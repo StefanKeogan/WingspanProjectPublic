@@ -1,8 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using WingspanPrototype1.Services;
-using WingspanPrototype1.Views;
 
 namespace WingspanPrototype1
 {
@@ -13,7 +11,7 @@ namespace WingspanPrototype1
         {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            // DependencyService.Register<MockDataStore>();
             MainPage = new MainPage();
         }
 
