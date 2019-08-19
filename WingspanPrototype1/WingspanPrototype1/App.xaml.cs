@@ -12,7 +12,7 @@ namespace WingspanPrototype1
             InitializeComponent();
 
             // DependencyService.Register<MockDataStore>();
-            MainPage = new MainPage();
+            MainPage = new NavigationPage(new MainPage());
         }
 
         protected override void OnStart()
