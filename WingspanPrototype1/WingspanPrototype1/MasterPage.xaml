@@ -4,12 +4,18 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WingspanPrototype1.MasterPage">
+             x:Class="WingspanPrototype1.MasterPage"
+             BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <ListView x:Name="MenuList">
             <ListView.ItemTemplate> 
                 <DataTemplate>
-                    <TextCell Text="{Binding Title}"/>
+                    <ViewCell>
+                        <Label Text="{Binding Title}" 
+                               TextColor="#000000" 
+                               FontSize="20" 
+                               Margin="10,5,0,5"/>
+                    </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>

@@ -12,6 +12,8 @@ namespace WingspanPrototype1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MasterPage : ContentPage
     {
+        public ListView menuList; // Create an object of MenuList so that we can access it from MainPage
+
         public MasterPage()
         {
             InitializeComponent();
@@ -29,8 +31,10 @@ namespace WingspanPrototype1
             menuItems.Add(new MasterPageItem { Title = "Sightings", TargetType = typeof(DetailPage) });
             menuItems.Add(new MasterPageItem { Title = "Reports", TargetType = typeof(ReportPage) });
 
+            menuList = MenuList; // Assign MenuList to object (Makes the listview acessible from MainPage)
+
             // Set Master page list items source to menu item list 
-            MenuList.ItemsSource = menuItems;
+            menuList.ItemsSource = menuItems;
 
         }
     }

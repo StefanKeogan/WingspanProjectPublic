@@ -17,7 +17,11 @@ namespace WingspanPrototype1
         {
             InitializeComponent();
 
-            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(DetailPage))); // Set default page 
+            // Set default page to home
+            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(HomePage))) {
+                BarBackgroundColor = Color.FromHex("#5C3838"),
+                BarTextColor = Color.White
+            }; 
 
             MasterPage.menuList.ItemSelected += Menu_Item_Selected; // Event handler
 
@@ -29,8 +33,13 @@ namespace WingspanPrototype1
             var item = e.SelectedItem as MasterPageItem; 
 
             if (item != null) // Validation 
-            {
-                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType)); // Open detail page 
+            { 
+                // Open detail page 
+                Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType, item.Title)) { 
+                    BarBackgroundColor = Color.FromHex("#5C3838"),
+                    BarTextColor = Color.White,
+                   
+                }; 
                 MasterPage.menuList.SelectedItem = null; // Set selected item to null
                 IsPresented = false; // Close master page 
             }

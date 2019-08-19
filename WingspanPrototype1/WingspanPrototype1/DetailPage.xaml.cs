@@ -12,9 +12,12 @@ namespace WingspanPrototype1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class DetailPage : ContentPage
     {
-        public DetailPage()
+        public DetailPage(string title)
         {
             InitializeComponent();
+
+            Title = title;
+            PageHeading.Text = title;
         }
     }
 }

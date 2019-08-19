@@ -10,13 +10,14 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ReportPage : ContentPage
+    public partial class HomePage : ContentPage
     {
-        public ReportPage(string title)
+        public HomePage()
         {
             InitializeComponent();
 
-            Title = title;
+            Title = "Home";
+
         }
     }
 }

@@ -5,10 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
                   xmlns:local="clr-namespace:WingspanPrototype1"
                   mc:Ignorable="d"
-             x:Class="WingspanPrototype1.MainPage">
+             x:Class="WingspanPrototype1.MainPage"
+             MasterBehavior="Popover">
     <MasterDetailPage.Master>
         <local:MasterPage x:Name="MasterPage"/>
     </MasterDetailPage.Master>
-
-
 </MasterDetailPage>
