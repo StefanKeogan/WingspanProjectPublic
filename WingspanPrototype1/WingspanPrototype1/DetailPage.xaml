@@ -7,10 +7,26 @@
              x:Class="WingspanPrototype1.DetailPage"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <StackLayout>
-            <Button/>
+        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+            <Button WidthRequest="500" HeightRequest="150" Text="Add Bird"/>
             <StackLayout>
-                
+                <Label x:Name="BoxTitle" HorizontalOptions="Center" FontSize="20"/>
+                <ListView x:Name="SearchFeildsList">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Margin="10,10,0,10">
+                                    <Label x:Name="{Binding LabelName}" 
+                                           Text="{Binding LabelText}"
+                                           FontSize="15"/>
+                                    <Entry HorizontalOptions="EndAndExpand" 
+                                           WidthRequest="300" 
+                                           x:Name="{Binding FeildName}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>

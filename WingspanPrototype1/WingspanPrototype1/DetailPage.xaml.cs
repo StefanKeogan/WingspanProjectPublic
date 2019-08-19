@@ -17,7 +17,23 @@ namespace WingspanPrototype1
             InitializeComponent();
 
             Title = title;
-            PageHeading.Text = title;
+
+            List<SearchFeild> searchFeilds = new List<SearchFeild>();
+
+            switch (title)
+            {
+                case "Birds":
+                    BoxTitle.Text = "Find Bird";
+                    searchFeilds.Add(new SearchFeild { FeildName = "NameInput", LabelName = "Name", LabelText = "Name: " });
+                    searchFeilds.Add(new SearchFeild { FeildName = "IDInput", LabelName = "ID", LabelText = "ID Number: " });
+                    searchFeilds.Add(new SearchFeild { FeildName = "BreedInput", LabelName = "Breed", LabelText = "Breed: " });
+                    break;
+                default:
+                    break;
+            }
+
+            SearchFeildsList.ItemsSource = searchFeilds;
+
         }
     }
 }
