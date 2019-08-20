@@ -40,7 +40,7 @@ namespace WingspanPrototype1
                     BarTextColor = Color.White,
                    
                 }; 
-                MasterPage.menuList.SelectedItem = null; // Set selected item to null
+                MasterPage.menuList.SelectedItem = null; // Set selected item to null (Ensures we dont get stuck on selected page)
                 IsPresented = false; // Close master page 
             }
         }
