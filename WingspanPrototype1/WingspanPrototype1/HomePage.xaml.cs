@@ -12,13 +12,14 @@ namespace WingspanPrototype1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class HomePage : ContentPage
     {
-        public HomePage()
+        public HomePage(string title)
         {
             InitializeComponent();
 
-            Title = "Home";          
+            Title = "Home"; // Set title value          
 
             // Check device to determine background image path
+            // TODO: Add IOS path
             switch (Device.RuntimePlatform)
             {
                 case Device.Android:

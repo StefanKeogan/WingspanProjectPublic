@@ -18,7 +18,7 @@ namespace WingspanPrototype1
             InitializeComponent();
 
             // Set default page to home
-            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(HomePage))) {
+            Detail = new NavigationPage((Page)Activator.CreateInstance(typeof(HomePage), "Home")) {
                 BarBackgroundColor = Color.FromHex("#5C3838"),
                 BarTextColor = Color.White
             }; 

@@ -12,6 +12,7 @@ namespace WingspanPrototype1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class ReportPage : ContentPage
     {
+        // Currently blank, will use to display report builder in future sprints 
         public ReportPage(string title)
         {
             InitializeComponent();
