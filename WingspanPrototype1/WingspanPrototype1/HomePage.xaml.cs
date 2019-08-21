@@ -16,7 +16,20 @@ namespace WingspanPrototype1
         {
             InitializeComponent();
 
-            Title = "Home";
+            Title = "Home";          
+
+            // Check device to determine background image path
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android:
+                    BackgroundImageSource = "homemobile.png";
+                    break;
+                case Device.UWP:
+                    BackgroundImageSource = "Assets/desktophome.png";
+                    break;
+                default: BackgroundImageSource = "homemobile.png";
+                    break;
+            }
 
         }
     }

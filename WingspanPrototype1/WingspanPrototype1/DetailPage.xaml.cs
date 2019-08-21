@@ -20,6 +20,13 @@ namespace WingspanPrototype1
 
             List<SearchFeild> searchFeilds = new List<SearchFeild>();
 
+            switch (Device.RuntimePlatform)
+            {
+                case Device.Android: 
+                default:
+                    break;
+            }
+
             switch (title)
             {
                 case "Birds":

@@ -7,34 +7,39 @@
              x:Class="WingspanPrototype1.DetailPage"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="30,30">
             <Button HorizontalOptions="CenterAndExpand"
-                    HeightRequest="100" 
-                    WidthRequest="300"
+                    HeightRequest="80" 
+                    WidthRequest="500"
                     Text="Add Bird" 
                     FontSize="30" 
                     BackgroundColor="#FDEB00"
                     Margin="0,0,0,0"/>
             <Frame BorderColor="Black" BackgroundColor="White">
-                <StackLayout>
+                <StackLayout WidthRequest="500">
                     <Label x:Name="BoxTitle" HorizontalOptions="Center" FontSize="20"/>
                     <ListView x:Name="SearchFeildsList">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <StackLayout Orientation="Horizontal" Margin="0,5,0,5">
+                                    <Grid Margin="2,5,0,5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="2*"/>
+                                            <ColumnDefinition Width="5*"/>
+                                        </Grid.ColumnDefinitions>
                                         <Label x:Name="{Binding LabelName}" 
                                                Text="{Binding LabelText}"
-                                               FontSize="15"/>
-                                        <Entry HorizontalOptions="EndAndExpand" 
-                                               WidthRequest="300" 
-                                               x:Name="{Binding FeildName}"/>
-                                    </StackLayout>
+                                               FontSize="15"
+                                               HorizontalOptions="Start"/>
+                                        <Entry HorizontalOptions="Fill" 
+                                               x:Name="{Binding FeildName}"
+                                               Grid.Column="1"/>
+                                    </Grid>
                                 </ViewCell>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Button Text="Search" BackgroundColor="#FDEB00" HorizontalOptions="Center"/>
+                    <Button x:Name="SearchBtn" Text="Search" BackgroundColor="#FDEB00" HorizontalOptions="Center"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

@@ -24,6 +24,7 @@ namespace WingspanPrototype1
             List<MasterPageItem> menuItems = new List<MasterPageItem>();
 
             // Menu list items
+            menuItems.Add(new MasterPageItem { Title = "Home", TargetType = typeof(HomePage) });
             menuItems.Add(new MasterPageItem { Title = "Birds", TargetType = typeof(DetailPage) });
             menuItems.Add(new MasterPageItem { Title = "Members", TargetType = typeof(DetailPage) });
             menuItems.Add(new MasterPageItem { Title = "Sponsors", TargetType = typeof(DetailPage) });

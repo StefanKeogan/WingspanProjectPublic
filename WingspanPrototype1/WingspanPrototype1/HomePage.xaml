@@ -4,13 +4,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WingspanPrototype1.HomePage"              
-             BackgroundImageSource="Assets/falcon4.PNG" 
-             Opacity=".8">
+             x:Class="WingspanPrototype1.HomePage">
     <ContentPage.Content>
-        <Image Source="Assets/wingspan-logo-clear.png" 
-               HorizontalOptions="Center" 
-               VerticalOptions="Center" 
-               Margin="0,0,0,350"/>
+
     </ContentPage.Content>
 </ContentPage>

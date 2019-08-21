@@ -17,6 +17,8 @@ namespace WingspanPrototype1.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
+            Window.SetStatusBarColor(Android.Graphics.Color.DarkGray);
+
             base.OnCreate(savedInstanceState);
 
             Xamarin.Essentials.Platform.Init(this, savedInstanceState);
