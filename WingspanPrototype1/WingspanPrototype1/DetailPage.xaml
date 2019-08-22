@@ -5,7 +5,9 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WingspanPrototype1.DetailPage"
-             BackgroundColor="#F0F0F0">
+             BackgroundColor="#F0F0F0"
+             NavigationPage.HasNavigationBar="True"
+             NavigationPage.HasBackButton="True">
     <ContentPage.Content>
         <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="30,30">
             <Button HorizontalOptions="CenterAndExpand"
@@ -39,7 +41,11 @@
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
-                    <Button x:Name="SearchBtn" Text="Search" BackgroundColor="#FDEB00" HorizontalOptions="Center"/>
+                    <Button x:Name="SearchBtn" 
+                            Text="Search" 
+                            BackgroundColor="#FDEB00" 
+                            HorizontalOptions="Center"
+                            Clicked="SearchBtn_Clicked"/>
                 </StackLayout>
             </Frame>
         </StackLayout>

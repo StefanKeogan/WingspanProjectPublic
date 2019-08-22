@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -34,12 +35,34 @@ namespace WingspanPrototype1
                     searchFeilds.Add(new SearchFeild { FeildName = "BreedInput", LabelName = "Breed", LabelText = "Breed: " });
                     break;
                 default:
+                    searchFeilds.Add(new SearchFeild { FeildName = "Error", LabelName = "Error", LabelText = "Error" });
                     break;
             }
 
             // Set source of search feilds list view to the list we added our feilds to 
             SearchFeildsList.ItemsSource = searchFeilds;
 
+        }
+
+        private void SearchBtn_Clicked(object sender, EventArgs e)
+        {
+            // Search database 
+            AccessDatabase accessDatabase = new AccessDatabase();
+            List<BsonDocument> results = accessDatabase.SearchCollection("Name", "Mr. Beaks");
+            
+
+
+            // What results page do we need to display ? 
+            switch (Device.RuntimePlatform)
+            {
+                case Device.UWP:
+                    Navigation.PushAsync(new ResultsDesktop(results));
+                    break;
+                default:
+                    Navigation.PushAsync(new ResultsDesktop(results));
+                    break;
+            }
+            
         }
     }
 }
