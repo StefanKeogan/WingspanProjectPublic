@@ -17,21 +17,21 @@
                     FontSize="30" 
                     BackgroundColor="#FDEB00"
                     Margin="0,0,0,0"/>
-            <Frame BorderColor="Black" BackgroundColor="White">
+            <Frame BorderColor="Black" BackgroundColor="White" WidthRequest="480">
                 <StackLayout WidthRequest="500">
                     <Label x:Name="BoxTitle" HorizontalOptions="Center" FontSize="20"/>
                     <ListView x:Name="SearchFeildsList">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid Margin="2,5,0,5">
+                                    <Grid>
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="2*"/>
                                             <ColumnDefinition Width="5*"/>
                                         </Grid.ColumnDefinitions>
                                         <Label x:Name="{Binding LabelName}" 
                                                Text="{Binding LabelText}"
-                                               FontSize="15"
+                                               FontSize="20"
                                                HorizontalOptions="Start"/>
                                         <Entry HorizontalOptions="Fill" 
                                                x:Name="{Binding FeildName}"

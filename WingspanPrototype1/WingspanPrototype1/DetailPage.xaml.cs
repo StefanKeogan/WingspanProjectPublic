@@ -47,16 +47,25 @@ namespace WingspanPrototype1
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
             // Search database 
-            AccessDatabase accessDatabase = new AccessDatabase();
-            List<BsonDocument> results = accessDatabase.SearchCollection("Name", "Mr. Beaks");
-            
 
+            // TODO: Get DB connection working 
+            // AccessDatabase accessDatabase = new AccessDatabase();
+            // List<BsonDocument> results = accessDatabase.SearchCollection("Name", "Mr. Beaks");
+
+            // Hardcoded data
+            List<string> results = new List<string>();
+            results.Add("Mr Beaks");
+            results.Add("Professor Feathers" );
+            results.Add("Batman");
 
             // What results page do we need to display ? 
             switch (Device.RuntimePlatform)
             {
                 case Device.UWP:
                     Navigation.PushAsync(new ResultsDesktop(results));
+                    break;
+                case Device.Android:
+                    Navigation.PushAsync(new ResultsMobile1(results));
                     break;
                 default:
                     Navigation.PushAsync(new ResultsDesktop(results));

@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.ResultsMobile2"
+             Title="Results">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <!--Bird Number-->
+            <Label x:Name="BirdNumberLabel" Text="Bird Number: " FontSize="20" Grid.Row="0" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label x:Name="BirdNumberValue"  Grid.Row="1" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <!--Wingspan Number-->
+            <Label x:Name="WingspanNumberLabel"  Grid.Row="2" Text="Wingspan Number: " FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label x:Name="WingspanNumberValue"   Grid.Row="3" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <!--Band Number-->
+            <Label x:Name="BandNumberLabel"  Grid.Row="4" Text="Band Number: " FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label x:Name="BandNumberValue"   Grid.Row="5" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <!--Name-->
+            <Label x:Name="NameLabel"  Grid.Row="6" Text="Name: " FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label x:Name="NameValue"   Grid.Row="7" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <!--Age-->
+            <Label x:Name="AgeLabel"  Grid.Row="8" Text="Age: " FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label x:Name="AgeValue"   Grid.Row="9" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <!--Sex-->
+            <Label x:Name="SexLabel"  Grid.Row="10" Text="Sex: " FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label x:Name="SexValue"  Grid.Row="11" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <!--Breed-->
+            <Label x:Name="BreedLabel"  Grid.Row="12" Text="Breed: " FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label x:Name="BreedValue"  Grid.Row="13" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <!--Status-->
+            <Label x:Name="SatusLabel"  Grid.Row="14" Text="Status: " FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+            <Label x:Name="StatusValue"  Grid.Row="15" FontSize="20" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <Button  Grid.Row="16" Text="Save Changes" BackgroundColor="#FDEB00" FontSize="20" HorizontalOptions="Center"/>
+            <Button  Grid.Row="17" Text="Delete Document" BackgroundColor="#FDEB00" FontSize="20" HorizontalOptions="Center"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -11,11 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ResultsDesktop : ContentPage
+    public partial class ResultsMobile1 : ContentPage
     {
-        public ResultsDesktop(List<string> results)
+        public ResultsMobile1(List<string> results )
         {
             InitializeComponent();
+
 
             // Convert hard coded result data into Bird objects
             List<Bird> birdResulsts = new List<Bird>();
@@ -24,11 +25,13 @@ namespace WingspanPrototype1
                 birdResulsts.Add(new Bird { Name = result });
             }
 
-            // Set result list item source to list of Bird objects
-            ResultsListView.ItemsSource = birdResulsts;
+            MobileResults.ItemsSource = birdResulsts;
 
+        }
 
-
+        private void MobileResults_ItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            Navigation.PushAsync(new ResultsMobile2());
         }
     }
 }

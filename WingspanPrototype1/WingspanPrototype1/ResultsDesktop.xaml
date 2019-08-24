@@ -19,7 +19,7 @@
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
-                                <Label FontSize="20"/>
+                                <Label FontSize="20" Text="{Binding Name}"/>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
