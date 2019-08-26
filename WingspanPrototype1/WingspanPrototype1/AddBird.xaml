@@ -48,18 +48,19 @@
 
             <!--Sex-->
             <Label x:Name="SexLabel"  Grid.Row="5" Text="Sex: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Entry x:Name="SexEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="5" Grid.Column="1"/>
+            <Picker x:Name="SexPicker" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="5" Grid.Column="1"/>
 
             <!--Breed-->
             <Label x:Name="BreedLabel"  Grid.Row="6" Text="Breed: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Entry x:Name="BreedEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="6" Grid.Column="1"/>
+            <Picker x:Name="BreedPicker" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="6" Grid.Column="1"/>
 
             <!--Status-->
             <Label x:Name="SatusLabel"  Grid.Row="7" Text="Status: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Entry x:Name="StatusEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="7" Grid.Column="1"/>
+            <Picker x:Name="StatusPicker" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="7" Grid.Column="1"/>
 
             <Button  Grid.Row="8" Grid.ColumnSpan="2" Text="Add" BackgroundColor="#FDEB00" FontSize="20" HorizontalOptions="Center" WidthRequest="150"/>
-
+             
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

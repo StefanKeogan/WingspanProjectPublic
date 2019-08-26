@@ -25,7 +25,7 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <ViewCell>
-                                    <Grid>
+                                    <Grid Padding="2">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="2*"/>
                                             <ColumnDefinition Width="5*"/>
@@ -33,8 +33,10 @@
                                         <Label x:Name="{Binding LabelName}" 
                                                Text="{Binding LabelText}"
                                                FontSize="20"
-                                               HorizontalOptions="Start"/>
-                                        <Entry HorizontalOptions="Fill" 
+                                               HorizontalOptions="Start"
+                                               VerticalOptions="CenterAndExpand"/>
+                                        <Entry HorizontalOptions="Fill"
+                                               VerticalOptions="Center"
                                                x:Name="{Binding FeildName}"
                                                Grid.Column="1"/>
                                     </Grid>

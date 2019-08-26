@@ -15,6 +15,12 @@ namespace WingspanPrototype1
         public AddBird()
         {
             InitializeComponent();
+
+            SexPicker.ItemsSource = new string[]{ "Male", "Female"};
+            BreedPicker.ItemsSource = new string[]{ "Morepork", "Falcon", "Hawk"};
+            StatusPicker.ItemsSource = new string[]{ "Captive", "Wild"};
+
+            
         }
     }
 }
