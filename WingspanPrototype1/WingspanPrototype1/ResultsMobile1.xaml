@@ -5,9 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WingspanPrototype1.ResultsMobile1"
-             Title="Results">
+             Title="Results"
+             BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <ListView x:Name="MobileResults" ItemTapped="MobileResults_ItemTapped">
+        <ListView x:Name="MobileResults" ItemSelected="MobileResults_ItemSelected_1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>

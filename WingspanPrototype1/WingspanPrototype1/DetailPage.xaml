@@ -16,7 +16,8 @@
                     Text="Add Bird" 
                     FontSize="30" 
                     BackgroundColor="#FDEB00"
-                    Margin="0,0,0,0"/>
+                    Margin="0,0,0,0"
+                    Clicked="AddBtn_Clicked"/>
             <Frame BorderColor="Black" BackgroundColor="White" WidthRequest="480">
                 <StackLayout WidthRequest="500">
                     <Label x:Name="BoxTitle" HorizontalOptions="Center" FontSize="20"/>

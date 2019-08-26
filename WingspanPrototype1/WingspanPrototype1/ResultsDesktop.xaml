@@ -15,7 +15,7 @@
                     <ColumnDefinition Width="6*"/>
                 </Grid.ColumnDefinitions>
 
-                <ListView x:Name="ResultsListView" BackgroundColor="#F0F0F0">
+                <ListView x:Name="ResultsListView" BackgroundColor="#F0F0F0" ItemSelected="ResultsListView_ItemSelected">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <ViewCell>
@@ -24,7 +24,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Grid Grid.Column="1" Margin="0,50">
+                <Grid Grid.Column="1" Margin="80,50,80,50">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="3*"/>
@@ -77,7 +77,7 @@
                     <Button Grid.Column="0" Grid.Row="9" Text="Save Changes" BackgroundColor="#FDEB00" FontSize="20" HorizontalOptions="Center"/>
                     <Button Grid.Column="1" Grid.Row="9" Text="Delete Document" BackgroundColor="#FDEB00" FontSize="20" HorizontalOptions="Center"/>
 
-                    <Image Grid.Column="2" Grid.RowSpan="4"/>
+                    <Image Grid.Column="2" Grid.RowSpan="4" Source="Assets/mpprofile.PNG"/>
                 </Grid>
             </Grid>
         </StackLayout>

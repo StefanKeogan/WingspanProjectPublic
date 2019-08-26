@@ -21,7 +21,7 @@ namespace WingspanPrototype1
 
             Title = title; // Set title 
 
-            List<SearchFeild> searchFeilds = new List<SearchFeild>(); // Stores the feild we want to display
+            List<SearchFeild> searchFeilds = new List<SearchFeild>(); // Stores the feilds we want to display
 
             // Based on title value set feilds 
             switch (title)
@@ -31,7 +31,7 @@ namespace WingspanPrototype1
 
                     // Add feilds search box by adding them to list 
                     searchFeilds.Add(new SearchFeild { FeildName = "NameInput", LabelName = "Name", LabelText = "Name: " });
-                    searchFeilds.Add(new SearchFeild { FeildName = "IDInput", LabelName = "ID", LabelText = "ID Number: " });
+                    searchFeilds.Add(new SearchFeild { FeildName = "IDInput", LabelName = "ID", LabelText = "ID: " });
                     searchFeilds.Add(new SearchFeild { FeildName = "BreedInput", LabelName = "Breed", LabelText = "Breed: " });
                     break;
                 default:
@@ -72,6 +72,12 @@ namespace WingspanPrototype1
                     break;
             }
             
+        }
+
+        // Add button click event
+        private void AddBtn_Clicked(object sender, EventArgs e)
+        {
+            Navigation.PushAsync(new AddBird());
         }
     }
 }

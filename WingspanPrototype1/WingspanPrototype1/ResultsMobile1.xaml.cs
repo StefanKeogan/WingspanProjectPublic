@@ -29,9 +29,11 @@ namespace WingspanPrototype1
 
         }
 
-        private void MobileResults_ItemTapped(object sender, ItemTappedEventArgs e)
+        private void MobileResults_ItemSelected_1(object sender, SelectedItemChangedEventArgs e)
         {
-            Navigation.PushAsync(new ResultsMobile2());
+            var item = e.SelectedItem as Bird;
+
+            Navigation.PushAsync(new ResultsMobile2(item.Name));
         }
     }
 }

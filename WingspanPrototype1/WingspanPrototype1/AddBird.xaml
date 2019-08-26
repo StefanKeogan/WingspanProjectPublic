@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.AddBird"
+             Title="Add Bird"
+             BackgroundColor="#F0F0F0">
+    <ContentPage.Content>
+        <Grid Margin="5,20,5,10" HorizontalOptions="CenterAndExpand">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <!--Bird Number-->
+            <Label x:Name="BirdNumberLabel" Text="Bird Number: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center" />
+            <Entry x:Name="BirdNumberEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Column="1"/>
+
+            <!--Wingspan Number-->
+            <Label x:Name="WingspanNumberLabel"  Grid.Row="1" Text="Wingspan Number: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry x:Name="WinspanNumberEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1"/>
+
+            <!--Band Number-->
+            <Label x:Name="BandNumberLabel"  Grid.Row="2" Text="Band Number: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry x:Name="BandNumberEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="2" Grid.Column="1"/>
+
+            <!--Name-->
+            <Label x:Name="NameLabel"  Grid.Row="3" Text="Name: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry x:Name="NameEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="3" Grid.Column="1"/>
+
+            <!--Age-->
+            <Label x:Name="AgeLabel"  Grid.Row="4" Text="Age: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry x:Name="AgeEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="1"/>
+
+            <!--Sex-->
+            <Label x:Name="SexLabel"  Grid.Row="5" Text="Sex: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry x:Name="SexEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="5" Grid.Column="1"/>
+
+            <!--Breed-->
+            <Label x:Name="BreedLabel"  Grid.Row="6" Text="Breed: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry x:Name="BreedEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="6" Grid.Column="1"/>
+
+            <!--Status-->
+            <Label x:Name="SatusLabel"  Grid.Row="7" Text="Status: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
+            <Entry x:Name="StatusEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="7" Grid.Column="1"/>
+
+            <Button  Grid.Row="8" Grid.ColumnSpan="2" Text="Add" BackgroundColor="#FDEB00" FontSize="20" HorizontalOptions="Center" WidthRequest="150"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
