@@ -19,8 +19,8 @@ namespace WingspanPrototype1
 
         public List<BsonDocument> SearchCollection(string key, string value)
         {
-            List<BsonDocument> results;
-            return results = collection.Find(new BsonDocument(key, value)).ToList();
+            List<BsonDocument> results = collection.Find(new BsonDocument(key, value)).ToList();
+            return results;
         }
 
     }

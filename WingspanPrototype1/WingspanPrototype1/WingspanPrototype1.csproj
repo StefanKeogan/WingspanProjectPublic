@@ -16,37 +16,40 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="ResultsDesktop.xaml.cs">
+    <Compile Update="View\SearchBird.xaml.cs">
+      <DependentUpon>SearchBird.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\ResultsDesktop.xaml.cs">
       <DependentUpon>ResultsDesktop.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="AddBird.xaml">
+    <EmbeddedResource Update="View\AddBird.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="DetailPage.xaml">
+    <EmbeddedResource Update="View\SearchBird.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="HomePage.xaml">
+    <EmbeddedResource Update="View\HomePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="MainPage.xaml">
+    <EmbeddedResource Update="View\MainPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="MasterPage.xaml">
+    <EmbeddedResource Update="View\MasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ReportPage.xaml">
+    <EmbeddedResource Update="View\ReportPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ResultsDesktop.xaml">
+    <EmbeddedResource Update="View\ResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ResultsMobile1.xaml">
+    <EmbeddedResource Update="View\ResultsMobile1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="ResultsMobile2.xaml">
+    <EmbeddedResource Update="View\ResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

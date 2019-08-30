@@ -38,7 +38,6 @@ namespace WingspanPrototype1
                 Detail = new NavigationPage((Page)Activator.CreateInstance(item.TargetType, item.Title)) { 
                     BarBackgroundColor = Color.FromHex("#5C3838"),
                     BarTextColor = Color.White,
-                   
                 }; 
                 MasterPage.menuList.SelectedItem = null; // Set selected item to null (Ensures we dont get stuck on selected page)
                 IsPresented = false; // Close master page 

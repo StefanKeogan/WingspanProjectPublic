@@ -11,11 +11,11 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class DetailPage : ContentPage
+    public partial class SearchBird : ContentPage
     {
         // The detail page displays the search / add menu, the content of this page is determined by the title of 
         // the menu item selected
-        public DetailPage(string title)
+        public SearchBird(string title)
         {
             InitializeComponent();
 
@@ -55,7 +55,7 @@ namespace WingspanPrototype1
             // Hardcoded data
             List<string> results = new List<string>();
             results.Add("Mr Beaks");
-            results.Add("Professor Feathers" );
+            results.Add("Professor Feathers");
             results.Add("Batman");
 
             // What results page do we need to display ? 
