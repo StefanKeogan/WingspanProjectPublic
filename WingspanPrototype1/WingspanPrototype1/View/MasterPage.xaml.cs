@@ -25,11 +25,17 @@ namespace WingspanPrototype1
 
             // Menu list items
             menuItems.Add(new MasterPageItem { Title = "Home", TargetType = typeof(HomePage) });
-            menuItems.Add(new MasterPageItem { Title = "Birds", TargetType = typeof(SearchBird) });
-            menuItems.Add(new MasterPageItem { Title = "Members", TargetType = typeof(SearchBird) });
-            menuItems.Add(new MasterPageItem { Title = "Sponsors", TargetType = typeof(SearchBird) });
-            menuItems.Add(new MasterPageItem { Title = "Volunteers", TargetType = typeof(SearchBird) });
-            menuItems.Add(new MasterPageItem { Title = "Sightings", TargetType = typeof(SearchBird) });
+            menuItems.Add(new MasterPageItem { Title = "New Wild Bird", TargetType = typeof(AddBird) });
+            menuItems.Add(new MasterPageItem { Title = "New Captive Bird", TargetType = typeof(AddBird) });
+            menuItems.Add(new MasterPageItem { Title = "Add Bird Note", TargetType = typeof(Edit) });
+            menuItems.Add(new MasterPageItem { Title = "Edit Birds", TargetType = typeof(Edit) });
+            menuItems.Add(new MasterPageItem { Title = "New Member", TargetType = typeof(Edit) });
+            menuItems.Add(new MasterPageItem { Title = "Edit Members", TargetType = typeof(Edit) });
+            menuItems.Add(new MasterPageItem { Title = "New Sponsorship", TargetType = typeof(Edit) });
+            menuItems.Add(new MasterPageItem { Title = "Add Volunteer", TargetType = typeof(Edit) });
+            menuItems.Add(new MasterPageItem { Title = "Edit Volunteers", TargetType = typeof(Edit) });
+            menuItems.Add(new MasterPageItem { Title = "Log Volunteer Hours", TargetType = typeof(Edit) });
+            menuItems.Add(new MasterPageItem { Title = "New Sighting", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "Reports", TargetType = typeof(ReportPage) });
 
             menuList = MenuList; // Assign MenuList to object (Makes the listview acessible from MainPage)

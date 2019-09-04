@@ -16,7 +16,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="View\SearchBird.xaml.cs">
+    <Compile Update="View\Edit.xaml.cs">
       <DependentUpon>SearchBird.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\ResultsDesktop.xaml.cs">
@@ -28,7 +28,7 @@
     <EmbeddedResource Update="View\AddBird.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\SearchBird.xaml">
+    <EmbeddedResource Update="View\Edit.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\HomePage.xaml">

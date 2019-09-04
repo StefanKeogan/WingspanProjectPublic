@@ -5,7 +5,6 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WingspanPrototype1.AddBird"
-             Title="Add Bird"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <Grid Margin="5,20,5,10" HorizontalOptions="CenterAndExpand">

@@ -11,11 +11,11 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SearchBird : ContentPage
+    public partial class Edit : ContentPage
     {
         // The detail page displays the search / add menu, the content of this page is determined by the title of 
         // the menu item selected
-        public SearchBird(string title)
+        public Edit(string title)
         {
             InitializeComponent();
 
@@ -26,7 +26,7 @@ namespace WingspanPrototype1
             // Based on title value set feilds 
             switch (title)
             {
-                case "Birds":
+                case "Edit Birds":
                     BoxTitle.Text = "Find Bird"; // Heading text
 
                     // Add feilds search box by adding them to list 
@@ -74,10 +74,6 @@ namespace WingspanPrototype1
             
         }
 
-        // Add button click event
-        private void AddBtn_Clicked(object sender, EventArgs e)
-        {
-            Navigation.PushAsync(new AddBird());
-        }
+
     }
 }

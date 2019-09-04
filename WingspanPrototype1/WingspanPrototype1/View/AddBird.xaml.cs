@@ -12,9 +12,11 @@ namespace WingspanPrototype1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddBird : ContentPage
     {
-        public AddBird()
+        public AddBird(string title)
         {
             InitializeComponent();
+
+            Title = title;
 
             SexPicker.ItemsSource = new string[]{ "Male", "Female"};
             BreedPicker.ItemsSource = new string[]{ "Morepork", "Falcon", "Hawk"};
