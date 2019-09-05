@@ -53,22 +53,25 @@ namespace WingspanPrototype1
             // List<BsonDocument> results = accessDatabase.SearchCollection("Name", "Mr. Beaks");
 
             // Hardcoded data
-            List<string> results = new List<string>();
-            results.Add("Mr Beaks");
-            results.Add("Professor Feathers");
-            results.Add("Batman");
+            List<WildBird> results = new List<WildBird>();
+            results.Add(new WildBird {WingspanId = "W15/003", Age = "Juvenile", MetalBandId = "H39851", BanderName = "Noel Hyde", DateBanded = DateTime.Now, Gps = "-38.163565, +176.27060" , Location = "Nursery Road, Whakarewarewa Forest, Rotorua, Bay of Plenty", Sex = "Male", Species = "Falcon" });
+            results.Add(new WildBird {WingspanId = "W15/004", Age = "Adult", MetalBandId = "L40435", BanderName = "Dave Crip", DateBanded = DateTime.Now, Gps = "-38.714077, 176.371659", Location = "Kaingaroa Forest, Cpt 512", Sex = "Female", Species = "Falcon" });
+            results.Add(new WildBird {WingspanId = "W15/004", Age = "Juvenile", MetalBandId = "K10996", BanderName = "Heidi Stook", DateBanded = DateTime.Now, Gps = "-38.712070, 176.533579", Location = "Hill Road, Whakarewarewa Forest, Rotorua, Bay of Plenty", Sex = "Male", Species = "Barn Owl" });
+            results.Add(new WildBird {WingspanId = "W15/006", Age = "Adult", MetalBandId = "S-87486", BanderName = "Noel Hyde", DateBanded = DateTime.Now, Gps = "-35.106184, +173.30352", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
+
+
 
             // What results page do we need to display ? 
             switch (Device.RuntimePlatform)
             {
                 case Device.UWP:
-                    Navigation.PushAsync(new ResultsDesktop(results));
+                    Navigation.PushAsync(new BirdResultsDesktop(results, typeof(WildBird)));
                     break;
                 case Device.Android:
-                    Navigation.PushAsync(new ResultsMobile1(results));
+                    // Navigation.PushAsync(new ResultsMobile1(results));
                     break;
                 default:
-                    Navigation.PushAsync(new ResultsDesktop(results));
+                    Navigation.PushAsync(new BirdResultsDesktop(results, typeof(WildBird)));
                     break;
             }
             

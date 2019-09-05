@@ -19,10 +19,10 @@ namespace WingspanPrototype1
 
 
             // Convert hard coded result data into Bird objects
-            List<Bird> birdResulsts = new List<Bird>();
+            List<WildBird> birdResulsts = new List<WildBird>();
             foreach (var result in results)
             {
-                birdResulsts.Add(new Bird { Name = result });
+                birdResulsts.Add(new WildBird { WingspanId = result });
             }
 
             MobileResults.ItemsSource = birdResulsts;
@@ -31,9 +31,9 @@ namespace WingspanPrototype1
 
         private void MobileResults_ItemSelected_1(object sender, SelectedItemChangedEventArgs e)
         {
-            var item = e.SelectedItem as Bird;
+            var item = e.SelectedItem as WildBird;
 
-            Navigation.PushAsync(new ResultsMobile2(item.Name));
+            Navigation.PushAsync(new ResultsMobile2(item.WingspanId));
         }
     }
 }

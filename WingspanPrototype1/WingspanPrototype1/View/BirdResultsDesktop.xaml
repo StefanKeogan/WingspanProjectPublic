@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.BirdResultsDesktop"
+             Title="Results"
+             NavigationPage.HasNavigationBar="True">
+    <ContentPage.Content>
+        <StackLayout>
+            
+            
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="30*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
+
+                <ListView x:Name="ResultsListView" BackgroundColor="#F0F0F0" Grid.RowSpan="2">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Label FontSize="20" Text="{Binding WingspanId}"/>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid x:Name="birdResultsGrid" Grid.Column="1" Margin="150, 50, 150, 50">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
+
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" >
+                    <Button  Text="Save Changes" BackgroundColor="#FDEB00" FontSize="15" HorizontalOptions="Center"/>
+                    <Button  Text="Delete Document" BackgroundColor="#FDEB00" FontSize="15" HorizontalOptions="Center"/>
+                </StackLayout>
+
+            </Grid>
+
+            
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
