@@ -4,7 +4,7 @@ using System.Text;
 
 namespace WingspanPrototype1.Model
 {
-    class BirdResultsItem
+    public class BirdResultsItem
     {
         public string KeyLabelName { get; set; }
         public string KeyLabelText { get; set; }

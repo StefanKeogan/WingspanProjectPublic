@@ -67,11 +67,13 @@ namespace WingspanPrototype1
                 // What feild type do we need to display?
                 if (formItem.FeildType == typeof(Entry)) 
                 {
+                    // If the feild is an entry, ad an entry to the grid
                     Entry feild = new Entry { VerticalOptions = LayoutOptions.Center, StyleId = formItem.FeildName };
                     addBirdGrid.Children.Add(feild, 1, rowIndex);
                 }
-                else if (formItem.FeildType == typeof(Picker)) // Is the feild a picker
+                else if (formItem.FeildType == typeof(Picker)) 
                 {
+                    // If the feild is a picker, add a picker to the grid
                     Picker feild = new Picker { VerticalOptions = LayoutOptions.Center, StyleId = formItem.FeildName };
 
                     switch (formItem.FeildName) // What items do we need to add to the picker?
@@ -85,17 +87,19 @@ namespace WingspanPrototype1
                         default:
                             break;
                     }
+
                     addBirdGrid.Children.Add(feild, 1, rowIndex);
                 }
                 else if (formItem.FeildType == typeof(DatePicker))
                 {
+                    // If the feild is a date picker, add a picker to the grid
                     DatePicker feild = new DatePicker { VerticalOptions = LayoutOptions.Center, StyleId = formItem.FeildName};
                     addBirdGrid.Children.Add(feild, 1, rowIndex);
-
 
                 }
                 else if (formItem.FeildType == typeof(Editor))
                 {
+                    // If the feild is an editor, add a picker to the grid
                     Editor feild = new Editor {  VerticalOptions = LayoutOptions.Center, StyleId = formItem.FeildName, MaxLength = 250, AutoSize = EditorAutoSizeOption.TextChanges };
                     addBirdGrid.Children.Add(feild, 1, rowIndex);
 

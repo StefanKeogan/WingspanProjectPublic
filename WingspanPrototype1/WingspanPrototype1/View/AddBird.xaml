@@ -8,6 +8,8 @@
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <StackLayout Margin="300,20,300,10" HorizontalOptions="Center" VerticalOptions="Center">
+            
+            <!--Dynamic grid-->
             <Grid x:Name="addBirdGrid" >
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -30,6 +32,7 @@
 
         </StackLayout>
 
+        <!--Static Grid-->       
         <!--<Grid Margin="5,20,5,10" HorizontalOptions="CenterAndExpand">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
