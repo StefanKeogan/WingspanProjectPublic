@@ -28,20 +28,24 @@ namespace WingspanPrototype1
             switch (title)
             {
                 case "Edit Birds":
-                    BoxTitle.Text = "Find Bird"; // Heading text
-
+                    searchTitle.Text = "Find Bird"; // Heading text
                     // Add feilds search box by adding them to list 
-                    searchFeilds.Add(new SearchFeild { FeildName = "NameInput", LabelName = "Name", LabelText = "Name: " });
-                    searchFeilds.Add(new SearchFeild { FeildName = "IDInput", LabelName = "ID", LabelText = "ID: " });
-                    searchFeilds.Add(new SearchFeild { FeildName = "BreedInput", LabelName = "Breed", LabelText = "Breed: " });
+                    searchFeilds.Add(new SearchFeild { FeildName = "nameInput", LabelName = "Name", LabelText = "Bird Name: ", FeildType = typeof(Entry) });
+                    searchFeilds.Add(new SearchFeild { FeildName = "idInput", LabelName = "ID", LabelText = "ID: ", FeildType = typeof(Entry) });
+                    searchFeilds.Add(new SearchFeild { FeildName = "speciesInput", LabelName = "Species", LabelText = "Species: ", FeildType = typeof(Entry) });
+                    searchFeilds.Add(new SearchFeild { FeildName = "statusInput", LabelName = "Status", LabelText = "Status: ", FeildType = typeof(Picker) });
+                    break;
+                case "Edit Members":
+                    searchTitle.Text = "Find Member";
+                    searchFeilds.Add(new SearchFeild { FeildName = "nameInput", LabelName = "Name", LabelText = "Member Name: ", FeildType = typeof(Entry) });
+                    searchFeilds.Add(new SearchFeild { FeildName = "idInput", LabelName = "ID", LabelText = "ID: ", FeildType = typeof(Entry) });
                     break;
                 default:
                     searchFeilds.Add(new SearchFeild { FeildName = "Error", LabelName = "Error", LabelText = "Error" });
                     break;
             }
 
-            // Set source of search feilds list view to the list we added our feilds to 
-            SearchFeildsList.ItemsSource = searchFeilds;
+            SetSearchFeilds(searchFeilds);            
 
         }
 
@@ -85,6 +89,38 @@ namespace WingspanPrototype1
             
         }
 
+        public void SetSearchFeilds(List<SearchFeild> searchFeilds)
+        {
+            int rowIndex = 0;
+
+            foreach (SearchFeild searchFeild in searchFeilds)
+            {
+                editGrid.RowDefinitions.Add(new RowDefinition());
+
+                editGrid.Children.Add(new Label { Text = searchFeild.LabelText, FontSize = 20,  VerticalOptions = LayoutOptions.Center}, 0, rowIndex);
+
+                if (searchFeild.FeildType == typeof(Entry))
+                {
+                    editGrid.Children.Add(new Entry { VerticalOptions = LayoutOptions.Center,}, 1, rowIndex);
+                }
+                else if (searchFeild.FeildType == typeof(Picker))
+                {
+                    Picker picker = new Picker();
+
+                    switch (searchFeild.LabelName)
+                    {
+                        case "Status": picker.ItemsSource = new string[] { "Captive", "Wild" };
+                            break;
+                        default: picker.ItemsSource = new string[] { "Error" };
+                            break;
+                    }
+
+                    editGrid.Children.Add(picker, 1, rowIndex);
+                }
+
+                rowIndex++;
+            }
+        }
 
     }
 }
