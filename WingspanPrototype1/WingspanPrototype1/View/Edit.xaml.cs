@@ -22,37 +22,50 @@ namespace WingspanPrototype1
 
             Title = title; // Set title 
 
-            List<SearchFeild> searchFeilds = new List<SearchFeild>(); // Stores the feilds we want to display
-
             // Based on title value set feilds 
             switch (title)
             {
                 case "Edit Birds":
-                    searchTitle.Text = "Find Bird"; // Heading text
-                    // Add feilds search box by adding them to list 
-                    searchFeilds.Add(new SearchFeild { FeildName = "nameInput", LabelName = "Name", LabelText = "Bird Name: ", FeildType = typeof(Entry) });
-                    searchFeilds.Add(new SearchFeild { FeildName = "idInput", LabelName = "ID", LabelText = "ID: ", FeildType = typeof(Entry) });
-                    searchFeilds.Add(new SearchFeild { FeildName = "speciesInput", LabelName = "Species", LabelText = "Species: ", FeildType = typeof(Entry) });
-                    searchFeilds.Add(new SearchFeild { FeildName = "statusInput", LabelName = "Status", LabelText = "Status: ", FeildType = typeof(Picker) });
+                    searchTitle.Text = "Find Bird"; // Heading text                   
+
+                    // Add grid rows
+                    editGrid.RowDefinitions.Add(new RowDefinition());
+                    editGrid.RowDefinitions.Add(new RowDefinition());
+                    editGrid.RowDefinitions.Add(new RowDefinition());
+                    editGrid.RowDefinitions.Add(new RowDefinition());
+
+                    // Add feilds to grid
+                    // Bird name
+                    editGrid.Children.Add(new Label { Text = "Bird Name", FontSize = 20, VerticalOptions = LayoutOptions.Center }, 0, 0);
+                    editGrid.Children.Add(new Entry { VerticalOptions = LayoutOptions.Center }, 1, 0);
+
+                    // Wingspan Number 
+                    editGrid.Children.Add(new Label { Text = "Wingspan Number", FontSize = 20, VerticalOptions = LayoutOptions.Center }, 0, 1);
+                    editGrid.Children.Add(new Entry { VerticalOptions = LayoutOptions.Center }, 1, 1);
+
+                    // Species
+                    editGrid.Children.Add(new Label { Text = "Species", FontSize = 20, VerticalOptions = LayoutOptions.Center }, 0, 2);
+                    editGrid.Children.Add(new Entry { VerticalOptions = LayoutOptions.Center }, 1, 2);
+
+                    // Status
+                    editGrid.Children.Add(new Label { Text = "Status", FontSize = 20, VerticalOptions = LayoutOptions.Center }, 0, 3);
+                    editGrid.Children.Add(new Picker { VerticalOptions = LayoutOptions.Center, ItemsSource = new string[] {"Captive", "Wild" } }, 1, 3);
+
                     break;
                 case "Edit Members":
-                    searchTitle.Text = "Find Member";
-                    searchFeilds.Add(new SearchFeild { FeildName = "nameInput", LabelName = "Name", LabelText = "Member Name: ", FeildType = typeof(Entry) });
-                    searchFeilds.Add(new SearchFeild { FeildName = "idInput", LabelName = "ID", LabelText = "ID: ", FeildType = typeof(Entry) });
+                    searchTitle.Text = "Find Member";                  
+                    break;
+                case "Edit Volunteers":
+                    searchTitle.Text = "Find Volunteer";                 
                     break;
                 default:
-                    searchFeilds.Add(new SearchFeild { FeildName = "Error", LabelName = "Error", LabelText = "Error" });
                     break;
             }
 
-            SetSearchFeilds(searchFeilds);            
-
         }
 
-        private void SearchBtn_Clicked(object sender, EventArgs e)
+        public ArrayList SearchBirdData(List<SearchParameter> searchParameters, string birdCategory)
         {
-            // Search database 
-
             // TODO: Get DB connection working 
             // AccessDatabase accessDatabase = new AccessDatabase();
             // List<BsonDocument> results = accessDatabase.SearchCollection("Name", "Mr. Beaks");
@@ -60,66 +73,98 @@ namespace WingspanPrototype1
             // Hardcoded data
             ArrayList results = new ArrayList();
 
-            //results.Add(new WildBird { WingspanId = "W15/003", Age = "Juvenile", MetalBandId = "H39851", BanderName = "Noel Hyde", DateBanded = DateTime.Now, Gps = "-38.163565, +176.27060", Location = "Nursery Road, Whakarewarewa Forest, Rotorua, Bay of Plenty", Sex = "Male", Species = "Falcon" });
-            //results.Add(new WildBird { WingspanId = "W15/004", Age = "Adult", MetalBandId = "L40435", BanderName = "Dave Crip", DateBanded = DateTime.Now, Gps = "-38.714077, 176.371659", Location = "Kaingaroa Forest, Cpt 512", Sex = "Female", Species = "Falcon" });
-            //results.Add(new WildBird { WingspanId = "W15/004", Age = "Juvenile", MetalBandId = "K10996", BanderName = "Heidi Stook", DateBanded = DateTime.Now, Gps = "-38.712070, 176.533579", Location = "Hill Road, Whakarewarewa Forest, Rotorua, Bay of Plenty", Sex = "Male", Species = "Barn Owl" });
-            //results.Add(new WildBird { WingspanId = "W15/006", Age = "Adult", MetalBandId = "S-87486", BanderName = "Noel Hyde", DateBanded = DateTime.Now, Gps = "-35.106184, +173.30352", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
-            
-            results.Add(new CaptiveBird { WingspanId = "15/006", Age = "Juvenile", BandNo = "S-87486", Name = "Mr. Beaks", DateArrived = DateTime.Now,  Result = "Captive", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
-            results.Add(new CaptiveBird { WingspanId = "15/007", Age = "Adult", BandNo = "L40435", Name = "Hawk Eye", DateArrived = DateTime.Now, Result = "Captive", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
-            results.Add(new CaptiveBird { WingspanId = "15/008", Age = "Juvenile", BandNo = "K10996", Name = "Professor Feathers", DateArrived = DateTime.Now, Result = "Captive", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
-            results.Add(new CaptiveBird { WingspanId = "15/009", Age = "Adult", BandNo = "H39851", Name = "Batman", DateArrived = DateTime.Now, DateDeceased= DateTime.Now, Result = "Deceased", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
-
-
-
-
-            // What results page do we need to display ? 
-            switch (Device.RuntimePlatform)
+            if (birdCategory == "Capive")
             {
-                case Device.UWP:
-                    Navigation.PushAsync(new BirdResultsDesktop(results, typeof(CaptiveBird)));
-                    break;
-                case Device.Android:
-                    // Navigation.PushAsync(new ResultsMobile1(results));
-                    break;
-                default:
-                    Navigation.PushAsync(new BirdResultsDesktop(results, typeof(WildBird)));
-                    break;
+                results.Add(new CaptiveBird { WingspanId = "15/006", Age = "Juvenile", BandNo = "S-87486", Name = "Mr. Beaks", DateArrived = DateTime.Now, Result = "Captive", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
+                results.Add(new CaptiveBird { WingspanId = "15/007", Age = "Adult", BandNo = "L40435", Name = "Hawk Eye", DateArrived = DateTime.Now, Result = "Captive", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
+                results.Add(new CaptiveBird { WingspanId = "15/008", Age = "Juvenile", BandNo = "K10996", Name = "Professor Feathers", DateArrived = DateTime.Now, Result = "Captive", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
+                results.Add(new CaptiveBird { WingspanId = "15/009", Age = "Adult", BandNo = "H39851", Name = "Batman", DateArrived = DateTime.Now, DateDeceased = DateTime.Now, Result = "Deceased", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
             }
-            
+            else if (birdCategory == "Wild")
+            {
+                results.Add(new WildBird { WingspanId = "W15/003", Age = "Juvenile", MetalBandId = "H39851", BanderName = "Noel Hyde", DateBanded = DateTime.Now, Gps = "-38.163565, +176.27060", Location = "Nursery Road, Whakarewarewa Forest, Rotorua, Bay of Plenty", Sex = "Male", Species = "Falcon" });
+                results.Add(new WildBird { WingspanId = "W15/004", Age = "Adult", MetalBandId = "L40435", BanderName = "Dave Crip", DateBanded = DateTime.Now, Gps = "-38.714077, 176.371659", Location = "Kaingaroa Forest, Cpt 512", Sex = "Female", Species = "Falcon" });
+                results.Add(new WildBird { WingspanId = "W15/004", Age = "Juvenile", MetalBandId = "K10996", BanderName = "Heidi Stook", DateBanded = DateTime.Now, Gps = "-38.712070, 176.533579", Location = "Hill Road, Whakarewarewa Forest, Rotorua, Bay of Plenty", Sex = "Male", Species = "Barn Owl" });
+                results.Add(new WildBird { WingspanId = "W15/006", Age = "Adult", MetalBandId = "S-87486", BanderName = "Noel Hyde", DateBanded = DateTime.Now, Gps = "-35.106184, +173.30352", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
+            }
+            else
+            {
+                // TODO: Error message
+            }
+
+            return results;
         }
 
-        public void SetSearchFeilds(List<SearchFeild> searchFeilds)
+        private void SearchBtn_Clicked(object sender, EventArgs e)
         {
-            int rowIndex = 0;
+            // Iterate through grid children
+            List<SearchParameter> searchParameters = new List<SearchParameter>();
+            string category = "";
 
-            foreach (SearchFeild searchFeild in searchFeilds)
+            int i = 0;
+            foreach (var child in editGrid.Children)
             {
-                editGrid.RowDefinitions.Add(new RowDefinition());
-
-                editGrid.Children.Add(new Label { Text = searchFeild.LabelText, FontSize = 20,  VerticalOptions = LayoutOptions.Center}, 0, rowIndex);
-
-                if (searchFeild.FeildType == typeof(Entry))
+                if (child.GetType() == typeof(Label))
                 {
-                    editGrid.Children.Add(new Entry { VerticalOptions = LayoutOptions.Center,}, 1, rowIndex);
-                }
-                else if (searchFeild.FeildType == typeof(Picker))
-                {
-                    Picker picker = new Picker();
+                    var childLabel = child as Label;
+                    var childFeildType = editGrid.Children[i + 1].GetType();
 
-                    switch (searchFeild.LabelName)
+                    if (childFeildType == typeof(Entry))
                     {
-                        case "Status": picker.ItemsSource = new string[] { "Captive", "Wild" };
-                            break;
-                        default: picker.ItemsSource = new string[] { "Error" };
-                            break;
+                        var childEntry = editGrid.Children[i + 1] as Entry;
+
+                        if ((childEntry.Text != null)
+                            || (childEntry.Text == string.Empty)
+                            || (childEntry.Text == ""))
+                        {
+                            searchParameters.Add(new SearchParameter { Key = childLabel.Text, Value = childEntry.Text });
+                        }
+
+                    }
+                    else if (childFeildType == typeof(Picker))
+                    {
+                        var categoryPicker = editGrid.Children[i + 1] as Picker;
+                        categoryPicker.SelectedItem.ToString();
+
                     }
 
-                    editGrid.Children.Add(picker, 1, rowIndex);
+                    i += 2;
                 }
-
-                rowIndex++;
             }
+
+            ArrayList results = new ArrayList(); // Search results 
+            switch (Title)
+            {
+                case "Edit Birds":
+                    results = SearchBirdData(searchParameters, category);
+                    // What results page do we need to display ? 
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.UWP:
+                            if (category == "Captive")
+                            {
+                                Navigation.PushAsync(new BirdResultsDesktop(results, typeof(CaptiveBird)));
+                            }
+                            else
+                            {
+                                Navigation.PushAsync(new BirdResultsDesktop(results, typeof(WildBird)));
+                            }
+                            
+                            break;
+                        case Device.Android:
+                            // Navigation.PushAsync(new ResultsMobile1(results));
+                            break;
+                        default:
+                            Navigation.PushAsync(new BirdResultsDesktop(results, typeof(WildBird)));
+                            break;
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            
+            
         }
 
     }
