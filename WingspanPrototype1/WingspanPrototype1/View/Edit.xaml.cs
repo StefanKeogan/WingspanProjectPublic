@@ -73,7 +73,7 @@ namespace WingspanPrototype1
             // Hardcoded data
             ArrayList results = new ArrayList();
 
-            if (birdCategory == "Capive")
+            if (birdCategory == "Captive")
             {
                 results.Add(new CaptiveBird { WingspanId = "15/006", Age = "Juvenile", BandNo = "S-87486", Name = "Mr. Beaks", DateArrived = DateTime.Now, Result = "Captive", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
                 results.Add(new CaptiveBird { WingspanId = "15/007", Age = "Adult", BandNo = "L40435", Name = "Hawk Eye", DateArrived = DateTime.Now, Result = "Captive", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
@@ -126,6 +126,8 @@ namespace WingspanPrototype1
                         var categoryPicker = editGrid.Children[i + 1] as Picker;
                         categoryPicker.SelectedItem.ToString();
 
+                        category = categoryPicker.SelectedItem.ToString();
+
                     }
 
                     i += 2;
@@ -152,7 +154,15 @@ namespace WingspanPrototype1
                             
                             break;
                         case Device.Android:
-                            // Navigation.PushAsync(new ResultsMobile1(results));
+                            if (category == "Captive")
+                            {
+                                Navigation.PushAsync(new ResultsMobile1(results, typeof(CaptiveBird)));
+                            }
+                            else
+                            {
+                                Navigation.PushAsync(new ResultsMobile1(results, typeof(WildBird)));
+                            }
+                            
                             break;
                         default:
                             Navigation.PushAsync(new BirdResultsDesktop(results, typeof(WildBird)));

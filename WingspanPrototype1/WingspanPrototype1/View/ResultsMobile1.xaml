@@ -8,11 +8,14 @@
              Title="Results"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <ListView x:Name="MobileResults" ItemSelected="MobileResults_ItemSelected_1">
+        <ListView x:Name="mobileResults" ItemSelected="MobileResults_ItemSelected_1">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <ViewCell>
-                        <Label Text="{Binding Name}" FontSize="20"/>
+                        <StackLayout Orientation="Horizontal" Padding="5">
+                            <Label FontSize="20" Text="{Binding WingspanId}"/>
+                            <Label FontSize="20" Text="{Binding Name}"/>
+                        </StackLayout>
                     </ViewCell>
                 </DataTemplate>
             </ListView.ItemTemplate>

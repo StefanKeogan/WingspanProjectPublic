@@ -28,6 +28,9 @@
     <Compile Update="View\BirdResultsDesktop.xaml.cs">
       <DependentUpon>BirdResultsDesktop.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\AddBirdNote.xaml.cs">
+      <DependentUpon>AddBirdNote.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -44,6 +47,9 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\MasterPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\AddBirdNote.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\ReportPage.xaml">

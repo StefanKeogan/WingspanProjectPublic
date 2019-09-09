@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using WingspanPrototype1.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -27,7 +27,7 @@ namespace WingspanPrototype1
             menuItems.Add(new MasterPageItem { Title = "Home", TargetType = typeof(HomePage) });
             menuItems.Add(new MasterPageItem { Title = "New Wild Bird", TargetType = typeof(AddBird) });
             menuItems.Add(new MasterPageItem { Title = "New Captive Bird", TargetType = typeof(AddBird) });
-            menuItems.Add(new MasterPageItem { Title = "Add Bird Note", TargetType = typeof(Edit) });
+            menuItems.Add(new MasterPageItem { Title = "Add Bird Note", TargetType = typeof(AddBirdNote) });
             menuItems.Add(new MasterPageItem { Title = "Edit Birds", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "New Member", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "Edit Members", TargetType = typeof(Edit) });

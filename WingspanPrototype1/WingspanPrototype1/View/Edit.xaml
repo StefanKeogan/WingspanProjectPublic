@@ -9,11 +9,11 @@
              NavigationPage.HasNavigationBar="True"
              NavigationPage.HasBackButton="True">
     <ContentPage.Content>
-            <StackLayout WidthRequest="600" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="100,100">
+            <StackLayout WidthRequest="400" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10,10">
                 
                 <Label x:Name="searchTitle" HorizontalOptions="Center" FontSize="20" Margin="30,30"/>
 
-                <Grid x:Name="editGrid" WidthRequest="600">
+                <Grid x:Name="editGrid" WidthRequest="400">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition/>
                         <ColumnDefinition/>

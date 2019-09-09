@@ -32,6 +32,10 @@ namespace WingspanPrototype1
                 ResultsListView.ItemSelected += ResultsListView_ItemSelected_Captive;
             }
 
+            // Set picker content
+            noteCategoryPicker.ItemsSource = new string[] { "Medical", "Breeding", "Transfer" };
+            locationCategoryPicker.ItemsSource = new string[] { "Release", "Transfer" };
+
         }
 
         public void ResultsListView_ItemSelected_Wild(object sender, SelectedItemChangedEventArgs e)
@@ -122,7 +126,69 @@ namespace WingspanPrototype1
 
         }
 
+        // Note popup boxes
+        private void NoteButton_Clicked(object sender, EventArgs e)
+        {
+            noteHistoryView.IsVisible = true;
 
+            noteListView.ItemsSource = new List<BirdNoteItem> { new BirdNoteItem {Date = DateTime.Today.ToString(), Category = "Transfer", Note = "Transfrerred to new site" },
+                new BirdNoteItem {Date = DateTime.Today.ToString(), Category = "Medical", Note = "Broken wing" }
+            };
+        }
 
+        private void AddNewNoteButton_Clicked(object sender, EventArgs e)
+        {
+            addNewNoteView.IsVisible = true;
+
+        }
+
+        private void NoteExitButton_Clicked(object sender, EventArgs e)
+        {
+            noteHistoryView.IsVisible = false;
+        }
+
+        private void AddNoteButton_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Note added", "Note has been added to this birds note history", "OK");
+            addNewNoteView.IsVisible = false;
+        }
+
+        private void AddNewNoteExitButton_Clicked(object sender, EventArgs e)
+        {
+            addNewNoteView.IsVisible = false;
+        }
+
+        //Location popup boxes
+        private void LocationButton_Clicked(object sender, EventArgs e)
+        {
+            locationHistoryView.IsVisible = true;
+
+            locationListView.ItemsSource = new List<LocationItem> { new LocationItem {Date = DateTime.Today.ToString(), Category = "Transfer", Location = "Transfrerred to new site" },
+                new LocationItem {Date = DateTime.Today.ToString(), Category = "Release", Location = "Released over new site" }
+            };
+        }
+
+        private void AddNewLocationButton_Clicked(object sender, EventArgs e)
+        {
+            addNewLocationView.IsVisible = true;
+        }
+
+        private void AddLocationButton_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Location added", "Location has been added to this birds note history", "OK");
+            addNewLocationView.IsVisible = false;
+        }
+
+        private void LocationExitButton_Clicked(object sender, EventArgs e)
+        {
+            locationHistoryView.IsVisible = false;
+        }
+
+        private void AddNewLocationExitButton_Clicked(object sender, EventArgs e)
+        {
+            addNewLocationView.IsVisible = false;
+        }
+
+       
     }
 }
