@@ -34,7 +34,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
 
-                <Grid x:Name="birdResultsGrid" Grid.Column="1" Margin="120, 30, 120, 30" VerticalOptions="Fill">
+                <Grid x:Name="birdResultsGrid" Grid.Column="1" Margin="120, 20, 120, 7" VerticalOptions="Fill">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="3*"/>
                         <ColumnDefinition Width="5*"/>
@@ -94,10 +94,10 @@
                 <!--Note history popup box-->
                 <ContentView x:Name="noteHistoryView" IsVisible="False" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
                     <ContentView.Content>
-                        <Frame BorderColor="#00000">
+                        <Frame BorderColor="#000000" Padding="3" BackgroundColor="#FFFFFF">
                             <StackLayout BackgroundColor="#FFFFFF" >
                                 <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
-                                    <Label Text="Note History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center"/>
+                                    <Label Text="Note History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Button x:Name="noteExitButton" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="NoteExitButton_Clicked"/>
                                 </StackLayout>
                                 <ListView x:Name="noteListView">
@@ -136,10 +136,10 @@
                 <!--Add Note Popup-->
                 <ContentView x:Name="addNewNoteView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600">
                     <ContentView.Content>
-                        <Frame BorderColor="#00000">
-                            <StackLayout BackgroundColor="#FFFFFF" Margin="20,20,20,20">
+                        <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
+                            <StackLayout BackgroundColor="#FFFFFF">
                                 <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
-                                    <Label Text="Add History" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center"/>
+                                    <Label Text="Add Note" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Button x:Name="addNewNoteExitButton" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="AddNewNoteExitButton_Clicked"/>
                                 </StackLayout>
                                 <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>
@@ -167,10 +167,10 @@
                 <!--Location history popup-->
                 <ContentView x:Name="locationHistoryView" IsVisible="False" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
                     <ContentView.Content>
-                        <Frame BorderColor="#00000">
+                        <Frame BorderColor="#000000" Padding="3" BackgroundColor="#FFFFFF">
                             <StackLayout BackgroundColor="#FFFFFF" >
                                 <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
-                                    <Label Text="Location History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center"/>
+                                    <Label Text="Location History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Button x:Name="locationExitButton" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="LocationExitButton_Clicked"/>
                                 </StackLayout>
                                 <ListView x:Name="locationListView">
@@ -209,10 +209,10 @@
                 <!--Add new location popup-->
                 <ContentView x:Name="addNewLocationView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600">
                     <ContentView.Content>
-                        <Frame BorderColor="#00000">
-                            <StackLayout BackgroundColor="#FFFFFF" Margin="20,20,20,20">
+                        <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
+                            <StackLayout BackgroundColor="#FFFFFF" >
                                 <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
-                                    <Label Text="Add Location" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center"/>
+                                    <Label Text="Add Location" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Button x:Name="addNewLocationExitButton" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="AddNewLocationExitButton_Clicked"/>
                                 </StackLayout>
                                 <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>

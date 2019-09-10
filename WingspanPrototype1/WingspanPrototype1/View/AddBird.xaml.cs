@@ -22,7 +22,7 @@ namespace WingspanPrototype1
             // BreedPicker.ItemsSource = new string[]{ "Morepork", "Falcon", "Hawk"};
             // StatusPicker.ItemsSource = new string[]{ "Captive", "Wild"};
 
-            // WHat type of bird are we adding?
+            // What type of bird are we adding?
             if (title == "New Wild Bird")
             {
                 SetWildBirdFormFeilds();
@@ -38,7 +38,21 @@ namespace WingspanPrototype1
 
             }
 
-            
+            // What device are we running on?
+            switch (Device.RuntimePlatform)
+            {
+                case Device.UWP:
+                    addBirdStackLayout.Margin = new Thickness(300, 20, 300, 20);
+                    break;
+                case Device.Android:
+                    addBirdStackLayout.Margin = new Thickness(5, 5, 5, 5);
+                    break;
+                default:
+                    addBirdStackLayout.Margin = new Thickness(300, 20, 300, 20);
+                    break;
+            }
+
+
         }
 
         public void SetWildBirdFormFeilds()

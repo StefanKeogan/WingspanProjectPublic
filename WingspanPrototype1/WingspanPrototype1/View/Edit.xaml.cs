@@ -97,7 +97,7 @@ namespace WingspanPrototype1
 
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
-            // Iterate through grid children
+            // Iterate through grid children and get feild data 
             List<SearchParameter> searchParameters = new List<SearchParameter>();
             string category = "";
 

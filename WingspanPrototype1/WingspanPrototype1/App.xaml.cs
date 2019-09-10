@@ -6,6 +6,10 @@ namespace WingspanPrototype1
 {
     public partial class App : Application
     {
+        // Wingspan Prototype sprint 2
+        // The second prototype of the wingspan app with added bird functionality 
+        // S.Keogan
+        // J.Cooper
 
         public App()
         {

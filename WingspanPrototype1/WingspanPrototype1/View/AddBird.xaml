@@ -7,7 +7,7 @@
              x:Class="WingspanPrototype1.AddBird"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <StackLayout Margin="300,20,300,10" HorizontalOptions="Center" VerticalOptions="Center">
+        <StackLayout x:Name="addBirdStackLayout" HorizontalOptions="Center" VerticalOptions="Center">
             
             <!--Dynamic grid-->
             <Grid x:Name="addBirdGrid" >
@@ -17,17 +17,16 @@
                 </Grid.ColumnDefinitions>
             </Grid>
 
-            <Button  Grid.Row="8" 
-                     Grid.ColumnSpan="2" 
-                     Text="Add" 
-                     BackgroundColor="#FFD966"
-                     BorderColor="#5C3838"
-                     BorderWidth="3"
-                     CornerRadius="5"
-                     FontSize="20" 
-                     HorizontalOptions="Center"
-                     Margin="20,0"
-                     WidthRequest="150"/>
+            <Button  
+                Text="Add" 
+                BackgroundColor="#FFD966"
+                BorderColor="#5C3838"
+                BorderWidth="3"
+                CornerRadius="5"
+                FontSize="20" 
+                HorizontalOptions="Center"
+                Margin="20,0"
+                WidthRequest="150"/>
 
 
         </StackLayout>

@@ -27,7 +27,18 @@ namespace WingspanPrototype1
             menuItems.Add(new MasterPageItem { Title = "Home", TargetType = typeof(HomePage) });
             menuItems.Add(new MasterPageItem { Title = "New Wild Bird", TargetType = typeof(AddBird) });
             menuItems.Add(new MasterPageItem { Title = "New Captive Bird", TargetType = typeof(AddBird) });
-            menuItems.Add(new MasterPageItem { Title = "Add Bird Note", TargetType = typeof(AddBirdNote) });
+            switch (Device.RuntimePlatform)
+            {
+                case Device.UWP:
+                    menuItems.Add(new MasterPageItem { Title = "Add Bird Note", TargetType = typeof(AddBirdNote) });
+                    break;
+                case Device.Android:
+                    menuItems.Add(new MasterPageItem { Title = "Add Bird Note", TargetType = typeof(AddBirdNoteMobile1) });
+                    break;
+                default:
+                    break;
+            }
+           
             menuItems.Add(new MasterPageItem { Title = "Edit Birds", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "New Member", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "Edit Members", TargetType = typeof(Edit) });
