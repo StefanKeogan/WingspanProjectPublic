@@ -124,15 +124,25 @@ namespace WingspanPrototype1
                     else if (childFeildType == typeof(Picker))
                     {
                         var categoryPicker = editGrid.Children[i + 1] as Picker;
-                        categoryPicker.SelectedItem.ToString();
+
+                        // Is the category selected?
+                        if (categoryPicker.SelectedItem == null)
+                        {
+                            DisplayAlert("Error", "Plese select a category to continue", "OK");
+                            return;
+                        }
 
                         category = categoryPicker.SelectedItem.ToString();
-
+                        
                     }
 
                     i += 2;
                 }
+
+                
             }
+
+            
 
             ArrayList results = new ArrayList(); // Search results 
             switch (Title)
