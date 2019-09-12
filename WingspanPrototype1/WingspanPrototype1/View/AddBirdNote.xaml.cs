@@ -20,5 +20,10 @@ namespace WingspanPrototype1.View
 
             categoryPicker.ItemsSource = new string[] { "Medical", "Transfer", "Release" };
         }
+
+        private void AddButton_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Note Added", "Note has been added to Professor Feathers", "Ok");
+        }
     }
 }

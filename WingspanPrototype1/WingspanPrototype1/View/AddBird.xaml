@@ -18,6 +18,7 @@
             </Grid>
 
             <Button  
+                x:Name="addButton"
                 Text="Add" 
                 BackgroundColor="#FFD966"
                 BorderColor="#5C3838"
@@ -26,7 +27,8 @@
                 FontSize="20" 
                 HorizontalOptions="Center"
                 Margin="20,0"
-                WidthRequest="150"/>
+                WidthRequest="150"
+                Clicked="AddButton_Clicked"/>
 
 
         </StackLayout>

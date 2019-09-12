@@ -203,5 +203,9 @@ namespace WingspanPrototype1
 
         }
 
+        private void AddButton_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Bird Saved", "This bird has been saved in the data base", "Ok");
+        }
     }
 }

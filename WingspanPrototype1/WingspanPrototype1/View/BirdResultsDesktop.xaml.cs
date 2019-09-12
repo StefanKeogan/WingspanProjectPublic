@@ -26,6 +26,7 @@ namespace WingspanPrototype1
             if (birdType == typeof(WildBird))
             {
                 ResultsListView.ItemSelected += ResultsListView_ItemSelected_Wild;
+                locationButton.IsVisible = false;
             }
             else
             {
@@ -149,7 +150,7 @@ namespace WingspanPrototype1
 
         private void AddNoteButton_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Note added", "Note has been added to this birds note history", "OK");
+            DisplayAlert("Note added", "Note has been added to this birds note history", "Ok");
             addNewNoteView.IsVisible = false;
         }
 
@@ -175,7 +176,7 @@ namespace WingspanPrototype1
 
         private void AddLocationButton_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Location added", "Location has been added to this birds note history", "OK");
+            DisplayAlert("Location added", "Location has been added to this birds note history", "Ok");
             addNewLocationView.IsVisible = false;
         }
 
@@ -189,6 +190,22 @@ namespace WingspanPrototype1
             addNewLocationView.IsVisible = false;
         }
 
-       
+        private async void SaveButton_Clicked(object sender, EventArgs e)
+        {
+            bool result = await DisplayAlert("Are you sure", "Would you like to save these changes", "Yes", "No");
+            if (result == true)
+            {
+                await DisplayAlert("Bird Saved", "Your changes have been saved", "Ok");
+            }
+        }
+
+        private async void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+            bool result = await DisplayAlert("Are you sure", "Would you like to delete this bird", "Yes", "No");
+            if (result == true)
+            {
+                await DisplayAlert("Bird Deleted", "This bird has been removed from the database", "Ok");
+            }
+        }
     }
 }

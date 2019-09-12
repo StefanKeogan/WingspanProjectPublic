@@ -16,5 +16,10 @@ namespace WingspanPrototype1.View
         {
             InitializeComponent();
         }
+
+        private void AddButton_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Note Added", "Note has been added to Professor Feathers", "Ok");
+        }
     }
 }
