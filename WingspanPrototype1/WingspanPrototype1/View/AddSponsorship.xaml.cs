@@ -14,20 +14,27 @@ namespace WingspanPrototype1.View
             Title = title; //gives the detail page the title passed from the main page
         }
 
-        //sorts out 
+        //saves sponsorship to database?
         void OnLevelSelected (object sender, EventArgs e)
         {
             var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
+            switch (selectedIndex)
+            {
+                case 0: //wild
+                    //assign
+                    break;
+                case 1: //absolute
+                    break;
+                case 2: //gold
+                    break;
+                case 3: //silver
+                    break;
+                case 4: //bronze
+                    break;
+            }
 
-            if (selectedIndex == 0) //platinum
-            {
-                //add ? months to start date
-            }
-            else if (selectedIndex == 1)
-            {
-                //add ? months to start date
-            }
+            //assign the string of the level to this sponsorship
         }
 
         //sorts out the sponsor selection

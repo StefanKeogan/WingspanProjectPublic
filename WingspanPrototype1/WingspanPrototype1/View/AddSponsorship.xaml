@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="WingspanPrototype1.View.AddSponsorship">
+             x:Class="WingspanPrototype1.AddSponsorship"
+             BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <StackLayout x:Name="addSponsorshipStackLayout"
                      HorizontalOptions="Center"
@@ -28,7 +29,11 @@
                        Grid.Row="0" />
 
                 <!-- when they push the field, it will take them to a page to search both collections
-                     then I'll need to create a unique page of the bird, with unique buttons -->
+                     then I'll need to create a unique page of the bird, with unique buttons
+                     Page will have -
+                     - number, name, species
+                     - exisiting sponsorship (name, level, end date)
+                -->
 
                 <!-- selecting the level of sponsorship -->
                 <Label x:Name="sponsorshipLevel"
@@ -42,10 +47,11 @@
                         SelectedIndexChanged="OnLevelSelected">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>Platinum</x:String>
-                            <x:String>Gold</x:String>
-                            <x:String>Silver</x:String>
-                            <x:String>Bronze</x:String>
+                            <x:String>Wild Bird</x:String>
+                            <x:String>Captive Bird (Absolute)</x:String>
+                            <x:String>Captive Bird (Gold)</x:String>
+                            <x:String>Captive Bird (Silver)</x:String>
+                            <x:String>Captive Bird (Bronze)</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
@@ -61,13 +67,13 @@
                             Grid.Row="2" />
 
 
-                <!-- sponsorship end date is calculated automatically depending on the level -->
+                <!-- when the sponsorship will end -->
                 <Label x:Name="sponsorshipEndDate"
                        Text="End date"
                        Grid.Column="0"
                        Grid.Row="3" />
 
-                <!-- make this happen automatically -->
+                <!-- 12 months after start date NOT an entry (invisible field?) -->
                 <Entry x:Name="endDateSelector"
                        Grid.Column="1"
                        Grid.Row="3" />
