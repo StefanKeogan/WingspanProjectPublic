@@ -279,6 +279,7 @@ namespace WingspanPrototype1
             {
                 captiveDateDepartedValueLabel.Text = bird.DateDeparted.ToString();
                 captiveDateDepartedStack.IsVisible = true;
+                captiveDateDepartedPicker.IsVisible = false;
             }
             else
             {
