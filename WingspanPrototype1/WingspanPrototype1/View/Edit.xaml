@@ -10,25 +10,122 @@
              NavigationPage.HasBackButton="True">
     <ContentPage.Content>
             <StackLayout WidthRequest="400" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10,10">
-                
+
                 <Label x:Name="searchTitle" HorizontalOptions="Center" FontSize="20" Margin="30,30"/>
 
-                <Grid x:Name="editGrid" WidthRequest="400">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition/>
-                        <ColumnDefinition/>
-                    </Grid.ColumnDefinitions>   
-                </Grid>
+                <!--Search bird form-->
+                <ContentView x:Name="searchBirdForm" IsVisible="False">
+                    <ContentView.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        
+                        <!--Wingspan Number-->
+                        <Label x:Name="wingspanIdLabel" FontSize="20" Text="Wingspan Id"/>
+                        <Entry x:Name="wingspanIdEntry"  HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+
+                        <!--Bird Name-->
+                        <Label x:Name="birdNameLabel" FontSize="20" Grid.Row="1" Text="Bird Name"/>
+                        <Entry x:Name="birdNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+
+                        <!--Band Number -->
+                        <Label x:Name="bandNumberLabel" FontSize="20" Grid.Row="2" Text="Band Number"/>
+                        <Entry x:Name="bandNumberEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+                        
+                    </Grid>
+
+                </ContentView.Content>
+                </ContentView>
+
+                <!--Search member form-->
+                <ContentView x:Name="searchMemberForm" IsVisible="False">
+                    <ContentView.Content>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <!--Member Number-->
+                            <Label x:Name="memberNumberLabel" FontSize="20" Text="Member Number"/>
+                            <Entry x:Name="memberNumberEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+
+                            <!--Member Name -->
+                            <Label x:Name="memberNameLabel" FontSize="20" Grid.Row="1" Text="Member Name"/>
+                            <Entry x:Name="memberNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+                    </Grid>
+                </ContentView.Content>
+                </ContentView>
+                
+                <!--Search sponsor form-->
+                <ContentView x:Name="searchSponsorForm" IsVisible="False">
+                    <ContentView.Content>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <!--Sponsor Number-->
+                            <Label x:Name="sponsorIdLabel" FontSize="20" Text="Sponsor Id"/>
+                            <Entry x:Name="sponsorIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+
+                            <!--Sponsor Name-->
+                            <Label x:Name="sponsorNameLabel" FontSize="20" Grid.Row="1" Text="Sponsor Name"/>
+                            <Entry x:Name="sponsorNumberEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+
+                        </Grid>
+                     </ContentView.Content>
+                </ContentView>
+                
+                <!--Search sponsorship form-->
+                <ContentView x:Name="searchSponsorshipForm" IsVisible="False">
+                    <ContentView.Content>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+
+                            <!--Sponsorship Id-->
+                            <Label x:Name="sponsorshipIdLabel" FontSize="20" Text="Sponsorship Id"/>
+                            <Entry x:Name="sponsorshipIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+
+                            <!--Sponsor Name-->
+                            <Label x:Name="sponsorshipSponsorNameLabel" Text="Sponsorship Name"  FontSize="20" Grid.Row="1"/>
+                            <Entry x:Name="sponsorshipSPonsorEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+                        </Grid> 
+                    </ContentView.Content>
+                </ContentView>
 
                 <Button x:Name="searchButton" 
-                 Text="Search" 
-                 BackgroundColor="#FFD966"
-                 BorderColor="#5C3838"
-                 BorderWidth="3"
-                 CornerRadius="5" 
-                 FontSize="20"
-                 HorizontalOptions="Center"
-                 Clicked="SearchBtn_Clicked"/>
-            </StackLayout>
+                     Text="Search" 
+                     BackgroundColor="#FFD966"
+                     BorderColor="#5C3838"
+                     BorderWidth="3"
+                     CornerRadius="5" 
+                     FontSize="20"
+                     HorizontalOptions="Center"
+                     Clicked="SearchBtn_Clicked"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

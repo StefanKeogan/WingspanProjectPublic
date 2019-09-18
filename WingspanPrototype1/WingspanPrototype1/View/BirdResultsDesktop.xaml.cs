@@ -15,23 +15,12 @@ namespace WingspanPrototype1
     public partial class BirdResultsDesktop : ContentPage
     {
 
-        public BirdResultsDesktop(ArrayList results, Type birdType)
+        public BirdResultsDesktop(ArrayList results)
         {
             InitializeComponent();          
 
             // Set result list item source to list of Bird objects
             ResultsListView.ItemsSource = results;
-
-            // Are we displaying a captive or wild bird
-            if (birdType == typeof(WildBird))
-            {
-                ResultsListView.ItemSelected += ResultsListView_ItemSelected_Wild;
-                locationButton.IsVisible = false;
-            }
-            else
-            {
-                ResultsListView.ItemSelected += ResultsListView_ItemSelected_Captive;
-            }
 
             // Set picker content
             noteCategoryPicker.ItemsSource = new string[] { "Medical", "Breeding", "Transfer" };
@@ -39,90 +28,286 @@ namespace WingspanPrototype1
 
         }
 
-        public void ResultsListView_ItemSelected_Wild(object sender, SelectedItemChangedEventArgs e)
+        private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            
-            var item = e.SelectedItem as WildBird;
+            var item = e.SelectedItem;
 
-            List<BirdResultsItem> resultItems = new List<BirdResultsItem>();
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "wingspanIdLabel", KeyLabelText = "Wingspan Id: ", ValueLabelName = "wingspanIdValueLabel", ValueLabelText = item.WingspanId });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "speciesLabel", KeyLabelText = "Species: ", ValueLabelName = "speciesValueLabel", ValueLabelText = item.Species });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "locationLabel", KeyLabelText = "Location: ", ValueLabelName = "locationValueLabel", ValueLabelText = item.Location }); ;
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "gpsLabel", KeyLabelText = "GPS: ", ValueLabelName = "gpsValueLabel", ValueLabelText = item.Gps });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "sexLabel", KeyLabelText = "Sex: ", ValueLabelName = "sexValueLabel", ValueLabelText = item.Sex });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "ageLabel", KeyLabelText = "Age: ", ValueLabelName = "ageValueLabel" , ValueLabelText = item.Age});
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "metalBandIdLabel", KeyLabelText = "Metal Band Id: ", ValueLabelName = "metalBandIdValueLabel", ValueLabelText = item.MetalBandId });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "dateBandedLabel", KeyLabelText = "Date Banded: ", ValueLabelName = "dateBandedValueLabel", ValueLabelText = item.DateBanded.ToString() }); 
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "banderNameLabel", KeyLabelText = "Bander Name: ", ValueLabelName = "banderValueLabel" , ValueLabelText = item.BanderName});
-
-            AddGridChildren(resultItems);
-
-        }
-
-        public void ResultsListView_ItemSelected_Captive(object sender, SelectedItemChangedEventArgs e)
-        {
-
-            var item = e.SelectedItem as CaptiveBird;
-
-            List<BirdResultsItem> resultItems = new List<BirdResultsItem>();
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "wingspanIdLabel", KeyLabelText = "Wingspan Id: ", ValueLabelName = "wingspanIdValueLabel", ValueLabelText = item.WingspanId });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "nameLabel", KeyLabelText = "Name: ", ValueLabelName = "nameValueLabel", ValueLabelText = item.Name });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "bandNoLabel", KeyLabelText = "Band Number: ", ValueLabelName = "bandNoValueLabel", ValueLabelText = item.BandNo }); ;
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "bandColourLabel", KeyLabelText = "Band Colour: ", ValueLabelName = "bandColourValueLabel", ValueLabelText = item.BandColour });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "speciesLabel", KeyLabelText = "Species: ", ValueLabelName = "speciesValueLabel", ValueLabelText = item.Species });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "sexLabel", KeyLabelText = "Sex: ", ValueLabelName = "sexValueLabel", ValueLabelText = item.Sex });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "ageLabel", KeyLabelText = "Age: ", ValueLabelName = "ageValueLabel", ValueLabelText = item.Age });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "locationLabel", KeyLabelText = "Location: ", ValueLabelName = "locationValueLabel", ValueLabelText = item.Location });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "dateArrivedLabel", KeyLabelText = "Date Arrived: ", ValueLabelName = "dateArrivedValueLabel", ValueLabelText = item.DateArrived.ToString() });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "dateDepartedLabel", KeyLabelText = "Date Departed: ", ValueLabelName = "dateDepartedValueLabel", ValueLabelText = item.DateDeparted.ToString() });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "dateDeceasedLabel", KeyLabelText = "Date Deceased: ", ValueLabelName = "dateDeceasedValueLabel", ValueLabelText = item.DateDeceased.ToString() });
-            resultItems.Add(new BirdResultsItem { KeyLabelName = "resultLabel", KeyLabelText = "Result: ", ValueLabelName = "resultValueLabel", ValueLabelText = item.Result });
-
-            AddGridChildren(resultItems);
-
-        }
-
-        public void AddGridChildren(List<BirdResultsItem> resultItems)
-        {
-            // Clear any existing grid children and row definitions
-            birdResultsGrid.Children.Clear();
-            birdResultsGrid.RowDefinitions.Clear();
-
-            int rowIndex = 0;
-
-            foreach (BirdResultsItem resultsItem in resultItems)
+            if (item.GetType() == typeof(WildBird))
             {
-                // Add another row to our grid
-                birdResultsGrid.RowDefinitions.Add(new RowDefinition());
+                DisplayWildBird(item as WildBird);
+            }
+            else
+            {
+                DisplayCaptiveBird(item as CaptiveBird);
+            }
+        }
 
-                // Add two labels to our new row 
-                birdResultsGrid.Children.Add(new Label { Text = resultsItem.KeyLabelText, FontSize = 20 }, 0, rowIndex);
+        // Display wild bird content view
+        public void DisplayWildBird(WildBird bird)
+        {
+            if (captiveBirdDisplayForm.IsVisible == true)
+            {
+                captiveBirdDisplayForm.IsVisible = false;
+            }
 
-                if ((resultsItem.ValueLabelText != null) && (resultsItem.ValueLabelText != "1/01/0001 12:00:00 AM")) // Is the feild blank
-                {
-                    StackLayout valueItemStackLayout = new StackLayout() { Orientation = StackOrientation.Horizontal };
-                    valueItemStackLayout.Children.Add(new Label { Text = resultsItem.ValueLabelText, FontSize = 20 });
-                    valueItemStackLayout.Children.Add(new Label { Text = "[edit]", FontSize = 15, TextColor = Color.FromHex("#5C3838"), VerticalOptions = LayoutOptions.Center });
-                    birdResultsGrid.Children.Add(valueItemStackLayout, 1, rowIndex);
-                }
-                else
-                {
-                    // What type of feild do we need to display
-                    if ((resultsItem.KeyLabelName != "dateArrivedLabel")
-                        && (resultsItem.KeyLabelName != "dateDeceasedLabel")
-                        && (resultsItem.KeyLabelName != "dateDepartedLabel"))
+            // Hide location history button
+            locationButton.IsVisible = false;
 
-                    {
-                        birdResultsGrid.Children.Add(new Entry { StyleId = resultsItem.KeyLabelText, VerticalOptions = LayoutOptions.Center }, 1, rowIndex);
-                    }
-                    else
-                    {
-                        birdResultsGrid.Children.Add(new DatePicker { StyleId = resultsItem.KeyLabelText }, 1, rowIndex);
+            // Display wild bird form
+            wildBirdDisplayForm.IsVisible = true;
 
-                    }
+            // Determine which feilds are populated, if populated display the value else display an entry, picker etc.
 
-                }
-                rowIndex++;
+            // Set Wingspan Id Value
+            if (bird.WingspanId != string.Empty)
+            {
+                wildWingspanIdValueLabel.Text = bird.WingspanId;
+                wildWingspanIdStack.IsVisible = true;
+            }
+            else
+            {
+                wildWingspanIdEntry.IsVisible = true;
+            }
+
+            // Set Species Value 
+            if (bird.Species != string.Empty)
+            {
+                wildSpeciesValueLabel.Text = bird.Species;
+                wildSpeciesStack.IsVisible = true;
+            }
+            else
+            {
+                wildSpeciesPicker.IsVisible = true;
+
+            }
+
+            // Set Location Value 
+            if (bird.Location!= string.Empty)
+            {
+                wildLocationValueLabel.Text = bird.Location;
+                wildLocationStack.IsVisible = true;
+            }
+            else
+            {
+                wildLocationEntry.IsVisible = true;
+            }
+
+            // Set GPS Value
+            if (bird.Gps != string.Empty)
+            {
+                wildGpsValueLabel.Text = bird.Gps;
+                wildGpsStack.IsVisible = true;
+            }
+            else
+            {
+                wildGpsEntry.IsVisible = true;
+            }
+
+            // Set Sex Value
+            if (bird.Sex != string.Empty)
+            {
+                wildSexValueLabel.Text = bird.Sex;
+                wildSexStack.IsVisible = true;
+            }
+            else
+            {
+                wildSexPicker.IsVisible = true;
+            }
+
+            // Set Age Value
+            if (bird.Age != string.Empty)
+            {
+                wildAgeValueLabel.Text = bird.Age;
+                wildAgeStack.IsVisible = true;
+            }
+            else
+            {
+                wildAgePicker.IsVisible = true;
+            }
+
+            // Set Metal Band Value
+            if (bird.MetalBandId != string.Empty)
+            {
+                wildMetalBandIdValueLabel.Text = bird.MetalBandId;
+                wildMetalBandStack.IsVisible = true;
+            }
+            else
+            {
+                wildMetalBandIdEntry.IsVisible = true;
+            }
+
+            // Set Date Banded Value 
+            if (bird.DateBanded.ToString() != string.Empty)
+            {
+                wildDateBandedValueLabel.Text = bird.DateBanded.ToString();
+                wildDateBandedStack.IsVisible = true;
+            }
+            else
+            {
+                wildDateBandedPicker.IsVisible = true;
+            }
+
+            // Set Bander Name Value 
+            if (bird.BanderName != string.Empty)
+            {
+                wildBanderNameValueLabel.Text = bird.BanderName;
+                wildBanderNameStack.IsVisible = true;
+            }
+            else
+            {
+                wildBanderNameEntry.IsVisible = true;
+            }
+
+        }
+
+        // Display captive bird content view
+        public void DisplayCaptiveBird(CaptiveBird bird)
+        {
+            // If Wild bird is displayed hide wild bird form
+            if (wildBirdDisplayForm.IsVisible == true)
+            {
+                wildBirdDisplayForm.IsVisible = false;
+            }
+
+            // Display location history button
+            locationButton.IsVisible = true;
+
+            // Display captive bird form
+            captiveBirdDisplayForm.IsVisible = true;
+
+            // Set Wingspan Id value
+            if (bird.WingspanId != string.Empty)
+            {
+                captiveWingspanIdValueLabel.Text = bird.WingspanId;
+                captiveWingspanIdStack.IsVisible = true;
+            }
+            else
+            {
+                captiveWingspanIdEntry.IsVisible = true;
+            }
+
+            // Set Name Value
+            if (bird.Name != string.Empty)
+            {
+                captiveNameValueLabel.Text = bird.Name;
+                captiveNameStack.IsVisible = true;
+            }
+            else
+            {
+                captiveNameEntry.IsVisible = true;
+            }
+
+            // Set Band Number Value
+            if (bird.BandNo != string.Empty)
+            {
+                captiveBandNumberValueLabel.Text = bird.BandNo;
+                captiveBandNumberStack.IsVisible = true;
+            }
+            else
+            {
+                captiveBandNumberEntry.IsVisible = true;
+            }
+
+            // Set Band Colour Value 
+            if ((bird.BandColour != string.Empty) && (bird.BandColour != "") && (bird.BandColour != null))
+            {
+                captiveBandColourValueLabel.Text = bird.BandColour;
+                captiveBandColourStack.IsVisible = true;
+            }
+            else
+            {
+                captiveBandColourPicker.IsVisible = true;
+            }
+
+            // Set Species Value 
+            if (bird.Species != string.Empty)
+            {
+                captiveSpeciesValueLabel.Text = bird.Species;
+                captiveSpeciesStack.IsVisible = true;
+            }
+            else
+            {
+                captiveSpeciesPicker.IsVisible = true;
+            }
+
+            // Set Sex Value 
+            if (bird.Sex != string.Empty)
+            {
+                captiveSexValueLabel.Text = bird.Sex;
+                captiveSexStack.IsVisible = true;
+            }
+            else
+            {
+                captiveSexPicker.IsVisible = true;
+            }
+
+            // Set Age Value 
+            if (bird.Age != string.Empty)
+            {
+                captiveAgeValueLabel.Text = bird.Age;
+                captiveAgeStack.IsVisible = true;
+            }
+            else
+            {
+                captiveAgePicker.IsVisible = true;
+            }
+
+            // Set Location Value 
+            if (bird.Location != string.Empty)
+            {
+                captiveLocationValueLabel.Text = bird.Location;
+                captiveLocationStack.IsVisible = true;
+            }
+            else
+            {
+                captiveLocationEntry.IsVisible = true;
+            }
+
+            // Set Date Arrived Value 
+            if (bird.DateArrived.ToString() != "1/01/0001 12:00:00 AM")
+            {
+                captiveDateArrivedValueLabel.Text = bird.DateArrived.ToString();
+                captiveDateArrivedStack.IsVisible = true;
+            }
+            else
+            {
+                captiveDateArrivedPicker.IsVisible = true;
+            }
+
+            // Set Date Departed Value 
+            if (bird.DateDeparted.ToString() != "1/01/0001 12:00:00 AM")
+            {
+                captiveDateDepartedValueLabel.Text = bird.DateDeparted.ToString();
+                captiveDateDepartedStack.IsVisible = true;
+            }
+            else
+            {
+                captiveDateDepartedPicker.IsVisible = true;
+            }
+
+            // Set Date Deceased Value 
+            if (bird.DateDeceased.ToString() != "1/01/0001 12:00:00 AM")
+            {
+                captiveDateDeceasedValueLabel.Text = bird.DateDeceased.ToString();
+                captiveDatedeceasedStack.IsVisible = true;
+                captiveDateDeceasedPicker.IsVisible = false;
+            }
+            else
+            {
+                captiveDateDeceasedPicker.IsVisible = true;
+                captiveDatedeceasedStack.IsVisible = false;
+
+            }
+
+            // Set Result Value 
+            if (bird.Result != string.Empty)
+            {
+                captiveResultValueLabel.Text = bird.Result.ToString();
+                captiveResultStack.IsVisible = true;
+            }
+            else
+            {
+                captiveResultEntry.IsVisible = true;
             }
 
         }
@@ -190,6 +375,7 @@ namespace WingspanPrototype1
             addNewLocationView.IsVisible = false;
         }
 
+        // Save and delete button click events
         private async void SaveButton_Clicked(object sender, EventArgs e)
         {
             bool result = await DisplayAlert("Are you sure", "Would you like to save these changes", "Yes", "No");
@@ -207,5 +393,7 @@ namespace WingspanPrototype1
                 await DisplayAlert("Bird Deleted", "This bird has been removed from the database", "Ok");
             }
         }
+
+       
     }
 }

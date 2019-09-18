@@ -42,7 +42,9 @@ namespace WingspanPrototype1
             menuItems.Add(new MasterPageItem { Title = "Edit Birds", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "New Member", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "Edit Members", TargetType = typeof(Edit) });
-            menuItems.Add(new MasterPageItem { Title = "New Sponsorship", TargetType = typeof(Edit) });
+            menuItems.Add(new MasterPageItem { Title = "New Sponsorship", TargetType = typeof(AddSponsorship) });
+            menuItems.Add(new MasterPageItem { Title = "Edit Sponsorships", TargetType = typeof(Edit) });
+            menuItems.Add(new MasterPageItem { Title = "Edit Sponsors", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "Add Volunteer", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "Edit Volunteers", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "Log Volunteer Hours", TargetType = typeof(Edit) });

@@ -8,14 +8,178 @@
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <StackLayout x:Name="addBirdStackLayout" HorizontalOptions="Center" VerticalOptions="Center">
-            
-            <!--Dynamic grid-->
-            <Grid x:Name="addBirdGrid" >
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="4*"/>
-                </Grid.ColumnDefinitions>
-            </Grid>
+
+            <ContentView x:Name="wildBirdForm" IsVisible="False">
+                <ContentView.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!--Species-->
+                        <Label x:Name="wildSpeciesLabel" Text="Species" FontSize="20" />
+                        <Picker x:Name="wildSpeciesPicker" Grid.Column="1">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Falcon</x:String>
+                                    <x:String>Hawk</x:String>
+                                    <x:String>Morepork</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                        
+                        <!--Location-->
+                        <Label x:Name="wildLocationLabel" Text="Location" FontSize="20" Grid.Row="1"/>
+                        <Entry x:Name="wildLocationEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+
+                        <!--GPS-->
+                        <Label x:Name="gpsLabel" Text="GPS" FontSize="20" Grid.Row="2"/>
+                        <Entry x:Name="gpsEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+
+                        <!--Sex-->
+                        <Label x:Name="wildSexLabel" Text="Sex" FontSize="20" Grid.Row="3"/>
+                        <Picker x:Name="wildSexPicker" Grid.Row="3" Grid.Column="1">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Male</x:String>
+                                    <x:String>Female</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+                        
+                        <!--Age-->
+                        <Label x:Name="wildAgeLabel" Text="Age" FontSize="20" Grid.Row="4"/>
+                        <Picker x:Name="wildAgePicker" Grid.Row="4" Grid.Column="1">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Adult</x:String>
+                                    <x:String>Juvenile</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+
+                        <!--Metal Band Id-->
+                        <Label x:Name="metalBandLabel" Text="Metal Band Id" FontSize="20" Grid.Row="5"/>
+                        <Entry x:Name="metalBandEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1"/>
+                        
+                        <!--Date Banded-->
+                        <Label x:Name="dateBandedLabel" Text="Date Banded" FontSize="20" Grid.Row="6"/>
+                        <DatePicker x:Name="dateBandedPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1"/>
+
+                        <!--Bander Name-->
+                        <Label x:Name="banderNameLabel" Text="Bander Name" FontSize="20" Grid.Row="7"/>
+                        <Entry x:Name="banderNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1"/>
+
+                        <!--Initial Comment-->
+                        <Label x:Name="wildInitialNoteLabel" Text="Initial Note" FontSize="20" Grid.Row="8"/>
+                        <Editor x:Name="wildInitialNoteEditor" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="1"/>
+
+                    </Grid>
+                </ContentView.Content>
+            </ContentView>
+
+            <ContentView x:Name="captiveBirdForm" IsVisible="False">
+                <ContentView.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="4*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!--Name-->
+                        <Label x:Name="captiveNameLabel" Text="Name" FontSize="20"/>
+                        <Entry x:Name="captiveNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+
+                        <!--Band Number-->
+                        <Label x:Name="bandNumberLabel" Text="Band Number" FontSize="20" Grid.Row="1"/>
+                        <Entry x:Name="bandNuberEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+
+                        <!--Band Colour-->
+                        <Label x:Name="bandColourLabel" Text="Band Colour" FontSize="20" Grid.Row="2"/>
+                        <Picker x:Name="bandColourPicker" Grid.Row="2" Grid.Column="1">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>"M:O"</x:String>
+                                    <x:String>"M:Y"</x:String>
+                                    <x:String>"O:M"</x:String>
+                                    <x:String>"M:W"</x:String>
+                                    <x:String>"B:M"</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+
+                        <!--Species-->
+                        <Label x:Name="captiveSpeciesLabel" Text="Species" FontSize="20" Grid.Row="3"/>
+                        <Picker x:Name="captiveSpeciesPicker" Grid.Row="3" Grid.Column="1">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Falcon</x:String>
+                                    <x:String>Hawk</x:String>
+                                    <x:String>Morepork</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+
+                        <!--Sex-->
+                        <Label x:Name="captiveSexLabel" Text="Sex" FontSize="20" Grid.Row="4"/>
+                        <Picker x:Name="captiveSexPicker" Grid.Row="4" Grid.Column="1">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Male</x:String>
+                                    <x:String>Female</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+
+                        <!--Age-->
+                        <Label x:Name="captiveAgeLabel" Text="Age" FontSize="20" Grid.Row="5"/>
+                        <Picker x:Name="captiveAgePicker" Grid.Row="5" Grid.Column="1">
+                            <Picker.ItemsSource>
+                                <x:Array Type="{x:Type x:String}">
+                                    <x:String>Adult</x:String>
+                                    <x:String>Juvenile</x:String>
+                                </x:Array>
+                            </Picker.ItemsSource>
+                        </Picker>
+
+                        <!--Location-->
+                        <Label x:Name="captiveLocationLabel" Text="Location" FontSize="20" Grid.Row="6"/>
+                        <Entry x:Name="captiveLocationEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1"/>
+
+                        <!--Date Arrived-->
+                        <Label x:Name="dateArrivedLabel" Text="Date Arrived" FontSize="20" Grid.Row="7"/>
+                        <DatePicker x:Name="dateArrivedPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1"/>
+
+                        <!--Initial Comment-->
+                        <Label x:Name="captiveInitialNoteLabel" Text="Initial Note" FontSize="20" Grid.Row="8"/>
+                        <Editor x:Name="cpativeInitialNoteEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="1"/>
+
+                    </Grid>
+                </ContentView.Content>
+            </ContentView>
 
             <Button  
                 x:Name="addButton"
@@ -33,60 +197,8 @@
 
         </StackLayout>
 
-        <!--Static Grid-->       
-        <!--<Grid Margin="5,20,5,10" HorizontalOptions="CenterAndExpand">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
+        
 
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
-
-            --><!--Bird Number--><!--
-            <Label x:Name="BirdNumberLabel" Text="Bird Number: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center" />
-            <Entry x:Name="BirdNumberEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Column="1"/>
-
-            --><!--Wingspan Number--><!--
-            <Label x:Name="WingspanNumberLabel"  Grid.Row="1" Text="Wingspan Number: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Entry x:Name="WinspanNumberEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="1" Grid.Column="1"/>
-
-            --><!--Band Number--><!--
-            <Label x:Name="BandNumberLabel"  Grid.Row="2" Text="Band Number: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Entry x:Name="BandNumberEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="2" Grid.Column="1"/>
-
-            --><!--Name--><!--
-            <Label x:Name="NameLabel"  Grid.Row="3" Text="Name: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Entry x:Name="NameEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="3" Grid.Column="1"/>
-
-            --><!--Age--><!--
-            <Label x:Name="AgeLabel"  Grid.Row="4" Text="Age: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Entry x:Name="AgeEntry" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="4" Grid.Column="1"/>
-
-            --><!--Sex--><!--
-            <Label x:Name="SexLabel"  Grid.Row="5" Text="Sex: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Picker x:Name="SexPicker" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="5" Grid.Column="1"/>
-
-            --><!--Breed--><!--
-            <Label x:Name="BreedLabel"  Grid.Row="6" Text="Breed: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Picker x:Name="BreedPicker" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="6" Grid.Column="1"/>
-
-            --><!--Status--><!--
-            <Label x:Name="SatusLabel"  Grid.Row="7" Text="Status: " FontSize="20" HorizontalOptions="Start" VerticalOptions="Center"/>
-            <Picker x:Name="StatusPicker" HorizontalOptions="Fill" VerticalOptions="CenterAndExpand" Grid.Row="7" Grid.Column="1"/>
-
-            <Button  Grid.Row="8" Grid.ColumnSpan="2" Text="Add" BackgroundColor="#FDEB00" FontSize="20" HorizontalOptions="Center" WidthRequest="150"/>
-             
-            
-        </Grid>-->
+       
     </ContentPage.Content>
 </ContentPage>
