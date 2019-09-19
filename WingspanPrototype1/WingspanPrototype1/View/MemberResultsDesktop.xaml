@@ -1,0 +1,169 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.View.MemberResultsDesktop"
+             Title="Results">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+
+                <!--Results List-->
+                <ListView x:Name="resultsListView" BackgroundColor="#F0F0F0" Grid.RowSpan="2" VerticalOptions="Fill" ItemSelected="ResultsListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Padding="5">
+                                    <Label FontSize="20" Text="{Binding MemberId}"/>
+                                    <Label FontSize="20" Text="{Binding FirstName}"/>
+                                    <Label FontSize="20" Text="{Binding LastName}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <Grid Grid.Column="1" Margin="20,5,20,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Member Id-->
+                    <Label x:Name="memberIdLabel" Text="Member Id" FontSize="20"/>
+                    <StackLayout x:Name="memberIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
+                        <Label x:Name="memberIdValueLabel" FontSize="20"/>
+                        <Button x:Name="memberIdEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="memberIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
+
+                    <!--First Name-->
+                    <Label x:Name="memberFirstNameLabel" Text="First Name" FontSize="20" Grid.Row="1"/>
+                    <StackLayout x:Name="memberFirstNameStack" Orientation="Horizontal" IsVisible="False" Grid.Row="1" Grid.Column="1">
+                        <Label x:Name="memberFirstNameValueLabel" FontSize="20"/>
+                        <Button x:Name="memberFirstNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="memberFirstNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" IsVisible="False"/>
+
+
+                    <!--Last Name-->
+                    <Label x:Name="memberLastNameLabel" Text="Last Name" FontSize="20" Grid.Row="2"/>
+                    <StackLayout x:Name="memberLastNameStack" Orientation="Horizontal"  IsVisible="False" Grid.Row="2" Grid.Column="1">
+                        <Label x:Name="memberLastNameValueLabel" FontSize="20"/>
+                        <Button x:Name="memberLastNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="memberLastNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
+
+                    <!--Salutation Name-->
+                    <Label x:Name="memberSalutationLabel" Text="GPS" FontSize="20" Grid.Row="3"/>
+                    <StackLayout x:Name="memberSautationStack" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" IsVisible="False">
+                        <Label x:Name="memberSalutationValueLabel" Text="GPS" FontSize="20"/>
+                        <Button x:Name="memberSalutationEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="memberSalutationEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
+
+                    <!--Email-->
+                    <Label x:Name="memberEmailLabel" Text="Sex" FontSize="20" Grid.Row="4"/>
+                    <StackLayout x:Name="memberEmailStack" Orientation="Horizontal" Grid.Row="4" Grid.Column="1" IsVisible="False">
+                        <Label x:Name="memberEmailValueLabel" Text="GPS" FontSize="20"/>
+                        <Button x:Name="memberEmailEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="memberEmailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" IsVisible="False"/>
+
+                    <!--Company-->
+                    <Label x:Name="memberCompanyLabel" Text="Age" FontSize="20" Grid.Row="5"/>
+                    <StackLayout x:Name="memberCompanyStack" Orientation="Horizontal" Grid.Row="5" Grid.Column="1" IsVisible="False">
+                        <Label x:Name="memberCompanyValueLabel" Text="GPS" FontSize="20" />
+                        <Button x:Name="memberCompanyEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="memberCompanyEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1" IsVisible="False"/>
+
+                    <!--Address 1-->
+                    <Label x:Name="memberAddress1Label" Text="Metal Band Id" FontSize="20" Grid.Row="6"/>
+                    <StackLayout x:Name="memberAddress1Stack" Orientation="Horizontal" Grid.Row="6" Grid.Column="1" IsVisible="False">
+                        <Label x:Name="memberAddress1ValueLabel" Text="GPS" FontSize="20"/>
+                        <Button x:Name="memberAddress1Button" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="memberAddress1Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" IsVisible="False"/>
+
+                    <!--Address 2-->
+                    <Label x:Name="memberAddress2Label" Text="Metal Band Id" FontSize="20" Grid.Row="7"/>
+                    <StackLayout x:Name="memberAddress2Stack" Orientation="Horizontal" Grid.Row="7" Grid.Column="1" IsVisible="False">
+                        <Label x:Name="memberAddress2ValueLabel" Text="GPS" FontSize="20"/>
+                        <Button x:Name="memberAddress2Button" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="memberAddress2Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1" IsVisible="False"/>
+
+                    <!--Address 3-->
+                    <Label x:Name="memberAddress3Label" Text="Metal Band Id" FontSize="20" Grid.Row="8"/>
+                    <StackLayout x:Name="memberAddress3Stack" Orientation="Horizontal" Grid.Row="8" Grid.Column="1" IsVisible="False">
+                        <Label x:Name="memberAddress3ValueLabel" Text="GPS" FontSize="20"/>
+                        <Button x:Name="memberAddress3Button" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="memberAddress3Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="1" IsVisible="False"/>
+
+                    <!--City-->
+                    <Label x:Name="memberCityLabel" Text="Date Banded" FontSize="20" Grid.Row="9"/>
+                    <StackLayout x:Name="memberCityStack" Orientation="Horizontal" Grid.Row="9" Grid.Column="1" IsVisible="False">
+                        <Label x:Name="memberCityValueLabel" Text="GPS" FontSize="20"/>
+                        <Button x:Name="memberCItyEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="memberCityEntry" Grid.Row="9" IsVisible="False" Grid.Column="1"/>
+
+                    <!--Post Code-->
+                    <Label x:Name="memberPostCodeLabel" Text="Bander Name" FontSize="20" Grid.Row="10"/>
+                    <StackLayout x:Name="memberPostCodeStack" Grid.Row="10" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
+                        <Label x:Name="memberPostCodeValueLabel" Text="GPS" FontSize="20" />
+                        <Button x:Name="memberPostCodeEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="memberPostCodeEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="10" Grid.Column="1" IsVisible="False"/>
+
+                    <!--Comment-->
+                    <Label x:Name="memberCommentLabel" Text="Bander Name" FontSize="20" Grid.Row="11"/>
+                    <StackLayout x:Name="memberCOmmentStack" Grid.Row="11" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
+                        <Label x:Name="memberCommentValueLabel" Text="GPS" FontSize="20" />
+                        <Button x:Name="memberCommentValueEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Editor x:Name="memberCommentEditor" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="11" Grid.Column="1" IsVisible="False"/>
+
+                    <!--Join Date-->
+                    <Label x:Name="memberJoinDateLabel" Text="Bander Name" FontSize="20" Grid.Row="12"/>
+                    <StackLayout x:Name="memberJoinDateStack" Grid.Row="12" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
+                        <Label x:Name="memberJoinDateValueLabel" Text="GPS" FontSize="20" />
+                        <Button x:Name="memberJoinDateEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <DatePicker x:Name="memberJoinDatePicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="12" Grid.Column="1" IsVisible="False"/>
+
+                </Grid>
+
+
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 using System.Diagnostics;
 
-namespace WingspanPrototype1.View
+namespace WingspanPrototype1
 {
     public partial class AddSponsorship : ContentPage
     {

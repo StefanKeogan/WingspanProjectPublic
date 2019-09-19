@@ -20,8 +20,8 @@ namespace WingspanPrototype1
             InitializeComponent();          
 
             // Set result list item source to list of Bird objects
-            ResultsListView.ItemsSource = results;
-
+            resultsListView.ItemsSource = results;
+        
             // Set picker content
             noteCategoryPicker.ItemsSource = new string[] { "Medical", "Breeding", "Transfer" };
             locationCategoryPicker.ItemsSource = new string[] { "Release", "Transfer" };
@@ -63,10 +63,13 @@ namespace WingspanPrototype1
             {
                 wildWingspanIdValueLabel.Text = bird.WingspanId;
                 wildWingspanIdStack.IsVisible = true;
+                wildWingspanIdEntry.IsVisible = false;
+
             }
             else
             {
                 wildWingspanIdEntry.IsVisible = true;
+                wildWingspanIdStack.IsVisible = false;
             }
 
             // Set Species Value 
@@ -74,10 +77,13 @@ namespace WingspanPrototype1
             {
                 wildSpeciesValueLabel.Text = bird.Species;
                 wildSpeciesStack.IsVisible = true;
+                wildSpeciesPicker.IsVisible = false;
+
             }
             else
             {
-                wildSpeciesPicker.IsVisible = true;
+                wildSpeciesPicker.IsVisible = true;              
+                wildSpeciesStack.IsVisible = false;
 
             }
 
@@ -86,10 +92,14 @@ namespace WingspanPrototype1
             {
                 wildLocationValueLabel.Text = bird.Location;
                 wildLocationStack.IsVisible = true;
+                wildLocationEntry.IsVisible = false;
+
             }
             else
             {
                 wildLocationEntry.IsVisible = true;
+                wildLocationStack.IsVisible = false;
+
             }
 
             // Set GPS Value
@@ -97,10 +107,14 @@ namespace WingspanPrototype1
             {
                 wildGpsValueLabel.Text = bird.Gps;
                 wildGpsStack.IsVisible = true;
+                wildGpsEntry.IsVisible = false;
+
             }
             else
             {
                 wildGpsEntry.IsVisible = true;
+                wildGpsStack.IsVisible = false;
+
             }
 
             // Set Sex Value
@@ -108,10 +122,14 @@ namespace WingspanPrototype1
             {
                 wildSexValueLabel.Text = bird.Sex;
                 wildSexStack.IsVisible = true;
+                wildSexPicker.IsVisible = false;
+
             }
             else
             {
                 wildSexPicker.IsVisible = true;
+                wildSexStack.IsVisible = false;
+
             }
 
             // Set Age Value
@@ -119,10 +137,14 @@ namespace WingspanPrototype1
             {
                 wildAgeValueLabel.Text = bird.Age;
                 wildAgeStack.IsVisible = true;
+                wildAgePicker.IsVisible = false;
+
             }
             else
             {
                 wildAgePicker.IsVisible = true;
+                wildAgeStack.IsVisible = false;
+
             }
 
             // Set Metal Band Value
@@ -130,10 +152,14 @@ namespace WingspanPrototype1
             {
                 wildMetalBandIdValueLabel.Text = bird.MetalBandId;
                 wildMetalBandStack.IsVisible = true;
+                wildMetalBandIdEntry.IsVisible = false;
+
             }
             else
             {
                 wildMetalBandIdEntry.IsVisible = true;
+                wildMetalBandStack.IsVisible = false;
+
             }
 
             // Set Date Banded Value 
@@ -141,10 +167,14 @@ namespace WingspanPrototype1
             {
                 wildDateBandedValueLabel.Text = bird.DateBanded.ToString();
                 wildDateBandedStack.IsVisible = true;
+                wildDateBandedPicker.IsVisible = false;
+
             }
             else
             {
                 wildDateBandedPicker.IsVisible = true;
+                wildDateBandedStack.IsVisible = false;
+
             }
 
             // Set Bander Name Value 
@@ -152,10 +182,14 @@ namespace WingspanPrototype1
             {
                 wildBanderNameValueLabel.Text = bird.BanderName;
                 wildBanderNameStack.IsVisible = true;
+                wildBanderNameEntry.IsVisible = false;
+
             }
             else
             {
                 wildBanderNameEntry.IsVisible = true;
+                wildBanderNameStack.IsVisible = false;
+
             }
 
         }
@@ -180,10 +214,14 @@ namespace WingspanPrototype1
             {
                 captiveWingspanIdValueLabel.Text = bird.WingspanId;
                 captiveWingspanIdStack.IsVisible = true;
+                captiveWingspanIdEntry.IsVisible = false;
+
             }
             else
             {
                 captiveWingspanIdEntry.IsVisible = true;
+                captiveWingspanIdStack.IsVisible = false;
+
             }
 
             // Set Name Value
@@ -191,10 +229,14 @@ namespace WingspanPrototype1
             {
                 captiveNameValueLabel.Text = bird.Name;
                 captiveNameStack.IsVisible = true;
+                captiveNameEntry.IsVisible = false;
+
             }
             else
             {
                 captiveNameEntry.IsVisible = true;
+                captiveNameStack.IsVisible = false;
+
             }
 
             // Set Band Number Value
@@ -202,10 +244,14 @@ namespace WingspanPrototype1
             {
                 captiveBandNumberValueLabel.Text = bird.BandNo;
                 captiveBandNumberStack.IsVisible = true;
+                captiveBandNumberEntry.IsVisible = false;
+
             }
             else
             {
                 captiveBandNumberEntry.IsVisible = true;
+                captiveBandNumberStack.IsVisible = false;
+
             }
 
             // Set Band Colour Value 
@@ -213,10 +259,14 @@ namespace WingspanPrototype1
             {
                 captiveBandColourValueLabel.Text = bird.BandColour;
                 captiveBandColourStack.IsVisible = true;
+                captiveBandColourPicker.IsVisible = false;
+
             }
             else
             {
                 captiveBandColourPicker.IsVisible = true;
+                captiveBandColourStack.IsVisible = false;
+
             }
 
             // Set Species Value 
@@ -224,10 +274,14 @@ namespace WingspanPrototype1
             {
                 captiveSpeciesValueLabel.Text = bird.Species;
                 captiveSpeciesStack.IsVisible = true;
+                captiveSpeciesPicker.IsVisible = false;
+
             }
             else
             {
                 captiveSpeciesPicker.IsVisible = true;
+                captiveSpeciesStack.IsVisible = false;
+
             }
 
             // Set Sex Value 
@@ -235,10 +289,14 @@ namespace WingspanPrototype1
             {
                 captiveSexValueLabel.Text = bird.Sex;
                 captiveSexStack.IsVisible = true;
+                captiveSexPicker.IsVisible = false;
+
             }
             else
             {
                 captiveSexPicker.IsVisible = true;
+                captiveSexStack.IsVisible = false;
+
             }
 
             // Set Age Value 
@@ -246,10 +304,14 @@ namespace WingspanPrototype1
             {
                 captiveAgeValueLabel.Text = bird.Age;
                 captiveAgeStack.IsVisible = true;
+                captiveAgePicker.IsVisible = false;
+
             }
             else
             {
                 captiveAgePicker.IsVisible = true;
+                captiveAgeStack.IsVisible = false;
+
             }
 
             // Set Location Value 
@@ -257,10 +319,14 @@ namespace WingspanPrototype1
             {
                 captiveLocationValueLabel.Text = bird.Location;
                 captiveLocationStack.IsVisible = true;
+                captiveLocationEntry.IsVisible = false;
+
             }
             else
             {
                 captiveLocationEntry.IsVisible = true;
+                captiveLocationStack.IsVisible = false;
+
             }
 
             // Set Date Arrived Value 
@@ -268,10 +334,14 @@ namespace WingspanPrototype1
             {
                 captiveDateArrivedValueLabel.Text = bird.DateArrived.ToString();
                 captiveDateArrivedStack.IsVisible = true;
+                captiveDateArrivedPicker.IsVisible = false;
+
             }
             else
             {
                 captiveDateArrivedPicker.IsVisible = true;
+                captiveDateArrivedStack.IsVisible = false;
+
             }
 
             // Set Date Departed Value 
@@ -284,6 +354,8 @@ namespace WingspanPrototype1
             else
             {
                 captiveDateDepartedPicker.IsVisible = true;
+                captiveDateDepartedStack.IsVisible = false;
+
             }
 
             // Set Date Deceased Value 
@@ -305,10 +377,14 @@ namespace WingspanPrototype1
             {
                 captiveResultValueLabel.Text = bird.Result.ToString();
                 captiveResultStack.IsVisible = true;
+                captiveResultEntry.IsVisible = false;
+
             }
             else
             {
                 captiveResultEntry.IsVisible = true;
+                captiveResultStack.IsVisible = false;
+
             }
 
         }

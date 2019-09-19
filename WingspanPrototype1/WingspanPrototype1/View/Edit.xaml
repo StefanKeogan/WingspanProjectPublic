@@ -125,6 +125,7 @@
                      CornerRadius="5" 
                      FontSize="20"
                      HorizontalOptions="Center"
+                     Margin="30,30"
                      Clicked="SearchBtn_Clicked"/>
         </StackLayout>
     </ContentPage.Content>
