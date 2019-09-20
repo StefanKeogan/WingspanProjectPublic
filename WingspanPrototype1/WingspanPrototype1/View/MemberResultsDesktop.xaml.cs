@@ -32,7 +32,187 @@ namespace WingspanPrototype1.View
 
         private void DisplayMember(Member member)
         {
+            // Member Id
+            if ((member.MemberID != string.Empty) && (member.MemberID != null))
+            {
+                memberIdValueLabel.Text = member.MemberID;
+                memberIdStack.IsVisible = true;
+                memberIdEntry.IsVisible = false;
+            }
+            else
+            {
+                memberIdEntry.IsVisible = true;
+                memberIdStack.IsVisible = false;
+                
+            }
 
+            // First Name
+            if ((member.FirstName != string.Empty) && (member.FirstName != null))
+            {
+                memberFirstNameValueLabel.Text = member.FirstName;
+                memberFirstNameStack.IsVisible = true;
+                memberFirstNameEntry.IsVisible = false;
+            }
+            else
+            {
+                memberFirstNameValueLabel.IsVisible = true;
+                memberFirstNameStack.IsVisible = false;
+
+            }
+
+            // Last Name
+            if ((member.LastName != string.Empty) && (member.LastName != null))
+            {
+                memberLastNameValueLabel.Text = member.LastName;
+                memberLastNameStack.IsVisible = true;
+                memberLastNameEntry.IsVisible = false;
+            }
+            else
+            {
+                memberLastNameEntry.IsVisible = true;
+                memberLastNameStack.IsVisible = false;
+
+            }
+            
+            // Salutation Name
+            if ((member.SaluationName != string.Empty)  && (member.SaluationName != null))
+            {
+                memberSalutationValueLabel.Text = member.SaluationName;
+                memberSalutationStack.IsVisible = true;
+                memberSalutationEntry.IsVisible = false;
+            }
+            else
+            {
+                memberSalutationEntry.IsVisible = true;
+                memberSalutationStack.IsVisible = false;
+
+            }
+
+            // Email
+            if ((member.Email != string.Empty) && (member.Email != null))
+            {
+                memberEmailValueLabel.Text = member.Email;
+                memberEmailStack.IsVisible = true;
+                memberEmailEntry.IsVisible = false;
+            }
+            else
+            {
+                memberEmailEntry.IsVisible = true;
+                memberEmailStack.IsVisible = false;
+
+            }
+
+            // Company 
+            if ((member.Company != string.Empty)  && (member.Company != null))
+            {
+                memberCompanyValueLabel.Text = member.Company;
+                memberCompanyStack.IsVisible = true;
+                memberCompanyEntry.IsVisible = false;
+            }
+            else
+            {
+                memberCompanyEntry.IsVisible = true;
+                memberCompanyStack.IsVisible = false;
+
+            }
+
+            // Address 1
+            if ((member.Address1 != string.Empty)  && (member.Address1 != null))
+            {
+                memberAddress1ValueLabel.Text = member.Address1;
+                memberAddress1Stack.IsVisible = true;
+                memberAddress1Entry.IsVisible = false;
+            }
+            else
+            {
+                memberAddress1Entry.IsVisible = true;
+                memberAddress1Stack.IsVisible = false;
+
+            }
+
+            // Address 2
+            if ((member.Address2 != string.Empty)  && (member.Address2 != null))
+            {
+                memberAddress2ValueLabel.Text = member.Address2;
+                memberAddress2Stack.IsVisible = true;
+                memberAddress2Entry.IsVisible = false;
+            }
+            else
+            {
+                memberAddress2Entry.IsVisible = true;
+                memberAddress2Stack.IsVisible = false;
+
+            }
+
+            // Address 3
+            if ((member.Address3 != string.Empty)  && (member.Address3 != null))
+            {
+                memberAddress3ValueLabel.Text = member.Address3;
+                memberAddress3Stack.IsVisible = true;
+                memberAddress3Entry.IsVisible = false;
+            }
+            else
+            {
+                memberAddress3Entry.IsVisible = true;
+                memberAddress3Stack.IsVisible = false;
+
+            }
+
+            // City
+            if ((member.City != string.Empty) && (member.City != null))
+            {
+                memberCityValueLabel.Text = member.City;
+                memberCityStack.IsVisible = true;
+                memberCityEntry.IsVisible = false;
+            }
+            else
+            {
+                memberCityEntry.IsVisible = true;
+                memberCityStack.IsVisible = false;
+
+            }
+
+            // Postcode
+            if ((member.Postcode != string.Empty) && (member.Postcode != null))
+            {
+                memberPostCodeValueLabel.Text = member.Postcode;
+                memberPostCodeStack.IsVisible = true;
+                memberPostCodeEntry.IsVisible = false;
+            }
+            else
+            {
+                memberPostCodeEntry.IsVisible = true;
+                memberPostCodeStack.IsVisible = false;
+
+            }
+
+            // Comment
+            if ((member.Comment != string.Empty) && (member.Comment != null))
+            {
+                memberCommentValueLabel.Text = member.Comment;
+                memberCommentStack.IsVisible = true;
+                memberCommentEditor.IsVisible = false;
+            }
+            else
+            {
+                memberCommentEditor.IsVisible = true;
+                memberCommentStack.IsVisible = false;
+
+            }
+
+            // Join Date
+            if (member.JoinDate.ToString() == "1/01/0001 12:00:00 AM")
+            {
+                memberJoinDateValueLabel.Text = member.JoinDate.ToString();
+                memberJoinDateStack.IsVisible = true;
+                memberJoinDatePicker.IsVisible = false;
+            }
+            else
+            {
+                memberJoinDatePicker.IsVisible = true;
+                memberJoinDateValueLabel.IsVisible = false;
+
+            }
         }
 
     }

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WingspanPrototype1.Model;
+using WingspanPrototype1.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -55,7 +56,7 @@ namespace WingspanPrototype1
                     Navigation.PushAsync(new BirdResultsDesktop(SearchBirds()));
                     break;
                 case "Edit Members":
-
+                    Navigation.PushAsync(new MemberResultsDesktop(Searchmembers()));
                     break;
                 case "Edit Sponsors":
 
@@ -88,6 +89,24 @@ namespace WingspanPrototype1
             results.Add(new CaptiveBird { WingspanId = "15/009", Age = "Adult", BandNo = "H39851", Name = "Batman", DateArrived = DateTime.Now, DateDeceased = DateTime.Now, Result = "Deceased", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
 
             return results;
+        }
+
+        private ArrayList Searchmembers()
+        {
+            ArrayList members = new ArrayList();
+
+            members.Add(new Member { MemberID = "1",
+                FirstName = "Member",
+                LastName = "Mc Person",
+                SaluationName = "Member",
+                Address1 = "12 Random St",
+                City = "Rotorua",
+                Postcode = "6039",
+                JoinDate = DateTime.Today
+            });
+
+            return members;
+
         }
 
     }
