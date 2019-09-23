@@ -213,7 +213,64 @@ namespace WingspanPrototype1.View
                 memberJoinDateValueLabel.IsVisible = false;
 
             }
+
+            // Set member donation history TODO connect to database
+            donationListView.ItemsSource = new List<Payment> { new Payment { PaymentDate = DateTime.Today, Donation = 100 } };
+
+
+
+
         }
 
+        // Delte this member
+        private async void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Are you sure?", "Would you like to delete this member", "Yes", "No");
+
+            if (answer)
+            {
+                await DisplayAlert("Member Deleted", "This member and their payment history have been delted", "Ok");
+            }
+            else
+            {
+                return;
+            }
+
+            
+        }
+
+
+        // Save changes to this member 
+        private void SaveChangesButton_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Changes Saved", "Changes to this member have been saved", "Ok");
+        }
+
+        private void DonationButton_Clicked(object sender, EventArgs e)
+        {
+            donationHistoryView.IsVisible = true;
+        }
+
+        private void AddNewDonationButton_Clicked(object sender, EventArgs e)
+        {
+            addNewDonationView.IsVisible = true;
+        }
+
+        private void AddNewDonationExitButton_Clicked(object sender, EventArgs e)
+        {
+            addNewDonationView.IsVisible = false;
+        }
+
+        private void DonationExitButton_Clicked(object sender, EventArgs e)
+        {
+            donationHistoryView.IsVisible = false;
+        }
+
+        private void AddDonationButton_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Donation Added", "This members donation has been recorded", "Ok");
+
+            addNewDonationView.IsVisible = false;
+        }
     }
 }

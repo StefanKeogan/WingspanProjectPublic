@@ -53,6 +53,7 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
                     <!--Member Id-->
@@ -162,8 +163,119 @@
 
                 </Grid>
 
+                <!--Buttons-->
+                <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Margin="0,5">
+                    <Button  
+                            x:Name="deleteButton"
+                            Grid.ColumnSpan="2" 
+                            Text="Delete" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            HorizontalOptions="Center"
+                            WidthRequest="150"
+                            Clicked="DeleteButton_Clicked"/>
+
+                    <Button  
+                            x:Name="saveChangesButton"
+                            Text="Save Changes" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            HorizontalOptions="Center"
+                            WidthRequest="150"
+                            Clicked="SaveChangesButton_Clicked"/>
+
+                    <Button  
+                            x:Name="doantionHistoryButton"
+                            Text="Donation History" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            HorizontalOptions="Center"
+                            WidthRequest="150"
+                            Clicked="DonationButton_Clicked"/>
+                </StackLayout>
+
+                <!--Donation History-->
+                <ContentView x:Name="donationHistoryView" IsVisible="False" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                    <ContentView.Content>
+                        <Frame BorderColor="#000000" Padding="3" BackgroundColor="#FFFFFF">
+                            <StackLayout BackgroundColor="#FFFFFF" >
+                                <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
+                                    <Label Text="Donation History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Button x:Name="donationExitButton" BackgroundColor="#5C3838" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="DonationExitButton_Clicked"/>
+                                </StackLayout>
+                                <ListView x:Name="donationListView">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                            <ViewCell>
+                                                <StackLayout Orientation="Horizontal" Margin="5,10,5,10">
+                                                    <Label Text="Date" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
+                                                    <Label Text="{Binding PaymentDate}" FontAttributes="Italic" FontSize="15"/>
+                                                    <Label Text="Category" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
+                                                    <Label Text="{Binding Donation}" FontAttributes="Italic" FontSize="15"/>
+                                                </StackLayout>
+                                            </ViewCell>
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>
+                                <Button
+                                    x:Name="addNewDonationButton"
+                                    Margin="5,5,5,5"
+                                    Text="Add Donation" 
+                                    BackgroundColor="#FFD966"
+                                    BorderColor="#5C3838"
+                                    BorderWidth="3"
+                                    CornerRadius="5"
+                                    FontSize="20" 
+                                    HorizontalOptions="Center"
+                                    Clicked="AddNewDonationButton_Clicked"/>
+                            </StackLayout>
+                        </Frame>
+                    </ContentView.Content>
+                </ContentView>
+
+                <!--Add Donation-->
+                <ContentView x:Name="addNewDonationView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600">
+                    <ContentView.Content>
+                        <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
+                            <StackLayout BackgroundColor="#FFFFFF">
+                                <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
+                                    <Label Text="Add Donation" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Button x:Name="addNewDonationExitButton" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="AddNewDonationExitButton_Clicked"/>
+                                </StackLayout>
+                                <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
+                                <DatePicker x:Name="donationDatePicker" Margin="5,5,5,5"/>
+
+                                <Label Text="Amount" FontSize="20" Margin="5,5,5,5"/>
+                                <Entry x:Name="donationAmountEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+
+                                <Button
+                                    x:Name="addDonationButton"
+                                    Margin="5,5,5,5"
+                                    Text="Add Donation" 
+                                    BackgroundColor="#FFD966"
+                                    BorderColor="#5C3838"
+                                    BorderWidth="3"
+                                    CornerRadius="5"
+                                    FontSize="20" 
+                                    HorizontalOptions="Center"
+                                    Clicked="AddDonationButton_Clicked"/>
+                            </StackLayout>
+                        </Frame>
+                    </ContentView.Content>
+                </ContentView>
+
 
             </Grid>
+          
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

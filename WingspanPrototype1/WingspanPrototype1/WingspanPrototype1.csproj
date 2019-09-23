@@ -31,6 +31,12 @@
     <Compile Update="View\AddBirdNote.xaml.cs">
       <DependentUpon>AddBirdNote.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\BirdResultsMobile1.xaml.cs">
+      <DependentUpon>BirdResultsMobile1.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\BirdResultsMobile2.xaml.cs">
+      <DependentUpon>BirdResultsMobile2.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -70,10 +76,10 @@
     <EmbeddedResource Update="View\BirdResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\ResultsMobile1.xaml">
+    <EmbeddedResource Update="View\BirdResultsMobile1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\ResultsMobile2.xaml">
+    <EmbeddedResource Update="View\BirdResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

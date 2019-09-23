@@ -50,10 +50,24 @@ namespace WingspanPrototype1
 
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
+            // TODO: Get feild data
+            // TODO: Wirte screen size awareness class to determine results page
+
             switch (Title)
             {
                 case "Edit Birds":
-                    Navigation.PushAsync(new BirdResultsDesktop(SearchBirds()));
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.UWP:
+                            Navigation.PushAsync(new BirdResultsDesktop(SearchBirds()));
+                            break;
+                        case Device.Android:
+                            Navigation.PushAsync(new BirdResultsMobile1(SearchBirds()));
+                            break;
+                        default: DisplayAlert("Error","Could not get runtime platform", "OK");
+                            break;
+                    }
+                    
                     break;
                 case "Edit Members":
                     Navigation.PushAsync(new MemberResultsDesktop(Searchmembers()));
@@ -93,6 +107,9 @@ namespace WingspanPrototype1
 
         private ArrayList Searchmembers()
         {
+            // TODO: Get DB connection working 
+
+            // Hardcoded data
             ArrayList members = new ArrayList();
 
             members.Add(new Member { MemberID = "1",

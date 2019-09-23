@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WingspanPrototype1.ResultsMobile1"
+             x:Class="WingspanPrototype1.BirdResultsMobile1"
              Title="Results"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>

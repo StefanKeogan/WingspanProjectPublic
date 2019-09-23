@@ -1,5 +1,4 @@
-﻿using MongoDB.Bson;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,34 +11,26 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class BirdResultsDesktop : ContentPage
+    public partial class BirdResultsMobile2 : ContentPage
     {
-
-        public BirdResultsDesktop(ArrayList results)
+        public BirdResultsMobile2(ArrayList bird)
         {
-            InitializeComponent();          
+            InitializeComponent();
 
-            // Set result list item source to list of Bird objects
-            resultsListView.ItemsSource = results;
-        
-            // Set picker content
-            noteCategoryPicker.ItemsSource = new string[] { "Medical", "Breeding", "Transfer" };
-            locationCategoryPicker.ItemsSource = new string[] { "Release", "Transfer" };
-
-        }
-
-        private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            var item = e.SelectedItem;
-
-            if (item.GetType() == typeof(WildBird))
+            // What type of bird are we displaying
+            if (bird[0].GetType() == typeof(WildBird))
             {
-                DisplayWildBird(item as WildBird);
+                DisplayWildBird(bird[0] as WildBird);
+            }
+            else if (bird[0].GetType() == typeof(CaptiveBird))
+            {
+                DisplayCaptiveBird(bird[0] as CaptiveBird);
             }
             else
             {
-                DisplayCaptiveBird(item as CaptiveBird);
+                DisplayAlert("Error", "Could not get bird type", "Ok");
             }
+            
         }
 
         // Display wild bird content view
@@ -82,13 +73,13 @@ namespace WingspanPrototype1
             }
             else
             {
-                wildSpeciesPicker.IsVisible = true;              
+                wildSpeciesPicker.IsVisible = true;
                 wildSpeciesStack.IsVisible = false;
 
             }
 
             // Set Location Value 
-            if (bird.Location!= string.Empty)
+            if (bird.Location != string.Empty)
             {
                 wildLocationValueLabel.Text = bird.Location;
                 wildLocationStack.IsVisible = true;
@@ -389,6 +380,7 @@ namespace WingspanPrototype1
 
         }
 
+
         // Note popup boxes
         private void NoteButton_Clicked(object sender, EventArgs e)
         {
@@ -412,7 +404,7 @@ namespace WingspanPrototype1
 
         private void AddNoteButton_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Note added", "Note has been added to this birds note history", "Ok");
+            DisplayAlert("Note added", "Note has been added to this birds note history", "OK");
             addNewNoteView.IsVisible = false;
         }
 
@@ -438,7 +430,7 @@ namespace WingspanPrototype1
 
         private void AddLocationButton_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Location added", "Location has been added to this birds note history", "Ok");
+            DisplayAlert("Location added", "Location has been added to this birds note history", "OK");
             addNewLocationView.IsVisible = false;
         }
 
@@ -452,25 +444,7 @@ namespace WingspanPrototype1
             addNewLocationView.IsVisible = false;
         }
 
-        // Save and delete button click events
-        private async void SaveButton_Clicked(object sender, EventArgs e)
-        {
-            bool result = await DisplayAlert("Are you sure", "Would you like to save these changes", "Yes", "No");
-            if (result == true)
-            {
-                await DisplayAlert("Bird Saved", "Your changes have been saved", "Ok");
-            }
-        }
 
-        private async void DeleteButton_Clicked(object sender, EventArgs e)
-        {
-            bool result = await DisplayAlert("Are you sure", "Would you like to delete this bird", "Yes", "No");
-            if (result == true)
-            {
-                await DisplayAlert("Bird Deleted", "This bird has been removed from the database", "Ok");
-            }
-        }
 
-       
     }
 }

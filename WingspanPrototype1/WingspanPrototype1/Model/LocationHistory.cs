@@ -4,10 +4,10 @@ using System.Text;
 
 namespace WingspanPrototype1.Model
 {
-    public class BirdNoteItem
+    public class LocationHistory
     {
         public string Date { get; set; }
         public string Category { get; set; }
-        public string Note { get; set; }
+        public string Location { get; set; }
     }
 }
