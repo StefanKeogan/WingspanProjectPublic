@@ -53,6 +53,8 @@ namespace WingspanPrototype1
             // TODO: Get feild data
             // TODO: Wirte screen size awareness class to determine results page
 
+            // What results page are we pushing based on title and runtime platform 
+
             switch (Title)
             {
                 case "Edit Birds":
@@ -70,7 +72,19 @@ namespace WingspanPrototype1
                     
                     break;
                 case "Edit Members":
-                    Navigation.PushAsync(new MemberResultsDesktop(Searchmembers()));
+
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.UWP:
+                            Navigation.PushAsync(new MemberResultsDesktop(Searchmembers()));
+                            break;
+                        case Device.Android:
+                            Navigation.PushAsync(new MemberResultsMobile1(Searchmembers()));
+                            break;
+                        default:
+                            break;
+                    }
+                   
                     break;
                 case "Edit Sponsors":
 

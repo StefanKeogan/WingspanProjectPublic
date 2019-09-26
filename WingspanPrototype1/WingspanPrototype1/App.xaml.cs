@@ -6,8 +6,8 @@ namespace WingspanPrototype1
 {
     public partial class App : Application
     {
-        // Wingspan Prototype sprint 2
-        // The second prototype of the wingspan app with added bird functionality 
+        // Wingspan Prototype sprint 3
+        // The third prototype of the wingspan app with add member and sponsor functionality
         // S.Keogan
         // J.Cooper
 

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,23 +10,13 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class MemberResultsDesktop : ContentPage
+    public partial class MemberResultsMobile2 : ContentPage
     {
-        public MemberResultsDesktop(ArrayList results)
+        public MemberResultsMobile2(Member member)
         {
             InitializeComponent();
 
-            resultsListView.ItemsSource = results;
-        }
-
-        private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            var item = e.SelectedItem as Member;
-
-            if (item != null)
-            {
-                DisplayMember(item);
-            }
+            DisplayMember(member);
         }
 
         private void DisplayMember(Member member)
@@ -43,7 +32,7 @@ namespace WingspanPrototype1.View
             {
                 memberIdEntry.IsVisible = true;
                 memberIdStack.IsVisible = false;
-                
+
             }
 
             // First Name
@@ -73,9 +62,9 @@ namespace WingspanPrototype1.View
                 memberLastNameStack.IsVisible = false;
 
             }
-            
+
             // Salutation Name
-            if ((member.SaluationName != string.Empty)  && (member.SaluationName != null))
+            if ((member.SaluationName != string.Empty) && (member.SaluationName != null))
             {
                 memberSalutationValueLabel.Text = member.SaluationName;
                 memberSalutationStack.IsVisible = true;
@@ -103,7 +92,7 @@ namespace WingspanPrototype1.View
             }
 
             // Company 
-            if ((member.Company != string.Empty)  && (member.Company != null))
+            if ((member.Company != string.Empty) && (member.Company != null))
             {
                 memberCompanyValueLabel.Text = member.Company;
                 memberCompanyStack.IsVisible = true;
@@ -117,7 +106,7 @@ namespace WingspanPrototype1.View
             }
 
             // Address 1
-            if ((member.Address1 != string.Empty)  && (member.Address1 != null))
+            if ((member.Address1 != string.Empty) && (member.Address1 != null))
             {
                 memberAddress1ValueLabel.Text = member.Address1;
                 memberAddress1Stack.IsVisible = true;
@@ -131,7 +120,7 @@ namespace WingspanPrototype1.View
             }
 
             // Address 2
-            if ((member.Address2 != string.Empty)  && (member.Address2 != null))
+            if ((member.Address2 != string.Empty) && (member.Address2 != null))
             {
                 memberAddress2ValueLabel.Text = member.Address2;
                 memberAddress2Stack.IsVisible = true;
@@ -145,7 +134,7 @@ namespace WingspanPrototype1.View
             }
 
             // Address 3
-            if ((member.Address3 != string.Empty)  && (member.Address3 != null))
+            if ((member.Address3 != string.Empty) && (member.Address3 != null))
             {
                 memberAddress3ValueLabel.Text = member.Address3;
                 memberAddress3Stack.IsVisible = true;
@@ -215,11 +204,22 @@ namespace WingspanPrototype1.View
             }
 
             // Set member donation history TODO connect to database
-            donationListView.ItemsSource = new List<Payment> { new Payment { PaymentDate = DateTime.Today, Donation = 100 } };
+            paymentListView.ItemsSource = new List<Payment> { new Payment { PaymentDate = DateTime.Today, Donation = 100 } };
 
 
 
 
+        }
+
+        // Save changes to this member 
+        private async void SaveChangesButton_Clicked(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Are you sure?", "Would you like to save chnages to this member", "Yes", "No");
+
+            if (answer)
+            {
+                await DisplayAlert("Member Saved", "Changes to this member have been saved", "Ok");
+            }
         }
 
         // Delte this member
@@ -236,23 +236,7 @@ namespace WingspanPrototype1.View
                 return;
             }
 
-            
-        }
 
-
-        // Save changes to this member 
-        private async void SaveChangesButton_Clicked(object sender, EventArgs e)
-        {
-            bool answer = await DisplayAlert("Are you sure?", "Would you like to save chnages to this member", "Yes", "No");
-
-            if (answer)
-            {
-                await DisplayAlert("Member Saved", "Changes to this member have been saved", "Ok");
-            }
-            else
-            {
-                return;
-            }
         }
 
         private void PaymentButton_Clicked(object sender, EventArgs e)
@@ -279,7 +263,7 @@ namespace WingspanPrototype1.View
         {
             DisplayAlert("Payment Added", "This members donation has been recorded", "Ok");
 
-            paymentHistoryView.IsVisible = false;
+            addNewPaymentView.IsVisible = false;
         }
     }
 }

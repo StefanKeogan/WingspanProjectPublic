@@ -445,6 +445,27 @@ namespace WingspanPrototype1
         }
 
 
+        // Save and delete button click events
+        private async void SaveButton_Clicked(object sender, EventArgs e)
+        {
+            bool result = await DisplayAlert("Are you sure", "Would you like to save these changes", "Yes", "No");
+            if (result == true)
+            {
+                await DisplayAlert("Bird Saved", "Your changes have been saved", "Ok");
+            }
+        }
+
+        private async void DeleteButton_Clicked(object sender, EventArgs e)
+        {
+            bool result = await DisplayAlert("Are you sure", "Would you like to delete this bird", "Yes", "No");
+            if (result == true)
+            {
+                await DisplayAlert("Bird Deleted", "This bird has been removed from the database", "Ok");
+            }
+        }
+
+
+
 
     }
 }

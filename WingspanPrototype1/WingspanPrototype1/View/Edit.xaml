@@ -11,7 +11,7 @@
     <ContentPage.Content>
             <StackLayout WidthRequest="400" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10,10">
 
-                <Label x:Name="searchTitle" HorizontalOptions="Center" FontSize="20" Margin="30,30"/>
+                <Label x:Name="searchTitle" HorizontalOptions="Center" FontSize="20" Margin="30,50"/>
 
                 <!--Search bird form-->
                 <ContentView x:Name="searchBirdForm" IsVisible="False">
@@ -55,15 +55,20 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
 
                             <!--Member Number-->
                             <Label x:Name="memberNumberLabel" FontSize="20" Text="Member Number"/>
                             <Entry x:Name="memberNumberEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
 
-                            <!--Member Name -->
-                            <Label x:Name="memberNameLabel" FontSize="20" Grid.Row="1" Text="Member Name"/>
-                            <Entry x:Name="memberNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+                            <!--First Name-->
+                            <Label x:Name="memberFirstNameLabel" FontSize="20" Grid.Row="1" Text="First Name"/>
+                            <Entry x:Name="memberFirstNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+
+                            <!--Last Name-->
+                            <Label x:Name="memberLastNameLabel" FontSize="20" Grid.Row="2" Text="Last Name"/>
+                            <Entry x:Name="memberLastNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
                     </Grid>
                 </ContentView.Content>
                 </ContentView>
@@ -79,17 +84,22 @@
                             <Grid.RowDefinitions>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
 
                             <!--Sponsor Number-->
                             <Label x:Name="sponsorIdLabel" FontSize="20" Text="Sponsor Id"/>
                             <Entry x:Name="sponsorIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
 
-                            <!--Sponsor Name-->
-                            <Label x:Name="sponsorNameLabel" FontSize="20" Grid.Row="1" Text="Sponsor Name"/>
-                            <Entry x:Name="sponsorNumberEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+                            <!--First Name-->
+                            <Label x:Name="firstNameLabel" FontSize="20" Grid.Row="1" Text="First Name"/>
+                            <Entry x:Name="firstNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
 
-                        </Grid>
+                            <!--Last Name-->
+                            <Label x:Name="lastNameLabel" FontSize="20" Grid.Row="2" Text="Last Name"/>
+                            <Entry x:Name="lastNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+
+                    </Grid>
                      </ContentView.Content>
                 </ContentView>
                 
@@ -125,7 +135,7 @@
                      CornerRadius="5" 
                      FontSize="20"
                      HorizontalOptions="Center"
-                     Margin="30,30"
+                     Margin="50,30"
                      Clicked="SearchBtn_Clicked"/>
         </StackLayout>
     </ContentPage.Content>

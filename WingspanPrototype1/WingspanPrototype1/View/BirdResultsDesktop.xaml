@@ -220,6 +220,7 @@
                             <Label x:Name="captiveSpeciesLabel" Text="Species" FontSize="20" Grid.Row="4"/>
                             <StackLayout x:Name="captiveSpeciesStack" Orientation="Horizontal" IsVisible="False" Grid.Row="4" Grid.Column="1">
                                 <Label x:Name="captiveSpeciesValueLabel" FontSize="20"/>
+                                <Button x:Name="captiveSpeciesEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
                             <Picker x:Name="captiveSpeciesPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" IsVisible="False">
                                 <Picker.ItemsSource>
