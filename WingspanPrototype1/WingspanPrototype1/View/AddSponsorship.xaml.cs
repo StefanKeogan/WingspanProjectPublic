@@ -12,25 +12,45 @@ namespace WingspanPrototype1
         {
             InitializeComponent();
             Title = title; //gives the detail page the title passed from the main page
+
+            // What device are we running on? 
+            switch (Device.RuntimePlatform)
+            {
+                case Device.UWP:
+                    addSponsorshipStackLayout.Margin = new Thickness(300, 20, 300, 20);
+                    break;
+                case Device.Android:
+                    addSponsorshipStackLayout.Margin = new Thickness(5, 5, 5, 5);
+                    break;
+                default:
+                    addSponsorshipStackLayout.Margin = new Thickness(300, 20, 300, 20);
+                    break;
+            }
         }
 
         //saves sponsorship to database?
         void OnLevelSelected (object sender, EventArgs e)
         {
+            string sponsorshipLevel; //ready for entering to database (maybe make it a property?)
+
             var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
             switch (selectedIndex)
             {
-                case 0: //wild
-                    //assign
+                case 0:
+                    sponsorshipLevel = "Wild Bird";
                     break;
-                case 1: //absolute
+                case 1:
+                    sponsorshipLevel = "Captive Bird (Absolute)";
                     break;
-                case 2: //gold
+                case 2:
+                    sponsorshipLevel = "Captive Bird (Gold)";
                     break;
-                case 3: //silver
+                case 3:
+                    sponsorshipLevel = "Captive Bird (Silver)";
                     break;
-                case 4: //bronze
+                case 4:
+                    sponsorshipLevel = "Captive Bird (Bronze)";
                     break;
             }
 
@@ -45,11 +65,11 @@ namespace WingspanPrototype1
 
             if (selectedIndex == 0) //exisiting sponsor
             {
-                //await Navigation.PushAsync(sponsor earch page);
+                //await Navigation.PushAsync(sponsor search page);
             }
             else if (selectedIndex == 1) // new sponsor
             {
-                //new page or pop up box for sponsor name
+                //pop up box for sponsor name
             }
         }
 
