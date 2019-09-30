@@ -18,20 +18,6 @@ namespace WingspanPrototype1.View
 
             Title = title;
 
-            // What device are we running on? 
-            switch (Device.RuntimePlatform)
-            {
-                case Device.UWP:
-                    addMemberStackLayout.Margin = new Thickness(300, 20, 300, 20);
-                    break;
-                case Device.Android:
-                    addMemberStackLayout.Margin = new Thickness(5, 5, 5, 5);
-                    break;
-                default:
-                    addMemberStackLayout.Margin = new Thickness(300, 20, 300, 20);
-                    break;
-            }
-
 
         }
 

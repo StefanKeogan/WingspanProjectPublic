@@ -8,8 +8,8 @@
              Title="Results">
     <ContentPage.Content>
         <StackLayout>
-            
-            <Grid VerticalOptions="FillAndExpand">
+
+            <Grid VerticalOptions="FillAndExpand"  BackgroundColor="#FFFFFF">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="6*"/>
@@ -34,7 +34,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 
-                <ContentView x:Name="wildBirdDisplayForm" Grid.Column="1" Margin="20,5,20,5" IsVisible="False" >
+                <ContentView x:Name="wildBirdDisplayForm" Grid.Column="1" Margin="20,5,20,5" IsVisible="False">
                     <ContentView.Content>
                         <Grid>
                             <Grid.ColumnDefinitions>
@@ -154,7 +154,7 @@
                     </ContentView.Content>
                 </ContentView>
 
-                <ContentView x:Name="captiveBirdDisplayForm" Grid.Column="1" Margin="20,5,20,5" IsVisible="False" >
+                <ContentView x:Name="captiveBirdDisplayForm" Grid.Column="1" Margin="20,5,20,5" IsVisible="False">
                     <ContentView.Content>
                         <Grid>
                             <Grid.ColumnDefinitions>

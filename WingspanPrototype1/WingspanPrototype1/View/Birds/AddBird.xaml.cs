@@ -34,18 +34,18 @@ namespace WingspanPrototype1
             }
 
             // What device are we running on? 
-            switch (Device.RuntimePlatform)
-            {
-                case Device.UWP:
-                    addBirdStackLayout.Margin = new Thickness(300, 20, 300, 20);
-                    break;
-                case Device.Android:
-                    addBirdStackLayout.Margin = new Thickness(5, 5, 5, 5);
-                    break;
-                default:
-                    addBirdStackLayout.Margin = new Thickness(300, 20, 300, 20);
-                    break;
-            }
+            //switch (Device.RuntimePlatform)
+            //{
+            //    case Device.UWP:
+            //        addBirdStackLayout.Margin = new Thickness(300, 20, 300, 20);
+            //        break;
+            //    case Device.Android:
+            //        addBirdStackLayout.Margin = new Thickness(5, 5, 5, 5);
+            //        break;
+            //    default:
+            //        addBirdStackLayout.Margin = new Thickness(300, 20, 300, 20);
+            //        break;
+            //}
 
 
         }

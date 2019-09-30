@@ -23,7 +23,7 @@ namespace WingspanPrototype1
 
             double size = DeviceSize.ScreenArea();
 
-            if (size < 783457) // If screen area is less than 7 inches set mobile image
+            if (size <= 783457) // If screen area is less than or equal to 7 inches set mobile image
             {
                 switch (Device.RuntimePlatform)
                 {
@@ -40,9 +40,11 @@ namespace WingspanPrototype1
                         break;
                 }
 
-                logoImage.WidthRequest = 250;
-                logoImage.HeightRequest = 125;
+                logoImage.WidthRequest = 270;
+                logoImage.HeightRequest = 145;
 
+                gridRow1.Height = new GridLength(3.5, GridUnitType.Star);
+                gridRow2.Height = new GridLength(5, GridUnitType.Star);
             }
             else if (size < 1382400) // If screen area is less than 14 inches set small desktop / tablet image
             {
@@ -61,8 +63,11 @@ namespace WingspanPrototype1
                         break;
                 }
 
-                logoImage.WidthRequest = 350;
-                logoImage.HeightRequest = 175;
+                logoImage.WidthRequest = 370;
+                logoImage.HeightRequest = 195;
+
+                gridRow1.Height = new GridLength(5, GridUnitType.Star);
+                gridRow2.Height = new GridLength(.5, GridUnitType.Star);
 
             }
             else // Any larger and set the desktop image 
@@ -84,6 +89,9 @@ namespace WingspanPrototype1
 
                 logoImage.WidthRequest = 400;
                 logoImage.HeightRequest = 200;
+
+                gridRow1.Height = new GridLength(3.5, GridUnitType.Star);
+                gridRow2.Height = new GridLength(5, GridUnitType.Star);
             }
 
 
