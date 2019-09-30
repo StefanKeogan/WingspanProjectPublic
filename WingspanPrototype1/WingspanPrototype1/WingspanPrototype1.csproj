@@ -25,28 +25,28 @@
     <Compile Update="View\Edit.xaml.cs">
       <DependentUpon>SearchBird.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\BirdResultsDesktop.xaml.cs">
+    <Compile Update="View\Birds\BirdResultsDesktop.xaml.cs">
       <DependentUpon>BirdResultsDesktop.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\AddBirdNote.xaml.cs">
+    <Compile Update="View\Birds\AddBirdNote.xaml.cs">
       <DependentUpon>AddBirdNote.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\BirdResultsMobile1.xaml.cs">
+    <Compile Update="View\Birds\BirdResultsMobile1.xaml.cs">
       <DependentUpon>BirdResultsMobile1.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\BirdResultsMobile2.xaml.cs">
+    <Compile Update="View\Birds\BirdResultsMobile2.xaml.cs">
       <DependentUpon>BirdResultsMobile2.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="View\AddBird.xaml">
+    <EmbeddedResource Update="View\Birds\AddBird.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\AddBirdNoteMobile1.xaml">
+    <EmbeddedResource Update="View\Birds\AddBirdNoteMobile1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\AddBirdNoteMobile2.xaml">
+    <EmbeddedResource Update="View\Birds\AddBirdNoteMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\AddMember.xaml">
@@ -64,29 +64,33 @@
     <EmbeddedResource Update="View\MasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\AddBirdNote.xaml">
+    <EmbeddedResource Update="View\Birds\AddBirdNote.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\MemberResultsDesktop.xaml">
+    <EmbeddedResource Update="View\Members\MemberResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\MemberResultsMobile1.xaml">
+    <EmbeddedResource Update="View\Members\MemberResultsMobile1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\MemberResultsMobile2.xaml">
+    <EmbeddedResource Update="View\Members\MemberResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\ReportPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\BirdResultsDesktop.xaml">
+    <EmbeddedResource Update="View\Birds\BirdResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\BirdResultsMobile1.xaml">
+    <EmbeddedResource Update="View\Birds\BirdResultsMobile1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\BirdResultsMobile2.xaml">
+    <EmbeddedResource Update="View\Birds\BirdResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Controller\" />
   </ItemGroup>
 </Project>
