@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WingspanPrototype1.View.ViewSponsorResultsDesktop"
+             x:Class="WingspanPrototype1.View.SelectSponsorResultsDesktop"
              Title="Results">
     <ContentPage.Content>
         <StackLayout>
@@ -51,28 +51,28 @@
                     </Grid.RowDefinitions>
 
                     <!--Sponsor ID-->
-                    <Label x:Name="viewSponsorIDLabel" Text="Sponsor ID" FontSize="20"/>
-                    <Label x:Name="viewSponsorIDValueLabel" FontSize="20" IsVisible="False" Grid.Column="1"/>
+                    <Label x:Name="selectSponsorIDLabel" Text="Sponsor ID" FontSize="20"/>
+                    <Label x:Name="selectSponsorIDValueLabel" FontSize="20" IsVisible="False" Grid.Column="1"/>
 
                     <!--Sponsor name-->
-                    <Label x:Name="viewSponsorNameLabel" Text="Sponsor name" FontSize="20" Grid.Row="1"/>
-                    <Label x:Name="viewSponsorNameValueLabel" FontSize="20" IsVisible="False" Grid.Row="1" Grid.Column="1"/>
+                    <Label x:Name="selectSponsorNameLabel" Text="Sponsor name" FontSize="20" Grid.Row="1"/>
+                    <Label x:Name="selectSponsorNameValueLabel" FontSize="20" IsVisible="False" Grid.Row="1" Grid.Column="1"/>
 
                     <!--Sponsor address-->
-                    <Label x:Name="viewSponsorAddressLabel" Text="Sponsor address" FontSize="20" Grid.Row="2"/>
-                    <Label x:Name="viewSponsorAddressValueLabel" FontSize="20" IsVisible="False" Grid.Row="2" Grid.Column="1"/>
+                    <Label x:Name="selectSponsorAddressLabel" Text="Sponsor address" FontSize="20" Grid.Row="2"/>
+                    <Label x:Name="selectSponsorAddressValueLabel" FontSize="20" IsVisible="False" Grid.Row="2" Grid.Column="1"/>
 
                     <!--Sponsor phone number-->
-                    <Label x:Name="viewSponsorPhoneLabel" Text="Sponsor name" FontSize="20" Grid.Row="3"/>
-                    <Label x:Name="viewSponsorPhoneValueLabel" FontSize="20" IsVisible="False" Grid.Row="3" Grid.Column="1"/>
+                    <Label x:Name="selectSponsorPhoneLabel" Text="Sponsor name" FontSize="20" Grid.Row="3"/>
+                    <Label x:Name="selectSponsorPhoneValueLabel" FontSize="20" IsVisible="False" Grid.Row="3" Grid.Column="1"/>
 
                     <!--Sponsor email-->
-                    <Label x:Name="viewSponsorEmailLabel" Text="Sponsor name" FontSize="20" Grid.Row="4"/>
-                    <Label x:Name="viewSponsorEmailValueLabel" FontSize="20" IsVisible="False" Grid.Row="4" Grid.Column="1"/>
+                    <Label x:Name="selectSponsorEmailLabel" Text="Sponsor name" FontSize="20" Grid.Row="4"/>
+                    <Label x:Name="selectSponsorEmailValueLabel" FontSize="20" IsVisible="False" Grid.Row="4" Grid.Column="1"/>
 
                     <!--Sponsor notes-->
-                    <Label x:Name="viewSponsorNotesLabel" Text="Sponsor name" FontSize="20" Grid.Row="5"/>
-                    <Label x:Name="viewSponsorNotesValueLabel" FontSize="20" IsVisible="False" Grid.Row="5" Grid.Column="1"/>
+                    <Label x:Name="selectSponsorNotesLabel" Text="Sponsor name" FontSize="20" Grid.Row="5"/>
+                    <Label x:Name="selectSponsorNotesValueLabel" FontSize="20" IsVisible="False" Grid.Row="5" Grid.Column="1"/>
 
                     <!--List of active sponsorships-->
                     <Label x:Name="currentSponsorship" Text="Currently sponsoring" FontSize="20" Grid.ColumnSpan="2" Grid.Row="6"/>

@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WingspanPrototype1.View.SponsorResultsDesktop"
+             x:Class="WingspanPrototype1.View.EditSponsorResultsDesktop"
              Title="Results">
     <ContentPage.Content>
         <StackLayout>

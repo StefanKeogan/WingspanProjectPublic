@@ -83,7 +83,7 @@ namespace WingspanPrototype1
                     switch (Device.RuntimePlatform)
                     {
                         case Device.UWP:
-                        Navigation.PushAsync(new SponsorResultsDesktop(SearchSponsors()));
+                        Navigation.PushAsync(new EditSponsorResultsDesktop(SearchSponsors()));
                         break;
                     default:
                         break;

@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SponsorshipResultsDesktop : ContentPage
+	public partial class EditSponsorshipResultsDesktop : ContentPage
 	{
-		public SponsorshipResultsDesktop ()
+		public EditSponsorshipResultsDesktop ()
 		{
 			InitializeComponent ();
 		}

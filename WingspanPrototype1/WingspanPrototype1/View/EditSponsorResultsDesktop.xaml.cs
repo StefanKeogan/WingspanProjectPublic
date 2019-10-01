@@ -11,9 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class SponsorResultsDesktop : ContentPage
+    public partial class EditSponsorResultsDesktop : ContentPage
     {
-        public SponsorResultsDesktop(ArrayList results)
+        public EditSponsorResultsDesktop(ArrayList results)
         {
             InitializeComponent();
             resultsListView.ItemsSource = results;

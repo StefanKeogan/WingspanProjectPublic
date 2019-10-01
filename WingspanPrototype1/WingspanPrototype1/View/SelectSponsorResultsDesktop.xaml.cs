@@ -11,9 +11,9 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class ViewSponsorResultsDesktop : ContentPage
+	public partial class SelectSponsorResultsDesktop : ContentPage
 	{
-		public ViewSponsorResultsDesktop (ArrayList results)
+		public SelectSponsorResultsDesktop (ArrayList results)
 		{
 			InitializeComponent ();
             resultsListView.ItemsSource = results;
@@ -34,67 +34,67 @@ namespace WingspanPrototype1.View
             // Sponsor ID
             if ((sponsor.SponsorID != string.Empty) && (sponsor.SponsorID != null))
             {
-                viewSponsorIDValueLabel.Text = sponsor.SponsorID;
-                viewSponsorIDValueLabel.IsVisible = true;
+                selectSponsorIDValueLabel.Text = sponsor.SponsorID;
+                selectSponsorIDValueLabel.IsVisible = true;
             }
             else
             {
-                viewSponsorIDValueLabel.IsVisible = false;
+                selectSponsorIDValueLabel.IsVisible = false;
             }
 
             // Sponsor name
             if ((sponsor.SponsorName != string.Empty) && (sponsor.SponsorName != null))
             {
-                viewSponsorNameValueLabel.Text = sponsor.SponsorName;
-                viewSponsorNameValueLabel.IsVisible = true;
+                selectSponsorNameValueLabel.Text = sponsor.SponsorName;
+                selectSponsorNameValueLabel.IsVisible = true;
             }
             else
             {
-                viewSponsorNameValueLabel.IsVisible = false;
+                selectSponsorNameValueLabel.IsVisible = false;
             }
 
             // Sponsor address
             if ((sponsor.SponsorAddress != string.Empty) && (sponsor.SponsorAddress != null))
             {
-                viewSponsorAddressValueLabel.Text = sponsor.SponsorAddress;
-                viewSponsorAddressValueLabel.IsVisible = true;
+                selectSponsorAddressValueLabel.Text = sponsor.SponsorAddress;
+                selectSponsorAddressValueLabel.IsVisible = true;
             }
             else
             {
-                viewSponsorAddressValueLabel.IsVisible = false;
+                selectSponsorAddressValueLabel.IsVisible = false;
             }
 
             // Sponsor phone
             if ((sponsor.SponsorPhone != string.Empty) && (sponsor.SponsorPhone != null))
             {
-                viewSponsorPhoneValueLabel.Text = sponsor.SponsorPhone;
-                viewSponsorPhoneValueLabel.IsVisible = true;
+                selectSponsorPhoneValueLabel.Text = sponsor.SponsorPhone;
+                selectSponsorPhoneValueLabel.IsVisible = true;
             }
             else
             {
-                viewSponsorPhoneValueLabel.IsVisible = false;
+                selectSponsorPhoneValueLabel.IsVisible = false;
             }
 
             // Sponsor email
             if ((sponsor.SponsorEmail != string.Empty) && (sponsor.SponsorEmail != null))
             {
-                viewSponsorEmailValueLabel.Text = sponsor.SponsorEmail;
-                viewSponsorEmailValueLabel.IsVisible = true;
+                selectSponsorEmailValueLabel.Text = sponsor.SponsorEmail;
+                selectSponsorEmailValueLabel.IsVisible = true;
             }
             else
             {
-                viewSponsorEmailValueLabel.IsVisible = false;
+                selectSponsorEmailValueLabel.IsVisible = false;
             }
 
             // Sponsor notes
             if ((sponsor.SponsorNotes != string.Empty) && (sponsor.SponsorNotes != null))
             {
-                viewSponsorNotesValueLabel.Text = sponsor.SponsorNotes;
-                viewSponsorNotesValueLabel.IsVisible = true;
+                selectSponsorNotesValueLabel.Text = sponsor.SponsorNotes;
+                selectSponsorNotesValueLabel.IsVisible = true;
             }
             else
             {
-                viewSponsorNotesValueLabel.IsVisible = false;
+                selectSponsorNotesValueLabel.IsVisible = false;
             }
         }
 
