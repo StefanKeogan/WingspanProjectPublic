@@ -2,10 +2,13 @@
 using System.Linq;
 using System.Collections.Generic;
 using Xamarin.Forms;
+using Xamarin.Forms.Xaml;
 using System.Diagnostics;
+using WingspanPrototype1.View;
 
 namespace WingspanPrototype1
 {
+    [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSponsorship : ContentPage
     {
         public AddSponsorship(string title)
@@ -27,6 +30,22 @@ namespace WingspanPrototype1
                     break;
             }
         }
+
+        //search the birds
+        private async void SelectSponsoredBird_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            if (selectedIndex == 0)
+            {
+                await Navigation.PushAsync(new Edit("Edit Birds"));
+            }
+            else
+            {
+                return;
+            }
+        }      
 
         //saves sponsorship to database?
         void OnLevelSelected (object sender, EventArgs e)
@@ -65,11 +84,11 @@ namespace WingspanPrototype1
 
             if (selectedIndex == 0) //exisiting sponsor
             {
-                //await Navigation.PushAsync(sponsor search page);
+                await Navigation.PushAsync(new Edit("Edit Sponsors"));
             }
             else if (selectedIndex == 1) // new sponsor
             {
-                //pop up box for sponsor name
+                newSponsorView.IsVisible = true;
             }
         }
 
@@ -84,6 +103,18 @@ namespace WingspanPrototype1
                 //need to connect these things to the database as well
                 await DisplayAlert("Success", "This sponsorship has been saved", "Ok");
             }
+        }
+
+        //buttons dealing with new sponsors
+        private void NewSponsorExitButton_Clicked(object sender, EventArgs e)
+        {
+            newSponsorView.IsVisible = false;
+        }
+
+        private void SaveNewSponsorButton_Clicked(object sender, EventArgs e)
+        {
+            DisplayAlert("Sponsor saved", "", "OK");
+            newSponsorView.IsVisible = false;
         }
     }
 }

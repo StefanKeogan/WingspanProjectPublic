@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.View.ViewSponsorResultsDesktop"
+             Title="Results">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid VerticalOptions="FillAndExpand">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="6*"/>
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="33*"/>
+                    <RowDefinition Height="3*"/>
+                </Grid.RowDefinitions>
+
+                <!--list of search results-->
+                <ListView x:Name="resultsListView" BackgroundColor="#F0F0F0" Grid.RowSpan="2" VerticalOptions="Fill" ItemSelected="ResultsListView_ItemSelected">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Padding="5">
+                                    <Label FontSize="20" Text="{Binding SponsorID}"/>
+                                    <Label FontSize="20" Text="{Binding SponsorName}"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <!--the grid to display the sponsor details-->
+                <Grid Grid.Column="1" Margin="20,5,20,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--Sponsor ID-->
+                    <Label x:Name="viewSponsorIDLabel" Text="Sponsor ID" FontSize="20"/>
+                    <Label x:Name="viewSponsorIDValueLabel" FontSize="20" IsVisible="False" Grid.Column="1"/>
+
+                    <!--Sponsor name-->
+                    <Label x:Name="viewSponsorNameLabel" Text="Sponsor name" FontSize="20" Grid.Row="1"/>
+                    <Label x:Name="viewSponsorNameValueLabel" FontSize="20" IsVisible="False" Grid.Row="1" Grid.Column="1"/>
+
+                    <!--Sponsor address-->
+                    <Label x:Name="viewSponsorAddressLabel" Text="Sponsor address" FontSize="20" Grid.Row="2"/>
+                    <Label x:Name="viewSponsorAddressValueLabel" FontSize="20" IsVisible="False" Grid.Row="2" Grid.Column="1"/>
+
+                    <!--Sponsor phone number-->
+                    <Label x:Name="viewSponsorPhoneLabel" Text="Sponsor name" FontSize="20" Grid.Row="3"/>
+                    <Label x:Name="viewSponsorPhoneValueLabel" FontSize="20" IsVisible="False" Grid.Row="3" Grid.Column="1"/>
+
+                    <!--Sponsor email-->
+                    <Label x:Name="viewSponsorEmailLabel" Text="Sponsor name" FontSize="20" Grid.Row="4"/>
+                    <Label x:Name="viewSponsorEmailValueLabel" FontSize="20" IsVisible="False" Grid.Row="4" Grid.Column="1"/>
+
+                    <!--Sponsor notes-->
+                    <Label x:Name="viewSponsorNotesLabel" Text="Sponsor name" FontSize="20" Grid.Row="5"/>
+                    <Label x:Name="viewSponsorNotesValueLabel" FontSize="20" IsVisible="False" Grid.Row="5" Grid.Column="1"/>
+
+                    <!--List of active sponsorships-->
+                    <Label x:Name="currentSponsorship" Text="Currently sponsoring" FontSize="20" Grid.ColumnSpan="2" Grid.Row="6"/>
+
+                    <Grid x:Name="currentSponsorshipGrid" Grid.Row="7" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!--Column headings heading-->
+                        <Label Text="WINGSPAN ID" HorizontalTextAlignment="Center" FontSize="15" FontAttributes="Bold"/>
+                        <Label Text="CATEGORY" HorizontalTextAlignment="Center" FontSize="15" FontAttributes="Bold" Grid.Column="1"/>
+                        <Label Text="TERM END" HorizontalTextAlignment="Center" FontSize="15" FontAttributes="Bold" Grid.Column="2"/>
+
+                        <StackLayout Grid.Row="1">
+                            <ListView ItemsSource="{Binding Sponsorship}" HasUnevenRows="True">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <Grid>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                    <ColumnDefinition/>
+                                                </Grid.ColumnDefinitions>
+                                                <Label Grid.Column="0" Text="{Binding WingspanId}" FontSize="15"/>
+                                                <Label Grid.Column="1" Text="{Binding SponsorshipCategory}" FontSize="15"/>
+                                                <Label Grid.Column="2" Text="{Binding SponsorshipEnd}" FontSize="15"/>
+                                            </Grid>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                        </StackLayout>
+                    </Grid>
+                </Grid>
+
+                <!--buttons at the bottom-->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Grid.Row="1" Grid.Column="1" Margin='0,10'>
+                    <Button x:Name="goBackSponsorButton"
+                            Grid.ColumnSpan="2" 
+                            Text="Go back" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            HorizontalOptions="Center"
+                            WidthRequest="150"
+                            Clicked="GoBackSponsorButton_Clicked"/>
+
+                    <Button x:Name="thisSponsorButton"
+                            Grid.ColumnSpan="2" 
+                            Text="Sponsor" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            HorizontalOptions="Center"
+                            WidthRequest="150"
+                            Clicked="ThisSponsorButton_Clicked"/>
+                </StackLayout>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

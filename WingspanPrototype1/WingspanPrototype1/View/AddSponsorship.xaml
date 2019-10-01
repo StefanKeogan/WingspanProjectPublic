@@ -8,7 +8,6 @@
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <StackLayout x:Name="addSponsorshipStackLayout" HorizontalOptions="Center" VerticalOptions="Center">
-
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -23,16 +22,19 @@
                     <RowDefinition/>
                 </Grid.RowDefinitions>
 
-                
                 <!--selecting the bird-->
                 <Label x:Name="sponsoredBirdName" Text="Bird to be sponsored" FontSize="20"/>
-                <Entry x:Name="selectSponsoredBird" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
-                <!-- when they push the field, it will take them to a page to search both collections
-                     then I'll need to create a unique page of the bird, with unique buttons
-                     Page will have -
-                     - number, name, species
-                     - exisiting sponsorship (name, level, end date)
-                -->
+                <Picker x:Name="selectSponsoredBird" 
+                        HorizontalOptions="Fill" 
+                        VerticalOptions="Center" 
+                        Grid.Column="1" 
+                        SelectedIndexChanged="SelectSponsoredBird_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Find a bird</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
 
                 <!--level of sponsorship-->
                 <Label x:Name="sponsorshipLevel" Text="Select level" FontSize="20" Grid.Row="1" />
@@ -60,14 +62,10 @@
 
                 <!--selecting exisiting sponsor or create a new one-->
                 <Label x:Name="sponsorName" Text="Sponsor name" FontSize="20" Grid.Row="4" />
-
-                <!-- existing sponsor pushing unique search page and results page with unique buttons
-                     new sponsor has unique page / pop up box with details and Add button (that saves) -->
                 <Picker x:Name="sponsorSelector"
                         Grid.Column="1"
                         Grid.Row="4"
                         SelectedIndexChanged="OnSponsorSelected">
-
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Existing Sponsor</x:String>
@@ -75,11 +73,13 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-            </Grid>
 
-            <Button
+                <!--save button-->
+                <Button
                 x:Name="saveButton"
                 Text="Save"
+                Grid.Row="5"
+                Grid.ColumnSpan="2"
                 BackgroundColor="#FFD966"
                 BorderColor="#5C3838"
                 BorderWidth="3"
@@ -89,6 +89,50 @@
                 Margin="20,0"
                 WidthRequest="150"
                 Clicked="SaveButton_Clicked" />
+
+                <!--New sponsor pop-up box-->
+                <ContentView x:Name="newSponsorView" Grid.Row="1" IsVisible="False" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                    <ContentView.Content>
+                        <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
+                            <StackLayout BackgroundColor="#FFFFFF">
+                                <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
+                                    <Label Text="New sponsor" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    <Button x:Name="newSponsorExitButton" 
+                                            Text="X" TextColor="#FFFFFF"  
+                                            FontSize="20" 
+                                            Margin="5,5,5,5" 
+                                            HorizontalOptions="EndAndExpand" 
+                                            VerticalOptions="Center" 
+                                            Clicked="NewSponsorExitButton_Clicked"/>
+                                </StackLayout>
+                                <Label Text="Sponsor name" FontSize="20" Margin="5,5,5,5"/>
+                                <Entry x:Name="newSponsorNameEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+
+                                <Label Text="Address" FontSize="20" Margin="5,5,5,5"/>
+                                <Entry x:Name="newSponsorAddressEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+
+                                <Label Text="Phone number" FontSize="20" Margin="5,5,5,5"/>
+                                <Entry x:Name="newSponsorPhoneEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+
+                                <Label Text="Email" FontSize="20" Margin="5,5,5,5"/>
+                                <Entry x:Name="newSponsorEmailEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+
+                                <Button
+                                    x:Name="saveNewSponsorButton"
+                                    Margin="5,5,5,5"
+                                    Text="Save" 
+                                    BackgroundColor="#FFD966"
+                                    BorderColor="#5C3838"
+                                    BorderWidth="3"
+                                    CornerRadius="5"
+                                    FontSize="20" 
+                                    HorizontalOptions="Center"
+                                    Clicked="SaveNewSponsorButton_Clicked"/>
+                            </StackLayout>
+                        </Frame>
+                    </ContentView.Content>
+                </ContentView>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

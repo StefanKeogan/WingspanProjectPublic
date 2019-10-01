@@ -72,7 +72,6 @@ namespace WingspanPrototype1
                     
                     break;
                 case "Edit Members":
-
                     switch (Device.RuntimePlatform)
                     {
                         case Device.UWP:
@@ -87,10 +86,19 @@ namespace WingspanPrototype1
                    
                     break;
                 case "Edit Sponsors":
+                    switch (Device.RuntimePlatform)
+                    {
+                        case Device.UWP:
+                            Navigation.PushAsync(new SponsorResultsDesktop(SearchSponsors()));
+                            break;
+                        default:
+                            break;
+                    }
 
                     break;
                 case "Edit Sponsorships":
          
+
                     break;
                 default:
                     break;
@@ -138,6 +146,19 @@ namespace WingspanPrototype1
 
             return members;
 
+        }
+
+        private ArrayList SearchSponsors()
+        {
+
+            //hardcoded examples
+            ArrayList sponsors = new ArrayList();
+
+            sponsors.Add(new Sponsor { SponsorID = "S001", SponsorName = "Homer Simpson", SponsorAddress = "Springfield, USA", SponsorPhone = "022 123 4567", SponsorEmail = "homer@gmail.com", SponsorNotes = null });
+            sponsors.Add(new Sponsor { SponsorID = "S002", SponsorName = "Bruce Banner", SponsorAddress = "", SponsorPhone = "", SponsorEmail = "hulk@gmail.com", SponsorNotes = "You won't like him when he's angry." });
+            sponsors.Add(new Sponsor { SponsorID = "S003", SponsorName = "Monty Burns", SponsorAddress = "Springfield, USA", SponsorPhone = "", SponsorEmail = "rich@gmail.com", SponsorNotes = null });
+
+            return sponsors;
         }
 
     }
