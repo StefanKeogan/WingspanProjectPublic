@@ -7,7 +7,7 @@
              x:Class="WingspanPrototype1.AddBird"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <StackLayout x:Name="addBirdStackLayout" HorizontalOptions="Center" VerticalOptions="Center">
+        <FlexLayout x:Name="addBirdFlexLayout" AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
 
             <ContentView x:Name="wildBirdForm" IsVisible="False">
                 <ContentView.Content>
@@ -40,7 +40,7 @@
                                 </x:Array>
                             </Picker.ItemsSource>
                         </Picker>
-                        
+
                         <!--Location-->
                         <Label x:Name="wildLocationLabel" Text="Location" FontSize="20" Grid.Row="1"/>
                         <Entry x:Name="wildLocationEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
@@ -59,7 +59,7 @@
                                 </x:Array>
                             </Picker.ItemsSource>
                         </Picker>
-                        
+
                         <!--Age-->
                         <Label x:Name="wildAgeLabel" Text="Age" FontSize="20" Grid.Row="4"/>
                         <Picker x:Name="wildAgePicker" Grid.Row="4" Grid.Column="1">
@@ -74,7 +74,7 @@
                         <!--Metal Band Id-->
                         <Label x:Name="metalBandLabel" Text="Metal Band Id" FontSize="20" Grid.Row="5"/>
                         <Entry x:Name="metalBandEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1"/>
-                        
+
                         <!--Date Banded-->
                         <Label x:Name="dateBandedLabel" Text="Date Banded" FontSize="20" Grid.Row="6"/>
                         <DatePicker x:Name="dateBandedPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1"/>
@@ -194,11 +194,7 @@
                 WidthRequest="150"
                 Clicked="AddButton_Clicked"/>
 
+        </FlexLayout>
 
-        </StackLayout>
-
-        
-
-       
     </ContentPage.Content>
 </ContentPage>

@@ -1,0 +1,100 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.View.AddMember"
+             BackgroundColor="#F0F0F0">
+    <ContentPage.Content>
+        <ScrollView>
+            <FlexLayout x:Name="addMemberFlexLayout"  AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!--First Name-->
+                    <Label x:Name="memberFirstNameLabel" Text="First Name" FontSize="20"/>
+                    <Entry x:Name="memberFirstNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+
+                    <!--Last Name-->
+                    <Label x:Name="memberLastNameLabel" Text="Last Name" FontSize="20" Grid.Row="1"/>
+                    <Entry x:Name="memberLastNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+
+                    <!--Salutation Name-->
+                    <Label x:Name="memberSalutationNameLabel" Text="Salutation Name" FontSize="20" Grid.Row="2"/>
+                    <Entry x:Name="memberSalutationNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+
+                    <!--Email-->
+                    <Label x:Name="memberEmailLabel" Text="Email" FontSize="20" Grid.Row="3"/>
+                    <Entry x:Name="memberEmailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1"/>
+
+                    <!--Company-->
+                    <Label x:Name="memberCompanyLabel" Text="Email" FontSize="20" Grid.Row="4"/>
+                    <Entry x:Name="memberCompanyEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1"/>
+
+                    <!--Address 1-->
+                    <Label x:Name="memberAddress1Label" Text="Address 1" FontSize="20" Grid.Row="5"/>
+                    <Entry x:Name="memberAddress1Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1"/>
+
+                    <!--Address 2-->
+                    <Label x:Name="memberAddress2Label" Text="Address 2" FontSize="20" Grid.Row="6"/>
+                    <Entry x:Name="memberAddress2Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1"/>
+
+                    <!--Address 3-->
+                    <Label x:Name="memberAddress3Label" Text="Address 3" FontSize="20" Grid.Row="7"/>
+                    <Entry x:Name="memberAddress3Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1"/>
+
+                    <!--City-->
+                    <Label x:Name="memberCityLabel" Text="City" FontSize="20" Grid.Row="8"/>
+                    <Entry x:Name="memberCityEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="1"/>
+
+                    <!--Postcode-->
+                    <Label x:Name="memberPostcodeLabel" Text="Postcode" FontSize="20" Grid.Row="9"/>
+                    <Entry x:Name="memberPostcodeEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="9" Grid.Column="1"/>
+
+                    <!--Comment-->
+                    <Label x:Name="memberCommentLabel" Text="Comment" FontSize="20" Grid.Row="10"/>
+                    <Editor x:Name="memberCommentEditor" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="10" Grid.Column="1"/>
+
+                    <!--Join Date-->
+                    <Label x:Name="memberJoinDateLabel" Text="Join Date" FontSize="20" Grid.Row="11"/>
+                    <DatePicker x:Name="memberJoindatePicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="11" Grid.Column="1"/>
+                </Grid>
+
+                <Button  
+                x:Name="addButton"
+                Text="Add" 
+                BackgroundColor="#FFD966"
+                BorderColor="#5C3838"
+                BorderWidth="3"
+                CornerRadius="5"
+                FontSize="20" 
+                HorizontalOptions="Center"
+                WidthRequest="150"
+                Margin="0,20"
+                Clicked="AddButton_Clicked"/>
+                
+            </FlexLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

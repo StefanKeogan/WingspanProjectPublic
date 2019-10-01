@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WingspanPrototype1.Model;
 using WingspanPrototype1.View;
+using WingspanPrototype1.Functions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -58,32 +59,24 @@ namespace WingspanPrototype1
             switch (Title)
             {
                 case "Edit Birds":
-                    switch (Device.RuntimePlatform)
+
+                    if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
                     {
-                        case Device.UWP:
-                            Navigation.PushAsync(new BirdResultsDesktop(SearchBirds()));
-                            break;
-                        case Device.Android:
-                            Navigation.PushAsync(new BirdResultsMobile1(SearchBirds()));
-                            break;
-                        default: DisplayAlert("Error","Could not get runtime platform", "OK");
-                            break;
+                        Navigation.PushAsync(new BirdResultsMobile1(SearchBirds()));
+                    }
+                    else
+                    {
+                        Navigation.PushAsync(new BirdResultsDesktop(SearchBirds()));
                     }
                     
                     break;
                 case "Edit Members":
+
                     switch (Device.RuntimePlatform)
                     {
-                        case Device.UWP:
-                            Navigation.PushAsync(new MemberResultsDesktop(Searchmembers()));
-                            break;
-                        case Device.Android:
-                            Navigation.PushAsync(new MemberResultsMobile1(Searchmembers()));
-                            break;
-                        default:
-                            break;
+                        Navigation.PushAsync(new MemberResultsDesktop(SearchMembers()));
                     }
-                   
+
                     break;
                 case "Edit Sponsors":
                     switch (Device.RuntimePlatform)
@@ -127,7 +120,7 @@ namespace WingspanPrototype1
             return results;
         }
 
-        private ArrayList Searchmembers()
+        private ArrayList SearchMembers()
         {
             // TODO: Get DB connection working 
 
