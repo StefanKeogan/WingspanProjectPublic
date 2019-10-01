@@ -68,27 +68,28 @@ namespace WingspanPrototype1
                     {
                         Navigation.PushAsync(new BirdResultsDesktop(SearchBirds()));
                     }
-                    
+
                     break;
                 case "Edit Members":
 
-                    switch (Device.RuntimePlatform)
+                    if (Device.RuntimePlatform == Device.UWP)
                     {
                         Navigation.PushAsync(new MemberResultsDesktop(SearchMembers()));
+                          
                     }
-
                     break;
+
                 case "Edit Sponsors":
                     switch (Device.RuntimePlatform)
                     {
                         case Device.UWP:
-                            Navigation.PushAsync(new SponsorResultsDesktop(SearchSponsors()));
-                            break;
-                        default:
-                            break;
+                        Navigation.PushAsync(new SponsorResultsDesktop(SearchSponsors()));
+                        break;
+                    default:
+                        break;
                     }
 
-                    break;
+                     break;
                 case "Edit Sponsorships":
          
 
@@ -96,7 +97,8 @@ namespace WingspanPrototype1
                 default:
                     break;
             }
-
+            
+       
         }
 
         private ArrayList SearchBirds()

@@ -40,12 +40,14 @@
                         <ColumnDefinition Width="3*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
                     </Grid.RowDefinitions>
 
                     <!--Sponsor ID-->
@@ -146,7 +148,7 @@
 
 
                 <!--Add note pop-up box-->
-                <ContentView x:Name="addSponsorNoteView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
+                <ContentView x:Name="addSponsorNoteView" IsVisible="False" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
                     <ContentView.Content>
                         <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
                             <StackLayout BackgroundColor="#FFFFFF">
