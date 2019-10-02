@@ -6,21 +6,18 @@ using System.Text;
 
 namespace WingspanPrototype1
 {
-    class AccessDatabase
+    class DatabaseConnection
     {
-        public IMongoCollection<BsonDocument> collection;
-        public AccessDatabase()
+        public static IMongoDatabase GetDatabase()
         {
-            var client = new MongoClient("mongodb+srv://Toi19:Toi19@cluster0-mzn8m.mongodb.net/test?retryWrites=true&w=majority");
-            var database = client.GetDatabase("test");
+            // var client = new MongoClient("mongodb+srv://Toi19:Toi19@cluster0-mzn8m.mongodb.net/test?retryWrites=true&w=majority");
 
-            collection = database.GetCollection<BsonDocument>("WingspanTest");
-        }
+            var client = new MongoClient("mongodb://localhost:27017");
 
-        public List<BsonDocument> SearchCollection(string key, string value)
-        {
-            List<BsonDocument> results = collection.Find(new BsonDocument(key, value)).ToList();
-            return results;
+            var database = client.GetDatabase("WingspanDB");
+
+            return database;
+
         }
 
     }

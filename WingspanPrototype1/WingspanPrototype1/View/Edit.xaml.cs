@@ -83,7 +83,6 @@ namespace WingspanPrototype1
                     }
                     break;
                 case "Select Bird":
-
                     if (Device.RuntimePlatform == Device.UWP)
                     {
                         Navigation.PushAsync(new SelectBirdResultsDesktop(SearchBirds()));
@@ -124,7 +123,7 @@ namespace WingspanPrototype1
                 case "Edit Volunteers":
                     if (DeviceSize.ScreenArea() <= 783457)
                     {
-                        // TODO: Add mobile pages 
+                        Navigation.PushAsync(new VolunteerResultsMobile1());
                     }
                     else
                     {

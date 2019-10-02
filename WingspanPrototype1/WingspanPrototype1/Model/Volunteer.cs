@@ -4,11 +4,11 @@ using System.Text;
 
 namespace WingspanPrototype1.Model
 {
-    class Volunteer
+    public class Volunteer
     {
-        string VolunteerId { get; set; }
-        string Name { get; set; }
-        int Mobile { get; set; }
-        string Email { get; set; }
+        public string VolunteerId { get; set; }
+        public string Name { get; set; }
+        public int Mobile { get; set; }
+        public string Email { get; set; }
     }
 }

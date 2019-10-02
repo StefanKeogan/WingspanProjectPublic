@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.View.Volunteers.VolunteerResultsMobile2"
+             Title="Results">
+    <ContentPage.Content>
+        <FlexLayout AlignItems="Center" JustifyContent="SpaceEvenly" Direction="Column" Margin="5,5,5,5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="3*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+
+                </Grid.RowDefinitions>
+
+                <!--Volunteer Id-->
+                <Label x:Name="volunteerIdLabel" Text="Volunteer Id" FontSize="20"/>
+                <StackLayout x:Name="volunteerIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
+                    <Label x:Name="volunteerIdValueLabel" FontSize="20"/>
+                    <Button x:Name="volunteerIdEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                </StackLayout>
+                <Entry x:Name="volunteerIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
+
+                <!--Name-->
+                <Label x:Name="nameLabel" Text="First Name" FontSize="20" Grid.Row="1"/>
+                <StackLayout x:Name="nameStack" Orientation="Horizontal" IsVisible="False" Grid.Row="1" Grid.Column="1">
+                    <Label x:Name="nameValueLabel" FontSize="20"/>
+                    <Button x:Name="nameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                </StackLayout>
+                <Entry x:Name="nameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" IsVisible="False"/>
+
+
+                <!--Mobile-->
+                <Label x:Name="mobileLabel" Text="Mobile" FontSize="20" Grid.Row="2"/>
+                <StackLayout x:Name="mobileStack" Orientation="Horizontal"  IsVisible="False" Grid.Row="2" Grid.Column="1">
+                    <Label x:Name="mobileValueLabel" FontSize="20"/>
+                    <Button x:Name="mobileEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                </StackLayout>
+                <Entry x:Name="mobileEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
+
+                <!--Email-->
+                <Label x:Name="emailLabel" Text="Email" FontSize="20" Grid.Row="3"/>
+                <StackLayout x:Name="emailStack" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="emailValueLabel" Text="GPS" FontSize="20"/>
+                    <Button x:Name="emailEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                </StackLayout>
+                <Entry x:Name="emailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
+
+
+
+            </Grid>
+
+            <!--Buttons-->
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Margin="0,5">
+                <Button  
+                            x:Name="deleteButton"
+                            Grid.ColumnSpan="2" 
+                            Text="Delete" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            HorizontalOptions="Center"
+                            WidthRequest="150"
+                            Clicked="DeleteButton_Clicked"/>
+
+                <Button  
+                            x:Name="saveChangesButton"
+                            Text="Save Changes" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            HorizontalOptions="Center"
+                            WidthRequest="150"
+                            Clicked="SaveChangesButton_Clicked"/>
+
+                <Button  
+                            x:Name="hoursHistoryButton"
+                            Text="Hours History" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            HorizontalOptions="Center"
+                            WidthRequest="200"
+                            Clicked="HoursHistoryButton_Clicked"/>
+            </StackLayout>
+
+            <!--Volunteer Hours History-->
+            <ContentView x:Name="hoursHistoryView" IsVisible="False" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView.Content>
+                    <Frame BorderColor="#000000" Padding="3" BackgroundColor="#FFFFFF">
+                        <StackLayout BackgroundColor="#FFFFFF" >
+                            <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
+                                <Label Text="Hours History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Button x:Name="hoursExitButton" BackgroundColor="#5C3838" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="HoursExitButton_Clicked"/>
+                            </StackLayout>
+                            <ListView x:Name="hoursListView">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Horizontal" Margin="5,10,5,10">
+                                                <Label Text="Date" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
+                                                <Label Text="{Binding Date}" FontAttributes="Italic" FontSize="15"/>
+                                                <Label Text="Category" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
+                                                <Label Text="{Binding Hours}" FontAttributes="Italic" FontSize="15"/>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Button
+                                    x:Name="logHoursButton"
+                                    Margin="5,5,5,5"
+                                    Text="Log Hours" 
+                                    BackgroundColor="#FFD966"
+                                    BorderColor="#5C3838"
+                                    BorderWidth="3"
+                                    CornerRadius="5"
+                                    FontSize="20" 
+                                    HorizontalOptions="Center"
+                                    Clicked="LogHoursButton_Clicked"/>
+                        </StackLayout>
+                    </Frame>
+                </ContentView.Content>
+            </ContentView>
+
+            <!--Log Hours-->
+            <ContentView x:Name="logHoursView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600">
+                <ContentView.Content>
+                    <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
+                        <StackLayout BackgroundColor="#FFFFFF">
+                            <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
+                                <Label Text="Log Hours" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Button x:Name="logHoursExitButton" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="LogHoursExitButton_Clicked"/>
+                            </StackLayout>
+                            <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
+                            <DatePicker x:Name="hoursDatePicker" Margin="5,5,5,5"/>
+
+                            <Label Text="Hours" FontSize="20" Margin="5,5,5,5"/>
+                            <Entry x:Name="hoursEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+
+                            <Button
+                                    x:Name="logButton"
+                                    Margin="5,5,5,5"
+                                    Text="Log" 
+                                    BackgroundColor="#FFD966"
+                                    BorderColor="#5C3838"
+                                    BorderWidth="3"
+                                    CornerRadius="5"
+                                    FontSize="20" 
+                                    HorizontalOptions="Center"
+                                    Clicked="LogButton_Clicked"/>
+                        </StackLayout>
+                    </Frame>
+                </ContentView.Content>
+            </ContentView>
+        </FlexLayout>
+    </ContentPage.Content>
+</ContentPage>
