@@ -37,6 +37,9 @@
     <Compile Update="View\Birds\BirdResultsMobile2.xaml.cs">
       <DependentUpon>BirdResultsMobile2.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\Volunteers\LogVolunteerHoursDesktop.xaml.cs">
+      <DependentUpon>LogVolunteerHoursDesktop.xaml</DependentUpon>
+    </Compile>
   </ItemGroup>
 
   <ItemGroup>
@@ -89,6 +92,12 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Volunteers\AddVolunteer.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\Volunteers\LogVolunteerHoursDesktop.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\Volunteers\VolunteerResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
   </ItemGroup>

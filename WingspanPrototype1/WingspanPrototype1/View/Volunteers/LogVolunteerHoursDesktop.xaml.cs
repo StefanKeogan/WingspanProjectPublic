@@ -10,20 +10,13 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1.View.Volunteers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddVolunteer : ContentPage
+    public partial class LogVolunteerHoursDesktop : ContentPage
     {
-        public AddVolunteer(string title)
+        public LogVolunteerHoursDesktop(string title)
         {
             InitializeComponent();
 
             Title = title;
-        }
-
-        private void AddButton_Clicked(object sender, EventArgs e)
-        {
-            // TODO: Database connection
-            // TODO: Validation
-
         }
     }
 }

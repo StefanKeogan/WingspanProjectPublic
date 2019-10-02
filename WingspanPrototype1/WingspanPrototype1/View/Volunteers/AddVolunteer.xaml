@@ -4,10 +4,47 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WingspanPrototype1.View.Volunteers.AddVolunteer">
+             x:Class="WingspanPrototype1.View.Volunteers.AddVolunteer"
+             BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <StackLayout>
-            
-        </StackLayout>
+        <FlexLayout AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
+            <Grid  WidthRequest="500">
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="4*"/>
+                </Grid.ColumnDefinitions>
+
+                <!--Name-->
+                <Label x:Name="nameLabel" Text="Name" FontSize="20" VerticalOptions="Center"/>
+                <Entry x:Name="nameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+
+                <!--Mobile-->
+                <Label x:Name="mobileLabel" Text="Mobile" FontSize="20" VerticalOptions="Center" Grid.Row="1"/>
+                <Entry x:Name="mobileEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+
+                <!--Email-->
+                <Label x:Name="emailLabel" Text="Email" FontSize="20" VerticalOptions="Center" Grid.Row="2" />
+                <Entry x:Name="emailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+
+            </Grid>
+
+            <Button  
+                x:Name="addButton"
+                Text="Add" 
+                BackgroundColor="#FFD966"
+                BorderColor="#5C3838"
+                BorderWidth="3"
+                CornerRadius="5"
+                FontSize="20" 
+                HorizontalOptions="Center"
+                Margin="20,0"
+                WidthRequest="150"
+                Clicked="AddButton_Clicked"/>
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -11,7 +11,7 @@
 
             <ContentView x:Name="wildBirdForm" IsVisible="False">
                 <ContentView.Content>
-                    <Grid>
+                    <Grid WidthRequest="500">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="4*"/>
@@ -93,7 +93,7 @@
 
             <ContentView x:Name="captiveBirdForm" IsVisible="False">
                 <ContentView.Content>
-                    <Grid>
+                    <Grid WidthRequest="500">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="2*"/>
                             <ColumnDefinition Width="4*"/>

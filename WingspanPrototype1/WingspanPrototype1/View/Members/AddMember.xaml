@@ -10,7 +10,7 @@
         <ScrollView>
             <FlexLayout x:Name="addMemberFlexLayout"  AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
 
-                <Grid>
+                <Grid WidthRequest="500">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="4*"/>

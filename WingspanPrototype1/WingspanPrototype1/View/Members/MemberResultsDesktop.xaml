@@ -203,7 +203,7 @@
                             Clicked="PaymentButton_Clicked"/>
                 </StackLayout>
 
-                <!--Donation History-->
+                <!--Payment History-->
                 <ContentView x:Name="paymentHistoryView" IsVisible="False" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
                     <ContentView.Content>
                         <Frame BorderColor="#000000" Padding="3" BackgroundColor="#FFFFFF">

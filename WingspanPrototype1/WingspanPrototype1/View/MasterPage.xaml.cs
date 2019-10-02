@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WingspanPrototype1.View;
+using WingspanPrototype1.View.Volunteers;
+using WingspanPrototype1.Functions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -28,17 +30,16 @@ namespace WingspanPrototype1
             menuItems.Add(new MasterPageItem { Title = "New Wild Bird", TargetType = typeof(AddBird) });
             menuItems.Add(new MasterPageItem { Title = "New Captive Bird", TargetType = typeof(AddBird) });
 
-            switch (Device.RuntimePlatform)
+
+            if (DeviceSize.ScreenArea() <= 783457) // If the device screen is smaller than 7 inches
             {
-                case Device.UWP:
-                    menuItems.Add(new MasterPageItem { Title = "Add Bird Note", TargetType = typeof(AddBirdNote) });
-                    break;
-                case Device.Android:
-                    menuItems.Add(new MasterPageItem { Title = "Add Bird Note", TargetType = typeof(AddBirdNoteMobile1) });
-                    break;
-                default:
-                    break;
+                menuItems.Add(new MasterPageItem { Title = "Add Bird Note", TargetType = typeof(AddBirdNoteMobile1) });
             }
+            else
+            {
+                menuItems.Add(new MasterPageItem { Title = "Add Bird Note", TargetType = typeof(AddBirdNote) });
+            }
+
            
             menuItems.Add(new MasterPageItem { Title = "Edit Birds", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "New Member", TargetType = typeof(AddMember) });
@@ -46,9 +47,19 @@ namespace WingspanPrototype1
             menuItems.Add(new MasterPageItem { Title = "New Sponsorship", TargetType = typeof(AddSponsorship) });
             menuItems.Add(new MasterPageItem { Title = "Edit Sponsorships", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "Edit Sponsors", TargetType = typeof(Edit) });
-            menuItems.Add(new MasterPageItem { Title = "Add Volunteer", TargetType = typeof(Edit) });
+            menuItems.Add(new MasterPageItem { Title = "New Volunteer", TargetType = typeof(AddVolunteer) });
             menuItems.Add(new MasterPageItem { Title = "Edit Volunteers", TargetType = typeof(Edit) });
-            menuItems.Add(new MasterPageItem { Title = "Log Volunteer Hours", TargetType = typeof(Edit) });
+
+            if (DeviceSize.ScreenArea() <= 783457) // If the device screen is smaller than 7 inches
+            {
+                
+            }
+            else
+            {
+                menuItems.Add(new MasterPageItem { Title = "Log Volunteer Hours", TargetType = typeof(LogVolunteerHoursDesktop) });
+            }
+
+            
             menuItems.Add(new MasterPageItem { Title = "New Sighting", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "Reports", TargetType = typeof(ReportPage) });
 

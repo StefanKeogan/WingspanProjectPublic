@@ -43,6 +43,10 @@ namespace WingspanPrototype1
                     searchTitle.Text = "Find Sponsorship";
                     searchSponsorshipForm.IsVisible = true;
                     break;
+                case "Edit Volunteers":
+                    searchTitle.Text = "Find Volunteer";
+                    searchVolunteerForm.IsVisible = true;
+                    break;
                 default:
                     break;
             }
@@ -52,7 +56,6 @@ namespace WingspanPrototype1
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
             // TODO: Get feild data
-            // TODO: Wirte screen size awareness class to determine results page
 
             // What results page are we pushing based on title and runtime platform 
 
@@ -80,13 +83,15 @@ namespace WingspanPrototype1
                     {
                         Navigation.PushAsync(new MemberResultsDesktop(SearchMembers()));
                     }
-
                     break;
                 case "Edit Sponsors":
 
                     break;
                 case "Edit Sponsorships":
          
+                    break;
+                case "Edit Volunteers":
+
                     break;
                 default:
                     break;

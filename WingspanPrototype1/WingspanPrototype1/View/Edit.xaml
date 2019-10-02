@@ -127,7 +127,31 @@
                 </ContentView.Content>
                 </ContentView>
 
-                <Button x:Name="searchButton" 
+            <!--Search volunteer form-->
+            <ContentView x:Name="searchVolunteerForm" IsVisible="False">
+                <ContentView.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+
+                        <!--Voluneer Id-->
+                        <Label x:Name="volunteerIdLabel" FontSize="20" Text="Volunteer ID"/>
+                        <Entry x:Name="volunteerIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+
+                        <!--Volunteer Name-->
+                        <Label x:Name="volunteerNameLabel" Text="Name"  FontSize="20" Grid.Row="1"/>
+                        <Entry x:Name="volunteerNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+                    </Grid>
+                </ContentView.Content>
+            </ContentView>
+
+            <Button x:Name="searchButton" 
                      Text="Search" 
                      BackgroundColor="#FFD966"
                      BorderColor="#5C3838"
