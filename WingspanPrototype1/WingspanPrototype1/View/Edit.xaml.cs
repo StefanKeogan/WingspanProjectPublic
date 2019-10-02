@@ -31,6 +31,10 @@ namespace WingspanPrototype1
                     searchTitle.Text = "Find Bird";
                     searchBirdForm.IsVisible = true;
                     break;
+                case "Select Bird":
+                    searchTitle.Text = "Find Bird";
+                    searchBirdForm.IsVisible = true;
+                    break;
                 case "Edit Members":
                     searchTitle.Text = "Find Member";
                     searchMemberForm.IsVisible = true;
@@ -39,13 +43,13 @@ namespace WingspanPrototype1
                     searchTitle.Text = "Find Sponsor";
                     searchSponsorForm.IsVisible = true;
                     break;
+                case "Select Sponsor":
+                    searchTitle.Text = "Find Sponsor";
+                    searchSponsorForm.IsVisible = true;
+                    break;
                 case "Edit Sponsorships":
                     searchTitle.Text = "Find Sponsorship";
                     searchSponsorshipForm.IsVisible = true;
-                    break;
-                case "Edit Volunteers":
-                    searchTitle.Text = "Find Volunteer";
-                    searchVolunteerForm.IsVisible = true;
                     break;
                 default:
                     break;
@@ -56,6 +60,7 @@ namespace WingspanPrototype1
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
             // TODO: Get feild data
+            // TODO: Wirte screen size awareness class to determine results page
 
             // What results page are we pushing based on title and runtime platform 
 
@@ -71,32 +76,56 @@ namespace WingspanPrototype1
                     {
                         Navigation.PushAsync(new BirdResultsDesktop(SearchBirds()));
                     }
-                    
                     break;
+
+
+                case "Select Bird":
+
+                    if (Device.RuntimePlatform == Device.UWP)
+                    {
+                        Navigation.PushAsync(new SelectBirdResultsDesktop(SearchBirds()));
+                    }                 
+                    break;
+
+
                 case "Edit Members":
 
-                    if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
-                    {
-                        Navigation.PushAsync(new MemberResultsMobile1(SearchMembers()));
-                    }
-                    else
+                    if (Device.RuntimePlatform == Device.UWP)
                     {
                         Navigation.PushAsync(new MemberResultsDesktop(SearchMembers()));
+                          
                     }
                     break;
+
+
                 case "Edit Sponsors":
 
+                    if (Device.RuntimePlatform == Device.UWP)
+                    {
+                        Navigation.PushAsync(new EditSponsorResultsDesktop(SearchSponsors()));
+                    }
                     break;
-                case "Edit Sponsorships":
-         
-                    break;
-                case "Edit Volunteers":
 
+
+                case "Select Sponsor":
+
+                    if (Device.RuntimePlatform == Device.UWP)
+                    {
+                        Navigation.PushAsync(new SelectSponsorResultsDesktop(SearchSponsors()));
+                    }
                     break;
-                default:
+
+
+                case "Edit Sponsorships":
+
+                    if (Device.RuntimePlatform == Device.UWP)
+                    {
+                        Navigation.PushAsync(new EditSponsorshipResultsDesktop(SearchSponsorships()));
+                    }
                     break;
             }
-
+            
+       
         }
 
         private ArrayList SearchBirds()
@@ -139,6 +168,29 @@ namespace WingspanPrototype1
 
             return members;
 
+        }
+
+        private ArrayList SearchSponsors()
+        {
+
+            //hardcoded examples
+            ArrayList sponsors = new ArrayList();
+
+            sponsors.Add(new Sponsor { SponsorID = "S001", SponsorName = "Homer Simpson", SponsorAddress = "Springfield, USA", SponsorPhone = "022 123 4567", SponsorEmail = "homer@gmail.com", SponsorNotes = null });
+            sponsors.Add(new Sponsor { SponsorID = "S002", SponsorName = "Bruce Banner", SponsorAddress = "", SponsorPhone = "", SponsorEmail = "hulk@gmail.com", SponsorNotes = "You won't like him when he's angry." });
+            sponsors.Add(new Sponsor { SponsorID = "S003", SponsorName = "Monty Burns", SponsorAddress = "Springfield, USA", SponsorPhone = "", SponsorEmail = "rich@gmail.com", SponsorNotes = null });
+
+            return sponsors;
+        }
+
+        private ArrayList SearchSponsorships()
+        {
+
+
+            //dummy data
+            ArrayList sponsorships = new ArrayList();
+
+            return sponsorships;
         }
 
     }
