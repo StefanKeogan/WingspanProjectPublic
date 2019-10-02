@@ -14,21 +14,21 @@ namespace WingspanPrototype1
         public AddSponsorship(string title)
         {
             InitializeComponent();
-            Title = title; //gives the detail page the title passed from the main page
+            Title = title;
 
-            // What device are we running on? 
-            switch (Device.RuntimePlatform)
-            {
-                case Device.UWP:
-                    addSponsorshipStackLayout.Margin = new Thickness(300, 20, 300, 20);
-                    break;
-                case Device.Android:
-                    addSponsorshipStackLayout.Margin = new Thickness(5, 5, 5, 5);
-                    break;
-                default:
-                    addSponsorshipStackLayout.Margin = new Thickness(300, 20, 300, 20);
-                    break;
-            }
+            //// What device are we running on? 
+            //switch (Device.RuntimePlatform)
+            //{
+            //    case Device.UWP:
+            //        addSponsorshipStackLayout.Margin = new Thickness(300, 20, 300, 20);
+            //        break;
+            //    case Device.Android:
+            //        addSponsorshipStackLayout.Margin = new Thickness(5, 5, 5, 5);
+            //        break;
+            //    default:
+            //        addSponsorshipStackLayout.Margin = new Thickness(300, 20, 300, 20);
+            //        break;
+            //}
         }
 
         //search the birds
@@ -39,7 +39,7 @@ namespace WingspanPrototype1
 
             if (selectedIndex == 0)
             {
-                await Navigation.PushAsync(new Edit("Edit Birds"));
+                await Navigation.PushAsync(new Edit("Select Bird"));
             }
             else
             {
@@ -50,30 +50,30 @@ namespace WingspanPrototype1
         //saves sponsorship to database?
         void OnLevelSelected (object sender, EventArgs e)
         {
-            string sponsorshipLevel; //ready for entering to database (maybe make it a property?)
+            //string sponsorshipLevel; //ready for entering to database (maybe make it a property?)
 
-            var picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
-            switch (selectedIndex)
-            {
-                case 0:
-                    sponsorshipLevel = "Wild Bird";
-                    break;
-                case 1:
-                    sponsorshipLevel = "Captive Bird (Absolute)";
-                    break;
-                case 2:
-                    sponsorshipLevel = "Captive Bird (Gold)";
-                    break;
-                case 3:
-                    sponsorshipLevel = "Captive Bird (Silver)";
-                    break;
-                case 4:
-                    sponsorshipLevel = "Captive Bird (Bronze)";
-                    break;
-            }
+            //var picker = (Picker)sender;
+            //int selectedIndex = picker.SelectedIndex;
+            //switch (selectedIndex)
+            //{
+            //    case 0:
+            //        sponsorshipLevel = "Wild Bird";
+            //        break;
+            //    case 1:
+            //        sponsorshipLevel = "Captive Bird (Absolute)";
+            //        break;
+            //    case 2:
+            //        sponsorshipLevel = "Captive Bird (Gold)";
+            //        break;
+            //    case 3:
+            //        sponsorshipLevel = "Captive Bird (Silver)";
+            //        break;
+            //    case 4:
+            //        sponsorshipLevel = "Captive Bird (Bronze)";
+            //        break;
+            //}
 
-            //assign the string of the level to this sponsorship
+            ////assign the string of the level to this sponsorship
         }
 
         //sorts out the sponsor selection
@@ -84,11 +84,11 @@ namespace WingspanPrototype1
 
             if (selectedIndex == 0) //exisiting sponsor
             {
-                await Navigation.PushAsync(new Edit("Edit Sponsors"));
+                await Navigation.PushAsync(new Edit("Select Sponsor"));
             }
             else if (selectedIndex == 1) // new sponsor
             {
-                newSponsorView.IsVisible = true;
+                await Navigation.PushAsync(new AddSponsor("New Sponsor"));
             }
         }
 
@@ -103,18 +103,10 @@ namespace WingspanPrototype1
                 //need to connect these things to the database as well
                 await DisplayAlert("Success", "This sponsorship has been saved", "Ok");
             }
-        }
-
-        //buttons dealing with new sponsors
-        private void NewSponsorExitButton_Clicked(object sender, EventArgs e)
-        {
-            newSponsorView.IsVisible = false;
-        }
-
-        private void SaveNewSponsorButton_Clicked(object sender, EventArgs e)
-        {
-            DisplayAlert("Sponsor saved", "", "OK");
-            newSponsorView.IsVisible = false;
+            else
+            {
+                return;
+            }
         }
     }
 }

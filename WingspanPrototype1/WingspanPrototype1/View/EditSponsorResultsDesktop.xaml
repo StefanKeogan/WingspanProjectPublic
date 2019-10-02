@@ -133,17 +133,6 @@
                             WidthRequest="150"
                             Clicked="AddSponsorNoteButton_Clicked"/>
 
-                    <Button x:Name="selectSponsorButton"
-                            Grid.ColumnSpan="2" 
-                            Text="Select" 
-                            BackgroundColor="#FFD966"
-                            BorderColor="#5C3838"
-                            BorderWidth="3"
-                            CornerRadius="5"
-                            FontSize="20" 
-                            HorizontalOptions="Center"
-                            WidthRequest="150"
-                            Clicked="SelectSponsorButton_Clicked"/>
                 </StackLayout>
 
 

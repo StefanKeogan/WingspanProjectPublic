@@ -5,9 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WingspanPrototype1.AddSponsorship"
-             BackgroundColor="#F0F0F0">
+             BackgroundColor="#F0F0F0"
+             Title="New Sponsorship">
     <ContentPage.Content>
-        <StackLayout x:Name="addSponsorshipStackLayout" HorizontalOptions="Center" VerticalOptions="Center">
+        <FlexLayout x:Name="addSponsorshipFlexLayout" AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -31,7 +32,7 @@
                         SelectedIndexChanged="SelectSponsoredBird_SelectedIndexChanged">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>Find a bird</x:String>
+                            <x:String>Find the right bird</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
@@ -73,66 +74,23 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
-
-                <!--save button-->
-                <Button
-                x:Name="saveButton"
-                Text="Save"
-                Grid.Row="5"
-                Grid.ColumnSpan="2"
-                BackgroundColor="#FFD966"
-                BorderColor="#5C3838"
-                BorderWidth="3"
-                CornerRadius="5"
-                FontSize="20"
-                HorizontalOptions="Center"
-                Margin="20,0"
-                WidthRequest="150"
-                Clicked="SaveButton_Clicked" />
-
-                <!--New sponsor pop-up box-->
-                <ContentView x:Name="newSponsorView" Grid.Row="1" IsVisible="False" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand">
-                    <ContentView.Content>
-                        <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
-                            <StackLayout BackgroundColor="#FFFFFF">
-                                <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
-                                    <Label Text="New sponsor" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Button x:Name="newSponsorExitButton" 
-                                            Text="X" TextColor="#FFFFFF"  
-                                            FontSize="20" 
-                                            Margin="5,5,5,5" 
-                                            HorizontalOptions="EndAndExpand" 
-                                            VerticalOptions="Center" 
-                                            Clicked="NewSponsorExitButton_Clicked"/>
-                                </StackLayout>
-                                <Label Text="Sponsor name" FontSize="20" Margin="5,5,5,5"/>
-                                <Entry x:Name="newSponsorNameEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
-
-                                <Label Text="Address" FontSize="20" Margin="5,5,5,5"/>
-                                <Entry x:Name="newSponsorAddressEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
-
-                                <Label Text="Phone number" FontSize="20" Margin="5,5,5,5"/>
-                                <Entry x:Name="newSponsorPhoneEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
-
-                                <Label Text="Email" FontSize="20" Margin="5,5,5,5"/>
-                                <Entry x:Name="newSponsorEmailEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
-
-                                <Button
-                                    x:Name="saveNewSponsorButton"
-                                    Margin="5,5,5,5"
-                                    Text="Save" 
-                                    BackgroundColor="#FFD966"
-                                    BorderColor="#5C3838"
-                                    BorderWidth="3"
-                                    CornerRadius="5"
-                                    FontSize="20" 
-                                    HorizontalOptions="Center"
-                                    Clicked="SaveNewSponsorButton_Clicked"/>
-                            </StackLayout>
-                        </Frame>
-                    </ContentView.Content>
-                </ContentView>
             </Grid>
-        </StackLayout>
+
+            <!--save button-->
+            <Button x:Name="saveButton"
+                    Text="Save"
+                    Grid.Row="5"
+                    Grid.ColumnSpan="2"
+                    BackgroundColor="#FFD966"
+                    BorderColor="#5C3838"
+                    BorderWidth="3"
+                    CornerRadius="5"
+                    FontSize="20"
+                    HorizontalOptions="Center"
+                    Margin="20,0"
+                    WidthRequest="150"
+                    Clicked="SaveButton_Clicked"/>
+
+        </FlexLayout>
     </ContentPage.Content>
 </ContentPage>

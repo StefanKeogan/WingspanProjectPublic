@@ -139,21 +139,6 @@ namespace WingspanPrototype1.View
             }
         }
 
-        private async void SelectSponsorButton_Clicked(object sender, EventArgs e)
-        {
-            bool answer = await DisplayAlert("", "Are you sure you want to select this sponsor?", "Yes", "No");
-
-            if (answer)
-            {
-                //TO DO make the input display
-                await DisplayAlert("Sponsor selected", "", "OK");
-                await Navigation.PopToRootAsync();
-            }
-            else
-            {
-                await Navigation.PopAsync();
-            }
-        }
 
         //buttons for working adding notes about sponsors
         private void AddSponsorNoteButton_Clicked(object sender, EventArgs e)

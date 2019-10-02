@@ -31,11 +31,19 @@ namespace WingspanPrototype1
                     searchTitle.Text = "Find Bird";
                     searchBirdForm.IsVisible = true;
                     break;
+                case "Select Bird":
+                    searchTitle.Text = "Find Bird";
+                    searchBirdForm.IsVisible = true;
+                    break;
                 case "Edit Members":
                     searchTitle.Text = "Find Member";
                     searchMemberForm.IsVisible = true;
                     break;
                 case "Edit Sponsors":
+                    searchTitle.Text = "Find Sponsor";
+                    searchSponsorForm.IsVisible = true;
+                    break;
+                case "Select Sponsor":
                     searchTitle.Text = "Find Sponsor";
                     searchSponsorForm.IsVisible = true;
                     break;
@@ -68,8 +76,18 @@ namespace WingspanPrototype1
                     {
                         Navigation.PushAsync(new BirdResultsDesktop(SearchBirds()));
                     }
-
                     break;
+
+
+                case "Select Bird":
+
+                    if (Device.RuntimePlatform == Device.UWP)
+                    {
+                        Navigation.PushAsync(new SelectBirdResultsDesktop(SearchBirds()));
+                    }                 
+                    break;
+
+
                 case "Edit Members":
 
                     if (Device.RuntimePlatform == Device.UWP)
@@ -79,22 +97,31 @@ namespace WingspanPrototype1
                     }
                     break;
 
+
                 case "Edit Sponsors":
-                    switch (Device.RuntimePlatform)
+
+                    if (Device.RuntimePlatform == Device.UWP)
                     {
-                        case Device.UWP:
                         Navigation.PushAsync(new EditSponsorResultsDesktop(SearchSponsors()));
-                        break;
-                    default:
-                        break;
                     }
-
-                     break;
-                case "Edit Sponsorships":
-         
-
                     break;
-                default:
+
+
+                case "Select Sponsor":
+
+                    if (Device.RuntimePlatform == Device.UWP)
+                    {
+                        Navigation.PushAsync(new SelectSponsorResultsDesktop(SearchSponsors()));
+                    }
+                    break;
+
+
+                case "Edit Sponsorships":
+
+                    if (Device.RuntimePlatform == Device.UWP)
+                    {
+                        Navigation.PushAsync(new EditSponsorshipResultsDesktop(SearchSponsorships()));
+                    }
                     break;
             }
             
@@ -154,6 +181,16 @@ namespace WingspanPrototype1
             sponsors.Add(new Sponsor { SponsorID = "S003", SponsorName = "Monty Burns", SponsorAddress = "Springfield, USA", SponsorPhone = "", SponsorEmail = "rich@gmail.com", SponsorNotes = null });
 
             return sponsors;
+        }
+
+        private ArrayList SearchSponsorships()
+        {
+
+
+            //dummy data
+            ArrayList sponsorships = new ArrayList();
+
+            return sponsorships;
         }
 
     }
