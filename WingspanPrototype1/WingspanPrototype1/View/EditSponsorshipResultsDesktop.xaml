@@ -101,7 +101,7 @@
                         <Label x:Name="sponsorshipEndValueLabel" FontSize="20"/>
                         <Button x:Name="sponsorshipEndEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="sponsorshipStartEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Row="5" Grid.Column="1"/>
+                    <Entry x:Name="sponsorshipEndEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Row="5" Grid.Column="1"/>
 
                     <!--Sponsor ID-->
                     <Label x:Name="displaySponsorIDLabel" Text="Sponsor ID" FontSize="20" Grid.Row="6"/>

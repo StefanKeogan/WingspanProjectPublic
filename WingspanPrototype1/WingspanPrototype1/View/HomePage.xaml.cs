@@ -52,11 +52,11 @@ namespace WingspanPrototype1
                 {
                     case Device.Android:
                         backgroundImage.Source = "tablethome.png";
-                        logoImage.Source = "darkbrownlogo.png";
+                        logoImage.Source = "darkbrownlogolarge.png";
                         break;
                     case Device.UWP:
                         backgroundImage.Source = "Assets/tablet-home.png";
-                        logoImage.Source = "Assets/darkbrown-logo.png";
+                        logoImage.Source = "Assets/darkbrown-logo-large.png";
                         break;
                     default:
                         backgroundImage.Source = "";

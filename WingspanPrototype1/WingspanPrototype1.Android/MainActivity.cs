@@ -17,7 +17,11 @@ namespace WingspanPrototype1.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            Window.SetStatusBarColor(Android.Graphics.Color.DarkGray);
+            if (Build.VERSION.SdkInt >= Build.VERSION_CODES.Lollipop) 
+            { 
+                Window.SetStatusBarColor(Android.Graphics.Color.DarkGray); 
+            }
+
 
             base.OnCreate(savedInstanceState);
 

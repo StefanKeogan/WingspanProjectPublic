@@ -10,6 +10,7 @@ using WingspanPrototype1.View;
 using WingspanPrototype1.Functions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using WingspanPrototype1.View.Volunteers;
 
 namespace WingspanPrototype1
 {
@@ -51,6 +52,11 @@ namespace WingspanPrototype1
                     searchTitle.Text = "Find Sponsorship";
                     searchSponsorshipForm.IsVisible = true;
                     break;
+                case "Edit Volunteers":
+                    searchTitle.Text = "Edit Volunteers";
+                    searchVolunteerForm.IsVisible = true;
+                    break;
+
                 default:
                     break;
             }
@@ -67,7 +73,6 @@ namespace WingspanPrototype1
             switch (Title)
             {
                 case "Edit Birds":
-
                     if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
                     {
                         Navigation.PushAsync(new BirdResultsMobile1(SearchBirds()));
@@ -77,8 +82,6 @@ namespace WingspanPrototype1
                         Navigation.PushAsync(new BirdResultsDesktop(SearchBirds()));
                     }
                     break;
-
-
                 case "Select Bird":
 
                     if (Device.RuntimePlatform == Device.UWP)
@@ -86,18 +89,17 @@ namespace WingspanPrototype1
                         Navigation.PushAsync(new SelectBirdResultsDesktop(SearchBirds()));
                     }                 
                     break;
-
-
                 case "Edit Members":
 
-                    if (Device.RuntimePlatform == Device.UWP)
+                    if (DeviceSize.ScreenArea() <= 783457)
+                    {
+                        Navigation.PushAsync(new MemberResultsMobile1(SearchMembers()));
+                    }
+                    else
                     {
                         Navigation.PushAsync(new MemberResultsDesktop(SearchMembers()));
-                          
                     }
                     break;
-
-
                 case "Edit Sponsors":
 
                     if (Device.RuntimePlatform == Device.UWP)
@@ -105,8 +107,6 @@ namespace WingspanPrototype1
                         Navigation.PushAsync(new EditSponsorResultsDesktop(SearchSponsors()));
                     }
                     break;
-
-
                 case "Select Sponsor":
 
                     if (Device.RuntimePlatform == Device.UWP)
@@ -114,13 +114,21 @@ namespace WingspanPrototype1
                         Navigation.PushAsync(new SelectSponsorResultsDesktop(SearchSponsors()));
                     }
                     break;
-
-
                 case "Edit Sponsorships":
 
                     if (Device.RuntimePlatform == Device.UWP)
                     {
                         Navigation.PushAsync(new EditSponsorshipResultsDesktop(SearchSponsorships()));
+                    }
+                    break;
+                case "Edit Volunteers":
+                    if (DeviceSize.ScreenArea() <= 783457)
+                    {
+                        // TODO: Add mobile pages 
+                    }
+                    else
+                    {
+                        Navigation.PushAsync(new VolunteerResultsDesktop());
                     }
                     break;
             }

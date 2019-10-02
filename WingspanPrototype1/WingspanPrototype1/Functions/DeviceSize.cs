@@ -15,9 +15,9 @@ namespace WingspanPrototype1.Functions
 
             double screenAreaPixels = width * height;
 
-            double screenAreaInches = screenAreaPixels / screenDensity;
+            double relativeScreenArea = screenAreaPixels / screenDensity;
 
-            return screenAreaInches;
+            return relativeScreenArea;
 
         }
 
