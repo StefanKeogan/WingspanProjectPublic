@@ -37,13 +37,10 @@
 
                 <Label x:Name="newSponsorNoteLabel" Text="Initial note" FontSize="20" Grid.Row="4"/>
                 <Entry x:Name="newSponsorNoteEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1"/>
-
             </Grid>
 
             <Button x:Name="saveNewSponsorButton"
-                    Text="Save sponsor"
-                    Grid.Row="5"
-                    Grid.ColumnSpan="2"
+                    Text="Save"
                     BackgroundColor="#FFD966"
                     BorderColor="#5C3838"
                     BorderWidth="3"

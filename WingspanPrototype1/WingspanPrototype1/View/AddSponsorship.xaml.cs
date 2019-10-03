@@ -29,6 +29,7 @@ namespace WingspanPrototype1
             //        addSponsorshipStackLayout.Margin = new Thickness(300, 20, 300, 20);
             //        break;
             //}
+
         }
 
         //search the birds

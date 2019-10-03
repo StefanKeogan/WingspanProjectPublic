@@ -56,11 +56,11 @@ namespace WingspanPrototype1
             // What type of bird are we adding?
             if (Title == "New Wild Bird")
             {
-                DisplayAlert("Wild Bird Saved", "This bird has been saved in the data base", "Ok");
+                DisplayAlert("Wild Bird Saved", "This bird has been saved in the database", "Ok");
             }
             else if (Title == "New Captive Bird")
             {
-                DisplayAlert("Captive Bird Saved", "This bird has been saved in the data base", "Ok");
+                DisplayAlert("Captive Bird Saved", "This bird has been saved in the database", "Ok");
             }
 
             

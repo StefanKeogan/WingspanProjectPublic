@@ -79,8 +79,6 @@
             <!--save button-->
             <Button x:Name="saveButton"
                     Text="Save"
-                    Grid.Row="5"
-                    Grid.ColumnSpan="2"
                     BackgroundColor="#FFD966"
                     BorderColor="#5C3838"
                     BorderWidth="3"

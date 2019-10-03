@@ -13,7 +13,7 @@ namespace WingspanPrototype1
         public string WildLocation { get; set; }
         public string WildAge { get; set; }
         public string WildSex { get; set; }
-        public int WildBand { get; set; }
+        public string WildBand { get; set; }
         public string WildBandInfo { get; set; }      
         public string WildGps { get; set; }
         public string WildDateBanded { get; set; }

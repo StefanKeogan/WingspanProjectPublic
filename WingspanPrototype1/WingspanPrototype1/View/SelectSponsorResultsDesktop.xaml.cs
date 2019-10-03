@@ -98,16 +98,11 @@ namespace WingspanPrototype1.View
             }
         }
 
-        //go back button which results user to the edit menu
-        private async void GoBackSponsorButton_Clicked(object sender, EventArgs e)
-        {
-            await Navigation.PopAsync();
-        }
-
         //button to update with this sponsor's name 
-        private void ThisSponsorButton_Clicked(object sender, EventArgs e)
+        private async void ThisSponsorButton_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Sponsor added", "", "OK");
+            await DisplayAlert("Sponsor added", "", "OK");
+            await Navigation.PopToRootAsync();
         }
     }
 }
