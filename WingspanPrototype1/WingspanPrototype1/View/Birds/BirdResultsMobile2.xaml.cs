@@ -64,9 +64,9 @@ namespace WingspanPrototype1
             }
 
             // Set Species Value 
-            if (bird.Species != string.Empty)
+            if (bird.WildSpecies != string.Empty)
             {
-                wildSpeciesValueLabel.Text = bird.Species;
+                wildSpeciesValueLabel.Text = bird.WildSpecies;
                 wildSpeciesStack.IsVisible = true;
                 wildSpeciesPicker.IsVisible = false;
 
@@ -79,9 +79,9 @@ namespace WingspanPrototype1
             }
 
             // Set Location Value 
-            if (bird.Location != string.Empty)
+            if (bird.WildLocation != string.Empty)
             {
-                wildLocationValueLabel.Text = bird.Location;
+                wildLocationValueLabel.Text = bird.WildLocation;
                 wildLocationStack.IsVisible = true;
                 wildLocationEntry.IsVisible = false;
 
@@ -94,9 +94,9 @@ namespace WingspanPrototype1
             }
 
             // Set GPS Value
-            if (bird.Gps != string.Empty)
+            if (bird.WildGps != string.Empty)
             {
-                wildGpsValueLabel.Text = bird.Gps;
+                wildGpsValueLabel.Text = bird.WildGps;
                 wildGpsStack.IsVisible = true;
                 wildGpsEntry.IsVisible = false;
 
@@ -109,9 +109,9 @@ namespace WingspanPrototype1
             }
 
             // Set Sex Value
-            if (bird.Sex != string.Empty)
+            if (bird.WildSex != string.Empty)
             {
-                wildSexValueLabel.Text = bird.Sex;
+                wildSexValueLabel.Text = bird.WildSex;
                 wildSexStack.IsVisible = true;
                 wildSexPicker.IsVisible = false;
 
@@ -124,9 +124,9 @@ namespace WingspanPrototype1
             }
 
             // Set Age Value
-            if (bird.Age != string.Empty)
+            if (bird.WildAge != string.Empty)
             {
-                wildAgeValueLabel.Text = bird.Age;
+                wildAgeValueLabel.Text = bird.WildAge;
                 wildAgeStack.IsVisible = true;
                 wildAgePicker.IsVisible = false;
 
@@ -139,9 +139,9 @@ namespace WingspanPrototype1
             }
 
             // Set Metal Band Value
-            if (bird.MetalBandId != string.Empty)
+            if (bird.WildBand != string.Empty)
             {
-                wildMetalBandIdValueLabel.Text = bird.MetalBandId;
+                wildMetalBandIdValueLabel.Text = bird.WildBand;
                 wildMetalBandStack.IsVisible = true;
                 wildMetalBandIdEntry.IsVisible = false;
 
@@ -154,9 +154,9 @@ namespace WingspanPrototype1
             }
 
             // Set Date Banded Value 
-            if (bird.DateBanded.ToString() != string.Empty)
+            if (bird.WildDateBanded.ToString() != string.Empty)
             {
-                wildDateBandedValueLabel.Text = bird.DateBanded.ToString();
+                wildDateBandedValueLabel.Text = bird.WildDateBanded.ToString();
                 wildDateBandedStack.IsVisible = true;
                 wildDateBandedPicker.IsVisible = false;
 
@@ -169,9 +169,9 @@ namespace WingspanPrototype1
             }
 
             // Set Bander Name Value 
-            if (bird.BanderName != string.Empty)
+            if (bird.WildBanderName != string.Empty)
             {
-                wildBanderNameValueLabel.Text = bird.BanderName;
+                wildBanderNameValueLabel.Text = bird.WildBanderName;
                 wildBanderNameStack.IsVisible = true;
                 wildBanderNameEntry.IsVisible = false;
 
