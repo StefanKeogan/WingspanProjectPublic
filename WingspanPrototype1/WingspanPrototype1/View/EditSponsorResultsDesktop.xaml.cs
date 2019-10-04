@@ -26,7 +26,9 @@ namespace WingspanPrototype1.View
             if (item != null)
             {
                 DisplaySponsor(item);
+                editSponsorResultsGrid.IsVisible = true;
             }
+            
         }
 
         //execute when user selects the sponsor they want to see
@@ -149,6 +151,7 @@ namespace WingspanPrototype1.View
         private void AddSponsorNoteExitButton_Clicked(object sender, EventArgs e)
         {
             addSponsorNoteView.IsVisible = false;
+            sponsorNoteEntry.Text = string.Empty; //clear any text added in the field
         }
 
         private void SaveSponsorNoteButton_Clicked(object sender, EventArgs e)

@@ -8,76 +8,77 @@
              BackgroundColor="#F0F0F0"
              Title="New Sponsorship">
     <ContentPage.Content>
-        <FlexLayout x:Name="addSponsorshipFlexLayout" AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="4*"/>
-                </Grid.ColumnDefinitions>
+        <ScrollView>
+            <FlexLayout x:Name="addSponsorshipFlexLayout" AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-                <!--selecting the bird-->
-                <Label x:Name="sponsoredBirdName" Text="Bird to be sponsored" FontSize="20"/>
-                <Picker x:Name="selectSponsoredBird" 
+                    <!--selecting the bird-->
+                    <Label x:Name="sponsoredBirdName" Text="Bird to be sponsored" FontSize="20"/>
+                    <Picker x:Name="selectSponsoredBird" 
                         HorizontalOptions="Fill" 
                         VerticalOptions="Center" 
                         Grid.Column="1" 
                         SelectedIndexChanged="SelectSponsoredBird_SelectedIndexChanged">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Find the right bird</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Find the right bird</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
 
-                <!--level of sponsorship-->
-                <Label x:Name="sponsorshipLevel" Text="Select level" FontSize="20" Grid.Row="1" />
-                <Picker x:Name="levelSelector" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" Grid.Row="1" 
+                    <!--level of sponsorship-->
+                    <Label x:Name="sponsorshipLevel" Text="Select level" FontSize="20" Grid.Row="1" />
+                    <Picker x:Name="levelSelector" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" Grid.Row="1" 
                         SelectedIndexChanged="OnLevelSelected">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Wild Bird</x:String>
-                            <x:String>Captive Bird (Absolute)</x:String>
-                            <x:String>Captive Bird (Gold)</x:String>
-                            <x:String>Captive Bird (Silver)</x:String>
-                            <x:String>Captive Bird (Bronze)</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Wild Bird</x:String>
+                                <x:String>Captive Bird (Absolute)</x:String>
+                                <x:String>Captive Bird (Gold)</x:String>
+                                <x:String>Captive Bird (Silver)</x:String>
+                                <x:String>Captive Bird (Bronze)</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
 
-                <!--when sponsorship begins-->
-                <Label x:Name="sponsorshipStartDate" Text="Start date" FontSize="20" Grid.Row="2"/>
-                <DatePicker x:Name="startDateSelector" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" Grid.Row="2" />
+                    <!--when sponsorship begins-->
+                    <Label x:Name="sponsorshipStartDate" Text="Start date" FontSize="20" Grid.Row="2"/>
+                    <DatePicker x:Name="startDateSelector" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" Grid.Row="2" />
 
-                <!--when the sponsorship will end-->
-                <Label x:Name="sponsorshipEndDate" Text="End date" FontSize="20" Grid.Column="0" Grid.Row="3" />
-                <DatePicker x:Name="endDateSelector" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" Grid.Row="3" />
+                    <!--when the sponsorship will end-->
+                    <Label x:Name="sponsorshipEndDate" Text="End date" FontSize="20" Grid.Column="0" Grid.Row="3" />
+                    <DatePicker x:Name="endDateSelector" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" Grid.Row="3" />
 
 
-                <!--selecting exisiting sponsor or create a new one-->
-                <Label x:Name="sponsorName" Text="Sponsor name" FontSize="20" Grid.Row="4" />
-                <Picker x:Name="sponsorSelector"
+                    <!--selecting exisiting sponsor or create a new one-->
+                    <Label x:Name="sponsorName" Text="Sponsor name" FontSize="20" Grid.Row="4" />
+                    <Picker x:Name="sponsorSelector"
                         Grid.Column="1"
                         Grid.Row="4"
                         SelectedIndexChanged="OnSponsorSelected">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Existing Sponsor</x:String>
-                            <x:String>New Sponsor</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
-            </Grid>
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Existing Sponsor</x:String>
+                                <x:String>New Sponsor</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+                </Grid>
 
-            <!--save button-->
-            <Button x:Name="saveButton"
+                <!--save button-->
+                <Button x:Name="saveButton"
                     Text="Save"
                     BackgroundColor="#FFD966"
                     BorderColor="#5C3838"
@@ -89,6 +90,7 @@
                     WidthRequest="150"
                     Clicked="SaveButton_Clicked"/>
 
-        </FlexLayout>
+            </FlexLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>

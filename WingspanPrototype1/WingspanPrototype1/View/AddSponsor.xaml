@@ -8,38 +8,39 @@
              BackgroundColor="#F0F0F0"
              Title="New Sponsor">
     <ContentPage.Content>
-        <FlexLayout x:Name="addSponsorFlexLayout" AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
-            <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="4*"/>
-                </Grid.ColumnDefinitions>
+        <ScrollView>
+            <FlexLayout x:Name="addSponsorFlexLayout" AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="4*"/>
+                    </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
 
-                <Label x:Name="newSponsorNameLabel" Text="Sponsor name" FontSize="20"/>
-                <Entry x:Name="newSponsorNameEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="1"/>
+                    <Label x:Name="newSponsorNameLabel" Text="Sponsor name" FontSize="20"/>
+                    <Entry x:Name="newSponsorNameEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="1"/>
 
-                <Label x:Name="newSponsorAddressLabel" Text="Address" FontSize="20" Grid.Row="1"/>
-                <Entry x:Name="newSponsorAddressEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"/>
+                    <Label x:Name="newSponsorAddressLabel" Text="Address" FontSize="20" Grid.Row="1"/>
+                    <Entry x:Name="newSponsorAddressEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"/>
 
-                <Label x:Name="newSponsorPhoneLabel" Text="Phone number" FontSize="20" Grid.Row="2"/>
-                <Entry x:Name="newSponsorPhoneEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1"/>
+                    <Label x:Name="newSponsorPhoneLabel" Text="Phone number" FontSize="20" Grid.Row="2"/>
+                    <Entry x:Name="newSponsorPhoneEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1"/>
 
-                <Label x:Name="newSponsorEmailLabel" Text="Email" FontSize="20" Grid.Row="3"/>
-                <Entry x:Name="newSponsorEmailEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1"/>
+                    <Label x:Name="newSponsorEmailLabel" Text="Email" FontSize="20" Grid.Row="3"/>
+                    <Entry x:Name="newSponsorEmailEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1"/>
 
-                <Label x:Name="newSponsorNoteLabel" Text="Initial note" FontSize="20" Grid.Row="4"/>
-                <Entry x:Name="newSponsorNoteEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1"/>
-            </Grid>
+                    <Label x:Name="newSponsorNoteLabel" Text="Initial note" FontSize="20" Grid.Row="4"/>
+                    <Entry x:Name="newSponsorNoteEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1"/>
+                </Grid>
 
-            <Button x:Name="saveNewSponsorButton"
+                <Button x:Name="saveNewSponsorButton"
                     Text="Save"
                     BackgroundColor="#FFD966"
                     BorderColor="#5C3838"
@@ -50,7 +51,8 @@
                     Margin="20,0"
                     WidthRequest="150"
                     Clicked="SaveNewSponsorButton_Clicked"/>
-            
-        </FlexLayout>
+
+            </FlexLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
