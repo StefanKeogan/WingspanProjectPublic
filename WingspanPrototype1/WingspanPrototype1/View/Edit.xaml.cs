@@ -57,7 +57,6 @@ namespace WingspanPrototype1
                     searchTitle.Text = "Edit Volunteers";
                     searchVolunteerForm.IsVisible = true;
                     break;
-
                 default:
                     break;
             }
@@ -66,14 +65,29 @@ namespace WingspanPrototype1
 
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
-            // TODO: Get feild data
-            // TODO: Wirte screen size awareness class to determine results page
 
-            // What results page are we pushing based on title and runtime platform 
-
+            // What are we searching based on page title 
             switch (Title)
             {
                 case "Edit Birds":
+                    // Have all feilds been left empty
+                    if (Validate.AllFeildsEmpty(new string[] {wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text }))
+                    {
+                        DisplayAlert("All feilds empty", "Please fill in at least one feild to continue", "OK");
+                        return;
+                    }
+
+                    // Has the name feild been filled in  
+                    if (Validate.FeildPopulated(birdNameEntry.Text)) 
+                    {
+                        if (Validate.ContainsNumerOrSymbol(birdNameEntry.Text)) // Does the name feild contain an invalid symblo
+                        {
+                            DisplayAlert("Invalid Name Value", "The name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
+                    // If no feilds are invalid run the search
                     if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
                     {
                         Navigation.PushAsync(new BirdResultsMobile1(SearchBirds()));
@@ -90,16 +104,55 @@ namespace WingspanPrototype1
                     }                 
                     break;
                 case "Edit Members":
+                    // Are all feilds left empty
+                    if (Validate.AllFeildsEmpty(new string[]{memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text }))
+                    {
+                        DisplayAlert("All Feilds Empty", "Please fill in at least one serach feild to continue", "OK");
+                        return;
+                    }
 
+                    // Is the first name feild filled in 
+                    if (Validate.FeildPopulated(memberFirstNameEntry.Text))
+                    {
+                        if (Validate.ContainsNumerOrSymbol(memberFirstNameEntry.Text))
+                        {
+                            DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
+                    // Is the last name feild filled in 
+                    if (Validate.FeildPopulated(memberLastNameEntry.Text))
+                    {
+                        if (Validate.ContainsNumerOrSymbol(memberLastNameEntry.Text))
+                        {
+                            DisplayAlert("Invalid Last Name Value", "The first name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
+                    // Is the salutaion name feild filled in 
+                    if (Validate.FeildPopulated(salutationNameEntry.Text))
+                    {
+                        // Does this feild contaiin any numbers or special characters
+                        if (Validate.ContainsNumerOrSymbol(salutationNameEntry.Text))
+                        {
+                            DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
+                    // If no feilds are invalid run the search
+                    SearchMembers searchMembers = new SearchMembers(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
                     if (DeviceSize.ScreenArea() <= 783457)
                     {
-                        Navigation.PushAsync(new MemberResultsMobile1(SearchMembers()));
+                        Navigation.PushAsync(new MemberResultsMobile1(searchMembers.Search()));
                     }
                     else
                     {
-                        Navigation.PushAsync(new MemberResultsDesktop(SearchMembers()));
+                        Navigation.PushAsync(new MemberResultsDesktop(searchMembers.Search()));
                     }
-                    break;
+                    break;                 
                 case "Edit Sponsors":
 
                     if (Device.RuntimePlatform == Device.UWP)
@@ -176,28 +229,6 @@ namespace WingspanPrototype1
             //results.Add(new CaptiveBird { WingspanId = "15/009", Age = "Adult", BandNo = "H39851", Name = "Batman", DateArrived = DateTime.Now, DateDeceased = DateTime.Now, Result = "Deceased", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
 
             return results;
-        }
-
-        private ArrayList SearchMembers()
-        {
-            // TODO: Get DB connection working 
-            // Hardcoded data
-            ArrayList members = new ArrayList();
-
-            members.Add(new Member
-            {
-                MemberID = "1",
-                FirstName = "Member",
-                LastName = "Mc Person",
-                SaluationName = "Member",
-                Address1 = "12 Random St",
-                City = "Rotorua",
-                Postcode = "6039",
-                JoinDate = DateTime.Today
-            });
-
-            return members;
-
         }
 
         private ArrayList SearchSponsors()

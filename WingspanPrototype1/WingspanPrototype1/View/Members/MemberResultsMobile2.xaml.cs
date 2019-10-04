@@ -22,9 +22,9 @@ namespace WingspanPrototype1.View
         private void DisplayMember(Member member)
         {
             // Member Id
-            if ((member.MemberID != string.Empty) && (member.MemberID != null))
+            if ((member._id != string.Empty) && (member._id != null))
             {
-                memberIdValueLabel.Text = member.MemberID;
+                memberIdValueLabel.Text = member._id;
                 memberIdStack.IsVisible = true;
                 memberIdEntry.IsVisible = false;
             }

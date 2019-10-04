@@ -31,12 +31,13 @@ namespace WingspanPrototype1.Controller.Birds
              // Get each bird collection 
              var captiveBirdsCollection = database.GetCollection<BsonDocument>("CaptiveBirds");
 
+            // Used to build filter with multiple conditions 
              var filterBuilder = Builders<BsonDocument>.Filter;
 
              // Captive bird filter
-             var captiveFilter = filterBuilder.Eq("WingspanId", WingspanIdValue) | filterBuilder.Eq("CaptiveBandNo", BandNumberValue);
+             var captiveFilter = filterBuilder.Eq("WingspanId", WingspanIdValue) | filterBuilder.Eq("BandNo", BandNumberValue);
 
-             // Search captive birds collection 
+             // Search captive birds collection using filter
              List<BsonDocument> captiveResults = captiveBirdsCollection.Find(captiveFilter).ToList();
 
              // Stores deserialised results
@@ -68,12 +69,13 @@ namespace WingspanPrototype1.Controller.Birds
              // Get each bird collection 
              var wildBirdsCollection = database.GetCollection<BsonDocument>("WildBirds");
 
+             // Used to build filter with multiple conditions 
              var filterBuilder = Builders<BsonDocument>.Filter;
 
              // Wild bird filter
-             var wildFilter = filterBuilder.Eq("WingspanId", WingspanIdValue) | filterBuilder.Eq("WildBand", BandNumberValue);
+             var wildFilter = filterBuilder.Eq("WingspanId", WingspanIdValue) | filterBuilder.Eq("Band", BandNumberValue);
 
-             // Search wild birds collection 
+             // Search wild birds collection using filter
              List<BsonDocument> wildResults = wildBirdsCollection.Find(wildFilter).ToList();
 
              // Stores deserialised results

@@ -6,7 +6,7 @@ namespace WingspanPrototype1.Model
 {
     public class Member
     {
-        public string MemberID { get; set; }
+        public string _id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string SaluationName { get; set; }

@@ -55,9 +55,9 @@
                                 <RowDefinition/>
                             </Grid.RowDefinitions>
 
-                            <!--Member Number-->
-                            <Label x:Name="memberNumberLabel" FontSize="20" Text="Member Number"/>
-                            <Entry x:Name="memberNumberEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+                            <!--Salutation Name-->
+                            <Label x:Name="salutationNameLabel" FontSize="20" Text="Salutation Name"/>
+                            <Entry x:Name="salutationNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
 
                             <!--First Name-->
                             <Label x:Name="memberFirstNameLabel" FontSize="20" Grid.Row="1" Text="First Name"/>
