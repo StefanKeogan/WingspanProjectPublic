@@ -13,7 +13,7 @@ namespace WingspanPrototype1.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MemberResultsMobile1 : ContentPage
     {
-        public MemberResultsMobile1(ArrayList results)
+        public MemberResultsMobile1(List<Member> results)
         {
             InitializeComponent();
 
