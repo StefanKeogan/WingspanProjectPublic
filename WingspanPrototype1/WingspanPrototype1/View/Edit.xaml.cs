@@ -97,12 +97,14 @@ namespace WingspanPrototype1
                         Navigation.PushAsync(new BirdResultsDesktop(SearchBirds()));
                     }
                     break;
+
                 case "Select Bird":
                     if (Device.RuntimePlatform == Device.UWP)
                     {
                         Navigation.PushAsync(new SelectBirdResultsDesktop(SearchBirds()));
                     }                 
                     break;
+
                 case "Edit Members":
                     // Are all feilds left empty
                     if (Validate.AllFeildsEmpty(new string[]{memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text }))
@@ -154,8 +156,30 @@ namespace WingspanPrototype1
                     }
                     break;                 
                 case "Edit Sponsors":
+         
+                    if (Validate.AllFeildsEmpty(new string[] {sponsorIdEntry.Text, sponsorNameEntry.Text }))
+                    {
+                        DisplayAlert("All Feilds Empty", "Please fill in at least one serach feild to continue", "OK");
+                        return;
+                    }
 
-                    if (Device.RuntimePlatform == Device.UWP)
+                    // Has the sponsor name feild been poulated? 
+                    if (Validate.FeildPopulated(sponsorNameEntry.Text))
+                    {
+                        // Does the sponsor name feild contain any numbers or symbols 
+                        if (Validate.ContainsNumerOrSymbol(sponsorNameEntry.Text))
+                        {
+                            DisplayAlert("Invalid Sponsor Name Value", "The sponsor name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
+                    // If all feilds are valid run the search
+                    if (DeviceSize.ScreenArea() <= 783457)
+                    {
+                        // TODO: Edit sponsor results desktop
+                    }
+                    else
                     {
                         Navigation.PushAsync(new EditSponsorResultsDesktop(SearchSponsors()));
                     }
