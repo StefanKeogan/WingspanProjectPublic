@@ -75,18 +75,21 @@
                         <Label x:Name="metalBandLabel" Text="Metal Band Id" FontSize="20" Grid.Row="5"/>
                         <Entry x:Name="metalBandEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1"/>
 
+                        <!--Band Info-->
+                        <Label x:Name="bandInfoLabel" Text="Band Info" FontSize="20" Grid.Row="6"/>
+                        <Entry x:Name="bandInfoEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1"/>
+
                         <!--Date Banded-->
-                        <Label x:Name="dateBandedLabel" Text="Date Banded" FontSize="20" Grid.Row="6"/>
-                        <DatePicker x:Name="dateBandedPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1"/>
+                        <Label x:Name="dateBandedLabel" Text="Date Banded" FontSize="20" Grid.Row="7"/>
+                        <DatePicker x:Name="dateBandedPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1"/>
 
                         <!--Bander Name-->
-                        <Label x:Name="banderNameLabel" Text="Bander Name" FontSize="20" Grid.Row="7"/>
-                        <Entry x:Name="banderNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1"/>
+                        <Label x:Name="banderNameLabel" Text="Bander Name" FontSize="20" Grid.Row="8"/>
+                        <Entry x:Name="banderNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="1"/>
 
                         <!--Initial Comment-->
-                        <Label x:Name="wildInitialNoteLabel" Text="Initial Note" FontSize="20" Grid.Row="8"/>
-                        <Editor x:Name="wildInitialNoteEditor" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="1"/>
-
+                        <Label x:Name="wildInitialNoteLabel" Text="Initial Note" FontSize="20" Grid.Row="9"/>
+                        <Editor x:Name="wildInitialNoteEditor" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="9" Grid.Column="1"/>
                     </Grid>
                 </ContentView.Content>
             </ContentView>
@@ -99,6 +102,7 @@
                             <ColumnDefinition Width="4*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
+                            <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>
                             <RowDefinition/>

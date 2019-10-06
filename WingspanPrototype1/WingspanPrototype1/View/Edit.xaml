@@ -106,19 +106,14 @@
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
-                            <RowDefinition/>
                         </Grid.RowDefinitions>
 
-                        <!--Sponsorship Id-->
-                        <Label x:Name="sponsorshipSponsorIDLabel" FontSize="20" Text="Sponsorship ID"/>
-                        <Entry x:Name="sponsorshipSponsorIDEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
-                        
                         <!--Wingspan Id-->
-                        <Label x:Name="sponsorshipWingspanIDLabel" FontSize="20" Text="Wingspan ID" Grid.Row="1"/>
+                        <Label x:Name="sponsorshipWingspanIDLabel" FontSize="20" Text="Wingspan ID"/>
                         <Entry x:Name="sponsorshipWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
                         
                         <!--Sponsor Name-->
-                        <Label x:Name="sponsorshipSponsorNameLabel" Text="Sponsor name"  FontSize="20" Grid.Row="2"/>
+                        <Label x:Name="sponsorshipSponsorNameLabel" Text="Sponsor name"  FontSize="20" Grid.Row="1"/>
                         <Entry x:Name="sponsorshipSponsorEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
                     </Grid>
                 </ContentView.Content>
@@ -136,14 +131,14 @@
                             <RowDefinition/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
-
-                        <!--Voluneer Id-->
-                        <Label x:Name="volunteerIdLabel" FontSize="20" Text="Volunteer ID"/>
-                        <Entry x:Name="volunteerIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
-
+                      
                         <!--Volunteer Name-->
                         <Label x:Name="volunteerNameLabel" Text="Name"  FontSize="20" Grid.Row="1"/>
-                        <Entry x:Name="volunteerNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+                        <Entry x:Name="volunteerNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+                        
+                        <!--Voluneer Email-->
+                        <Label x:Name="volunteerEmail" FontSize="20" Text="Volunteer Email"/>
+                        <Entry x:Name="volunteerEmailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
                     </Grid>
                 </ContentView.Content>
             </ContentView>

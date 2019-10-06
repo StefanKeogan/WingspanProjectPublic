@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WingspanPrototype1.Controller.Birds;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -33,37 +34,60 @@ namespace WingspanPrototype1
 
             }
 
-            // What device are we running on? 
-            //switch (Device.RuntimePlatform)
-            //{
-            //    case Device.UWP:
-            //        addBirdStackLayout.Margin = new Thickness(300, 20, 300, 20);
-            //        break;
-            //    case Device.Android:
-            //        addBirdStackLayout.Margin = new Thickness(5, 5, 5, 5);
-            //        break;
-            //    default:
-            //        addBirdStackLayout.Margin = new Thickness(300, 20, 300, 20);
-            //        break;
-            //}
-
 
         }
 
         private void AddButton_Clicked(object sender, EventArgs e)
         {
-            // TODO: 
+
+
+
             // What type of bird are we adding?
             if (Title == "New Wild Bird")
             {
-                DisplayAlert("Wild Bird Saved", "This bird has been saved in the database", "Ok");
+                bool inserted = AddWildBird.InsertWildBirdDocumnet( new WildBird {
+                    WingspanId = GenerateWingspanId(),
+                    Species = wildSpeciesPicker.SelectedItem.ToString(),
+                    Location = wildLocationEntry.Text,
+                    Age = wildAgePicker.SelectedItem.ToString(),
+                    Sex = wildSexPicker.SelectedItem.ToString(),
+                    MetalBand = metalBandEntry.Text,
+                    BandInfo = bandInfoEntry.Text,
+                    Gps = gpsEntry.Text,
+                    DateBanded = dateBandedPicker.Date,
+                    BanderName = banderNameEntry.Text
+                });
+
+                if (inserted)
+                {
+                    DisplayAlert("Wild Bird Saved", "This bird has been saved in the database", "Ok");
+                }
+                else
+                {
+                    DisplayAlert("Connenction Error", "Could not connect to database please check connection and try again", "OK");
+                }
+
+                
             }
-            else if (Title == "New Captive Bird")
+            else
             {
                 DisplayAlert("Captive Bird Saved", "This bird has been saved in the database", "Ok");
             }
-
             
         }
+
+        private string GenerateWingspanId()
+        {
+            int year = DateTime.Today.Year;
+
+            int number = 12;
+
+            string wingspanId = year.ToString() + "/" + number.ToString();
+
+            return wingspanId;
+
+
+        }
+
     }
 }

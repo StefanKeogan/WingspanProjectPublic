@@ -54,6 +54,7 @@
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
                             <!--Wingspan Id-->
@@ -134,22 +135,29 @@
                             </StackLayout>
                             <Entry x:Name="wildMetalBandIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" IsVisible="False"/>
 
+                            <!--Band Info-->
+                            <Label x:Name="bandInfoLabel" Text="Metal Band Id" FontSize="20" Grid.Row="7"/>
+                            <StackLayout x:Name="bandInfoStack" Orientation="Horizontal" Grid.Row="7" Grid.Column="1" IsVisible="False">
+                                <Label x:Name="bandInfoValueLabel" Text="GPS" FontSize="20"/>
+                                <Button x:Name="bandInfoEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                            </StackLayout>
+                            <Entry x:Name="bandInfoEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1" IsVisible="False"/>
+
                             <!--Date Banded-->
-                            <Label x:Name="wildDateBandedLabel" Text="Date Banded" FontSize="20" Grid.Row="7"/>
-                            <StackLayout x:Name="wildDateBandedStack" Orientation="Horizontal" Grid.Row="7" Grid.Column="1" IsVisible="False">
+                            <Label x:Name="wildDateBandedLabel" Text="Date Banded" FontSize="20" Grid.Row="8"/>
+                            <StackLayout x:Name="wildDateBandedStack" Orientation="Horizontal" Grid.Row="8" Grid.Column="1" IsVisible="False">
                                 <Label x:Name="wildDateBandedValueLabel" Text="GPS" FontSize="20"/>
                                 <Button x:Name="wildDateBandedEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
-                            <DatePicker x:Name="wildDateBandedPicker" Grid.Row="7" IsVisible="False" Grid.Column="1"/>
+                            <DatePicker x:Name="wildDateBandedPicker" Grid.Row="8" IsVisible="False" Grid.Column="1"/>
 
                             <!--Bander Name-->
-                            <Label x:Name="wildBanderNameLabel" Text="Bander Name" FontSize="20" Grid.Row="8"/>
-                            <StackLayout x:Name="wildBanderNameStack" Grid.Row="8" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
+                            <Label x:Name="wildBanderNameLabel" Text="Bander Name" FontSize="20" Grid.Row="9"/>
+                            <StackLayout x:Name="wildBanderNameStack" Grid.Row="9" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
                                 <Label x:Name="wildBanderNameValueLabel" Text="GPS" FontSize="20" />
                                 <Button x:Name="wildBanderNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
-                            <Entry x:Name="wildBanderNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="1" IsVisible="False"/>
-
+                            <Entry x:Name="wildBanderNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="9" Grid.Column="1" IsVisible="False"/>
                         </Grid>
                     </ContentView.Content>
                 </ContentView>

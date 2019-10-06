@@ -139,9 +139,9 @@ namespace WingspanPrototype1
             }
 
             // Set Metal Band Value
-            if (bird.Band != string.Empty)
+            if (bird.MetalBand != string.Empty)
             {
-                wildMetalBandIdValueLabel.Text = bird.Band;
+                wildMetalBandIdValueLabel.Text = bird.MetalBand;
                 wildMetalBandStack.IsVisible = true;
                 wildMetalBandIdEntry.IsVisible = false;
 

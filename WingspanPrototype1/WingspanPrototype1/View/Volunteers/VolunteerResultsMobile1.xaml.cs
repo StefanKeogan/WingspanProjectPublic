@@ -13,9 +13,11 @@ namespace WingspanPrototype1.View.Volunteers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VolunteerResultsMobile1 : ContentPage
     {
-        public VolunteerResultsMobile1()
+        public VolunteerResultsMobile1(List<Volunteer> results)
         {
             InitializeComponent();
+
+            resultsListView.ItemsSource = results;
         }
 
         private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

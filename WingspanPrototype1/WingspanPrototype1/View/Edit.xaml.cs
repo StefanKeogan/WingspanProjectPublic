@@ -12,6 +12,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WingspanPrototype1.View.Volunteers;
 using WingspanPrototype1.Controller.Birds;
+using WingspanPrototype1.Controller.Volunteers;
 
 namespace WingspanPrototype1
 {
@@ -145,16 +146,16 @@ namespace WingspanPrototype1
                     }
 
                     // If no feilds are invalid run the search
-                    SearchMembers searchMembers = new SearchMembers(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
                     if (DeviceSize.ScreenArea() <= 783457)
                     {
-                        Navigation.PushAsync(new MemberResultsMobile1(searchMembers.Search()));
+                        Navigation.PushAsync(new MemberResultsMobile1(SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text)));
                     }
                     else
                     {
-                        Navigation.PushAsync(new MemberResultsDesktop(searchMembers.Search()));
+                        Navigation.PushAsync(new MemberResultsDesktop(SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text)));
                     }
-                    break;                 
+                    break;  
+                    
                 case "Edit Sponsors":
          
                     if (Validate.AllFeildsEmpty(new string[] {sponsorIdEntry.Text, sponsorNameEntry.Text }))
@@ -184,29 +185,82 @@ namespace WingspanPrototype1
                         Navigation.PushAsync(new EditSponsorResultsDesktop(SearchSponsors()));
                     }
                     break;
-                case "Select Sponsor":
 
+                case "Select Sponsor":
                     if (Device.RuntimePlatform == Device.UWP)
                     {
                         Navigation.PushAsync(new SelectSponsorResultsDesktop(SearchSponsors()));
                     }
                     break;
+
                 case "Edit Sponsorships":
+
+                    if (Validate.AllFeildsEmpty(new string[] { sponsorshipWingspanIdEntry.Text, sponsorshipSponsorEntry.Text }))
+                    {
+                        DisplayAlert("All Feilds Empty", "Please fill in at least one serach feild to continue", "OK");
+                        return;
+                    }
+
+                    // Has the wingspan Id feild been poulated? 
+                    if (Validate.FeildPopulated(sponsorshipWingspanIdEntry.Text))
+                    {
+                        // Does the wingspan Id feild contain any numbers or symbols 
+                        if (Validate.ContainsNumerOrSymbol(sponsorshipWingspanIdEntry.Text))
+                        {
+                            DisplayAlert("Invalid Winspan Id Value", "The sponsor name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
+                    // Has the sponsor name feild been poulated? 
+                    if (Validate.FeildPopulated(sponsorshipSponsorEntry.Text))
+                    {
+                        // Does the sponsor name feild contain any numbers or symbols 
+                        if (Validate.ContainsNumerOrSymbol(sponsorshipSponsorEntry.Text))
+                        {
+                            DisplayAlert("Invalid Sponsor Name Value", "The sponsor name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
 
                     if (Device.RuntimePlatform == Device.UWP)
                     {
                         Navigation.PushAsync(new EditSponsorshipResultsDesktop(SearchSponsorships()));
                     }
                     break;
+
                 case "Edit Volunteers":
+
+                    if (Validate.AllFeildsEmpty(new string[] {volunteerEmailEntry.Text, volunteerNameEntry.Text }))
+                    {
+                        DisplayAlert("All Feilds Empty", "Please fill in at least one serach feild to continue", "OK");
+                        return;
+                    }
+
+                    if (Validate.FeildPopulated(volunteerEmailEntry.Text))
+                    {
+                        // TODO: valid email address                       
+                    }
+
+                    if (Validate.FeildPopulated(volunteerNameEntry.Text))
+                    {
+                        if (Validate.ContainsNumerOrSymbol(volunteerNameEntry.Text))
+                        {
+                            DisplayAlert("Invalid Volunteer Name Value", "The volunteer name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
                     if (DeviceSize.ScreenArea() <= 783457)
                     {
-                        Navigation.PushAsync(new VolunteerResultsMobile1());
+                        Navigation.PushAsync(new VolunteerResultsMobile1(SearchVolunteers.Search(volunteerEmailEntry.Text, volunteerNameEntry.Text)));
                     }
                     else
                     {
-                        Navigation.PushAsync(new VolunteerResultsDesktop());
+                        Navigation.PushAsync(new VolunteerResultsDesktop(SearchVolunteers.Search(volunteerEmailEntry.Text, volunteerNameEntry.Text)));
                     }
+
                     break;
             }
             

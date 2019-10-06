@@ -13,10 +13,13 @@ namespace WingspanPrototype1.View.Volunteers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VolunteerResultsDesktop : ContentPage
     {
-        public VolunteerResultsDesktop()
+        public VolunteerResultsDesktop(List<Volunteer> results)
         {
             InitializeComponent();
 
+            resultsListView.ItemsSource = results;
+
+            // Hard coded hours items
             hoursListView.ItemsSource = new List<VolunteerHours>() {
                 new VolunteerHours { HoursId = "1", Amount = 3.00, Date = DateTime.Today },
                 new VolunteerHours { HoursId = "2", Amount = 5.00, Date = DateTime.Today },

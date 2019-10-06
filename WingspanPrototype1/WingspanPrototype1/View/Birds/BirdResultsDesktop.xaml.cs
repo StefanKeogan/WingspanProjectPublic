@@ -148,9 +148,24 @@ namespace WingspanPrototype1
             }
 
             // Set Metal Band Value
-            if (bird.Band != string.Empty)
+            if (bird.MetalBand != string.Empty)
             {
-                wildMetalBandIdValueLabel.Text = bird.Band;
+                wildMetalBandIdValueLabel.Text = bird.MetalBand;
+                wildMetalBandStack.IsVisible = true;
+                wildMetalBandIdEntry.IsVisible = false;
+
+            }
+            else
+            {
+                wildMetalBandIdEntry.IsVisible = true;
+                wildMetalBandStack.IsVisible = false;
+
+            }
+
+            // Set Band Info Value
+            if (bird.BandInfo != string.Empty)
+            {
+                wildMetalBandIdEditButton.Text = bird.MetalBand;
                 wildMetalBandStack.IsVisible = true;
                 wildMetalBandIdEntry.IsVisible = false;
 

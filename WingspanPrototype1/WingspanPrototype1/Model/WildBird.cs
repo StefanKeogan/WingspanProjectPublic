@@ -13,10 +13,10 @@ namespace WingspanPrototype1
         public string Location { get; set; }
         public string Age { get; set; }
         public string Sex { get; set; }
-        public string Band { get; set; }
+        public string MetalBand { get; set; }
         public string BandInfo { get; set; }      
         public string Gps { get; set; }
-        public string DateBanded { get; set; }
+        public DateTime DateBanded { get; set; }
         public string BanderName { get; set; }
     }
 }

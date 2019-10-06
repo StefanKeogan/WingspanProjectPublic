@@ -20,7 +20,6 @@ namespace WingspanPrototype1.Controller.Birds
              WingspanIdValue = wingspanId;
              BirdNameValue = birdName;
              BandNumberValue = bandNumber;
-
          }
 
          public List<CaptiveBird> SearchCaptiveBirds()
