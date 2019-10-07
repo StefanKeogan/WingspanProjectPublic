@@ -37,26 +37,23 @@ namespace WingspanPrototype1.Controller.Birds
              var captiveFilter = filterBuilder.Eq("WingspanId", WingspanIdValue) | filterBuilder.Eq("BandNo", BandNumberValue);
 
              // Search captive birds collection using filter
-             List<BsonDocument> captiveResults = captiveBirdsCollection.Find(captiveFilter).ToList();
-
-             // Stores deserialised results
-             List<CaptiveBird> captiveBirds = new List<CaptiveBird>();
+             List<BsonDocument> captiveResults = captiveBirdsCollection.Find(captiveFilter).ToList();          
              
-             // Deserialise captive bird results
+             // Deserialise and return captive bird results
              if (captiveResults != null)
              {
-                
-                 foreach (var bird in captiveResults)
-                 {
+                // Stores deserialised results
+                List<CaptiveBird> captiveBirds = new List<CaptiveBird>();
+                foreach (var bird in captiveResults)
+                {
                      captiveBirds.Add(BsonSerializer.Deserialize<CaptiveBird>(bird));
-                 }
+                }
+                return captiveBirds;
              }
              else
              {
                  return null;
              }
-
-             return captiveBirds;
 
          }
 
