@@ -22,41 +22,25 @@ namespace WingspanPrototype1.Controller.Birds
 
             // Used to build filter with multiple conditions
             var filterBuilder = Builders<Member>.Filter;
-
-            // Build search filter
-            // var filter = filterBuilder.Eq(member => member.FirstName, FirstName) | filterBuilder.Eq(member => member.LastName, LastName) | filterBuilder.Eq(member => member.SaluationName, SalutationName);
-
+        
             // Store as default for now
-            var filter = filterBuilder.Eq(member => member.FirstName, firstName);
+            FilterDefinition<Member> filter = null;
 
-            if (Validate.FeildPopulated(firstName))
-            {
-                filter = filter | filterBuilder.Eq(member => member.FirstName, firstName);
-            }
-            if (Validate.FeildPopulated(lastName))
-            {
-                filter = filter | filterBuilder.Eq(member => member.LastName, lastName);
-            }
-            if (Validate.FeildPopulated(salutationName))
-            {
-                filter = filter | filterBuilder.Eq(member => member.SaluationName, salutationName);
-            }
+            // If feilds are populated add conditions to the filter
+            if (Validate.FeildPopulated(firstName)) filter |= filterBuilder.Eq(member => member.FirstName, firstName);
+            if (Validate.FeildPopulated(lastName)) filter |= filterBuilder.Eq(member => member.LastName, lastName);
+            if (Validate.FeildPopulated(salutationName)) filter |= filterBuilder.Eq(member => member.SaluationName, salutationName);
 
             try
             {
                 // Search member collection 
-                List<Member> memberResults = collection.Find(filter).ToList();
+                var memberResults = collection.Find(filter).ToList();
                 return memberResults;
             }
             catch (Exception)
             {
                 return null;
             }
-
-            
-
-
-            
 
         }
 

@@ -60,40 +60,37 @@ namespace WingspanPrototype1.Controller.Birds
 
          }
 
-         public List<WildBird> SearchWildBirds()
-         {
-             // Get DB connection
-             var database = DatabaseConnection.GetDatabase();
+        public List<WildBird> SearchWildBirds()
+        {
+            // Get DB connection
+            var database = DatabaseConnection.GetDatabase();
 
-             // Get each bird collection 
-             var wildBirdsCollection = database.GetCollection<BsonDocument>("WildBirds");
+            // Get each bird collection 
+            var wildBirdsCollection = database.GetCollection<WildBird>("WildBirds");
 
-             // Used to build filter with multiple conditions 
-             var filterBuilder = Builders<BsonDocument>.Filter;
+            // Used to build filter with multiple conditions 
+            var filterBuilder = Builders<WildBird>.Filter;
 
-             // Wild bird filter
-             var wildFilter = filterBuilder.Eq("WingspanId", WingspanIdValue) | filterBuilder.Eq("Band", BandNumberValue);
+            FilterDefinition<WildBird> filter = null;
 
-             // Search wild birds collection using filter
-             List<BsonDocument> wildResults = wildBirdsCollection.Find(wildFilter).ToList();
+            if (Validate.FeildPopulated(WingspanIdValue)) filter |= filterBuilder.Eq(bird => bird.WingspanId, WingspanIdValue);
 
-             // Stores deserialised results
-             List<WildBird> wildBirds = new List<WildBird>();
+            // Deserialise wild bird results
+            //if (wildResults != null)
+            //{
+            //    foreach (var bird in wildResults)
+            //    {
+            //        wildBirds.Add(BsonSerializer.Deserialize<WildBird>(bird));
+            //    }
+            //}
+            //else
+            //{
+            //    return null;
+            //}
 
-             // Deserialise wild bird results
-             if (wildResults != null)
-             {
-                 foreach (var bird in wildResults)
-                 {
-                     wildBirds.Add(BsonSerializer.Deserialize<WildBird>(bird));
-                 }
-             }
-             else
-             {
-                 return null;
-             }
+            var wildBirds = wildBirdsCollection.Find(filter);
 
-             return wildBirds;
+            return null;
 
 
          }

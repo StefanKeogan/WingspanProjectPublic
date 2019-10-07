@@ -14,7 +14,7 @@ namespace WingspanPrototype1.Controller.Volunteers
             var database = DatabaseConnection.GetDatabase();
 
             // Get member collection
-            var collection = database.GetCollection<Volunteer>("Members");
+            var collection = database.GetCollection<Volunteer>("Volunteers");
 
             // Used to build filter with multiple conditions
             var filterBuilder = Builders<Volunteer>.Filter;
@@ -30,13 +30,13 @@ namespace WingspanPrototype1.Controller.Volunteers
 
             if (volunteerName != string.Empty)
             {
-                filter = filter | filterBuilder.Eq(member => member.Name, volunteerName);
+                filter = filter | filterBuilder.Eq(volnteer => volnteer.Name, volunteerName);
             }
 
             // Search member collection 
-            List<Volunteer> memberResults = collection.Find(filter).ToList();
+            List<Volunteer> volunteerResults = collection.Find(filter).ToList();
 
-            return memberResults;
+            return volunteerResults;
         }
 
     }

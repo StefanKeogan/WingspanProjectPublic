@@ -25,7 +25,7 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" Padding="5">
-                                    <Label FontSize="20" Text="{Binding MemberId}"/>
+                                    <Label FontSize="20" Text="{Binding SalutationName}"/>
                                     <Label FontSize="20" Text="{Binding FirstName}"/>
                                     <Label FontSize="20" Text="{Binding LastName}"/>
                                 </StackLayout>

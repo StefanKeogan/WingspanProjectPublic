@@ -144,18 +144,29 @@ namespace WingspanPrototype1
                             return;
                         }
                     }
+                    
+                    // Search Memebers
+                    List<Member> results = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
 
-                    // If no feilds are invalid run the search
-                    if (DeviceSize.ScreenArea() <= 783457)
+                    if (results != null)
                     {
-                        Navigation.PushAsync(new MemberResultsMobile1(SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text)));
+                        // Results have been returned push the results page 
+                        if (DeviceSize.ScreenArea() <= 783457)
+                        {
+                            Navigation.PushAsync(new MemberResultsMobile1(results));
+                        }
+                        else
+                        {
+                            Navigation.PushAsync(new MemberResultsDesktop(results));
+                        }
+                        
                     }
                     else
                     {
-                        Navigation.PushAsync(new MemberResultsDesktop(SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text)));
+                        DisplayAlert("No Members Found", "That member could been found", "OK");
                     }
-                    break;  
-                    
+                    break;
+
                 case "Edit Sponsors":
          
                     if (Validate.AllFeildsEmpty(new string[] {sponsorIdEntry.Text, sponsorNameEntry.Text }))
