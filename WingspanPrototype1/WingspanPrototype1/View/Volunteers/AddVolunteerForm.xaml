@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WingspanPrototype1.View.Volunteers.AddVolunteer"
+             x:Class="WingspanPrototype1.View.Volunteers.AddVolunteerForm"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <FlexLayout AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">

@@ -386,8 +386,8 @@ namespace WingspanPrototype1
         {
             noteHistoryView.IsVisible = true;
 
-            noteListView.ItemsSource = new List<NoteHistory> { new NoteHistory {Date = DateTime.Today.ToString(), Category = "Transfer", Note = "Transfrerred to new site" },
-                new NoteHistory {Date = DateTime.Today.ToString(), Category = "Medical", Note = "Broken wing" }
+            noteListView.ItemsSource = new List<Note> { new Note {Date = DateTime.Today, Category = "Transfer", Comment = "Transfrerred to new site" },
+                new Note {Date = DateTime.Today, Category = "Medical", Comment = "Broken wing" }
             };
         }
 

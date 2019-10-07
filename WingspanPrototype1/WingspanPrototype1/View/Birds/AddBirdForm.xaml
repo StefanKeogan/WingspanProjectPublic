@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WingspanPrototype1.AddBird"
+             x:Class="WingspanPrototype1.AddBirdForm"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <FlexLayout x:Name="addBirdFlexLayout" AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
@@ -47,7 +47,7 @@
 
                         <!--GPS-->
                         <Label x:Name="gpsLabel" Text="GPS" FontSize="20" Grid.Row="2"/>
-                        <Entry x:Name="gpsEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+                        <Entry x:Name="wildGpsEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
 
                         <!--Sex-->
                         <Label x:Name="wildSexLabel" Text="Sex" FontSize="20" Grid.Row="3"/>
@@ -73,19 +73,19 @@
 
                         <!--Metal Band Id-->
                         <Label x:Name="metalBandLabel" Text="Metal Band Id" FontSize="20" Grid.Row="5"/>
-                        <Entry x:Name="metalBandEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1"/>
+                        <Entry x:Name="wildMetalBandIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1"/>
 
                         <!--Band Info-->
                         <Label x:Name="bandInfoLabel" Text="Band Info" FontSize="20" Grid.Row="6"/>
-                        <Entry x:Name="bandInfoEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1"/>
+                        <Entry x:Name="wildBandInfoEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1"/>
 
                         <!--Date Banded-->
                         <Label x:Name="dateBandedLabel" Text="Date Banded" FontSize="20" Grid.Row="7"/>
-                        <DatePicker x:Name="dateBandedPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1"/>
+                        <DatePicker x:Name="wildDateBandedPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1"/>
 
                         <!--Bander Name-->
                         <Label x:Name="banderNameLabel" Text="Bander Name" FontSize="20" Grid.Row="8"/>
-                        <Entry x:Name="banderNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="1"/>
+                        <Entry x:Name="wildBanderNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="1"/>
 
                         <!--Initial Comment-->
                         <Label x:Name="wildInitialNoteLabel" Text="Initial Note" FontSize="20" Grid.Row="9"/>
@@ -119,11 +119,11 @@
 
                         <!--Band Number-->
                         <Label x:Name="bandNumberLabel" Text="Band Number" FontSize="20" Grid.Row="1"/>
-                        <Entry x:Name="bandNuberEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+                        <Entry x:Name="captiveBandNumberEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
 
                         <!--Band Colour-->
                         <Label x:Name="bandColourLabel" Text="Band Colour" FontSize="20" Grid.Row="2"/>
-                        <Picker x:Name="bandColourPicker" Grid.Row="2" Grid.Column="1">
+                        <Picker x:Name="captiveBandColourPicker" Grid.Row="2" Grid.Column="1">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>"M:O"</x:String>
@@ -177,7 +177,7 @@
                         <Label x:Name="dateArrivedLabel" Text="Date Arrived" FontSize="20" Grid.Row="7"/>
                         <DatePicker x:Name="dateArrivedPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1"/>
 
-                        <!--Initial Comment-->
+                        <!--Initial Note-->
                         <Label x:Name="captiveInitialNoteLabel" Text="Initial Note" FontSize="20" Grid.Row="8"/>
                         <Editor x:Name="cpativeInitialNoteEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="1"/>
 

@@ -27,8 +27,8 @@ namespace WingspanPrototype1
 
             // Menu list items
             menuItems.Add(new MasterPageItem { Title = "Birdbook", TargetType = typeof(HomePage) });
-            menuItems.Add(new MasterPageItem { Title = "New Wild Bird", TargetType = typeof(AddBird) });
-            menuItems.Add(new MasterPageItem { Title = "New Captive Bird", TargetType = typeof(AddBird) });
+            menuItems.Add(new MasterPageItem { Title = "New Wild Bird", TargetType = typeof(AddBirdForm) });
+            menuItems.Add(new MasterPageItem { Title = "New Captive Bird", TargetType = typeof(AddBirdForm) });
 
 
             if (DeviceSize.ScreenArea() <= 783457) // If the device screen is smaller than 7 inches
@@ -42,12 +42,12 @@ namespace WingspanPrototype1
 
            
             menuItems.Add(new MasterPageItem { Title = "Edit Birds", TargetType = typeof(Edit) });
-            menuItems.Add(new MasterPageItem { Title = "New Member", TargetType = typeof(AddMember) });
+            menuItems.Add(new MasterPageItem { Title = "New Member", TargetType = typeof(AddMemberForm) });
             menuItems.Add(new MasterPageItem { Title = "Edit Members", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "New Sponsorship", TargetType = typeof(AddSponsorship) });
             menuItems.Add(new MasterPageItem { Title = "Edit Sponsorships", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "Edit Sponsors", TargetType = typeof(Edit) });
-            menuItems.Add(new MasterPageItem { Title = "New Volunteer", TargetType = typeof(AddVolunteer) });
+            menuItems.Add(new MasterPageItem { Title = "New Volunteer", TargetType = typeof(AddVolunteerForm) });
             menuItems.Add(new MasterPageItem { Title = "Edit Volunteers", TargetType = typeof(Edit) });
 
             if (DeviceSize.ScreenArea() <= 783457) // If the device screen is smaller than 7 inches

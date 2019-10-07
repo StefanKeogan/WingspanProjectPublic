@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1.View.Volunteers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddVolunteer : ContentPage
+    public partial class AddVolunteerForm : ContentPage
     {
-        public AddVolunteer(string title)
+        public AddVolunteerForm(string title)
         {
             InitializeComponent();
 

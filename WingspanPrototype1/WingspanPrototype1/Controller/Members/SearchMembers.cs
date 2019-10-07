@@ -26,26 +26,37 @@ namespace WingspanPrototype1.Controller.Birds
             // Build search filter
             // var filter = filterBuilder.Eq(member => member.FirstName, FirstName) | filterBuilder.Eq(member => member.LastName, LastName) | filterBuilder.Eq(member => member.SaluationName, SalutationName);
 
-            FilterDefinition<Member> filter = null;
+            // Store as default for now
+            var filter = filterBuilder.Eq(member => member.FirstName, firstName);
 
-            if (firstName != string.Empty)
+            if (Validate.FeildPopulated(firstName))
             {
                 filter = filter | filterBuilder.Eq(member => member.FirstName, firstName);
             }
-            if (lastName != string.Empty)
+            if (Validate.FeildPopulated(lastName))
             {
                 filter = filter | filterBuilder.Eq(member => member.LastName, lastName);
             }
-            if (salutationName != string.Empty)
+            if (Validate.FeildPopulated(salutationName))
             {
                 filter = filter | filterBuilder.Eq(member => member.SaluationName, salutationName);
             }
 
-            // Search member collection 
-            List<Member> memberResults = collection.Find(filter).ToList();
+            try
+            {
+                // Search member collection 
+                List<Member> memberResults = collection.Find(filter).ToList();
+                return memberResults;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+            
 
 
-            return memberResults;
+            
 
         }
 

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -388,9 +389,9 @@ namespace WingspanPrototype1
             }
 
             // Set Result Value 
-            if (bird.Result != string.Empty)
+            if (Validate.FeildPopulated(bird.Result))
             {
-                captiveResultValueLabel.Text = bird.Result.ToString();
+                captiveResultValueLabel.Text = bird.Result;
                 captiveResultStack.IsVisible = true;
                 captiveResultEntry.IsVisible = false;
 
@@ -409,8 +410,8 @@ namespace WingspanPrototype1
         {
             noteHistoryView.IsVisible = true;
 
-            noteListView.ItemsSource = new List<NoteHistory> { new NoteHistory {Date = DateTime.Today.ToString(), Category = "Transfer", Note = "Transfrerred to new site" },
-                new NoteHistory {Date = DateTime.Today.ToString(), Category = "Medical", Note = "Broken wing" }
+            noteListView.ItemsSource = new List<Note> { new Note {Date = DateTime.Today, Category = "Transfer", Comment = "Transfrerred to new site" },
+                new Note {Date = DateTime.Today, Category = "Medical", Comment = "Broken wing" }
             };
         }
 
