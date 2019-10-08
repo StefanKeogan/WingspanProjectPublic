@@ -133,11 +133,11 @@
                         </Grid.RowDefinitions>
                       
                         <!--Volunteer Name-->
-                        <Label x:Name="volunteerNameLabel" Text="Name"  FontSize="20" Grid.Row="1"/>
+                        <Label x:Name="volunteerNameLabel" Text="Name"  FontSize="20"/>
                         <Entry x:Name="volunteerNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
                         
                         <!--Voluneer Email-->
-                        <Label x:Name="volunteerEmail" FontSize="20" Text="Volunteer Email"/>
+                        <Label x:Name="volunteerEmail" FontSize="20" Text="Volunteer Email" Grid.Row="1"/>
                         <Entry x:Name="volunteerEmailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
                     </Grid>
                 </ContentView.Content>

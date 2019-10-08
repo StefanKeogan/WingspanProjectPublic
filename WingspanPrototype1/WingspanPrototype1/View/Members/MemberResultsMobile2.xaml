@@ -32,14 +32,6 @@
                         <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
-                    <!--Member Id-->
-                    <Label x:Name="memberIdLabel" Text="Member Id" FontSize="20"/>
-                    <StackLayout x:Name="memberIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
-                        <Label x:Name="memberIdValueLabel" FontSize="20"/>
-                        <Button x:Name="memberIdEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                    </StackLayout>
-                    <Entry x:Name="memberIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
-
                     <!--First Name-->
                     <Label x:Name="memberFirstNameLabel" Text="First Name" FontSize="20" Grid.Row="1"/>
                     <StackLayout x:Name="memberFirstNameStack" Orientation="Horizontal" IsVisible="False" Grid.Row="1" Grid.Column="1">

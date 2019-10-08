@@ -1,7 +1,10 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 
 namespace WingspanPrototype1.Controller.Volunteers
@@ -14,30 +17,51 @@ namespace WingspanPrototype1.Controller.Volunteers
             var database = DatabaseConnection.GetDatabase();
 
             // Get member collection
-            var collection = database.GetCollection<Volunteer>("Volunteers");
+            var collection = database.GetCollection<BsonDocument>("Volunteers");
 
             // Used to build filter with multiple conditions
-            var filterBuilder = Builders<Volunteer>.Filter;
+            var filterBuilder = Builders<BsonDocument>.Filter;
 
             // Build search filter
+            List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
 
-            FilterDefinition<Volunteer> filter = null;
+            if (Validate.FeildPopulated(volunteerEmail)) filters.Add(filterBuilder.Eq("Email", volunteerEmail));           
+            if (Validate.FeildPopulated(volunteerName)) filters.Add(filterBuilder.Eq("Name", volunteerName));
 
-            if (volunteerEmail != string.Empty)
+            FilterDefinition<BsonDocument> searchFilter = filters[0];
+
+            if (filters.Count > 1)
             {
-                filter = filter | filterBuilder.Eq(volunteer => volunteer.Email, volunteerEmail);
+                for (int i = 1; i < filters.Count; i++)
+                {
+                    searchFilter |= filters[i];
+                }
             }
 
-            if (volunteerName != string.Empty)
+            try
             {
-                filter = filter | filterBuilder.Eq(volnteer => volnteer.Name, volunteerName);
+                // Search volunteers
+                List<BsonDocument> volunteerResults = collection.Find(searchFilter).ToList();
+
+                // TODO: Check list size 
+
+                // Convert to volunteer objects 
+                List<Volunteer> volunteerObjectResults = new List<Volunteer>();
+                foreach (var result in volunteerResults)
+                {
+                    volunteerObjectResults.Add(BsonSerializer.Deserialize<Volunteer>(result));
+                }
+
+                return volunteerObjectResults;
             }
-
-            // Search member collection 
-            List<Volunteer> volunteerResults = collection.Find(filter).ToList();
-
-            return volunteerResults;
+            catch (Exception)
+            {
+                return null;
+            }
+          
+            
         }
 
     }
+
 }
