@@ -26,14 +26,107 @@ namespace WingspanPrototype1.View
             if (item != null)
             {
                 DisplaySponsorship(item);
+                editSponsorshipResultsGrid.IsVisible = true;
             }
         }
 
+
         private void DisplaySponsorship(Sponsorship sponsorship)
         {
+            // Sponsorship ID
+            if ((sponsorship.SponsorshipID != string.Empty) && (sponsorship.SponsorshipID != null))
+            {
+                sponsorshipIDLabel.Text = sponsorship.SponsorID;
+                sponsorshipIDStack.IsVisible = true;
+                sponsorshipIDEntry.IsVisible = false;
+            }
+            else
+            {
+                sponsorshipIDEntry.IsVisible = true;
+                sponsorshipIDStack.IsVisible = false;
+            }
 
+            // Wingspan ID
+            if ((sponsorship.WingspanId != string.Empty) && (sponsorship.WingspanId != null))
+            {
+                sponsoredWingspanIDLabel.Text = sponsorship.WingspanId;
+                sponsoredWingspanIDStack.IsVisible = true;
+                sponsoredWingspanIDEntry.IsVisible = false;
+            }
+            else
+            {
+                sponsoredWingspanIDEntry.IsVisible = true;
+                sponsoredWingspanIDStack.IsVisible = false;
+            }
+
+            // Category
+            if ((sponsorship.SponsorshipCategory != string.Empty) && (sponsorship.SponsorshipCategory != null))
+            {
+                editCategoryLabel.Text = sponsorship.SponsorshipCategory;
+                //editsponsorshipCategoryStack.IsVisible = true;
+                editCategorySelector.IsVisible = false;
+            }
+            else
+            {
+                editCategorySelector.IsVisible = true;
+                //editsponsorshipCategoryStack.IsVisible = false;
+            }
+
+            // Sponsorship start date
+            if (sponsorship.SponsorshipStart != null)
+            {
+                editSponsorshipStartLabel.Text = sponsorship.SponsorshipStart.ToString();
+                //sponsorshipStartStack.IsVisible = true;
+                editSponsorshipStartEdit.IsVisible = false;
+            }
+            else
+            {
+                editSponsorshipStartEdit.IsVisible = true;
+                //sponsorshipStartStack.IsVisible = false;
+            }
+
+            // Sponsorship end date
+            if (sponsorship.SponsorshipEnd != null)
+            {
+                editSponsorshipEndLabel.Text = sponsorship.SponsorshipEnd.ToString();
+                //sponsorshipEndStack.IsVisible = true;
+                editSponsorshipEndEdit.IsVisible = false;
+            }
+            else
+            {
+                editSponsorshipEndEdit.IsVisible = true;
+                //sponsorshipEndStack.IsVisible = false;
+            }
+
+            // Sponsor ID
+            if ((sponsorship.SponsorID != string.Empty) && (sponsorship.SponsorID != null))
+            {
+                editSponsorIDLabel.Text = sponsorship.SponsorID;
+                editSponsorIDStack.IsVisible = true;
+                editSponsorIDEntry.IsVisible = false;
+            }
+            else
+            {
+                editSponsorIDEntry.IsVisible = true;
+                editSponsorIDStack.IsVisible = false;
+            }
+
+            // Sponsor name
+            if ((sponsorship.SponsorName != string.Empty) && (sponsorship.SponsorName != null))
+            {
+                editSponsorNameLabel.Text = sponsorship.SponsorName;
+                editSponsorNameStack.IsVisible = true;
+                editSponsorNameEntry.IsVisible = false;
+            }
+            else
+            {
+                editSponsorNameEntry.IsVisible = true;
+                editSponsorNameStack.IsVisible = false;
+            }
         }
 
+
+        //methods for buttons
         private async void DeleteSponsorshipButton_Clicked(object sender, EventArgs e)
         {
             bool answer = await DisplayAlert("", "Are you sure you want to delete this sponsorship?", "Yes", "No");
@@ -60,6 +153,12 @@ namespace WingspanPrototype1.View
             {
                 return;
             }
+        }
+
+        //selecting a new category
+        private void EditCategorySelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
