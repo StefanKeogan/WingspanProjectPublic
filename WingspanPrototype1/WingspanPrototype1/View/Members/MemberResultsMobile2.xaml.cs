@@ -21,19 +21,19 @@ namespace WingspanPrototype1.View
 
         private void DisplayMember(Member member)
         {
-            // Member Id
-            if ((member._id != string.Empty) && (member._id != null))
-            {
-                memberIdValueLabel.Text = member._id;
-                memberIdStack.IsVisible = true;
-                memberIdEntry.IsVisible = false;
-            }
-            else
-            {
-                memberIdEntry.IsVisible = true;
-                memberIdStack.IsVisible = false;
+            //// Member Id
+            //if ((member._id != string.Empty) && (member._id != null))
+            //{
+            //    memberIdValueLabel.Text = member._id;
+            //    memberIdStack.IsVisible = true;
+            //    memberIdEntry.IsVisible = false;
+            //}
+            //else
+            //{
+            //    memberIdEntry.IsVisible = true;
+            //    memberIdStack.IsVisible = false;
 
-            }
+            //}
 
             // First Name
             if ((member.FirstName != string.Empty) && (member.FirstName != null))

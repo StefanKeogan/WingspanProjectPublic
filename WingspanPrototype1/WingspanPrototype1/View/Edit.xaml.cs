@@ -88,21 +88,32 @@ namespace WingspanPrototype1
                         }
                     }
 
-                    // If no feilds are invalid run the search
-                    if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
+                    ArrayList birdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);
+
+                    if (birdResults != null)
                     {
-                        Navigation.PushAsync(new BirdResultsMobile1(SearchBirds()));
+                        // If no feilds are invalid run the search
+                        if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
+                        {
+                            Navigation.PushAsync(new BirdResultsMobile1(birdResults));
+                        }
+                        else
+                        {
+                            Navigation.PushAsync(new BirdResultsDesktop(birdResults));
+                        }
                     }
                     else
                     {
-                        Navigation.PushAsync(new BirdResultsDesktop(SearchBirds()));
+                        DisplayAlert("No Birds Found", "That bird could been found", "OK");
                     }
+                    
                     break;
 
                 case "Select Bird":
+                    ArrayList selectBirdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);
                     if (Device.RuntimePlatform == Device.UWP)
                     {
-                        Navigation.PushAsync(new SelectBirdResultsDesktop(SearchBirds()));
+                        Navigation.PushAsync(new SelectBirdResultsDesktop(selectBirdResults));
                     }                 
                     break;
 
@@ -146,18 +157,18 @@ namespace WingspanPrototype1
                     }
                     
                     // Search Memebers
-                    List<Member> results = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
+                    List<Member> memberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
 
-                    if (results != null)
+                    if (memberResults != null)
                     {
                         // Results have been returned push the results page 
                         if (DeviceSize.ScreenArea() <= 783457)
                         {
-                            Navigation.PushAsync(new MemberResultsMobile1(results));
+                            Navigation.PushAsync(new MemberResultsMobile1(memberResults));
                         }
                         else
                         {
-                            Navigation.PushAsync(new MemberResultsDesktop(results));
+                            Navigation.PushAsync(new MemberResultsDesktop(memberResults));
                         }
                         
                     }
@@ -263,63 +274,24 @@ namespace WingspanPrototype1
                         }
                     }
 
-                    if (DeviceSize.ScreenArea() <= 783457)
-                    {
-                        Navigation.PushAsync(new VolunteerResultsMobile1(SearchVolunteers.Search(volunteerEmailEntry.Text, volunteerNameEntry.Text)));
-                    }
-                    else
-                    {
-                        Navigation.PushAsync(new VolunteerResultsDesktop(SearchVolunteers.Search(volunteerEmailEntry.Text, volunteerNameEntry.Text)));
-                    }
+                    List<Volunteer> volunteerResults = SearchVolunteers.Search(volunteerEmailEntry.Text, volunteerNameEntry.Text);
 
+                    if (volunteerResults != null)
+                    {
+                        if (DeviceSize.ScreenArea() <= 783457)
+                        {
+                            Navigation.PushAsync(new VolunteerResultsMobile1(volunteerResults));
+                        }
+                        else
+                        {
+                            Navigation.PushAsync(new VolunteerResultsDesktop(volunteerResults));
+                        }
+                    }          
                     break;
             }
-            
+                  
+        }
        
-        }
-
-        private ArrayList SearchBirds()
-        {
-            SearchBirds searchBirds = new SearchBirds(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);
-
-            // Store found items 
-            List<WildBird> wildBirds = searchBirds.SearchWildBirds();
-            List<CaptiveBird> captiveBirds = searchBirds.SearchCaptiveBirds();
-
-            // Stores items from both lists so that we can pass them through to the results pages
-            ArrayList results = new ArrayList();
-
-            // If wild birds were found add them to the array list
-            if (wildBirds != null)
-            {
-                foreach (var bird in wildBirds)
-                {
-                    results.Add(bird);
-                }
-            }
-
-            // If captive birds were found add them to the array list
-            if (captiveBirds != null)
-            {
-                foreach (var bird in captiveBirds)
-                {
-                    results.Add(bird);
-                }
-            }
-                                 
-            // Hardcoded data
-            //results.Add(new WildBird { WingspanId = "W15/003", Age = "Juvenile", MetalBandId = "H39851", BanderName = "Noel Hyde", DateBanded = DateTime.Now, Gps = "-38.163565, +176.27060", Location = "Nursery Road, Whakarewarewa Forest, Rotorua, Bay of Plenty", Sex = "Male", Species = "Falcon" });
-            //results.Add(new WildBird { WingspanId = "W15/004", Age = "Adult", MetalBandId = "L40435", BanderName = "Dave Crip", DateBanded = DateTime.Now, Gps = "-38.714077, 176.371659", Location = "Kaingaroa Forest, Cpt 512", Sex = "Female", Species = "Falcon" });
-            //results.Add(new WildBird { WingspanId = "W15/004", Age = "Juvenile", MetalBandId = "K10996", BanderName = "Heidi Stook", DateBanded = DateTime.Now, Gps = "-38.712070, 176.533579", Location = "Hill Road, Whakarewarewa Forest, Rotorua, Bay of Plenty", Sex = "Male", Species = "Barn Owl" });
-            //results.Add(new WildBird { WingspanId = "W15/006", Age = "Adult", MetalBandId = "S-87486", BanderName = "Noel Hyde", DateBanded = DateTime.Now, Gps = "-35.106184, +173.30352", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
-            //results.Add(new CaptiveBird { WingspanId = "15/006", Age = "Juvenile", BandNo = "S-87486", Name = "Mr. Beaks", DateArrived = DateTime.Now, Result = "Captive", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
-            //results.Add(new CaptiveBird { WingspanId = "15/007", Age = "Adult", BandNo = "L40435", Name = "Hawk Eye", DateArrived = DateTime.Now, Result = "Captive", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
-            //results.Add(new CaptiveBird { WingspanId = "15/008", Age = "Juvenile", BandNo = "K10996", Name = "Professor Feathers", DateArrived = DateTime.Now, Result = "Captive", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
-            //results.Add(new CaptiveBird { WingspanId = "15/009", Age = "Adult", BandNo = "H39851", Name = "Batman", DateArrived = DateTime.Now, DateDeceased = DateTime.Now, Result = "Deceased", Location = "436 Church Road, Kaitaia", Sex = "Female", Species = "Falcon" });
-
-            return results;
-        }
-
         private ArrayList SearchSponsors()
         {
 

@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
+﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,7 @@ namespace WingspanPrototype1.Model
 {
     public class Member
     {
-        public string _id { get; set; }
+        public ObjectId _id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string SaluationName { get; set; }

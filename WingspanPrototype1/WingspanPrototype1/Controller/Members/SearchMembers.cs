@@ -10,32 +10,48 @@ using MongoDB.Bson.Serialization;
 namespace WingspanPrototype1.Controller.Birds
 {
     class SearchMembers
-    {
-      
+    {   
         public static List<Member> Search(string firstName, string lastName, string salutationName)
         {
             // Get DB
             var database = DatabaseConnection.GetDatabase();
 
             // Get member collection
-            var collection = database.GetCollection<Member>("Members");
+            var collection = database.GetCollection<BsonDocument>("Members");
 
             // Used to build filter with multiple conditions
-            var filterBuilder = Builders<Member>.Filter;
-        
-            // Store as default for now
-            FilterDefinition<Member> filter = null;
+            var filterBuilder = Builders<BsonDocument>.Filter;
+
+            List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
 
             // If feilds are populated add conditions to the filter
-            if (Validate.FeildPopulated(firstName)) filter |= filterBuilder.Eq(member => member.FirstName, firstName);
-            if (Validate.FeildPopulated(lastName)) filter |= filterBuilder.Eq(member => member.LastName, lastName);
-            if (Validate.FeildPopulated(salutationName)) filter |= filterBuilder.Eq(member => member.SaluationName, salutationName);
+            if (Validate.FeildPopulated(firstName)) filters.Add(filterBuilder.Eq("FirstName", firstName));
+            if (Validate.FeildPopulated(lastName)) filters.Add(filterBuilder.Eq("LastName", lastName));
+            if (Validate.FeildPopulated(salutationName)) filters.Add(filterBuilder.Eq("SalutionName", salutationName));
 
+            FilterDefinition<BsonDocument> searchFilter = filters[0];
+
+            if (filters.Count > 1)
+            {
+                for (int i = 1; i < filters.Count; i++)
+                {
+                    searchFilter |= filters[i];
+                }
+            }
+            
             try
             {
                 // Search member collection 
-                var memberResults = collection.Find(filter).ToList();
-                return memberResults;
+                List<BsonDocument> memberResults = collection.Find(searchFilter).ToList();
+
+                // Convert results to member results
+                List<Member> memberObjectResults = new List<Member>();
+                foreach (var result in memberResults)
+                {
+                    memberObjectResults.Add(BsonSerializer.Deserialize<Member>(result));
+                }
+
+                return memberObjectResults;
             }
             catch (Exception)
             {

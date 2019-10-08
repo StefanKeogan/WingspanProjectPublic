@@ -15,28 +15,26 @@ namespace WingspanPrototype1.Controller.Birds
 
             var collection = database.GetCollection<BsonDocument>("CaptiveBirds");
 
-            try
-            {
-                // Insert auto generated / default feilds 
-                var document = new BsonDocument
+            // Insert auto generated / default feilds 
+            var document = new BsonDocument
                 {
                     {"WingspanId", bird.WingspanId},
                     {"DateArrived", bird.DateArrived}
                 };
 
-                // Further validation for un-required feilds 
-                if (bird.Name != null) document.Add("Name", bird.Name);
-                if (bird.BandNo != null) document.Add("BandNo", bird.BandNo);
-                if (bird.BandColour != null) document.Add("BandColour", bird.BandColour);
-                if (bird.Species != null) document.Add("Species", bird.Species);
-                if (bird.Sex != null) document.Add("Sex", bird.Sex);
-                if (bird.Age != null) document.Add("Age", bird.Age);
-                if (bird.Location != null) document.Add("Location", bird.Location);
-                
-                collection.InsertOne(document);
+            // Further validation for un-required feilds 
+            if (bird.Name != null) document.Add("Name", bird.Name);
+            if (bird.BandNo != null) document.Add("BandNo", bird.BandNo);
+            if (bird.BandColour != null) document.Add("BandColour", bird.BandColour);
+            if (bird.Species != null) document.Add("Species", bird.Species);
+            if (bird.Sex != null) document.Add("Sex", bird.Sex);
+            if (bird.Age != null) document.Add("Age", bird.Age);
+            if (bird.Location != null) document.Add("Location", bird.Location);
 
-                return true;
-                
+            try
+            {                               
+                collection.InsertOne(document);
+                return true;                
             }
             catch (Exception)
             {

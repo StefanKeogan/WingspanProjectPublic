@@ -1,8 +1,11 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 
 using Xamarin.Forms;
@@ -13,6 +16,9 @@ namespace WingspanPrototype1.View.Volunteers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VolunteerResultsDesktop : ContentPage
     {
+        private List<Entry> entries = new List<Entry>();
+        private ObjectId id;
+
         public VolunteerResultsDesktop(List<Volunteer> results)
         {
             InitializeComponent();
@@ -26,14 +32,58 @@ namespace WingspanPrototype1.View.Volunteers
                 new VolunteerHours { HoursId = "3", Amount = 2.00, Date = DateTime.Today }
             };
 
-
         }
 
         private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
+            var item = e.SelectedItem as Volunteer;
 
+            if (item != null)
+            {
+                DisplayVolunteer(item);
+            }
         }
 
+        private void DisplayVolunteer(Volunteer volunteer)
+        {
+            id = volunteer._id;
+
+            if (Validate.FeildPopulated(volunteer.Name))
+            {
+                nameValueLabel.Text = volunteer.Name;
+                nameStack.IsVisible = true;
+            }
+            else
+            {
+                nameStack.IsVisible = false;
+                nameEntry.IsVisible = true;
+                entries.Add(nameEntry);
+            }
+
+            if (Validate.FeildPopulated(volunteer.Email))
+            {
+                emailValueLabel.Text = volunteer.Email;
+                emailStack.IsVisible = true;
+            }
+            else
+            {
+                emailStack.IsVisible = false;
+                emailEntry.IsVisible = true;
+                entries.Add(emailEntry);
+            }
+
+            if (Validate.FeildPopulated(volunteer.Mobile.ToString()))
+            {
+                mobileValueLabel.Text = volunteer.Mobile.ToString();
+                mobileStack.IsVisible = true;
+            }
+            else
+            {
+                mobileStack.IsVisible = false;
+                mobileEntry.IsVisible = true;
+                entries.Add(mobileEntry);
+            }
+        }
 
         private void HoursHistoryButton_Clicked(object sender, EventArgs e)
         {
@@ -74,17 +124,35 @@ namespace WingspanPrototype1.View.Volunteers
 
         }
 
-        // Save chnages
+        // Save changes
         private async void SaveChangesButton_Clicked(object sender, EventArgs e)
         {
-            bool result = await DisplayAlert("Are you sure?", "Would you like to save changes to this voluneer?", "Yes", "No");
+            bool result = await DisplayAlert("Are you sure?", "Would you like to save changes to this volunteer?", "Yes", "No");
 
             if (result)
             {
+                var database = DatabaseConnection.GetDatabase();
+
+                var collection = database.GetCollection<BsonDocument>("Volunteers");
+
+                var updateBuilder = Builders<BsonDocument>.Update;
+
+                if (collection != null)
+                {
+                    foreach (var entry in entries)
+                    {
+                        if (Validate.FeildPopulated(entry.Text))
+                        {
+                            if (entry.StyleId == "emailEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Email", entry.Text));
+                            if (entry.StyleId == "nameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Name", entry.Text));
+                            if (entry.StyleId == "mobileEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Mobile", entry.Text));
+                        }
+                    }
+                }
+            
                 await DisplayAlert("Volunteer Saved", "Changes to this volunteer have been saved", "Ok");
             }
-
-            // TODO: Save changes method, reload page 
+            
         }
     }
 }

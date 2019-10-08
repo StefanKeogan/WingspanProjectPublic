@@ -25,7 +25,6 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" Padding="5">
-                                    <Label FontSize="20" Text="{Binding VolunteerId}"/>
                                     <Label FontSize="20" Text="{Binding Name}"/>
                                 </StackLayout>
                             </ViewCell>
@@ -45,14 +44,6 @@
                         <RowDefinition Height="1*"/>
 
                     </Grid.RowDefinitions>
-
-                    <!--Volunteer Id-->
-                    <Label x:Name="volunteerIdLabel" Text="Volunteer Id" FontSize="20"/>
-                    <StackLayout x:Name="volunteerIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
-                        <Label x:Name="volunteerIdValueLabel" FontSize="20"/>
-                        <Button x:Name="volunteerIdEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                    </StackLayout>
-                    <Entry x:Name="volunteerIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
 
                     <!--Name-->
                     <Label x:Name="nameLabel" Text="First Name" FontSize="20" Grid.Row="1"/>

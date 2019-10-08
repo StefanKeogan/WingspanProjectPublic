@@ -9,7 +9,7 @@ namespace WingspanPrototype1.Model
     {
         public ObjectId _id { get; set; }
         public string Name { get; set; }
-        public int Mobile { get; set; }
+        public long Mobile { get; set; }
         public string Email { get; set; }
     }
 }
