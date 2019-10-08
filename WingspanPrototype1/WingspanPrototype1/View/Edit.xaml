@@ -110,11 +110,11 @@
 
                         <!--Wingspan Id-->
                         <Label x:Name="sponsorshipWingspanIDLabel" FontSize="20" Text="Wingspan ID"/>
-                        <Entry x:Name="sponsorshipWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+                        <Entry x:Name="sponsorshipWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
                         
                         <!--Sponsor Name-->
                         <Label x:Name="sponsorshipSponsorNameLabel" Text="Sponsor name"  FontSize="20" Grid.Row="1"/>
-                        <Entry x:Name="sponsorshipSponsorEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+                        <Entry x:Name="sponsorshipSponsorEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
                     </Grid>
                 </ContentView.Content>
                 </ContentView>

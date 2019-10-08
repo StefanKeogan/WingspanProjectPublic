@@ -213,7 +213,7 @@ namespace WingspanPrototype1
         // Display captive bird content view
         public void DisplayCaptiveBird(CaptiveBird bird)
         {
-            // If Wild bird is displayed hide wild bird form
+            // If wild bird is displayed hide wild bird form
             if (wildBirdDisplayForm.IsVisible == true)
             {
                 wildBirdDisplayForm.IsVisible = false;

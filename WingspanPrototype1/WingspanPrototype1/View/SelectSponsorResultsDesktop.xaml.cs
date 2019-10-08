@@ -26,6 +26,7 @@ namespace WingspanPrototype1.View
             if (item != null)
             {
                 DisplaySponsor(item);
+                selectSponsorResultsGrid.IsVisible = true;
             }
         }
 

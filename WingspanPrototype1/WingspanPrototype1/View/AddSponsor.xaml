@@ -9,8 +9,8 @@
              Title="New Sponsor">
     <ContentPage.Content>
         <ScrollView>
-            <FlexLayout x:Name="addSponsorFlexLayout" AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
-                <Grid>
+            <FlexLayout x:Name="addSponsorFlexLayout" AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly">
+                <Grid WidthRequest="500">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="4*"/>
@@ -25,19 +25,19 @@
                     </Grid.RowDefinitions>
 
                     <Label x:Name="newSponsorNameLabel" Text="Sponsor name" FontSize="20"/>
-                    <Entry x:Name="newSponsorNameEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Column="1"/>
+                    <Entry x:Name="newSponsorNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
 
                     <Label x:Name="newSponsorAddressLabel" Text="Address" FontSize="20" Grid.Row="1"/>
-                    <Entry x:Name="newSponsorAddressEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Grid.Column="1"/>
+                    <Entry x:Name="newSponsorAddressEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
 
                     <Label x:Name="newSponsorPhoneLabel" Text="Phone number" FontSize="20" Grid.Row="2"/>
-                    <Entry x:Name="newSponsorPhoneEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="2" Grid.Column="1"/>
+                    <Entry x:Name="newSponsorPhoneEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
 
                     <Label x:Name="newSponsorEmailLabel" Text="Email" FontSize="20" Grid.Row="3"/>
-                    <Entry x:Name="newSponsorEmailEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="3" Grid.Column="1"/>
+                    <Entry x:Name="newSponsorEmailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1"/>
 
                     <Label x:Name="newSponsorNoteLabel" Text="Initial note" FontSize="20" Grid.Row="4"/>
-                    <Entry x:Name="newSponsorNoteEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="4" Grid.Column="1"/>
+                    <Entry x:Name="newSponsorNoteEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1"/>
                 </Grid>
 
                 <Button x:Name="saveNewSponsorButton"
