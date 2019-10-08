@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WingspanPrototype1.Controller.Birds;
 using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
@@ -15,7 +16,11 @@ namespace WingspanPrototype1
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class BirdResultsDesktop : ContentPage
     {
-
+        private ObjectId id;
+        private List<Entry> entries;
+        private List<Picker> pickers;
+        private Type birdType;
+444
         public BirdResultsDesktop(ArrayList results)
         {
             InitializeComponent();          
@@ -35,11 +40,23 @@ namespace WingspanPrototype1
 
             if (item.GetType() == typeof(WildBird))
             {
-                DisplayWildBird(item as WildBird);
+                var wildItem = item as WildBird;
+
+                DisplayWildBird(wildItem);
+
+                id = wildItem._id;
+
+                birdType = typeof(WildBird);
             }
-            else
+            else if (item.GetType() == typeof(CaptiveBird))
             {
-                DisplayCaptiveBird(item as CaptiveBird);
+                var captiveItem = item as CaptiveBird;
+
+                DisplayCaptiveBird(captiveItem);
+
+                id = captiveItem._id;
+
+                birdType = typeof(CaptiveBird);
             }
         }
 
@@ -474,7 +491,30 @@ namespace WingspanPrototype1
             bool result = await DisplayAlert("Are you sure", "Would you like to save these changes", "Yes", "No");
             if (result == true)
             {
-                await DisplayAlert("Bird Saved", "Your changes have been saved", "Ok");
+                if (birdType == typeof(WildBird))
+                {
+                    if (UpdateWildBird.UpdateDocument(id, entries, pickers))
+                    {
+                        await DisplayAlert("Bird Saved", "Your changes have been saved", "OK");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Connection Error", "Could not connect to database, please check your connection and try again", "OK");
+                    }
+                }
+                else if (birdType == typeof(CaptiveBird))
+                {
+                    if (UpdateCaptiveBird.UpdateDocument(id, entries, pickers))
+                    {
+                        await DisplayAlert("Bird Saved", "Your changes have been saved", "OK");
+                    }
+                    else
+                    {
+                        await DisplayAlert("Connection Error", "Could not connect to database, please check your connection and try again", "OK");
+                    }
+                }
+
+                
             }
         }
 
@@ -483,7 +523,7 @@ namespace WingspanPrototype1
             bool result = await DisplayAlert("Are you sure", "Would you like to delete this bird", "Yes", "No");
             if (result == true)
             {
-                await DisplayAlert("Bird Deleted", "This bird has been removed from the database", "Ok");
+                await DisplayAlert("Bird Deleted", "This bird has been removed from the database", "OK");
             }
         }
 

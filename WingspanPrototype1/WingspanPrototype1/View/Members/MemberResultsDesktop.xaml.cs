@@ -1,9 +1,12 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WingspanPrototype1.Controller.Members;
+using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,6 +16,10 @@ namespace WingspanPrototype1.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MemberResultsDesktop : ContentPage
     {
+        private List<Entry> entries = new List<Entry>();
+        private Editor editor;
+        private ObjectId id;
+
         public MemberResultsDesktop(List<Member> results)
         {
             InitializeComponent();
@@ -24,6 +31,8 @@ namespace WingspanPrototype1.View
         {
             var item = e.SelectedItem as Member;
 
+            id = item._id;
+
             if (item != null)
             {
                 DisplayMember(item);
@@ -34,7 +43,7 @@ namespace WingspanPrototype1.View
         {
 
             // First Name
-            if ((member.FirstName != string.Empty) && (member.FirstName != null))
+            if (Validate.FeildPopulated(member.FirstName))
             {
                 memberFirstNameValueLabel.Text = member.FirstName;
                 memberFirstNameStack.IsVisible = true;
@@ -42,13 +51,14 @@ namespace WingspanPrototype1.View
             }
             else
             {
-                memberFirstNameValueLabel.IsVisible = true;
+                memberFirstNameEntry.IsVisible = true;
                 memberFirstNameStack.IsVisible = false;
+                entries.Add(memberFirstNameEntry);
 
             }
 
             // Last Name
-            if ((member.LastName != string.Empty) && (member.LastName != null))
+            if (Validate.FeildPopulated(member.LastName))
             {
                 memberLastNameValueLabel.Text = member.LastName;
                 memberLastNameStack.IsVisible = true;
@@ -58,11 +68,12 @@ namespace WingspanPrototype1.View
             {
                 memberLastNameEntry.IsVisible = true;
                 memberLastNameStack.IsVisible = false;
+                entries.Add(memberLastNameEntry);
 
             }
             
             // Salutation Name
-            if ((member.SaluationName != string.Empty)  && (member.SaluationName != null))
+            if (Validate.FeildPopulated(member.SaluationName))
             {
                 memberSalutationValueLabel.Text = member.SaluationName;
                 memberSalutationStack.IsVisible = true;
@@ -72,11 +83,12 @@ namespace WingspanPrototype1.View
             {
                 memberSalutationEntry.IsVisible = true;
                 memberSalutationStack.IsVisible = false;
+                entries.Add(memberSalutationEntry);
 
             }
 
             // Email
-            if ((member.Email != string.Empty) && (member.Email != null))
+            if (Validate.FeildPopulated(member.Email))
             {
                 memberEmailValueLabel.Text = member.Email;
                 memberEmailStack.IsVisible = true;
@@ -86,11 +98,12 @@ namespace WingspanPrototype1.View
             {
                 memberEmailEntry.IsVisible = true;
                 memberEmailStack.IsVisible = false;
+                entries.Add(memberEmailEntry);
 
             }
 
             // Company 
-            if ((member.Company != string.Empty)  && (member.Company != null))
+            if (Validate.FeildPopulated(member.Company))
             {
                 memberCompanyValueLabel.Text = member.Company;
                 memberCompanyStack.IsVisible = true;
@@ -100,11 +113,12 @@ namespace WingspanPrototype1.View
             {
                 memberCompanyEntry.IsVisible = true;
                 memberCompanyStack.IsVisible = false;
+                entries.Add(memberCompanyEntry);
 
             }
 
             // Address 1
-            if ((member.Address1 != string.Empty)  && (member.Address1 != null))
+            if (Validate.FeildPopulated(member.Address1))
             {
                 memberAddress1ValueLabel.Text = member.Address1;
                 memberAddress1Stack.IsVisible = true;
@@ -114,11 +128,12 @@ namespace WingspanPrototype1.View
             {
                 memberAddress1Entry.IsVisible = true;
                 memberAddress1Stack.IsVisible = false;
+                entries.Add(memberAddress1Entry);
 
             }
 
             // Address 2
-            if ((member.Address2 != string.Empty)  && (member.Address2 != null))
+            if (Validate.FeildPopulated(member.Address2))
             {
                 memberAddress2ValueLabel.Text = member.Address2;
                 memberAddress2Stack.IsVisible = true;
@@ -128,11 +143,12 @@ namespace WingspanPrototype1.View
             {
                 memberAddress2Entry.IsVisible = true;
                 memberAddress2Stack.IsVisible = false;
+                entries.Add(memberAddress2Entry);
 
             }
 
             // Address 3
-            if ((member.Address3 != string.Empty)  && (member.Address3 != null))
+            if (Validate.FeildPopulated(member.Address3))
             {
                 memberAddress3ValueLabel.Text = member.Address3;
                 memberAddress3Stack.IsVisible = true;
@@ -142,11 +158,12 @@ namespace WingspanPrototype1.View
             {
                 memberAddress3Entry.IsVisible = true;
                 memberAddress3Stack.IsVisible = false;
+                entries.Add(memberAddress3Entry);
 
             }
 
             // City
-            if ((member.City != string.Empty) && (member.City != null))
+            if (Validate.FeildPopulated(member.City))
             {
                 memberCityValueLabel.Text = member.City;
                 memberCityStack.IsVisible = true;
@@ -156,11 +173,12 @@ namespace WingspanPrototype1.View
             {
                 memberCityEntry.IsVisible = true;
                 memberCityStack.IsVisible = false;
+                entries.Add(memberCityEntry);
 
             }
 
             // Postcode
-            if ((member.Postcode != string.Empty) && (member.Postcode != null))
+            if (Validate.FeildPopulated(member.Postcode))
             {
                 memberPostCodeValueLabel.Text = member.Postcode;
                 memberPostCodeStack.IsVisible = true;
@@ -170,11 +188,12 @@ namespace WingspanPrototype1.View
             {
                 memberPostCodeEntry.IsVisible = true;
                 memberPostCodeStack.IsVisible = false;
+                entries.Add(memberPostCodeEntry);
 
             }
 
             // Comment
-            if ((member.Comment != string.Empty) && (member.Comment != null))
+            if (Validate.FeildPopulated(member.Comment))
             {
                 memberCommentValueLabel.Text = member.Comment;
                 memberCommentStack.IsVisible = true;
@@ -205,8 +224,6 @@ namespace WingspanPrototype1.View
             donationListView.ItemsSource = new List<Payment> { new Payment { PaymentDate = DateTime.Today, Donation = 100 } };
 
 
-
-
         }
 
         // Delte this member
@@ -234,12 +251,17 @@ namespace WingspanPrototype1.View
 
             if (answer)
             {
-                await DisplayAlert("Member Saved", "Changes to this member have been saved", "Ok");
+                if (UpdateMember.UpdateDocument(id, entries, editor))
+                {
+                    await DisplayAlert("Member Saved", "Changes to this member have been saved", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Connection Error", "Could not connect to database, please check your connection and try again", "OK");
+                }
+                
             }
-            else
-            {
-                return;
-            }
+
         }
 
         private void PaymentButton_Clicked(object sender, EventArgs e)

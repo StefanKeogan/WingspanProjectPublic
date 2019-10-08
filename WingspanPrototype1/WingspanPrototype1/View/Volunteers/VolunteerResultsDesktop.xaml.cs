@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WingspanPrototype1.Controller.Volunteers;
 using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 
@@ -131,26 +132,17 @@ namespace WingspanPrototype1.View.Volunteers
 
             if (result)
             {
-                var database = DatabaseConnection.GetDatabase();
-
-                var collection = database.GetCollection<BsonDocument>("Volunteers");
-
-                var updateBuilder = Builders<BsonDocument>.Update;
-
-                if (collection != null)
+                if (UpdateVolunteer.UpdateDocument(id, entries))
                 {
-                    foreach (var entry in entries)
-                    {
-                        if (Validate.FeildPopulated(entry.Text))
-                        {
-                            if (entry.StyleId == "emailEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Email", entry.Text));
-                            if (entry.StyleId == "nameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Name", entry.Text));
-                            if (entry.StyleId == "mobileEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Mobile", entry.Text));
-                        }
-                    }
+                    await DisplayAlert("Volunteer Saved", "Changes to this volunteer have been saved", "Ok");
                 }
+                else
+                {
+                    await DisplayAlert("Connection Error", "Please check your connection and try again", "Ok");
+                }
+
             
-                await DisplayAlert("Volunteer Saved", "Changes to this volunteer have been saved", "Ok");
+                
             }
             
         }
