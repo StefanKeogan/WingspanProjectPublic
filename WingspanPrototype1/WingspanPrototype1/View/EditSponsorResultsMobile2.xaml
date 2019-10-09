@@ -1,0 +1,156 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.View.EditSponsorResultsMobile2"
+             Title="Results"
+             BackgroundColor="#F0F0F0">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid Margin="5,5,5,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!--Sponsor ID-->
+                    <Label x:Name="sponsorIDLabel" Text="Sponsor ID" FontSize="20"/>
+                    <StackLayout x:Name="sponsorIDStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
+                        <Label x:Name="sponsorIDValueLabel" FontSize="20"/>
+                        <Button x:Name="sponsorIDEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="sponsorIDEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
+
+                    <!--Sponsor name-->
+                    <Label x:Name="sponsorNameLabel" Text="Name" FontSize="20" Grid.Row="1"/>
+                    <StackLayout x:Name="sponsorNameStack" Orientation="Horizontal" IsVisible="False" Grid.Row="1" Grid.Column="1">
+                        <Label x:Name="sponsorNameValueLabel" FontSize="20"/>
+                        <Button x:Name="sponsorNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="sponsorNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Row="1" Grid.Column="1"/>
+
+                    <!--Sponsor address-->
+                    <Label x:Name="sponsorAddressLabel" Text="Address" FontSize="20" Grid.Row="2"/>
+                    <StackLayout x:Name="sponsorAddressStack" Orientation="Horizontal" IsVisible="False" Grid.Row="2" Grid.Column="1">
+                        <Label x:Name="sponsorAddressValueLabel" FontSize="20"/>
+                        <Button x:Name="sponsorAddressEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="sponsorAddressEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Row="2" Grid.Column="1"/>
+
+                    <!--Sponsor phone number-->
+                    <Label x:Name="sponsorPhoneLabel" Text="Phone" FontSize="20" Grid.Row="3"/>
+                    <StackLayout x:Name="sponsorPhoneStack" Orientation="Horizontal" IsVisible="False" Grid.Row="3" Grid.Column="1">
+                        <Label x:Name="sponsorPhoneValueLabel" FontSize="20"/>
+                        <Button x:Name="sponsorPhoneEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="sponsorPhoneEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Row="3" Grid.Column="1"/>
+
+                    <!--Sponsor email-->
+                    <Label x:Name="sponsorEmailLabel" Text="Email" FontSize="20" Grid.Row="4"/>
+                    <StackLayout x:Name="sponsorEmailStack" Orientation="Horizontal" IsVisible="False" Grid.Row="4" Grid.Column="1">
+                        <Label x:Name="sponsorEmailValueLabel" FontSize="20"/>
+                        <Button x:Name="sponsorEmailEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="sponsorEmailEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Row="4" Grid.Column="1"/>
+
+                    <!--Sponsor notes-->
+                    <Label x:Name="sponsorNotesLabel" Text="Notes" FontSize="20" Grid.Row="5"/>
+                    <Label x:Name="sponsorNotesValueLabel" FontSize="20" IsVisible="False" Grid.Row="5" Grid.Column="1"/>
+
+
+                    <!--Add note pop-up box-->
+                    <ContentView x:Name="addSponsorNoteView" Grid.ColumnSpan="2" Grid.Row="1" Grid.RowSpan="5" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center">
+                        <ContentView.Content>
+                            <Frame BorderColor="#000000" Padding="3" BackgroundColor="#FFFFFF">
+                                <StackLayout BackgroundColor="#FFFFFF">
+                                    <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
+                                        <Label Text="New note" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        <Button x:Name="addSponsorNoteExitButton" 
+                                            Text="X" TextColor="#FFFFFF"  
+                                            FontSize="20" 
+                                            Margin="5,5,5,5" 
+                                            HorizontalOptions="EndAndExpand" 
+                                            VerticalOptions="Center" 
+                                            Clicked="AddSponsorNoteExitButton_Clicked"/>
+                                    </StackLayout>
+                                    <StackLayout Margin="5,5,5,5">
+                                        <Label Text="Date" FontSize="20"/>
+                                        <DatePicker x:Name="sponsorNoteDatePicker"/>
+
+                                        <Label Text="Note" FontSize="20"/>
+                                        <Editor x:Name="sponsorNoteEntry" 
+                                                    AutoSize="TextChanges" 
+                                                    HeightRequest="100"
+                                                    HorizontalOptions="FillAndExpand" 
+                                                    VerticalOptions="FillAndExpand" 
+                                                    MaxLength="350"/>
+
+                                        <Button x:Name="saveSponsorNoteButton"
+                                            Text="Save" 
+                                            Margin="0,20"
+                                            BackgroundColor="#FFD966"
+                                            BorderColor="#5C3838"
+                                            BorderWidth="3"
+                                            CornerRadius="5"
+                                            FontSize="20" 
+                                            WidthRequest="150"
+                                            HorizontalOptions="Center"
+                                            Clicked="SaveSponsorNoteButton_Clicked"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ContentView.Content>
+                    </ContentView>
+                </Grid>
+                
+                <!--buttons at the bottom-->
+                <StackLayout HorizontalOptions="CenterAndExpand" Orientation="Vertical" Margin="0,5">
+                    <Button x:Name="deleteSponsorButton" 
+                            Text="Delete" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            HorizontalOptions="Center"
+                            WidthRequest="150"
+                            Clicked="DeleteSponsorButton_Clicked"/>
+
+                    <Button x:Name="saveSponsorChangesButton"
+                            Text="Save changes" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            HorizontalOptions="Center"
+                            WidthRequest="150"
+                            Clicked="SaveSponsorChangesButton_Clicked"/>
+
+                    <Button x:Name="addSponsorNoteButton"
+                            Text="Add note" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            HorizontalOptions="Center"
+                            WidthRequest="150"
+                            Clicked="AddSponsorNoteButton_Clicked"/>
+                </StackLayout>
+                
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -4,18 +4,18 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WingspanPrototype1.BirdResultsMobile1"
+             x:Class="WingspanPrototype1.View.SelectSponsorResultsMobile1"
              Title="Results"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <ScrollView>
-            <ListView x:Name="mobileResults" ItemSelected="MobileResults_ItemSelected_1">
+            <ListView x:Name="resultsListView" BackgroundColor="#F0F0F0" ItemSelected="ResultsListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="5">
-                                <Label FontSize="20" Text="{Binding WingspanId}"/>
-                                <Label FontSize="20" Text="{Binding Name}"/>
+                                <Label FontSize="20" Text="{Binding SponsorID}"/>
+                                <Label FontSize="20" Text="{Binding SponsorName}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -11,25 +10,15 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SelectSponsorResultsDesktop : ContentPage
+	public partial class SelectSponsorResultsMobile2 : ContentPage
 	{
-		public SelectSponsorResultsDesktop (List<Sponsor> results)
+		public SelectSponsorResultsMobile2(Sponsor sponsor)
 		{
-			InitializeComponent ();
-            resultsListView.ItemsSource = results;
-        }
+			InitializeComponent();
 
-        private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
-        {
-            var item = e.SelectedItem as Sponsor;
+            DisplaySponsor(sponsor);
+		}
 
-            if (item != null)
-            {
-                DisplaySponsor(item);
-                //display the results once an item is selected from the list
-                selectSponsorResultsGrid.IsVisible = true;
-            }
-        }
 
         private void DisplaySponsor(Sponsor sponsor)
         {
@@ -100,7 +89,7 @@ namespace WingspanPrototype1.View
             }
         }
 
-        //button to update with this sponsor 
+        //assign this sponsor button
         private async void ThisSponsorButton_Clicked(object sender, EventArgs e)
         {
             await DisplayAlert("Sponsor added", "", "OK");

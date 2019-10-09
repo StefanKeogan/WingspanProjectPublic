@@ -27,7 +27,7 @@ namespace WingspanPrototype1
             // Get item from list
             var item = e.SelectedItem;
 
-            // Array list allows us to stire bird ofd either type
+            // Array list allows us to store bird of either type
             ArrayList birds = new ArrayList();
             birds.Add(item);
 

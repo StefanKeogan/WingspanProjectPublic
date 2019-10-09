@@ -204,14 +204,14 @@ namespace WingspanPrototype1
                     }
                     else
                     {
-                        Navigation.PushAsync(new EditSponsorResultsDesktop(SearchSponsors()));
+                        //Navigation.PushAsync(new EditSponsorResultsDesktop(SearchSponsors()));
                     }
                     break;
 
                 case "Select Sponsor":
                     if (Device.RuntimePlatform == Device.UWP)
                     {
-                        Navigation.PushAsync(new SelectSponsorResultsDesktop(SearchSponsors()));
+                        //Navigation.PushAsync(new SelectSponsorResultsDesktop(SearchSponsors()));
                     }
                     break;
 
@@ -248,9 +248,11 @@ namespace WingspanPrototype1
 
                     if (Device.RuntimePlatform == Device.UWP)
                     {
-                        Navigation.PushAsync(new EditSponsorshipResultsDesktop(SearchSponsorships()));
+                        //Navigation.PushAsync(new EditSponsorshipResultsDesktop(SearchSponsorships()));
                     }
                     break;
+
+
 
                 case "Edit Volunteers":
 

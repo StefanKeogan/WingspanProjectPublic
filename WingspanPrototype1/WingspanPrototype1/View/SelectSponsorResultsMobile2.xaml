@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.View.SelectSponsorResultsMobile2"
+             Title="Results"
+             BackgroundColor="#F0F0F0">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid Margin="5,5,5,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!--Sponsor ID-->
+                    <Label x:Name="selectSponsorIDLabel" Text="Sponsor ID" FontSize="20"/>
+                    <Label x:Name="selectSponsorIDValueLabel" FontSize="20" IsVisible="False" Grid.Column="1"/>
+
+                    <!--Sponsor name-->
+                    <Label x:Name="selectSponsorNameLabel" Text="Name" FontSize="20" Grid.Row="1"/>
+                    <Label x:Name="selectSponsorNameValueLabel" FontSize="20" IsVisible="False" Grid.Row="1" Grid.Column="1"/>
+
+                    <!--Sponsor address-->
+                    <Label x:Name="selectSponsorAddressLabel" Text="Address" FontSize="20" Grid.Row="2"/>
+                    <Label x:Name="selectSponsorAddressValueLabel" FontSize="20" IsVisible="False" Grid.Row="2" Grid.Column="1"/>
+
+                    <!--Sponsor phone number-->
+                    <Label x:Name="selectSponsorPhoneLabel" Text="Phone" FontSize="20" Grid.Row="3"/>
+                    <Label x:Name="selectSponsorPhoneValueLabel" FontSize="20" IsVisible="False" Grid.Row="3" Grid.Column="1"/>
+
+                    <!--Sponsor email-->
+                    <Label x:Name="selectSponsorEmailLabel" Text="Email" FontSize="20" Grid.Row="4"/>
+                    <Label x:Name="selectSponsorEmailValueLabel" FontSize="20" IsVisible="False" Grid.Row="4" Grid.Column="1"/>
+
+                    <!--Sponsor notes-->
+                    <Label x:Name="selectSponsorNotesLabel" Text="Notes" FontSize="20" Grid.Row="5"/>
+                    <Label x:Name="selectSponsorNotesValueLabel" FontSize="20" IsVisible="False" Grid.Row="5" Grid.Column="1"/>
+
+                    <!--button at the bottom -->
+                    <Button x:Name="thisSponsorButton"
+                            Margin="0,5"
+                            Grid.ColumnSpan="2"
+                            HorizontalOptions="Center"
+                            Text="Sponsor" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            WidthRequest="150"
+                            Clicked="ThisSponsorButton_Clicked"/>
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

@@ -20,9 +20,8 @@
                         <DataTemplate>
                             <ViewCell>
                                 <StackLayout Orientation="Horizontal" Padding="5">
-                                    <Label FontSize="20" Text="{Binding SponsorshipID}"/>
-                                    <Label FontSize="20" Text="{Binding SponsorName}"/>
                                     <Label FontSize="20" Text="{Binding WingspanId}"/>
+                                    <Label FontSize="20" Text="{Binding SponsorName}"/>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
@@ -69,7 +68,11 @@
 
                             <!--Sponsorship category-->
                             <Label x:Name="editCategoryLabel" Text="Category" FontSize="20" Grid.Row="2"/>
-                            <Picker x:Name="editCategorySelector" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" Grid.Row="2">
+                            <StackLayout x:Name="editCategoryStack" Orientation="Horizontal" IsVisible="False" Grid.Row="2" Grid.Column="1">
+                                <Label x:Name="editCategoryValueLabel" FontSize="20"/>
+                                <Button x:Name="editCategoryEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                            </StackLayout>
+                            <Picker x:Name="editCategoryPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" Grid.Row="2" IsVisible="False">
                                 <Picker.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
                                         <x:String>Wild Bird</x:String>
@@ -83,11 +86,19 @@
 
                             <!--Sponsorship start date-->
                             <Label x:Name="editSponsorshipStartLabel" Text="Start date" FontSize="20" Grid.Row="3"/>
-                            <DatePicker x:Name="editSponsorshipStartEdit" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1"/>
+                            <StackLayout x:Name="editSponsorshipStartStack" Orientation="Horizontal" IsVisible="False" Grid.Row="3" Grid.Column="1">
+                                <Label x:Name="editSponsorshipStartValueLabel" FontSize="20"/>
+                                <Button x:Name="editSponsorshipStartEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                            </StackLayout>
+                            <DatePicker x:Name="editSponsorshipStartPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
 
                             <!--Sponsorship end date-->
                             <Label x:Name="editSponsorshipEndLabel" Text="End date" FontSize="20" Grid.Row="4"/>
-                            <DatePicker x:Name="editSponsorshipEndEdit" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1"/>
+                            <StackLayout x:Name="editSponsorshipEndStack" Orientation="Horizontal" IsVisible="False" Grid.Row="4" Grid.Column="1">
+                                <Label x:Name="editSponsorshipEndValueLabel" FontSize="20"/>
+                                <Button x:Name="editSponsorshipEndEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                            </StackLayout>
+                            <DatePicker x:Name="editSponsorshipEndPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" IsVisible="False"/>
 
                             <!--Sponsor ID-->
                             <Label x:Name="editSponsorIDLabel" Text="Sponsor ID" FontSize="20" Grid.Row="5"/>

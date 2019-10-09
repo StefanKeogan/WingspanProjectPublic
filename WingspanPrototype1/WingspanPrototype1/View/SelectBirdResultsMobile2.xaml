@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.View.SelectBirdResultsMobile2"
+             Title="Results"
+             BackgroundColor="#F0F0F0">>
+    
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid Margin="5,5,5,5" HorizontalOptions="Fill">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+
+                    <!--display for wild birds-->
+                    <ContentView x:Name="selectWildBirdGrid" IsVisible="False">
+                        <ContentView.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <!--Wingspan Id-->
+                                <Label x:Name="selectWildWingspanIdLabel" Text="Wingspan ID" FontSize="20"/>
+                                <Label x:Name="selectWildWingspanIdValueLabel" FontSize="20" Grid.Column="1" IsVisible="False"/>
+
+                                <!--Species-->
+                                <Label x:Name="selectWildSpeciesLabel" Text="Species" FontSize="20" Grid.Row="1"/>
+                                <Label x:Name="selectWildSpeciesValueLabel" FontSize="20" Grid.Row="1" Grid.Column="1" IsVisible="False"/>
+
+                                <!--Location-->
+                                <Label x:Name="selectWildLocationLabel" Text="Location" FontSize="20" Grid.Row="2"/>
+                                <Label x:Name="selectWildLocationValueLabel" FontSize="20" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
+
+                                <!--Sex-->
+                                <Label x:Name="selectWildSexLabel" Text="Sex" FontSize="20" Grid.Row="3"/>
+                                <Label x:Name="selectWildSexValueLabel" FontSize="20" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
+
+                                <!--Age-->
+                                <Label x:Name="selectWildAgeLabel" Text="Age" FontSize="20" Grid.Row="4"/>
+                                <Label x:Name="selectWildAgeValueLabel" FontSize="20" Grid.Row="4" Grid.Column="1" IsVisible="False"/>
+
+                                <!--Metal Band Id-->
+                                <Label x:Name="selectWildMetalBandIdLabel" Text="Metal Band Id" FontSize="20" Grid.Row="5"/>
+                                <Label x:Name="selectWildMetalBandIdValueLabel" FontSize="20" Grid.Row="5" Grid.Column="1" IsVisible="False"/>
+
+                                <!--Band Info-->
+                                <Label x:Name="selectBandInfoLabel" Text="Band Info" FontSize="20" Grid.Row="6"/>
+                                <Label x:Name="selectBandInfoValueLabel" FontSize="20" Grid.Row="6" Grid.Column="1" IsVisible="False"/>
+                            </Grid>
+                        </ContentView.Content>
+                    </ContentView>
+
+                    <!--display for captive birds-->
+                    <ContentView x:Name="selectCaptiveBirdGrid" IsVisible="False">
+                        <ContentView.Content>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+
+                                <!--Wingspan Id-->
+                                <Label x:Name="selectCaptiveWingspanIdLabel" Text="Wingspan Id" FontSize="20"/>
+                                <Label x:Name="selectCaptiveWingspanIdValueLabel" FontSize="20" Grid.Column="1" IsVisible="False"/>
+
+                                <!--Name-->
+                                <Label x:Name="selectCaptiveNameLabel" Text="Name" FontSize="20" Grid.Row="1"/>
+                                <Label x:Name="selectCaptiveNameValueLabel" FontSize="20" Grid.Row="1" Grid.Column="1" IsVisible="False"/>
+
+                                <!--Band Number-->
+                                <Label x:Name="selectCaptiveBandNumberLabel" Text="Band Number" FontSize="20" Grid.Row="2"/>
+                                <Label x:Name="selectCaptiveBandNumberValueLabel" FontSize="20" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
+
+                                <!--Species-->
+                                <Label x:Name="selectCaptiveSpeciesLabel" Text="Species" FontSize="20" Grid.Row="3"/>
+                                <Label x:Name="selectCaptiveSpeciesValueLabel" FontSize="20" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
+
+                                <!--Sex-->
+                                <Label x:Name="selectCaptiveSexLabel" Text="Sex" FontSize="20" Grid.Row="4"/>
+                                <Label x:Name="selectCaptiveSexValueLabel" FontSize="20" Grid.Row="4" Grid.Column="1" IsVisible="False"/>
+
+                                <!--Age-->
+                                <Label x:Name="selectCaptiveAgeLabel" Text="Age" FontSize="20" Grid.Row="5"/>
+                                <Label x:Name="selectCaptiveAgeValueLabel" FontSize="20" Grid.Row="5" Grid.Column="1" IsVisible="False"/>
+                            </Grid>
+                        </ContentView.Content>
+                    </ContentView>
+
+                    <!--button at the bottom -->
+                    <Button x:Name="thisBirdButton"
+                            Margin="0,5"                        
+                            Grid.Row="1"
+                            Grid.ColumnSpan="2"
+                            HorizontalOptions="Center"
+                            Text="Sponsor" 
+                            BackgroundColor="#FFD966"
+                            BorderColor="#5C3838"
+                            BorderWidth="3"
+                            CornerRadius="5"
+                            FontSize="20" 
+                            WidthRequest="150"
+                            Clicked="ThisBirdButton_Clicked"/>
+
+                </Grid>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>
