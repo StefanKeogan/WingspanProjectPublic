@@ -8,78 +8,77 @@
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <ScrollView Orientation="Vertical" >
-            <Grid RowSpacing="0" ColumnSpacing="0">
+            <Grid RowSpacing="0" ColumnSpacing="0" HeightRequest="700">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1.75*"/>
                     <ColumnDefinition Width="3.5*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <Grid.RowDefinitions>
-                    <RowDefinition Height=".7*"/>
-                    <RowDefinition Height=".7*"/>
-                    <RowDefinition Height=".7*"/>
-                    <RowDefinition Height=".7*"/>
-                    <RowDefinition Height=".7*"/>
-                    <RowDefinition Height=".7*"/>
-                    <RowDefinition Height=".7*"/>
-                    <RowDefinition Height=".7*"/>
-                    <RowDefinition Height=".7*"/>
-                    <RowDefinition Height=".7*"/>
-                    <RowDefinition Height=".7*"/>
-                    <RowDefinition Height=".7*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="2*"/>
-
                 </Grid.RowDefinitions>
 
                 <!--First Name-->
                 <Label x:Name="memberFirstNameLabel" Text="First Name" VerticalOptions="Center" FontSize="20" Grid.Column="1"/>
-                <Entry x:Name="memberFirstNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="2"/>
+                <Entry x:Name="memberFirstNameEntry" Style="{StaticResource addFeildStyle}" Grid.Column="2"/>
 
                 <!--Last Name-->
                 <Label x:Name="memberLastNameLabel" Text="Last Name" FontSize="20" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
-                <Entry x:Name="memberLastNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="2"/>
+                <Entry x:Name="memberLastNameEntry"  Grid.Row="1" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
 
                 <!--Salutation Name-->
                 <Label x:Name="memberSalutationNameLabel" Text="Salutation Name" FontSize="20" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
-                <Entry x:Name="memberSalutationNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="2"/>
+                <Entry x:Name="memberSalutationNameEntry"  Grid.Row="2" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
 
                 <!--Email-->
                 <Label x:Name="memberEmailLabel" Text="Email" FontSize="20" VerticalOptions="Center" Grid.Row="3" Grid.Column="1"/>
-                <Entry x:Name="memberEmailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="2"/>
+                <Entry x:Name="memberEmailEntry"  Grid.Row="3" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
 
                 <!--Company-->
                 <Label x:Name="memberCompanyLabel" Text="Company" FontSize="20" VerticalOptions="Center" Grid.Row="4" Grid.Column="1"/>
-                <Entry x:Name="memberCompanyEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="2"/>
+                <Entry x:Name="memberCompanyEntry" Grid.Row="4" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
 
                 <!--Address 1-->
                 <Label x:Name="memberAddress1Label" Text="Address 1" FontSize="20" VerticalOptions="Center" Grid.Row="5" Grid.Column="1"/>
-                <Entry x:Name="memberAddress1Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="2"/>
+                <Entry x:Name="memberAddress1Entry"  Grid.Row="5" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
 
                 <!--Address 2-->
                 <Label x:Name="memberAddress2Label" Text="Address 2" FontSize="20" VerticalOptions="Center" Grid.Row="6" Grid.Column="1"/>
-                <Entry x:Name="memberAddress2Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="2"/>
+                <Entry x:Name="memberAddress2Entry" Grid.Row="6" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
 
                 <!--Address 3-->
                 <Label x:Name="memberAddress3Label" Text="Address 3" FontSize="20" VerticalOptions="Center" Grid.Row="7" Grid.Column="1"/>
-                <Entry x:Name="memberAddress3Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="2"/>
+                <Entry x:Name="memberAddress3Entry" Grid.Row="7" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
 
                 <!--City-->
                 <Label x:Name="memberCityLabel" Text="City" FontSize="20" VerticalOptions="Center" Grid.Row="8" Grid.Column="1"/>
-                <Entry x:Name="memberCityEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="2"/>
+                <Entry x:Name="memberCityEntry" Grid.Row="8" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
 
                 <!--Postcode-->
                 <Label x:Name="memberPostcodeLabel" Text="Postcode" FontSize="20" VerticalOptions="Center" Grid.Row="9" Grid.Column="1"/>
-                <Entry x:Name="memberPostcodeEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="9" Grid.Column="2"/>
+                <Entry x:Name="memberPostcodeEntry" Grid.Row="9" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
 
                 <!--Comment-->
                 <Label x:Name="memberCommentLabel" Text="Comment" FontSize="20" VerticalOptions="Center" Grid.Row="10" Grid.Column="1"/>
-                <Editor x:Name="memberCommentEditor" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="10" Grid.Column="2"/>
+                <Editor x:Name="memberCommentEditor" Grid.Row="10" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
 
                 <!--Join Date-->
                 <Label x:Name="memberJoinDateLabel" Text="Join Date" FontSize="20" VerticalOptions="Center" Grid.Row="11" Grid.Column="1"/>
-                <DatePicker x:Name="memberJoindatePicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="11" Grid.Column="2"/>
+                <DatePicker x:Name="memberJoindatePicker"  Grid.Row="11" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
 
                 <Button
                     x:Name="addButton"
@@ -91,7 +90,6 @@
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     WidthRequest="150"
-                    Margin="0,20"
                     Clicked="AddButton_Clicked"/>
 
             </Grid>

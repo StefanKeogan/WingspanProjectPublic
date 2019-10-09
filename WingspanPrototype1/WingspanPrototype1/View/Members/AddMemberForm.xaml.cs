@@ -22,7 +22,6 @@ namespace WingspanPrototype1.View
 
             Title = title;
 
-
         }
 
         private async void AddButton_Clicked(object sender, EventArgs e)
