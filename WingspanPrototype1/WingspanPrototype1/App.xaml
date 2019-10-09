@@ -9,11 +9,20 @@
     <Application.Resources>
         <ResourceDictionary>
             <!--Global Styles-->
-            <Color x:Key="NavigationPrimary">#2196F3</Color>
+            <!--<Color x:Key="NavigationPrimary">#2196F3</Color>
             <Style TargetType="NavigationPage">
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
+            </Style>-->
+
+            <Style x:Key="mainButtonStyle" TargetType="Button">
+                <Setter Property="BorderColor" Value="#5C3838"/>
+                <Setter Property="BackgroundColor" Value="#FFD966"/>
+                <Setter Property="BorderWidth" Value="3"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="FontSize" Value="20"/>
             </Style>
+
         </ResourceDictionary>
     </Application.Resources>
     

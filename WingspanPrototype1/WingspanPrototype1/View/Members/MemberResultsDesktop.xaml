@@ -76,7 +76,7 @@
                     <!--Salutation Name-->
                     <Label x:Name="memberSalutationLabel" Text="Salutation Name" FontSize="20" Grid.Row="2"/>
                     <StackLayout x:Name="memberSalutationStack" Orientation="Horizontal" Grid.Row="2" Grid.Column="1" IsVisible="False">
-                        <Label x:Name="memberSalutationValueLabel" Text="GPS" FontSize="20"/>
+                        <Label x:Name="memberSalutationValueLabel" FontSize="20"/>
                         <Button x:Name="memberSalutationEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
                     <Entry x:Name="memberSalutationEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
@@ -84,7 +84,7 @@
                     <!--Email-->
                     <Label x:Name="memberEmailLabel" Text="Email" FontSize="20" Grid.Row="3"/>
                     <StackLayout x:Name="memberEmailStack" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" IsVisible="False">
-                        <Label x:Name="memberEmailValueLabel" Text="GPS" FontSize="20"/>
+                        <Label x:Name="memberEmailValueLabel" FontSize="20"/>
                         <Button x:Name="memberEmailEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
                     <Entry x:Name="memberEmailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
@@ -92,7 +92,7 @@
                     <!--Company-->
                     <Label x:Name="memberCompanyLabel" Text="Company" FontSize="20" Grid.Row="4"/>
                     <StackLayout x:Name="memberCompanyStack" Orientation="Horizontal" Grid.Row="4" Grid.Column="1" IsVisible="False">
-                        <Label x:Name="memberCompanyValueLabel" Text="GPS" FontSize="20" />
+                        <Label x:Name="memberCompanyValueLabel" FontSize="20" />
                         <Button x:Name="memberCompanyEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
                     <Entry x:Name="memberCompanyEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" IsVisible="False"/>
@@ -100,7 +100,7 @@
                     <!--Address 1-->
                     <Label x:Name="memberAddress1Label" Text="Address 1" FontSize="20" Grid.Row="5"/>
                     <StackLayout x:Name="memberAddress1Stack" Orientation="Horizontal" Grid.Row="5" Grid.Column="1" IsVisible="False">
-                        <Label x:Name="memberAddress1ValueLabel" Text="GPS" FontSize="20"/>
+                        <Label x:Name="memberAddress1ValueLabel" FontSize="20"/>
                         <Button x:Name="memberAddress1Button" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
                     <Entry x:Name="memberAddress1Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1" IsVisible="False"/>
@@ -108,7 +108,7 @@
                     <!--Address 2-->
                     <Label x:Name="memberAddress2Label" Text="Address 2" FontSize="20" Grid.Row="6"/>
                     <StackLayout x:Name="memberAddress2Stack" Orientation="Horizontal" Grid.Row="6" Grid.Column="1" IsVisible="False">
-                        <Label x:Name="memberAddress2ValueLabel" Text="GPS" FontSize="20"/>
+                        <Label x:Name="memberAddress2ValueLabel" FontSize="20"/>
                         <Button x:Name="memberAddress2Button" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
                     <Entry x:Name="memberAddress2Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" IsVisible="False"/>
@@ -116,7 +116,7 @@
                     <!--Address 3-->
                     <Label x:Name="memberAddress3Label" Text="Address 3" FontSize="20" Grid.Row="7"/>
                     <StackLayout x:Name="memberAddress3Stack" Orientation="Horizontal" Grid.Row="7" Grid.Column="1" IsVisible="False">
-                        <Label x:Name="memberAddress3ValueLabel" Text="GPS" FontSize="20"/>
+                        <Label x:Name="memberAddress3ValueLabel" FontSize="20"/>
                         <Button x:Name="memberAddress3Button" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
                     <Entry x:Name="memberAddress3Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1" IsVisible="False"/>
@@ -124,7 +124,7 @@
                     <!--City-->
                     <Label x:Name="memberCityLabel" Text="City" FontSize="20" Grid.Row="8"/>
                     <StackLayout x:Name="memberCityStack" Orientation="Horizontal" Grid.Row="8" Grid.Column="1" IsVisible="False">
-                        <Label x:Name="memberCityValueLabel" Text="GPS" FontSize="20"/>
+                        <Label x:Name="memberCityValueLabel" FontSize="20"/>
                         <Button x:Name="memberCItyEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
                     <Entry x:Name="memberCityEntry" Grid.Row="8" IsVisible="False" Grid.Column="1"/>
@@ -140,7 +140,7 @@
                     <!--Comment-->
                     <Label x:Name="memberCommentLabel" Text="Comment" FontSize="20" Grid.Row="10"/>
                     <StackLayout x:Name="memberCommentStack" Grid.Row="10" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
-                        <Label x:Name="memberCommentValueLabel" Text="GPS" FontSize="20" />
+                        <Label x:Name="memberCommentValueLabel" FontSize="20" />
                         <Button x:Name="memberCommentValueEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
                     <Editor x:Name="memberCommentEditor" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="10" Grid.Column="1" IsVisible="False"/>
@@ -148,7 +148,7 @@
                     <!--Join Date-->
                     <Label x:Name="memberJoinDateLabel" Text="Join Date" FontSize="20" Grid.Row="11"/>
                     <StackLayout x:Name="memberJoinDateStack" Grid.Row="11" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
-                        <Label x:Name="memberJoinDateValueLabel" Text="GPS" FontSize="20" />
+                        <Label x:Name="memberJoinDateValueLabel" FontSize="20" />
                         <Button x:Name="memberJoinDateEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
                     <DatePicker x:Name="memberJoinDatePicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="11" Grid.Column="1" IsVisible="False"/>
@@ -161,11 +161,7 @@
                         x:Name="deleteButton"
                         Grid.ColumnSpan="2" 
                         Text="Delete" 
-                        BackgroundColor="#FFD966"
-                        BorderColor="#5C3838"
-                        BorderWidth="3"
-                        CornerRadius="5"
-                        FontSize="20" 
+                        Style="{StaticResource mainButtonStyle}"
                         HorizontalOptions="Center"
                         WidthRequest="150"
                         Clicked="DeleteButton_Clicked"/>
@@ -173,11 +169,7 @@
                     <Button  
                         x:Name="saveChangesButton"
                         Text="Save Changes" 
-                        BackgroundColor="#FFD966"
-                        BorderColor="#5C3838"
-                        BorderWidth="3"
-                        CornerRadius="5"
-                        FontSize="20" 
+                        Style="{StaticResource mainButtonStyle}"
                         HorizontalOptions="Center"
                         WidthRequest="150"
                         Clicked="SaveChangesButton_Clicked"/>
@@ -185,11 +177,7 @@
                     <Button  
                         x:Name="paymentHistoryButton"
                         Text="Payment History" 
-                        BackgroundColor="#FFD966"
-                        BorderColor="#5C3838"
-                        BorderWidth="3"
-                        CornerRadius="5"
-                        FontSize="20" 
+                        Style="{StaticResource mainButtonStyle}"
                         HorizontalOptions="Center"
                         WidthRequest="200"
                         Clicked="PaymentButton_Clicked"/>
@@ -222,11 +210,7 @@
                                     x:Name="addNewPaymentButton"
                                     Margin="5,5,5,5"
                                     Text="Add Payment" 
-                                    BackgroundColor="#FFD966"
-                                    BorderColor="#5C3838"
-                                    BorderWidth="3"
-                                    CornerRadius="5"
-                                    FontSize="20" 
+                                    Style="{StaticResource mainButtonStyle}"
                                     HorizontalOptions="Center"
                                     Clicked="AddNewPaymentButton_Clicked"/>
                             </StackLayout>
@@ -253,11 +237,7 @@
                                     x:Name="addPaymentButton"
                                     Margin="5,5,5,5"
                                     Text="Add" 
-                                    BackgroundColor="#FFD966"
-                                    BorderColor="#5C3838"
-                                    BorderWidth="3"
-                                    CornerRadius="5"
-                                    FontSize="20" 
+                                    Style="{StaticResource mainButtonStyle}"
                                     HorizontalOptions="Center"
                                     Clicked="AddPaymentButton_Clicked"/>
                             </StackLayout>
