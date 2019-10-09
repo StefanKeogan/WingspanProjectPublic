@@ -34,51 +34,51 @@
 
                 <!--First Name-->
                 <Label x:Name="memberFirstNameLabel" Text="First Name" VerticalOptions="Center" FontSize="20" Grid.Column="1"/>
-                <Entry x:Name="memberFirstNameEntry" Style="{StaticResource addFeildStyle}" Grid.Column="2"/>
+                <Entry x:Name="memberFirstNameEntry" Style="{StaticResource feildStyle}" Grid.Column="2"/>
 
                 <!--Last Name-->
                 <Label x:Name="memberLastNameLabel" Text="Last Name" FontSize="20" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
-                <Entry x:Name="memberLastNameEntry"  Grid.Row="1" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
+                <Entry x:Name="memberLastNameEntry"  Grid.Row="1" Grid.Column="2" Style="{StaticResource feildStyle}"/>
 
                 <!--Salutation Name-->
                 <Label x:Name="memberSalutationNameLabel" Text="Salutation Name" FontSize="20" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
-                <Entry x:Name="memberSalutationNameEntry"  Grid.Row="2" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
+                <Entry x:Name="memberSalutationNameEntry"  Grid.Row="2" Grid.Column="2" Style="{StaticResource feildStyle}"/>
 
                 <!--Email-->
                 <Label x:Name="memberEmailLabel" Text="Email" FontSize="20" VerticalOptions="Center" Grid.Row="3" Grid.Column="1"/>
-                <Entry x:Name="memberEmailEntry"  Grid.Row="3" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
+                <Entry x:Name="memberEmailEntry"  Grid.Row="3" Grid.Column="2" Style="{StaticResource feildStyle}"/>
 
                 <!--Company-->
                 <Label x:Name="memberCompanyLabel" Text="Company" FontSize="20" VerticalOptions="Center" Grid.Row="4" Grid.Column="1"/>
-                <Entry x:Name="memberCompanyEntry" Grid.Row="4" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
+                <Entry x:Name="memberCompanyEntry" Grid.Row="4" Grid.Column="2" Style="{StaticResource feildStyle}"/>
 
                 <!--Address 1-->
                 <Label x:Name="memberAddress1Label" Text="Address 1" FontSize="20" VerticalOptions="Center" Grid.Row="5" Grid.Column="1"/>
-                <Entry x:Name="memberAddress1Entry"  Grid.Row="5" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
+                <Entry x:Name="memberAddress1Entry"  Grid.Row="5" Grid.Column="2" Style="{StaticResource feildStyle}"/>
 
                 <!--Address 2-->
                 <Label x:Name="memberAddress2Label" Text="Address 2" FontSize="20" VerticalOptions="Center" Grid.Row="6" Grid.Column="1"/>
-                <Entry x:Name="memberAddress2Entry" Grid.Row="6" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
+                <Entry x:Name="memberAddress2Entry" Grid.Row="6" Grid.Column="2" Style="{StaticResource feildStyle}"/>
 
                 <!--Address 3-->
                 <Label x:Name="memberAddress3Label" Text="Address 3" FontSize="20" VerticalOptions="Center" Grid.Row="7" Grid.Column="1"/>
-                <Entry x:Name="memberAddress3Entry" Grid.Row="7" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
+                <Entry x:Name="memberAddress3Entry" Grid.Row="7" Grid.Column="2" Style="{StaticResource feildStyle}"/>
 
                 <!--City-->
                 <Label x:Name="memberCityLabel" Text="City" FontSize="20" VerticalOptions="Center" Grid.Row="8" Grid.Column="1"/>
-                <Entry x:Name="memberCityEntry" Grid.Row="8" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
+                <Entry x:Name="memberCityEntry" Grid.Row="8" Grid.Column="2" Style="{StaticResource feildStyle}"/>
 
                 <!--Postcode-->
                 <Label x:Name="memberPostcodeLabel" Text="Postcode" FontSize="20" VerticalOptions="Center" Grid.Row="9" Grid.Column="1"/>
-                <Entry x:Name="memberPostcodeEntry" Grid.Row="9" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
+                <Entry x:Name="memberPostcodeEntry" Grid.Row="9" Grid.Column="2" Style="{StaticResource feildStyle}"/>
 
                 <!--Comment-->
                 <Label x:Name="memberCommentLabel" Text="Comment" FontSize="20" VerticalOptions="Center" Grid.Row="10" Grid.Column="1"/>
-                <Editor x:Name="memberCommentEditor" Grid.Row="10" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
+                <Editor x:Name="memberCommentEditor" Grid.Row="10" Grid.Column="2" Style="{StaticResource feildStyle}"/>
 
                 <!--Join Date-->
                 <Label x:Name="memberJoinDateLabel" Text="Join Date" FontSize="20" VerticalOptions="Center" Grid.Row="11" Grid.Column="1"/>
-                <DatePicker x:Name="memberJoindatePicker"  Grid.Row="11" Grid.Column="2" Style="{StaticResource addFeildStyle}"/>
+                <DatePicker x:Name="memberJoindatePicker"  Grid.Row="11" Grid.Column="2" Style="{StaticResource feildStyle}"/>
 
                 <Button
                     x:Name="addButton"
