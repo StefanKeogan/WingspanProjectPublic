@@ -39,6 +39,53 @@ namespace WingspanPrototype1
 
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
+            // Species
+            // Feild manditory?
+
+            // Location
+            if (Validate.FeildPopulated(wildLocationEntry.Text))
+            {
+                if (Validate.ContainsNumberOrSymbol(wildLocationEntry.Text))
+                {
+                    await DisplayAlert("Invalid Entry", "The location feild can not contain numbers or symbols", "OK");
+                    return;
+                }
+            }
+            // Required?
+
+            // Age
+            // Required?
+
+            // Sex
+            // Required?
+
+            // Metal Band
+            if (Validate.FeildPopulated(metalBandLabel.Text))
+            {
+                if (Validate.ContainsLetterOrSymbol(wildLocationEntry.Text))
+                {
+                    await DisplayAlert("Invalid Entry", "The metal band Id feild can not contain letters or symbols", "OK");
+                    return;
+                }
+            }
+            // Required?
+
+            // Band Info
+            // Required?
+
+            // Gps
+            // Required?
+
+            // Bander Name
+            if (Validate.FeildPopulated(wildBanderNameEntry.Text))
+            {
+                if (Validate.ContainsNumberOrSymbol(wildBanderNameEntry.Text))
+                {
+                    await DisplayAlert("Invalid Entry", "The bander name feild can not contain numbers or symbols", "OK");
+                    return;
+                }
+            }
+            // Required?
 
             // What type of bird are we adding?
             if (Title == "New Wild Bird")
@@ -80,6 +127,54 @@ namespace WingspanPrototype1
             }
             else if (Title == "New Captive Bird")
             {
+                // Validate 
+                // Name
+                if (Validate.FeildPopulated(captiveNameEntry.Text))
+                {
+                    if (Validate.ContainsNumberOrSymbol(captiveNameEntry.Text))
+                    {
+                        await DisplayAlert("Invalid Entry", "The name feild cant contain numbers or symbols", "OK");
+                        return;
+                    }
+                 
+                }
+                // Required?
+
+                // Band number
+                if (Validate.FeildPopulated(captiveBandNumberEntry.Text))
+                {
+                    if (Validate.ContainsLetterOrSymbol(captiveNameEntry.Text))
+                    {
+                        await DisplayAlert("Invalid Entry", "The band number feild can not contain letters or symbols", "OK");
+                        return;
+                    }
+                }
+                // Required?
+
+                // Band Number
+                // Required feild?
+
+                // Species
+                // Required feild?
+
+                // Sex
+                // Required feild?
+
+                // Age
+                // Required feild?
+
+                // Location
+                if (Validate.FeildPopulated(captiveLocationEntry.Text))
+                {
+                    if (Validate.ContainsNumberOrSymbol(captiveLocationEntry.Text))
+                    {
+                        await DisplayAlert("Invalid Entry", "The location feild can not contain numbers or symbols", "OK");
+                        return;
+                    }
+                }
+                // Required feild?
+
+                // Instantilate wingspan ID here so both add note and add bird functions can access it 
                 string wingspanId = GenerateWingspanId();
 
                 bool birdInserted = AddCaptiveBird.InsertCaptiveBirdDocument(new CaptiveBird

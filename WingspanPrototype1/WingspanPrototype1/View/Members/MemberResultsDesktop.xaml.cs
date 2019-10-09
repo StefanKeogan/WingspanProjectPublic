@@ -233,7 +233,17 @@ namespace WingspanPrototype1.View
 
             if (answer)
             {
-                await DisplayAlert("Member Deleted", "This member and their payment history have been delted", "Ok");
+                if (DeleteMember.DropDocument(id))
+                {
+                    await DisplayAlert("Member Deleted", "This member and their payment history have been delted", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
+                }
+
+                await Navigation.PopAsync();
+
             }
             else
             {

@@ -391,7 +391,7 @@
                                                         <Label Text="Category" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
                                                         <Label Text="{Binding Category}" FontAttributes="Italic" FontSize="15"/>
                                                     </StackLayout>
-                                                    <Label Text="{Binding Note}" Margin="20,0,0,0" FontSize="15"/>
+                                                    <Label Text="{Binding Comment}" Margin="20,0,0,0" FontSize="15"/>
                                                 </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
@@ -422,11 +422,15 @@
                                     <Label Text="Add Note" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Button x:Name="addNewNoteExitButton" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="AddNewNoteExitButton_Clicked"/>
                                 </StackLayout>
+
+                                <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
+                                <DatePicker x:Name="noteDatePicker" Margin="5,5,5,5"/>
+
                                 <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>
                                 <Picker x:Name="noteCategoryPicker" Margin="5,5,5,5"/>
 
                                 <Label Text="Note" FontSize="20" Margin="5,5,5,5"/>
-                                <Editor x:Name="notEditor" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+                                <Editor x:Name="noteEditor" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
 
                                 <Button
                                     x:Name="addNoteButton"

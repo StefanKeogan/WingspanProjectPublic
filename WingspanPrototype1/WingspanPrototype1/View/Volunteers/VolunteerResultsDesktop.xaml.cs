@@ -51,38 +51,38 @@ namespace WingspanPrototype1.View.Volunteers
 
             if (Validate.FeildPopulated(volunteer.Name))
             {
-                nameValueLabel.Text = volunteer.Name;
-                nameStack.IsVisible = true;
+                volunteerNameValueLabel.Text = volunteer.Name;
+                volunteerNameStack.IsVisible = true;
             }
             else
             {
-                nameStack.IsVisible = false;
-                nameEntry.IsVisible = true;
-                entries.Add(nameEntry);
+                volunteerNameStack.IsVisible = false;
+                volunteerNameEntry.IsVisible = true;
+                entries.Add(volunteerNameEntry);
             }
 
             if (Validate.FeildPopulated(volunteer.Email))
             {
-                emailValueLabel.Text = volunteer.Email;
-                emailStack.IsVisible = true;
+                volunteerEmailValueLabel.Text = volunteer.Email;
+                volunteerEmailStack.IsVisible = true;
             }
             else
             {
-                emailStack.IsVisible = false;
-                emailEntry.IsVisible = true;
-                entries.Add(emailEntry);
+                volunteerEmailStack.IsVisible = false;
+                volunteerEmailEntry.IsVisible = true;
+                entries.Add(volunteerEmailEntry);
             }
 
             if (Validate.FeildPopulated(volunteer.Mobile.ToString()))
             {
-                mobileValueLabel.Text = volunteer.Mobile.ToString();
-                mobileStack.IsVisible = true;
+                volunteerMobileValueLabel.Text = volunteer.Mobile.ToString();
+                volunteerMobileStack.IsVisible = true;
             }
             else
             {
-                mobileStack.IsVisible = false;
-                mobileEntry.IsVisible = true;
-                entries.Add(mobileEntry);
+                volunteerMobileStack.IsVisible = false;
+                volunteerMobileEntry.IsVisible = true;
+                entries.Add(volunteerMobileEntry);
             }
         }
 
@@ -118,7 +118,20 @@ namespace WingspanPrototype1.View.Volunteers
 
             if (result)
             {
-                await DisplayAlert("Volunteer Deleted", "This volunteer has been deleted", "Ok");
+                if (DeleteVolunteer.DropDocument(id))
+                {
+                    await DisplayAlert("Volunteer Deleted", "This volunteer has been deleted", "Ok");
+
+                    await Navigation.PopAsync();
+
+                    // TODO: Refresh page? 
+
+                }
+                else
+                {
+                    await DisplayAlert("Connection Error", "Unable to delete volunteer please check your connection and try again", "OK");
+                }
+                
             }
 
             // TODO: Erase volunteer, send to default page
@@ -139,9 +152,7 @@ namespace WingspanPrototype1.View.Volunteers
                 else
                 {
                     await DisplayAlert("Connection Error", "Please check your connection and try again", "Ok");
-                }
-
-            
+                }           
                 
             }
             

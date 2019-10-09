@@ -40,12 +40,12 @@ namespace WingspanPrototype1.Functions
         }
 
 
-        public static bool ContainsNumerOrSymbol(string feild)
+        public static bool ContainsNumberOrSymbol(string feild)
         {
             bool result = false;
 
-            if ((feild.Any(char.IsDigit)) &&
-                (feild.Any(char.IsPunctuation)) &&
+            if ((feild.Any(char.IsDigit)) ||
+                (feild.Any(char.IsPunctuation)) ||
                 (feild.Any(char.IsSymbol)))
             {
                 result = true;
@@ -53,6 +53,20 @@ namespace WingspanPrototype1.Functions
 
             return result;
 
+        }
+
+        public static bool ContainsLetterOrSymbol(string feild)
+        {
+            bool result = false;
+
+            if ((feild.Any(char.IsLetter)) ||
+                (feild.Any(char.IsPunctuation)) ||
+                (feild.Any(char.IsSymbol)))
+            {
+                result = true;
+            }
+
+            return result;
         }
     }
 
