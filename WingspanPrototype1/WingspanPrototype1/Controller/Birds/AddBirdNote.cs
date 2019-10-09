@@ -10,13 +10,14 @@ namespace WingspanPrototype1.Controller.Birds
     {
         public static bool InsertBirdNote(Note note)
         {
+            // Get databse
             var database = DatabaseConnection.GetDatabase();
 
+            // Get Note history collection
             var collection = database.GetCollection<BsonDocument>("NoteHistory");
 
-            try
-            {
-                var document = new BsonDocument
+            // Create document
+            var document = new BsonDocument
                 {
                     { "Date", note.Date },
                     { "Category", note.Category },
@@ -24,8 +25,10 @@ namespace WingspanPrototype1.Controller.Birds
                     { "WingspanId", note.Comment}
                 };
 
+            // Insert docunment
+            try
+            {              
                 collection.InsertOne(document);
-
                 return true;
             }
             catch (Exception)

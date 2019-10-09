@@ -11,12 +11,16 @@ namespace WingspanPrototype1.Controller.Volunteers
     {
         public static bool DropDocument(ObjectId id)
         {
+            // Get databse 
             var database = DatabaseConnection.GetDatabase();
 
+            // Get collection
             var collection = database.GetCollection<BsonDocument>("Volunteers");
 
+            // Get filter 
             var filter = Builders<BsonDocument>.Filter.Eq("_id", id);
 
+            // Delete document 
             try
             {
                 collection.DeleteOne(filter);

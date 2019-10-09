@@ -10,12 +10,16 @@ namespace WingspanPrototype1.Controller.Members
     {
         public static bool DropDocument(ObjectId id)
         {
+            // Get databse 
             var database = DatabaseConnection.GetDatabase();
 
+            // Get collection
             var collection = database.GetCollection<BsonDocument>("Members");
 
+            // Create filter
             var filter = Builders<BsonDocument>.Filter.Eq("_id", id);
 
+            // Delete document 
             try
             {
                 collection.DeleteOne(filter);

@@ -11,15 +11,19 @@ namespace WingspanPrototype1.Controller.Birds
     {
         public static bool InsertMemberDocument(Member member)
         {
+            // Create database 
             var database = DatabaseConnection.GetDatabase();
 
+            // Get collection 
             var collection = database.GetCollection<BsonDocument>("Members");
 
+            // Create document object, add default values 
             var document = new BsonDocument
-                {
+            {
                     {"JoinDate", member.JoinDate },
-                };
+            };
 
+            // Add feilds that are populated 
             if (Validate.FeildPopulated(member.FirstName)) document.Add("FirstName", member.FirstName);
             if (Validate.FeildPopulated(member.LastName)) document.Add("LastName", member.LastName);
             if (Validate.FeildPopulated(member.Email)) document.Add("Email", member.Email);
@@ -30,6 +34,7 @@ namespace WingspanPrototype1.Controller.Birds
             if (Validate.FeildPopulated(member.Postcode)) document.Add("Postcode", member.Postcode);
             if (Validate.FeildPopulated(member.Comment)) document.Add("Comment", member.Comment);
 
+            // Insert document
             try
             {               
                 collection.InsertOne(document);
