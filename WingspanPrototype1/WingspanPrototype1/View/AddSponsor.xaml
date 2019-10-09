@@ -10,7 +10,7 @@
     <ContentPage.Content>
         <ScrollView>
             <FlexLayout x:Name="addSponsorFlexLayout" AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly">
-                <Grid WidthRequest="500">
+                <Grid WidthRequest="600">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="4*"/>

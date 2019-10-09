@@ -14,6 +14,7 @@
                     <ColumnDefinition Width="6*"/>
                 </Grid.ColumnDefinitions>
 
+                
                 <!--list of search results-->
                 <ListView x:Name="resultsListView" BackgroundColor="#F0F0F0" VerticalOptions="Fill" ItemSelected="ResultsListView_ItemSelected">
                     <ListView.ItemTemplate>
@@ -71,55 +72,7 @@
                             <Label x:Name="selectSponsorNotesLabel" Text="Notes" FontSize="20" Grid.Row="5"/>
                             <Label x:Name="selectSponsorNotesValueLabel" FontSize="20" IsVisible="False" Grid.Row="5" Grid.Column="1"/>
 
-                            <!--
-                                
-                                THIS IS BREAKING THE PAGE - might need to include as a separate button, or do they need to see exisiting sponsorships on a bird
-                                IF SO, this might need to be a separate fucntion altogether -->
-                            
-                            
-                            <!--List of active sponsorships
-                            <Grid x:Name="currentSponsorshipGrid" Grid.Row="7" Grid.ColumnSpan="2" VerticalOptions="Center" HorizontalOptions="Center">
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                    <ColumnDefinition/>
-                                </Grid.ColumnDefinitions>
-
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition/>
-                                </Grid.RowDefinitions>
-
-                                <Column headings heading
-                                <Label Text="WINGSPAN ID" HorizontalTextAlignment="Center" FontSize="15" FontAttributes="Bold"/>
-                                <Label Text="CATEGORY" HorizontalTextAlignment="Center" FontSize="15" FontAttributes="Bold" Grid.Column="1"/>
-                                <Label Text="TERM END" HorizontalTextAlignment="Center" FontSize="15" FontAttributes="Bold" Grid.Column="2"/>
-
-                                
-                                
-                                <StackLayout Grid.Row="1">
-                                    <ListView ItemsSource="{Binding Sponsorship}" HasUnevenRows="True">
-                                        <ListView.ItemTemplate>
-                                            <DataTemplate>
-                                                <ViewCell>
-                                                    <Grid>
-                                                        <Grid.ColumnDefinitions>
-                                                            <ColumnDefinition/>
-                                                            <ColumnDefinition/>
-                                                            <ColumnDefinition/>
-                                                        </Grid.ColumnDefinitions>
-                                                        <Label Grid.Column="0" Text="{Binding WingspanId}" FontSize="15"/>
-                                                        <Label Grid.Column="1" Text="{Binding SponsorshipCategory}" FontSize="15"/>
-                                                        <Label Grid.Column="2" Text="{Binding SponsorshipEnd}" FontSize="15"/>
-                                                    </Grid>
-                                                </ViewCell>
-                                            </DataTemplate>
-                                        </ListView.ItemTemplate>
-                                    </ListView>
-                                </StackLayout>
-                                
-                            </Grid>-->
-                        <!--button at the bottom -->
+                            <!--button at the bottom -->
                         <Button x:Name="thisSponsorButton"
                                 Grid.Row="7"
                                 Grid.ColumnSpan="2"
@@ -130,7 +83,6 @@
                                 BorderWidth="3"
                                 CornerRadius="5"
                                 FontSize="20" 
-                                Margin="20,0"
                                 WidthRequest="150"
                                 Clicked="ThisSponsorButton_Clicked"/>
 
