@@ -44,19 +44,19 @@
     <Compile Update="View\Birds\BirdResultsMobile2.xaml.cs">
       <DependentUpon>BirdResultsMobile2.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\EditSponsorResultsDesktop.xaml.cs">
+    <Compile Update="View\Sponsors\EditSponsorResultsDesktop.xaml.cs">
       <DependentUpon>EditSponsorResultsDesktop.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\Members\AddMemberForm.xaml.cs">
       <DependentUpon>AddMemberForm.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\SelectBirdResultsDesktop.xaml.cs">
+    <Compile Update="View\Birds\SelectBirdResultsDesktop.xaml.cs">
       <DependentUpon>SelectBirdResultsDesktop.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\SelectSponsorResultsDesktop.xaml.cs">
+    <Compile Update="View\Sponsors\SelectSponsorResultsDesktop.xaml.cs">
       <DependentUpon>SelectSponsorResultsDesktop.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\EditSponsorshipResultsDesktop.xaml.cs">
+    <Compile Update="View\Sponsorships\EditSponsorshipResultsDesktop.xaml.cs">
       <DependentUpon>EditSponsorshipResultsDesktop.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\Volunteers\AddVolunteerForm.xaml.cs">
@@ -65,7 +65,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Update="View\AddSponsor.xaml">
+    <EmbeddedResource Update="View\Sponsors\AddSponsor.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Birds\AddBirdForm.xaml">
@@ -77,16 +77,16 @@
     <EmbeddedResource Update="View\Birds\AddBirdNoteMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\EditSponsorResultsMobile1.xaml">
+    <EmbeddedResource Update="View\Sponsors\EditSponsorResultsMobile1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\EditSponsorResultsMobile2.xaml">
+    <EmbeddedResource Update="View\Sponsors\EditSponsorResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\EditSponsorshipResultsMobile1.xaml">
+    <EmbeddedResource Update="View\Sponsorships\EditSponsorshipResultsMobile1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\EditSponsorshipResultsMobile2.xaml">
+    <EmbeddedResource Update="View\Sponsorships\EditSponsorshipResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Members\AddMemberForm.xaml">
@@ -128,31 +128,31 @@
     <EmbeddedResource Update="View\Birds\BirdResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\SelectBirdResultsMobile1.xaml">
+    <EmbeddedResource Update="View\Birds\SelectBirdResultsMobile1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\SelectBirdResultsMobile2.xaml">
+    <EmbeddedResource Update="View\Birds\SelectBirdResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\SelectSponsorResultsMobile1.xaml">
+    <EmbeddedResource Update="View\Sponsors\SelectSponsorResultsMobile1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\SelectSponsorResultsMobile2.xaml">
+    <EmbeddedResource Update="View\Sponsors\SelectSponsorResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Volunteers\AddVolunteerForm.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\EditSponsorResultsDesktop.xaml">
+    <EmbeddedResource Update="View\Sponsors\EditSponsorResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\EditSponsorshipResultsDesktop.xaml">
+    <EmbeddedResource Update="View\Sponsorships\EditSponsorshipResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\SelectBirdResultsDesktop.xaml">
+    <EmbeddedResource Update="View\Birds\SelectBirdResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\SelectSponsorResultsDesktop.xaml">
+    <EmbeddedResource Update="View\Sponsors\SelectSponsorResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Volunteers\VolunteerResultsMobile1.xaml">
