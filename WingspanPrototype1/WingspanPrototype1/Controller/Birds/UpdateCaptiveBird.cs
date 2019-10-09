@@ -38,7 +38,7 @@ namespace WingspanPrototype1.Controller.Birds
                             if (entry.StyleId == "captiveNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Name", entry.Text));
                             if (entry.StyleId == "captiveBandNumberEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("BandNumber", entry.Text));
                             if (entry.StyleId == "captiveLocationEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Location", entry.Text));
-                            if (entry.StyleId == "captiveResultEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Reault", entry.Text));
+                            if (entry.StyleId == "captiveResultEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Result", entry.Text));
 
                         }
                     }

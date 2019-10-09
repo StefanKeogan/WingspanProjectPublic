@@ -12,16 +12,21 @@ namespace WingspanPrototype1.Controller.Volunteers
     {
         public static bool UpdateDocument(ObjectId id, List<Entry> entries)
         {
+            // Get database 
             var database = DatabaseConnection.GetDatabase();
 
+            // Get collection 
             var collection = database.GetCollection<BsonDocument>("Volunteers");
 
+            // Create update builder 
             var updateBuilder = Builders<BsonDocument>.Update;
 
+            // Is our collection null?
             if (collection != null)
             {
                 foreach (var entry in entries)
                 {
+                    // Update document id entries are populated 
                     if (Validate.FeildPopulated(entry.Text))
                     {
                         if (entry.StyleId == "emailEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Email", entry.Text));

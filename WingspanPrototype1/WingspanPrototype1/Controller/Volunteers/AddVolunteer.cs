@@ -11,8 +11,10 @@ namespace WingspanPrototype1.Controller.Volunteers
     {
         public static bool InsertVolunteerDocument(Volunteer volunteer)
         {
+            // Get database 
             var database = DatabaseConnection.GetDatabase();
 
+            // Get collection
             var collection = database.GetCollection<BsonDocument>("Volunteers");
 
             // Insert required feilds 

@@ -90,6 +90,7 @@ namespace WingspanPrototype1
 
                     ArrayList birdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);
 
+                    // TODO: Try Catch
                     if ((birdResults != null) || (birdResults.Count < 1))
                     {
                         // If no feilds are invalid run the search

@@ -60,9 +60,9 @@ namespace WingspanPrototype1
             // Required?
 
             // Metal Band
-            if (Validate.FeildPopulated(metalBandLabel.Text))
+            if (Validate.FeildPopulated(wildMetalBandIdEntry.Text))
             {
-                if (Validate.ContainsLetterOrSymbol(wildLocationEntry.Text))
+                if (Validate.ContainsLetterOrSymbol(wildMetalBandIdEntry.Text))
                 {
                     await DisplayAlert("Invalid Entry", "The metal band Id feild can not contain letters or symbols", "OK");
                     return;
@@ -90,9 +90,10 @@ namespace WingspanPrototype1
             // What type of bird are we adding?
             if (Title == "New Wild Bird")
             {
+                // TODO Dynamic wild bird object 
                 // Insert record, return outcome
                 bool inserted = AddWildBird.InsertWildBirdDocumnet( new WildBird {
-                    WingspanId = GenerateWingspanId(),
+                    WingspanId = "W" + GenerateWingspanId.NewId(),
                     Species = wildSpeciesPicker.SelectedItem.ToString(),
                     Location = wildLocationEntry.Text,
                     Age = wildAgePicker.SelectedItem.ToString(),
@@ -175,7 +176,7 @@ namespace WingspanPrototype1
                 // Required feild?
 
                 // Instantilate wingspan ID here so both add note and add bird functions can access it 
-                string wingspanId = GenerateWingspanId();
+                string wingspanId = GenerateWingspanId.NewId();
 
                 bool birdInserted = AddCaptiveBird.InsertCaptiveBirdDocument(new CaptiveBird
                 {
@@ -234,21 +235,7 @@ namespace WingspanPrototype1
                 // TODO: Error message 
             }
             
-        }
-
-        private string GenerateWingspanId()
-        {
-            // TODO: Trim date 
-            int year = DateTime.Today.Year;
-
-            // TODO: Get number source
-            int number = 12;
-
-            string wingspanId = year.ToString() + "/" + number.ToString();
-
-            return wingspanId;
-
-        }
+        }       
 
     }
 }

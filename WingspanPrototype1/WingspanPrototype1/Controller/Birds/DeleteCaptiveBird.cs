@@ -10,12 +10,16 @@ namespace WingspanPrototype1.Controller.Birds
     {
         public static bool DropDocument(ObjectId id)
         {
+            // Get database
             var database = DatabaseConnection.GetDatabase();
 
+            // Get Captive birds collection
             var collection = database.GetCollection<BsonDocument>("CaptiveBirds");
 
+            // Build filter
             var filter = Builders<BsonDocument>.Filter.Eq("_id", id);
 
+            // Delete document
             try
             {
                 collection.DeleteOne(filter);

@@ -1,7 +1,10 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WingspanPrototype1.Model;
 
 namespace WingspanPrototype1.Controller.Birds
 {
@@ -11,8 +14,10 @@ namespace WingspanPrototype1.Controller.Birds
         {
             var database = DatabaseConnection.GetDatabase();
 
-            var collection = database.GetCollection<BsonDocument>("WildBirds");
+            
 
+            var collection = database.GetCollection<BsonDocument>("WildBirds");
+            
             // Insert auto generated / default feilds 
             var document = new BsonDocument
                 {
@@ -30,6 +35,7 @@ namespace WingspanPrototype1.Controller.Birds
             if (bird.Gps != null) document.Add("Gps", bird.Gps);
             if (bird.BanderName != null) document.Add("BanderName", bird.BanderName);
 
+            // Insert document
             try
             {                            
                 collection.InsertOne(document);
@@ -40,7 +46,7 @@ namespace WingspanPrototype1.Controller.Birds
                 return false;
             }
 
-        }        
+        }
 
     }
 

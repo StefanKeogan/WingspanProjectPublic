@@ -1,4 +1,6 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -11,7 +13,7 @@ namespace WingspanPrototype1.Controller.Birds
         public static bool InsertCaptiveBirdDocument(CaptiveBird bird)
 
         {
-            var database = DatabaseConnection.GetDatabase();
+            var database = DatabaseConnection.GetDatabase();         
 
             var collection = database.GetCollection<BsonDocument>("CaptiveBirds");
 
@@ -31,6 +33,7 @@ namespace WingspanPrototype1.Controller.Birds
             if (bird.Age != null) document.Add("Age", bird.Age);
             if (bird.Location != null) document.Add("Location", bird.Location);
 
+            // Insert document 
             try
             {                               
                 collection.InsertOne(document);
