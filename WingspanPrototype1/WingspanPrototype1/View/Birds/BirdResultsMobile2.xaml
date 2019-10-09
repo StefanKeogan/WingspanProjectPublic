@@ -456,6 +456,10 @@
                                     <Label Text="Add Location" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Button x:Name="addNewLocationExitButton" BackgroundColor="#5C3838"  Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="AddNewLocationExitButton_Clicked"/>
                                 </StackLayout>
+
+                                <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
+                                <DatePicker x:Name="noteDatePicker" Margin="5,5,5,5"/>
+
                                 <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>
                                 <Picker x:Name="locationCategoryPicker" Margin="5,5,5,5"/>
 

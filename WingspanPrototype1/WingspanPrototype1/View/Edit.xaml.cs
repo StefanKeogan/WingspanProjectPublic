@@ -81,7 +81,7 @@ namespace WingspanPrototype1
                     // Has the name feild been filled in  
                     if (Validate.FeildPopulated(birdNameEntry.Text)) 
                     {
-                        if (Validate.ContainsNumerOrSymbol(birdNameEntry.Text)) // Does the name feild contain an invalid symblo
+                        if (Validate.ContainsNumberOrSymbol(birdNameEntry.Text)) // Does the name feild contain an invalid symblo
                         {
                             DisplayAlert("Invalid Name Value", "The name feild can not contain numbers or symbols", "OK");
                             return;
@@ -90,7 +90,7 @@ namespace WingspanPrototype1
 
                     ArrayList birdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);
 
-                    if (birdResults != null)
+                    if ((birdResults != null) || (birdResults.Count < 1))
                     {
                         // If no feilds are invalid run the search
                         if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
@@ -128,7 +128,7 @@ namespace WingspanPrototype1
                     // Is the first name feild filled in 
                     if (Validate.FeildPopulated(memberFirstNameEntry.Text))
                     {
-                        if (Validate.ContainsNumerOrSymbol(memberFirstNameEntry.Text))
+                        if (Validate.ContainsNumberOrSymbol(memberFirstNameEntry.Text))
                         {
                             DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
                             return;
@@ -138,7 +138,7 @@ namespace WingspanPrototype1
                     // Is the last name feild filled in 
                     if (Validate.FeildPopulated(memberLastNameEntry.Text))
                     {
-                        if (Validate.ContainsNumerOrSymbol(memberLastNameEntry.Text))
+                        if (Validate.ContainsNumberOrSymbol(memberLastNameEntry.Text))
                         {
                             DisplayAlert("Invalid Last Name Value", "The first name feild can not contain numbers or symbols", "OK");
                             return;
@@ -149,7 +149,7 @@ namespace WingspanPrototype1
                     if (Validate.FeildPopulated(salutationNameEntry.Text))
                     {
                         // Does this feild contaiin any numbers or special characters
-                        if (Validate.ContainsNumerOrSymbol(salutationNameEntry.Text))
+                        if (Validate.ContainsNumberOrSymbol(salutationNameEntry.Text))
                         {
                             DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
                             return;
@@ -159,7 +159,7 @@ namespace WingspanPrototype1
                     // Search Memebers
                     List<Member> memberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
 
-                    if (memberResults != null)
+                    if ((memberResults != null) || (memberResults.Count < 1))
                     {
                         // Results have been returned push the results page 
                         if (DeviceSize.ScreenArea() <= 783457)
@@ -190,7 +190,7 @@ namespace WingspanPrototype1
                     if (Validate.FeildPopulated(sponsorNameEntry.Text))
                     {
                         // Does the sponsor name feild contain any numbers or symbols 
-                        if (Validate.ContainsNumerOrSymbol(sponsorNameEntry.Text))
+                        if (Validate.ContainsNumberOrSymbol(sponsorNameEntry.Text))
                         {
                             DisplayAlert("Invalid Sponsor Name Value", "The sponsor name feild can not contain numbers or symbols", "OK");
                             return;
@@ -227,7 +227,7 @@ namespace WingspanPrototype1
                     if (Validate.FeildPopulated(sponsorshipWingspanIdEntry.Text))
                     {
                         // Does the wingspan Id feild contain any numbers or symbols 
-                        if (Validate.ContainsNumerOrSymbol(sponsorshipWingspanIdEntry.Text))
+                        if (Validate.ContainsNumberOrSymbol(sponsorshipWingspanIdEntry.Text))
                         {
                             DisplayAlert("Invalid Winspan Id Value", "The sponsor name feild can not contain numbers or symbols", "OK");
                             return;
@@ -238,7 +238,7 @@ namespace WingspanPrototype1
                     if (Validate.FeildPopulated(sponsorshipSponsorEntry.Text))
                     {
                         // Does the sponsor name feild contain any numbers or symbols 
-                        if (Validate.ContainsNumerOrSymbol(sponsorshipSponsorEntry.Text))
+                        if (Validate.ContainsNumberOrSymbol(sponsorshipSponsorEntry.Text))
                         {
                             DisplayAlert("Invalid Sponsor Name Value", "The sponsor name feild can not contain numbers or symbols", "OK");
                             return;
@@ -267,7 +267,7 @@ namespace WingspanPrototype1
 
                     if (Validate.FeildPopulated(volunteerNameEntry.Text))
                     {
-                        if (Validate.ContainsNumerOrSymbol(volunteerNameEntry.Text))
+                        if (Validate.ContainsNumberOrSymbol(volunteerNameEntry.Text))
                         {
                             DisplayAlert("Invalid Volunteer Name Value", "The volunteer name feild can not contain numbers or symbols", "OK");
                             return;
@@ -276,7 +276,7 @@ namespace WingspanPrototype1
 
                     List<Volunteer> volunteerResults = SearchVolunteers.Search(volunteerEmailEntry.Text, volunteerNameEntry.Text);
 
-                    if (volunteerResults != null)
+                    if ((volunteerResults != null) || (volunteerResults.Count < 1))
                     {
                         if (DeviceSize.ScreenArea() <= 783457)
                         {

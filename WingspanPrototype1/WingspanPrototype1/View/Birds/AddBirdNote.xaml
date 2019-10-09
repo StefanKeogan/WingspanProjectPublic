@@ -45,6 +45,11 @@
                 </Grid.RowDefinitions>
 
                 <StackLayout Margin="30,30,30,30">
+                    <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
+                    <DatePicker x:Name="noteDateicker" Margin="5,5,5,5"/>
+                </StackLayout>
+
+                <StackLayout Margin="30,30,30,30">
                     <Label Text="Category" FontSize="20"  Margin="5,5,5,5"/>
                     <Picker x:Name="categoryPicker" HorizontalOptions="FillAndExpand"   Margin="5,5,5,5"/>
                 </StackLayout>

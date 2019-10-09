@@ -47,7 +47,7 @@ namespace WingspanPrototype1.Controller.Members
                     }
 
                     // Are we updating the comment feild?
-                    if (Validate.FeildPopulated(editor.Text))
+                    if (editor != null)
                     {
                         collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Comment", editor.Text));
                     }

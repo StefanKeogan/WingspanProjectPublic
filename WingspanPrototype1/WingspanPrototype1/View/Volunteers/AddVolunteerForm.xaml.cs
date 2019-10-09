@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WingspanPrototype1.Controller.Volunteers;
+using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -22,6 +23,26 @@ namespace WingspanPrototype1.View.Volunteers
 
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
+            if (Validate.FeildPopulated(nameEntry.Text))
+            {
+                if (Validate.ContainsNumberOrSymbol(nameEntry.Text))
+                {
+                    await DisplayAlert("Invalid Format", "The first name feild can not contain letters or symbols", "OK");
+                    return;
+                }
+            }
+            else
+            {
+                await DisplayAlert("Empty Feild", "Please fill in the first name feild", "OK");
+                return;
+            }
+
+            // Mobile 
+            // Required feild? 
+
+            // Email 
+            // Required feild
+
             // Insert volunteer document
             bool inserted = AddVolunteer.InsertVolunteerDocument(new Volunteer
             {

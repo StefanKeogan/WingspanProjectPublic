@@ -9,6 +9,7 @@ using Xamarin.Forms.Xaml;
 using WingspanPrototype1.Controller;
 using WingspanPrototype1.Controller.Birds;
 using WingspanPrototype1.Model;
+using WingspanPrototype1.Functions;
 
 namespace WingspanPrototype1.View
 {
@@ -26,6 +27,83 @@ namespace WingspanPrototype1.View
 
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
+            // TODO: Discuss manditory feilds
+
+            // First Name Validation
+            if (Validate.FeildPopulated(memberFirstNameEntry.Text))
+            {
+                if (Validate.ContainsNumberOrSymbol(memberFirstNameEntry.Text))
+                {
+                    await DisplayAlert("Invalid Entry", "First Name feild can not contain numbers or symbols", "OK");
+                    return;
+                }
+            }
+            // Manditory?
+
+            // Last Name Validation
+            if (Validate.FeildPopulated(memberLastNameEntry.Text))
+            {
+                if (Validate.ContainsNumberOrSymbol(memberLastNameEntry.Text))
+                {
+                    await DisplayAlert("Invalid Entry", "Last Name feild can not contain numbers or symbols", "OK");
+                    return;
+                }
+            }
+            // Manditory?
+
+            // Salutation Name Validation
+            if (Validate.FeildPopulated(memberLastNameEntry.Text))
+            {
+                if (Validate.ContainsNumberOrSymbol(memberLastNameEntry.Text))
+                {
+                    await DisplayAlert("Invalid Entry", "Salutation Name feild can not contain numbers or symbols", "OK");
+                    return;
+                }
+            }
+
+            // Email Name Validation
+            // Check if manditory?
+
+            // Company
+            // Check if manditory
+
+            // Address 1
+            // Check if manditory
+
+            // Address 2
+            // Check if manditory
+
+            // Address 3
+            // Check if manditory
+
+            // City 
+            if (Validate.FeildPopulated(memberCityEntry.Text))
+            {
+                if (Validate.ContainsNumberOrSymbol(memberCityEntry.Text))
+                {
+                    await DisplayAlert("Invalid Entry", "City feild can not contain numbers or symbols", "OK");
+                    return;
+                }
+            }
+            // Manditory?
+
+            // Postcode 
+            if (Validate.FeildPopulated(memberPostcodeEntry.Text))
+            {
+                if (Validate.ContainsLetterOrSymbol(memberPostcodeEntry.Text))
+                {
+                    await DisplayAlert("Invalid Entry", "Postcode feild can not contain letters or symbols", "OK");
+                    return;
+                }
+                // Larger than 4?
+            }
+            // Manditory?
+
+            // Comment
+            // Check if maditory
+
+
+            // TODO: Dynamic member document?
             bool memberInserted = AddMember.InsertMemberDocument(new Member
             {
                 FirstName = memberFirstNameEntry.Text,

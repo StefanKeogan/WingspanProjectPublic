@@ -46,72 +46,70 @@
                     </Grid.RowDefinitions>
 
                     <!--Name-->
-                    <Label x:Name="nameLabel" Text="First Name" FontSize="20" Grid.Row="1"/>
-                    <StackLayout x:Name="nameStack" Orientation="Horizontal" IsVisible="False" Grid.Row="1" Grid.Column="1">
-                        <Label x:Name="nameValueLabel" FontSize="20"/>
-                        <Button x:Name="nameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    <Label x:Name="volunteerNameLabel" Text="First Name" FontSize="20" Grid.Row="1"/>
+                    <StackLayout x:Name="volunteerNameStack" Orientation="Horizontal" IsVisible="False" Grid.Row="1" Grid.Column="1">
+                        <Label x:Name="volunteerNameValueLabel" FontSize="20"/>
+                        <Button x:Name="volunteerNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="nameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="volunteerNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" IsVisible="False"/>
 
 
                     <!--Mobile-->
-                    <Label x:Name="mobileLabel" Text="Mobile" FontSize="20" Grid.Row="2"/>
-                    <StackLayout x:Name="mobileStack" Orientation="Horizontal"  IsVisible="False" Grid.Row="2" Grid.Column="1">
-                        <Label x:Name="mobileValueLabel" FontSize="20"/>
-                        <Button x:Name="mobileEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    <Label x:Name="volunteerMobileLabel" Text="Mobile" FontSize="20" Grid.Row="2"/>
+                    <StackLayout x:Name="volunteerMobileStack" Orientation="Horizontal"  IsVisible="False" Grid.Row="2" Grid.Column="1">
+                        <Label x:Name="volunteerMobileValueLabel" FontSize="20"/>
+                        <Button x:Name="volunteerMobileEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="mobileEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="volunteerMobileEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
 
                     <!--Email-->
-                    <Label x:Name="emailLabel" Text="Email" FontSize="20" Grid.Row="3"/>
-                    <StackLayout x:Name="emailStack" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" IsVisible="False">
-                        <Label x:Name="emailValueLabel" Text="GPS" FontSize="20"/>
-                        <Button x:Name="emailEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    <Label x:Name="volunteerEmailLabel" Text="Email" FontSize="20" Grid.Row="3"/>
+                    <StackLayout x:Name="volunteerEmailStack" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" IsVisible="False">
+                        <Label x:Name="volunteerEmailValueLabel" Text="GPS" FontSize="20"/>
+                        <Button x:Name="volunteerEmailEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="emailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
-
-                   
+                    <Entry x:Name="volunteerEmailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
 
                 </Grid>
 
                 <!--Buttons-->
                 <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Margin="0,5">
                     <Button  
-                            x:Name="deleteButton"
-                            Grid.ColumnSpan="2" 
-                            Text="Delete" 
-                            BackgroundColor="#FFD966"
-                            BorderColor="#5C3838"
-                            BorderWidth="3"
-                            CornerRadius="5"
-                            FontSize="20" 
-                            HorizontalOptions="Center"
-                            WidthRequest="150"
-                            Clicked="DeleteButton_Clicked"/>
+                        x:Name="deleteButton"
+                        Grid.ColumnSpan="2" 
+                        Text="Delete" 
+                        BackgroundColor="#FFD966"
+                        BorderColor="#5C3838"
+                        BorderWidth="3"
+                        CornerRadius="5"
+                        FontSize="20" 
+                        HorizontalOptions="Center"
+                        WidthRequest="150"
+                        Clicked="DeleteButton_Clicked"/>
 
                     <Button  
-                            x:Name="saveChangesButton"
-                            Text="Save Changes" 
-                            BackgroundColor="#FFD966"
-                            BorderColor="#5C3838"
-                            BorderWidth="3"
-                            CornerRadius="5"
-                            FontSize="20" 
-                            HorizontalOptions="Center"
-                            WidthRequest="150"
-                            Clicked="SaveChangesButton_Clicked"/>
+                        x:Name="saveChangesButton"
+                        Text="Save Changes" 
+                        BackgroundColor="#FFD966"
+                        BorderColor="#5C3838"
+                        BorderWidth="3"
+                        CornerRadius="5"
+                        FontSize="20" 
+                        HorizontalOptions="Center"
+                        WidthRequest="150"
+                        Clicked="SaveChangesButton_Clicked"/>
 
                     <Button  
-                            x:Name="hoursHistoryButton"
-                            Text="Hours History" 
-                            BackgroundColor="#FFD966"
-                            BorderColor="#5C3838"
-                            BorderWidth="3"
-                            CornerRadius="5"
-                            FontSize="20" 
-                            HorizontalOptions="Center"
-                            WidthRequest="200"
-                            Clicked="HoursHistoryButton_Clicked"/>
+                        x:Name="hoursHistoryButton"
+                        Text="Hours History" 
+                        BackgroundColor="#FFD966"
+                        BorderColor="#5C3838"
+                        BorderWidth="3"
+                        CornerRadius="5"
+                        FontSize="20" 
+                        HorizontalOptions="Center"
+                        WidthRequest="200"
+                        Clicked="HoursHistoryButton_Clicked"/>
                 </StackLayout>
 
                 <!--Volunteer Hours History-->
