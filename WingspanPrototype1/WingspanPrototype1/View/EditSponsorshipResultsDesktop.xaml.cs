@@ -63,39 +63,39 @@ namespace WingspanPrototype1.View
             if ((sponsorship.SponsorshipCategory != string.Empty) && (sponsorship.SponsorshipCategory != null))
             {
                 editCategoryLabel.Text = sponsorship.SponsorshipCategory;
-                //editsponsorshipCategoryStack.IsVisible = true;
-                editCategorySelector.IsVisible = false;
+                editCategoryStack.IsVisible = true;
+                editCategoryPicker.IsVisible = false;
             }
             else
             {
-                editCategorySelector.IsVisible = true;
-                //editsponsorshipCategoryStack.IsVisible = false;
+                editCategoryPicker.IsVisible = true;
+                editCategoryStack.IsVisible = false;
             }
 
             // Sponsorship start date
-            if (sponsorship.SponsorshipStart != null)
+            if ((sponsorship.SponsorshipStart.ToString() != string.Empty) && (sponsorship.SponsorshipStart != null))
             {
                 editSponsorshipStartLabel.Text = sponsorship.SponsorshipStart.ToString();
-                //sponsorshipStartStack.IsVisible = true;
-                editSponsorshipStartEdit.IsVisible = false;
+                editSponsorshipStartStack.IsVisible = true;
+                editSponsorshipStartPicker.IsVisible = false;
             }
             else
             {
-                editSponsorshipStartEdit.IsVisible = true;
-                //sponsorshipStartStack.IsVisible = false;
+                editSponsorshipStartPicker.IsVisible = true;
+                editSponsorshipStartStack.IsVisible = false;
             }
 
             // Sponsorship end date
-            if (sponsorship.SponsorshipEnd != null)
+            if ((sponsorship.SponsorshipEnd.ToString() != string.Empty) && (sponsorship.SponsorshipEnd != null))
             {
                 editSponsorshipEndLabel.Text = sponsorship.SponsorshipEnd.ToString();
-                //sponsorshipEndStack.IsVisible = true;
-                editSponsorshipEndEdit.IsVisible = false;
+                editSponsorshipEndStack.IsVisible = true;
+                editSponsorshipEndPicker.IsVisible = false;
             }
             else
             {
-                editSponsorshipEndEdit.IsVisible = true;
-                //sponsorshipEndStack.IsVisible = false;
+                editSponsorshipEndPicker.IsVisible = true;
+                editSponsorshipEndStack.IsVisible = false;
             }
 
             // Sponsor ID

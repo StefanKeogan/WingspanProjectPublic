@@ -20,7 +20,7 @@ namespace WingspanPrototype1
         private List<Entry> entries;
         private List<Picker> pickers;
         private Type birdType;
-444
+
         public BirdResultsDesktop(ArrayList results)
         {
             InitializeComponent();          

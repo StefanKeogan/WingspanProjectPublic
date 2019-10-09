@@ -295,7 +295,7 @@
                             <DatePicker x:Name="captiveDateDepartedPicker" Grid.Row="9" IsVisible="False" Grid.Column="1"/>
 
                             <!--Date Deceased-->
-                            <Label x:Name="cpativeDateDeceasedLabel" Text="Date Deceased" FontSize="20" Grid.Row="10"/>
+                            <Label x:Name="captiveDateDeceasedLabel" Text="Date Deceased" FontSize="20" Grid.Row="10"/>
                             <StackLayout x:Name="captiveDatedeceasedStack" Orientation="Horizontal" Grid.Row="10" Grid.Column="1" IsVisible="False">
                                 <Label x:Name="captiveDateDeceasedValueLabel" FontSize="20"/>
                                 <Button x:Name="captiveDateDeceasedEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>

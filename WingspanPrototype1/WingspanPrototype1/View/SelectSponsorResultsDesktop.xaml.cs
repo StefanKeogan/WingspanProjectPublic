@@ -32,7 +32,7 @@ namespace WingspanPrototype1.View
 
         private void DisplaySponsor(Sponsor sponsor)
         {
-            // Sponsor ID
+            // display Sponsor ID
             if ((sponsor.SponsorID != string.Empty) && (sponsor.SponsorID != null))
             {
                 selectSponsorIDValueLabel.Text = sponsor.SponsorID;
@@ -43,7 +43,7 @@ namespace WingspanPrototype1.View
                 selectSponsorIDValueLabel.IsVisible = false;
             }
 
-            // Sponsor name
+            // display Sponsor name
             if ((sponsor.SponsorName != string.Empty) && (sponsor.SponsorName != null))
             {
                 selectSponsorNameValueLabel.Text = sponsor.SponsorName;
@@ -54,7 +54,7 @@ namespace WingspanPrototype1.View
                 selectSponsorNameValueLabel.IsVisible = false;
             }
 
-            // Sponsor address
+            // display Sponsor address, if there is one
             if ((sponsor.SponsorAddress != string.Empty) && (sponsor.SponsorAddress != null))
             {
                 selectSponsorAddressValueLabel.Text = sponsor.SponsorAddress;
@@ -65,7 +65,7 @@ namespace WingspanPrototype1.View
                 selectSponsorAddressValueLabel.IsVisible = false;
             }
 
-            // Sponsor phone
+            // display Sponsor phone, if there is one
             if ((sponsor.SponsorPhone != string.Empty) && (sponsor.SponsorPhone != null))
             {
                 selectSponsorPhoneValueLabel.Text = sponsor.SponsorPhone;
@@ -76,7 +76,7 @@ namespace WingspanPrototype1.View
                 selectSponsorPhoneValueLabel.IsVisible = false;
             }
 
-            // Sponsor email
+            // display Sponsor email, if there is one
             if ((sponsor.SponsorEmail != string.Empty) && (sponsor.SponsorEmail != null))
             {
                 selectSponsorEmailValueLabel.Text = sponsor.SponsorEmail;
@@ -87,7 +87,7 @@ namespace WingspanPrototype1.View
                 selectSponsorEmailValueLabel.IsVisible = false;
             }
 
-            // Sponsor notes
+            // display any Sponsor notes
             if ((sponsor.SponsorNotes != string.Empty) && (sponsor.SponsorNotes != null))
             {
                 selectSponsorNotesValueLabel.Text = sponsor.SponsorNotes;
@@ -99,7 +99,7 @@ namespace WingspanPrototype1.View
             }
         }
 
-        //button to update with this sponsor's name 
+        //button to update with this sponsor 
         private async void ThisSponsorButton_Clicked(object sender, EventArgs e)
         {
             await DisplayAlert("Sponsor added", "", "OK");
