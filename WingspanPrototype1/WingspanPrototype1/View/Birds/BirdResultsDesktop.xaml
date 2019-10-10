@@ -36,10 +36,13 @@
                 
                 <ContentView x:Name="wildBirdDisplayForm" Grid.Column="1" Margin="20,5,20,5" IsVisible="False">
                     <ContentView.Content>
-                        <Grid>
+                        <ScrollView VerticalOptions="Center">
+                            <Grid HeightRequest="500">
                             <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2*"/>
                                 <ColumnDefinition Width="3*"/>
+                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"/>
@@ -58,20 +61,20 @@
                             </Grid.RowDefinitions>
 
                             <!--Wingspan Id-->
-                            <Label x:Name="wildWingspanIdLabel" Text="Wingspan Id" FontSize="20"/>
-                            <StackLayout x:Name="wildWingspanIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
+                            <Label x:Name="wildWingspanIdLabel" Text="Wingspan Id" Style="{StaticResource resultLabelStyle}"/>
+                            <StackLayout x:Name="wildWingspanIdStack" Style="{StaticResource resultStackStyle}" IsVisible="False">
                                 <Label x:Name="wildWingspanIdValueLabel" FontSize="20"/>
                                 <Button x:Name="wildWingspanIdEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
-                            <Entry x:Name="wildWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
+                            <Entry x:Name="wildWingspanIdEntry" Style="{StaticResource resultFeildStyle}" IsVisible="False"/>
                             
                             <!--Species-->
-                            <Label x:Name="wildSpeciesLabel" Text="Species" FontSize="20" Grid.Row="1"/>
-                            <StackLayout x:Name="wildSpeciesStack" Orientation="Horizontal" IsVisible="False" Grid.Row="1" Grid.Column="1">
+                            <Label x:Name="wildSpeciesLabel" Text="Species" Style="{StaticResource resultLabelStyle}" Grid.Row="1"/>
+                            <StackLayout x:Name="wildSpeciesStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="1">
                                 <Label x:Name="wildSpeciesValueLabel" FontSize="20"/>
                                 <Button x:Name="wildSpeciesEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
-                            <Picker x:Name="wildSpeciesPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" IsVisible="False">
+                            <Picker x:Name="wildSpeciesPicker" Style="{StaticResource resultFeildStyle}" Grid.Row="1" IsVisible="False">
                                 <Picker.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
                                         <x:String>Falcon</x:String>
@@ -82,28 +85,28 @@
                             </Picker>
 
                             <!--Location-->
-                            <Label x:Name="wildLocationLabel" Text="Location" FontSize="20" Grid.Row="2"/>
-                            <StackLayout x:Name="wildLocationStack" Orientation="Horizontal"  IsVisible="False" Grid.Row="2" Grid.Column="1">
+                            <Label x:Name="wildLocationLabel" Text="Location" Style="{StaticResource resultLabelStyle}" Grid.Row="2"/>
+                            <StackLayout x:Name="wildLocationStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="2" >
                                 <Label x:Name="wildLocationValueLabel" FontSize="20"/>
                                 <Button x:Name="wildLocationEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
-                            <Entry x:Name="wildLocationEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
+                            <Entry x:Name="wildLocationEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="2"  IsVisible="False"/>
 
                             <!--GPS-->
-                            <Label x:Name="wildGpsLabel" Text="GPS" FontSize="20" Grid.Row="3"/>
-                            <StackLayout x:Name="wildGpsStack" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" IsVisible="False">
+                            <Label x:Name="wildGpsLabel" Text="GPS" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
+                            <StackLayout x:Name="wildGpsStack" Style="{StaticResource resultStackStyle}" Grid.Row="3" IsVisible="False">
                                 <Label x:Name="wildGpsValueLabel" Text="GPS" FontSize="20"/>
                                 <Button x:Name="wildGpsEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
-                            <Entry x:Name="wildGpsEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
+                            <Entry x:Name="wildGpsEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="3" IsVisible="False"/>
 
                             <!--Sex-->
-                            <Label x:Name="wildSexLabel" Text="Sex" FontSize="20" Grid.Row="4"/>
-                            <StackLayout x:Name="wildSexStack" Orientation="Horizontal" Grid.Row="4" Grid.Column="1" IsVisible="False">
+                            <Label x:Name="wildSexLabel" Text="Sex" Style="{StaticResource resultLabelStyle}" Grid.Row="4"/>
+                            <StackLayout x:Name="wildSexStack" Style="{StaticResource resultStackStyle}" Grid.Row="4"  IsVisible="False">
                                 <Label x:Name="wildSexValueLabel" Text="GPS" FontSize="20"/>
                                 <Button x:Name="wildSexEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
-                            <Picker x:Name="wildSexPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" IsVisible="False">
+                            <Picker x:Name="wildSexPicker" Style="{StaticResource resultFeildStyle}" Grid.Row="4" Grid.Column="1" IsVisible="False">
                                 <Picker.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
                                         <x:String>Male</x:String>
@@ -113,12 +116,12 @@
                             </Picker>
 
                             <!--Age-->
-                            <Label x:Name="wildAgeLabel" Text="Age" FontSize="20" Grid.Row="5"/>
-                            <StackLayout x:Name="wildAgeStack" Orientation="Horizontal" Grid.Row="5" Grid.Column="1" IsVisible="False">
+                            <Label x:Name="wildAgeLabel" Text="Age" Style="{StaticResource resultLabelStyle}" Grid.Row="5"/>
+                            <StackLayout x:Name="wildAgeStack" Style="{StaticResource resultStackStyle}" Grid.Row="5" IsVisible="False">
                                 <Label x:Name="wildAgeValueLabel" Text="GPS" FontSize="20" />
                                 <Button x:Name="wildAgeEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
-                            <Picker x:Name="wildAgePicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1" IsVisible="False">
+                            <Picker x:Name="wildAgePicker" Style="{StaticResource resultFeildStyle}" Grid.Row="5" IsVisible="False">
                                 <Picker.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
                                         <x:String>Juvenile</x:String>
@@ -128,37 +131,38 @@
                             </Picker>
 
                             <!--Metal Band Id-->
-                            <Label x:Name="wildMetalBandIdLabel" Text="Metal Band Id" FontSize="20" Grid.Row="6"/>
-                            <StackLayout x:Name="wildMetalBandStack" Orientation="Horizontal" Grid.Row="6" Grid.Column="1" IsVisible="False">
+                            <Label x:Name="wildMetalBandIdLabel" Text="Metal Band Id" Style="{StaticResource resultLabelStyle}" Grid.Row="6"/>
+                            <StackLayout x:Name="wildMetalBandStack" Style="{StaticResource resultStackStyle}" Grid.Row="6" IsVisible="False">
                                 <Label x:Name="wildMetalBandIdValueLabel" Text="GPS" FontSize="20"/>
                                 <Button x:Name="wildMetalBandIdEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
-                            <Entry x:Name="wildMetalBandIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" IsVisible="False"/>
+                            <Entry x:Name="wildMetalBandIdEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="6" IsVisible="False"/>
 
                             <!--Band Info-->
-                            <Label x:Name="bandInfoLabel" Text="Metal Band Id" FontSize="20" Grid.Row="7"/>
-                            <StackLayout x:Name="bandInfoStack" Orientation="Horizontal" Grid.Row="7" Grid.Column="1" IsVisible="False">
+                            <Label x:Name="bandInfoLabel" Text="Metal Band Id"  Style="{StaticResource resultLabelStyle}" Grid.Row="7"/>
+                            <StackLayout x:Name="bandInfoStack" Style="{StaticResource resultStackStyle}" Grid.Row="7"  IsVisible="False">
                                 <Label x:Name="bandInfoValueLabel" Text="GPS" FontSize="20"/>
                                 <Button x:Name="bandInfoEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
-                            <Entry x:Name="bandInfoEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1" IsVisible="False"/>
+                            <Entry x:Name="bandInfoEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="7" IsVisible="False"/>
 
                             <!--Date Banded-->
-                            <Label x:Name="wildDateBandedLabel" Text="Date Banded" FontSize="20" Grid.Row="8"/>
-                            <StackLayout x:Name="wildDateBandedStack" Orientation="Horizontal" Grid.Row="8" Grid.Column="1" IsVisible="False">
+                            <Label x:Name="wildDateBandedLabel" Text="Date Banded" Style="{StaticResource resultLabelStyle}" Grid.Row="8"/>
+                            <StackLayout x:Name="wildDateBandedStack" Style="{StaticResource resultStackStyle}" Grid.Row="8" IsVisible="False">
                                 <Label x:Name="wildDateBandedValueLabel" Text="GPS" FontSize="20"/>
                                 <Button x:Name="wildDateBandedEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
-                            <DatePicker x:Name="wildDateBandedPicker" Grid.Row="8" IsVisible="False" Grid.Column="1"/>
+                            <DatePicker x:Name="wildDateBandedPicker" Style="{StaticResource resultFeildStyle}" Grid.Row="8" IsVisible="False"/>
 
                             <!--Bander Name-->
-                            <Label x:Name="wildBanderNameLabel" Text="Bander Name" FontSize="20" Grid.Row="9"/>
-                            <StackLayout x:Name="wildBanderNameStack" Grid.Row="9" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
+                            <Label x:Name="wildBanderNameLabel" Text="Bander Name" Style="{StaticResource resultLabelStyle}" Grid.Row="9"/>
+                            <StackLayout x:Name="wildBanderNameStack" Grid.Row="9" Style="{StaticResource resultStackStyle}" IsVisible="False">
                                 <Label x:Name="wildBanderNameValueLabel" Text="GPS" FontSize="20" />
                                 <Button x:Name="wildBanderNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                             </StackLayout>
-                            <Entry x:Name="wildBanderNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="9" Grid.Column="1" IsVisible="False"/>
+                            <Entry x:Name="wildBanderNameEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="9" IsVisible="False"/>
                         </Grid>
+                        </ScrollView>
                     </ContentView.Content>
                 </ContentView>
 

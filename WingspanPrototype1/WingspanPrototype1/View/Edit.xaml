@@ -11,7 +11,7 @@
     <ContentPage.Content>
             <StackLayout WidthRequest="400" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10,10">
 
-                <Label x:Name="searchTitle" HorizontalOptions="Center" FontSize="20" Margin="30,50"/>
+            <Label x:Name="searchTitle" HorizontalOptions="Center" FontSize="20" Margin="30,50"/>
 
             <!--Search bird form-->
             <ContentView x:Name="searchBirdForm" IsVisible="False">
