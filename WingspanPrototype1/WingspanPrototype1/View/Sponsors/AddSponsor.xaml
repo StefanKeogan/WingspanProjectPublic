@@ -8,8 +8,8 @@
              BackgroundColor="#F0F0F0"
              Title="New Sponsor">
     <ContentPage.Content>
-        <ScrollView VerticalOptions="Center">
-            <Grid HeightRequest="400">
+        <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
+            <Grid HeightRequest="400" HorizontalOptions="Center">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="1.5*"/>

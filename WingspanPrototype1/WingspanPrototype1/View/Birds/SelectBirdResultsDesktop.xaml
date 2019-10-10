@@ -32,10 +32,10 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ScrollView Grid.Column="1" VerticalOptions="Center">
+            <ScrollView Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
                 <ContentView x:Name="selectWildBirdGrid" IsVisible="False">
                     <ContentView.Content>
-                        <Grid HeightRequest="400">
+                        <Grid HeightRequest="400" HorizontalOptions="Center">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="1.5*"/>
@@ -54,31 +54,31 @@
 
                             <!--Wingspan Id-->
                             <Label x:Name="selectWildWingspanIdLabel" Text="Wingspan ID" Style="{StaticResource resultLabelStyle}"/>
-                            <Label x:Name="selectWildWingspanIdValueLabel" Style="{StaticResource resultFeildStyle}" IsVisible="False"/>
+                            <Label x:Name="selectWildWingspanIdValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False"/>
 
                             <!--Species-->
                             <Label x:Name="selectWildSpeciesLabel" Text="Species" Style="{StaticResource resultLabelStyle}" Grid.Row="1"/>
-                            <Label x:Name="selectWildSpeciesValueLabel" Style="{StaticResource resultFeildStyle}" Grid.Row="1" IsVisible="False"/>
+                            <Label x:Name="selectWildSpeciesValueLabel" Style="{StaticResource selectFeildStyle}" Grid.Row="1" IsVisible="False"/>
 
                             <!--Location-->
                             <Label x:Name="selectWildLocationLabel" Text="Location" Style="{StaticResource resultLabelStyle}" Grid.Row="2"/>
-                            <Label x:Name="selectWildLocationValueLabel" Style="{StaticResource resultFeildStyle}" Grid.Row="2" IsVisible="False"/>
+                            <Label x:Name="selectWildLocationValueLabel" Style="{StaticResource selectFeildStyle}" Grid.Row="2" IsVisible="False"/>
 
                             <!--Sex-->
                             <Label x:Name="selectWildSexLabel" Text="Sex" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
-                            <Label x:Name="selectWildSexValueLabel" Style="{StaticResource resultFeildStyle}" Grid.Row="3" IsVisible="False"/>
+                            <Label x:Name="selectWildSexValueLabel" Style="{StaticResource selectFeildStyle}" Grid.Row="3" IsVisible="False"/>
 
                             <!--Age-->
                             <Label x:Name="selectWildAgeLabel" Text="Age" Style="{StaticResource resultLabelStyle}" Grid.Row="4"/>
-                            <Label x:Name="selectWildAgeValueLabel" Style="{StaticResource resultFeildStyle}" Grid.Row="4" IsVisible="False"/>
+                            <Label x:Name="selectWildAgeValueLabel" Style="{StaticResource selectFeildStyle}" Grid.Row="4" IsVisible="False"/>
 
                             <!--Metal Band Id-->
                             <Label x:Name="selectWildMetalBandIdLabel" Text="Metal Band Id" Style="{StaticResource resultLabelStyle}" Grid.Row="5"/>
-                            <Label x:Name="selectWildMetalBandIdValueLabel" Style="{StaticResource resultFeildStyle}" Grid.Row="5" IsVisible="False"/>
+                            <Label x:Name="selectWildMetalBandIdValueLabel" Style="{StaticResource selectFeildStyle}" Grid.Row="5" IsVisible="False"/>
 
                             <!--Band Info-->
                             <Label x:Name="selectBandInfoLabel" Text="Band Info" Style="{StaticResource resultLabelStyle}" Grid.Row="6"/>
-                            <Label x:Name="selectBandInfoValueLabel" Style="{StaticResource resultFeildStyle}" Grid.Row="6" IsVisible="False"/>
+                            <Label x:Name="selectBandInfoValueLabel" Style="{StaticResource selectFeildStyle}" Grid.Row="6" IsVisible="False"/>
 
                         </Grid>
                     </ContentView.Content>
