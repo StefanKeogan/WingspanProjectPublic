@@ -11,7 +11,7 @@
             <Grid RowSpacing="0" ColumnSpacing="0" HeightRequest="700">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="1.75*"/>
+                    <ColumnDefinition Width="1.5*"/>
                     <ColumnDefinition Width="3.5*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
@@ -33,15 +33,15 @@
                 </Grid.RowDefinitions>
 
                 <!--First Name-->
-                <Label x:Name="memberFirstNameLabel" Text="First Name" VerticalOptions="Center" FontSize="20" Grid.Column="1"/>
-                <Entry x:Name="memberFirstNameEntry" Style="{StaticResource feildStyle}" Grid.Column="2"/>
+                <Label x:Name="memberFirstNameLabel" Text="First Name" Grid.Column="1" Style="{StaticResource labelStyle}" />
+                <Entry x:Name="memberFirstNameEntry" Style="{StaticResource feildStyle}"/>
 
                 <!--Last Name-->
-                <Label x:Name="memberLastNameLabel" Text="Last Name" FontSize="20" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
-                <Entry x:Name="memberLastNameEntry"  Grid.Row="1" Grid.Column="2" Style="{StaticResource feildStyle}"/>
+                <Label x:Name="memberLastNameLabel" Grid.Row="1" Style="{StaticResource labelStyle}"/>
+                <Entry x:Name="memberLastNameEntry"  Grid.Row="1" Style="{StaticResource feildStyle}"/>
 
                 <!--Salutation Name-->
-                <Label x:Name="memberSalutationNameLabel" Text="Salutation Name" FontSize="20" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+                <Label x:Name="memberSalutationNameLabel" Text="Salutation Name" Grid.Row="2" Style="{StaticResource labelStyle}"/>
                 <Entry x:Name="memberSalutationNameEntry"  Grid.Row="2" Grid.Column="2" Style="{StaticResource feildStyle}"/>
 
                 <!--Email-->
