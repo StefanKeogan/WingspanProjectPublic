@@ -8,84 +8,80 @@
              BackgroundColor="#F0F0F0"
              Title="New Sponsorship">
     <ContentPage.Content>
-        <ScrollView>
-            <FlexLayout x:Name="addSponsorshipFlexLayout" AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly">
-                <Grid WidthRequest="600">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="4*"/>
-                    </Grid.ColumnDefinitions>
+        <ScrollView VerticalOptions="Center">
+            <Grid HeightRequest="400">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="3.5*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
 
-                    <Grid.RowDefinitions>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
+                </Grid.RowDefinitions>
 
-                    <!--selecting the bird-->
-                    <Label x:Name="sponsoredBirdName" Text="Bird to be sponsored" FontSize="20"/>
-                    <Picker x:Name="selectSponsoredBird" 
-                        HorizontalOptions="Fill" 
-                        VerticalOptions="Center" 
-                        Grid.Column="1" 
-                        SelectedIndexChanged="SelectSponsoredBird_SelectedIndexChanged">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Find the right bird</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
+                <!--selecting the bird-->
+                <Label x:Name="sponsoredBirdName" Text="Bird to be sponsored" Style="{StaticResource labelStyle}"/>
+                <Picker x:Name="selectSponsoredBird" Style="{StaticResource feildStyle}" SelectedIndexChanged="SelectSponsoredBird_SelectedIndexChanged">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Find the right bird</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
 
-                    <!--level of sponsorship-->
-                    <Label x:Name="sponsorshipLevel" Text="Select level" FontSize="20" Grid.Row="1" />
-                    <Picker x:Name="levelSelector" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" Grid.Row="1" 
-                        SelectedIndexChanged="OnLevelSelected">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Wild Bird</x:String>
-                                <x:String>Captive Bird (Absolute)</x:String>
-                                <x:String>Captive Bird (Gold)</x:String>
-                                <x:String>Captive Bird (Silver)</x:String>
-                                <x:String>Captive Bird (Bronze)</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
+                <!--level of sponsorship-->
+                <Label x:Name="sponsorshipLevel" Text="Select level" Style="{StaticResource labelStyle}" Grid.Row="1" />
+                <Picker x:Name="levelSelector" Style="{StaticResource feildStyle}" Grid.Row="1" SelectedIndexChanged="OnLevelSelected">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Wild Bird</x:String>
+                            <x:String>Captive Bird (Absolute)</x:String>
+                            <x:String>Captive Bird (Gold)</x:String>
+                            <x:String>Captive Bird (Silver)</x:String>
+                            <x:String>Captive Bird (Bronze)</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
 
-                    <!--when sponsorship begins-->
-                    <Label x:Name="sponsorshipStartDate" Text="Start date" FontSize="20" Grid.Row="2"/>
-                    <DatePicker x:Name="startDateSelector" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" Grid.Row="2" />
+                <!--when sponsorship begins-->
+                <Label x:Name="sponsorshipStartDate" Text="Start date" Style="{StaticResource labelStyle}" Grid.Row="2"/>
+                <DatePicker x:Name="startDateSelector" Style="{StaticResource feildStyle}" Grid.Row="2" />
 
-                    <!--when the sponsorship will end-->
-                    <Label x:Name="sponsorshipEndDate" Text="End date" FontSize="20" Grid.Column="0" Grid.Row="3" />
-                    <DatePicker x:Name="endDateSelector" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" Grid.Row="3" />
+                <!--when the sponsorship will end-->
+                <Label x:Name="sponsorshipEndDate" Text="End date" Style="{StaticResource labelStyle}" Grid.Row="3" />
+                <DatePicker x:Name="endDateSelector" Style="{StaticResource feildStyle}" Grid.Row="3" />
 
 
-                    <!--selecting exisiting sponsor or create a new one-->
-                    <Label x:Name="sponsorName" Text="Sponsor name" FontSize="20" Grid.Row="4" />
-                    <Picker x:Name="sponsorSelector"
-                        Grid.Column="1"
-                        Grid.Row="4"
-                        SelectedIndexChanged="OnSponsorSelected">
-                        <Picker.ItemsSource>
-                            <x:Array Type="{x:Type x:String}">
-                                <x:String>Existing Sponsor</x:String>
-                                <x:String>New Sponsor</x:String>
-                            </x:Array>
-                        </Picker.ItemsSource>
-                    </Picker>
-                </Grid>
+                <!--selecting exisiting sponsor or create a new one-->
+                <Label x:Name="sponsorName" Text="Sponsor name" Style="{StaticResource labelStyle}" Grid.Row="4" />
+                <Picker x:Name="sponsorSelector" Style="{StaticResource feildStyle}" Grid.Row="4" SelectedIndexChanged="OnSponsorSelected">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Existing Sponsor</x:String>
+                            <x:String>New Sponsor</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
 
                 <!--save button-->
                 <Button x:Name="saveButton"
-                    Text="Save"
-                    Style="{StaticResource mainButtonStyle}"
-                    HorizontalOptions="Center"
-                    WidthRequest="150"
-                    Clicked="SaveButton_Clicked"/>
-
-            </FlexLayout>
+                        Text="Save"
+                        Grid.Row="5"
+                        Grid.Column="1"
+                        Grid.ColumnSpan="2"
+                        Style="{StaticResource mainButtonStyle}"
+                        HorizontalOptions="Center"
+                        VerticalOptions="Center"
+                        WidthRequest="150"
+                        Clicked="SaveButton_Clicked"/>
+            </Grid>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>
