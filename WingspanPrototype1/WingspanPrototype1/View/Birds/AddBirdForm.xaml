@@ -7,31 +7,34 @@
              x:Class="WingspanPrototype1.AddBirdForm"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <FlexLayout x:Name="addBirdFlexLayout" AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
+        <ScrollView VerticalOptions="Center">
+            <StackLayout>
 
             <ContentView x:Name="wildBirdForm" IsVisible="False">
                 <ContentView.Content>
-                    <Grid WidthRequest="500">
+                    <Grid HeightRequest="500">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="3.5*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
 
                         <!--Species-->
-                        <Label x:Name="wildSpeciesLabel" Text="Species" FontSize="20" />
-                        <Picker x:Name="wildSpeciesPicker" Grid.Column="1">
+                        <Label x:Name="wildSpeciesLabel" Text="Species" Style="{StaticResource labelStyle}"/>
+                        <Picker x:Name="wildSpeciesPicker" Style="{StaticResource feildStyle}">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Falcon</x:String>
@@ -42,16 +45,16 @@
                         </Picker>
 
                         <!--Location-->
-                        <Label x:Name="wildLocationLabel" Text="Location" FontSize="20" Grid.Row="1"/>
-                        <Entry x:Name="wildLocationEntry" Style="{StaticResource feildStyle}" Grid.Row="1" Grid.Column="1"/>
+                        <Label x:Name="wildLocationLabel" Text="Location" Grid.Row="1" Style="{StaticResource labelStyle}"/>
+                        <Entry x:Name="wildLocationEntry" Style="{StaticResource feildStyle}" Grid.Row="1"/>
 
                         <!--GPS-->
-                        <Label x:Name="gpsLabel" Text="GPS" FontSize="20" Grid.Row="2"/>
-                        <Entry x:Name="wildGpsEntry" Style="{StaticResource feildStyle}" Grid.Row="2" Grid.Column="1"/>
+                        <Label x:Name="gpsLabel" Text="GPS" Style="{StaticResource labelStyle}" Grid.Row="2"/>
+                        <Entry x:Name="wildGpsEntry" Style="{StaticResource feildStyle}" Grid.Row="2"/>
 
                         <!--Sex-->
-                        <Label x:Name="wildSexLabel" Text="Sex" FontSize="20" Grid.Row="3"/>
-                        <Picker x:Name="wildSexPicker" Style="{StaticResource feildStyle}" Grid.Row="3" Grid.Column="1">
+                        <Label x:Name="wildSexLabel" Text="Sex" Style="{StaticResource labelStyle}" Grid.Row="3"/>
+                        <Picker x:Name="wildSexPicker" Style="{StaticResource feildStyle}" Grid.Row="3">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Male</x:String>
@@ -61,8 +64,8 @@
                         </Picker>
 
                         <!--Age-->
-                        <Label x:Name="wildAgeLabel" Text="Age" FontSize="20" Grid.Row="4"/>
-                        <Picker x:Name="wildAgePicker" Style="{StaticResource feildStyle}" Grid.Row="4" Grid.Column="1">
+                        <Label x:Name="wildAgeLabel" Text="Age" Style="{StaticResource labelStyle}" Grid.Row="4"/>
+                        <Picker x:Name="wildAgePicker" Style="{StaticResource feildStyle}" Grid.Row="4">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Adult</x:String>
@@ -72,58 +75,60 @@
                         </Picker>
 
                         <!--Metal Band Id-->
-                        <Label x:Name="metalBandLabel" Text="Metal Band Id" FontSize="20" Grid.Row="5"/>
-                        <Entry x:Name="wildMetalBandIdEntry" Style="{StaticResource feildStyle}" Grid.Row="5" Grid.Column="1"/>
+                        <Label x:Name="metalBandLabel" Text="Metal Band Id" Style="{StaticResource labelStyle}" Grid.Row="5"/>
+                        <Entry x:Name="wildMetalBandIdEntry" Style="{StaticResource feildStyle}" Grid.Row="5"/>
 
                         <!--Band Info-->
-                        <Label x:Name="bandInfoLabel" Text="Band Info" FontSize="20" Grid.Row="6"/>
-                        <Entry x:Name="wildBandInfoEntry" Style="{StaticResource feildStyle}" Grid.Row="6" Grid.Column="1"/>
+                        <Label x:Name="bandInfoLabel" Text="Band Info" Style="{StaticResource labelStyle}" Grid.Row="6"/>
+                        <Entry x:Name="wildBandInfoEntry" Style="{StaticResource feildStyle}" Grid.Row="6"/>
 
                         <!--Date Banded-->
-                        <Label x:Name="dateBandedLabel" Text="Date Banded" FontSize="20" Grid.Row="7"/>
-                        <DatePicker x:Name="wildDateBandedPicker" Style="{StaticResource feildStyle}" Grid.Row="7" Grid.Column="1"/>
+                        <Label x:Name="dateBandedLabel" Text="Date Banded" Style="{StaticResource labelStyle}" Grid.Row="7"/>
+                        <DatePicker x:Name="wildDateBandedPicker" Style="{StaticResource feildStyle}" Grid.Row="7" />
 
                         <!--Bander Name-->
-                        <Label x:Name="banderNameLabel" Text="Bander Name" FontSize="20" Grid.Row="8"/>
-                        <Entry x:Name="wildBanderNameEntry" Style="{StaticResource feildStyle}" Grid.Row="8" Grid.Column="1"/>
+                        <Label x:Name="banderNameLabel" Text="Bander Name" Style="{StaticResource labelStyle}" Grid.Row="8"/>
+                        <Entry x:Name="wildBanderNameEntry" Style="{StaticResource feildStyle}" Grid.Row="8"/>
 
                         <!--Initial Comment-->
-                        <Label x:Name="wildInitialNoteLabel" Text="Initial Note" FontSize="20" Grid.Row="9"/>
-                        <Editor x:Name="wildInitialNoteEditor" Style="{StaticResource feildStyle}" Grid.Row="9" Grid.Column="1"/>
+                        <Label x:Name="wildInitialNoteLabel" Text="Initial Note" Style="{StaticResource labelStyle}" Grid.Row="9" HorizontalTextAlignment="Start"/>
+                        <Editor x:Name="wildInitialNoteEditor" Style="{StaticResource feildStyle}" Grid.Row="9" />
                     </Grid>
                 </ContentView.Content>
             </ContentView>
 
             <ContentView x:Name="captiveBirdForm" IsVisible="False">
                 <ContentView.Content>
-                    <Grid WidthRequest="500">
+                    <Grid HeightRequest="500">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="2*"/>
-                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="3.5*"/>
+                            <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                            <RowDefinition/>
-                        </Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            </Grid.RowDefinitions>
 
                         <!--Name-->
-                        <Label x:Name="captiveNameLabel" Text="Name" FontSize="20"/>
-                        <Entry x:Name="captiveNameEntry" Style="{StaticResource feildStyle}" Grid.Column="1"/>
+                        <Label x:Name="captiveNameLabel" Text="Name" Style="{StaticResource labelStyle}"/>
+                        <Entry x:Name="captiveNameEntry" Style="{StaticResource feildStyle}" />
 
                         <!--Band Number-->
-                        <Label x:Name="bandNumberLabel" Text="Band Number" FontSize="20" Grid.Row="1"/>
-                        <Entry x:Name="captiveBandNumberEntry" Style="{StaticResource feildStyle}" Grid.Row="1" Grid.Column="1"/>
+                        <Label x:Name="bandNumberLabel" Text="Band Number" Style="{StaticResource labelStyle}" Grid.Row="1"/>
+                        <Entry x:Name="captiveBandNumberEntry" Style="{StaticResource feildStyle}" Grid.Row="1" />
 
                         <!--Band Colour-->
-                        <Label x:Name="bandColourLabel" Text="Band Colour" FontSize="20" Grid.Row="2"/>
-                        <Picker x:Name="captiveBandColourPicker" Style="{StaticResource feildStyle}" Grid.Row="2" Grid.Column="1">
+                        <Label x:Name="bandColourLabel" Text="Band Colour" Style="{StaticResource labelStyle}" Grid.Row="2"/>
+                        <Picker x:Name="captiveBandColourPicker" Style="{StaticResource feildStyle}" Grid.Row="2" >
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>"M:O"</x:String>
@@ -136,8 +141,8 @@
                         </Picker>
 
                         <!--Species-->
-                        <Label x:Name="captiveSpeciesLabel" Text="Species" FontSize="20" Grid.Row="3"/>
-                        <Picker x:Name="captiveSpeciesPicker" Style="{StaticResource feildStyle}" Grid.Row="3" Grid.Column="1">
+                        <Label x:Name="captiveSpeciesLabel" Text="Species" Style="{StaticResource labelStyle}" Grid.Row="3"/>
+                        <Picker x:Name="captiveSpeciesPicker" Style="{StaticResource feildStyle}" Grid.Row="3">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Falcon</x:String>
@@ -148,8 +153,8 @@
                         </Picker>
 
                         <!--Sex-->
-                        <Label x:Name="captiveSexLabel" Text="Sex" FontSize="20" Grid.Row="4"/>
-                        <Picker x:Name="captiveSexPicker" Style="{StaticResource feildStyle}" Grid.Row="4" Grid.Column="1">
+                        <Label x:Name="captiveSexLabel" Text="Sex" Style="{StaticResource labelStyle}" Grid.Row="4"/>
+                        <Picker x:Name="captiveSexPicker" Style="{StaticResource feildStyle}" Grid.Row="4">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Male</x:String>
@@ -159,8 +164,8 @@
                         </Picker>
 
                         <!--Age-->
-                        <Label x:Name="captiveAgeLabel" Text="Age" FontSize="20" Grid.Row="5"/>
-                        <Picker x:Name="captiveAgePicker" Style="{StaticResource feildStyle}" Grid.Row="5" Grid.Column="1">
+                        <Label x:Name="captiveAgeLabel" Text="Age" Style="{StaticResource labelStyle}" Grid.Row="5"/>
+                        <Picker x:Name="captiveAgePicker" Style="{StaticResource feildStyle}" Grid.Row="5">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Adult</x:String>
@@ -170,16 +175,16 @@
                         </Picker>
 
                         <!--Location-->
-                        <Label x:Name="captiveLocationLabel" Text="Location" FontSize="20" Grid.Row="6"/>
-                        <Entry x:Name="captiveLocationEntry" Style="{StaticResource feildStyle}" Grid.Row="6" Grid.Column="1"/>
+                        <Label x:Name="captiveLocationLabel" Text="Location" Style="{StaticResource labelStyle}" Grid.Row="6"/>
+                        <Entry x:Name="captiveLocationEntry" Style="{StaticResource feildStyle}" Grid.Row="6"/>
 
                         <!--Date Arrived-->
-                        <Label x:Name="dateArrivedLabel" Text="Date Arrived" FontSize="20" Grid.Row="7"/>
-                        <DatePicker x:Name="dateArrivedPicker" Style="{StaticResource feildStyle}" Grid.Row="7" Grid.Column="1"/>
+                        <Label x:Name="dateArrivedLabel" Text="Date Arrived" Style="{StaticResource labelStyle}" Grid.Row="7"/>
+                        <DatePicker x:Name="dateArrivedPicker" Style="{StaticResource feildStyle}" Grid.Row="7" />
 
                         <!--Initial Note-->
-                        <Label x:Name="captiveInitialNoteLabel" Text="Initial Note" FontSize="20" Grid.Row="8"/>
-                        <Editor x:Name="cpativeInitialNoteEntry" Style="{StaticResource feildStyle}" Grid.Row="8" Grid.Column="1"/>
+                        <Label x:Name="captiveInitialNoteLabel" Text="Initial Note" Style="{StaticResource labelStyle}" Grid.Row="8"/>
+                        <Editor x:Name="cpativeInitialNoteEntry" Style="{StaticResource feildStyle}" Grid.Row="8"/>
 
                     </Grid>
                 </ContentView.Content>
@@ -188,17 +193,13 @@
             <Button  
                 x:Name="addButton"
                 Text="Add" 
-                BackgroundColor="#FFD966"
-                BorderColor="#5C3838"
-                BorderWidth="3"
-                CornerRadius="5"
-                FontSize="20" 
+                Style="{StaticResource mainButtonStyle}"
                 HorizontalOptions="Center"
-                Margin="20,0"
                 WidthRequest="150"
                 Clicked="AddButton_Clicked"/>
 
-        </FlexLayout>
+        </StackLayout>
+        </ScrollView>
 
     </ContentPage.Content>
 </ContentPage>

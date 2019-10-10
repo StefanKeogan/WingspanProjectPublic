@@ -23,9 +23,9 @@ namespace WingspanPrototype1.View.Volunteers
 
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
-            if (Validate.FeildPopulated(nameEntry.Text))
+            if (Validate.FeildPopulated(volunteerNameEntry.Text))
             {
-                if (Validate.ContainsNumberOrSymbol(nameEntry.Text))
+                if (Validate.ContainsNumberOrSymbol(volunteerNameEntry.Text))
                 {
                     await DisplayAlert("Invalid Format", "The first name feild can not contain letters or symbols", "OK");
                     return;
@@ -46,18 +46,18 @@ namespace WingspanPrototype1.View.Volunteers
             // Insert volunteer document
             bool inserted = AddVolunteer.InsertVolunteerDocument(new Volunteer
             {
-                Name = nameEntry.Text,
-                Mobile = Convert.ToInt64(mobileEntry.Text),
-                Email = emailEntry.Text
+                Name = volunteerNameEntry.Text,
+                Mobile = Convert.ToInt64(volunteerMobileEntry.Text),
+                Email = volunteerEmailEntry.Text
 
             }) ;
 
             // Was the document inserted successfully?
             if (inserted)
             {
-                nameEntry.Text = null;
-                mobileEntry.Text = null;
-                emailEntry.Text = null;
+                volunteerNameEntry.Text = null;
+                volunteerMobileEntry.Text = null;
+                volunteerEmailEntry.Text = null;
 
                 await DisplayAlert("Volunteer Saved", "This volunteer has been inserted into the database", "OK");
             }

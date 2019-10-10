@@ -7,44 +7,47 @@
              x:Class="WingspanPrototype1.View.Volunteers.AddVolunteerForm"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <FlexLayout AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly" Margin="3,3,3,3">
-            <Grid  WidthRequest="500">
+        <ScrollView VerticalOptions="Center">
+            <Grid  HeightRequest="200">
                 <Grid.RowDefinitions>
-                    <RowDefinition/>
-                    <RowDefinition/>
-                    <RowDefinition/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="4*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="1.5*"/>
+                    <ColumnDefinition Width="3.5*"/>
+                    <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Name-->
-                <Label x:Name="nameLabel" Text="Name" FontSize="20" VerticalOptions="Center"/>
-                <Entry x:Name="nameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+                <Label x:Name="nameLabel" Text="Name"  Style="{StaticResource labelStyle}" />
+                <Entry x:Name="volunteerNameEntry" Style="{StaticResource feildStyle}" />
 
                 <!--Mobile-->
-                <Label x:Name="mobileLabel" Text="Mobile" FontSize="20" VerticalOptions="Center" Grid.Row="1"/>
-                <Entry x:Name="mobileEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+                <Label x:Name="mobileLabel" Text="Mobile"  Style="{StaticResource labelStyle}" Grid.Row="1"/>
+                <Entry x:Name="volunteerMobileEntry" Style="{StaticResource feildStyle}" Grid.Row="1"/>
 
                 <!--Email-->
-                <Label x:Name="emailLabel" Text="Email" FontSize="20" VerticalOptions="Center" Grid.Row="2" />
-                <Entry x:Name="emailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+                <Label x:Name="emailLabel" Text="Email"  Style="{StaticResource labelStyle}" Grid.Row="2" />
+                <Entry x:Name="volunteerEmailEntry"  Style="{StaticResource feildStyle}" Grid.Row="2"/>
+
+                <Button  
+                x:Name="addButton"
+                Grid.Column="1"
+                Grid.Row="3"
+                Grid.ColumnSpan="2"
+                Text="Add" 
+                Style="{StaticResource mainButtonStyle}"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                WidthRequest="150"
+                Clicked="AddButton_Clicked"/>
 
             </Grid>
 
-            <Button  
-                x:Name="addButton"
-                Text="Add" 
-                BackgroundColor="#FFD966"
-                BorderColor="#5C3838"
-                BorderWidth="3"
-                CornerRadius="5"
-                FontSize="20" 
-                HorizontalOptions="Center"
-                Margin="20,0"
-                WidthRequest="150"
-                Clicked="AddButton_Clicked"/>
-        </FlexLayout>
+        </ScrollView>
     </ContentPage.Content>
 </ContentPage>
