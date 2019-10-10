@@ -23,29 +23,34 @@ namespace WingspanPrototype1.View
         {
             var item = e.SelectedItem;
 
-            if (item.GetType() == typeof(WildBird))
+            if (item != null)
             {
-                var wildItem = item as WildBird;
+                selectBirdSearchGrid.IsVisible = true;
 
-                DisplayWildBird(wildItem);
-
-                //id = wildItem._id;
-
-                //birdType = typeof(WildBird);
-            }
-            else if (item.GetType() == typeof(CaptiveBird))
-            {
-                var captiveItem = item as CaptiveBird;
-
-                //only display captive birds that are alive
-                if ((captiveItem.DateDeceased == null) && (captiveItem.DateDeceased.ToString() == string.Empty))
+                if (item.GetType() == typeof(WildBird))
                 {
-                    DisplayCaptiveBird(captiveItem);
+                    var wildItem = item as WildBird;
+
+                    DisplayWildBird(wildItem);
+
+                    //id = wildItem._id;
+
+                    //birdType = typeof(WildBird);
                 }
+                else if (item.GetType() == typeof(CaptiveBird))
+                {
+                    var captiveItem = item as CaptiveBird;
 
-                //id = captiveItem._id;
+                    //only display captive birds that are alive
+                    if ((captiveItem.DateDeceased == null) && (captiveItem.DateDeceased.ToString() == string.Empty))
+                    {
+                        DisplayCaptiveBird(captiveItem);
+                    }
 
-                //birdType = typeof(CaptiveBird);
+                    //id = captiveItem._id;
+
+                    //birdType = typeof(CaptiveBird);
+                }
             }
         }
 
