@@ -136,7 +136,7 @@
                                 <StackLayout BackgroundColor="#FFFFFF" >
                                     <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
                                         <Label Text="Payment History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                        <Button x:Name="paymentExitButton" BackgroundColor="#5C3838" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="PaymentExitButton_Clicked"/>
+                                        <Button x:Name="paymentExitButton"  Style="{StaticResource exitStyle}" Clicked="PaymentExitButton_Clicked"/>
                                     </StackLayout>
                                     <ListView x:Name="paymentListView">
                                         <ListView.ItemTemplate>
@@ -171,7 +171,7 @@
                                 <StackLayout BackgroundColor="#FFFFFF">
                                     <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
                                         <Label Text="Add Payment" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                        <Button x:Name="addNewPaymentExitButton" BackgroundColor="#5C3838" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="AddNewPaymentExitButton_Clicked"/>
+                                        <Button x:Name="addNewPaymentExitButton"  Style="{StaticResource exitStyle}" Clicked="AddNewPaymentExitButton_Clicked"/>
                                     </StackLayout>
                                     <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
                                     <DatePicker x:Name="paymentDatePicker" Margin="5,5,5,5"/>

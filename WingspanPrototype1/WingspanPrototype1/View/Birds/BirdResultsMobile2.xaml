@@ -316,7 +316,6 @@
                          HorizontalOptions="Center"
                          WidthRequest="150"
                         Clicked="NoteButton_Clicked"/>
-                    <!--Clicked="NoteButton_Clicked"-->
                     <Button
                          x:Name="locationButton"
                          Grid.Row="1" 
@@ -339,7 +338,7 @@
                             <StackLayout BackgroundColor="#FFFFFF" >
                                 <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
                                     <Label Text="Note History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Button x:Name="noteExitButton" BackgroundColor="#5C3838" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="NoteExitButton_Clicked"/>
+                                    <Button x:Name="noteExitButton"  Style="{StaticResource exitStyle}" Clicked="NoteExitButton_Clicked"/>
                                 </StackLayout>
                                 <ListView x:Name="noteListView" RowHeight="100">
                                     <ListView.ItemTemplate>
@@ -381,8 +380,12 @@
                             <StackLayout BackgroundColor="#FFFFFF">
                                 <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
                                     <Label Text="Add Note" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Button x:Name="addNewNoteExitButton" BackgroundColor="#5C3838" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="AddNewNoteExitButton_Clicked"/>
+                                    <Button x:Name="addNewNoteExitButton"  Style="{StaticResource exitStyle}" Clicked="AddNewNoteExitButton_Clicked"/>
                                 </StackLayout>
+
+                                <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
+                                <DatePicker x:Name="noteDatePicker" Margin="5,5,5,5"/>
+
                                 <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>
                                 <Picker x:Name="noteCategoryPicker" Margin="5,5,5,5"/>
 
@@ -412,7 +415,7 @@
                             <StackLayout BackgroundColor="#FFFFFF" >
                                 <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
                                     <Label Text="Location History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Button x:Name="locationExitButton" BackgroundColor="#5C3838"  Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="LocationExitButton_Clicked"/>
+                                    <Button x:Name="locationExitButton"  Style="{StaticResource exitStyle}" Clicked="LocationExitButton_Clicked"/>
                                 </StackLayout>
                                 <ListView x:Name="locationListView" RowHeight="100">
                                     <ListView.ItemTemplate>
@@ -454,11 +457,8 @@
                             <StackLayout BackgroundColor="#FFFFFF" >
                                 <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
                                     <Label Text="Add Location" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Button x:Name="addNewLocationExitButton" BackgroundColor="#5C3838"  Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="AddNewLocationExitButton_Clicked"/>
+                                    <Button x:Name="addNewLocationExitButton" Style="{StaticResource exitStyle}" Clicked="AddNewLocationExitButton_Clicked"/>
                                 </StackLayout>
-
-                                <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
-                                <DatePicker x:Name="noteDatePicker" Margin="5,5,5,5"/>
 
                                 <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>
                                 <Picker x:Name="locationCategoryPicker" Margin="5,5,5,5"/>

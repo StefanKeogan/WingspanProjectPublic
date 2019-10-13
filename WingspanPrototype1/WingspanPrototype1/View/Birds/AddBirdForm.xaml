@@ -7,18 +7,18 @@
              x:Class="WingspanPrototype1.AddBirdForm"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <ScrollView VerticalOptions="Center">
+        <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
             <StackLayout>
 
             <ContentView x:Name="wildBirdForm" IsVisible="False">
                 <ContentView.Content>
-                    <Grid HeightRequest="500">
+                    <Grid HeightRequest="600" HorizontalOptions="Center">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" x:Name="wildMargin1"/>
                             <ColumnDefinition Width="1.5*"/>
                             <ColumnDefinition Width="3.5*"/>
-                            <ColumnDefinition Width="*"/>
-                        </Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"  x:Name="wildMargin2"/>
+                            </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
@@ -99,12 +99,12 @@
 
             <ContentView x:Name="captiveBirdForm" IsVisible="False">
                 <ContentView.Content>
-                    <Grid HeightRequest="500">
+                    <Grid HeightRequest="600">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" x:Name="captiveMargin1"/>
                             <ColumnDefinition Width="1.5*"/>
                             <ColumnDefinition Width="3.5*"/>
-                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="*" x:Name="captiveMargin2"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>

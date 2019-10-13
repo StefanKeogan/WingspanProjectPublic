@@ -55,7 +55,7 @@ namespace WingspanPrototype1
                     searchSponsorshipForm.IsVisible = true;
                     break;
                 case "Edit Volunteers":
-                    searchTitle.Text = "Edit Volunteers";
+                    searchTitle.Text = "Search Volunteers";
                     searchVolunteerForm.IsVisible = true;
                     break;
                 default:
@@ -91,7 +91,7 @@ namespace WingspanPrototype1
                     ArrayList birdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);
 
                     // TODO: Try Catch
-                    if ((birdResults != null) || (birdResults.Count < 1))
+                    if ((birdResults != null) && (birdResults.Count > 0))
                     {
                         // If no feilds are invalid run the search
                         if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
@@ -160,7 +160,7 @@ namespace WingspanPrototype1
                     // Search Memebers
                     List<Member> memberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
 
-                    if ((memberResults != null) || (memberResults.Count < 1))
+                    if ((memberResults != null) && (memberResults.Count > 0))
                     {
                         // Results have been returned push the results page 
                         if (DeviceSize.ScreenArea() <= 783457)
@@ -279,7 +279,7 @@ namespace WingspanPrototype1
 
                     List<Volunteer> volunteerResults = SearchVolunteers.Search(volunteerEmailEntry.Text, volunteerNameEntry.Text);
 
-                    if ((volunteerResults != null) || (volunteerResults.Count < 1))
+                    if ((volunteerResults != null) && (volunteerResults.Count > 0))
                     {
                         if (DeviceSize.ScreenArea() <= 783457)
                         {
@@ -289,7 +289,11 @@ namespace WingspanPrototype1
                         {
                             Navigation.PushAsync(new VolunteerResultsDesktop(volunteerResults));
                         }
-                    }          
+                    }
+                    else
+                    {
+                        DisplayAlert("No Members Found", "That member could been found", "OK");
+                    }
                     break;
             }
                   

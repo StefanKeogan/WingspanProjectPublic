@@ -31,6 +31,9 @@ namespace WingspanPrototype1.View
         {
             var item = e.SelectedItem as Member;
 
+            resultsView.IsVisible = true;
+            resultButtons.IsVisible = true;
+
             id = item._id;
 
             if (item != null)

@@ -20,6 +20,16 @@ namespace WingspanPrototype1
 
             Title = title;
 
+            // What type of device are we running on 
+            if (DeviceSize.ScreenArea() <= 783457)
+            {
+                wildMargin1.Width = 0;
+                wildMargin2.Width = 0;
+                captiveMargin1.Width = 0;
+                captiveMargin2.Width = 0;
+            }
+
+
             // What type of bird are we adding?
             if (title == "New Wild Bird")
             {

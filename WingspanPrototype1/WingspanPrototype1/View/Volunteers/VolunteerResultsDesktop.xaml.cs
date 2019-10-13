@@ -39,6 +39,9 @@ namespace WingspanPrototype1.View.Volunteers
         {
             var item = e.SelectedItem as Volunteer;
 
+            resultsView.IsVisible = true;
+            resultButtons.IsVisible = true;
+
             if (item != null)
             {
                 DisplayVolunteer(item);
@@ -88,7 +91,7 @@ namespace WingspanPrototype1.View.Volunteers
 
         private void HoursHistoryButton_Clicked(object sender, EventArgs e)
         {
-            hoursListView.IsVisible = true;
+            hoursHistoryView.IsVisible = true;
         }
 
         private void HoursExitButton_Clicked(object sender, EventArgs e)

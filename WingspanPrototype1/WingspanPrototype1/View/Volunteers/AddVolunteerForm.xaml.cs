@@ -19,6 +19,14 @@ namespace WingspanPrototype1.View.Volunteers
             InitializeComponent();
 
             Title = title;
+
+            // What type of device are we running on 
+            if (DeviceSize.ScreenArea() <= 783457)
+            {
+                volunteerMargin1.Width = 0;
+                volunteerMargin2.Width = 0;
+
+            }
         }
 
         private async void AddButton_Clicked(object sender, EventArgs e)

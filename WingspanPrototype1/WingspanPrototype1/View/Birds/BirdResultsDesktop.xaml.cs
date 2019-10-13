@@ -38,6 +38,8 @@ namespace WingspanPrototype1
         {
             var item = e.SelectedItem;
 
+            resultButtons.IsVisible = true;
+
             if (item.GetType() == typeof(WildBird))
             {
                 var wildItem = item as WildBird;
@@ -185,16 +187,16 @@ namespace WingspanPrototype1
             // Set Band Info Value
             if (Validate.FeildPopulated(bird.BandInfo))
             {
-                wildMetalBandIdEditButton.Text = bird.MetalBand;
-                wildMetalBandStack.IsVisible = true;
-                wildMetalBandIdEntry.IsVisible = false;
+                bandInfoValueLabel.Text = bird.BandInfo;
+                bandInfoStack.IsVisible = true;
+                bandInfoEntry.IsVisible = false;
 
             }
             else
             {
-                wildMetalBandIdEntry.IsVisible = true;
-                wildMetalBandStack.IsVisible = false;
-                entries.Add(wildMetalBandIdEntry);
+                bandInfoEntry.IsVisible = true;
+                bandInfoStack.IsVisible = false;
+                entries.Add(bandInfoEntry);
             }
 
             // Set Date Banded Value 

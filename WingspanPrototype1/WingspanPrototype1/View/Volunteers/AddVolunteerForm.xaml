@@ -7,19 +7,19 @@
              x:Class="WingspanPrototype1.View.Volunteers.AddVolunteerForm"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <ScrollView VerticalOptions="Center">
-            <Grid  HeightRequest="200">
+        <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
+            <Grid  HeightRequest="200" HorizontalOptions="Center">
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*" />
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" x:Name="volunteerMargin1"/>
                     <ColumnDefinition Width="1.5*"/>
                     <ColumnDefinition Width="3.5*"/>
-                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*" x:Name="volunteerMargin2"/>
                 </Grid.ColumnDefinitions>
 
                 <!--Name-->

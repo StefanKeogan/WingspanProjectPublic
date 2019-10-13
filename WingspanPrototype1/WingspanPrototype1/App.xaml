@@ -24,7 +24,7 @@
                 <Setter Property="Grid.Column" Value="2"/>
             </Style>
 
-            <Style  x:Key="labelStyle" TargetType="Label">
+            <Style x:Key="labelStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Start"/>
                 <Setter Property="Margin" Value="0,0,10,0"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
@@ -49,6 +49,16 @@
                 <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="Grid.Column" Value="2"/>
+            </Style>
+
+            <Style x:Key="exitStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#5C3838"/>
+                <Setter Property="Text" Value="X"/>
+                <Setter Property="TextColor" Value="#FFFFFF"/>
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="Margin" Value="5,5,5,5"/>
+                <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
 
         </ResourceDictionary>

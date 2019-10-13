@@ -7,37 +7,39 @@
              x:Class="WingspanPrototype1.View.MemberResultsDesktop"
              Title="Results">
     <ContentPage.Content>
-        <StackLayout>
-            <Grid VerticalOptions="FillAndExpand" BackgroundColor="#FFFFFF">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="2*"/>
-                    <ColumnDefinition Width="6*"/>
-                </Grid.ColumnDefinitions>
+        <Grid BackgroundColor="#FFFFFF">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="6*"/>
+            </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="33*"/>
-                    <RowDefinition Height="3*"/>
-                </Grid.RowDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="5*"/>
+            </Grid.RowDefinitions>
 
-                <!--Results List-->
-                <ListView x:Name="resultsListView" BackgroundColor="#F0F0F0" Grid.RowSpan="2" VerticalOptions="Fill" ItemSelected="ResultsListView_ItemSelected">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Orientation="Horizontal" Padding="5">
-                                    <Label FontSize="20" Text="{Binding SalutationName}"/>
-                                    <Label FontSize="20" Text="{Binding FirstName}"/>
-                                    <Label FontSize="20" Text="{Binding LastName}"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+            <!--Results List-->
+            <ListView x:Name="resultsListView" BackgroundColor="#F0F0F0" Grid.RowSpan="2" VerticalOptions="Fill" ItemSelected="ResultsListView_ItemSelected">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal" Padding="5">
+                                <Label FontSize="20" Text="{Binding SalutationName}"/>
+                                <Label FontSize="20" Text="{Binding FirstName}"/>
+                                <Label FontSize="20" Text="{Binding LastName}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
-                <Grid Grid.Column="1" Margin="20,5,20,5">
+            <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" x:Name="resultsView" IsVisible="False">
+                <Grid HorizontalOptions="Center" HeightRequest="700">
                     <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
                         <ColumnDefinition Width="3*"/>
+                        <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -57,194 +59,196 @@
                     </Grid.RowDefinitions>
 
                     <!--First Name-->
-                    <Label x:Name="memberFirstNameLabel" Text="First Name" FontSize="20"/>
-                    <StackLayout x:Name="memberFirstNameStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
+                    <Label x:Name="memberFirstNameLabel" Text="First Name" Style="{StaticResource resultLabelStyle}"/>
+                    <StackLayout x:Name="memberFirstNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False">
                         <Label x:Name="memberFirstNameValueLabel" FontSize="20"/>
                         <Button x:Name="memberFirstNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberFirstNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberFirstNameEntry" Style="{StaticResource resultFeildStyle}" Grid.Column="1" IsVisible="False"/>
 
 
                     <!--Last Name-->
-                    <Label x:Name="memberLastNameLabel" Text="Last Name" FontSize="20" Grid.Row="1"/>
-                    <StackLayout x:Name="memberLastNameStack" Orientation="Horizontal"  IsVisible="False" Grid.Row="1" Grid.Column="1">
+                    <Label x:Name="memberLastNameLabel" Text="Last Name" Style="{StaticResource resultLabelStyle}" Grid.Row="1"/>
+                    <StackLayout x:Name="memberLastNameStack" Style="{StaticResource resultStackStyle}"  IsVisible="False" Grid.Row="1">
                         <Label x:Name="memberLastNameValueLabel" FontSize="20"/>
                         <Button x:Name="memberLastNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberLastNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberLastNameEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="1" IsVisible="False"/>
 
                     <!--Salutation Name-->
-                    <Label x:Name="memberSalutationLabel" Text="Salutation Name" FontSize="20" Grid.Row="2"/>
-                    <StackLayout x:Name="memberSalutationStack" Orientation="Horizontal" Grid.Row="2" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberSalutationLabel" Text="Salutation Name" Style="{StaticResource resultLabelStyle}" Grid.Row="2"/>
+                    <StackLayout x:Name="memberSalutationStack" Style="{StaticResource resultStackStyle}" Grid.Row="2" IsVisible="False">
                         <Label x:Name="memberSalutationValueLabel" FontSize="20"/>
                         <Button x:Name="memberSalutationEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberSalutationEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberSalutationEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="2" IsVisible="False"/>
 
                     <!--Email-->
-                    <Label x:Name="memberEmailLabel" Text="Email" FontSize="20" Grid.Row="3"/>
-                    <StackLayout x:Name="memberEmailStack" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberEmailLabel" Text="Email" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
+                    <StackLayout x:Name="memberEmailStack" Style="{StaticResource resultStackStyle}" Grid.Row="3" IsVisible="False">
                         <Label x:Name="memberEmailValueLabel" FontSize="20"/>
                         <Button x:Name="memberEmailEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberEmailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberEmailEntry" Style="{StaticResource feildStyle}" Grid.Row="3" IsVisible="False"/>
 
                     <!--Company-->
-                    <Label x:Name="memberCompanyLabel" Text="Company" FontSize="20" Grid.Row="4"/>
-                    <StackLayout x:Name="memberCompanyStack" Orientation="Horizontal" Grid.Row="4" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberCompanyLabel" Text="Company" Style="{StaticResource resultLabelStyle}" Grid.Row="4"/>
+                    <StackLayout x:Name="memberCompanyStack" Style="{StaticResource resultStackStyle}" Grid.Row="4" Grid.Column="1" IsVisible="False">
                         <Label x:Name="memberCompanyValueLabel" FontSize="20" />
                         <Button x:Name="memberCompanyEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberCompanyEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberCompanyEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="4" IsVisible="False"/>
 
                     <!--Address 1-->
-                    <Label x:Name="memberAddress1Label" Text="Address 1" FontSize="20" Grid.Row="5"/>
-                    <StackLayout x:Name="memberAddress1Stack" Orientation="Horizontal" Grid.Row="5" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberAddress1Label" Text="Address 1" Style="{StaticResource resultLabelStyle}" Grid.Row="5"/>
+                    <StackLayout x:Name="memberAddress1Stack" Style="{StaticResource resultStackStyle}" Grid.Row="5" IsVisible="False">
                         <Label x:Name="memberAddress1ValueLabel" FontSize="20"/>
                         <Button x:Name="memberAddress1Button" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberAddress1Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberAddress1Entry" Style="{StaticResource resultFeildStyle}" Grid.Row="5" IsVisible="False"/>
 
                     <!--Address 2-->
-                    <Label x:Name="memberAddress2Label" Text="Address 2" FontSize="20" Grid.Row="6"/>
-                    <StackLayout x:Name="memberAddress2Stack" Orientation="Horizontal" Grid.Row="6" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberAddress2Label" Text="Address 2" Style="{StaticResource labelStyle}" Grid.Row="6"/>
+                    <StackLayout x:Name="memberAddress2Stack" Style="{StaticResource resultStackStyle}" Grid.Row="6" IsVisible="False">
                         <Label x:Name="memberAddress2ValueLabel" FontSize="20"/>
                         <Button x:Name="memberAddress2Button" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberAddress2Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberAddress2Entry" Style="{StaticResource resultFeildStyle}" Grid.Row="6" IsVisible="False"/>
 
                     <!--Address 3-->
-                    <Label x:Name="memberAddress3Label" Text="Address 3" FontSize="20" Grid.Row="7"/>
-                    <StackLayout x:Name="memberAddress3Stack" Orientation="Horizontal" Grid.Row="7" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberAddress3Label" Text="Address 3" Style="{StaticResource resultLabelStyle}" Grid.Row="7"/>
+                    <StackLayout x:Name="memberAddress3Stack" Style="{StaticResource resultStackStyle}" Grid.Row="7" IsVisible="False">
                         <Label x:Name="memberAddress3ValueLabel" FontSize="20"/>
                         <Button x:Name="memberAddress3Button" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberAddress3Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberAddress3Entry" Style="{StaticResource resultFeildStyle}" Grid.Row="7" IsVisible="False"/>
 
                     <!--City-->
-                    <Label x:Name="memberCityLabel" Text="City" FontSize="20" Grid.Row="8"/>
-                    <StackLayout x:Name="memberCityStack" Orientation="Horizontal" Grid.Row="8" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberCityLabel" Text="City" Style="{StaticResource resultLabelStyle}" Grid.Row="8"/>
+                    <StackLayout x:Name="memberCityStack" Style="{StaticResource resultStackStyle}" Grid.Row="8" IsVisible="False">
                         <Label x:Name="memberCityValueLabel" FontSize="20"/>
                         <Button x:Name="memberCItyEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberCityEntry" Grid.Row="8" IsVisible="False" Grid.Column="1"/>
+                    <Entry x:Name="memberCityEntry" Style="{StaticResource resultFeildStyle}" IsVisible="False" Grid.Column="1"/>
 
                     <!--Post Code-->
-                    <Label x:Name="memberPostCodeLabel" Text="Post Code" FontSize="20" Grid.Row="9"/>
-                    <StackLayout x:Name="memberPostCodeStack" Grid.Row="9" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
+                    <Label x:Name="memberPostCodeLabel" Text="Post Code" Style="{StaticResource resultLabelStyle}" Grid.Row="9"/>
+                    <StackLayout x:Name="memberPostCodeStack" Grid.Row="9" Style="{StaticResource resultStackStyle}" IsVisible="False">
                         <Label x:Name="memberPostCodeValueLabel" Text="GPS" FontSize="20" />
                         <Button x:Name="memberPostCodeEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberPostCodeEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="9" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberPostCodeEntry" Style="{StaticResource resultFeildStyle}"  Grid.Row="9" IsVisible="False"/>
 
                     <!--Comment-->
-                    <Label x:Name="memberCommentLabel" Text="Comment" FontSize="20" Grid.Row="10"/>
-                    <StackLayout x:Name="memberCommentStack" Grid.Row="10" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
+                    <Label x:Name="memberCommentLabel" Text="Comment" Style="{StaticResource resultLabelStyle}"  Grid.Row="10"/>
+                    <StackLayout x:Name="memberCommentStack" Grid.Row="10" Style="{StaticResource resultStackStyle}"  IsVisible="False">
                         <Label x:Name="memberCommentValueLabel" FontSize="20" />
                         <Button x:Name="memberCommentValueEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Editor x:Name="memberCommentEditor" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="10" Grid.Column="1" IsVisible="False"/>
+                    <Editor x:Name="memberCommentEditor" Style="{StaticResource resultFeildStyle}"  Grid.Row="10" IsVisible="False"/>
 
                     <!--Join Date-->
-                    <Label x:Name="memberJoinDateLabel" Text="Join Date" FontSize="20" Grid.Row="11"/>
-                    <StackLayout x:Name="memberJoinDateStack" Grid.Row="11" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
+                    <Label x:Name="memberJoinDateLabel" Text="Join Date" Style="{StaticResource resultLabelStyle}" Grid.Row="11"/>
+                    <StackLayout x:Name="memberJoinDateStack" Grid.Row="11" Style="{StaticResource resultStackStyle}" IsVisible="False">
                         <Label x:Name="memberJoinDateValueLabel" FontSize="20" />
                         <Button x:Name="memberJoinDateEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <DatePicker x:Name="memberJoinDatePicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="11" Grid.Column="1" IsVisible="False"/>
-
+                    <DatePicker x:Name="memberJoinDatePicker" Style="{StaticResource resultFeildStyle}" Grid.Row="11" IsVisible="False"/>
                 </Grid>
+            </ScrollView>
 
-                <!--Buttons-->
-                <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Margin="0,5">
-                    <Button 
-                        x:Name="deleteButton"
-                        Grid.ColumnSpan="2" 
-                        Text="Delete" 
-                        Style="{StaticResource mainButtonStyle}"
-                        HorizontalOptions="Center"
-                        WidthRequest="150"
-                        Clicked="DeleteButton_Clicked"/>
+            <!--Buttons-->
+            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" x:Name="resultButtons" IsVisible="False">
+                <Button 
+                    x:Name="deleteButton"
+                    Grid.ColumnSpan="2" 
+                    Text="Delete" 
+                    Style="{StaticResource mainButtonStyle}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="150"
+                    Clicked="DeleteButton_Clicked"/>
 
-                    <Button  
-                        x:Name="saveChangesButton"
-                        Text="Save Changes" 
-                        Style="{StaticResource mainButtonStyle}"
-                        HorizontalOptions="Center"
-                        WidthRequest="150"
-                        Clicked="SaveChangesButton_Clicked"/>
+                <Button  
+                    x:Name="saveChangesButton"
+                    Text="Save Changes" 
+                    Style="{StaticResource mainButtonStyle}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="150"
+                    Clicked="SaveChangesButton_Clicked"/>
 
-                    <Button  
-                        x:Name="paymentHistoryButton"
-                        Text="Payment History" 
-                        Style="{StaticResource mainButtonStyle}"
-                        HorizontalOptions="Center"
-                        WidthRequest="200"
-                        Clicked="PaymentButton_Clicked"/>
-                </StackLayout>
+                <Button  
+                    x:Name="paymentHistoryButton"
+                    Text="Payment History" 
+                    Style="{StaticResource mainButtonStyle}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="165"
+                    Clicked="PaymentButton_Clicked"/>
+            </StackLayout>
 
-                <!--Payment History-->
-                <ContentView x:Name="paymentHistoryView" IsVisible="False" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
-                    <ContentView.Content>
-                        <Frame BorderColor="#000000" Padding="3" BackgroundColor="#FFFFFF">
-                            <StackLayout BackgroundColor="#FFFFFF" >
-                                <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
-                                    <Label Text="Payment History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Button x:Name="paymentExitButton" BackgroundColor="#5C3838" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="PaymentExitButton_Clicked"/>
-                                </StackLayout>
-                                <ListView x:Name="donationListView">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                            <ViewCell>
-                                                <StackLayout Orientation="Horizontal" Margin="5,10,5,10">
-                                                    <Label Text="Date" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
-                                                    <Label Text="{Binding PaymentDate}" FontAttributes="Italic" FontSize="15"/>
-                                                    <Label Text="Category" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
-                                                    <Label Text="{Binding Donation}" FontAttributes="Italic" FontSize="15"/>
-                                                </StackLayout>
-                                            </ViewCell>
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>
-                                <Button
-                                    x:Name="addNewPaymentButton"
-                                    Margin="5,5,5,5"
-                                    Text="Add Payment" 
-                                    Style="{StaticResource mainButtonStyle}"
-                                    HorizontalOptions="Center"
-                                    Clicked="AddNewPaymentButton_Clicked"/>
+            <!--Payment History-->
+            <ContentView x:Name="paymentHistoryView" IsVisible="False" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView.Content>
+                    <Frame BorderColor="#000000" Padding="3" BackgroundColor="#FFFFFF">
+                        <StackLayout BackgroundColor="#FFFFFF" >
+                            <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
+                                <Label Text="Payment History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Button x:Name="paymentExitButton"  Style="{StaticResource exitStyle}" Clicked="PaymentExitButton_Clicked"/>
                             </StackLayout>
-                        </Frame>
-                    </ContentView.Content>
-                </ContentView>
+                            <ListView x:Name="donationListView">
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <ViewCell>
+                                            <StackLayout Orientation="Horizontal" Margin="5,10,5,10">
+                                                <Label Text="Date" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
+                                                <Label Text="{Binding PaymentDate}" FontAttributes="Italic" FontSize="15"/>
+                                                <Label Text="Category" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
+                                                <Label Text="{Binding Donation}" FontAttributes="Italic" FontSize="15"/>
+                                            </StackLayout>
+                                        </ViewCell>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Button
+                                x:Name="addNewPaymentButton"
+                                Margin="5,5,5,5"
+                                Text="Add Payment" 
+                                Style="{StaticResource mainButtonStyle}"
+                                HorizontalOptions="Center"
+                                Clicked="AddNewPaymentButton_Clicked"/>
+                        </StackLayout>
+                    </Frame>
+                </ContentView.Content>
+            </ContentView>
 
-                <!--Add Payment-->
-                <ContentView x:Name="addNewPaymentView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600">
-                    <ContentView.Content>
-                        <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
-                            <StackLayout BackgroundColor="#FFFFFF">
-                                <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
-                                    <Label Text="Add Payment" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Button x:Name="addNewPaymentExitButton" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="AddNewPaymentExitButton_Clicked"/>
-                                </StackLayout>
-                                <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
-                                <DatePicker x:Name="paymentDatePicker" Margin="5,5,5,5"/>
-
-                                <Label Text="Amount" FontSize="20" Margin="5,5,5,5"/>
-                                <Entry x:Name="paymentAmountEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
-
-                                <Button
-                                    x:Name="addPaymentButton"
-                                    Margin="5,5,5,5"
-                                    Text="Add" 
-                                    Style="{StaticResource mainButtonStyle}"
-                                    HorizontalOptions="Center"
-                                    Clicked="AddPaymentButton_Clicked"/>
+            <!--Add Payment-->
+            <ContentView x:Name="addNewPaymentView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600">
+                <ContentView.Content>
+                    <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
+                        <StackLayout BackgroundColor="#FFFFFF">
+                            <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
+                                <Label Text="Add Payment" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Button x:Name="addNewPaymentExitButton"  Style="{StaticResource exitStyle}" Clicked="AddNewPaymentExitButton_Clicked"/>
                             </StackLayout>
-                        </Frame>
-                    </ContentView.Content>
-                </ContentView>
-            </Grid>
-        </StackLayout>
+                            <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
+                            <DatePicker x:Name="paymentDatePicker" Margin="5,5,5,5"/>
+
+                            <Label Text="Amount" FontSize="20" Margin="5,5,5,5"/>
+                            <Entry x:Name="paymentAmountEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+
+                            <Button
+                                x:Name="addPaymentButton"
+                                Margin="5,5,5,5"
+                                Text="Add" 
+                                Style="{StaticResource mainButtonStyle}"
+                                HorizontalOptions="Center"
+                                Clicked="AddPaymentButton_Clicked"/>
+                        </StackLayout>
+                    </Frame>
+                </ContentView.Content>
+            </ContentView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

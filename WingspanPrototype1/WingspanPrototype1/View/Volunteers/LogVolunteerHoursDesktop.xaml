@@ -51,7 +51,7 @@
 
                 <StackLayout Grid.Row="1"  Margin="30,30,30,30">
                     <Label Text="Hours" FontSize="20"  Margin="5,5,5,5"/>
-                    <Editor x:Name="hoursEditor" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+                    <Entry x:Name="hoursEditor" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
                 </StackLayout>
 
                 <Button                    

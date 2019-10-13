@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <Grid VerticalOptions="FillAndExpand"  BackgroundColor="#FFFFFF">
+            <Grid BackgroundColor="#FFFFFF">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="6*"/>
@@ -17,7 +17,7 @@
 
                 <Grid.RowDefinitions>
                     <RowDefinition Height="33*"/>
-                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="5*"/>
                 </Grid.RowDefinitions>
                 
                 <!--Results List-->
@@ -34,9 +34,9 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 
-                <ContentView x:Name="wildBirdDisplayForm" Grid.Column="1" Margin="20,5,20,5" IsVisible="False">
+                <ContentView x:Name="wildBirdDisplayForm" Grid.Column="1" HorizontalOptions="Center" IsVisible="False">
                     <ContentView.Content>
-                        <ScrollView VerticalOptions="Center">
+                        <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
                             <Grid HeightRequest="500">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="*"/>
@@ -139,7 +139,7 @@
                             <Entry x:Name="wildMetalBandIdEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="6" IsVisible="False"/>
 
                             <!--Band Info-->
-                            <Label x:Name="bandInfoLabel" Text="Metal Band Id"  Style="{StaticResource resultLabelStyle}" Grid.Row="7"/>
+                            <Label x:Name="bandInfoLabel" Text="Band Info"  Style="{StaticResource resultLabelStyle}" Grid.Row="7"/>
                             <StackLayout x:Name="bandInfoStack" Style="{StaticResource resultStackStyle}" Grid.Row="7"  IsVisible="False">
                                 <Label x:Name="bandInfoValueLabel" Text="GPS" FontSize="20"/>
                                 <Button x:Name="bandInfoEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
@@ -166,172 +166,173 @@
                     </ContentView.Content>
                 </ContentView>
 
-                <ContentView x:Name="captiveBirdDisplayForm" Grid.Column="1" Margin="20,5,20,5" IsVisible="False">
+                <ContentView x:Name="captiveBirdDisplayForm" Grid.Column="1" HorizontalOptions="Center"  IsVisible="False">
                     <ContentView.Content>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+                        <ScrollView HorizontalOptions="Center" VerticalOptions="Center">
+                            <Grid HeightRequest="500">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="2*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
 
-                            <!--Wingspan Id-->
-                            <Label x:Name="captiveWingspanIdLabel" Text="Wingspan Id" FontSize="20"/>
-                            <StackLayout x:Name="captiveWingspanIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
-                                <Label x:Name="captiveWingspanIdValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveWingspanIdEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <Entry x:Name="captiveWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
+                                <!--Wingspan Id-->
+                                <Label x:Name="captiveWingspanIdLabel" Text="Wingspan Id" Style="{StaticResource resultLabelStyle}"/>
+                                <StackLayout x:Name="captiveWingspanIdStack" Style="{StaticResource resultStackStyle}" IsVisible="False">
+                                    <Label x:Name="captiveWingspanIdValueLabel" FontSize="20"/>
+                                    <Button x:Name="captiveWingspanIdEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Entry x:Name="captiveWingspanIdEntry" Style="{StaticResource resultFeildStyle}" IsVisible="False"/>
 
-                            <!--Name-->
-                            <Label x:Name="captiveNameLabel" Text="Name" FontSize="20" Grid.Row="1"/>
-                            <StackLayout x:Name="captiveNameStack" Orientation="Horizontal" IsVisible="False" Grid.Row="1" Grid.Column="1">
-                                <Label x:Name="captiveNameValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <Entry x:Name="captiveNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Row="1" Grid.Column="1"/>
+                                <!--Name-->
+                                <Label x:Name="captiveNameLabel" Text="Name" Style="{StaticResource resultLabelStyle}" Grid.Row="1"/>
+                                <StackLayout x:Name="captiveNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="1">
+                                    <Label x:Name="captiveNameValueLabel" FontSize="20"/>
+                                    <Button x:Name="captiveNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Entry x:Name="captiveNameEntry" Style="{StaticResource resultFeildStyle}" IsVisible="False" Grid.Row="1"/>
 
-                            <!--Band Number-->
-                            <Label x:Name="captiveBandNumberLabel" Text="Band Number" FontSize="20" Grid.Row="2"/>
-                            <StackLayout x:Name="captiveBandNumberStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1" Grid.Row="2">
-                                <Label x:Name="captiveBandNumberValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveBandNumberEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <Entry x:Name="captiveBandNumberEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="2"/>
+                                <!--Band Number-->
+                                <Label x:Name="captiveBandNumberLabel" Text="Band Number" Style="{StaticResource resultLabelStyle}" Grid.Row="2"/>
+                                <StackLayout x:Name="captiveBandNumberStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="2">
+                                    <Label x:Name="captiveBandNumberValueLabel" FontSize="20"/>
+                                    <Button x:Name="captiveBandNumberEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Entry x:Name="captiveBandNumberEntry" Style="{StaticResource resultFeildStyle}" IsVisible="False" Grid.Row="2"/>
 
-                            <!--Band Colour-->
-                            <Label x:Name="captiveBandColourLabel" Text="Band Colour" FontSize="20" Grid.Row="3"/>
-                            <StackLayout x:Name="captiveBandColourStack" Orientation="Horizontal" IsVisible="False" Grid.Row="3" Grid.Column="1">
-                                <Label x:Name="captiveBandColourValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveBandColurEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <Picker x:Name="captiveBandColourPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>G:M</x:String>
-                                        <x:String>B:M</x:String>
-                                        <x:String>M:R</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
+                                <!--Band Colour-->
+                                <Label x:Name="captiveBandColourLabel" Text="Band Colour" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
+                                <StackLayout x:Name="captiveBandColourStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="3">
+                                    <Label x:Name="captiveBandColourValueLabel" FontSize="20"/>
+                                    <Button x:Name="captiveBandColurEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Picker x:Name="captiveBandColourPicker" Style="{StaticResource resultFeildStyle}" Grid.Row="3" IsVisible="False">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>G:M</x:String>
+                                            <x:String>B:M</x:String>
+                                            <x:String>M:R</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
 
-                            <!--Species-->
-                            <Label x:Name="captiveSpeciesLabel" Text="Species" FontSize="20" Grid.Row="4"/>
-                            <StackLayout x:Name="captiveSpeciesStack" Orientation="Horizontal" IsVisible="False" Grid.Row="4" Grid.Column="1">
-                                <Label x:Name="captiveSpeciesValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveSpeciesEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <Picker x:Name="captiveSpeciesPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" IsVisible="False">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>Falcon</x:String>
-                                        <x:String>Hawk</x:String>
-                                        <x:String>Morepork</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
+                                <!--Species-->
+                                <Label x:Name="captiveSpeciesLabel" Text="Species" Style="{StaticResource resultLabelStyle}"  Grid.Row="4"/>
+                                <StackLayout x:Name="captiveSpeciesStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="4">
+                                    <Label x:Name="captiveSpeciesValueLabel" FontSize="20"/>
+                                    <Button x:Name="captiveSpeciesEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Picker x:Name="captiveSpeciesPicker" Style="{StaticResource resultFeildStyle}" Grid.Row="4" IsVisible="False">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Falcon</x:String>
+                                            <x:String>Hawk</x:String>
+                                            <x:String>Morepork</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
 
-                            <!--Sex-->
-                            <Label x:Name="captiveSexLabel" Text="Sex" FontSize="20" Grid.Row="5"/>
-                            <StackLayout x:Name="captiveSexStack" Orientation="Horizontal" Grid.Row="5" Grid.Column="1" IsVisible="False">
-                                <Label x:Name="captiveSexValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveSexEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <Picker x:Name="captiveSexPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1" IsVisible="False">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>Male</x:String>
-                                        <x:String>Female</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
+                                <!--Sex-->
+                                <Label x:Name="captiveSexLabel" Text="Sex" Style="{StaticResource resultLabelStyle}" Grid.Row="5"/>
+                                <StackLayout x:Name="captiveSexStack" Style="{StaticResource resultStackStyle}" Grid.Row="5" IsVisible="False">
+                                    <Label x:Name="captiveSexValueLabel" FontSize="20"/>
+                                    <Button x:Name="captiveSexEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Picker x:Name="captiveSexPicker" Style="{StaticResource resultFeildStyle}" Grid.Row="5" IsVisible="False">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Male</x:String>
+                                            <x:String>Female</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
 
-                            <!--Age-->
-                            <Label x:Name="captiveAgeLabel" Text="Age" FontSize="20" Grid.Row="6"/>
-                            <StackLayout x:Name="captiveAgeStack" Orientation="Horizontal" Grid.Row="6" Grid.Column="1" IsVisible="False">
-                                <Label x:Name="captiveAgeValueLabel" FontSize="20" />
-                                <Button x:Name="captiveAgeEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <Picker x:Name="captiveAgePicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" IsVisible="False">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>Juvenile</x:String>
-                                        <x:String>Adult</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
+                                <!--Age-->
+                                <Label x:Name="captiveAgeLabel" Text="Age" Style="{StaticResource resultLabelStyle}" Grid.Row="6"/>
+                                <StackLayout x:Name="captiveAgeStack" Style="{StaticResource resultStackStyle}" Grid.Row="6" IsVisible="False">
+                                    <Label x:Name="captiveAgeValueLabel" FontSize="20" />
+                                    <Button x:Name="captiveAgeEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Picker x:Name="captiveAgePicker" Style="{StaticResource resultFeildStyle}" Grid.Row="6" IsVisible="False">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Juvenile</x:String>
+                                            <x:String>Adult</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
 
-                            <!--Location-->
-                            <Label x:Name="captiveLocationValue" Text="Location" FontSize="20" Grid.Row="7"/>
-                            <StackLayout x:Name="captiveLocationStack" Orientation="Horizontal"  IsVisible="False" Grid.Row="7" Grid.Column="1">
-                                <Label x:Name="captiveLocationValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveLocationEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <Entry x:Name="captiveLocationEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1" IsVisible="False"/>
+                                <!--Location-->
+                                <Label x:Name="captiveLocationValue" Text="Location" Style="{StaticResource labelStyle}" Grid.Row="7"/>
+                                <StackLayout x:Name="captiveLocationStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="7">
+                                    <Label x:Name="captiveLocationValueLabel" FontSize="20"/>
+                                    <Button x:Name="captiveLocationEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Entry x:Name="captiveLocationEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="7" IsVisible="False"/>
                             
-                            <!--Date Arrived-->
-                            <Label x:Name="captiveDateArrivedLabel" Text="Date Arrived" FontSize="20" Grid.Row="8"/>
-                            <StackLayout x:Name="captiveDateArrivedStack" Orientation="Horizontal" Grid.Row="8" Grid.Column="1" IsVisible="False">
-                                <Label x:Name="captiveDateArrivedValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveDateArrivedEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <DatePicker x:Name="captiveDateArrivedPicker" Grid.Row="8" IsVisible="False" Grid.Column="1"/>
+                                <!--Date Arrived-->
+                                <Label x:Name="captiveDateArrivedLabel" Text="Date Arrived" Style="{StaticResource labelStyle}" Grid.Row="8"/>
+                                <StackLayout x:Name="captiveDateArrivedStack" Style="{StaticResource resultStackStyle}" Grid.Row="8" IsVisible="False">
+                                    <Label x:Name="captiveDateArrivedValueLabel" FontSize="20"/>
+                                    <Button x:Name="captiveDateArrivedEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <DatePicker x:Name="captiveDateArrivedPicker" Grid.Row="8" IsVisible="False" Style="{StaticResource resultFeildStyle}"/>
 
-                            <!--Date Departed-->
-                            <Label x:Name="captiveDateDepartedLabel" Text="Date Departed" FontSize="20" Grid.Row="9"/>
-                            <StackLayout x:Name="captiveDateDepartedStack" Orientation="Horizontal" Grid.Row="9" Grid.Column="1" IsVisible="False">
-                                <Label x:Name="captiveDateDepartedValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveDateDepartedEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <DatePicker x:Name="captiveDateDepartedPicker" Grid.Row="9" IsVisible="False" Grid.Column="1"/>
+                                <!--Date Departed-->
+                                <Label x:Name="captiveDateDepartedLabel" Text="Date Departed" Style="{StaticResource labelStyle}" Grid.Row="9"/>
+                                <StackLayout x:Name="captiveDateDepartedStack" Style="{StaticResource resultStackStyle}" Grid.Row="9" Grid.Column="1">
+                                    <Label x:Name="captiveDateDepartedValueLabel" FontSize="20"/>
+                                    <Button x:Name="captiveDateDepartedEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <DatePicker x:Name="captiveDateDepartedPicker" Grid.Row="9" IsVisible="False" Style="{StaticResource resultFeildStyle}"/>
 
-                            <!--Date Deceased-->
-                            <Label x:Name="captiveDateDeceasedLabel" Text="Date Deceased" FontSize="20" Grid.Row="10"/>
-                            <StackLayout x:Name="captiveDatedeceasedStack" Orientation="Horizontal" Grid.Row="10" Grid.Column="1" IsVisible="False">
-                                <Label x:Name="captiveDateDeceasedValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveDateDeceasedEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <DatePicker x:Name="captiveDateDeceasedPicker" Grid.Row="10" IsVisible="False" Grid.Column="1"/>
+                                <!--Date Deceased-->
+                                <Label x:Name="captiveDateDeceasedLabel" Text="Date Deceased" Style="{StaticResource labelStyle}" Grid.Row="10"/>
+                                <StackLayout x:Name="captiveDatedeceasedStack" Style="{StaticResource resultStackStyle}" Grid.Row="10" IsVisible="False">
+                                    <Label x:Name="captiveDateDeceasedValueLabel" FontSize="20"/>
+                                    <Button x:Name="captiveDateDeceasedEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <DatePicker x:Name="captiveDateDeceasedPicker" Grid.Row="10" IsVisible="False" Style="{StaticResource resultFeildStyle}"/>
 
-                            <!--Result-->
-                            <Label x:Name="captiveResultLabel" Text="Result" FontSize="20" Grid.Row="11"/>
-                            <StackLayout x:Name="captiveResultStack" Grid.Row="11" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
-                                <Label x:Name="captiveResultValueLabel" FontSize="20" />
-                                <Button x:Name="captiveResultEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                            </StackLayout>
-                            <Entry x:Name="captiveResultEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="11" Grid.Column="1" IsVisible="False"/>
+                                <!--Result-->
+                                <Label x:Name="captiveResultLabel" Text="Result" Style="{StaticResource labelStyle}" Grid.Row="11"/>
+                                <StackLayout x:Name="captiveResultStack" Grid.Row="11" Style="{StaticResource resultStackStyle}" IsVisible="False">
+                                    <Label x:Name="captiveResultValueLabel" FontSize="20" />
+                                    <Button x:Name="captiveResultEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                </StackLayout>
+                                <Entry x:Name="captiveResultEntry" Grid.Row="11" Style="{StaticResource resultFeildStyle}" IsVisible="False"/>
 
-                        </Grid>
+                            </Grid>
+                        </ScrollView>
                     </ContentView.Content>
                 </ContentView>
 
 
                 <!--Buttons-->
-                <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Margin="0,5">
+                <StackLayout x:Name="resultButtons" IsVisible="False" HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Margin="0,5">
                     <Button  
                          x:Name="deleteButton"
                          Grid.Row="8" 
                          Grid.ColumnSpan="2" 
                          Text="Delete" 
-                         BackgroundColor="#FFD966"
-                         BorderColor="#5C3838"
-                         BorderWidth="3"
-                         CornerRadius="5"
-                         FontSize="20" 
+                         Style="{StaticResource mainButtonStyle}"
                          HorizontalOptions="Center"
+                         VerticalOptions="Center"
                          WidthRequest="150"
                          Clicked="DeleteButton_Clicked"/>
                     <Button  
@@ -339,12 +340,9 @@
                          Grid.Row="8" 
                          Grid.ColumnSpan="2" 
                          Text="Save Changes" 
-                         BackgroundColor="#FFD966"
-                         BorderColor="#5C3838"
-                         BorderWidth="3"
-                         CornerRadius="5"
-                         FontSize="20" 
+                         Style="{StaticResource mainButtonStyle}"
                          HorizontalOptions="Center"
+                         VerticalOptions="Center"
                          WidthRequest="150" 
                          Clicked="SaveButton_Clicked"/>
                     <Button  
@@ -352,11 +350,8 @@
                          Grid.Row="8" 
                          Grid.ColumnSpan="2" 
                          Text="View Notes" 
-                         BackgroundColor="#FFD966"
-                         BorderColor="#5C3838"
-                         BorderWidth="3"
-                         CornerRadius="5"
-                         FontSize="20" 
+                         Style="{StaticResource mainButtonStyle}"
+                         VerticalOptions="Center"
                          HorizontalOptions="Center"
                          WidthRequest="150"
                          Clicked="NoteButton_Clicked"/>
@@ -365,14 +360,11 @@
                          Grid.Row="8" 
                          Grid.ColumnSpan="2" 
                          Text="Past Locations" 
-                         BackgroundColor="#FFD966"
-                         BorderColor="#5C3838"
-                         BorderWidth="3"
-                         CornerRadius="5"
-                         FontSize="20" 
+                         Style="{StaticResource mainButtonStyle}"
                          HorizontalOptions="Center"
+                         VerticalOptions="Center"
                          WidthRequest="150"
-                        Clicked="LocationButton_Clicked"/>
+                         Clicked="LocationButton_Clicked"/>
                 </StackLayout>
 
                 <!--Note history popup box-->
@@ -382,7 +374,7 @@
                             <StackLayout BackgroundColor="#FFFFFF" >
                                 <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
                                     <Label Text="Note History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Button x:Name="noteExitButton" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="NoteExitButton_Clicked"/>
+                                    <Button x:Name="noteExitButton"  Style="{StaticResource exitStyle}" Clicked="NoteExitButton_Clicked"/>
                                 </StackLayout>
                                 <ListView x:Name="noteListView">
                                     <ListView.ItemTemplate>
@@ -405,11 +397,7 @@
                                     x:Name="addNewNoteButton"
                                     Margin="5,5,5,5"
                                     Text="Add Note" 
-                                    BackgroundColor="#FFD966"
-                                    BorderColor="#5C3838"
-                                    BorderWidth="3"
-                                    CornerRadius="5"
-                                    FontSize="20" 
+                                    Style="{StaticResource mainButtonStyle}"
                                     HorizontalOptions="Center"
                                     Clicked="AddNewNoteButton_Clicked"/>
                             </StackLayout>
@@ -424,7 +412,7 @@
                             <StackLayout BackgroundColor="#FFFFFF">
                                 <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
                                     <Label Text="Add Note" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Button x:Name="addNewNoteExitButton" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="AddNewNoteExitButton_Clicked"/>
+                                    <Button x:Name="addNewNoteExitButton"  Style="{StaticResource exitStyle}" Clicked="AddNewNoteExitButton_Clicked"/>
                                 </StackLayout>
 
                                 <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
@@ -440,11 +428,7 @@
                                     x:Name="addNoteButton"
                                     Margin="5,5,5,5"
                                     Text="Add Note" 
-                                    BackgroundColor="#FFD966"
-                                    BorderColor="#5C3838"
-                                    BorderWidth="3"
-                                    CornerRadius="5"
-                                    FontSize="20" 
+                                    Style="{StaticResource mainButtonStyle}"
                                     HorizontalOptions="Center"
                                     Clicked="AddNoteButton_Clicked"/>
                             </StackLayout>
@@ -459,7 +443,7 @@
                             <StackLayout BackgroundColor="#FFFFFF" >
                                 <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
                                     <Label Text="Location History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Button x:Name="locationExitButton" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="LocationExitButton_Clicked"/>
+                                    <Button x:Name="locationExitButton"  Style="{StaticResource exitStyle}" Clicked="LocationExitButton_Clicked"/>
                                 </StackLayout>
                                 <ListView x:Name="locationListView">
                                     <ListView.ItemTemplate>
@@ -482,11 +466,7 @@
                                     x:Name="addNewLocationButton"
                                     Margin="5,5,5,5"
                                     Text="Add Location" 
-                                    BackgroundColor="#FFD966"
-                                    BorderColor="#5C3838"
-                                    BorderWidth="3"
-                                    CornerRadius="5"
-                                    FontSize="20" 
+                                    Style="{StaticResource mainButtonStyle}"
                                     HorizontalOptions="Center"
                                     Clicked="AddNewLocationButton_Clicked"/>
                             </StackLayout>
@@ -501,7 +481,7 @@
                             <StackLayout BackgroundColor="#FFFFFF" >
                                 <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
                                     <Label Text="Add Location" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Button x:Name="addNewLocationExitButton" Text="X" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="EndAndExpand" VerticalOptions="Center" Clicked="AddNewLocationExitButton_Clicked"/>
+                                    <Button x:Name="addNewLocationExitButton" Style="{StaticResource exitStyle}" Clicked="AddNewLocationExitButton_Clicked"/>
                                 </StackLayout>
                                 <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>
                                 <Picker x:Name="locationCategoryPicker" Margin="5,5,5,5"/>
@@ -513,11 +493,7 @@
                                     x:Name="addLocationButton"
                                     Margin="5,5,5,5"
                                     Text="Add" 
-                                    BackgroundColor="#FFD966"
-                                    BorderColor="#5C3838"
-                                    BorderWidth="3"
-                                    CornerRadius="5"
-                                    FontSize="20" 
+                                    Style="{StaticResource mainButtonStyle}"
                                     HorizontalOptions="Center"
                                     Clicked="AddLocationButton_Clicked"/>
                             </StackLayout>
