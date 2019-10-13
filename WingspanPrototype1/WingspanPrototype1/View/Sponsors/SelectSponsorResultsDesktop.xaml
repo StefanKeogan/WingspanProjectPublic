@@ -30,61 +30,60 @@
                 </ListView>
 
                 <!--the grid to display the sponsor details-->
-                <ScrollView Grid.Column="1" VerticalOptions="Center">
-                    <FlexLayout AlignItems="Center" Direction="Column" JustifyContent="SpaceEvenly">
-                        <Grid x:Name="selectSponsorResultsGrid" IsVisible="False" WidthRequest="600">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="3*"/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+                <ScrollView Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+                    <Grid x:Name="selectSponsorResultsGrid" IsVisible="False" HorizontalOptions="Center" HeightRequest="400">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="1.5*"/>
+                            <ColumnDefinition Width="3.5*"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="2*"/>
+                        </Grid.RowDefinitions>
 
-                            <!--Sponsor ID-->
-                            <Label x:Name="selectSponsorIDLabel" Text="Sponsor ID" FontSize="20"/>
-                            <Label x:Name="selectSponsorIDValueLabel" FontSize="20" IsVisible="False" Grid.Column="1"/>
+                        <!--Sponsor ID-->
+                        <Label x:Name="selectSponsorIDLabel" Text="Sponsor ID" Style="{StaticResource resultLabelStyle}"/>
+                        <Label x:Name="selectSponsorIDValueLabel" FontSize="20" IsVisible="False"/>
 
-                            <!--Sponsor name-->
-                            <Label x:Name="selectSponsorNameLabel" Text="Name" FontSize="20" Grid.Row="1"/>
-                            <Label x:Name="selectSponsorNameValueLabel" FontSize="20" IsVisible="False" Grid.Row="1" Grid.Column="1"/>
+                        <!--Sponsor name-->
+                        <Label x:Name="selectSponsorNameLabel" Text="Name" Style="{StaticResource resultLabelStyle}" Grid.Row="1"/>
+                        <Label x:Name="selectSponsorNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="1"/>
 
-                            <!--Sponsor address-->
-                            <Label x:Name="selectSponsorAddressLabel" Text="Address" FontSize="20" Grid.Row="2"/>
-                            <Label x:Name="selectSponsorAddressValueLabel" FontSize="20" IsVisible="False" Grid.Row="2" Grid.Column="1"/>
+                        <!--Sponsor address-->
+                        <Label x:Name="selectSponsorAddressLabel" Text="Address" Style="{StaticResource resultLabelStyle}" Grid.Row="2"/>
+                        <Label x:Name="selectSponsorAddressValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="2"/>
 
-                            <!--Sponsor phone number-->
-                            <Label x:Name="selectSponsorPhoneLabel" Text="Phone" FontSize="20" Grid.Row="3"/>
-                            <Label x:Name="selectSponsorPhoneValueLabel" FontSize="20" IsVisible="False" Grid.Row="3" Grid.Column="1"/>
+                        <!--Sponsor phone number-->
+                        <Label x:Name="selectSponsorPhoneLabel" Text="Phone" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
+                        <Label x:Name="selectSponsorPhoneValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="3"/>
 
-                            <!--Sponsor email-->
-                            <Label x:Name="selectSponsorEmailLabel" Text="Email" FontSize="20" Grid.Row="4"/>
-                            <Label x:Name="selectSponsorEmailValueLabel" FontSize="20" IsVisible="False" Grid.Row="4" Grid.Column="1"/>
+                        <!--Sponsor email-->
+                        <Label x:Name="selectSponsorEmailLabel" Text="Email" Style="{StaticResource resultLabelStyle}" Grid.Row="4"/>
+                        <Label x:Name="selectSponsorEmailValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="4"/>
 
-                            <!--Sponsor notes-->
-                            <Label x:Name="selectSponsorNotesLabel" Text="Notes" FontSize="20" Grid.Row="5"/>
-                            <Label x:Name="selectSponsorNotesValueLabel" FontSize="20" IsVisible="False" Grid.Row="5" Grid.Column="1"/>
+                        <!--Sponsor notes-->
+                        <Label x:Name="selectSponsorNotesLabel" Text="Notes" Style="{StaticResource resultLabelStyle}" Grid.Row="5"/>
+                        <Label x:Name="selectSponsorNotesValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="5"/>
 
-                            <!--button at the bottom -->
+                        <!--button at the bottom -->
                         <Button x:Name="thisSponsorButton"
-                                Grid.Row="7"
+                                Grid.Row="6"
                                 Grid.ColumnSpan="2"
                                 HorizontalOptions="Center"
+                                VerticalOptions="Center"
                                 Text="Sponsor" 
                                 Style="{StaticResource mainButtonStyle}" 
                                 WidthRequest="150"
                                 Clicked="ThisSponsorButton_Clicked"/>
 
-                        </Grid>
-                    </FlexLayout>
+                    </Grid>
                 </ScrollView>
             </Grid>
         </StackLayout>
