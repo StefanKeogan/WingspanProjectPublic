@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <StackLayout>
 
-            <Grid BackgroundColor="#FFFFFF">
+            <Grid BackgroundColor="#FFFFFF" VerticalOptions="Fill">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="6*"/>
@@ -34,7 +34,7 @@
                     </ListView.ItemTemplate>
                 </ListView>
                 
-                <ContentView x:Name="wildBirdDisplayForm" Grid.Column="1" HorizontalOptions="Center" IsVisible="False">
+                <ContentView x:Name="wildBirdDisplayForm" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
                     <ContentView.Content>
                         <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
                             <Grid HeightRequest="500">
@@ -166,7 +166,7 @@
                     </ContentView.Content>
                 </ContentView>
 
-                <ContentView x:Name="captiveBirdDisplayForm" Grid.Column="1" HorizontalOptions="Center"  IsVisible="False">
+                <ContentView x:Name="captiveBirdDisplayForm" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
                     <ContentView.Content>
                         <ScrollView HorizontalOptions="Center" VerticalOptions="Center">
                             <Grid HeightRequest="500">

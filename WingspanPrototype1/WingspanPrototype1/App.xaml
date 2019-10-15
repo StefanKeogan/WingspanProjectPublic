@@ -68,6 +68,7 @@
                 <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
 
+
         </ResourceDictionary>
     </Application.Resources>
     

@@ -7,17 +7,14 @@ using System.Threading.Tasks;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
-namespace WingspanPrototype1
+namespace WingspanPrototype1.View.Volunteers
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class ReportPage : ContentPage
+    public partial class LogVolunteerHoursMobile2 : ContentPage
     {
-        // Currently blank, will use to display report builder in future sprints 
-        public ReportPage(string title)
+        public LogVolunteerHoursMobile2()
         {
             InitializeComponent();
-
-            Title = title;
         }
     }
 }

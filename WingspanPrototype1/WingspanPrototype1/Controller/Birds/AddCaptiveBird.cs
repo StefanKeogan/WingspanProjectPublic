@@ -11,7 +11,6 @@ namespace WingspanPrototype1.Controller.Birds
     class AddCaptiveBird
     {
         public static bool InsertCaptiveBirdDocument(CaptiveBird bird)
-
         {
             var database = DatabaseConnection.GetDatabase();         
 
@@ -19,10 +18,10 @@ namespace WingspanPrototype1.Controller.Birds
 
             // Insert auto generated / default feilds 
             var document = new BsonDocument
-                {
-                    {"WingspanId", bird.WingspanId},
-                    {"DateArrived", bird.DateArrived}
-                };
+            {
+                {"WingspanId", bird.WingspanId},
+                {"DateArrived", bird.DateArrived}
+            };
 
             // Further validation for un-required feilds 
             if (bird.Name != null) document.Add("Name", bird.Name);
@@ -43,7 +42,6 @@ namespace WingspanPrototype1.Controller.Birds
             {
                 return false;
             }
-
             
         }
     }

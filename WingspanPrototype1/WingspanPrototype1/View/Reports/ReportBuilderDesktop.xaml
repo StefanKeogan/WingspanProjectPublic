@@ -1,0 +1,152 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.View.Reports.ReportBuilderDesktop"
+             BackgroundColor="#F0F0F0">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="reportPickerStyle" TargetType="Picker">
+                <Setter Property="WidthRequest" Value="450"/>
+                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="Grid.Row" Value="1"/>
+            </Style>
+
+            <Style x:Key="reportLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+
+            <Style x:Key="resultLabel" TargetType="Label">
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="Margin" Value="5,0,0,0"/>
+            </Style>
+
+            <Style x:Key="resultListStyle" TargetType="ListView">
+                <Setter Property="BackgroundColor" Value="#FFFFFF"/>
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="VerticalOptions" Value="Fill"/>
+                <Setter Property="Grid.Row" Value="2"/>
+                <Setter Property="Grid.ColumnSpan" Value="5"/>
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+
+        <Grid HorizontalOptions="Center" VerticalOptions="Center" Margin="10,10,10,10">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="9*"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width=".9*"/>
+                <ColumnDefinition Width=".9*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1.1*"/>
+
+            </Grid.ColumnDefinitions>
+
+            <Label Text="Collection" Style="{StaticResource reportLabelStyle}"/>
+            <Label Text="Condition" Style="{StaticResource reportLabelStyle}" Grid.Column="1"/>
+            <Label Text="From" Style="{StaticResource reportLabelStyle}" Grid.Column="2"/>
+            <Label Text="To" Style="{StaticResource reportLabelStyle}" Grid.Column="3"/>
+
+            <Picker x:Name="collectionPicker" Style="{StaticResource reportPickerStyle}" SelectedIndexChanged="collectionPicker_SelectedIndexChanged">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Wild Birds</x:String>
+                        <x:String>Captive Birds</x:String>
+                        <x:String>Members</x:String>
+                        <x:String>Volunteers</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Picker x:Name="conditionPicker" Style="{StaticResource reportPickerStyle}" Grid.Column="1"/>
+            <DatePicker x:Name="fromDatePicker" Style="{StaticResource reportPickerStyle}" Grid.Column="2"/>
+            <DatePicker x:Name="toDatePicker" Style="{StaticResource reportPickerStyle}" Grid.Column="3"/>
+
+            <Button 
+                x:Name="buildReportButton" 
+                Text="Generate Report"
+                Style="{StaticResource mainButtonStyle}" 
+                Grid.Column="4" 
+                HorizontalOptions="CenterAndExpand" 
+                VerticalOptions="Center"
+                WidthRequest="170"
+                Grid.Row="1"/>
+
+            <ListView x:Name="wildBirdListView" Style="{StaticResource resultListStyle}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding WingspanId}"/>
+                                <Label Text="{Binding Species}"/>
+                                <Label Text="{Binding Sex}"/>
+                                <Label Text="{Binding Age}"/>
+                                <Label Text="{Binding MetalBand}"/>
+                                <Label Text="{Binding BandInfo}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView x:Name="captiveBirdListView" Style="{StaticResource resultListStyle}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding WingspanId}"/>
+                                <Label Text="{Binding Name}"/>
+                                <Label Text="{Binding Species}"/>
+                                <Label Text="{Binding Sex}"/>
+                                <Label Text="{Binding Age}"/>
+                                <Label Text="{Binding BandId}"/>
+                                <Label Text="{Binding BandInfo}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView x:Name="memberListView" Style="{StaticResource resultListStyle}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding FirstName}"/>
+                                <Label Text="{Binding LastName}"/>
+                                <Label Text="{Binding Email}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView x:Name="volunteerListView" Style="{StaticResource resultListStyle}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding FirstName}"/>
+                                <Label Text="{Binding LastName}"/>
+                                <Label Text="{Binding Email}"/>
+                                <Label Text="{Binding Moile}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

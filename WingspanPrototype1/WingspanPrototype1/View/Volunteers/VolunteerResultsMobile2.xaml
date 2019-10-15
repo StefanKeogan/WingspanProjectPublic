@@ -57,7 +57,7 @@
             </Grid>
 
             <!--Buttons-->
-            <StackLayout HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Margin="0,5">
+            <StackLayout HorizontalOptions="Center" Grid.Column="1" Grid.Row="1" Margin="0,5">
                 <Button  
                     x:Name="deleteButton"
                     Grid.ColumnSpan="2" 
