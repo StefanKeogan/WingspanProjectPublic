@@ -13,7 +13,7 @@ namespace WingspanPrototype1.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditSponsorshipResultsDesktop : ContentPage
 	{
-		public EditSponsorshipResultsDesktop (List<Sponsor> results)
+		public EditSponsorshipResultsDesktop (List<Sponsorship> results)
 		{
 			InitializeComponent ();
             resultsListView.ItemsSource = results;
@@ -33,23 +33,10 @@ namespace WingspanPrototype1.View
 
         private void DisplaySponsorship(Sponsorship sponsorship)
         {
-            //display Sponsorship ID
-            if ((sponsorship.SponsorshipID != string.Empty) && (sponsorship.SponsorshipID != null))
-            {
-                sponsorshipIDLabel.Text = sponsorship.SponsorID;
-                sponsorshipIDStack.IsVisible = true;
-                sponsorshipIDEntry.IsVisible = false;
-            }
-            else
-            {
-                sponsorshipIDEntry.IsVisible = true;
-                sponsorshipIDStack.IsVisible = false;
-            }
-
             //display Wingspan ID
             if ((sponsorship.WingspanId != string.Empty) && (sponsorship.WingspanId != null))
             {
-                sponsoredWingspanIDLabel.Text = sponsorship.WingspanId;
+                sponsoredWingspanIDValueLabel.Text = sponsorship.WingspanId;
                 sponsoredWingspanIDStack.IsVisible = true;
                 sponsoredWingspanIDEntry.IsVisible = false;
             }
@@ -62,7 +49,7 @@ namespace WingspanPrototype1.View
             //display Category
             if ((sponsorship.SponsorshipCategory != string.Empty) && (sponsorship.SponsorshipCategory != null))
             {
-                editCategoryLabel.Text = sponsorship.SponsorshipCategory;
+                editCategoryValueLabel.Text = sponsorship.SponsorshipCategory;
                 editCategoryStack.IsVisible = true;
                 editCategoryPicker.IsVisible = false;
             }
@@ -75,7 +62,7 @@ namespace WingspanPrototype1.View
             //display Sponsorship start date
             if ((sponsorship.SponsorshipStart.ToString() != string.Empty) && (sponsorship.SponsorshipStart != null))
             {
-                editSponsorshipStartLabel.Text = sponsorship.SponsorshipStart.ToString();
+                editSponsorshipStartValueLabel.Text = sponsorship.SponsorshipStart.ToString();
                 editSponsorshipStartStack.IsVisible = true;
                 editSponsorshipStartPicker.IsVisible = false;
             }
@@ -88,7 +75,7 @@ namespace WingspanPrototype1.View
             //display Sponsorship end date
             if ((sponsorship.SponsorshipEnd.ToString() != string.Empty) && (sponsorship.SponsorshipEnd != null))
             {
-                editSponsorshipEndLabel.Text = sponsorship.SponsorshipEnd.ToString();
+                editSponsorshipEndValueLabel.Text = sponsorship.SponsorshipEnd.ToString();
                 editSponsorshipEndStack.IsVisible = true;
                 editSponsorshipEndPicker.IsVisible = false;
             }
@@ -98,30 +85,31 @@ namespace WingspanPrototype1.View
                 editSponsorshipEndStack.IsVisible = false;
             }
 
-            //display Sponsor ID
-            if ((sponsorship.SponsorID != string.Empty) && (sponsorship.SponsorID != null))
+
+            //display member's salutation name
+            if ((sponsorship.SaluationName != string.Empty) && (sponsorship.SaluationName != null))
             {
-                editSponsorIDLabel.Text = sponsorship.SponsorID;
-                editSponsorIDStack.IsVisible = true;
-                editSponsorIDEntry.IsVisible = false;
+                editSponsorSalutationNameValueLabel.Text = sponsorship.SaluationName;
+                editSponsorSalutationNameStack.IsVisible = true;
+                editSponsorSalutationNameEntry.IsVisible = false;
             }
             else
             {
-                editSponsorIDEntry.IsVisible = true;
-                editSponsorIDStack.IsVisible = false;
+                editSponsorSalutationNameEntry.IsVisible = true;
+                editSponsorSalutationNameStack.IsVisible = false;
             }
 
-            //display Sponsor name
-            if ((sponsorship.SponsorName != string.Empty) && (sponsorship.SponsorName != null))
+            //display sponsoring company name
+            if ((sponsorship.Company != string.Empty) && (sponsorship.Company != null))
             {
-                editSponsorNameLabel.Text = sponsorship.SponsorName;
-                editSponsorNameStack.IsVisible = true;
-                editSponsorNameEntry.IsVisible = false;
+                editSponsorCompanyNameValueLabel.Text = sponsorship.Company;
+                editSponsorCompanyNameStack.IsVisible = true;
+                editSponsorCompanyNameEntry.IsVisible = false;
             }
             else
             {
-                editSponsorNameEntry.IsVisible = true;
-                editSponsorNameStack.IsVisible = false;
+                editSponsorCompanyNameEntry.IsVisible = true;
+                editSponsorCompanyNameStack.IsVisible = false;
             }
         }
 

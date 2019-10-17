@@ -24,7 +24,7 @@
                 <Setter Property="Grid.Column" Value="2"/>
             </Style>
             
-            <!--for "Select Bird" and "Select Sponsor" pages-->
+            <!--for "Select Bird" and "Select Member" pages-->
             <Style  x:Key="selectFeildStyle" TargetType="Label">
                 <Setter Property="HorizontalOptions" Value="Start"/>
                 <Setter Property="VerticalOptions" Value="Center"/>

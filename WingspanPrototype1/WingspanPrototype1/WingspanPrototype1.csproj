@@ -44,20 +44,23 @@
     <Compile Update="View\Birds\BirdResultsMobile2.xaml.cs">
       <DependentUpon>BirdResultsMobile2.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Sponsors\EditSponsorResultsDesktop.xaml.cs">
-      <DependentUpon>EditSponsorResultsDesktop.xaml</DependentUpon>
-    </Compile>
     <Compile Update="View\Members\AddMemberForm.xaml.cs">
       <DependentUpon>AddMemberForm.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\Birds\SelectBirdResultsDesktop.xaml.cs">
       <DependentUpon>SelectBirdResultsDesktop.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Sponsors\SelectSponsorResultsDesktop.xaml.cs">
-      <DependentUpon>SelectSponsorResultsDesktop.xaml</DependentUpon>
+    <Compile Update="View\Members\SelectMemberResultsDesktop.xaml.cs">
+      <DependentUpon>SelectMemberResultsDesktop.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\Sponsorships\EditSponsorshipResultsDesktop.xaml.cs">
       <DependentUpon>EditSponsorshipResultsDesktop.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Members\SelectMemberResultsMobile1.xaml.cs">
+      <DependentUpon>SelectMemberResultsMobile1.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Members\SelectMemberResultsMobile2.xaml.cs">
+      <DependentUpon>SelectMemberResultsMobile2.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\Volunteers\AddVolunteerForm.xaml.cs">
       <DependentUpon>AddVolunteerForm.xaml</DependentUpon>
@@ -68,9 +71,6 @@
     <EmbeddedResource Update="View\Reports\ReportBuilderDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Sponsors\AddSponsor.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
     <EmbeddedResource Update="View\Birds\AddBirdForm.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
@@ -78,12 +78,6 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Birds\AddBirdNoteMobile2.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="View\Sponsors\EditSponsorResultsMobile1.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="View\Sponsors\EditSponsorResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Sponsorships\EditSponsorshipResultsMobile1.xaml">
@@ -134,16 +128,13 @@
     <EmbeddedResource Update="View\Birds\SelectBirdResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Sponsors\SelectSponsorResultsMobile1.xaml">
+    <EmbeddedResource Update="View\Members\SelectMemberResultsMobile1.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Sponsors\SelectSponsorResultsMobile2.xaml">
+    <EmbeddedResource Update="View\Members\SelectMemberResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Volunteers\AddVolunteerForm.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-    </EmbeddedResource>
-    <EmbeddedResource Update="View\Sponsors\EditSponsorResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Sponsorships\EditSponsorshipResultsDesktop.xaml">
@@ -152,7 +143,7 @@
     <EmbeddedResource Update="View\Birds\SelectBirdResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Sponsors\SelectSponsorResultsDesktop.xaml">
+    <EmbeddedResource Update="View\Members\SelectMemberResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Volunteers\LogVolunteerHoursMobile1.xaml">

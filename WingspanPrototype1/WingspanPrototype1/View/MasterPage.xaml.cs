@@ -47,7 +47,6 @@ namespace WingspanPrototype1
             menuItems.Add(new MasterPageItem { Title = "Edit Members", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "New Sponsorship", TargetType = typeof(AddSponsorship) });
             menuItems.Add(new MasterPageItem { Title = "Edit Sponsorships", TargetType = typeof(Edit) });
-            menuItems.Add(new MasterPageItem { Title = "Edit Sponsors", TargetType = typeof(Edit) });
             menuItems.Add(new MasterPageItem { Title = "New Volunteer", TargetType = typeof(AddVolunteerForm) });
             menuItems.Add(new MasterPageItem { Title = "Edit Volunteers", TargetType = typeof(Edit) });
 

@@ -4,7 +4,7 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WingspanPrototype1.View.SelectSponsorResultsDesktop"
+             x:Class="WingspanPrototype1.View.SelectMemberResultsDesktop"
              Title="Results">
     <ContentPage.Content>
         <StackLayout>
@@ -31,7 +31,7 @@
 
                 <!--the grid to display the sponsor details-->
                 <ScrollView Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
-                    <Grid x:Name="selectSponsorResultsGrid" IsVisible="False" HorizontalOptions="Center" HeightRequest="400">
+                    <Grid x:Name="selectMemberResultsGrid" IsVisible="False" HorizontalOptions="Center" HeightRequest="400">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*"/>
                             <ColumnDefinition Width="1.5*"/>
@@ -44,44 +44,39 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
-                            <RowDefinition Height="*"/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
 
-                        <!--Sponsor ID-->
-                        <Label x:Name="selectSponsorIDLabel" Text="Sponsor ID" Style="{StaticResource resultLabelStyle}"/>
-                        <Label x:Name="selectSponsorIDValueLabel" FontSize="20" IsVisible="False"/>
+                        <!--member first name-->
+                        <Label x:Name="selectMemberFirstNameLabel" Text="First name" Style="{StaticResource resultLabelStyle}"/>
+                        <Label x:Name="selectMemberFirstNameValueLabel" FontSize="20" IsVisible="False"/>
 
-                        <!--Sponsor name-->
-                        <Label x:Name="selectSponsorNameLabel" Text="Name" Style="{StaticResource resultLabelStyle}" Grid.Row="1"/>
-                        <Label x:Name="selectSponsorNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="1"/>
+                        <!--member last name-->
+                        <Label x:Name="selectMemberLastNameLabel" Text="Last name" Style="{StaticResource resultLabelStyle}" Grid.Row="1"/>
+                        <Label x:Name="selectMemberLastNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="1"/>
 
-                        <!--Sponsor address-->
-                        <Label x:Name="selectSponsorAddressLabel" Text="Address" Style="{StaticResource resultLabelStyle}" Grid.Row="2"/>
-                        <Label x:Name="selectSponsorAddressValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="2"/>
+                        <!--member salutation name-->
+                        <Label x:Name="selectMemberSalutationNameLabel" Text="Salutation name" Style="{StaticResource resultLabelStyle}" Grid.Row="2"/>
+                        <Label x:Name="selectMemberSalutationNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="2"/>
 
-                        <!--Sponsor phone number-->
-                        <Label x:Name="selectSponsorPhoneLabel" Text="Phone" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
-                        <Label x:Name="selectSponsorPhoneValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="3"/>
+                        <!--member company name-->
+                        <Label x:Name="selectMemberCompanyLabel" Text="Company name" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
+                        <Label x:Name="selectMemberCompanyValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="3"/>
 
-                        <!--Sponsor email-->
-                        <Label x:Name="selectSponsorEmailLabel" Text="Email" Style="{StaticResource resultLabelStyle}" Grid.Row="4"/>
-                        <Label x:Name="selectSponsorEmailValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="4"/>
-
-                        <!--Sponsor notes-->
-                        <Label x:Name="selectSponsorNotesLabel" Text="Notes" Style="{StaticResource resultLabelStyle}" Grid.Row="5"/>
-                        <Label x:Name="selectSponsorNotesValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="5"/>
+                        <!--member notes-->
+                        <Label x:Name="selectMemberCommentsLabel" Text="Comments" Style="{StaticResource resultLabelStyle}" Grid.Row="4"/>
+                        <Label x:Name="selectMemberCommentsValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="4"/>
 
                         <!--button at the bottom -->
-                        <Button x:Name="thisSponsorButton"
-                                Grid.Row="6"
+                        <Button x:Name="thisMemberButton"
+                                Grid.Row="5"
                                 Grid.ColumnSpan="2"
                                 HorizontalOptions="Center"
                                 VerticalOptions="Center"
                                 Text="Sponsor" 
                                 Style="{StaticResource mainButtonStyle}" 
                                 WidthRequest="150"
-                                Clicked="ThisSponsorButton_Clicked"/>
+                                Clicked="ThisMemberButton_Clicked"/>
 
                     </Grid>
                 </ScrollView>

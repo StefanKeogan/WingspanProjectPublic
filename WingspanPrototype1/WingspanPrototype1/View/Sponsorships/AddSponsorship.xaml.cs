@@ -14,26 +14,11 @@ namespace WingspanPrototype1
         public AddSponsorship(string title)
         {
             InitializeComponent();
-            Title = title;
-
-            //// What device are we running on? 
-            //switch (Device.RuntimePlatform)
-            //{
-            //    case Device.UWP:
-            //        addSponsorshipStackLayout.Margin = new Thickness(300, 20, 300, 20);
-            //        break;
-            //    case Device.Android:
-            //        addSponsorshipStackLayout.Margin = new Thickness(5, 5, 5, 5);
-            //        break;
-            //    default:
-            //        addSponsorshipStackLayout.Margin = new Thickness(300, 20, 300, 20);
-            //        break;
-            //}
-
+            Title = title;           
         }
 
         //search the birds
-        private async void SelectSponsoredBird_SelectedIndexChanged(object sender, EventArgs e)
+        private async void SelectSponsorship_SelectedIndexChanged(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
@@ -41,6 +26,10 @@ namespace WingspanPrototype1
             if (selectedIndex == 0)
             {
                 await Navigation.PushAsync(new Edit("Select Bird"));
+            }
+            else if (selectedIndex == 1)
+            {
+                await DisplayAlert("NOTE", "Need to add some notes", "OK");
             }
             else
             {
@@ -72,6 +61,9 @@ namespace WingspanPrototype1
             //    case 4:
             //        sponsorshipLevel = "Captive Bird (Bronze)";
             //        break;
+            //    case 5:
+            //        sponsorshipLevel = "Other";
+            //        break;
             //}
 
             ////assign the string of the level to this sponsorship
@@ -83,13 +75,13 @@ namespace WingspanPrototype1
             var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
 
-            if (selectedIndex == 0) //exisiting sponsor
+            if (selectedIndex == 0) //exisiting member
             {
-                await Navigation.PushAsync(new Edit("Select Sponsor"));
+                await Navigation.PushAsync(new Edit("Select Member"));
             }
-            else if (selectedIndex == 1) // new sponsor
+            else if (selectedIndex == 1) //new member
             {
-                await Navigation.PushAsync(new AddSponsor("New Sponsor"));
+                await Navigation.PushAsync(new AddMemberForm("New Member"));
             }
         }
 

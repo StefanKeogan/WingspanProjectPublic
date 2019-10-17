@@ -27,11 +27,12 @@
                 </Grid.RowDefinitions>
 
                 <!--selecting the bird-->
-                <Label x:Name="sponsoredBirdName" Text="Bird to be sponsored" Style="{StaticResource labelStyle}"/>
-                <Picker x:Name="selectSponsoredBird" Style="{StaticResource feildStyle}" SelectedIndexChanged="SelectSponsoredBird_SelectedIndexChanged">
+                <Label x:Name="sponsorshipName" Text="To be sponsored" Style="{StaticResource labelStyle}"/>
+                <Picker x:Name="selectSponsorship" Style="{StaticResource feildStyle}" SelectedIndexChanged="SelectSponsorship_SelectedIndexChanged">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>Find the right bird</x:String>
+                            <x:String>Individual Bird</x:String>
+                            <x:String>Other</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
@@ -46,6 +47,7 @@
                             <x:String>Captive Bird (Gold)</x:String>
                             <x:String>Captive Bird (Silver)</x:String>
                             <x:String>Captive Bird (Bronze)</x:String>
+                            <x:String>Other</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
@@ -64,8 +66,8 @@
                 <Picker x:Name="sponsorSelector" Style="{StaticResource feildStyle}" Grid.Row="4" SelectedIndexChanged="OnSponsorSelected">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
-                            <x:String>Existing Sponsor</x:String>
-                            <x:String>New Sponsor</x:String>
+                            <x:String>Existing Member</x:String>
+                            <x:String>New Member</x:String>
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
