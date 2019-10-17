@@ -53,8 +53,8 @@
     <Compile Update="View\Birds\SelectBirdResultsDesktop.xaml.cs">
       <DependentUpon>SelectBirdResultsDesktop.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Sponsors\SelectSponsorResultsDesktop.xaml.cs">
-      <DependentUpon>SelectSponsorResultsDesktop.xaml</DependentUpon>
+    <Compile Update="View\Sponsors\SelectMemberResultsDesktop.xaml.cs">
+      <DependentUpon>SelectMemberResultsDesktop.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\Sponsorships\EditSponsorshipResultsDesktop.xaml.cs">
       <DependentUpon>EditSponsorshipResultsDesktop.xaml</DependentUpon>
@@ -152,7 +152,7 @@
     <EmbeddedResource Update="View\Birds\SelectBirdResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Sponsors\SelectSponsorResultsDesktop.xaml">
+    <EmbeddedResource Update="View\Sponsors\SelectMemberResultsDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Volunteers\LogVolunteerHoursMobile1.xaml">

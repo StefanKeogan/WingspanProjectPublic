@@ -1,9 +1,10 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 namespace WingspanPrototype1.Model
 {
     public class Sponsorship
     {
-        public string SponsorshipID { get; set; }
+        public ObjectId _id { get; set; }
         public string WingspanId { get; set; }
         public string SponsorshipCategory { get; set; }
         public string SponsorID { get; set; }

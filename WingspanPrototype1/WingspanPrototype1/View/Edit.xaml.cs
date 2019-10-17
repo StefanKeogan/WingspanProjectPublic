@@ -42,12 +42,15 @@ namespace WingspanPrototype1
                     searchTitle.Text = "Find Member";
                     searchMemberForm.IsVisible = true;
                     break;
-                case "Edit Sponsors":
-                    searchTitle.Text = "Find Sponsor";
-                    searchSponsorForm.IsVisible = true;
-                    break;
-                case "Select Sponsor":
-                    searchTitle.Text = "Find Sponsor";
+
+                //no longer required
+                //case "Edit Sponsors":
+                //    searchTitle.Text = "Find Sponsor";
+                //    searchSponsorForm.IsVisible = true;
+                //    break;
+
+                case "Select Member":
+                    searchTitle.Text = "Find Member";
                     searchSponsorForm.IsVisible = true;
                     break;
                 case "Edit Sponsorships":
@@ -179,40 +182,43 @@ namespace WingspanPrototype1
                     }
                     break;
 
-                case "Edit Sponsors":
+
+                //NO LONGER NEEDED
+
+                //case "Edit Sponsors":
          
-                    if (Validate.AllFeildsEmpty(new string[] {sponsorIdEntry.Text, sponsorNameEntry.Text }))
-                    {
-                        DisplayAlert("All Feilds Empty", "Please fill in at least one serach feild to continue", "OK");
-                        return;
-                    }
+                //    if (Validate.AllFeildsEmpty(new string[] {sponsorIdEntry.Text, sponsorNameEntry.Text }))
+                //    {
+                //        DisplayAlert("All Feilds Empty", "Please fill in at least one serach feild to continue", "OK");
+                //        return;
+                //    }
 
-                    // Has the sponsor name feild been poulated? 
-                    if (Validate.FeildPopulated(sponsorNameEntry.Text))
-                    {
-                        // Does the sponsor name feild contain any numbers or symbols 
-                        if (Validate.ContainsNumberOrSymbol(sponsorNameEntry.Text))
-                        {
-                            DisplayAlert("Invalid Sponsor Name Value", "The sponsor name feild can not contain numbers or symbols", "OK");
-                            return;
-                        }
-                    }
+                //    // Has the sponsor name feild been poulated? 
+                //    if (Validate.FeildPopulated(sponsorNameEntry.Text))
+                //    {
+                //        // Does the sponsor name feild contain any numbers or symbols 
+                //        if (Validate.ContainsNumberOrSymbol(sponsorNameEntry.Text))
+                //        {
+                //            DisplayAlert("Invalid Sponsor Name Value", "The sponsor name feild can not contain numbers or symbols", "OK");
+                //            return;
+                //        }
+                //    }
 
-                    // If all feilds are valid run the search
-                    if (DeviceSize.ScreenArea() <= 783457)
-                    {
-                        // TODO: Edit sponsor results desktop
-                    }
-                    else
-                    {
-                        //Navigation.PushAsync(new EditSponsorResultsDesktop(SearchSponsors()));
-                    }
-                    break;
+                //    // If all feilds are valid run the search
+                //    if (DeviceSize.ScreenArea() <= 783457)
+                //    {
+                //        // TODO: Edit sponsor results desktop
+                //    }
+                //    else
+                //    {
+                //        //Navigation.PushAsync(new EditSponsorResultsDesktop(SearchSponsors()));
+                //    }
+                //    break;
 
-                case "Select Sponsor":
+                case "Select Member":
                     if (Device.RuntimePlatform == Device.UWP)
                     {
-                        //Navigation.PushAsync(new SelectSponsorResultsDesktop(SearchSponsors()));
+                        //Navigation.PushAsync(new SelectSponsorResultsDesktop(SearchMembers()));
                     }
                     break;
 
@@ -299,28 +305,18 @@ namespace WingspanPrototype1
                   
         }
        
-        private ArrayList SearchSponsors()
-        {
+        //private ArrayList SearchSponsors()
+        //{
 
-            //hardcoded examples
-            ArrayList sponsors = new ArrayList();
+        //    //hardcoded examples
+        //    ArrayList sponsors = new ArrayList();
 
-            sponsors.Add(new Sponsor { SponsorID = "S001", SponsorName = "Homer Simpson", SponsorAddress = "Springfield, USA", SponsorPhone = "022 123 4567", SponsorEmail = "homer@gmail.com", SponsorNotes = null });
-            sponsors.Add(new Sponsor { SponsorID = "S002", SponsorName = "Bruce Banner", SponsorAddress = "", SponsorPhone = "", SponsorEmail = "hulk@gmail.com", SponsorNotes = "You won't like him when he's angry." });
-            sponsors.Add(new Sponsor { SponsorID = "S003", SponsorName = "Monty Burns", SponsorAddress = "Springfield, USA", SponsorPhone = "", SponsorEmail = "rich@gmail.com", SponsorNotes = null });
+        //    sponsors.Add(new Sponsor { SponsorID = "S001", SponsorName = "Homer Simpson", SponsorAddress = "Springfield, USA", SponsorPhone = "022 123 4567", SponsorEmail = "homer@gmail.com", SponsorNotes = null });
+        //    sponsors.Add(new Sponsor { SponsorID = "S002", SponsorName = "Bruce Banner", SponsorAddress = "", SponsorPhone = "", SponsorEmail = "hulk@gmail.com", SponsorNotes = "You won't like him when he's angry." });
+        //    sponsors.Add(new Sponsor { SponsorID = "S003", SponsorName = "Monty Burns", SponsorAddress = "Springfield, USA", SponsorPhone = "", SponsorEmail = "rich@gmail.com", SponsorNotes = null });
 
-            return sponsors;
-        }
-
-        private ArrayList SearchSponsorships()
-        {
-
-
-            //dummy data
-            ArrayList sponsorships = new ArrayList();
-
-            return sponsorships;
-        }
+        //    return sponsors;
+        //}
 
     }
 }

@@ -72,6 +72,9 @@ namespace WingspanPrototype1
             //    case 4:
             //        sponsorshipLevel = "Captive Bird (Bronze)";
             //        break;
+            //    case 5:
+            //        sponsorshipLevel = "Other";
+            //        break;
             //}
 
             ////assign the string of the level to this sponsorship
@@ -83,13 +86,13 @@ namespace WingspanPrototype1
             var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
 
-            if (selectedIndex == 0) //exisiting sponsor
+            if (selectedIndex == 0) //exisiting member
             {
-                await Navigation.PushAsync(new Edit("Select Sponsor"));
+                await Navigation.PushAsync(new Edit("Select Member"));
             }
-            else if (selectedIndex == 1) // new sponsor
+            else if (selectedIndex == 1) //new member
             {
-                await Navigation.PushAsync(new AddSponsor("New Sponsor"));
+                await Navigation.PushAsync(new AddMemberForm("New Member"));
             }
         }
 
