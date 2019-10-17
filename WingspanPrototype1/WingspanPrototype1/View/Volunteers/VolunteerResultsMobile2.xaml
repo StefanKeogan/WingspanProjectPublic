@@ -5,9 +5,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WingspanPrototype1.View.Volunteers.VolunteerResultsMobile2"
-             Title="Results">
+             Title="Results"
+             BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <FlexLayout AlignItems="Center" JustifyContent="SpaceEvenly" Direction="Column" Margin="5,5,5,5">
+        <StackLayout Margin="5,5,5,5">
             <Grid>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
@@ -21,43 +22,35 @@
 
                 </Grid.RowDefinitions>
 
-                <!--Volunteer Id-->
-                <Label x:Name="volunteerIdLabel" Text="Volunteer Id" FontSize="20"/>
-                <StackLayout x:Name="volunteerIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
-                    <Label x:Name="volunteerIdValueLabel" FontSize="20"/>
-                    <Button x:Name="volunteerIdEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
-                </StackLayout>
-                <Entry x:Name="volunteerIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
 
                 <!--Name-->
-                <Label x:Name="nameLabel" Text="First Name" FontSize="20" Grid.Row="1"/>
-                <StackLayout x:Name="nameStack" Orientation="Horizontal" IsVisible="False" Grid.Row="1" Grid.Column="1">
-                    <Label x:Name="nameValueLabel" FontSize="20"/>
-                    <Button x:Name="nameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                <Label x:Name="volunteerNameLabel" Text="First Name" Style="{StaticResource resultLabelStyle}" Grid.Column="0"/>
+                <StackLayout x:Name="volunteerNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Column="1">
+                    <Label x:Name="volunteerNameValueLabel" FontSize="20"/>
+                    <Button x:Name="volunteerNameEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                 </StackLayout>
-                <Entry x:Name="nameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" IsVisible="False"/>
-
+                <Entry x:Name="volunteerNameEntry" Style="{StaticResource resultFeildStyle}"  IsVisible="False" Grid.Column="1"/>
 
                 <!--Mobile-->
-                <Label x:Name="mobileLabel" Text="Mobile" FontSize="20" Grid.Row="2"/>
-                <StackLayout x:Name="mobileStack" Orientation="Horizontal"  IsVisible="False" Grid.Row="2" Grid.Column="1">
-                    <Label x:Name="mobileValueLabel" FontSize="20"/>
-                    <Button x:Name="mobileEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                <Label x:Name="volunteerMobileLabel" Text="Mobile" Style="{StaticResource resultLabelStyle}" Grid.Row="1" Grid.Column="0"/>
+                <StackLayout x:Name="volunteerMobileStack" Style="{StaticResource resultStackStyle}"  IsVisible="False" Grid.Row="1" Grid.Column="1">
+                    <Label x:Name="volunteerMobileValueLabel" FontSize="20"/>
+                    <Button x:Name="volunteerMobileEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                 </StackLayout>
-                <Entry x:Name="mobileEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
+                <Entry x:Name="volunteerMobileEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="1" IsVisible="False" Grid.Column="1"/>
 
                 <!--Email-->
-                <Label x:Name="emailLabel" Text="Email" FontSize="20" Grid.Row="3"/>
-                <StackLayout x:Name="emailStack" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" IsVisible="False">
-                    <Label x:Name="emailValueLabel" Text="GPS" FontSize="20"/>
-                    <Button x:Name="emailEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                <Label x:Name="volunteerEmailLabel" Text="Email" Style="{StaticResource resultLabelStyle}" Grid.Row="2" Grid.Column="0" />
+                <StackLayout x:Name="volunteerEmailStack" Style="{StaticResource resultStackStyle}" Grid.Row="2" IsVisible="False" Grid.Column="1">
+                    <Label x:Name="volunteerEmailValueLabel" Text="GPS" FontSize="20"/>
+                    <Button x:Name="volunteerEmailEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                 </StackLayout>
-                <Entry x:Name="emailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
+                <Entry x:Name="volunteerEmailEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="2" IsVisible="False" Grid.Column="1"/>
 
             </Grid>
 
             <!--Buttons-->
-            <StackLayout HorizontalOptions="Center" Grid.Column="1" Grid.Row="1" Margin="0,5">
+            <StackLayout HorizontalOptions="Center" Margin="0,5">
                 <Button  
                     x:Name="deleteButton"
                     Grid.ColumnSpan="2" 
@@ -145,6 +138,6 @@
                     </Frame>
                 </ContentView.Content>
             </ContentView>
-        </FlexLayout>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

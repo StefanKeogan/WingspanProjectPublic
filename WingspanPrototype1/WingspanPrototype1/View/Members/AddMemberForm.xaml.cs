@@ -114,7 +114,7 @@ namespace WingspanPrototype1.View
             {
                 FirstName = memberFirstNameEntry.Text,
                 LastName = memberLastNameEntry.Text,
-                SaluationName = memberSalutationNameEntry.Text,
+                SalutationName = memberSalutationNameEntry.Text,
                 Email = memberEmailEntry.Text,
                 Address1 = memberAddress1Entry.Text,
                 Address2 = memberAddress2Entry.Text,

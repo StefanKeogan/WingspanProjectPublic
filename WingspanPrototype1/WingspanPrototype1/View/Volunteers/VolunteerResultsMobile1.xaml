@@ -5,7 +5,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WingspanPrototype1.View.Volunteers.VolunteerResultsMobile1"
-             Title="Results">
+             Title="Results"
+             BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <!--Results List-->
         <ListView x:Name="resultsListView" BackgroundColor="#F0F0F0" Grid.RowSpan="2" VerticalOptions="Fill" ItemSelected="ResultsListView_ItemSelected">

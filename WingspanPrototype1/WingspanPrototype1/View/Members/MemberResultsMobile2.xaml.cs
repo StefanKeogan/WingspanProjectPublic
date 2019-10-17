@@ -64,9 +64,9 @@ namespace WingspanPrototype1.View
             }
 
             // Salutation Name
-            if ((member.SaluationName != string.Empty) && (member.SaluationName != null))
+            if ((member.SalutationName != string.Empty) && (member.SalutationName != null))
             {
-                memberSalutationValueLabel.Text = member.SaluationName;
+                memberSalutationValueLabel.Text = member.SalutationName;
                 memberSalutationStack.IsVisible = true;
                 memberSalutationEntry.IsVisible = false;
             }

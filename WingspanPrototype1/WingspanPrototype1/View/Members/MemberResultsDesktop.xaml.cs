@@ -18,6 +18,7 @@ namespace WingspanPrototype1.View
     {
         private List<Entry> entries = new List<Entry>();
         private Editor editor;
+        private DatePicker date;
         private ObjectId id;
 
         public MemberResultsDesktop(List<Member> results)
@@ -76,9 +77,9 @@ namespace WingspanPrototype1.View
             }
             
             // Salutation Name
-            if (Validate.FeildPopulated(member.SaluationName))
+            if (Validate.FeildPopulated(member.SalutationName))
             {
-                memberSalutationValueLabel.Text = member.SaluationName;
+                memberSalutationValueLabel.Text = member.SalutationName;
                 memberSalutationStack.IsVisible = true;
                 memberSalutationEntry.IsVisible = false;
             }
@@ -209,25 +210,17 @@ namespace WingspanPrototype1.View
 
             }
 
-            // Join Date
-            if (member.JoinDate.ToString() == "1/01/0001 12:00:00 AM")
-            {
-                memberJoinDateValueLabel.Text = member.JoinDate.ToString();
-                memberJoinDateStack.IsVisible = true;
-                memberJoinDatePicker.IsVisible = false;
-            }
-            else
-            {
-                memberJoinDatePicker.IsVisible = true;
-                memberJoinDateValueLabel.IsVisible = false;
+            memberJoinDateValueLabel.Text = member.JoinDate.ToString();
+            memberJoinDateStack.IsVisible = true;
+            memberJoinDatePicker.IsVisible = false;
 
-            }
 
             // Set member donation history TODO connect to database
             donationListView.ItemsSource = new List<Payment> { new Payment { PaymentDate = DateTime.Today, Donation = 100 } };
 
 
         }
+
 
         // Delte this member
         private async void DeleteButton_Clicked(object sender, EventArgs e)
@@ -252,7 +245,6 @@ namespace WingspanPrototype1.View
             {
                 return;
             }
-
             
         }
 
@@ -264,8 +256,10 @@ namespace WingspanPrototype1.View
 
             if (answer)
             {
-                if (UpdateMember.UpdateDocument(id, entries, editor))
+                Member updatedMember = UpdateMember.UpdateDocument(id, entries, editor, date);
+                if (updatedMember != null)
                 {
+                    DisplayMember(updatedMember);
                     await DisplayAlert("Member Saved", "Changes to this member have been saved", "OK");
                 }
                 else
@@ -303,5 +297,91 @@ namespace WingspanPrototype1.View
 
             paymentHistoryView.IsVisible = false;
         }
+
+        private void memberFirstNameEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberFirstNameStack.IsVisible = false;
+            memberFirstNameEntry.IsVisible = true;
+            entries.Add(memberFirstNameEntry);
+        }
+
+        private void memberLastNameEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberLastNameStack.IsVisible = false;
+            memberLastNameEntry.IsVisible = true;
+            entries.Add(memberLastNameEntry);
+        }
+
+        private void memberSalutationEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberSalutationStack.IsVisible = false;
+            memberSalutationEntry.IsVisible = true;
+            entries.Add(memberSalutationEntry);
+        }
+
+        private void memberEmailEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberEmailStack.IsVisible = false;
+            memberEmailEntry.IsVisible = true;
+            entries.Add(memberEmailEntry);
+        }
+
+        private void memberCompanyEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberCompanyStack.IsVisible = false;
+            memberCompanyEntry.IsVisible = true;
+            entries.Add(memberCompanyEntry);
+        }
+
+        private void memberAddress1Button_Clicked(object sender, EventArgs e)
+        {
+            memberAddress1Stack.IsVisible = false;
+            memberAddress1Entry.IsVisible = true;
+            entries.Add(memberAddress1Entry);
+        }
+
+        private void memberAddress2Button_Clicked(object sender, EventArgs e)
+        {
+            memberAddress2Stack.IsVisible = false;
+            memberAddress2Entry.IsVisible = true;
+            entries.Add(memberAddress2Entry);
+        }
+
+        private void memberAddress3Button_Clicked(object sender, EventArgs e)
+        {
+            memberAddress3Stack.IsVisible = false;
+            memberAddress3Entry.IsVisible = true;
+            entries.Add(memberAddress3Entry);
+        }
+
+        private void memberCityEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberCityStack.IsVisible = false;
+            memberCityEntry.IsVisible = true;
+            entries.Add(memberCityEntry);
+        }
+
+        private void memberPostCodeEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberPostCodeStack.IsVisible = false;
+            memberPostCodeEntry.IsVisible = true;
+            entries.Add(memberPostCodeEntry);
+        }
+
+        private void memberCommentValueEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberCommentStack.IsVisible = false;
+            memberCommentEditor.IsVisible = true;
+            editor = memberCommentEditor;
+        }
+
+        private void memberJoinDateEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberJoinDateStack.IsVisible = false;
+            memberJoinDatePicker.IsVisible = true;
+            date = memberJoinDatePicker;
+        }
+
+
     }
 }

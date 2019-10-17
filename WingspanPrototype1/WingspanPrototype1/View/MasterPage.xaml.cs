@@ -61,7 +61,6 @@ namespace WingspanPrototype1
                 menuItems.Add(new MasterPageItem { Title = "Log Volunteer Hours", TargetType = typeof(LogVolunteerHoursDesktop) });
             }
 
-
             menuItems.Add(new MasterPageItem { Title = "Report Builder", TargetType = typeof(ReportBuilderDesktop) }) ;
 
             menuList = MenuList; // Assign MenuList to object (Makes the listview acessible from MainPage)
