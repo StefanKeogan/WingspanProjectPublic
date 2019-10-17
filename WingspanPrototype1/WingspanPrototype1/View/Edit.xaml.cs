@@ -41,17 +41,10 @@ namespace WingspanPrototype1
                 case "Edit Members":
                     searchTitle.Text = "Find Member";
                     searchMemberForm.IsVisible = true;
-                    break;
-
-                //no longer required
-                //case "Edit Sponsors":
-                //    searchTitle.Text = "Find Sponsor";
-                //    searchSponsorForm.IsVisible = true;
-                //    break;
-
+                    break;               
                 case "Select Member":
                     searchTitle.Text = "Find Member";
-                    searchSponsorForm.IsVisible = true;
+                    searchMemberForm.IsVisible = true;
                     break;
                 case "Edit Sponsorships":
                     searchTitle.Text = "Find Sponsorship";
@@ -160,7 +153,7 @@ namespace WingspanPrototype1
                         }
                     }
                     
-                    // Search Memebers
+                    // Search Members
                     List<Member> memberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
 
                     if ((memberResults != null) && (memberResults.Count > 0))
@@ -181,39 +174,7 @@ namespace WingspanPrototype1
                         DisplayAlert("No Members Found", "That member could been found", "OK");
                     }
                     break;
-
-
-                //NO LONGER NEEDED
-
-                //case "Edit Sponsors":
-         
-                //    if (Validate.AllFeildsEmpty(new string[] {sponsorIdEntry.Text, sponsorNameEntry.Text }))
-                //    {
-                //        DisplayAlert("All Feilds Empty", "Please fill in at least one serach feild to continue", "OK");
-                //        return;
-                //    }
-
-                //    // Has the sponsor name feild been poulated? 
-                //    if (Validate.FeildPopulated(sponsorNameEntry.Text))
-                //    {
-                //        // Does the sponsor name feild contain any numbers or symbols 
-                //        if (Validate.ContainsNumberOrSymbol(sponsorNameEntry.Text))
-                //        {
-                //            DisplayAlert("Invalid Sponsor Name Value", "The sponsor name feild can not contain numbers or symbols", "OK");
-                //            return;
-                //        }
-                //    }
-
-                //    // If all feilds are valid run the search
-                //    if (DeviceSize.ScreenArea() <= 783457)
-                //    {
-                //        // TODO: Edit sponsor results desktop
-                //    }
-                //    else
-                //    {
-                //        //Navigation.PushAsync(new EditSponsorResultsDesktop(SearchSponsors()));
-                //    }
-                //    break;
+               
 
                 case "Select Member":
                     if (Device.RuntimePlatform == Device.UWP)
@@ -303,20 +264,6 @@ namespace WingspanPrototype1
                     break;
             }
                   
-        }
-       
-        //private ArrayList SearchSponsors()
-        //{
-
-        //    //hardcoded examples
-        //    ArrayList sponsors = new ArrayList();
-
-        //    sponsors.Add(new Sponsor { SponsorID = "S001", SponsorName = "Homer Simpson", SponsorAddress = "Springfield, USA", SponsorPhone = "022 123 4567", SponsorEmail = "homer@gmail.com", SponsorNotes = null });
-        //    sponsors.Add(new Sponsor { SponsorID = "S002", SponsorName = "Bruce Banner", SponsorAddress = "", SponsorPhone = "", SponsorEmail = "hulk@gmail.com", SponsorNotes = "You won't like him when he's angry." });
-        //    sponsors.Add(new Sponsor { SponsorID = "S003", SponsorName = "Monty Burns", SponsorAddress = "Springfield, USA", SponsorPhone = "", SponsorEmail = "rich@gmail.com", SponsorNotes = null });
-
-        //    return sponsors;
-        //}
-
+        }              
     }
 }

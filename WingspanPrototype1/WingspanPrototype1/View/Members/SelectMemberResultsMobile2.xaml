@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.View.SelectMemberResultsMobile2"
+             Title="Results"
+             BackgroundColor="#F0F0F0">
+    <ContentPage.Content>
+        <ScrollView>
+            <StackLayout>
+                <Grid Margin="5,5,5,5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="2*"/>
+                        <ColumnDefinition Width="3*"/>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+
+                    <!--member first name-->
+                    <Label x:Name="selectMemberFirstNameLabel" Text="Sponsor ID" FontSize="20"/>
+                    <Label x:Name="selectMemberFirstNameValueLabel" FontSize="20" IsVisible="False"/>
+
+                    <!--member last name-->
+                    <Label x:Name="selectMemberLastNameLabel" Text="Name" FontSize="20" Grid.Row="1"/>
+                    <Label x:Name="selectMemberLastNameValueLabel" FontSize="20" IsVisible="False" Grid.Column="1" Grid.Row="1"/>
+
+                    <!--member salutation name-->
+                    <Label x:Name="selectMemberSalutationNameLabel" Text="Address" FontSize="20" Grid.Row="2"/>
+                    <Label x:Name="selectMemberSalutationNameValueLabel" FontSize="20" IsVisible="False" Grid.Column="1" Grid.Row="2"/>
+
+                    <!--member company name-->
+                    <Label x:Name="selectMemberCompanyLabel" Text="Phone" FontSize="20" Grid.Row="3"/>
+                    <Label x:Name="selectMemberCompanyValueLabel" FontSize="20" IsVisible="False" Grid.Column="1" Grid.Row="3"/>
+
+                    <!--member notes-->
+                    <Label x:Name="selectMemberCommentsLabel" Text="Notes" FontSize="20" Grid.Row="4"/>
+                    <Label x:Name="selectMemberCommentsValueLabel" FontSize="20" IsVisible="False" Grid.Column="1" Grid.Row="4"/>
+                </Grid>
+
+                <!--button at the bottom -->
+                    <Button x:Name="thisSponsorButton"
+                            Margin="0,5"
+                            Grid.ColumnSpan="2"
+                            HorizontalOptions="Center"
+                            Text="Sponsor" 
+                            Style="{StaticResource mainButtonStyle}"
+                            WidthRequest="150"
+                            Clicked="ThisSponsorButton_Clicked"/>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

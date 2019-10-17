@@ -13,7 +13,7 @@ namespace WingspanPrototype1.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SelectMemberResultsDesktop : ContentPage
 	{
-		public SelectMemberResultsDesktop (List<Sponsor> results)
+		public SelectMemberResultsDesktop (List<Member> results)
 		{
 			InitializeComponent ();
             resultsListView.ItemsSource = results;
@@ -55,7 +55,7 @@ namespace WingspanPrototype1.View
                 selectMemberLastNameValueLabel.IsVisible = false;
             }
 
-            // display Sponsor address, if there is one
+            // display member's salutation name, if there is one
             if ((member.SaluationName != string.Empty) && (member.SaluationName != null))
             {
                 selectMemberSalutationNameValueLabel.Text = member.SaluationName;
@@ -66,7 +66,7 @@ namespace WingspanPrototype1.View
                 selectMemberSalutationNameValueLabel.IsVisible = false;
             }
 
-            // display Sponsor phone, if there is one
+            // display company name, if there is one
             if ((member.Company != string.Empty) && (member.Company != null))
             {
                 selectMemberCompanyValueLabel.Text = member.Company;
@@ -77,18 +77,7 @@ namespace WingspanPrototype1.View
                 selectMemberCompanyValueLabel.IsVisible = false;
             }
 
-            // display Sponsor email, if there is one
-            if ((member.SponsorEmail != string.Empty) && (member.SponsorEmail != null))
-            {
-                selectSponsorEmailValueLabel.Text = member.SponsorEmail;
-                selectSponsorEmailValueLabel.IsVisible = true;
-            }
-            else
-            {
-                selectSponsorEmailValueLabel.IsVisible = false;
-            }
-
-            // display any Sponsor notes
+            // display any member notes
             if ((member.Comment != string.Empty) && (member.Comment != null))
             {
                 selectMemberCommentsValueLabel.Text = member.Comment;
@@ -100,7 +89,7 @@ namespace WingspanPrototype1.View
             }
         }
 
-        //button to update with this sponsor 
+        //button to update using this member 
         private async void ThisMemberButton_Clicked(object sender, EventArgs e)
         {
             await DisplayAlert("Member added", "", "OK");

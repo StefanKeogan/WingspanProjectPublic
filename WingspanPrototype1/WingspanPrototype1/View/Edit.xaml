@@ -42,60 +42,35 @@
             </ContentView>
 
             <!--Search member form-->
-                <ContentView x:Name="searchMemberForm" IsVisible="False">
-                    <ContentView.Content>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+            <ContentView x:Name="searchMemberForm" IsVisible="False">
+                <ContentView.Content>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
 
-                            <!--Salutation Name-->
-                            <Label x:Name="salutationNameLabel" FontSize="20" Text="Salutation Name"/>
-                            <Entry x:Name="salutationNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+                        <!--Salutation Name-->
+                        <Label x:Name="salutationNameLabel" FontSize="20" Text="Salutation Name"/>
+                        <Entry x:Name="salutationNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
 
-                            <!--First Name-->
-                            <Label x:Name="memberFirstNameLabel" FontSize="20" Grid.Row="1" Text="First Name"/>
-                            <Entry x:Name="memberFirstNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+                        <!--First Name-->
+                        <Label x:Name="memberFirstNameLabel" FontSize="20" Grid.Row="1" Text="First Name"/>
+                        <Entry x:Name="memberFirstNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
 
-                            <!--Last Name-->
-                            <Label x:Name="memberLastNameLabel" FontSize="20" Grid.Row="2" Text="Last Name"/>
-                            <Entry x:Name="memberLastNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+                        <!--Last Name-->
+                        <Label x:Name="memberLastNameLabel" FontSize="20" Grid.Row="2" Text="Last Name"/>
+                        <Entry x:Name="memberLastNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
                     </Grid>
                 </ContentView.Content>
-                </ContentView>
-                
-                <!--Search sponsor form-->
-                <ContentView x:Name="searchSponsorForm" IsVisible="False">
-                    <ContentView.Content>
-                        <Grid>
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition/>
-                                <ColumnDefinition/>
-                            </Grid.ColumnDefinitions>
-                            <Grid.RowDefinitions>
-                                <RowDefinition/>
-                                <RowDefinition/>
-                            </Grid.RowDefinitions>
+            </ContentView>
 
-                            <!--Sponsor Number-->
-                            <Label x:Name="sponsorIdLabel" FontSize="20" Text="Sponsor ID"/>
-                            <Entry x:Name="sponsorIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
-
-                            <!--Sponsor name-->
-                            <Label x:Name="sponsornameLabel" FontSize="20" Grid.Row="1" Text="Sponsor name"/>
-                            <Entry x:Name="sponsorNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
-                    
-                        </Grid>
-                     </ContentView.Content>
-                </ContentView>
-                
-                <!--Search sponsorship form-->
+            <!--Search sponsorship form-->
                 <ContentView x:Name="searchSponsorshipForm" IsVisible="False">
                     <ContentView.Content>
                     <Grid>

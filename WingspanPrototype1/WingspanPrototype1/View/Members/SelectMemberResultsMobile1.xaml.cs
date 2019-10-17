@@ -10,9 +10,9 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class SelectSponsorResultsMobile1 : ContentPage
+	public partial class SelectMemberResultsMobile1 : ContentPage
 	{
-		public SelectSponsorResultsMobile1(List<Sponsor> results)
+		public SelectMemberResultsMobile1(List<Member> results)
 		{
 			InitializeComponent();
 
@@ -22,11 +22,11 @@ namespace WingspanPrototype1.View
 
         private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
-            var item = e.SelectedItem as Sponsor;
+            var item = e.SelectedItem as Member;
 
             if (item != null)
             {
-                Navigation.PushAsync(new SelectSponsorResultsMobile2(item));
+                Navigation.PushAsync(new SelectMemberResultsMobile2(item));
             }
         }
     }
