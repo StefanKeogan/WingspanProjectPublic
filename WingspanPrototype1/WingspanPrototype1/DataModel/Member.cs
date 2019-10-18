@@ -11,7 +11,7 @@ namespace WingspanPrototype1.Model
         public ObjectId _id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string SaluationName { get; set; }
+        public string SalutationName { get; set; }
         public string Email { get; set; }
         public string Company { get; set; }
         public string Address1 { get; set; }

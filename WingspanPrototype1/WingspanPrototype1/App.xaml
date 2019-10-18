@@ -68,6 +68,15 @@
                 <Setter Property="VerticalOptions" Value="Center"/>
             </Style>
 
+            <Style x:Key="editStyleDesktop" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="#FFFFFF"/>
+                <Setter Property="TextColor" Value="#5C3838"/>
+                <Setter Property="TextColor" Value="#5C3838"/>
+                <Setter Property="FontSize" Value="15"/>
+                <Setter Property="HorizontalOptions" Value="Center"/>
+                <Setter Property="Text" Value="[edit]"/>
+            </Style>
+
 
         </ResourceDictionary>
     </Application.Resources>

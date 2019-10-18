@@ -82,9 +82,10 @@
                 HorizontalOptions="CenterAndExpand" 
                 VerticalOptions="Center"
                 WidthRequest="170"
-                Grid.Row="1"/>
+                Grid.Row="1"
+                Clicked="buildReportButton_Clicked"/>
 
-            <ListView x:Name="wildBirdListView" Style="{StaticResource resultListStyle}">
+            <ListView x:Name="wildBirdListView" Style="{StaticResource resultListStyle}" IsVisible="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -101,7 +102,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ListView x:Name="captiveBirdListView" Style="{StaticResource resultListStyle}">
+            <ListView x:Name="captiveBirdListView" Style="{StaticResource resultListStyle}" IsVisible="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -119,7 +120,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ListView x:Name="memberListView" Style="{StaticResource resultListStyle}">
+            <ListView x:Name="memberListView" Style="{StaticResource resultListStyle}" IsVisible="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -133,7 +134,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ListView x:Name="volunteerListView" Style="{StaticResource resultListStyle}">
+            <ListView x:Name="volunteerListView" Style="{StaticResource resultListStyle}" IsVisible="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>

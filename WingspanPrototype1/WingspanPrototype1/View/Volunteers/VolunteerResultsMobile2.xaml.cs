@@ -1,8 +1,10 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,6 +14,9 @@ namespace WingspanPrototype1.View.Volunteers
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class VolunteerResultsMobile2 : ContentPage
     {
+        private ObjectId id;
+        private List<Entry> entries;
+
         public VolunteerResultsMobile2(Volunteer volunteer)
         {
             InitializeComponent();
@@ -21,11 +26,49 @@ namespace WingspanPrototype1.View.Volunteers
                 new VolunteerHours { HoursId = "2", Amount = 5.00, Date = DateTime.Today },
                 new VolunteerHours { HoursId = "3", Amount = 2.00, Date = DateTime.Today }
             };
+
+            DisplayVolunteer(volunteer);
         }
 
-        private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        private void DisplayVolunteer(Volunteer volunteer)
         {
+            id = volunteer._id;
 
+            if (Validate.FeildPopulated(volunteer.Name))
+            {
+                volunteerNameValueLabel.Text = volunteer.Name;
+                volunteerNameStack.IsVisible = true;
+            }
+            else
+            {
+                volunteerNameStack.IsVisible = false;
+                volunteerNameEntry.IsVisible = true;
+                entries.Add(volunteerNameEntry);
+            }
+
+            if (Validate.FeildPopulated(volunteer.Email))
+            {
+                volunteerEmailValueLabel.Text = volunteer.Email;
+                volunteerEmailStack.IsVisible = true;
+            }
+            else
+            {
+                volunteerEmailStack.IsVisible = false;
+                volunteerEmailEntry.IsVisible = true;
+                entries.Add(volunteerEmailEntry);
+            }
+
+            if (Validate.FeildPopulated(volunteer.Mobile.ToString()))
+            {
+                volunteerMobileValueLabel.Text = volunteer.Mobile.ToString();
+                volunteerMobileStack.IsVisible = true;
+            }
+            else
+            {
+                volunteerMobileStack.IsVisible = false;
+                volunteerMobileEntry.IsVisible = true;
+                entries.Add(volunteerMobileEntry);
+            }
         }
 
 
