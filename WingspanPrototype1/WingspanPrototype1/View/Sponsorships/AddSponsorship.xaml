@@ -23,6 +23,7 @@
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
 
@@ -52,18 +53,22 @@
                     </Picker.ItemsSource>
                 </Picker>
 
+                <!--any notes to add-->
+                <Label x:Name="sponsorshipNotesLabel" Text="Notes" Style="{StaticResource labelStyle}"  Grid.Row="2"/>
+                <Editor x:Name="sponsorshipNotesEditor" Grid.Row="2"  Style="{StaticResource feildStyle}"/>
+
                 <!--when sponsorship begins-->
-                <Label x:Name="sponsorshipStartDate" Text="Start date" Style="{StaticResource labelStyle}" Grid.Row="2"/>
-                <DatePicker x:Name="startDateSelector" Style="{StaticResource feildStyle}" Grid.Row="2" />
+                <Label x:Name="sponsorshipStartDate" Text="Start date" Style="{StaticResource labelStyle}" Grid.Row="3"/>
+                <DatePicker x:Name="startDateSelector" Style="{StaticResource feildStyle}" Grid.Row="3" />
 
                 <!--when the sponsorship will end-->
-                <Label x:Name="sponsorshipEndDate" Text="End date" Style="{StaticResource labelStyle}" Grid.Row="3" />
-                <DatePicker x:Name="endDateSelector" Style="{StaticResource feildStyle}" Grid.Row="3" />
+                <Label x:Name="sponsorshipEndDate" Text="End date" Style="{StaticResource labelStyle}" Grid.Row="4" />
+                <DatePicker x:Name="endDateSelector" Style="{StaticResource feildStyle}" Grid.Row="4" />
 
 
-                <!--selecting exisiting sponsor or create a new one-->
-                <Label x:Name="sponsorName" Text="Sponsor name" Style="{StaticResource labelStyle}" Grid.Row="4" />
-                <Picker x:Name="sponsorSelector" Style="{StaticResource feildStyle}" Grid.Row="4" SelectedIndexChanged="OnSponsorSelected">
+                <!--selecting existing sponsor or create a new one-->
+                <Label x:Name="sponsorName" Text="Sponsor" Style="{StaticResource labelStyle}" Grid.Row="5" />
+                <Picker x:Name="sponsorSelector" Style="{StaticResource feildStyle}" Grid.Row="5" SelectedIndexChanged="OnSponsorSelected">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Existing Member</x:String>
@@ -75,7 +80,7 @@
                 <!--save button-->
                 <Button x:Name="saveButton"
                         Text="Save"
-                        Grid.Row="5"
+                        Grid.Row="6"
                         Grid.Column="1"
                         Grid.ColumnSpan="2"
                         Style="{StaticResource mainButtonStyle}"

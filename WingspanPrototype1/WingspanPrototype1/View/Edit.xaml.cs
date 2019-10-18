@@ -13,6 +13,7 @@ using Xamarin.Forms.Xaml;
 using WingspanPrototype1.View.Volunteers;
 using WingspanPrototype1.Controller.Birds;
 using WingspanPrototype1.Controller.Volunteers;
+using WingspanPrototype1.Controller.Sponsorships;
 
 namespace WingspanPrototype1
 {
@@ -101,24 +102,56 @@ namespace WingspanPrototype1
                     }
                     else
                     {
-                        DisplayAlert("No Birds Found", "That bird could been found", "OK");
-                    }
-                    
+                        DisplayAlert("No Birds Found", "That bird could not be found", "OK");
+                    }                   
                     break;
 
+
                 case "Select Bird":
-                    ArrayList selectBirdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);
-                    if (Device.RuntimePlatform == Device.UWP)
+                    // Have all feilds been left empty
+                    if (Validate.AllFeildsEmpty(new string[] { wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text }))
                     {
-                        Navigation.PushAsync(new SelectBirdResultsDesktop(selectBirdResults));
-                    }                 
+                        DisplayAlert("All feilds empty", "Please fill in at least one feild to continue", "OK");
+                        return;
+                    }
+
+                    // Has the name feild been filled in  
+                    if (Validate.FeildPopulated(birdNameEntry.Text))
+                    {
+                        if (Validate.ContainsNumberOrSymbol(birdNameEntry.Text)) // Does the name feild contain an invalid symblo
+                        {
+                            DisplayAlert("Invalid Name Value", "The name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
+                    ArrayList selectBirdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);
+
+                    // TODO: Try Catch
+                    if ((selectBirdResults != null) && (selectBirdResults.Count > 0))
+                    {
+                        // If no feilds are invalid run the search
+                        if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
+                        {
+                            Navigation.PushAsync(new SelectBirdResultsMobile1(selectBirdResults));
+                        }
+                        else
+                        {
+                            Navigation.PushAsync(new SelectBirdResultsDesktop(selectBirdResults));
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("No Birds Found", "That bird could not be found", "OK");
+                    }
                     break;
+
 
                 case "Edit Members":
                     // Are all feilds left empty
                     if (Validate.AllFeildsEmpty(new string[]{memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text }))
                     {
-                        DisplayAlert("All Feilds Empty", "Please fill in at least one serach feild to continue", "OK");
+                        DisplayAlert("All Feilds Empty", "Please fill in at least one search feild to continue", "OK");
                         return;
                     }
 
@@ -145,7 +178,7 @@ namespace WingspanPrototype1
                     // Is the salutaion name feild filled in 
                     if (Validate.FeildPopulated(salutationNameEntry.Text))
                     {
-                        // Does this feild contaiin any numbers or special characters
+                        // Does this feild contain any numbers or special characters
                         if (Validate.ContainsNumberOrSymbol(salutationNameEntry.Text))
                         {
                             DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
@@ -171,52 +204,133 @@ namespace WingspanPrototype1
                     }
                     else
                     {
-                        DisplayAlert("No Members Found", "That member could been found", "OK");
+                        DisplayAlert("No Members Found", "That member could not be found", "OK");
                     }
                     break;
                
 
                 case "Select Member":
-                    if (Device.RuntimePlatform == Device.UWP)
+                    // Are all feilds left empty
+                    if (Validate.AllFeildsEmpty(new string[] { memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text }))
                     {
-                        //Navigation.PushAsync(new SelectSponsorResultsDesktop(SearchMembers()));
-                    }
-                    break;
-
-                case "Edit Sponsorships":
-
-                    if (Validate.AllFeildsEmpty(new string[] { sponsorshipWingspanIdEntry.Text, sponsorshipSponsorEntry.Text }))
-                    {
-                        DisplayAlert("All Feilds Empty", "Please fill in at least one serach feild to continue", "OK");
+                        DisplayAlert("All Feilds Empty", "Please fill in at least one search feild to continue", "OK");
                         return;
                     }
 
-                    // Has the wingspan Id feild been poulated? 
-                    if (Validate.FeildPopulated(sponsorshipWingspanIdEntry.Text))
+                    // Is the first name feild filled in 
+                    if (Validate.FeildPopulated(memberFirstNameEntry.Text))
                     {
-                        // Does the wingspan Id feild contain any numbers or symbols 
-                        if (Validate.ContainsNumberOrSymbol(sponsorshipWingspanIdEntry.Text))
+                        if (Validate.ContainsNumberOrSymbol(memberFirstNameEntry.Text))
                         {
-                            DisplayAlert("Invalid Winspan Id Value", "The sponsor name feild can not contain numbers or symbols", "OK");
+                            DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
                             return;
                         }
                     }
 
-                    // Has the sponsor name feild been poulated? 
-                    if (Validate.FeildPopulated(sponsorshipSponsorEntry.Text))
+                    // Is the last name feild filled in 
+                    if (Validate.FeildPopulated(memberLastNameEntry.Text))
+                    {
+                        if (Validate.ContainsNumberOrSymbol(memberLastNameEntry.Text))
+                        {
+                            DisplayAlert("Invalid Last Name Value", "The first name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
+                    // Is the salutaion name feild filled in 
+                    if (Validate.FeildPopulated(salutationNameEntry.Text))
+                    {
+                        // Does this feild contain any numbers or special characters
+                        if (Validate.ContainsNumberOrSymbol(salutationNameEntry.Text))
+                        {
+                            DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
+                    // Search Members
+                    List<Member> selectMemberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
+
+                    if ((selectMemberResults != null) && (selectMemberResults.Count > 0))
+                    {
+                        // Results have been returned push the results page 
+                        if (DeviceSize.ScreenArea() <= 783457)
+                        {
+                            Navigation.PushAsync(new SelectMemberResultsMobile1(selectMemberResults));
+                        }
+                        else
+                        {
+                            Navigation.PushAsync(new SelectMemberResultsDesktop(selectMemberResults));
+                        }
+
+                    }
+                    else
+                    {
+                        DisplayAlert("No Members Found", "That member could not be found", "OK");
+                    }
+                    break;
+
+
+
+                case "Edit Sponsorships":
+
+                    if (Validate.AllFeildsEmpty(new string[] { sponsorshipWingspanIdEntry.Text, sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text }))
+                    {
+                        DisplayAlert("All Feilds Empty", "Please fill in at least one search feild to continue", "OK");
+                        return;
+                    }                    
+
+                    // Has the first name feild been populated? 
+                    if (Validate.FeildPopulated(sponsorshipFirstNameEntry.Text))
                     {
                         // Does the sponsor name feild contain any numbers or symbols 
-                        if (Validate.ContainsNumberOrSymbol(sponsorshipSponsorEntry.Text))
+                        if (Validate.ContainsNumberOrSymbol(sponsorshipFirstNameEntry.Text))
                         {
-                            DisplayAlert("Invalid Sponsor Name Value", "The sponsor name feild can not contain numbers or symbols", "OK");
+                            DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
                             return;
                         }
                     }
 
-
-                    if (Device.RuntimePlatform == Device.UWP)
+                    // Has the last name feild been populated? 
+                    if (Validate.FeildPopulated(sponsorshipLastNameEntry.Text))
                     {
-                        //Navigation.PushAsync(new EditSponsorshipResultsDesktop(SearchSponsorships()));
+                        // Does the sponsor name feild contain any numbers or symbols 
+                        if (Validate.ContainsNumberOrSymbol(sponsorshipLastNameEntry.Text))
+                        {
+                            DisplayAlert("Invalid Last Name Value", "The last name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
+                    // Has the company name feild been populated? 
+                    if (Validate.FeildPopulated(sponsorshipCompanyNameEntry.Text))
+                    {
+                        // Does the sponsor name feild contain any numbers or symbols 
+                        if (Validate.ContainsNumberOrSymbol(sponsorshipCompanyNameEntry.Text))
+                        {
+                            DisplayAlert("Invalid Company Name Value", "The company name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
+                    // Search sponsorships
+                    List<Sponsorship> sponsorshipResults = SearchSponsorships.Search(sponsorshipWingspanIdEntry.Text, sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text);
+
+                    if ((sponsorshipResults != null) && (sponsorshipResults.Count > 0))
+                    {
+                        // Results have been returned push the results page 
+                        if (DeviceSize.ScreenArea() <= 783457)
+                        {
+                            Navigation.PushAsync(new EditSponsorshipResultsMobile1(sponsorshipResults));
+                        }
+                        else
+                        {
+                            Navigation.PushAsync(new EditSponsorshipResultsMobile1(sponsorshipResults));
+                        }
+                    }
+                    else
+                    {
+                        DisplayAlert("No Sponsorships Found", "That sponsorship could not be found", "OK");
                     }
                     break;
 
@@ -226,7 +340,7 @@ namespace WingspanPrototype1
 
                     if (Validate.AllFeildsEmpty(new string[] {volunteerEmailEntry.Text, volunteerFirstNameEntry.Text, volunteerLastNameEntry.Text }))
                     {
-                        DisplayAlert("All Feilds Empty", "Please fill in at least one serach feild to continue", "OK");
+                        DisplayAlert("All Feilds Empty", "Please fill in at least one search feild to continue", "OK");
                         return;
                     }
 
@@ -268,7 +382,7 @@ namespace WingspanPrototype1
                     }
                     else
                     {
-                        DisplayAlert("No Members Found", "That member could been found", "OK");
+                        DisplayAlert("No Members Found", "That member could not be found", "OK");
                     }
                     break;
             }

@@ -87,9 +87,17 @@
                         <Label x:Name="sponsorshipWingspanIDLabel" FontSize="20" Text="Wingspan ID"/>
                         <Entry x:Name="sponsorshipWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
                         
-                        <!--Sponsor Name-->
-                        <Label x:Name="sponsorshipSponsorNameLabel" Text="Sponsor name"  FontSize="20" Grid.Row="1"/>
-                        <Entry x:Name="sponsorshipSponsorEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>
+                        <!--sponsor/member first name-->
+                        <Label x:Name="sponsorshipFirstNameLabel" Text="First name"  FontSize="20" Grid.Row="2"/>
+                        <Entry x:Name="sponsorshipFirstNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
+
+                        <!--sponsor/member last name-->
+                        <Label x:Name="sponsorshipLastNameLabel" Text="Last name"  FontSize="20" Grid.Row="3"/>
+                        <Entry x:Name="sponsorshipLastNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1"/>
+
+                        <!--sponsor/member company name-->
+                        <Label x:Name="sponsorshipCompanyNameLabel" Text="Company name"  FontSize="20" Grid.Row="4"/>
+                        <Entry x:Name="sponsorshipCompanyNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1"/>
                     </Grid>
                 </ContentView.Content>
                 </ContentView>
