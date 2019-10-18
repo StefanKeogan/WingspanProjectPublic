@@ -23,6 +23,7 @@ namespace WingspanPrototype1.Controller.Birds
 
             FilterDefinition<BsonDocument> filter = null;
 
+            // What search condition are we using?
             switch (condition.ToString())
             {
                 case "Ingoing":

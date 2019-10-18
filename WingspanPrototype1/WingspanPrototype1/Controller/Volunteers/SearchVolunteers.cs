@@ -11,7 +11,7 @@ namespace WingspanPrototype1.Controller.Volunteers
 {
     class SearchVolunteers
     {
-        public static List<Volunteer> Search(string volunteerEmail, string volunteerName)
+        public static List<Volunteer> Search(string volunteerEmail, string volunteerFirstName, string volunteerLastName)
         {
             // Get DB
             var database = DatabaseConnection.GetDatabase();
@@ -26,7 +26,8 @@ namespace WingspanPrototype1.Controller.Volunteers
             List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
 
             if (Validate.FeildPopulated(volunteerEmail)) filters.Add(filterBuilder.Eq("Email", volunteerEmail));           
-            if (Validate.FeildPopulated(volunteerName)) filters.Add(filterBuilder.Eq("Name", volunteerName));
+            if (Validate.FeildPopulated(volunteerFirstName)) filters.Add(filterBuilder.Eq("FirstName", volunteerFirstName));
+            if (Validate.FeildPopulated(volunteerLastName)) filters.Add(filterBuilder.Eq("LastName", volunteerLastName));
 
             FilterDefinition<BsonDocument> searchFilter = filters[0];
 

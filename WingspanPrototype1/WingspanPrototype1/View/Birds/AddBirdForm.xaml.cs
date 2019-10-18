@@ -103,7 +103,7 @@ namespace WingspanPrototype1
                 // TODO Dynamic wild bird object 
                 // Insert record, return outcome
                 bool inserted = AddWildBird.InsertWildBirdDocumnet( new WildBird {
-                    WingspanId = "W" + GenerateWingspanId.NewId(),
+                    WingspanId = GenerateWildWingspanId.NewId(),
                     Species = wildSpeciesPicker.SelectedItem.ToString(),
                     Location = wildLocationEntry.Text,
                     Age = wildAgePicker.SelectedItem.ToString(),
@@ -186,7 +186,7 @@ namespace WingspanPrototype1
                 // Required feild?
 
                 // Instantilate wingspan ID here so both add note and add bird functions can access it 
-                string wingspanId = GenerateWingspanId.NewId();
+                string wingspanId = GenerateCaptiveWingspanId.NewId();
 
                 bool birdInserted = AddCaptiveBird.InsertCaptiveBirdDocument(new CaptiveBird
                 {

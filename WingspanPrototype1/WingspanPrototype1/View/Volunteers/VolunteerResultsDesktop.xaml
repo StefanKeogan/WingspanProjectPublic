@@ -24,7 +24,8 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="5">
-                                <Label FontSize="20" Text="{Binding Name}"/>
+                                <Label FontSize="20" Text="{Binding FirstName}"/>
+                                <Label FontSize="20" Text="{Binding LastName}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -32,7 +33,7 @@
             </ListView>
 
             <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" x:Name="resultsView" IsVisible="False">
-                <Grid HorizontalOptions="Center" HeightRequest="100">
+                <Grid HorizontalOptions="Center" HeightRequest="150">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
@@ -46,29 +47,37 @@
 
                     </Grid.RowDefinitions>
 
-                    <!--Name-->
-                    <Label x:Name="volunteerNameLabel" Text="First Name" Style="{StaticResource resultLabelStyle}"/>
-                    <StackLayout x:Name="volunteerNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" >
-                        <Label x:Name="volunteerNameValueLabel" FontSize="20"/>
-                        <Button x:Name="volunteerNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    <!--First Name-->
+                    <Label x:Name="volunteerFirstNameLabel" Text="First Name" Style="{StaticResource resultLabelStyle}"/>
+                    <StackLayout x:Name="volunteerFirstNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" >
+                        <Label x:Name="volunteerFirstNameValueLabel" FontSize="20"/>
+                        <Button x:Name="volunteerFirstNameEditButton" Style="{StaticResource editStyleDesktop}" Clicked="VolunteerFirstNameEditButton_Clicked"/>
                     </StackLayout>
-                    <Entry x:Name="volunteerNameEntry" Style="{StaticResource resultFeildStyle}"  IsVisible="False"/>
+                    <Entry x:Name="volunteerFirstNameEntry" Style="{StaticResource resultFeildStyle}"  IsVisible="False"/>
+
+                    <!--Last Name-->
+                    <Label x:Name="volunteerLastNameLabel" Text="Last Name" Style="{StaticResource resultLabelStyle}" Grid.Row="1"/>
+                    <StackLayout x:Name="volunteerLastNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="1">
+                        <Label x:Name="volunteerLastNameValueLabel" FontSize="20"/>
+                        <Button x:Name="volunteerLastNameEditButton" Style="{StaticResource editStyleDesktop}" Clicked="VolunteerLastNameEditButton_Clicked"/>
+                    </StackLayout>
+                    <Entry x:Name="volunteerLastNameEntry" Style="{StaticResource resultFeildStyle}"  IsVisible="False" Grid.Row="1"/>
 
                     <!--Mobile-->
-                    <Label x:Name="volunteerMobileLabel" Text="Mobile" Style="{StaticResource resultLabelStyle}" Grid.Row="1"/>
-                    <StackLayout x:Name="volunteerMobileStack" Style="{StaticResource resultStackStyle}"  IsVisible="False" Grid.Row="1">
+                    <Label x:Name="volunteerMobileLabel" Text="Mobile" Style="{StaticResource resultLabelStyle}" Grid.Row="2"/>
+                    <StackLayout x:Name="volunteerMobileStack" Style="{StaticResource resultStackStyle}"  IsVisible="False" Grid.Row="2">
                         <Label x:Name="volunteerMobileValueLabel" FontSize="20"/>
-                        <Button x:Name="volunteerMobileEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                        <Button x:Name="volunteerMobileEditButton" Style="{StaticResource editStyleDesktop}" Clicked="VolunteerMobileEditButton_Clicked"/>
                     </StackLayout>
-                    <Entry x:Name="volunteerMobileEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="1" IsVisible="False"/>
+                    <Entry x:Name="volunteerMobileEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="2" IsVisible="False"/>
 
                     <!--Email-->
-                    <Label x:Name="volunteerEmailLabel" Text="Email" Style="{StaticResource resultLabelStyle}" Grid.Row="2"/>
-                    <StackLayout x:Name="volunteerEmailStack" Style="{StaticResource resultStackStyle}" Grid.Row="2" IsVisible="False">
+                    <Label x:Name="volunteerEmailLabel" Text="Email" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
+                    <StackLayout x:Name="volunteerEmailStack" Style="{StaticResource resultStackStyle}" Grid.Row="3" IsVisible="False">
                         <Label x:Name="volunteerEmailValueLabel" Text="GPS" FontSize="20"/>
-                        <Button x:Name="volunteerEmailEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                        <Button x:Name="volunteerEmailEditButton" Style="{StaticResource editStyleDesktop}" Clicked="VolunteerEmailEditButton_Clicked"/>
                     </StackLayout>
-                    <Entry x:Name="volunteerEmailEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="2" IsVisible="False"/>
+                    <Entry x:Name="volunteerEmailEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="3" IsVisible="False"/>
                 </Grid>
             </ScrollView>
 

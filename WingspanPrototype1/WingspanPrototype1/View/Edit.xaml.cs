@@ -224,7 +224,7 @@ namespace WingspanPrototype1
 
                 case "Edit Volunteers":
 
-                    if (Validate.AllFeildsEmpty(new string[] {volunteerEmailEntry.Text, volunteerNameEntry.Text }))
+                    if (Validate.AllFeildsEmpty(new string[] {volunteerEmailEntry.Text, volunteerFirstNameEntry.Text, volunteerLastNameEntry.Text }))
                     {
                         DisplayAlert("All Feilds Empty", "Please fill in at least one serach feild to continue", "OK");
                         return;
@@ -235,16 +235,25 @@ namespace WingspanPrototype1
                         // TODO: valid email address                       
                     }
 
-                    if (Validate.FeildPopulated(volunteerNameEntry.Text))
+                    if (Validate.FeildPopulated(volunteerFirstNameEntry.Text))
                     {
-                        if (Validate.ContainsNumberOrSymbol(volunteerNameEntry.Text))
+                        if (Validate.ContainsNumberOrSymbol(volunteerFirstNameEntry.Text))
                         {
                             DisplayAlert("Invalid Volunteer Name Value", "The volunteer name feild can not contain numbers or symbols", "OK");
                             return;
                         }
                     }
 
-                    List<Volunteer> volunteerResults = SearchVolunteers.Search(volunteerEmailEntry.Text, volunteerNameEntry.Text);
+                    if (Validate.FeildPopulated(volunteerLastNameEntry.Text))
+                    {
+                        if (Validate.ContainsNumberOrSymbol(volunteerLastNameEntry.Text))
+                        {
+                            DisplayAlert("Invalid Volunteer Name Value", "The volunteer name feild can not contain numbers or symbols", "OK");
+                            return;
+                        }
+                    }
+
+                    List<Volunteer> volunteerResults = SearchVolunteers.Search(volunteerEmailEntry.Text, volunteerFirstNameEntry.Text, volunteerLastNameEntry.Text);
 
                     if ((volunteerResults != null) && (volunteerResults.Count > 0))
                     {

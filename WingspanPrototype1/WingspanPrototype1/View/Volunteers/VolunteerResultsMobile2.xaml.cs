@@ -34,16 +34,28 @@ namespace WingspanPrototype1.View.Volunteers
         {
             id = volunteer._id;
 
-            if (Validate.FeildPopulated(volunteer.Name))
+            if (Validate.FeildPopulated(volunteer.FirstName))
             {
-                volunteerNameValueLabel.Text = volunteer.Name;
-                volunteerNameStack.IsVisible = true;
+                volunteerFirstNameValueLabel.Text = volunteer.FirstName;
+                volunteerFirstNameStack.IsVisible = true;
             }
             else
             {
-                volunteerNameStack.IsVisible = false;
-                volunteerNameEntry.IsVisible = true;
-                entries.Add(volunteerNameEntry);
+                volunteerFirstNameStack.IsVisible = false;
+                volunteerFirstNameEntry.IsVisible = true;
+                entries.Add(volunteerFirstNameEntry);
+            }
+
+            if (Validate.FeildPopulated(volunteer.LastName))
+            {
+                volunteerLastNameValueLabel.Text = volunteer.LastName;
+                volunteerLastNameStack.IsVisible = true;
+            }
+            else
+            {
+                volunteerLastNameStack.IsVisible = false;
+                volunteerLastNameEntry.IsVisible = true;
+                entries.Add(volunteerLastNameEntry);
             }
 
             if (Validate.FeildPopulated(volunteer.Email))

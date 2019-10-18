@@ -52,21 +52,37 @@ namespace WingspanPrototype1.View.Volunteers
         {
             id = volunteer._id;
 
-            if (Validate.FeildPopulated(volunteer.Name))
+            if (Validate.FeildPopulated(volunteer.FirstName))
             {
-                volunteerNameValueLabel.Text = volunteer.Name;
-                volunteerNameStack.IsVisible = true;
+                volunteerFirstNameValueLabel.Text = volunteer.FirstName;
+                volunteerFirstNameEntry.IsVisible = false;
+                volunteerFirstNameStack.IsVisible = true;
             }
             else
             {
-                volunteerNameStack.IsVisible = false;
-                volunteerNameEntry.IsVisible = true;
-                entries.Add(volunteerNameEntry);
+                volunteerFirstNameStack.IsVisible = false;
+                volunteerFirstNameEntry.IsVisible = true;
+                entries.Add(volunteerFirstNameEntry);
+            }
+
+            if (Validate.FeildPopulated(volunteer.LastName))
+            {
+                volunteerLastNameValueLabel.Text = volunteer.LastName;
+                volunteerLastNameEntry.IsVisible = false;
+                volunteerLastNameStack.IsVisible = true;
+            }
+            else
+            {
+                volunteerLastNameStack.IsVisible = false;
+                volunteerLastNameEntry.IsVisible = true;
+                entries.Add(volunteerLastNameEntry);
             }
 
             if (Validate.FeildPopulated(volunteer.Email))
             {
+
                 volunteerEmailValueLabel.Text = volunteer.Email;
+                volunteerEmailEntry.IsVisible = false;
                 volunteerEmailStack.IsVisible = true;
             }
             else
@@ -79,7 +95,8 @@ namespace WingspanPrototype1.View.Volunteers
             if (Validate.FeildPopulated(volunteer.Mobile.ToString()))
             {
                 volunteerMobileValueLabel.Text = volunteer.Mobile.ToString();
-                volunteerMobileStack.IsVisible = true;
+                volunteerMobileEntry.IsVisible = false;
+                volunteerMobileStack.IsVisible = true;                
             }
             else
             {
@@ -148,8 +165,11 @@ namespace WingspanPrototype1.View.Volunteers
 
             if (result)
             {
-                if (UpdateVolunteer.UpdateDocument(id, entries))
+                Volunteer volunteer = UpdateVolunteer.UpdateDocument(id, entries);
+
+                if (volunteer != null)
                 {
+                    DisplayVolunteer(volunteer);
                     await DisplayAlert("Volunteer Saved", "Changes to this volunteer have been saved", "Ok");
                 }
                 else
@@ -159,6 +179,34 @@ namespace WingspanPrototype1.View.Volunteers
                 
             }
             
+        }
+
+        private void VolunteerFirstNameEditButton_Clicked(object sender, EventArgs e)
+        {
+            volunteerFirstNameStack.IsVisible = false;
+            volunteerFirstNameEntry.IsVisible = true;
+            entries.Add(volunteerFirstNameEntry);
+        }
+
+        private void VolunteerLastNameEditButton_Clicked(object sender, EventArgs e)
+        {
+            volunteerLastNameStack.IsVisible = false;
+            volunteerLastNameEntry.IsVisible = true;
+            entries.Add(volunteerLastNameEntry);
+        }
+
+        private void VolunteerMobileEditButton_Clicked(object sender, EventArgs e)
+        {
+            volunteerMobileStack.IsVisible = false;
+            volunteerMobileEntry.IsVisible = true;
+            entries.Add(volunteerMobileEntry);
+        }
+
+        private void VolunteerEmailEditButton_Clicked(object sender, EventArgs e)
+        {
+            volunteerEmailStack.IsVisible = false;
+            volunteerEmailEntry.IsVisible = true;
+            entries.Add(volunteerEmailEntry);
         }
     }
 }

@@ -20,10 +20,11 @@ namespace WingspanPrototype1.Controller.Volunteers
             // Insert required feilds 
             var document = new BsonDocument
             {
-                {"Name", volunteer.Name }
+                {"FirstName", volunteer.FirstName }
             };
 
             // What other feilds do we need to insert?
+            if (Validate.FeildPopulated(volunteer.LastName)) document.Add("LastName", volunteer.LastName);
             if (Validate.FeildPopulated(volunteer.Email)) document.Add("Email", volunteer.Email);
             if (Validate.FeildPopulated(volunteer.Mobile.ToString())) document.Add("Mobile", volunteer.Mobile);
 
@@ -35,7 +36,8 @@ namespace WingspanPrototype1.Controller.Volunteers
             }
             catch (Exception)
             {
-                return false;
+                throw;
+                //return false;
             }
         }
     }

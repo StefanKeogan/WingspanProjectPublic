@@ -19,6 +19,7 @@ namespace WingspanPrototype1
         private ObjectId id;
         private List<Entry> entries = new List<Entry>();
         private List<Picker> pickers = new List<Picker>();
+        private List<DatePicker> datePickers = new List<DatePicker>();
         private Type birdType;
 
         public BirdResultsDesktop(ArrayList results)
@@ -497,8 +498,11 @@ namespace WingspanPrototype1
             {
                 if (birdType == typeof(WildBird))
                 {
-                    if (UpdateWildBird.UpdateDocument(id, entries, pickers))
+                    WildBird wildBird = UpdateWildBird.UpdateDocument(id, entries, pickers);
+
+                    if (wildBird != null)
                     {
+                        DisplayWildBird(wildBird);
                         await DisplayAlert("Bird Saved", "Your changes have been saved", "OK");
                     }
                     else
@@ -508,8 +512,11 @@ namespace WingspanPrototype1
                 }
                 else if (birdType == typeof(CaptiveBird))
                 {
-                    if (UpdateCaptiveBird.UpdateDocument(id, entries, pickers))
+                    CaptiveBird captiveBird = UpdateCaptiveBird.UpdateDocument(id, entries, pickers);
+
+                    if (captiveBird != null)
                     {
+                        DisplayCaptiveBird(captiveBird);
                         await DisplayAlert("Bird Saved", "Your changes have been saved", "OK");
                     }
                     else
@@ -557,6 +564,158 @@ namespace WingspanPrototype1
             }
         }
 
-       
+        private void WildWingspanIdEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildWingspanIdStack.IsVisible = false;
+            wildWingspanIdEntry.IsVisible = true;
+            entries.Add(wildWingspanIdEntry);
+        }
+
+        private void WildSpeciesEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildSpeciesStack.IsVisible = false;
+            wildSpeciesPicker.IsVisible = true;
+            pickers.Add(wildSpeciesPicker);
+        }
+
+        private void WildLocationEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildLocationStack.IsVisible = false;
+            wildLocationEntry.IsVisible = true;
+            entries.Add(wildLocationEntry);
+        }
+
+        private void WildGpsEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildGpsStack.IsVisible = false;
+            wildGpsEntry.IsVisible = true;
+            entries.Add(wildGpsEntry);
+        }
+
+        private void WildSexEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildSexStack.IsVisible = false;
+            wildSexPicker.IsVisible = true;
+            pickers.Add(wildSexPicker);
+        }
+
+        private void WildAgeEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildAgeStack.IsVisible = false;
+            wildAgePicker.IsVisible = true;
+            pickers.Add(wildAgePicker);
+        }
+
+        private void WildMetalBandIdEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildMetalBandStack.IsVisible = false;
+            wildMetalBandIdEntry.IsVisible = true;
+            entries.Add(wildMetalBandIdEntry);
+        }
+
+        private void BandInfoEditButton_Clicked(object sender, EventArgs e)
+        {
+            bandInfoStack.IsVisible = false;
+            bandInfoEntry.IsVisible = true;
+            entries.Add(bandInfoEntry);
+        }
+
+        private void WildDateBandedEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildDateBandedStack.IsVisible = false;
+            wildDateBandedPicker.IsVisible = true;
+            datePickers.Add(wildDateBandedPicker);
+        }
+
+        private void WildBanderNameEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildBanderNameStack.IsVisible = false;
+            wildBanderNameEntry.IsVisible = true;
+            entries.Add(bandInfoEntry);
+        }
+
+        private void CaptiveWingspanIdEditButton_Clicked(object sender, EventArgs e)
+        {
+            captiveWingspanIdStack.IsVisible = false;
+            captiveWingspanIdEntry.IsVisible = true;
+            entries.Add(captiveWingspanIdEntry);
+        }
+
+        private void CaptiveNameEditButton_Clicked(object sender, EventArgs e)
+        {
+            captiveNameStack.IsVisible = false;
+            captiveNameEntry.IsVisible = true;
+            entries.Add(captiveNameEntry);
+        }
+
+        private void CaptiveBandNumberEditButton_Clicked(object sender, EventArgs e)
+        {
+            captiveWingspanIdStack.IsVisible = false;
+            captiveWingspanIdEntry.IsVisible = true;
+            entries.Add(captiveWingspanIdEntry);
+        }
+
+        private void CaptiveBandColurEditButton_Clicked(object sender, EventArgs e)
+        {
+            captiveBandColourStack.IsVisible = false;
+            captiveBandColourPicker.IsVisible = true;
+            pickers.Add(captiveBandColourPicker);
+        }
+
+        private void CaptiveSpeciesEditButton_Clicked(object sender, EventArgs e)
+        {
+            captiveSpeciesStack.IsVisible = false;
+            captiveSpeciesPicker.IsVisible = true;
+            pickers.Add(captiveSpeciesPicker);
+        }
+
+        private void CaptiveSexEditButton_Clicked(object sender, EventArgs e)
+        {
+            captiveSexStack.IsVisible = false;
+            captiveSexPicker.IsVisible = true;
+            pickers.Add(captiveSexPicker);
+        }
+
+        private void CaptiveAgeEditButton_Clicked(object sender, EventArgs e)
+        {
+            captiveAgeStack.IsVisible = false;
+            captiveAgePicker.IsVisible = true;
+            pickers.Add(captiveAgePicker);
+        }
+
+        private void CaptiveLocationEditButton_Clicked(object sender, EventArgs e)
+        {
+            captiveLocationStack.IsVisible = false;
+            captiveLocationEntry.IsVisible = true;
+            entries.Add(captiveLocationEntry);
+        }
+
+        private void CaptiveDateArrivedEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildDateBandedStack.IsVisible = false;
+            wildDateBandedPicker.IsVisible = true;
+            datePickers.Add(wildDateBandedPicker);
+        }
+
+        private void CaptiveDateDepartedEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildDateBandedStack.IsVisible = false;
+            wildDateBandedPicker.IsVisible = true;
+            datePickers.Add(wildDateBandedPicker);
+        }
+
+        private void CaptiveDateDeceasedEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildDateBandedStack.IsVisible = false;
+            wildDateBandedPicker.IsVisible = true;
+            datePickers.Add(wildDateBandedPicker);
+        }
+
+        private void CaptiveResultEditButton_Clicked(object sender, EventArgs e)
+        {
+            captiveResultStack.IsVisible = false;
+            captiveResultEntry.IsVisible = true;
+            entries.Add(captiveResultEntry);
+        }
     }
 }

@@ -56,9 +56,9 @@ namespace WingspanPrototype1.View
             }
 
             // display member's salutation name, if there is one
-            if ((member.SaluationName != string.Empty) && (member.SaluationName != null))
+            if ((member.SalutationName != string.Empty) && (member.SalutationName != null))
             {
-                selectMemberSalutationNameValueLabel.Text = member.SaluationName;
+                selectMemberSalutationNameValueLabel.Text = member.SalutationName;
                 selectMemberSalutationNameValueLabel.IsVisible = true;
             }
             else

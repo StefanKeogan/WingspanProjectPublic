@@ -18,7 +18,7 @@ namespace WingspanPrototype1.View.Volunteers
 
             Title = title;
 
-            resultsListView.ItemsSource = new List<Volunteer> { new Volunteer { Name = "Person" , Email = "person@email.co.nz"} };
+            resultsListView.ItemsSource = new List<Volunteer> { new Volunteer { FirstName = "Person" , Email = "person@email.co.nz"} };
         }
 
         private void resultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

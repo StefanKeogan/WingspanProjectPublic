@@ -31,9 +31,23 @@ namespace WingspanPrototype1.View.Volunteers
 
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
-            if (Validate.FeildPopulated(volunteerNameEntry.Text))
+            if (Validate.FeildPopulated(volunteerFirstNameEntry.Text))
             {
-                if (Validate.ContainsNumberOrSymbol(volunteerNameEntry.Text))
+                if (Validate.ContainsNumberOrSymbol(volunteerFirstNameEntry.Text))
+                {
+                    await DisplayAlert("Invalid Format", "The first name feild can not contain letters or symbols", "OK");
+                    return;
+                }
+            }
+            else
+            {
+                await DisplayAlert("Empty Feild", "Please fill in the first name feild", "OK");
+                return;
+            }
+
+            if (Validate.FeildPopulated(volunteerLastNameEntry.Text))
+            {
+                if (Validate.ContainsNumberOrSymbol(volunteerLastNameEntry.Text))
                 {
                     await DisplayAlert("Invalid Format", "The first name feild can not contain letters or symbols", "OK");
                     return;
@@ -54,7 +68,8 @@ namespace WingspanPrototype1.View.Volunteers
             // Insert volunteer document
             bool inserted = AddVolunteer.InsertVolunteerDocument(new Volunteer
             {
-                Name = volunteerNameEntry.Text,
+                FirstName = volunteerFirstNameEntry.Text,
+                LastName = volunteerLastNameEntry.Text,
                 Mobile = Convert.ToInt64(volunteerMobileEntry.Text),
                 Email = volunteerEmailEntry.Text
 
@@ -63,7 +78,8 @@ namespace WingspanPrototype1.View.Volunteers
             // Was the document inserted successfully?
             if (inserted)
             {
-                volunteerNameEntry.Text = null;
+                volunteerFirstNameEntry.Text = null;
+                volunteerLastNameEntry.Text = null;
                 volunteerMobileEntry.Text = null;
                 volunteerEmailEntry.Text = null;
 

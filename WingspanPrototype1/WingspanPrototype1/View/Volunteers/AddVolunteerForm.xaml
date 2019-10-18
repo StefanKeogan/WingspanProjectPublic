@@ -8,9 +8,10 @@
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
-            <Grid  HeightRequest="200" HorizontalOptions="Center">
+            <Grid  HeightRequest="300" HorizontalOptions="Center">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
+                    <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="*"/>
                     <RowDefinition Height="2*"/>
@@ -23,21 +24,25 @@
                 </Grid.ColumnDefinitions>
 
                 <!--Name-->
-                <Label x:Name="nameLabel" Text="Name"  Style="{StaticResource labelStyle}" />
-                <Entry x:Name="volunteerNameEntry" Style="{StaticResource feildStyle}" />
+                <Label x:Name="volunteerFirstNameLabel" Text="First Name"  Style="{StaticResource labelStyle}" />
+                <Entry x:Name="volunteerFirstNameEntry" Style="{StaticResource feildStyle}" />
+
+                <!--Name-->
+                <Label x:Name="volunteerLastNameLabel" Text="Last Name"  Style="{StaticResource labelStyle}" Grid.Row="1"/>
+                <Entry x:Name="volunteerLastNameEntry" Style="{StaticResource feildStyle}" Grid.Row="1"/>
 
                 <!--Mobile-->
-                <Label x:Name="mobileLabel" Text="Mobile"  Style="{StaticResource labelStyle}" Grid.Row="1"/>
-                <Entry x:Name="volunteerMobileEntry" Style="{StaticResource feildStyle}" Grid.Row="1"/>
+                <Label x:Name="volunteerMobileLabel" Text="Mobile"  Style="{StaticResource labelStyle}" Grid.Row="2"/>
+                <Entry x:Name="volunteerMobileEntry" Style="{StaticResource feildStyle}" Grid.Row="2"/>
 
                 <!--Email-->
-                <Label x:Name="emailLabel" Text="Email"  Style="{StaticResource labelStyle}" Grid.Row="2" />
-                <Entry x:Name="volunteerEmailEntry"  Style="{StaticResource feildStyle}" Grid.Row="2"/>
+                <Label x:Name="volunteerEmailLabel" Text="Email"  Style="{StaticResource labelStyle}" Grid.Row="3" />
+                <Entry x:Name="volunteerEmailEntry"  Style="{StaticResource feildStyle}" Grid.Row="3"/>
 
                 <Button  
                 x:Name="addButton"
                 Grid.Column="1"
-                Grid.Row="3"
+                Grid.Row="4"
                 Grid.ColumnSpan="2"
                 Text="Add" 
                 Style="{StaticResource mainButtonStyle}"

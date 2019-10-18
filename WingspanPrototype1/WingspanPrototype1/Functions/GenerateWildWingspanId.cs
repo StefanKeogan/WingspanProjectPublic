@@ -8,31 +8,34 @@ using WingspanPrototype1.Model;
 
 namespace WingspanPrototype1.Functions
 {
-    class GenerateWingspanId
+    class GenerateWildWingspanId
     {
         public static string NewId()
         {
+            // Get databse 
             var database = DatabaseConnection.GetDatabase();
 
-            var collection = database.GetCollection<BsonDocument>("IdValue");
+            // Get collection
+            var collection = database.GetCollection<BsonDocument>("WildIdValue");
 
-            var value = collection.Find(new BsonDocument { }).ToList();
+            // Get value
+            var value = collection.Find(new BsonDocument { }).First();
 
             // Get Id Value 
-            var idValue = BsonSerializer.Deserialize<IdValue>(value[0]);
+            var idValue = BsonSerializer.Deserialize<IdValue>(value);
 
             // Generate Wingspan ID
             int number = idValue.Value;
             int year = DateTime.Today.Year % 100;
-            string wingspanId = year.ToString() + "/" + number.ToString();
+            string wingspanId = "W" + year.ToString() + "/" + number.ToString();
 
-
-            int increment = number+1;
+            int increment = number + 1;
 
             // Increment Id Value 
             collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", idValue._id), Builders<BsonDocument>.Update.Set("Value", increment));
 
             return wingspanId;
         }
+
     }
 }
