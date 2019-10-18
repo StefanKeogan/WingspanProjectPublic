@@ -48,6 +48,19 @@ namespace WingspanPrototype1.View
                 editCategoryStack.IsVisible = false;
             }
 
+            //display notes
+            if ((sponsorship.SponsorshipNotes != string.Empty) && (sponsorship.SponsorshipNotes != null))
+            {
+                editSponsorshipNotesValueLabel.Text = sponsorship.SponsorshipNotes;
+                editSponsorshipNotesStack.IsVisible = true;
+                editSponsorshipNotes.IsVisible = false;
+            }
+            else
+            {
+                editSponsorshipNotes.IsVisible = true;
+                editSponsorshipNotesStack.IsVisible = false;
+            }
+
             //display Sponsorship start date
             if ((sponsorship.SponsorshipStart.ToString() != string.Empty) && (sponsorship.SponsorshipStart != null))
             {
@@ -74,18 +87,30 @@ namespace WingspanPrototype1.View
                 editSponsorshipEndStack.IsVisible = false;
             }
 
-
-            //display member's salutation name
-            if ((sponsorship.SaluationName != string.Empty) && (sponsorship.SaluationName != null))
+            //display member's first name
+            if ((sponsorship.FirstName != string.Empty) && (sponsorship.FirstName != null))
             {
-                editSponsorSalutationNameValueLabel.Text = sponsorship.SaluationName;
-                editSponsorSalutationNameStack.IsVisible = true;
-                editSponsorSalutationNameEntry.IsVisible = false;
+                editSponsorFirstNameValueLabel.Text = sponsorship.FirstName;
+                editSponsorFirstNameStack.IsVisible = true;
+                editSponsorFirstNameEntry.IsVisible = false;
             }
             else
             {
-                editSponsorSalutationNameEntry.IsVisible = true;
-                editSponsorSalutationNameStack.IsVisible = false;
+                editSponsorFirstNameEntry.IsVisible = true;
+                editSponsorFirstNameStack.IsVisible = false;
+            }
+
+            //display member's last name
+            if ((sponsorship.LastName != string.Empty) && (sponsorship.LastName != null))
+            {
+                editSponsorLastNameValueLabel.Text = sponsorship.LastName;
+                editSponsorLastNameStack.IsVisible = true;
+                editSponsorLastNameEntry.IsVisible = false;
+            }
+            else
+            {
+                editSponsorLastNameEntry.IsVisible = true;
+                editSponsorLastNameStack.IsVisible = false;
             }
 
             //display sponsoring company name

@@ -10,6 +10,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Controller\Sponsors\**" />
+    <EmbeddedResource Remove="Controller\Sponsors\**" />
+    <None Remove="Controller\Sponsors\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.Net.Compilers" Version="3.3.1">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
@@ -158,10 +164,5 @@
     <EmbeddedResource Update="View\Volunteers\VolunteerResultsMobile2.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Controller\Sponsors\" />
-    <Folder Include="Controller\Sponsorship\" />
   </ItemGroup>
 </Project>

@@ -44,6 +44,8 @@
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
                             <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
+                            <RowDefinition Height="*"/>
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
 
@@ -70,45 +72,62 @@
                                     <x:String>Captive Bird (Gold)</x:String>
                                     <x:String>Captive Bird (Silver)</x:String>
                                     <x:String>Captive Bird (Bronze)</x:String>
+                                    <x:String>Other</x:String>
                                 </x:Array>
                             </Picker.ItemsSource>
                         </Picker>
+                        
+                        <!--sponsorship notes-->
+                        <Label x:Name="editSponsorshipNotesLabel" Text="Notes" Style="{StaticResource resultLabelStyle}" Grid.Row="2"/>
+                        <StackLayout x:Name="editSponsorshipNotesStack" Grid.Row="2" Style="{StaticResource resultStackStyle}"  IsVisible="False">
+                            <Label x:Name="editSponsorshipNotesValueLabel" FontSize="20" />
+                            <Button x:Name="editSponsorshipNotesValueEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Editor x:Name="editSponsorshipNotes" Style="{StaticResource resultFeildStyle}" Grid.Row="2" IsVisible="False"/>
 
                         <!--Sponsorship start date-->
-                        <Label x:Name="editSponsorshipStartLabel" Text="Start date" Style="{StaticResource resultLabelStyle}" Grid.Row="2"/>
-                        <StackLayout x:Name="editSponsorshipStartStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="2">
+                        <Label x:Name="editSponsorshipStartLabel" Text="Start date" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
+                        <StackLayout x:Name="editSponsorshipStartStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="3">
                             <Label x:Name="editSponsorshipStartValueLabel" FontSize="20"/>
                             <Button x:Name="editSponsorshipStartEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                         </StackLayout>
-                        <DatePicker x:Name="editSponsorshipStartPicker" Style="{StaticResource feildStyle}" Grid.Row="2" IsVisible="False"/>
+                        <DatePicker x:Name="editSponsorshipStartPicker" Style="{StaticResource feildStyle}" Grid.Row="3" IsVisible="False"/>
 
                         <!--Sponsorship end date-->
-                        <Label x:Name="editSponsorshipEndLabel" Text="End date" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
-                        <StackLayout x:Name="editSponsorshipEndStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="3">
+                        <Label x:Name="editSponsorshipEndLabel" Text="End date" Style="{StaticResource resultLabelStyle}" Grid.Row="4"/>
+                        <StackLayout x:Name="editSponsorshipEndStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="4">
                             <Label x:Name="editSponsorshipEndValueLabel" FontSize="20"/>
                             <Button x:Name="editSponsorshipEndEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                         </StackLayout>
-                        <DatePicker x:Name="editSponsorshipEndPicker" Style="{StaticResource feildStyle}" Grid.Row="3" IsVisible="False"/>
+                        <DatePicker x:Name="editSponsorshipEndPicker" Style="{StaticResource feildStyle}" Grid.Row="4" IsVisible="False"/>
 
-                        <!--member name-->
-                        <Label x:Name="editSponsorSalutationNameLabel" Text="Sponsor name" Style="{StaticResource resultLabelStyle}" Grid.Row="4"/>
-                        <StackLayout x:Name="editSponsorSalutationNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="4">
-                            <Label x:Name="editSponsorSalutationNameValueLabel" FontSize="20"/>
-                            <Button x:Name="editSponsorSalutationNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                        <!--member first name-->
+                        <Label x:Name="editSponsorFirstNameLabel" Text="First name" Style="{StaticResource resultLabelStyle}" Grid.Row="5"/>
+                        <StackLayout x:Name="editSponsorFirstNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="5">
+                            <Label x:Name="editSponsorFirstNameValueLabel" FontSize="20"/>
+                            <Button x:Name="editSponsorFirstNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                         </StackLayout>
-                        <Entry x:Name="editSponsorSalutationNameEntry" Style="{StaticResource feildStyle}" IsVisible="False" Grid.Row="4"/>
-                        
+                        <Entry x:Name="editSponsorFirstNameEntry" Style="{StaticResource feildStyle}" IsVisible="False" Grid.Row="5"/>
+
+                        <!--member last name-->
+                        <Label x:Name="editSponsorLastNameLabel" Text="Last name" Style="{StaticResource resultLabelStyle}" Grid.Row="6"/>
+                        <StackLayout x:Name="editSponsorLastNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="6">
+                            <Label x:Name="editSponsorLastNameValueLabel" FontSize="20"/>
+                            <Button x:Name="editSponsorLastNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                        </StackLayout>
+                        <Entry x:Name="editSponsorLastNameEntry" Style="{StaticResource feildStyle}" IsVisible="False" Grid.Row="6"/>
+
                         <!--company name-->
-                        <Label x:Name="editSponsorCompanyNameLabel" Text="Sponsor name" Style="{StaticResource resultLabelStyle}" Grid.Row="5"/>
-                        <StackLayout x:Name="editSponsorCompanyNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="5">
+                        <Label x:Name="editSponsorCompanyNameLabel" Text="Company name" Style="{StaticResource resultLabelStyle}" Grid.Row="7"/>
+                        <StackLayout x:Name="editSponsorCompanyNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="7">
                             <Label x:Name="editSponsorCompanyNameValueLabel" FontSize="20"/>
                             <Button x:Name="editSponsorCompanyNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                         </StackLayout>
-                        <Entry x:Name="editSponsorCompanyNameEntry" Style="{StaticResource feildStyle}" IsVisible="False" Grid.Row="5"/>
+                        <Entry x:Name="editSponsorCompanyNameEntry" Style="{StaticResource feildStyle}" IsVisible="False" Grid.Row="7"/>
 
 
                         <!--buttons at the bottom-->
-                        <StackLayout Orientation="Horizontal" Grid.Row="6" Grid.ColumnSpan="2">
+                        <StackLayout Orientation="Horizontal" Grid.Row="8" Grid.ColumnSpan="2">
                             <Button x:Name="deleteSponsorshipButton"
                                     Text="Delete" 
                                     Style="{StaticResource mainButtonStyle}" 
