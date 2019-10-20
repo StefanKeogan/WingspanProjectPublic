@@ -204,7 +204,7 @@ namespace WingspanPrototype1.View
             }
 
             // Set member donation history TODO connect to database
-            paymentListView.ItemsSource = new List<Payment> { new Payment { PaymentDate = DateTime.Today, Donation = 100 } };
+            paymentListView.ItemsSource = new List<Payment> { new Payment { Date = DateTime.Today, Amount = 100 } };
 
 
 

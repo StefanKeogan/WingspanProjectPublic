@@ -41,6 +41,8 @@ namespace WingspanPrototype1.View
             {
                 DisplayMember(item);
             }
+
+            
         }
 
         private void DisplayMember(Member member)
@@ -215,9 +217,6 @@ namespace WingspanPrototype1.View
             memberJoinDatePicker.IsVisible = false;
 
 
-            // Set member donation history TODO connect to database
-            donationListView.ItemsSource = new List<Payment> { new Payment { PaymentDate = DateTime.Today, Donation = 100 } };
-
 
         }
 
@@ -273,6 +272,8 @@ namespace WingspanPrototype1.View
 
         private void PaymentButton_Clicked(object sender, EventArgs e)
         {
+            // Find payments that belong to that member 
+            paymentListView.ItemsSource = FindMembersPayments.GetPaymentDocuments(id);
             paymentHistoryView.IsVisible = true;
         }
 
@@ -291,11 +292,39 @@ namespace WingspanPrototype1.View
             paymentHistoryView.IsVisible = false;
         }
 
-        private void AddPaymentButton_Clicked(object sender, EventArgs e)
+        // Adds payment to database 
+        private async void AddPaymentButton_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Payment Added", "This members donation has been recorded", "Ok");
+            
 
-            paymentHistoryView.IsVisible = false;
+            // Validate payment amount feild 
+            if (Validate.FeildPopulated(paymentAmountEntry.Text))
+            {
+                if (Validate.ContainsLetter(paymentAmountEntry.Text))
+                {
+                    await DisplayAlert("Invalid Format", "The can not contain letters", "OK");
+                    return;
+                }
+            }
+            else
+            {
+                await DisplayAlert("Feild Empty", "Please fill in the amount feild to continue", "OK");
+                return;
+            }
+
+            // Add payment to database 
+            if (AddPayment.InsertPaymentDocument(id, new Payment {Date = paymentDatePicker.Date, Amount = Convert.ToDouble(paymentAmountEntry.Text), Member_id = id }))
+            {
+                await DisplayAlert("Payment Added", "This members donation has been recorded", "OK");
+                paymentListView.ItemsSource = FindMembersPayments.GetPaymentDocuments(id);
+                addNewPaymentView.IsVisible = false;
+            }
+            else
+            {
+                await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
+            }
+            
+            
         }
 
         private void memberFirstNameEditButton_Clicked(object sender, EventArgs e)

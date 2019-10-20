@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,11 +7,10 @@ namespace WingspanPrototype1.Model
 {
     class Payment
     {
-        public string PaymemtId { get; set; }
-
-        public DateTime PaymentDate { get; set; }
-
-        public double Donation { get; set; }
+        public ObjectId _id { get; set; }
+        public DateTime Date { get; set; }
+        public double Amount { get; set; }
+        public ObjectId Member_id { get; set; }
 
     }
 }

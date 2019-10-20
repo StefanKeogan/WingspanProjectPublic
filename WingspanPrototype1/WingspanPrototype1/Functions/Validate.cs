@@ -68,6 +68,18 @@ namespace WingspanPrototype1.Functions
 
             return result;
         }
+
+        public static bool ContainsLetter(string feild)
+        {
+            bool result = false;
+
+            if (feild.Any(char.IsLetter))
+            {
+                result = true;
+            }
+
+            return result;
+        }
     }
 
     

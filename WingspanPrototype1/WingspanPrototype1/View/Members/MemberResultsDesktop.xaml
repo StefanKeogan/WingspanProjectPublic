@@ -33,7 +33,7 @@
             </ListView>
 
             <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" x:Name="resultsView" IsVisible="False">
-                <Grid HorizontalOptions="Center" HeightRequest="700">
+                <Grid HeightRequest="700">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
@@ -41,8 +41,6 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
@@ -196,15 +194,15 @@
                                 <Label Text="Payment History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 <Button x:Name="paymentExitButton"  Style="{StaticResource exitStyle}" Clicked="PaymentExitButton_Clicked"/>
                             </StackLayout>
-                            <ListView x:Name="donationListView">
+                            <ListView x:Name="paymentListView">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
                                             <StackLayout Orientation="Horizontal" Margin="5,10,5,10">
                                                 <Label Text="Date" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
-                                                <Label Text="{Binding PaymentDate}" FontAttributes="Italic" FontSize="15"/>
-                                                <Label Text="Category" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
-                                                <Label Text="{Binding Donation}" FontAttributes="Italic" FontSize="15"/>
+                                                <Label Text="{Binding Date}" FontAttributes="Italic" FontSize="15"/>
+                                                <Label Text="Amount" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
+                                                <Label Text="{Binding Amount}" FontAttributes="Italic" FontSize="15"/>
                                             </StackLayout>
                                         </ViewCell>
                                     </DataTemplate>
