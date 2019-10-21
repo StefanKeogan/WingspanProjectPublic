@@ -16,17 +16,17 @@ namespace WingspanPrototype1.Controller.Members
             // Get DB
             var database = DatabaseConnection.GetDatabase();
 
-            // Get member collection
+            // Get payment collection
             var collection = database.GetCollection<BsonDocument>("Payments");
 
             try
             {
-                // Search member collection 
-                List<BsonDocument> memberResults = collection.Find(Builders<BsonDocument>.Filter.Eq("Member_id", memberId)).ToList();
+                // Search payment collection 
+                List<BsonDocument> paymentResults = collection.Find(Builders<BsonDocument>.Filter.Eq("Member_id", memberId)).ToList();
 
                 // Convert results to member results
                 List<Payment> paymentObjectResults = new List<Payment>();
-                foreach (var result in memberResults)
+                foreach (var result in paymentResults)
                 {
                     paymentObjectResults.Add(BsonSerializer.Deserialize<Payment>(result));
                 }

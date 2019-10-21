@@ -2,9 +2,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using WingspanPrototype1.Controller.Birds;
 using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
@@ -17,6 +14,7 @@ namespace WingspanPrototype1
     public partial class BirdResultsDesktop : ContentPage
     {
         private ObjectId id;
+        private string wingspanId;
         private List<Entry> entries = new List<Entry>();
         private List<Picker> pickers = new List<Picker>();
         private List<DatePicker> datePickers = new List<DatePicker>();
@@ -49,6 +47,8 @@ namespace WingspanPrototype1
 
                 id = wildItem._id;
 
+                wingspanId = wildItem.WingspanId;
+
                 birdType = typeof(WildBird);
             }
             else if (item.GetType() == typeof(CaptiveBird))
@@ -58,6 +58,8 @@ namespace WingspanPrototype1
                 DisplayCaptiveBird(captiveItem);
 
                 id = captiveItem._id;
+
+                wingspanId = captiveItem.WingspanId;
 
                 birdType = typeof(CaptiveBird);
             }
@@ -430,11 +432,14 @@ namespace WingspanPrototype1
         // Note popup boxes
         private void NoteButton_Clicked(object sender, EventArgs e)
         {
-            noteHistoryView.IsVisible = true;
+            noteListView.ItemsSource = FindBirdNotes.GetNoteDocuments(wingspanId);
+            //List<Note> results = FindBirdNotes.GetNoteDocuments(wingspanId);
+            //if ((results != null) && (results.Count > 0))
+            //{
+            //    noteListView.ItemsSource = results;
+            //}
 
-            noteListView.ItemsSource = new List<Note> { new Note {Date = DateTime.Today, Category = "Transfer", Comment = "Transfrerred to new site" },
-                new Note {Date = DateTime.Today, Category = "Medical", Comment = "Broken wing" }
-            };
+            noteHistoryView.IsVisible = true;           
         }
 
         private void AddNewNoteButton_Clicked(object sender, EventArgs e)
@@ -448,10 +453,37 @@ namespace WingspanPrototype1
             noteHistoryView.IsVisible = false;
         }
 
-        private void AddNoteButton_Clicked(object sender, EventArgs e)
+        private async void AddNoteButton_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Note added", "Note has been added to this birds note history", "Ok");
-            addNewNoteView.IsVisible = false;
+            if (!Validate.FeildPopulated(noteCategoryPicker.SelectedItem.ToString()))
+            {
+                await DisplayAlert("Feild Empty", "The category feild can not be empty", "OK");
+                return;
+            }
+
+            if (!Validate.FeildPopulated(noteEditor.Text))
+            {
+                await DisplayAlert("Feild Empty", "The comment feild can not be empty", "OK");
+                return;
+            }
+
+
+            if (AddBirdNote.InsertNoteDocument(new Note { Date = noteDatePicker.Date, 
+                Category = noteCategoryPicker.SelectedItem.ToString(), 
+                Comment = noteEditor.Text, 
+                WingspanId = wingspanId 
+            }))
+            {
+                List<Note> results = FindBirdNotes.GetNoteDocuments(wingspanId);
+                if ((results != null) && (results.Count > 0))
+                {
+                    noteListView.ItemsSource = results;
+                }
+                addNewNoteView.IsVisible = false;
+                await DisplayAlert("Bird Note Added", "Your note has been added to this birds note history", "OK");
+                return;
+            }
+            
         }
 
         private void AddNewNoteExitButton_Clicked(object sender, EventArgs e)
@@ -462,11 +494,9 @@ namespace WingspanPrototype1
         //Location popup boxes
         private void LocationButton_Clicked(object sender, EventArgs e)
         {
+            locationListView.ItemsSource = FindBirdLocationHistory.GetLocationDocuments(wingspanId);
             locationHistoryView.IsVisible = true;
 
-            locationListView.ItemsSource = new List<LocationHistory> { new LocationHistory {Date = DateTime.Today.ToString(), Category = "Transfer", Location = "Transfrerred to new site" },
-                new LocationHistory {Date = DateTime.Today.ToString(), Category = "Release", Location = "Released over new site" }
-            };
         }
 
         private void AddNewLocationButton_Clicked(object sender, EventArgs e)
@@ -474,10 +504,32 @@ namespace WingspanPrototype1
             addNewLocationView.IsVisible = true;
         }
 
-        private void AddLocationButton_Clicked(object sender, EventArgs e)
+        private async void AddLocationButton_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Location added", "Location has been added to this birds note history", "Ok");
-            addNewLocationView.IsVisible = false;
+            if (!Validate.FeildPopulated(locationCategoryPicker.SelectedIndex.ToString()))
+            {
+                await DisplayAlert("Feild Empty", "The category feild can not be empty", "OK");
+                return;
+            }
+
+            if (!Validate.FeildPopulated(locationEntry.Text))
+            {
+                await DisplayAlert("Feild Empty", "The location feild can not be empty", "OK");
+                return;
+            }
+
+            if (AddBirdLocation.InsertLocationDocument(new Location {Date = locationDatePicker.Date, 
+                Category = locationCategoryPicker.SelectedItem.ToString(),
+                BirdLocation  = locationEntry.Text,
+                WingspanId = wingspanId
+            
+            }))
+            {
+                await DisplayAlert("Location added", "Location has been added to this birds note history", "Ok");
+                locationListView.ItemsSource = FindBirdLocationHistory.GetLocationDocuments(wingspanId);
+                addNewLocationView.IsVisible = false;
+            }
+            
         }
 
         private void LocationExitButton_Clicked(object sender, EventArgs e)

@@ -456,7 +456,7 @@
                                                         <Label Text="Category" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
                                                         <Label Text="{Binding Category}" FontAttributes="Italic" FontSize="15"/>
                                                     </StackLayout>
-                                                    <Label Text="{Binding Location}" Margin="20,0,0,0" FontSize="15"/>
+                                                    <Label Text="{Binding BirdLocation}" Margin="20,0,0,0" FontSize="15"/>
                                                 </StackLayout>
                                             </ViewCell>
                                         </DataTemplate>
@@ -483,11 +483,15 @@
                                     <Label Text="Add Location" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Button x:Name="addNewLocationExitButton" Style="{StaticResource exitStyle}" Clicked="AddNewLocationExitButton_Clicked"/>
                                 </StackLayout>
+
+                                <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
+                                <DatePicker x:Name="locationDatePicker" Margin="5,5,5,5"/>
+
                                 <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>
                                 <Picker x:Name="locationCategoryPicker" Margin="5,5,5,5"/>
 
                                 <Label Text="Location" FontSize="20" Margin="5,5,5,5"/>
-                                <Editor x:Name="locationEditor" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+                                <Entry x:Name="locationEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
 
                                 <Button
                                     x:Name="addLocationButton"

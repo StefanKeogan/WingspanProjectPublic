@@ -220,7 +220,7 @@ namespace WingspanPrototype1
 
                 if (Validate.FeildPopulated(cpativeInitialNoteEntry.Text))
                 {
-                    bool noteInserted = AddBirdNote.InsertBirdNote(new Note
+                    bool noteInserted = AddBirdNote.InsertNoteDocument(new Note
                     {
                         Date = DateTime.Today,
                         Category = "Initial Note",

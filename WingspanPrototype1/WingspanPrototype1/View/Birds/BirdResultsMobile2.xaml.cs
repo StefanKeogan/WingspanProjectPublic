@@ -418,9 +418,7 @@ namespace WingspanPrototype1
         {
             locationHistoryView.IsVisible = true;
 
-            locationListView.ItemsSource = new List<LocationHistory> { new LocationHistory {Date = DateTime.Today.ToString(), Category = "Transfer", Location = "Transfrerred to new site" },
-                new LocationHistory {Date = DateTime.Today.ToString(), Category = "Release", Location = "Released over new site" }
-            };
+            
         }
 
         private void AddNewLocationButton_Clicked(object sender, EventArgs e)

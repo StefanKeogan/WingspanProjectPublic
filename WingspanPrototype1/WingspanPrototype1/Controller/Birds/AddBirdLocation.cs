@@ -6,28 +6,28 @@ using WingspanPrototype1.Model;
 
 namespace WingspanPrototype1.Controller.Birds
 {
-    class AddBirdNote
+    class AddBirdLocation
     {
-        public static bool InsertNoteDocument(Note note)
+        public static bool InsertLocationDocument(Location location)
         {
             // Get databse
             var database = DatabaseConnection.GetDatabase();
 
             // Get Note history collection
-            var collection = database.GetCollection<BsonDocument>("NoteHistory");
+            var collection = database.GetCollection<BsonDocument>("LocationHistory");
 
             // Create document
             var document = new BsonDocument
                 {
-                    { "Date", note.Date },
-                    { "Category", note.Category },
-                    { "Comment", note.Comment },
-                    { "WingspanId", note.WingspanId}
+                    { "Date", location.Date },
+                    { "Category", location.Category },
+                    { "Content", location.BirdLocation },
+                    { "WingspanId", location.WingspanId}
                 };
 
             // Insert docunment
             try
-            {              
+            {
                 collection.InsertOne(document);
                 return true;
             }
@@ -36,7 +36,7 @@ namespace WingspanPrototype1.Controller.Birds
                 return false;
             }
 
-            
+
         }
     }
 }
