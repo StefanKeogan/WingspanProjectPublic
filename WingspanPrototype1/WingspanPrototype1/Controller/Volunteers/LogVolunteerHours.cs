@@ -4,25 +4,25 @@ using System.Collections.Generic;
 using System.Text;
 using WingspanPrototype1.Model;
 
-namespace WingspanPrototype1.Controller.Birds
+namespace WingspanPrototype1.Controller.Volunteers
 {
-    class AddBirdLocation
+    class LogVolunteerHours
     {
-        public static bool InsertLocationDocument(Location location)
+        public static bool InsertVolunteerHoursDocument(VolunteerHours hours)
         {
             // Get databse
             var database = DatabaseConnection.GetDatabase();
 
             // Get Note history collection
-            var collection = database.GetCollection<BsonDocument>("LocationHistory");
+            var collection = database.GetCollection<BsonDocument>("VolunteerHours");
 
             // Create document
             var document = new BsonDocument
             {
-                { "Date", location.Date },
-                { "Category", location.Category },
-                { "BirdLocation", location.BirdLocation },
-                { "WingspanId", location.WingspanId}
+                { "Date", hours.Date },
+                { "Amount", hours.Amount },
+                { "Note", hours.Note },
+                { "Volunteer_id", hours.Volunteer_id}
             };
 
             // Insert docunment
@@ -33,7 +33,8 @@ namespace WingspanPrototype1.Controller.Birds
             }
             catch (Exception)
             {
-                return false;
+                // return false;
+                throw;
             }
 
 

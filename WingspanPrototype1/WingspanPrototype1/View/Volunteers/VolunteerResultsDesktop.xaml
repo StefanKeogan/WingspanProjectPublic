@@ -130,6 +130,8 @@
                                                 <Label Text="{Binding Date}" FontAttributes="Italic" FontSize="15"/>
                                                 <Label Text="Hours" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
                                                 <Label Text="{Binding Amount}" FontAttributes="Italic" FontSize="15"/>
+                                                <Label Text="Note" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
+                                                <Label Text="{Binding Note}" FontAttributes="Italic" FontSize="15"/>
                                             </StackLayout>
                                         </ViewCell>
                                     </DataTemplate>
@@ -161,6 +163,9 @@
 
                             <Label Text="Hours" FontSize="20" Margin="5,5,5,5"/>
                             <Entry x:Name="hoursEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+
+                            <Label Text="Note" FontSize="20" Margin="5,5,5,5"/>
+                            <Editor x:Name="noteEditor" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
 
                             <Button
                                 x:Name="logButton"

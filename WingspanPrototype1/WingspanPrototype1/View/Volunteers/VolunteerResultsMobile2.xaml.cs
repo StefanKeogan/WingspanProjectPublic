@@ -21,12 +21,6 @@ namespace WingspanPrototype1.View.Volunteers
         {
             InitializeComponent();
 
-            hoursListView.ItemsSource = new List<VolunteerHours>() {
-                new VolunteerHours { HoursId = "1", Amount = 3.00, Date = DateTime.Today },
-                new VolunteerHours { HoursId = "2", Amount = 5.00, Date = DateTime.Today },
-                new VolunteerHours { HoursId = "3", Amount = 2.00, Date = DateTime.Today }
-            };
-
             DisplayVolunteer(volunteer);
         }
 

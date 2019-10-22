@@ -26,13 +26,6 @@ namespace WingspanPrototype1.View.Volunteers
 
             resultsListView.ItemsSource = results;
 
-            // Hard coded hours items
-            hoursListView.ItemsSource = new List<VolunteerHours>() {
-                new VolunteerHours { HoursId = "1", Amount = 3.00, Date = DateTime.Today },
-                new VolunteerHours { HoursId = "2", Amount = 5.00, Date = DateTime.Today },
-                new VolunteerHours { HoursId = "3", Amount = 2.00, Date = DateTime.Today }
-            };
-
         }
 
         private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -108,6 +101,7 @@ namespace WingspanPrototype1.View.Volunteers
 
         private void HoursHistoryButton_Clicked(object sender, EventArgs e)
         {
+            hoursListView.ItemsSource = FindVolunteerWorkHours.GetHoursDocuments(id);
             hoursHistoryView.IsVisible = true;
         }
 
@@ -126,9 +120,31 @@ namespace WingspanPrototype1.View.Volunteers
             logHoursView.IsVisible = false;
         }
 
-        private void LogButton_Clicked(object sender, EventArgs e)
+        private async void LogButton_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Hours Logged", "This volunteers hours have been logged in the database", "Ok");
+            if (!Validate.FeildPopulated(hoursEntry.Text))
+            {
+                await DisplayAlert("Amount Feild Empty", "The amount feild must be filled in to continue", "OK");
+            }
+
+            if (!Validate.FeildPopulated(hoursEntry.Text))
+            {
+                await DisplayAlert("Note Feild Empty", "The note feild must be filled in to continue", "OK");
+            }
+
+            if (LogVolunteerHours.InsertVolunteerHoursDocument(new VolunteerHours { Date = hoursDatePicker.Date,
+                Amount = Convert.ToDouble(hoursEntry.Text),
+                Note = noteEditor.Text,
+                Volunteer_id = id
+
+            }))
+            {
+                hoursListView.ItemsSource = FindVolunteerWorkHours.GetHoursDocuments(id);
+                logHoursView.IsVisible = false;
+                await DisplayAlert("Hours Logged", "This volunteer hours have been inserted into the database", "OK");
+            }
+
+
         }
 
         // Delete volunteer
