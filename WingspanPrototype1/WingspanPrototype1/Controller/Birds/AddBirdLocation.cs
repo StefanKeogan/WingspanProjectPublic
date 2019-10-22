@@ -18,12 +18,12 @@ namespace WingspanPrototype1.Controller.Birds
 
             // Create document
             var document = new BsonDocument
-            {
-                { "Date", location.Date },
-                { "Category", location.Category },
-                { "BirdLocation", location.BirdLocation },
-                { "WingspanId", location.WingspanId}
-            };
+                {
+                    { "Date", location.Date },
+                    { "Category", location.Category },
+                    { "BirdLocation", location.BirdLocation },
+                    { "WingspanId", location.WingspanId}
+                };
 
             // Insert docunment
             try
