@@ -17,6 +17,23 @@ namespace WingspanPrototype1
             Title = title;           
         }
 
+        //sorts out the sponsor selection
+        async void OnSponsorSelected(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            if (selectedIndex == 0) //exisiting member
+            {
+                await Navigation.PushAsync(new Edit("Select Member"));
+            }
+            else if (selectedIndex == 1) //new member
+            {
+                await DisplayAlert("Create new member", "Enter new member details first", "OK");
+                await Navigation.PushAsync(new AddMemberForm("New Member"));
+            }
+        }
+
         //search the birds
         private async void SelectSponsorship_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -26,14 +43,6 @@ namespace WingspanPrototype1
             if (selectedIndex == 0)
             {
                 await Navigation.PushAsync(new Edit("Select Bird"));
-            }
-            else if (selectedIndex == 1)
-            {
-                await DisplayAlert("NOTE", "Need to add some notes", "OK");
-            }
-            else
-            {
-                return;
             }
         }      
 
@@ -69,21 +78,6 @@ namespace WingspanPrototype1
             ////assign the string of the level to this sponsorship
         }
 
-        //sorts out the sponsor selection
-        async void OnSponsorSelected(object sender, EventArgs e)
-        {
-            var picker = (Picker)sender;
-            int selectedIndex = picker.SelectedIndex;
-
-            if (selectedIndex == 0) //exisiting member
-            {
-                await Navigation.PushAsync(new Edit("Select Member"));
-            }
-            else if (selectedIndex == 1) //new member
-            {
-                await Navigation.PushAsync(new AddMemberForm("New Member"));
-            }
-        }
 
 
         //save button for sponsorship
