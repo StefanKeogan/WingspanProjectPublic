@@ -197,6 +197,33 @@ namespace WingspanPrototype1.View.Volunteers
             
         }
 
+        private async void HoursListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            bool result = await DisplayAlert("Delete Hours?", "Would you like to delete this hours item?", "Yes", "No");
+
+            // If yes has been selected
+            if (result)
+            {
+                // Store selected list item
+                var item = e.SelectedItem as Payment;
+
+                // If item is not null
+                if (item != null)
+                {
+                    // Delete locattion document
+                    if (DeleteHours.DropDocument(item._id))
+                    {
+                        await DisplayAlert("Hours Deleted", "This volunteers hours has been deleted", "OK");
+                        hoursListView.ItemsSource = FindVolunteerWorkHours.GetHoursDocuments(id);
+                    }
+                    else
+                    {
+                        await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
+                    }
+                }
+            }
+        }
+
         private void VolunteerFirstNameEditButton_Clicked(object sender, EventArgs e)
         {
             volunteerFirstNameStack.IsVisible = false;
@@ -224,5 +251,7 @@ namespace WingspanPrototype1.View.Volunteers
             volunteerEmailEntry.IsVisible = true;
             entries.Add(volunteerEmailEntry);
         }
+
+        
     }
 }

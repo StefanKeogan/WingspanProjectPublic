@@ -616,6 +616,60 @@ namespace WingspanPrototype1
             }
         }
 
+        private async void LocationListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            bool result = await DisplayAlert("Delete Location?", "Would you like to delete this lacation item?", "Yes", "No");
+
+            // If yes has been selected
+            if (result)
+            {
+                // Store selected list item
+                var item = e.SelectedItem as Location;
+
+                // If item is not null
+                if (item != null)
+                {
+                    // Delete location document
+                    if (DeleteBirdLocation.DropDocument(item._id))
+                    {
+                        await DisplayAlert("Location Deleted", "This bird location has been deleted", "OK");
+                        locationListView.ItemsSource = FindBirdLocationHistory.GetLocationDocuments(wingspanId);
+                    }
+                    else
+                    {
+                        await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
+                    }
+                }
+            }
+        }
+
+        private async void NoteListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            bool result = await DisplayAlert("Delete Note?", "Would you like to delete this note item?", "Yes", "No");
+
+            // If yes has been selected
+            if (result)
+            {
+                // Store selected list item
+                var item = e.SelectedItem as Note;
+
+                // If item is not null
+                if (item != null)
+                {
+                    // Delete note document
+                    if (DeleteBirdNote.DropDocument(item._id))
+                    {
+                        await DisplayAlert("Note Deleted", "This bird note has been deleted", "OK");
+                        noteListView.ItemsSource = FindBirdNotes.GetNoteDocuments(wingspanId);
+                    }
+                    else
+                    {
+                        await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
+                    }
+                }
+            }
+        }
+
         private void WildWingspanIdEditButton_Clicked(object sender, EventArgs e)
         {
             wildWingspanIdStack.IsVisible = false;
@@ -769,5 +823,7 @@ namespace WingspanPrototype1
             captiveResultEntry.IsVisible = true;
             entries.Add(captiveResultEntry);
         }
+
+        
     }
 }

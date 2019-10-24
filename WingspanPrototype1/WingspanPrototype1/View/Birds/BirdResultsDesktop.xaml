@@ -376,7 +376,7 @@
                                     <Label Text="Note History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Button x:Name="noteExitButton"  Style="{StaticResource exitStyle}" Clicked="NoteExitButton_Clicked"/>
                                 </StackLayout>
-                                <ListView x:Name="noteListView">
+                                <ListView x:Name="noteListView" ItemSelected="NoteListView_ItemSelected">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>
@@ -445,7 +445,7 @@
                                     <Label Text="Location History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                     <Button x:Name="locationExitButton"  Style="{StaticResource exitStyle}" Clicked="LocationExitButton_Clicked"/>
                                 </StackLayout>
-                                <ListView x:Name="locationListView">
+                                <ListView x:Name="locationListView" ItemSelected="LocationListView_ItemSelected">
                                     <ListView.ItemTemplate>
                                         <DataTemplate>
                                             <ViewCell>

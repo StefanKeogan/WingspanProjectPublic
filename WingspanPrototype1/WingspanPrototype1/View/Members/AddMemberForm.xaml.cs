@@ -33,119 +33,156 @@ namespace WingspanPrototype1.View
 
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
-            // TODO: Discuss manditory feilds
+
+            bool allFeildsValid = true;
 
             // First Name Validation
             if (Validate.FeildPopulated(memberFirstNameEntry.Text))
             {
                 if (Validate.ContainsNumberOrSymbol(memberFirstNameEntry.Text))
                 {
-                    await DisplayAlert("Invalid Entry", "First Name feild can not contain numbers or symbols", "OK");
-                    return;
+                    firstNameError.IsVisible = true;
+                    firstNameError.Text = "First Name feild can not contain numbers or symbols";
+                    allFeildsValid = false;
                 }
             }
-            // Manditory?
+            else
+            {
+                firstNameError.IsVisible = true;
+                firstNameError.Text = "First Name feild must be filled in";
+                allFeildsValid = false;
+            }
 
             // Last Name Validation
             if (Validate.FeildPopulated(memberLastNameEntry.Text))
             {
-                if (Validate.ContainsNumberOrSymbol(memberLastNameEntry.Text))
+                if (Validate.ContainsNumberOrSymbol(memberFirstNameEntry.Text))
                 {
-                    await DisplayAlert("Invalid Entry", "Last Name feild can not contain numbers or symbols", "OK");
-                    return;
+                    lastNameError.IsVisible = true;
+                    allFeildsValid = false;
                 }
+                else
+                {
+                    lastNameError.IsVisible = false;
+
+                }
+
             }
-            // Manditory?
 
             // Salutation Name Validation
             if (Validate.FeildPopulated(memberLastNameEntry.Text))
             {
                 if (Validate.ContainsNumberOrSymbol(memberLastNameEntry.Text))
                 {
-                    await DisplayAlert("Invalid Entry", "Salutation Name feild can not contain numbers or symbols", "OK");
-                    return;
+                    salutationNameError.IsVisible = true;
+                    allFeildsValid = false;
+                }
+                else
+                {
+                    salutationNameError.IsVisible = false;
                 }
             }
 
             // Email Name Validation
-            // Check if manditory?
-
-            // Company
-            // Check if manditory
-
-            // Address 1
-            // Check if manditory
-
-            // Address 2
-            // Check if manditory
-
-            // Address 3
-            // Check if manditory
-
+            if (Validate.FeildPopulated(memberEmailEntry.Text))
+            {
+                if (Validate.EmailFormat(memberEmailEntry.Text))
+                {
+                    emailError.IsVisible = false;
+                }
+                else
+                {
+                    emailError.IsVisible = true;
+                }
+            }
+            
             // City 
             if (Validate.FeildPopulated(memberCityEntry.Text))
             {
                 if (Validate.ContainsNumberOrSymbol(memberCityEntry.Text))
                 {
-                    await DisplayAlert("Invalid Entry", "City feild can not contain numbers or symbols", "OK");
-                    return;
+                    cityError.IsVisible = true;
+                    allFeildsValid = false;
+                }
+                else
+                {
+                    cityError.IsVisible = false;
                 }
             }
-            // Manditory?
 
             // Postcode 
             if (Validate.FeildPopulated(memberPostcodeEntry.Text))
             {
                 if (Validate.ContainsLetterOrSymbol(memberPostcodeEntry.Text))
                 {
-                    await DisplayAlert("Invalid Entry", "Postcode feild can not contain letters or symbols", "OK");
-                    return;
+                    postcodeError.IsVisible = true;
+                    allFeildsValid = false;
                 }
-                // Larger than 4?
+                else
+                {
+                    postcodeError.IsVisible = false;
+                }
             }
-            // Manditory?
 
-            // Comment
-            // Check if maditory
-
-
-            // TODO: Dynamic member document?
-            bool memberInserted = AddMember.InsertMemberDocument(new Member
+            // Country 
+            if (Validate.FeildPopulated(memberCountryEntry.Text))
             {
-                FirstName = memberFirstNameEntry.Text,
-                LastName = memberLastNameEntry.Text,
-                SalutationName = memberSalutationNameEntry.Text,
-                Email = memberEmailEntry.Text,
-                Address1 = memberAddress1Entry.Text,
-                Address2 = memberAddress2Entry.Text,
-                Address3 = memberAddress3Entry.Text,
-                City = memberCityEntry.Text,
-                Postcode = memberPostcodeEntry.Text,
-                Comment = memberCommentEditor.Text,
-                JoinDate = memberJoindatePicker.Date
+                if (Validate.ContainsLetterOrSymbol(memberCountryEntry.Text))
+                {
+                    countryError.IsVisible = true;
+                    allFeildsValid = false;
+                }
+                else
+                {
+                    countryError.IsVisible = false;
+                }
+            }
 
-            }) ;
-
-            if (memberInserted)
+            if (allFeildsValid)
             {
-                memberFirstNameEntry.Text = null;
-                memberLastNameEntry.Text = null;
-                memberSalutationNameEntry.Text = null;
-                memberEmailEntry.Text = null;
-                memberAddress1Entry.Text = null;
-                memberAddress2Entry.Text = null;
-                memberAddress3Entry.Text = null;
-                memberCityEntry.Text = null;
-                memberPostcodeEntry.Text = null;
-                memberCommentEditor.Text = null;
-                
-                await DisplayAlert("Member Added", "Member document inderted into the database", "OK");
+                bool memberInserted = AddMember.InsertMemberDocument(new Member
+                {
+                    FirstName = memberFirstNameEntry.Text,
+                    LastName = memberLastNameEntry.Text,
+                    SalutationName = memberSalutationNameEntry.Text,
+                    Email = memberEmailEntry.Text,
+                    Address1 = memberAddress1Entry.Text,
+                    Address2 = memberAddress2Entry.Text,
+                    Address3 = memberAddress3Entry.Text,
+                    City = memberCityEntry.Text,
+                    Postcode = memberPostcodeEntry.Text,
+                    Comment = memberCommentEditor.Text,
+                    JoinDate = memberJoindatePicker.Date
+
+                });
+
+                if (memberInserted)
+                {
+                    memberFirstNameEntry.Text = null;
+                    memberLastNameEntry.Text = null;
+                    memberSalutationNameEntry.Text = null;
+                    memberEmailEntry.Text = null;
+                    memberAddress1Entry.Text = null;
+                    memberAddress2Entry.Text = null;
+                    memberAddress3Entry.Text = null;
+                    memberCityEntry.Text = null;
+                    memberPostcodeEntry.Text = null;
+                    memberCommentEditor.Text = null;
+
+                    await DisplayAlert("Member Added", "Member document inderted into the database", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Connenction Error", "Could not insert bird record, please check connection and try again", "OK");
+
+                }
             }
             else
             {
-                await DisplayAlert("Connenction Error", "Could not insert bird record, please check connection and try again", "OK");
-
+                allFeildsValid = true;
             }
+
+            
 
 
         }

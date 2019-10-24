@@ -121,7 +121,7 @@
                                 <Label Text="Hours History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 <Button x:Name="hoursExitButton"  Style="{StaticResource exitStyle}" Clicked="HoursExitButton_Clicked"/>
                             </StackLayout>
-                            <ListView x:Name="hoursListView">
+                            <ListView x:Name="hoursListView" ItemSelected="HoursListView_ItemSelected">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>

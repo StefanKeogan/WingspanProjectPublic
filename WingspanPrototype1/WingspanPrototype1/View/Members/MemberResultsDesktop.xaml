@@ -194,7 +194,7 @@
                                 <Label Text="Payment History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                 <Button x:Name="paymentExitButton"  Style="{StaticResource exitStyle}" Clicked="PaymentExitButton_Clicked"/>
                             </StackLayout>
-                            <ListView x:Name="paymentListView">
+                            <ListView x:Name="paymentListView" ItemSelected="PaymentListView_ItemSelected">
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>

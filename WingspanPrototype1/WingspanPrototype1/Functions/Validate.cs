@@ -80,6 +80,18 @@ namespace WingspanPrototype1.Functions
 
             return result;
         }
+
+        public static bool EmailFormat(string feild)
+        {
+            if (feild.Contains('@'))
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
     }
 
     

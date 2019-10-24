@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WingspanPrototype1.Controller.Birds;
 using WingspanPrototype1.Controller.Members;
 using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
@@ -327,6 +328,33 @@ namespace WingspanPrototype1.View
             
         }
 
+        private async void PaymentListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            bool result = await DisplayAlert("Delete Payment?", "Would you like to delete this payment item?", "Yes", "No");
+
+            // If yes has been selected
+            if (result)
+            {
+                // Store selected list item
+                var item = e.SelectedItem as Payment;
+
+                // If item is not null
+                if (item != null)
+                {
+                    // Delete locattion document
+                    if (DeletePayment.DropDocument(item._id))
+                    {
+                        await DisplayAlert("Payment Deleted", "This payment has been deleted", "OK");
+                        paymentListView.ItemsSource = FindMembersPayments.GetPaymentDocuments(id);
+                    }
+                    else
+                    {
+                        await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
+                    }
+                }
+            }
+        }
+
         private void memberFirstNameEditButton_Clicked(object sender, EventArgs e)
         {
             memberFirstNameStack.IsVisible = false;
@@ -411,6 +439,6 @@ namespace WingspanPrototype1.View
             date = memberJoinDatePicker;
         }
 
-
+        
     }
 }
