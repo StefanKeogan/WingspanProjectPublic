@@ -27,9 +27,23 @@
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
 
+                <!--selecting existing sponsor or create a new one-->
+                <Label x:Name="sponsorName" Text="Sponsor name" Style="{StaticResource labelStyle}"/>
+                <Picker x:Name="sponsorSelector" Style="{StaticResource feildStyle}" SelectedIndexChanged="OnSponsorSelected">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Existing Member</x:String>
+                            <x:String>New Member</x:String>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+                <!--or should this be field string text? same with wingspanID below?-->
+                <Label x:Name="selectedSponsorNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False"/>
+
+
                 <!--selecting the bird-->
-                <Label x:Name="sponsorshipName" Text="To be sponsored" Style="{StaticResource labelStyle}"/>
-                <Picker x:Name="selectSponsorship" Style="{StaticResource feildStyle}" SelectedIndexChanged="SelectSponsorship_SelectedIndexChanged">
+                <Label x:Name="sponsorshipName" Text="To be sponsored" Style="{StaticResource labelStyle}" Grid.Row="1"/>
+                <Picker x:Name="selectSponsorship" Style="{StaticResource feildStyle}" SelectedIndexChanged="SelectSponsorship_SelectedIndexChanged" Grid.Row="1">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Individual Bird</x:String>
@@ -37,10 +51,11 @@
                         </x:Array>
                     </Picker.ItemsSource>
                 </Picker>
+                <Label x:Name="selectedWingspanIdValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="1"/>
 
                 <!--level of sponsorship-->
-                <Label x:Name="sponsorshipLevel" Text="Select level" Style="{StaticResource labelStyle}" Grid.Row="1" />
-                <Picker x:Name="levelSelector" Style="{StaticResource feildStyle}" Grid.Row="1" SelectedIndexChanged="OnLevelSelected">
+                <Label x:Name="sponsorshipLevel" Text="Select level" Style="{StaticResource labelStyle}" Grid.Row="2" />
+                <Picker x:Name="levelSelector" Style="{StaticResource feildStyle}" Grid.Row="2" SelectedIndexChanged="OnLevelSelected">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">
                             <x:String>Wild Bird</x:String>
@@ -54,28 +69,16 @@
                 </Picker>
 
                 <!--any notes to add-->
-                <Label x:Name="sponsorshipNotesLabel" Text="Notes" Style="{StaticResource labelStyle}"  Grid.Row="2"/>
-                <Editor x:Name="sponsorshipNotesEditor" Grid.Row="2"  Style="{StaticResource feildStyle}"/>
+                <Label x:Name="sponsorshipNotesLabel" Text="Notes" Style="{StaticResource labelStyle}"  Grid.Row="3"/>
+                <Editor x:Name="sponsorshipNotesEditor" Grid.Row="3"  Style="{StaticResource feildStyle}"/>
 
                 <!--when sponsorship begins-->
-                <Label x:Name="sponsorshipStartDate" Text="Start date" Style="{StaticResource labelStyle}" Grid.Row="3"/>
-                <DatePicker x:Name="startDateSelector" Style="{StaticResource feildStyle}" Grid.Row="3" />
+                <Label x:Name="sponsorshipStartDate" Text="Start date" Style="{StaticResource labelStyle}" Grid.Row="4"/>
+                <DatePicker x:Name="startDateSelector" Style="{StaticResource feildStyle}" Grid.Row="4" />
 
                 <!--when the sponsorship will end-->
-                <Label x:Name="sponsorshipEndDate" Text="End date" Style="{StaticResource labelStyle}" Grid.Row="4" />
-                <DatePicker x:Name="endDateSelector" Style="{StaticResource feildStyle}" Grid.Row="4" />
-
-
-                <!--selecting existing sponsor or create a new one-->
-                <Label x:Name="sponsorName" Text="Sponsor" Style="{StaticResource labelStyle}" Grid.Row="5" />
-                <Picker x:Name="sponsorSelector" Style="{StaticResource feildStyle}" Grid.Row="5" SelectedIndexChanged="OnSponsorSelected">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Existing Member</x:String>
-                            <x:String>New Member</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                <Label x:Name="sponsorshipEndDate" Text="End date" Style="{StaticResource labelStyle}" Grid.Row="5" />
+                <DatePicker x:Name="endDateSelector" Style="{StaticResource feildStyle}" Grid.Row="5" />
 
                 <!--save button-->
                 <Button x:Name="saveButton"
