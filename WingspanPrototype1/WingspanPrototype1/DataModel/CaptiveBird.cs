@@ -11,7 +11,7 @@ namespace WingspanPrototype1.Model
         public string WingspanId { get; set; }
         public string Name { get; set; }
         public string BandNo { get; set; }
-        public string BandColour { get; set; }
+        public string BandInfo { get; set; }
         public string Species { get; set; }
         public string Age { get; set; }
         public string Sex { get; set; }      

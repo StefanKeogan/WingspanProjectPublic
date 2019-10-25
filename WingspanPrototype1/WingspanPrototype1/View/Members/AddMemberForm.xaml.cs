@@ -86,7 +86,7 @@ namespace WingspanPrototype1.View
             // Email Name Validation
             if (Validate.FeildPopulated(memberEmailEntry.Text))
             {
-                if (Validate.EmailFormat(memberEmailEntry.Text))
+                if (Validate.EmailFormatValid(memberEmailEntry.Text))
                 {
                     emailError.IsVisible = false;
                 }
@@ -127,7 +127,7 @@ namespace WingspanPrototype1.View
             // Country 
             if (Validate.FeildPopulated(memberCountryEntry.Text))
             {
-                if (Validate.ContainsLetterOrSymbol(memberCountryEntry.Text))
+                if (Validate.ContainsNumberOrSymbol(memberCountryEntry.Text))
                 {
                     countryError.IsVisible = true;
                     allFeildsValid = false;
@@ -143,18 +143,19 @@ namespace WingspanPrototype1.View
                 bool memberInserted = AddMember.InsertMemberDocument(new Member
                 {
                     FirstName = memberFirstNameEntry.Text,
-                    LastName = memberLastNameEntry.Text,
+                    LastName = memberLastNameEntry.Text,                   
                     SalutationName = memberSalutationNameEntry.Text,
                     Email = memberEmailEntry.Text,
                     Address1 = memberAddress1Entry.Text,
                     Address2 = memberAddress2Entry.Text,
                     Address3 = memberAddress3Entry.Text,
                     City = memberCityEntry.Text,
+                    Country = memberCountryEntry.Text,
                     Postcode = memberPostcodeEntry.Text,
                     Comment = memberCommentEditor.Text,
                     JoinDate = memberJoindatePicker.Date
 
-                });
+                });;
 
                 if (memberInserted)
                 {

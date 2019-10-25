@@ -27,13 +27,13 @@ namespace WingspanPrototype1.Controller.Birds
 
             // Further validation for un-required feilds 
             if (bird.Species != null) document.Add("Species", bird.Species);
-            if (bird.Location != null) document.Add("Location", bird.Location);
+            if (bird.Location != null) document.Add("Location", bird.Location.Replace(" ", string.Empty));
             if (bird.Age != null) document.Add("Age", bird.Age);
             if (bird.Sex != null) document.Add("Sex", bird.Sex);
-            if (bird.MetalBand != null) document.Add("MetalBand", bird.MetalBand);
+            if (bird.MetalBand != null) document.Add("MetalBand", bird.MetalBand.Replace(" ", string.Empty));
             if (bird.BandInfo != null) document.Add("BandInfo", bird.BandInfo);
-            if (bird.Gps != null) document.Add("Gps", bird.Gps);
-            if (bird.BanderName != null) document.Add("BanderName", bird.BanderName);
+            if (bird.Gps != null) document.Add("Gps", bird.Gps.Replace(" ", string.Empty));
+            if (bird.BanderName != null) document.Add("BanderName", bird.BanderName.Replace(" ", string.Empty));
 
             // Insert document
             try

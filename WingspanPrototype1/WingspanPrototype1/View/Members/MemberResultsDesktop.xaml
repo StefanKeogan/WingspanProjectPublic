@@ -22,7 +22,7 @@
             <ListView x:Name="resultsListView" BackgroundColor="#F0F0F0" Grid.RowSpan="2" VerticalOptions="Fill" ItemSelected="ResultsListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
+                        <ViewCell> 
                             <StackLayout Orientation="Horizontal" Padding="5">
                                 <Label FontSize="20" Text="{Binding FirstName}"/>
                                 <Label FontSize="20" Text="{Binding LastName}"/>
@@ -41,6 +41,7 @@
                         <ColumnDefinition Width="*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
@@ -131,26 +132,34 @@
                     <!--Post Code-->
                     <Label x:Name="memberPostCodeLabel" Text="Post Code" Style="{StaticResource resultLabelStyle}" Grid.Row="9"/>
                     <StackLayout x:Name="memberPostCodeStack" Grid.Row="9" Style="{StaticResource resultStackStyle}" IsVisible="False">
-                        <Label x:Name="memberPostCodeValueLabel" Text="GPS" FontSize="20" />
+                        <Label x:Name="memberPostCodeValueLabel" FontSize="20" />
                         <Button x:Name="memberPostCodeEditButton"  Style="{StaticResource editStyleDesktop}" Clicked="memberPostCodeEditButton_Clicked"/>
                     </StackLayout>
                     <Entry x:Name="memberPostCodeEntry" Style="{StaticResource resultFeildStyle}"  Grid.Row="9" IsVisible="False"/>
 
+                    <!--Country-->
+                    <Label x:Name="memberCountryLabel" Text="Country" Style="{StaticResource resultLabelStyle}" Grid.Row="10"/>
+                    <StackLayout x:Name="memberCountryStack" Grid.Row="10" Style="{StaticResource resultStackStyle}" IsVisible="False">
+                        <Label x:Name="memberCountryValueLabel" FontSize="20" />
+                        <Button x:Name="memberCountryEditButton"  Style="{StaticResource editStyleDesktop}" Clicked="memberCountryEditButton_Clicked"/>
+                    </StackLayout>
+                    <Entry x:Name="memberCountryEntry" Style="{StaticResource resultFeildStyle}"  Grid.Row="10" IsVisible="False"/>
+
                     <!--Comment-->
-                    <Label x:Name="memberCommentLabel" Text="Comment" Style="{StaticResource resultLabelStyle}"  Grid.Row="10"/>
-                    <StackLayout x:Name="memberCommentStack" Grid.Row="10" Style="{StaticResource resultStackStyle}"  IsVisible="False">
+                    <Label x:Name="memberCommentLabel" Text="Comment" Style="{StaticResource resultLabelStyle}"  Grid.Row="11"/>
+                    <StackLayout x:Name="memberCommentStack" Grid.Row="11" Style="{StaticResource resultStackStyle}"  IsVisible="False">
                         <Label x:Name="memberCommentValueLabel" FontSize="20" />
                         <Button x:Name="memberCommentValueEditButton"  Style="{StaticResource editStyleDesktop}" Clicked="memberCommentValueEditButton_Clicked"/>
                     </StackLayout>
-                    <Editor x:Name="memberCommentEditor" Style="{StaticResource resultFeildStyle}"  Grid.Row="10" IsVisible="False"/>
+                    <Editor x:Name="memberCommentEditor" Style="{StaticResource resultFeildStyle}"  Grid.Row="11" IsVisible="False"/>
 
                     <!--Join Date-->
-                    <Label x:Name="memberJoinDateLabel" Text="Join Date" Style="{StaticResource resultLabelStyle}" Grid.Row="11"/>
-                    <StackLayout x:Name="memberJoinDateStack" Grid.Row="11" Style="{StaticResource resultStackStyle}" IsVisible="False">
+                    <Label x:Name="memberJoinDateLabel" Text="Join Date" Style="{StaticResource resultLabelStyle}" Grid.Row="12"/>
+                    <StackLayout x:Name="memberJoinDateStack" Grid.Row="12" Style="{StaticResource resultStackStyle}" IsVisible="False">
                         <Label x:Name="memberJoinDateValueLabel" FontSize="20" />
                         <Button x:Name="memberJoinDateEditButton"  Style="{StaticResource editStyleDesktop}" Clicked="memberJoinDateEditButton_Clicked"/>
                     </StackLayout>
-                    <DatePicker x:Name="memberJoinDatePicker" Style="{StaticResource resultFeildStyle}" Grid.Row="11" IsVisible="False"/>
+                    <DatePicker x:Name="memberJoinDatePicker" Style="{StaticResource resultFeildStyle}" Grid.Row="12" IsVisible="False"/>
                 </Grid>
             </ScrollView>
 

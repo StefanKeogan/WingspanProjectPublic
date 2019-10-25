@@ -31,10 +31,10 @@ namespace WingspanPrototype1.Controller.Members
                 {
                     foreach (var entry in entries)
                     {
-                        try
+                        // Is the entry poulated
+                        if (Validate.FeildPopulated(entry.Text))
                         {
-                            // Is the entry poulated
-                            if (Validate.FeildPopulated(entry.Text))
+                            try
                             {
                                 // Which feild are we updateing?
                                 if (entry.StyleId == "memberFirstNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("FirstName", entry.Text));
@@ -47,17 +47,19 @@ namespace WingspanPrototype1.Controller.Members
                                 if (entry.StyleId == "memberAddress3Entry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Address3", entry.Text));
                                 if (entry.StyleId == "memberCityEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("City", entry.Text));
                                 if (entry.StyleId == "memberPostCodeEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("PostCode", entry.Text));
-                            }                           
+                                if (entry.StyleId == "memberCountryEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Country", entry.Text));
 
-                        }
-                        catch (Exception)
-                        {
-                            return null;
-                        }
+                            }
+                            catch (Exception)
+                            {
+                                return null;
+                            }
+                        }                       
                         
                     }
                    
                 }
+
                 // Are we updating the comment feild?
                 if (editor != null)
                 {

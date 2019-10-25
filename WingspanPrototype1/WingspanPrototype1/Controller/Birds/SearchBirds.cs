@@ -35,29 +35,27 @@ namespace WingspanPrototype1.Controller.Birds
             {
                 if (captiveBirdsCollection != null)
                 {
+
+                    List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
+
+                    if (Validate.FeildPopulated(wingspanId)) filters.Add(filterBuilder.Eq("WingspanId", wingspanId));
+                    if (Validate.FeildPopulated(birdName)) filters.Add(filterBuilder.Eq("Name", birdName.ToLower()));
+
                     // Captive bird filters with default values of null
-                    FilterDefinition<BsonDocument> captiveIdFilter = null;
-                    FilterDefinition<BsonDocument> captiveNameFilter = null;
+                    FilterDefinition<BsonDocument> searchFilter = filters[0];
 
-                    FilterDefinition<BsonDocument> captiveSearchFilter = null;
-
-                    // If a feild is populated create filters
-                    if (Validate.FeildPopulated(wingspanId)) captiveIdFilter = filterBuilder.Eq("WingspanId", wingspanId);
-                    if (Validate.FeildPopulated(birdName)) captiveNameFilter = filterBuilder.Eq("Name", birdName);
-
-                    // Build final filter
-                    // Are we searching for both conditions?
-                    if (captiveIdFilter != null && captiveNameFilter != null)                    
-                    captiveSearchFilter = captiveIdFilter | captiveNameFilter;
-                    else if (captiveIdFilter != null)
-                    captiveSearchFilter = captiveIdFilter;                    
-                    else if (captiveNameFilter != null)
-                    captiveSearchFilter = captiveNameFilter;
+                    if (filters.Count > 0)
+                    {
+                        for (int i = 1; i < filters.Count; i++)
+                        {
+                            searchFilter |= filters[i];
+                        }
+                    }
                     
                     try
                     {
                         // Search captive collection
-                        List<BsonDocument> captiveResults = captiveBirdsCollection.Find(captiveSearchFilter).ToList();
+                        List<BsonDocument> captiveResults = captiveBirdsCollection.Find(searchFilter).ToList();
                         // Convert results to captive bird object 
                         foreach (var result in captiveResults)
                         {
@@ -67,7 +65,7 @@ namespace WingspanPrototype1.Controller.Birds
                     }
                     catch (Exception)
                     {
-                        throw;
+                        return null;
                     }
 
                 }
@@ -78,24 +76,25 @@ namespace WingspanPrototype1.Controller.Birds
             {
                 if (wildBirdsCollection != null)
                 {
-                    // Wild bird filter
-                    FilterDefinition<BsonDocument> wildIdFilter = null;
-                    FilterDefinition<BsonDocument> wildNumberFilter = null;
-
-                    FilterDefinition<BsonDocument> wildSearchFilter = null;
+                    List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
 
                     // If a feild is populated add a condition to the filter
-                    if (Validate.FeildPopulated(wingspanId)) wildIdFilter = filterBuilder.Eq("WingspanId", wingspanId);
-                    if (Validate.FeildPopulated(bandNumber)) wildNumberFilter = filterBuilder.Eq("BandNo", bandNumber);
+                    if (Validate.FeildPopulated(wingspanId)) filters.Add(filterBuilder.Eq("WingspanId", wingspanId));
+                    if (Validate.FeildPopulated(bandNumber)) filters.Add(filterBuilder.Eq("BandNo", bandNumber));
 
-                    // Are we searching for both conditions
-                    if (wildIdFilter != null && wildNumberFilter != null) wildSearchFilter = wildIdFilter | wildNumberFilter;
-                    else if (wildIdFilter != null) wildSearchFilter = wildIdFilter;
-                    else if (wildNumberFilter != null) wildSearchFilter = wildNumberFilter;
+                    FilterDefinition<BsonDocument> searchFilter = filters[0];
+
+                    if (filters.Count > 0)
+                    {
+                        for (int i = 1; i < filters.Count; i++)
+                        {
+                            searchFilter |= filters[i];
+                        }
+                    }
 
                     try
                     {
-                        List<BsonDocument> wildresults = wildBirdsCollection.Find(wildSearchFilter).ToList();
+                        List<BsonDocument> wildresults = wildBirdsCollection.Find(searchFilter).ToList();
                         // Convert results to captive bird object 
                         foreach (var result in wildresults)
                         {

@@ -246,9 +246,9 @@ namespace WingspanPrototype1
             }
 
             // Set Band Colour Value 
-            if ((bird.BandColour != string.Empty) && (bird.BandColour != "") && (bird.BandColour != null))
+            if ((bird.BandInfo != string.Empty) && (bird.BandInfo != "") && (bird.BandInfo != null))
             {
-                captiveBandColourValueLabel.Text = bird.BandColour;
+                captiveBandColourValueLabel.Text = bird.BandInfo;
                 captiveBandColourStack.IsVisible = true;
                 captiveBandColourPicker.IsVisible = false;
 

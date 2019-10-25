@@ -9,7 +9,7 @@
              NavigationPage.HasNavigationBar="True"
              NavigationPage.HasBackButton="True">
     <ContentPage.Content>
-            <StackLayout WidthRequest="400" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10,10">
+            <StackLayout WidthRequest="600" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10,10">
 
             <Label x:Name="searchTitle" HorizontalOptions="Center" FontSize="20" Margin="30,50"/>
 
@@ -71,8 +71,8 @@
             </ContentView>
 
             <!--Search sponsorship form-->
-                <ContentView x:Name="searchSponsorshipForm" IsVisible="False">
-                    <ContentView.Content>
+            <ContentView x:Name="searchSponsorshipForm" IsVisible="False">
+                <ContentView.Content>
                     <Grid>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition/>
@@ -86,7 +86,7 @@
                         <!--Wingspan Id-->
                         <Label x:Name="sponsorshipWingspanIDLabel" FontSize="20" Text="Wingspan ID"/>
                         <Entry x:Name="sponsorshipWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
-                        
+
                         <!--sponsor/member first name-->
                         <Label x:Name="sponsorshipFirstNameLabel" Text="First name"  FontSize="20" Grid.Row="2"/>
                         <Entry x:Name="sponsorshipFirstNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1"/>
@@ -100,7 +100,7 @@
                         <Entry x:Name="sponsorshipCompanyNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1"/>
                     </Grid>
                 </ContentView.Content>
-                </ContentView>
+            </ContentView>
 
             <!--Search volunteer form-->
             <ContentView x:Name="searchVolunteerForm" IsVisible="False">
@@ -141,6 +141,8 @@
                      HorizontalOptions="Center"
                      Margin="50,30"
                      Clicked="SearchBtn_Clicked"/>
+
+            <ActivityIndicator x:Name="searchingIndicator" Color="#5C3838" WidthRequest="300" HeightRequest="20"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

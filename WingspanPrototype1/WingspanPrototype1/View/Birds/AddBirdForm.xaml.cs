@@ -239,7 +239,7 @@ namespace WingspanPrototype1
                         WingspanId = wingspanId,
                         Name = captiveNameEntry.Text,
                         BandNo = captiveBandNumberEntry.Text,
-                        BandColour = captiveBandDetailsEntry.Text,
+                        BandInfo = captiveBandDetailsEntry.Text,
                         Species = captiveSpeciesPicker.SelectedItem.ToString(),
                         Sex = captiveSexPicker.SelectedItem.ToString(),
                         Age = captiveAgePicker.SelectedItem.ToString(),
