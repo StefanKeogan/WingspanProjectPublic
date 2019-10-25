@@ -22,14 +22,27 @@ namespace WingspanPrototype1
 
         public BirdResultsDesktop(ArrayList results)
         {
-            InitializeComponent();          
+            InitializeComponent();
+
+            foreach (var bird in results)
+            {
+                if (bird.GetType() == typeof(CaptiveBird))
+                {
+                    CaptiveBird captiveBird = bird as CaptiveBird;
+
+                    captiveBird.Name = FormatText.FirstToUpper(captiveBird.Name);                   
+                }
+            }
 
             // Set result list item source to list of Bird objects
             resultsListView.ItemsSource = results;
         
+            // TODO: Set in XAML
             // Set picker content
             noteCategoryPicker.ItemsSource = new string[] { "Medical", "Breeding", "Transfer" };
             locationCategoryPicker.ItemsSource = new string[] { "Release", "Transfer" };
+
+
 
         }
 
@@ -295,18 +308,18 @@ namespace WingspanPrototype1
             }
 
             // Set Band Colour Value 
-            if (Validate.FeildPopulated(bird.BandColour))
+            if (Validate.FeildPopulated(bird.BandInfo))
             {
-                captiveBandColourValueLabel.Text = bird.BandColour;
-                captiveBandColourStack.IsVisible = true;
-                captiveBandColourPicker.IsVisible = false;
+                captiveBandInfoValueLabel.Text = bird.BandInfo;
+                captiveBandInfoStack.IsVisible = true;
+                captiveBandInfoEntry.IsVisible = false;
 
             }
             else
             {
-                captiveBandColourPicker.IsVisible = true;
-                captiveBandColourStack.IsVisible = false;
-                pickers.Add(captiveBandColourPicker);
+                captiveBandInfoEntry.IsVisible = true;
+                captiveBandInfoStack.IsVisible = false;
+                entries.Add(captiveBandInfoEntry);
             }
 
             // Set Species Value 
@@ -433,6 +446,8 @@ namespace WingspanPrototype1
         private void NoteButton_Clicked(object sender, EventArgs e)
         {
             noteListView.ItemsSource = FindBirdNotes.GetNoteDocuments(wingspanId);
+
+            // TODO: Add result validation
             //List<Note> results = FindBirdNotes.GetNoteDocuments(wingspanId);
             //if ((results != null) && (results.Count > 0))
             //{
@@ -564,10 +579,12 @@ namespace WingspanPrototype1
                 }
                 else if (birdType == typeof(CaptiveBird))
                 {
-                    CaptiveBird captiveBird = UpdateCaptiveBird.UpdateDocument(id, entries, pickers);
+                    CaptiveBird captiveBird = UpdateCaptiveBird.UpdateDocument(id, entries, pickers);                   
 
                     if (captiveBird != null)
                     {
+                        captiveBird.Name = FormatText.FirstToUpper(captiveBird.Name);
+
                         DisplayCaptiveBird(captiveBird);
                         await DisplayAlert("Bird Saved", "Your changes have been saved", "OK");
                     }
@@ -761,11 +778,11 @@ namespace WingspanPrototype1
             entries.Add(captiveWingspanIdEntry);
         }
 
-        private void CaptiveBandColurEditButton_Clicked(object sender, EventArgs e)
+        private void CaptiveBandInfoEditButton_Clicked(object sender, EventArgs e)
         {
-            captiveBandColourStack.IsVisible = false;
-            captiveBandColourPicker.IsVisible = true;
-            pickers.Add(captiveBandColourPicker);
+            captiveBandInfoStack.IsVisible = false;
+            captiveBandInfoEntry.IsVisible = true;
+            entries.Add(captiveBandInfoEntry);
         }
 
         private void CaptiveSpeciesEditButton_Clicked(object sender, EventArgs e)

@@ -26,6 +26,14 @@ namespace WingspanPrototype1.View
         {
             InitializeComponent();
 
+            // Set name items to upper case
+            foreach (var member in results)
+            {
+                member.FirstName = FormatText.FirstToUpper(member.FirstName);
+                member.LastName = FormatText.FirstToUpper(member.LastName);
+                member.SalutationName = FormatText.FirstToUpper(member.SalutationName);
+            }
+
             resultsListView.ItemsSource = results;
         }
 
@@ -52,6 +60,7 @@ namespace WingspanPrototype1.View
             // First Name
             if (Validate.FeildPopulated(member.FirstName))
             {
+
                 memberFirstNameValueLabel.Text = member.FirstName;
                 memberFirstNameStack.IsVisible = true;
                 memberFirstNameEntry.IsVisible = false;
@@ -199,6 +208,21 @@ namespace WingspanPrototype1.View
 
             }
 
+            // Country
+            if (Validate.FeildPopulated(member.Country))
+            {
+                memberCountryValueLabel.Text = member.Country;
+                memberCountryStack.IsVisible = true;
+                memberCountryEntry.IsVisible = false;
+            }
+            else
+            {
+                memberCountryEntry.IsVisible = true;
+                memberCountryStack.IsVisible = false;
+                entries.Add(memberCountryEntry);
+
+            }
+
             // Comment
             if (Validate.FeildPopulated(member.Comment))
             {
@@ -259,6 +283,10 @@ namespace WingspanPrototype1.View
                 Member updatedMember = UpdateMember.UpdateDocument(id, entries, editor, date);
                 if (updatedMember != null)
                 {
+                    updatedMember.FirstName = FormatText.FirstToUpper(updatedMember.FirstName);
+                    updatedMember.LastName = FormatText.FirstToUpper(updatedMember.LastName);
+                    updatedMember.SalutationName = FormatText.FirstToUpper(updatedMember.SalutationName);
+
                     DisplayMember(updatedMember);
                     await DisplayAlert("Member Saved", "Changes to this member have been saved", "OK");
                 }
@@ -439,6 +467,11 @@ namespace WingspanPrototype1.View
             date = memberJoinDatePicker;
         }
 
-        
+        private void memberCountryEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberCountryStack.IsVisible = false;
+            memberCountryEntry.IsVisible = true;
+            entries.Add(memberCountryEntry);
+        }
     }
 }

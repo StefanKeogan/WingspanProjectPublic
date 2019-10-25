@@ -33,9 +33,9 @@ namespace WingspanPrototype1.Controller.Volunteers
                     {
                         try
                         {
-                            if (entry.StyleId == "volunteerEmailEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Email", entry.Text));
-                            if (entry.StyleId == "volunteerFirstNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("FirstName", entry.Text));
-                            if (entry.StyleId == "volunteerLastNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("LastName", entry.Text));
+                            if (entry.StyleId == "volunteerEmailEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Email", entry.Text.Replace(" ", string.Empty)));
+                            if (entry.StyleId == "volunteerFirstNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("FirstName", entry.Text.Replace(" ", string.Empty).ToLower()));
+                            if (entry.StyleId == "volunteerLastNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("LastName", entry.Text.Replace(" ", string.Empty).ToLower()));
                             if (entry.StyleId == "volunteerMobileEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Mobile", entry.Text));
                         }
                         catch (Exception)

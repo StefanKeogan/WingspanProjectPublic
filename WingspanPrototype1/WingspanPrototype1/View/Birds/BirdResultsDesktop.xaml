@@ -215,21 +215,13 @@
                                 </StackLayout>
                                 <Entry x:Name="captiveBandNumberEntry" Style="{StaticResource resultFeildStyle}" IsVisible="False" Grid.Row="2"/>
 
-                                <!--Band Colour-->
-                                <Label x:Name="captiveBandColourLabel" Text="Band Colour" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
-                                <StackLayout x:Name="captiveBandColourStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="3">
-                                    <Label x:Name="captiveBandColourValueLabel" FontSize="20"/>
-                                    <Button x:Name="captiveBandColurEditButton" Style="{StaticResource editStyleDesktop}" Clicked="CaptiveBandColurEditButton_Clicked"/>
+                                <!--Band Info-->
+                                <Label x:Name="captiveBandinfoLabel" Text="Band Info" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
+                                <StackLayout x:Name="captiveBandInfoStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="3">
+                                    <Label x:Name="captiveBandInfoValueLabel" FontSize="20"/>
+                                    <Button x:Name="captiveBandInfoEditButton" Style="{StaticResource editStyleDesktop}" Clicked="CaptiveBandInfoEditButton_Clicked"/>
                                 </StackLayout>
-                                <Picker x:Name="captiveBandColourPicker" Style="{StaticResource resultFeildStyle}" Grid.Row="3" IsVisible="False">
-                                    <Picker.ItemsSource>
-                                        <x:Array Type="{x:Type x:String}">
-                                            <x:String>G:M</x:String>
-                                            <x:String>B:M</x:String>
-                                            <x:String>M:R</x:String>
-                                        </x:Array>
-                                    </Picker.ItemsSource>
-                                </Picker>
+                                <Entry x:Name="captiveBandInfoEntry" Style="{StaticResource resultFeildStyle}" Grid.Row="3" IsVisible="False"/>
 
                                 <!--Species-->
                                 <Label x:Name="captiveSpeciesLabel" Text="Species" Style="{StaticResource resultLabelStyle}"  Grid.Row="4"/>

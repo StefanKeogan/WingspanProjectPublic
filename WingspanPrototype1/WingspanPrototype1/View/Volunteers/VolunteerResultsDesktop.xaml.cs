@@ -24,6 +24,12 @@ namespace WingspanPrototype1.View.Volunteers
         {
             InitializeComponent();
 
+            foreach (var volunteer in results)
+            {
+                volunteer.FirstName = FormatText.FirstToUpper(volunteer.FirstName);
+                volunteer.LastName = FormatText.FirstToUpper(volunteer.LastName);
+            }
+
             resultsListView.ItemsSource = results;
 
         }
@@ -181,10 +187,13 @@ namespace WingspanPrototype1.View.Volunteers
 
             if (result)
             {
-                Volunteer volunteer = UpdateVolunteer.UpdateDocument(id, entries);
+                Volunteer volunteer = UpdateVolunteer.UpdateDocument(id, entries);                
 
                 if (volunteer != null)
                 {
+                    volunteer.FirstName = FormatText.FirstToUpper(volunteer.FirstName);
+                    volunteer.LastName = FormatText.FirstToUpper(volunteer.LastName);
+
                     DisplayVolunteer(volunteer);
                     await DisplayAlert("Volunteer Saved", "Changes to this volunteer have been saved", "Ok");
                 }

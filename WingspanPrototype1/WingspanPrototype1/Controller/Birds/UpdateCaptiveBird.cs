@@ -39,10 +39,11 @@ namespace WingspanPrototype1.Controller.Birds
                             {
                                 // Which feild are we updateing?
                                 if (entry.StyleId == "captiveWingspanIdEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("WingspanId", entry.Text));
-                                if (entry.StyleId == "captiveNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Name", entry.Text));
+                                if (entry.StyleId == "captiveNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Name", entry.Text.ToLower()));
                                 if (entry.StyleId == "captiveBandNumberEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("BandNumber", entry.Text));
                                 if (entry.StyleId == "captiveLocationEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Location", entry.Text));
                                 if (entry.StyleId == "captiveResultEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Result", entry.Text));
+                                if (entry.StyleId == "captiveBandInfoEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("BandInfo", entry.Text));
 
                             }
                             catch (Exception)
@@ -64,7 +65,6 @@ namespace WingspanPrototype1.Controller.Birds
                     {
                         try
                         {
-                            if (picker.StyleId == "captiveBandColourPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("BandColour", picker.SelectedItem.ToString()));
                             if (picker.StyleId == "captiveSpeciesPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Species", picker.SelectedItem.ToString()));
                             if (picker.StyleId == "captiveSexPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Sex", picker.SelectedItem.ToString()));
                             if (picker.StyleId == "captiveAgePicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Age", picker.SelectedItem.ToString()));

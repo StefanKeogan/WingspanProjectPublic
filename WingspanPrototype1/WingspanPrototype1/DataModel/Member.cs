@@ -18,6 +18,7 @@ namespace WingspanPrototype1.Model
         public string Address2 { get; set; }
         public string Address3 { get; set; }
         public string City { get; set; }
+        public string Country { get; set; }
         public string Postcode { get; set; }
         public string Comment { get; set; }
         public DateTime JoinDate { get; set; }
