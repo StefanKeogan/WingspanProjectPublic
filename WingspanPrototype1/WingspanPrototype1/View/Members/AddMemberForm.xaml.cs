@@ -169,7 +169,7 @@ namespace WingspanPrototype1.View
                     memberPostcodeEntry.Text = null;
                     memberCommentEditor.Text = null;
 
-                    await DisplayAlert("Member Added", "Member document inderted into the database", "OK");
+                    await DisplayAlert("Member Added", "Member document inserted into the database", "OK");
                 }
                 else
                 {

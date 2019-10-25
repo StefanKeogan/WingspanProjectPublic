@@ -59,6 +59,9 @@
     <Compile Update="View\Members\SelectMemberResultsDesktop.xaml.cs">
       <DependentUpon>SelectMemberResultsDesktop.xaml</DependentUpon>
     </Compile>
+    <Compile Update="View\Sponsorships\AddSponsorshipForm.xaml.cs">
+      <DependentUpon>AddSponsorshipForm.xaml</DependentUpon>
+    </Compile>
     <Compile Update="View\Sponsorships\EditSponsorshipResultsDesktop.xaml.cs">
       <DependentUpon>EditSponsorshipResultsDesktop.xaml</DependentUpon>
     </Compile>
