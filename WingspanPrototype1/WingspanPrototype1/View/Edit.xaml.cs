@@ -85,33 +85,43 @@ namespace WingspanPrototype1
                         }
                     }
 
-                    // Load animation 
+                    // Load animation
                     searchingIndicator.IsRunning = true;
-                    ArrayList birdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);
-                    searchingIndicator.IsRunning = false;
 
-                    if ((birdResults != null) && (birdResults.Count > 0))
-                    {
-                        wingspanIdEntry.Text = null;
-                        birdNameEntry.Text = null;
-                        bandNumberEntry.Text = null;
+                    // Run search on another thread
+                    Task.Run(() => {
 
-                        // If no feilds are invalid run the search
-                        if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
-                        {
-                            Navigation.PushAsync(new BirdResultsMobile1(birdResults));
-                        }
-                        else
-                        {
-                            Navigation.PushAsync(new BirdResultsDesktop(birdResults));
-                        }
-                    }
-                    else
-                    {
-                        DisplayAlert("No Birds Found", "That bird could not be found", "OK");
-                    }                   
+                        ArrayList birdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);
+
+                        // Run on main thread
+                        Device.BeginInvokeOnMainThread(() => {
+
+                            if ((birdResults != null) && (birdResults.Count > 0))
+                            {
+                                wingspanIdEntry.Text = null;
+                                birdNameEntry.Text = null;
+                                bandNumberEntry.Text = null;
+
+                                // If no feilds are invalid run the search
+                                if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
+                                {
+                                    Navigation.PushAsync(new BirdResultsMobile1(birdResults));
+                                }
+                                else
+                                {
+                                    Navigation.PushAsync(new BirdResultsDesktop(birdResults));
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("No Birds Found", "That bird could not be found", "OK");
+                            }
+
+                            searchingIndicator.IsRunning = false;
+                        });
+                    });
+
                     break;
-
 
                 case "Select Bird":
                     // Have all feilds been left empty
@@ -130,10 +140,8 @@ namespace WingspanPrototype1
                             return;
                         }
                     }
-
-                    searchingIndicator.IsRunning = true;
-                    ArrayList selectBirdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);
-                    searchingIndicator.IsRunning = false;
+                   
+                    ArrayList selectBirdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);                   
 
                     if ((selectBirdResults != null) && (selectBirdResults.Count > 0))
                     {
@@ -155,6 +163,7 @@ namespace WingspanPrototype1
 
 
                 case "Edit Members":
+
                     // Are all feilds left empty
                     if (Validate.AllFeildsEmpty(new string[]{memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text }))
                     {
@@ -194,35 +203,48 @@ namespace WingspanPrototype1
                     }
 
                     searchingIndicator.IsRunning = true;
-                    // Search Members
-                    List<Member> memberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
-                    searchingIndicator.IsRunning = false;
 
-                    if ((memberResults != null) && (memberResults.Count > 0))
-                    {
-                        memberFirstNameEntry.Text = null;
-                        memberLastNameEntry.Text = null;
-                        salutationNameEntry.Text = null;
+                    // Run search on another thread
+                    Task.Run(() => {
 
-                        // Results have been returned push the results page 
-                        if (DeviceSize.ScreenArea() <= 783457)
-                        {
-                            Navigation.PushAsync(new MemberResultsMobile1(memberResults));
-                        }
-                        else
-                        {
-                            Navigation.PushAsync(new MemberResultsDesktop(memberResults));
-                        }
-                        
-                    }
-                    else
-                    {
-                        DisplayAlert("No Members Found", "That member could not be found", "OK");
-                    }
+                        // Search Members
+                        List<Member> memberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
+
+                        // Run on main thread
+                        Device.BeginInvokeOnMainThread(() => {
+
+                            if ((memberResults != null) && (memberResults.Count > 0))
+                            {
+                                memberFirstNameEntry.Text = null;
+                                memberLastNameEntry.Text = null;
+                                salutationNameEntry.Text = null;
+
+                                // Results have been returned push the results page 
+                                if (DeviceSize.ScreenArea() <= 783457)
+                                {
+                                    Navigation.PushAsync(new MemberResultsMobile1(memberResults));
+                                }
+                                else
+                                {
+                                    Navigation.PushAsync(new MemberResultsDesktop(memberResults));
+                                }
+
+                            }
+                            else
+                            {
+                                DisplayAlert("No Members Found", "That member could not be found", "OK");                               
+                            }
+
+                            searchingIndicator.IsRunning = false;
+
+                        });
+
+                    });
+                                       
                     break;
                
-
                 case "Select Member":
+
                     // Are all feilds left empty
                     if (Validate.AllFeildsEmpty(new string[] { memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text }))
                     {
@@ -285,8 +307,6 @@ namespace WingspanPrototype1
                     }
                     break;
 
-
-
                 case "Edit Sponsorships":
 
                     if (Validate.AllFeildsEmpty(new string[] { sponsorshipWingspanIdEntry.Text, sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text }))
@@ -329,29 +349,38 @@ namespace WingspanPrototype1
                     }
 
                     searchingIndicator.IsRunning = true;
-                    // Search sponsorships
-                    List<Sponsorship> sponsorshipResults = SearchSponsorships.Search(sponsorshipWingspanIdEntry.Text, sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text);
-                    searchingIndicator.IsRunning = false;
 
-                    if ((sponsorshipResults != null) && (sponsorshipResults.Count > 0))
-                    {
-                        // Results have been returned push the results page 
-                        if (DeviceSize.ScreenArea() <= 783457)
-                        {
-                            Navigation.PushAsync(new EditSponsorshipResultsMobile1(sponsorshipResults));
-                        }
-                        else
-                        {
-                            Navigation.PushAsync(new EditSponsorshipResultsMobile1(sponsorshipResults));
-                        }
-                    }
-                    else
-                    {
-                        DisplayAlert("No Sponsorships Found", "That sponsorship could not be found", "OK");
-                    }
+                    Task.Run(() => {
+
+                        // Search sponsorships
+                        List<Sponsorship> sponsorshipResults = SearchSponsorships.Search(sponsorshipWingspanIdEntry.Text, sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text);
+
+                        Device.BeginInvokeOnMainThread(() => {
+
+                            if ((sponsorshipResults != null) && (sponsorshipResults.Count > 0))
+                            {
+                                // Results have been returned push the results page 
+                                if (DeviceSize.ScreenArea() <= 783457)
+                                {
+                                    Navigation.PushAsync(new EditSponsorshipResultsMobile1(sponsorshipResults));
+                                }
+                                else
+                                {
+                                    Navigation.PushAsync(new EditSponsorshipResultsMobile1(sponsorshipResults));
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("No Sponsorships Found", "That sponsorship could not be found", "OK");
+                            }
+
+                            searchingIndicator.IsRunning = false;
+
+                        });
+
+                    });
+
                     break;
-
-
 
                 case "Edit Volunteers":
 
@@ -388,28 +417,40 @@ namespace WingspanPrototype1
                     }
 
                     searchingIndicator.IsRunning = true;
-                    List<Volunteer> volunteerResults = SearchVolunteers.Search(volunteerEmailEntry.Text, volunteerFirstNameEntry.Text, volunteerLastNameEntry.Text);
-                    searchingIndicator.IsRunning = false;
+                    
 
-                    if ((volunteerResults != null) && (volunteerResults.Count > 0))
-                    {
-                        volunteerFirstNameEntry.Text = null;
-                        volunteerLastNameEntry.Text = null;
-                        volunteerEmailEntry.Text = null;
+                    Task.Run(() => {
 
-                        if (DeviceSize.ScreenArea() <= 783457)
-                        {
-                            Navigation.PushAsync(new VolunteerResultsMobile1(volunteerResults));
-                        }
-                        else
-                        {
-                            Navigation.PushAsync(new VolunteerResultsDesktop(volunteerResults));
-                        }
-                    }
-                    else
-                    {
-                        DisplayAlert("No Members Found", "That member could not be found", "OK");
-                    }
+                        List<Volunteer> volunteerResults = SearchVolunteers.Search(volunteerEmailEntry.Text, volunteerFirstNameEntry.Text, volunteerLastNameEntry.Text);
+
+                        Device.BeginInvokeOnMainThread(() => {
+
+                            if ((volunteerResults != null) && (volunteerResults.Count > 0))
+                            {
+                                volunteerFirstNameEntry.Text = null;
+                                volunteerLastNameEntry.Text = null;
+                                volunteerEmailEntry.Text = null;
+
+                                if (DeviceSize.ScreenArea() <= 783457)
+                                {
+                                    Navigation.PushAsync(new VolunteerResultsMobile1(volunteerResults));
+                                }
+                                else
+                                {
+                                    Navigation.PushAsync(new VolunteerResultsDesktop(volunteerResults));
+                                }
+                            }
+                            else
+                            {
+                                DisplayAlert("No Members Found", "That member could not be found", "OK");
+                            }
+
+                            searchingIndicator.IsRunning = false;
+
+                        });
+
+                    });
+
                     break;
             }
                   
