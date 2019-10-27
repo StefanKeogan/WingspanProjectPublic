@@ -148,6 +148,10 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <FlexLayout x:Name="watermarkLayout" Style="{StaticResource resultListStyle}" IsVisible="True" AlignItems="Center" JustifyContent="Center">
+                <Image x:Name="watermarkImage" HorizontalOptions="Center" VerticalOptions="Center" Opacity=".2" Margin="200,200,200,200"/>
+            </FlexLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

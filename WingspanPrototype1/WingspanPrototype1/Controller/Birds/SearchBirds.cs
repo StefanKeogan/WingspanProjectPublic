@@ -21,106 +21,112 @@ namespace WingspanPrototype1.Controller.Birds
             // Get DB connection
             var database = DatabaseConnection.GetDatabase();
 
-            // Get captive bird collection 
-            var captiveBirdsCollection = database.GetCollection<BsonDocument>("CaptiveBirds");
-
-            // Get wild birds collection 
-            var wildBirdsCollection = database.GetCollection<BsonDocument>("WildBirds");
-
-            // Used to build filter with multiple conditions 
-            var filterBuilder = Builders<BsonDocument>.Filter;
-
-            // If both of these search feilds are not empty
-            if (Validate.FeildPopulated(wingspanId) || Validate.FeildPopulated(birdName))
+            if (database != null)
             {
-                if (captiveBirdsCollection != null)
+                // Get captive bird collection 
+                var captiveBirdsCollection = database.GetCollection<BsonDocument>("CaptiveBirds");
+
+                // Get wild birds collection 
+                var wildBirdsCollection = database.GetCollection<BsonDocument>("WildBirds");
+
+                // Used to build filter with multiple conditions 
+                var filterBuilder = Builders<BsonDocument>.Filter;
+
+                // If both of these search feilds are not empty
+                if (Validate.FeildPopulated(wingspanId) || Validate.FeildPopulated(birdName))
                 {
-
-                    List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
-
-                    if (Validate.FeildPopulated(wingspanId)) filters.Add(filterBuilder.Eq("WingspanId", wingspanId));
-                    if (Validate.FeildPopulated(birdName)) filters.Add(filterBuilder.Eq("Name", birdName.ToLower()));
-
-                    // Captive bird filters with default values of null
-                    FilterDefinition<BsonDocument> searchFilter = filters[0];
-
-                    if (filters.Count > 0)
+                    if (captiveBirdsCollection != null)
                     {
-                        for (int i = 1; i < filters.Count; i++)
+
+                        List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
+
+                        if (Validate.FeildPopulated(wingspanId)) filters.Add(filterBuilder.Eq("WingspanId", wingspanId));
+                        if (Validate.FeildPopulated(birdName)) filters.Add(filterBuilder.Eq("Name", birdName.ToLower()));
+
+                        // Captive bird filters with default values of null
+                        FilterDefinition<BsonDocument> searchFilter = filters[0];
+
+                        if (filters.Count > 0)
                         {
-                            searchFilter |= filters[i];
-                        }
-                    }
-                    
-                    try
-                    {
-                        // Search captive collection
-                        List<BsonDocument> captiveResults = captiveBirdsCollection.Find(searchFilter).ToList();
-                        // Convert results to captive bird object 
-                        foreach (var result in captiveResults)
-                        {
-                            results.Add(BsonSerializer.Deserialize<CaptiveBird>(result));
+                            for (int i = 1; i < filters.Count; i++)
+                            {
+                                searchFilter |= filters[i];
+                            }
                         }
 
+                        try
+                        {
+                            // Search captive collection
+                            List<BsonDocument> captiveResults = captiveBirdsCollection.Find(searchFilter).ToList();
+                            // Convert results to captive bird object 
+                            foreach (var result in captiveResults)
+                            {
+                                results.Add(BsonSerializer.Deserialize<CaptiveBird>(result));
+                            }
+
+                        }
+                        catch (Exception)
+                        {
+                            return null;
+                        }
+
                     }
-                    catch (Exception)
+                }
+
+                // If both these feilds are not empty 
+                if ((Validate.FeildPopulated(wingspanId)) || (Validate.FeildPopulated(bandNumber)))
+                {
+                    if (wildBirdsCollection != null)
                     {
-                        return null;
+                        List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
+
+                        // If a feild is populated add a condition to the filter
+                        if (Validate.FeildPopulated(wingspanId)) filters.Add(filterBuilder.Eq("WingspanId", wingspanId));
+                        if (Validate.FeildPopulated(bandNumber)) filters.Add(filterBuilder.Eq("BandNo", bandNumber));
+
+                        FilterDefinition<BsonDocument> searchFilter = filters[0];
+
+                        if (filters.Count > 0)
+                        {
+                            for (int i = 1; i < filters.Count; i++)
+                            {
+                                searchFilter |= filters[i];
+                            }
+                        }
+
+                        try
+                        {
+                            List<BsonDocument> wildresults = wildBirdsCollection.Find(searchFilter).ToList();
+                            // Convert results to captive bird object 
+                            foreach (var result in wildresults)
+                            {
+                                results.Add(BsonSerializer.Deserialize<WildBird>(result));
+                            }
+
+                        }
+                        catch (Exception)
+                        {
+
+                            throw;
+                        }
+
                     }
 
                 }
-            }
 
-            // If both these feilds are not empty 
-            if ((Validate.FeildPopulated(wingspanId)) || (Validate.FeildPopulated(bandNumber)))
-            {
-                if (wildBirdsCollection != null)
+                if (results.Count > 0) // Search successful return results
                 {
-                    List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
-
-                    // If a feild is populated add a condition to the filter
-                    if (Validate.FeildPopulated(wingspanId)) filters.Add(filterBuilder.Eq("WingspanId", wingspanId));
-                    if (Validate.FeildPopulated(bandNumber)) filters.Add(filterBuilder.Eq("BandNo", bandNumber));
-
-                    FilterDefinition<BsonDocument> searchFilter = filters[0];
-
-                    if (filters.Count > 0)
-                    {
-                        for (int i = 1; i < filters.Count; i++)
-                        {
-                            searchFilter |= filters[i];
-                        }
-                    }
-
-                    try
-                    {
-                        List<BsonDocument> wildresults = wildBirdsCollection.Find(searchFilter).ToList();
-                        // Convert results to captive bird object 
-                        foreach (var result in wildresults)
-                        {
-                            results.Add(BsonSerializer.Deserialize<WildBird>(result));
-                        }
-
-                    }
-                    catch (Exception)
-                    {
-
-                        throw;
-                    }
-
+                    return results;
                 }
-
+                else // Search failed return null
+                {
+                    return null;
+                }
             }
-                    
-            if (results.Count > 0) // Search successful return results
-            {
-                return results;
-            }
-            else // Search failed return null
+            else
             {
                 return null;
-            }
-          
+            }        
 
          }
          

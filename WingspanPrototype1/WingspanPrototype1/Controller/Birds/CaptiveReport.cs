@@ -15,46 +15,55 @@ namespace WingspanPrototype1.Controller.Birds
             // Get database
             var database = DatabaseConnection.GetDatabase();
 
-            // Get collection
-            var collection = database.GetCollection<BsonDocument>("CaptiveBirds");
-
-            // Used to build reports 
-            var filterBuilder = Builders<BsonDocument>.Filter;
-
-            FilterDefinition<BsonDocument> filter = null;
-
-            // What search condition are we using?
-            switch (condition.ToString())
+            if (database != null)
             {
-                case "Ingoing":
-                    filter = filterBuilder.Gte("DateArrived", startDate) & filterBuilder.Lte("DateArrived", endDate);
-                    break;
-                case "Outgoing":
-                    filter = filterBuilder.Gte("DateDeparted", startDate) & filterBuilder.Lte("DateDeparted", endDate);
-                    break;
-                case "Deceased":
-                    filter = filterBuilder.Gte("DateDeceased", startDate) & filterBuilder.Lte("DateDeceased", endDate);
-                    break;
-                default:
-                    return null;
-            }
+                // Get collection
+                var collection = database.GetCollection<BsonDocument>("CaptiveBirds");
 
-            try
-            {
-                // Search wild birds 
-                var reportResults = collection.Find(filter).ToList();
-                // Deserialize bson documents 
-                List<CaptiveBird> results = new List<CaptiveBird>();
-                foreach (var result in reportResults)
+                // Used to build reports 
+                var filterBuilder = Builders<BsonDocument>.Filter;
+
+                FilterDefinition<BsonDocument> filter = null;
+
+                // What search condition are we using?
+                switch (condition.ToString())
                 {
-                    results.Add(BsonSerializer.Deserialize<CaptiveBird>(result));
+                    case "Ingoing":
+                        filter = filterBuilder.Gte("DateArrived", startDate) & filterBuilder.Lte("DateArrived", endDate);
+                        break;
+                    case "Outgoing":
+                        filter = filterBuilder.Gte("DateDeparted", startDate) & filterBuilder.Lte("DateDeparted", endDate);
+                        break;
+                    case "Deceased":
+                        filter = filterBuilder.Gte("DateDeceased", startDate) & filterBuilder.Lte("DateDeceased", endDate);
+                        break;
+                    default:
+                        return null;
                 }
-                return results;
+
+                try
+                {
+                    // Search wild birds 
+                    var reportResults = collection.Find(filter).ToList();
+                    // Deserialize bson documents 
+                    List<CaptiveBird> results = new List<CaptiveBird>();
+                    foreach (var result in reportResults)
+                    {
+                        results.Add(BsonSerializer.Deserialize<CaptiveBird>(result));
+                    }
+                    return results;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
             }
-            catch (Exception)
+            else
             {
                 return null;
             }
+
+            
 
         }
         

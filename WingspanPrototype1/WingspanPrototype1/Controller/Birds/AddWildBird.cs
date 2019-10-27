@@ -14,37 +14,42 @@ namespace WingspanPrototype1.Controller.Birds
         {
             var database = DatabaseConnection.GetDatabase();
 
-            
+            if (database != null)
+            {
+                var collection = database.GetCollection<BsonDocument>("WildBirds");
 
-            var collection = database.GetCollection<BsonDocument>("WildBirds");
-            
-            // Insert auto generated / default feilds 
-            var document = new BsonDocument
+                // Insert auto generated / default feilds 
+                var document = new BsonDocument
                 {
                     {"WingspanId", bird.WingspanId},
                     {"DateBanded", bird.DateBanded}
                 };
 
-            // Further validation for un-required feilds 
-            if (bird.Species != null) document.Add("Species", bird.Species);
-            if (bird.Location != null) document.Add("Location", bird.Location.Replace(" ", string.Empty));
-            if (bird.Age != null) document.Add("Age", bird.Age);
-            if (bird.Sex != null) document.Add("Sex", bird.Sex);
-            if (bird.MetalBand != null) document.Add("MetalBand", bird.MetalBand.Replace(" ", string.Empty));
-            if (bird.BandInfo != null) document.Add("BandInfo", bird.BandInfo);
-            if (bird.Gps != null) document.Add("Gps", bird.Gps.Replace(" ", string.Empty));
-            if (bird.BanderName != null) document.Add("BanderName", bird.BanderName.Replace(" ", string.Empty));
+                // Further validation for un-required feilds 
+                if (bird.Species != null) document.Add("Species", bird.Species);
+                if (bird.Location != null) document.Add("Location", bird.Location.Replace(" ", string.Empty));
+                if (bird.Age != null) document.Add("Age", bird.Age);
+                if (bird.Sex != null) document.Add("Sex", bird.Sex);
+                if (bird.MetalBand != null) document.Add("MetalBand", bird.MetalBand.Replace(" ", string.Empty));
+                if (bird.BandInfo != null) document.Add("BandInfo", bird.BandInfo);
+                if (bird.Gps != null) document.Add("Gps", bird.Gps.Replace(" ", string.Empty));
+                if (bird.BanderName != null) document.Add("BanderName", bird.BanderName.Replace(" ", string.Empty));
 
-            // Insert document
-            try
-            {                            
-                collection.InsertOne(document);
-                return true;
+                // Insert document
+                try
+                {
+                    collection.InsertOne(document);
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
-            catch (Exception)
+            else
             {
                 return false;
-            }
+            }           
 
         }
 

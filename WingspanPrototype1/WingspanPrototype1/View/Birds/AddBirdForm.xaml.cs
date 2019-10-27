@@ -53,242 +53,349 @@ namespace WingspanPrototype1
             // What type of bird are we adding?
             if (Title == "New Wild Bird")
             {
+                searchingIndicator.IsRunning = true;
+
                 bool allFeildsValid = true;
 
-                // Species
-                if (wildSpeciesPicker.SelectedIndex == -1)
-                {
-                    wildSpeciesError.Text = "The species feild is required";
-                    wildSpeciesError.IsVisible = true;
-                    allFeildsValid = false;
-                }
-                else
-                {
-                    wildSpeciesError.IsVisible = false;
-                }
+                await Task.Run(() => {
 
-                // Location
-                if (Validate.FeildPopulated(wildLocationEntry.Text))
-                {
-                    
-                    if (Validate.ContainsNumberOrSymbol(wildLocationEntry.Text))
+                    // Species
+                    if (wildSpeciesPicker.SelectedIndex == -1)
                     {
-                        wildLocationError.Text = "The location feild cannot contain numbers or symbols";
-                        wildLocationError.IsVisible = true;
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+                            wildSpeciesError.Text = "The species feild is required";
+                            wildSpeciesError.IsVisible = true;
+                        });
+                        
                         allFeildsValid = false;
                     }
                     else
                     {
-                        wildLocationError.IsVisible = false;
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+                            wildSpeciesError.IsVisible = false;
+                        });
                     }
-                }
-                else
-                {
-                    wildLocationError.Text = "The location feild is required";
-                    wildLocationError.IsVisible = true;
-                    allFeildsValid = false;
-                }
-                                 
-                // Metal Band
-                if (Validate.FeildPopulated(wildMetalBandIdEntry.Text))
-                {
-                    
-                    if (Validate.ContainsLetterOrSymbol(wildMetalBandIdEntry.Text))
+
+                    // Location
+                    if (Validate.FeildPopulated(wildLocationEntry.Text))
                     {
-                        wildBandIdError.Text = "The metal band Id feild can not contain letters or symbols";
-                        wildBandIdError.IsVisible = true;
-                        allFeildsValid = false;
+                        if (Validate.ContainsNumberOrSymbol(wildLocationEntry.Text))
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                wildLocationError.Text = "The location feild cannot contain numbers or symbols";
+                                wildLocationError.IsVisible = true;
+                            });
+                            allFeildsValid = false;
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                wildLocationError.IsVisible = false;
+                            });
+                        }
                     }
                     else
                     {
-                        wildBandIdError.IsVisible = false;
-                    }
-                }
-
-                // Bander Name
-                if (Validate.FeildPopulated(wildBanderNameEntry.Text))
-                {
-                    wildBanderNameError.IsVisible = false;
-                    if (Validate.ContainsNumberOrSymbol(wildBanderNameEntry.Text))
-                    {
-                        wildBanderNameError.Text = "The bander name feild can not contain numbers or symbols";
-                        wildBanderNameError.IsVisible = true;
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            wildLocationError.Text = "The location feild is required";
+                            wildLocationError.IsVisible = true;
+                        });
                         allFeildsValid = false;
                     }
-                }
 
-                if (allFeildsValid)
-                {
-                    // TODO Dynamic wild bird object 
-                    // Insert record, return outcome
-                    bool inserted = AddWildBird.InsertWildBirdDocumnet(new WildBird
+                    // Metal Band
+                    if (Validate.FeildPopulated(wildMetalBandIdEntry.Text))
                     {
-                        WingspanId = GenerateWildWingspanId.NewId(),
-                        Species = wildSpeciesPicker.SelectedItem.ToString(),
-                        Location = wildLocationEntry.Text,
-                        Age = wildAgePicker.SelectedItem.ToString(),
-                        Sex = wildSexPicker.SelectedItem.ToString(),
-                        MetalBand = wildMetalBandIdEntry.Text,
-                        BandInfo = wildBandInfoEntry.Text,
-                        Gps = wildGpsEntry.Text,
-                        DateBanded = wildDateBandedPicker.Date,
-                        BanderName = wildBanderNameEntry.Text
-                    });
 
-                    // Was the record inserted successfully?
-                    if (inserted)
+                        if (Validate.ContainsLetterOrSymbol(wildMetalBandIdEntry.Text))
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                wildBandIdError.Text = "The metal band Id feild can not contain letters or symbols";
+                                wildBandIdError.IsVisible = true;
+                            });
+                            allFeildsValid = false;
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                wildBandIdError.IsVisible = false;
+
+                            });
+                        }
+                    }
+
+                    // Bander Name
+                    if (Validate.FeildPopulated(wildBanderNameEntry.Text))
                     {
-                        // Clear feilds
-                        wildSpeciesPicker.SelectedIndex = -1;
-                        wildLocationEntry.Text = null;
-                        wildAgePicker.SelectedIndex = -1;
-                        wildSexPicker.SelectedIndex = -1;
-                        wildMetalBandIdEntry.Text = null;
-                        wildBandInfoEntry.Text = null;
-                        wildGpsEntry.Text = null;
-                        wildBanderNameEntry.Text = null;
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            wildBanderNameError.IsVisible = false;
+                        });
 
-                        await DisplayAlert("Wild Bird Saved", "This bird has been saved in the database", "Ok");
+                        if (Validate.ContainsNumberOrSymbol(wildBanderNameEntry.Text))
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                wildBanderNameError.Text = "The bander name feild can not contain numbers or symbols";
+                                wildBanderNameError.IsVisible = true;                               
+                            });
+
+                            allFeildsValid = false;
+                        }
+                    }
+
+                    if (allFeildsValid)
+                    {
+                        // TODO Dynamic wild bird object 
+                        // Insert record, return outcome
+                        bool inserted = AddWildBird.InsertWildBirdDocumnet(new WildBird
+                        {
+                            WingspanId = GenerateWildWingspanId.NewId(),
+                            Species = wildSpeciesPicker.SelectedItem.ToString(),
+                            Location = wildLocationEntry.Text,
+                            Age = wildAgePicker.SelectedItem.ToString(),
+                            Sex = wildSexPicker.SelectedItem.ToString(),
+                            MetalBand = wildMetalBandIdEntry.Text,
+                            BandInfo = wildBandInfoEntry.Text,
+                            Gps = wildGpsEntry.Text,
+                            DateBanded = wildDateBandedPicker.Date,
+                            BanderName = wildBanderNameEntry.Text
+                        });
+
+                        // Run on interface thread
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+
+                            // Was the record inserted successfully?
+                            if (inserted)
+                            {
+                                // Clear feilds
+                                wildSpeciesPicker.SelectedIndex = -1;
+                                wildLocationEntry.Text = null;
+                                wildAgePicker.SelectedIndex = -1;
+                                wildSexPicker.SelectedIndex = -1;
+                                wildMetalBandIdEntry.Text = null;
+                                wildBandInfoEntry.Text = null;
+                                wildGpsEntry.Text = null;
+                                wildBanderNameEntry.Text = null;
+
+                                DisplayAlert("Wild Bird Saved", "This bird has been saved in the database", "Ok");
+                            }
+                            else
+                            {
+                                DisplayAlert("Connenction Error", "Could not connect to database please check connection and try again", "OK");
+                            }
+
+                        });
+
+                        searchingIndicator.IsRunning = false;
+                        
                     }
                     else
                     {
-                        await DisplayAlert("Connenction Error", "Could not connect to database please check connection and try again", "OK");
+                        allFeildsValid = true;
                     }
-                }
-                else
-                {
-                    allFeildsValid = true;
-                }
 
-                
+                });               
                 
             }
             else if (Title == "New Captive Bird")
             {
+                searchingIndicator.IsRunning = true;
+
                 bool allFeildsValid = true;
 
-                // Validate 
-                // Name
-                if (Validate.FeildPopulated(captiveNameEntry.Text))
+                await Task.Run(() => 
                 {
-                    if (Validate.ContainsNumberOrSymbol(captiveNameEntry.Text))
+
+                    // Validate 
+                    // Name
+                    if (Validate.FeildPopulated(captiveNameEntry.Text))
                     {
-                        captiveNameError.IsVisible = true;
-                        allFeildsValid = false;
+                        if (Validate.ContainsNumberOrSymbol(captiveNameEntry.Text))
+                        {
+                            Device.BeginInvokeOnMainThread(() => 
+                            {
+                                captiveNameError.IsVisible = true;
+                            });
+                            
+                            allFeildsValid = false;
+
+                        }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(() => 
+                            {
+                                captiveNameError.IsVisible = false;
+                            });
+                        }
                     }
                     else
                     {
                         captiveNameError.IsVisible = false;
-                    }                
-                }
-                else
-                {
-                    captiveNameError.IsVisible = false;
-                }
-
-                // Band number
-                if (Validate.FeildPopulated(captiveBandNumberEntry.Text))
-                {                   
-                    if (Validate.ContainsLetterOrSymbol(captiveBandNumberEntry.Text))
-                    {
-                        captiveBandNumberError.IsVisible = true;
-                        allFeildsValid = false;
-                    }
-                    else
-                    {
-                        captiveBandNumberError.IsVisible = false;
-                    }
-                }
-                else
-                {
-                    captiveBandNumberError.IsVisible = false;
-                }
-
-                // Species
-                if (captiveSpeciesPicker.SelectedIndex == -1)
-                {
-                    captiveSpeciesError.IsVisible = true;
-                    allFeildsValid = false;
-                }
-
-                // Sex
-                if (captiveSexPicker.SelectedIndex == -1)
-                {
-                    captiveSexError.IsVisible = true;
-                    allFeildsValid = false;
-                }
-
-
-                // Location
-                if (Validate.FeildPopulated(captiveLocationEntry.Text))
-                {
-                    if (Validate.ContainsNumberOrSymbol(captiveLocationEntry.Text))
-                    {
-                        captiveLocationError.IsVisible = true;
-                        allFeildsValid = false;
-                    }
-                }
-
-                if (allFeildsValid)
-                {
-                    // Instantiate wingspan id here so both add bird and initial note functions can access it
-                    string wingspanId = GenerateCaptiveWingspanId.NewId();
-
-                    bool birdInserted = AddCaptiveBird.InsertCaptiveBirdDocument(new CaptiveBird
-                    {
-                        WingspanId = wingspanId,
-                        Name = captiveNameEntry.Text,
-                        BandNo = captiveBandNumberEntry.Text,
-                        BandInfo = captiveBandDetailsEntry.Text,
-                        Species = captiveSpeciesPicker.SelectedItem.ToString(),
-                        Sex = captiveSexPicker.SelectedItem.ToString(),
-                        Age = captiveAgePicker.SelectedItem.ToString(),
-                        Location = captiveLocationEntry.Text,
-                        DateArrived = wildDateBandedPicker.Date
-                    });
-
-                    if (birdInserted)
-                    {
-                        captiveNameEntry.Text = null;
-                        captiveBandNumberEntry.Text = null;
-                        captiveBandDetailsEntry.Text = null;
-                        captiveSpeciesPicker.SelectedIndex = -1;
-                        captiveSexPicker.SelectedIndex = -1;
-                        captiveAgePicker.SelectedIndex = -1;
-                        captiveLocationEntry.Text = null;
-
-                        await DisplayAlert("Captive Bird Saved", "This bird has been saved in the database", "Ok");
-                    }
-                    else
-                    {
-                        await DisplayAlert("Connenction Error", "Could not insert bird record, please check connection and try again", "OK");
                     }
 
-                    if (Validate.FeildPopulated(cpativeInitialNoteEntry.Text))
+                    // Band number
+                    if (Validate.FeildPopulated(captiveBandNumberEntry.Text))
                     {
-                        bool noteInserted = AddBirdNote.InsertNoteDocument(new Note
+                        if (Validate.ContainsLetterOrSymbol(captiveBandNumberEntry.Text))
                         {
-                            Date = DateTime.Today,
-                            Category = "Initial Note",
-                            Comment = cpativeInitialNoteEntry.Text,
-                            WingspanId = wingspanId
-                        });
-
-                        if (noteInserted)
-                        {
-                            await DisplayAlert("Initial Note Saved", "An initial note for this bird has been saved in the database", "Ok");
-                            wildInitialNoteEditor.Text = null;
+                            Device.BeginInvokeOnMainThread(() => 
+                            {
+                                captiveBandNumberError.IsVisible = true;
+                            });                            
+                            allFeildsValid = false;
                         }
                         else
                         {
-                            await DisplayAlert("Connenction Error", "Could not insert bird note, please check connection and try again", "OK");
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                captiveBandNumberError.IsVisible = false;
+                            });
                         }
                     }
-                }
-                else
-                {
-                    allFeildsValid = true;
-                }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+                            captiveBandNumberError.IsVisible = false;
+                        });
+                    }
+
+                    // Species
+                    if (captiveSpeciesPicker.SelectedIndex == -1)
+                    {
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+                            captiveSpeciesError.IsVisible = true;
+                        });                       
+                        allFeildsValid = false;
+                    }
+
+                    // Sex
+                    if (captiveSexPicker.SelectedIndex == -1)
+                    {
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+                            captiveSexError.IsVisible = true;
+                        });
+                            
+                        allFeildsValid = false;
+                    }
+
+
+                    // Location
+                    if (Validate.FeildPopulated(captiveLocationEntry.Text))
+                    {
+                        if (Validate.ContainsNumberOrSymbol(captiveLocationEntry.Text))
+                        {
+                            Device.BeginInvokeOnMainThread(() => 
+                            {
+                                captiveLocationError.IsVisible = true;
+                            });                            
+                            allFeildsValid = false;
+                        }
+                    }
+
+                    if (allFeildsValid)
+                    {
+                        // Instantiate wingspan id here so both add bird and initial note functions can access it
+                        string wingspanId = GenerateCaptiveWingspanId.NewId();
+
+                        // Stores picker items, set default values
+                        string speciesValue = null;
+                        string sexValue = null;
+                        string ageValue = null;
+
+                        // Handle pickers first
+                        if (captiveSpeciesPicker.SelectedIndex != -1) speciesValue = captiveSpeciesPicker.SelectedItem.ToString();
+                        if (captiveSexPicker.SelectedIndex != -1) sexValue = captiveSexPicker.SelectedItem.ToString();
+                        if (wildAgePicker.SelectedIndex != -1) ageValue = wildAgePicker.SelectedItem.ToString();
+
+
+                        bool birdInserted = AddCaptiveBird.InsertCaptiveBirdDocument(new CaptiveBird
+                        {
+                            WingspanId = wingspanId,
+                            Name = captiveNameEntry.Text,
+                            BandNo = captiveBandNumberEntry.Text,
+                            BandInfo = captiveBandDetailsEntry.Text,
+                            Species = speciesValue,
+                            Sex = sexValue,
+                            Age = ageValue,
+                            Location = captiveLocationEntry.Text,
+                            DateArrived = wildDateBandedPicker.Date
+                        });
+
+                        // Run on interface thread
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+
+                            if (birdInserted)
+                            {
+                                captiveNameEntry.Text = null;
+                                captiveBandNumberEntry.Text = null;
+                                captiveBandDetailsEntry.Text = null;
+                                captiveSpeciesPicker.SelectedIndex = -1;
+                                captiveSexPicker.SelectedIndex = -1;
+                                captiveAgePicker.SelectedIndex = -1;
+                                captiveLocationEntry.Text = null;
+
+                                DisplayAlert("Captive Bird Saved", "This bird has been saved in the database", "Ok");
+                            }
+                            else
+                            {
+                                DisplayAlert("Connenction Error", "Could not insert bird record, please check connection and try again", "OK");
+                            }
+
+                            if (Validate.FeildPopulated(cpativeInitialNoteEntry.Text))
+                            {
+                                bool noteInserted = AddBirdNote.InsertNoteDocument(new Note
+                                {
+                                    Date = DateTime.Today,
+                                    Category = "Initial Note",
+                                    Comment = cpativeInitialNoteEntry.Text,
+                                    WingspanId = wingspanId
+                                });
+
+                                if (noteInserted)
+                                {
+                                    DisplayAlert("Initial Note Saved", "An initial note for this bird has been saved in the database", "Ok");
+                                    wildInitialNoteEditor.Text = null;
+                                }
+                                else
+                                {
+                                    DisplayAlert("Connenction Error", "Could not insert bird note, please check connection and try again", "OK");
+                                }
+                            }
+
+                            searchingIndicator.IsRunning = false;
+
+                        });
+
+                                                                                   
+                    }
+                    else
+                    {
+                        allFeildsValid = true;
+
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+                            searchingIndicator.IsRunning = false;
+                        });
+
+                        return;
+
+                        
+                    }
+
+                });
 
             }
             else

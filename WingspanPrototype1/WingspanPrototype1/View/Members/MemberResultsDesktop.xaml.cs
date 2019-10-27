@@ -21,20 +21,23 @@ namespace WingspanPrototype1.View
         private Editor editor;
         private DatePicker date;
         private ObjectId id;
+        private List<Member> memberResults = null;
 
         public MemberResultsDesktop(List<Member> results)
         {
             InitializeComponent();
 
+            memberResults = results;
+
             // Set name items to upper case
-            foreach (var member in results)
+            foreach (var member in memberResults)
             {
                 member.FirstName = FormatText.FirstToUpper(member.FirstName);
                 member.LastName = FormatText.FirstToUpper(member.LastName);
                 member.SalutationName = FormatText.FirstToUpper(member.SalutationName);
             }
 
-            resultsListView.ItemsSource = results;
+            resultsListView.ItemsSource = memberResults;
         }
 
         private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -256,13 +259,29 @@ namespace WingspanPrototype1.View
                 if (DeleteMember.DropDocument(id))
                 {
                     await DisplayAlert("Member Deleted", "This member and their payment history have been delted", "OK");
+
+                    Member member = memberResults.Find(x => x._id == id);
+                    memberResults.Remove(member);                   
+
+                    if (memberResults.Count <= 0)
+                    {
+                        await Navigation.PopAsync();
+                    }
+                    else
+                    {
+                        // Clear list view
+                        resultsListView.ItemsSource = null;
+
+                        // Add any items left over
+                        resultsListView.ItemsSource = memberResults;
+                    }
+                   
                 }
                 else
                 {
                     await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
                 }
 
-                await Navigation.PopAsync();
 
             }
             else

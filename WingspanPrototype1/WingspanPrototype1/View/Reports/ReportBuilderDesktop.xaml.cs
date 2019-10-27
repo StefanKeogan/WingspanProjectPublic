@@ -20,6 +20,19 @@ namespace WingspanPrototype1.View.Reports
 
             Title = title;
 
+            switch (Device.RuntimePlatform)
+            {
+                case Device.UWP:
+                    watermarkImage.Source = "Assets/watermark-logo.png";
+                    break;
+                case Device.Android:
+                    watermarkImage.Source = "watermarklogo.png";
+                    break;
+                default:
+                    watermarkImage.Source = "watermark-logo.png";
+                    break;
+            }
+
         }
 
         private void collectionPicker_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,6 +73,7 @@ namespace WingspanPrototype1.View.Reports
                         captiveBirdListView.IsVisible = false;
                         memberListView.IsVisible = false;
                         volunteerListView.IsVisible = false;
+                        watermarkLayout.IsVisible = false;
 
                         List<WildBird> wildResults = null;
 
@@ -82,6 +96,7 @@ namespace WingspanPrototype1.View.Reports
                         memberListView.IsVisible = false;
                         volunteerListView.IsVisible = false;
                         wildBirdListView.IsVisible = false;
+                        watermarkLayout.IsVisible = false;
 
                         List<CaptiveBird> captiveResults = null;
 
@@ -110,6 +125,7 @@ namespace WingspanPrototype1.View.Reports
                         captiveBirdListView.IsVisible = false;
                         volunteerListView.IsVisible = false;
                         wildBirdListView.IsVisible = false;
+                        watermarkLayout.IsVisible = false;
 
                         List<Member> memberResults = null;
 

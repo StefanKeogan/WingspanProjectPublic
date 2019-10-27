@@ -14,22 +14,31 @@ namespace WingspanPrototype1.Controller.Birds
             // Get database 
             var database = DatabaseConnection.GetDatabase();
 
-            // Get location collection
-            var collection = database.GetCollection<BsonDocument>("LocationHistory");
-
-            // Build filter
-            var filter = Builders<BsonDocument>.Filter.Eq("_id", id);
-
-            // Delete document
-            try
+            if (database != null)
             {
-                collection.DeleteOne(filter);
-                return true;
+                // Get location collection
+                var collection = database.GetCollection<BsonDocument>("LocationHistory");
+
+                // Build filter
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", id);
+
+                // Delete document
+                try
+                {
+                    collection.DeleteOne(filter);
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
-            catch (Exception)
+            else
             {
                 return false;
             }
+
+            
 
         }
     }

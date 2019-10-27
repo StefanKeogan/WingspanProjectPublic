@@ -33,155 +33,219 @@ namespace WingspanPrototype1.View
 
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
+            searchingIndicator.IsEnabled = true;
+            searchingIndicator.IsVisible = true;
+            searchingIndicator.IsRunning = true;
 
             bool allFeildsValid = true;
 
-            // First Name Validation
-            if (Validate.FeildPopulated(memberFirstNameEntry.Text))
+            await Task.Run(() =>
             {
-                if (Validate.ContainsNumberOrSymbol(memberFirstNameEntry.Text))
+                // First Name Validation
+                if (Validate.FeildPopulated(memberFirstNameEntry.Text))
                 {
-                    firstNameError.IsVisible = true;
-                    firstNameError.Text = "First Name feild can not contain numbers or symbols";
-                    allFeildsValid = false;
-                }
-            }
-            else
-            {
-                firstNameError.IsVisible = true;
-                firstNameError.Text = "First Name feild must be filled in";
-                allFeildsValid = false;
-            }
-
-            // Last Name Validation
-            if (Validate.FeildPopulated(memberLastNameEntry.Text))
-            {
-                if (Validate.ContainsNumberOrSymbol(memberFirstNameEntry.Text))
-                {
-                    lastNameError.IsVisible = true;
-                    allFeildsValid = false;
+                    if (Validate.ContainsNumberOrSymbol(memberFirstNameEntry.Text))
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            firstNameError.IsVisible = true;
+                            firstNameError.Text = "First Name feild can not contain numbers or symbols";
+                        });
+                        
+                        allFeildsValid = false;
+                    }
                 }
                 else
                 {
-                    lastNameError.IsVisible = false;
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        firstNameError.IsVisible = true;
+                        firstNameError.Text = "First Name feild must be filled in";
+                    });
 
-                }
-
-            }
-
-            // Salutation Name Validation
-            if (Validate.FeildPopulated(memberLastNameEntry.Text))
-            {
-                if (Validate.ContainsNumberOrSymbol(memberLastNameEntry.Text))
-                {
-                    salutationNameError.IsVisible = true;
                     allFeildsValid = false;
                 }
-                else
-                {
-                    salutationNameError.IsVisible = false;
-                }
-            }
 
-            // Email Name Validation
-            if (Validate.FeildPopulated(memberEmailEntry.Text))
-            {
-                if (Validate.EmailFormatValid(memberEmailEntry.Text))
+                // Last Name Validation
+                if (Validate.FeildPopulated(memberLastNameEntry.Text))
                 {
-                    emailError.IsVisible = false;
+                    if (Validate.ContainsNumberOrSymbol(memberFirstNameEntry.Text))
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            lastNameError.IsVisible = true;
+                        });
+                        allFeildsValid = false;
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            lastNameError.IsVisible = false;
+                        });
+                    }
+
+                }
+
+                // Salutation Name Validation
+                if (Validate.FeildPopulated(memberLastNameEntry.Text))
+                {
+                    if (Validate.ContainsNumberOrSymbol(memberLastNameEntry.Text))
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            salutationNameError.IsVisible = true;
+                        });
+
+                        allFeildsValid = false;
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            salutationNameError.IsVisible = false;
+                        });
+                    }
+                }
+
+                // Email Name Validation
+                if (Validate.FeildPopulated(memberEmailEntry.Text))
+                {
+                    if (Validate.EmailFormatValid(memberEmailEntry.Text))
+                    {
+                        emailError.IsVisible = false;
+                    }
+                    else
+                    {
+                        emailError.IsVisible = true;
+                    }
+                }
+
+                // City 
+                if (Validate.FeildPopulated(memberCityEntry.Text))
+                {
+                    if (Validate.ContainsNumberOrSymbol(memberCityEntry.Text))
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            cityError.IsVisible = true;
+                        });
+
+                        allFeildsValid = false;
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            cityError.IsVisible = false;
+                        });
+                    }
+                }
+
+                // Postcode 
+                if (Validate.FeildPopulated(memberPostcodeEntry.Text))
+                {
+                    if (Validate.ContainsLetterOrSymbol(memberPostcodeEntry.Text))
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            postcodeError.IsVisible = true;
+                        });
+
+                        allFeildsValid = false;
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            postcodeError.IsVisible = false;
+
+                        });
+                    }
+                }
+
+                // Country 
+                if (Validate.FeildPopulated(memberCountryEntry.Text))
+                {
+                    if (Validate.ContainsNumberOrSymbol(memberCountryEntry.Text))
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            countryError.IsVisible = true;
+                        });
+
+                        allFeildsValid = false;
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            countryError.IsVisible = false;
+                        });
+                    }
+                }
+
+                if (allFeildsValid)
+                {
+                    bool memberInserted = AddMember.InsertMemberDocument(new Member
+                    {
+                        FirstName = memberFirstNameEntry.Text,
+                        LastName = memberLastNameEntry.Text,
+                        SalutationName = memberSalutationNameEntry.Text,
+                        Email = memberEmailEntry.Text,
+                        Address1 = memberAddress1Entry.Text,
+                        Address2 = memberAddress2Entry.Text,
+                        Address3 = memberAddress3Entry.Text,
+                        City = memberCityEntry.Text,
+                        Country = memberCountryEntry.Text,
+                        Postcode = memberPostcodeEntry.Text,
+                        Comment = memberCommentEditor.Text,
+                        JoinDate = memberJoindatePicker.Date
+
+                    }); ;
+                   
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        if (memberInserted)
+                        {
+                            memberFirstNameEntry.Text = null;
+                            memberLastNameEntry.Text = null;
+                            memberSalutationNameEntry.Text = null;
+                            memberEmailEntry.Text = null;
+                            memberAddress1Entry.Text = null;
+                            memberAddress2Entry.Text = null;
+                            memberAddress3Entry.Text = null;
+                            memberCityEntry.Text = null;
+                            memberCountryEntry.Text = null;
+                            memberPostcodeEntry.Text = null;
+                            memberCommentEditor.Text = null;
+
+                            DisplayAlert("Member Added", "Member document inserted into the database", "OK");
+                        }
+                        else
+                        {
+                            DisplayAlert("Connenction Error", "Could not insert bird record, please check connection and try again", "OK");
+
+                        }
+
+                        searchingIndicator.IsEnabled = false;
+                    });
+
+
                 }
                 else
                 {
-                    emailError.IsVisible = true;
+                    allFeildsValid = true;
+
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        searchingIndicator.IsEnabled = false;
+                    });
                 }
-            }
+
+            });
+
             
-            // City 
-            if (Validate.FeildPopulated(memberCityEntry.Text))
-            {
-                if (Validate.ContainsNumberOrSymbol(memberCityEntry.Text))
-                {
-                    cityError.IsVisible = true;
-                    allFeildsValid = false;
-                }
-                else
-                {
-                    cityError.IsVisible = false;
-                }
-            }
-
-            // Postcode 
-            if (Validate.FeildPopulated(memberPostcodeEntry.Text))
-            {
-                if (Validate.ContainsLetterOrSymbol(memberPostcodeEntry.Text))
-                {
-                    postcodeError.IsVisible = true;
-                    allFeildsValid = false;
-                }
-                else
-                {
-                    postcodeError.IsVisible = false;
-                }
-            }
-
-            // Country 
-            if (Validate.FeildPopulated(memberCountryEntry.Text))
-            {
-                if (Validate.ContainsNumberOrSymbol(memberCountryEntry.Text))
-                {
-                    countryError.IsVisible = true;
-                    allFeildsValid = false;
-                }
-                else
-                {
-                    countryError.IsVisible = false;
-                }
-            }
-
-            if (allFeildsValid)
-            {
-                bool memberInserted = AddMember.InsertMemberDocument(new Member
-                {
-                    FirstName = memberFirstNameEntry.Text,
-                    LastName = memberLastNameEntry.Text,                   
-                    SalutationName = memberSalutationNameEntry.Text,
-                    Email = memberEmailEntry.Text,
-                    Address1 = memberAddress1Entry.Text,
-                    Address2 = memberAddress2Entry.Text,
-                    Address3 = memberAddress3Entry.Text,
-                    City = memberCityEntry.Text,
-                    Country = memberCountryEntry.Text,
-                    Postcode = memberPostcodeEntry.Text,
-                    Comment = memberCommentEditor.Text,
-                    JoinDate = memberJoindatePicker.Date
-
-                });;
-
-                if (memberInserted)
-                {
-                    memberFirstNameEntry.Text = null;
-                    memberLastNameEntry.Text = null;
-                    memberSalutationNameEntry.Text = null;
-                    memberEmailEntry.Text = null;
-                    memberAddress1Entry.Text = null;
-                    memberAddress2Entry.Text = null;
-                    memberAddress3Entry.Text = null;
-                    memberCityEntry.Text = null;
-                    memberPostcodeEntry.Text = null;
-                    memberCommentEditor.Text = null;
-
-                    await DisplayAlert("Member Added", "Member document inserted into the database", "OK");
-                }
-                else
-                {
-                    await DisplayAlert("Connenction Error", "Could not insert bird record, please check connection and try again", "OK");
-
-                }
-            }
-            else
-            {
-                allFeildsValid = true;
-            }
 
             
 

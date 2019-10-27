@@ -125,5 +125,8 @@
   <ItemGroup>
     <AndroidResource Include="Resources\drawable-xxhdpi\darkbrownlogolarge.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Resources\drawable-xxhdpi\watermarklogo.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>

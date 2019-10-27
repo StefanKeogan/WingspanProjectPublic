@@ -17,83 +17,90 @@ namespace WingspanPrototype1.Controller.Members
             // Get database
             var database = DatabaseConnection.GetDatabase();
 
-            // Get member collection
-            var collection = database.GetCollection<BsonDocument>("Members");
-
-            // Use to build updates
-            var updateBuilder = Builders<BsonDocument>.Update;
-
-            // If we are able to get collection
-            if (collection != null)
+            if (database != null)
             {
-                // Are any entried being updated?
-                if (entries.Count > 0)
+                // Get member collection
+                var collection = database.GetCollection<BsonDocument>("Members");
+
+                // Use to build updates
+                var updateBuilder = Builders<BsonDocument>.Update;
+
+                // If we are able to get collection
+                if (collection != null)
                 {
-                    foreach (var entry in entries)
+                    // Are any entried being updated?
+                    if (entries.Count > 0)
                     {
-                        // Is the entry poulated
-                        if (Validate.FeildPopulated(entry.Text))
+                        foreach (var entry in entries)
                         {
-                            try
+                            // Is the entry poulated
+                            if (Validate.FeildPopulated(entry.Text))
                             {
-                                // Which feild are we updateing?
-                                if (entry.StyleId == "memberFirstNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("FirstName", entry.Text));
-                                if (entry.StyleId == "memberLastNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("LastName", entry.Text));
-                                if (entry.StyleId == "memberSalutationEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("SalutationName", entry.Text));
-                                if (entry.StyleId == "memberEmailEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Email", entry.Text));
-                                if (entry.StyleId == "memberCompanyEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Company", entry.Text));
-                                if (entry.StyleId == "memberAddress1Entry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Address1", entry.Text));
-                                if (entry.StyleId == "memberAddress2Entry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Address2", entry.Text));
-                                if (entry.StyleId == "memberAddress3Entry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Address3", entry.Text));
-                                if (entry.StyleId == "memberCityEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("City", entry.Text));
-                                if (entry.StyleId == "memberPostCodeEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("PostCode", entry.Text));
-                                if (entry.StyleId == "memberCountryEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Country", entry.Text));
+                                try
+                                {
+                                    // Which feild are we updateing?
+                                    if (entry.StyleId == "memberFirstNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("FirstName", entry.Text));
+                                    if (entry.StyleId == "memberLastNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("LastName", entry.Text));
+                                    if (entry.StyleId == "memberSalutationEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("SalutationName", entry.Text));
+                                    if (entry.StyleId == "memberEmailEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Email", entry.Text));
+                                    if (entry.StyleId == "memberCompanyEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Company", entry.Text));
+                                    if (entry.StyleId == "memberAddress1Entry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Address1", entry.Text));
+                                    if (entry.StyleId == "memberAddress2Entry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Address2", entry.Text));
+                                    if (entry.StyleId == "memberAddress3Entry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Address3", entry.Text));
+                                    if (entry.StyleId == "memberCityEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("City", entry.Text));
+                                    if (entry.StyleId == "memberPostCodeEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("PostCode", entry.Text));
+                                    if (entry.StyleId == "memberCountryEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Country", entry.Text));
 
+                                }
+                                catch (Exception)
+                                {
+                                    return null;
+                                }
                             }
-                            catch (Exception)
-                            {
-                                return null;
-                            }
-                        }                       
-                        
-                    }
-                   
-                }
 
-                // Are we updating the comment feild?
-                if (editor != null)
+                        }
+
+                    }
+
+                    // Are we updating the comment feild?
+                    if (editor != null)
+                    {
+                        try
+                        {
+                            collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Comment", editor.Text));
+                        }
+                        catch (Exception)
+                        {
+                            return null;
+                        }
+
+                    }
+
+                    if (date != null)
+                    {
+                        try
+                        {
+                            collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("JoinDate", date.Date));
+                        }
+                        catch (Exception)
+                        {
+                            return null;
+                        }
+                    }
+
+                    // Return updated member
+                    return BsonSerializer.Deserialize<Member>(collection.Find(Builders<BsonDocument>.Filter.Eq("_id", id)).First());
+
+                }
+                else
                 {
-                    try
-                    {
-                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Comment", editor.Text));
-                    }
-                    catch (Exception)
-                    {
-                        return null;
-                    }
-                   
+                    return null;
                 }
-
-                if (date != null)
-                {
-                    try
-                    {
-                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("JoinDate", date.Date));
-                    }
-                    catch (Exception)
-                    {
-                        return null;
-                    }
-                }
-
-                // Return updated member
-                return BsonSerializer.Deserialize<Member>(collection.Find(Builders<BsonDocument>.Filter.Eq("_id", id)).First());
-
             }
             else
             {
                 return null;
-            }
+            }         
 
         }
     }

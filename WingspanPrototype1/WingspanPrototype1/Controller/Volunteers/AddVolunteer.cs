@@ -14,31 +14,39 @@ namespace WingspanPrototype1.Controller.Volunteers
             // Get database 
             var database = DatabaseConnection.GetDatabase();
 
-            // Get collection
-            var collection = database.GetCollection<BsonDocument>("Volunteers");
+            if (database != null)
+            {
+                // Get collection
+                var collection = database.GetCollection<BsonDocument>("Volunteers");
 
-            // Insert required feilds 
-            var document = new BsonDocument
+                // Insert required feilds 
+                var document = new BsonDocument
             {
                 {"FirstName", volunteer.FirstName.Replace(" ", string.Empty).ToLower() }
             };
 
-            // What other feilds do we need to insert?
-            if (Validate.FeildPopulated(volunteer.LastName)) document.Add("LastName", volunteer.LastName.Replace(" ", string.Empty).ToLower());
-            if (Validate.FeildPopulated(volunteer.Email)) document.Add("Email", volunteer.Email.Replace(" ", string.Empty));
-            if (Validate.FeildPopulated(volunteer.Mobile.ToString())) document.Add("Mobile", volunteer.Mobile);
+                // What other feilds do we need to insert?
+                if (Validate.FeildPopulated(volunteer.LastName)) document.Add("LastName", volunteer.LastName.Replace(" ", string.Empty).ToLower());
+                if (Validate.FeildPopulated(volunteer.Email)) document.Add("Email", volunteer.Email.Replace(" ", string.Empty));
+                if (Validate.FeildPopulated(volunteer.Mobile.ToString())) document.Add("Mobile", volunteer.Mobile);
 
-            try
-            {
-                // Insert volunteer collection
-                collection.InsertOne(document);
-                return true;
+                try
+                {
+                    // Insert volunteer collection
+                    collection.InsertOne(document);
+                    return true;
+                }
+                catch (Exception)
+                {                   
+                    return false;
+                }
             }
-            catch (Exception)
+            else
             {
-                throw;
-                //return false;
+                return false;
             }
+
+            
         }
     }
 }

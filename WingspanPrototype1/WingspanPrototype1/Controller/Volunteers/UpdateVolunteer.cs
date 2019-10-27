@@ -17,37 +17,44 @@ namespace WingspanPrototype1.Controller.Volunteers
             // Get database 
             var database = DatabaseConnection.GetDatabase();
 
-            // Get collection 
-            var collection = database.GetCollection<BsonDocument>("Volunteers");
-
-            // Create update builder 
-            var updateBuilder = Builders<BsonDocument>.Update;
-
-            // Is our collection null?
-            if (collection != null)
+            if (database != null)
             {
-                foreach (var entry in entries)
+                // Get collection 
+                var collection = database.GetCollection<BsonDocument>("Volunteers");
+
+                // Create update builder 
+                var updateBuilder = Builders<BsonDocument>.Update;
+
+                // Is our collection null?
+                if (collection != null)
                 {
-                    // Update document id entries are populated 
-                    if (Validate.FeildPopulated(entry.Text))
+                    foreach (var entry in entries)
                     {
-                        try
+                        // Update document id entries are populated 
+                        if (Validate.FeildPopulated(entry.Text))
                         {
-                            if (entry.StyleId == "volunteerEmailEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Email", entry.Text.Replace(" ", string.Empty)));
-                            if (entry.StyleId == "volunteerFirstNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("FirstName", entry.Text.Replace(" ", string.Empty).ToLower()));
-                            if (entry.StyleId == "volunteerLastNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("LastName", entry.Text.Replace(" ", string.Empty).ToLower()));
-                            if (entry.StyleId == "volunteerMobileEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Mobile", entry.Text));
-                        }
-                        catch (Exception)
-                        {
+                            try
+                            {
+                                if (entry.StyleId == "volunteerEmailEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Email", entry.Text.Replace(" ", string.Empty)));
+                                if (entry.StyleId == "volunteerFirstNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("FirstName", entry.Text.Replace(" ", string.Empty).ToLower()));
+                                if (entry.StyleId == "volunteerLastNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("LastName", entry.Text.Replace(" ", string.Empty).ToLower()));
+                                if (entry.StyleId == "volunteerMobileEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Mobile", entry.Text));
+                            }
+                            catch (Exception)
+                            {
 
-                            return null;
+                                return null;
+                            }
+
                         }
-                        
                     }
-                }
 
-                return BsonSerializer.Deserialize<Volunteer>(collection.Find(Builders<BsonDocument>.Filter.Eq("_id", id)).First()); ;
+                    return BsonSerializer.Deserialize<Volunteer>(collection.Find(Builders<BsonDocument>.Filter.Eq("_id", id)).First()); ;
+                }
+                else
+                {
+                    return null;
+                }
             }
             else
             {

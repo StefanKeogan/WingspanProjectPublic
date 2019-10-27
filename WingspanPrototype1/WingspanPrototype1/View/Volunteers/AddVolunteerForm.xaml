@@ -8,72 +8,76 @@
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
         <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
-            <Grid  HeightRequest="400" HorizontalOptions="Center">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height=".6*" />
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height=".6*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height=".6*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height=".6*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
+            <StackLayout>
+                <Grid  HeightRequest="400" >
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".6*" />
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="1*"/>
 
-                    <RowDefinition Height="2*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" x:Name="volunteerMargin1"/>
-                    <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="3.5*"/>
-                    <ColumnDefinition Width="*" x:Name="volunteerMargin2"/>
-                </Grid.ColumnDefinitions>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" x:Name="volunteerMargin1"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="3.5*"/>
+                        <ColumnDefinition Width="*" x:Name="volunteerMargin2"/>
+                    </Grid.ColumnDefinitions>
 
-                <!--First Name-->
-                <Label x:Name="volunteerFirstNameLabel" Text="First Name"  Style="{StaticResource labelStyle}" Grid.Row="1"/>
-                <Entry x:Name="volunteerFirstNameEntry" Style="{StaticResource feildStyle}" Grid.Row="1"/>
+                    <!--First Name-->
+                    <Label x:Name="volunteerFirstNameLabel" Text="First Name"  Style="{StaticResource labelStyle}" Grid.Row="1"/>
+                    <Entry x:Name="volunteerFirstNameEntry" Style="{StaticResource feildStyle}" Grid.Row="1"/>
 
-                <!--Last Name-->
-                <Label x:Name="volunteerLastNameLabel" Text="Last Name"  Style="{StaticResource labelStyle}" Grid.Row="3"/>
-                <Entry x:Name="volunteerLastNameEntry" Style="{StaticResource feildStyle}" Grid.Row="3"/>
+                    <!--Last Name-->
+                    <Label x:Name="volunteerLastNameLabel" Text="Last Name"  Style="{StaticResource labelStyle}" Grid.Row="3"/>
+                    <Entry x:Name="volunteerLastNameEntry" Style="{StaticResource feildStyle}" Grid.Row="3"/>
 
-                <!--Mobile-->
-                <Label x:Name="volunteerMobileLabel" Text="Mobile"  Style="{StaticResource labelStyle}" Grid.Row="5"/>
-                <Entry x:Name="volunteerMobileEntry" Style="{StaticResource feildStyle}" Grid.Row="5"/>
+                    <!--Mobile-->
+                    <Label x:Name="volunteerMobileLabel" Text="Mobile"  Style="{StaticResource labelStyle}" Grid.Row="5"/>
+                    <Entry x:Name="volunteerMobileEntry" Style="{StaticResource feildStyle}" Grid.Row="5"/>
 
-                <!--Email-->
-                <Label x:Name="volunteerEmailLabel" Text="Email"  Style="{StaticResource labelStyle}" Grid.Row="7" />
-                <Entry x:Name="volunteerEmailEntry"  Style="{StaticResource feildStyle}" Grid.Row="7"/>
+                    <!--Email-->
+                    <Label x:Name="volunteerEmailLabel" Text="Email"  Style="{StaticResource labelStyle}" Grid.Row="7" />
+                    <Entry x:Name="volunteerEmailEntry"  Style="{StaticResource feildStyle}" Grid.Row="7"/>
 
-                <!--Error Messages-->
-                <!--First Name-->
-                <Label x:Name="firstNameError" Style="{StaticResource addFormErrorStyle}"/>
+                    <!--Error Messages-->
+                    <!--First Name-->
+                    <Label x:Name="firstNameError" Style="{StaticResource addFormErrorStyle}"/>
 
-                <!--Last Name-->
-                <Label x:Name="lastNameError" Style="{StaticResource addFormErrorStyle}" Text="The last name feild cannot contain numbers or symbols" Grid.Row="2"/>
+                    <!--Last Name-->
+                    <Label x:Name="lastNameError" Style="{StaticResource addFormErrorStyle}" Text="The last name feild cannot contain numbers or symbols" Grid.Row="2"/>
 
-                <!--Mobile-->
-                <Label x:Name="mobileError" Style="{StaticResource addFormErrorStyle}" Text="The mobile feild cannont contain letters" Grid.Row="4"/>
+                    <!--Mobile-->
+                    <Label x:Name="mobileError" Style="{StaticResource addFormErrorStyle}" Text="The mobile feild cannont contain letters" Grid.Row="4"/>
 
-                <!--Email-->
-                <Label x:Name="emailError" Style="{StaticResource addFormErrorStyle}" Text="That is not a valid email address" Grid.Row="6"/>
+                    <!--Email-->
+                    <Label x:Name="emailError" Style="{StaticResource addFormErrorStyle}" Text="That is not a valid email address" Grid.Row="6"/>
 
-                <!--Contact-->
-                <Label x:Name="contactError" Style="{StaticResource addFormErrorStyle}" Text="At least one of the contact information feilds need to be filled in" Grid.Row="8"/>
+                    <!--Contact-->
+                    <Label x:Name="contactError" Style="{StaticResource addFormErrorStyle}" Text="At least one of the contact information feilds need to be filled in" Grid.Row="8"/>
 
-                <Button  
-                x:Name="addButton"
-                Grid.Column="1"
-                Grid.Row="9"
-                Grid.ColumnSpan="2"
-                Text="Add" 
-                Style="{StaticResource mainButtonStyle}"
-                HorizontalOptions="Center"
-                VerticalOptions="Center"
-                WidthRequest="150"
-                Clicked="AddButton_Clicked"/>
-                
-            </Grid>
+                    <Button  
+                    x:Name="addButton"
+                    Grid.Column="1"
+                    Grid.Row="9"
+                    Grid.ColumnSpan="2"
+                    Text="Add" 
+                    Style="{StaticResource mainButtonStyle}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    WidthRequest="150"
+                    Clicked="AddButton_Clicked"/>
+
+                </Grid>
+
+                <ActivityIndicator x:Name="searchingIndicator" Color="#5C3838" WidthRequest="300" Margin="30,30" />
+            </StackLayout>
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

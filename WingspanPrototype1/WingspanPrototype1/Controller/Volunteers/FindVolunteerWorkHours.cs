@@ -15,27 +15,33 @@ namespace WingspanPrototype1.Controller.Volunteers
             // Get DB
             var database = DatabaseConnection.GetDatabase();
 
-            // Get payment collection
-            var collection = database.GetCollection<BsonDocument>("VolunteerHours");
-
-            try
+            if (database != null)
             {
-                // Search payment collection 
-                List<BsonDocument> paymentResults = collection.Find(Builders<BsonDocument>.Filter.Eq("Volunteer_id", volunteerId)).ToList();
+                // Get payment collection
+                var collection = database.GetCollection<BsonDocument>("VolunteerHours");
 
-                // Convert results to member results
-                List<VolunteerHours> hoursObjectResults = new List<VolunteerHours>();
-                foreach (var result in paymentResults)
+                try
                 {
-                    hoursObjectResults.Add(BsonSerializer.Deserialize<VolunteerHours>(result));
+                    // Search payment collection 
+                    List<BsonDocument> paymentResults = collection.Find(Builders<BsonDocument>.Filter.Eq("Volunteer_id", volunteerId)).ToList();
+
+                    // Convert results to member results
+                    List<VolunteerHours> hoursObjectResults = new List<VolunteerHours>();
+                    foreach (var result in paymentResults)
+                    {
+                        hoursObjectResults.Add(BsonSerializer.Deserialize<VolunteerHours>(result));
+                    }
+                    return hoursObjectResults;
                 }
-                return hoursObjectResults;
+                catch (Exception)
+                {
+                    return null;
+                }
             }
-            catch (Exception)
+            else
             {
-                // return null;
-                throw;
-            }
+                return null;
+            }            
 
         }
     }

@@ -14,22 +14,29 @@ namespace WingspanPrototype1.Controller.Volunteers
             // Get databse 
             var database = DatabaseConnection.GetDatabase();
 
-            // Get collection
-            var collection = database.GetCollection<BsonDocument>("Volunteers");
-
-            // Get filter 
-            var filter = Builders<BsonDocument>.Filter.Eq("_id", id);
-
-            // Delete document 
-            try
+            if (database != null)
             {
-                collection.DeleteOne(filter);
-                return true;
+                // Get collection
+                var collection = database.GetCollection<BsonDocument>("Volunteers");
+
+                // Get filter 
+                var filter = Builders<BsonDocument>.Filter.Eq("_id", id);
+
+                // Delete document 
+                try
+                {
+                    collection.DeleteOne(filter);
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
-            catch (Exception)
+            else
             {
                 return false;
-            }
+            }           
 
         }
     }

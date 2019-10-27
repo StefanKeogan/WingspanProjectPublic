@@ -238,7 +238,9 @@
                 WidthRequest="150"
                 Clicked="AddButton_Clicked"/>
 
-        </StackLayout>
+            <ActivityIndicator x:Name="searchingIndicator" Color="#5C3838" WidthRequest="300" Margin="30,30"/>
+
+            </StackLayout>
         </ScrollView>
 
     </ContentPage.Content>

@@ -16,34 +16,40 @@ namespace WingspanPrototype1.Controller.Birds
             // Get database
             var database = DatabaseConnection.GetDatabase();
 
-            // Get collection
-            var collection = database.GetCollection<BsonDocument>("WildBirds");
-            
-            // Used to build reports 
-            var filterBuilder = Builders<BsonDocument>.Filter;
-
-            // Build master filter
-            var filter = filterBuilder.Gte("DateBanded", startDate) & filterBuilder.Lte("DateBanded", endDate);
-
-            try
+            if (database != null)
             {
-                // Search wild birds 
-                var reportResults = collection.Find(filter).ToList();
-                // Deserialize bson documents 
-                List<WildBird> results = new List<WildBird>();
-                foreach (var result in reportResults)
+                // Get collection
+                var collection = database.GetCollection<BsonDocument>("WildBirds");
+
+                // Used to build reports 
+                var filterBuilder = Builders<BsonDocument>.Filter;
+
+                // Build master filter
+                var filter = filterBuilder.Gte("DateBanded", startDate) & filterBuilder.Lte("DateBanded", endDate);
+
+                try
                 {
-                    results.Add(BsonSerializer.Deserialize<WildBird>(result));
+                    // Search wild birds 
+                    var reportResults = collection.Find(filter).ToList();
+                    // Deserialize bson documents 
+                    List<WildBird> results = new List<WildBird>();
+                    foreach (var result in reportResults)
+                    {
+                        results.Add(BsonSerializer.Deserialize<WildBird>(result));
+                    }
+                    return results;
                 }
-                return results;
+                catch (Exception)
+                {
+                    return null;
+                }
             }
-            catch (Exception)
+            else
             {
                 return null;
-            }                       
+            }                           
             
-        }
-        
+        }      
 
     }
 

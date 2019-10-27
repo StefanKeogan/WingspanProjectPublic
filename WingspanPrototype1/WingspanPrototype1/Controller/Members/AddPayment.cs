@@ -14,28 +14,35 @@ namespace WingspanPrototype1.Controller.Members
             // Get database
             var database = DatabaseConnection.GetDatabase();
 
-            // Get payment collection
-            var collection = database.GetCollection<BsonDocument>("Payments");
-
-            // Create payment document
-            var document = new BsonDocument
+            if (database != null)
             {
-                {"Date", payment.Date },
-                {"Amount", payment.Amount },
-                {"Member_id", memberId }
-            };
+                // Get payment collection
+                var collection = database.GetCollection<BsonDocument>("Payments");
 
-            try
-            {
-                // Insert document
-                collection.InsertOne(document);
-                return true;
+                // Create payment document
+                var document = new BsonDocument
+                {
+                    {"Date", payment.Date },
+                    {"Amount", payment.Amount },
+                    {"Member_id", memberId }
+                };
+
+                try
+                {
+                    // Insert document
+                    collection.InsertOne(document);
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
-            catch (Exception)
+            else
             {
                 return false;
             }
-
+           
         }
     }
 }

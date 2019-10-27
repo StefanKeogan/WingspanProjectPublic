@@ -15,26 +15,33 @@ namespace WingspanPrototype1.Controller.Birds
             // Get DB
             var database = DatabaseConnection.GetDatabase();
 
-            // Get note collection
-            var collection = database.GetCollection<BsonDocument>("NoteHistory");
-
-            try
+            if (database != null)
             {
-                // Search note collection 
-                List<BsonDocument> noteResults = collection.Find(Builders<BsonDocument>.Filter.Eq("WingspanId", wingspanId)).ToList();
+                // Get note collection
+                var collection = database.GetCollection<BsonDocument>("NoteHistory");
 
-                // Convert results to note results
-                List<Note> noteObjectResults = new List<Note>();
-                foreach (var result in noteResults)
+                try
                 {
-                    noteObjectResults.Add(BsonSerializer.Deserialize<Note>(result));
+                    // Search note collection 
+                    List<BsonDocument> noteResults = collection.Find(Builders<BsonDocument>.Filter.Eq("WingspanId", wingspanId)).ToList();
+
+                    // Convert results to note results
+                    List<Note> noteObjectResults = new List<Note>();
+                    foreach (var result in noteResults)
+                    {
+                        noteObjectResults.Add(BsonSerializer.Deserialize<Note>(result));
+                    }
+                    return noteObjectResults;
                 }
-                return noteObjectResults;
+                catch (Exception)
+                {
+                    return null;
+                }
             }
-            catch (Exception)
+            else
             {
                 return null;
-            }
+            }           
 
         }
     }

@@ -19,7 +19,7 @@
 
             <Style x:Key="feildStyle" TargetType="Entry">
                 <Setter Property="WidthRequest" Value="450"/>
-                <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="Grid.Column" Value="2"/>
             </Style>

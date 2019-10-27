@@ -13,11 +13,13 @@ namespace WingspanPrototype1.Controller.Birds
             // Get databse
             var database = DatabaseConnection.GetDatabase();
 
-            // Get Note history collection
-            var collection = database.GetCollection<BsonDocument>("NoteHistory");
+            if (database != null)
+            {
+                // Get Note history collection
+                var collection = database.GetCollection<BsonDocument>("NoteHistory");
 
-            // Create document
-            var document = new BsonDocument
+                // Create document
+                var document = new BsonDocument
                 {
                     { "Date", note.Date },
                     { "Category", note.Category },
@@ -25,18 +27,22 @@ namespace WingspanPrototype1.Controller.Birds
                     { "WingspanId", note.WingspanId}
                 };
 
-            // Insert docunment
-            try
-            {              
-                collection.InsertOne(document);
-                return true;
+                // Insert docunment
+                try
+                {
+                    collection.InsertOne(document);
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
             }
-            catch (Exception)
+            else
             {
                 return false;
             }
-
-            
+           
         }
     }
 }
