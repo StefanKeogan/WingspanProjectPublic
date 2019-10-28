@@ -136,6 +136,9 @@
                             <Label Text="Hours" FontSize="20" Margin="5,5,5,5"/>
                             <Entry x:Name="hoursEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
 
+                            <Label Text="Note" FontSize="20" Margin="5,5,5,5"/>
+                            <Editor x:Name="noteEditor" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+
                             <Button
                                 x:Name="logButton"
                                 Margin="5,5,5,5"

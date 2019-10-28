@@ -41,8 +41,8 @@
     <Compile Update="View\Birds\BirdResultsDesktop.xaml.cs">
       <DependentUpon>BirdResultsDesktop.xaml</DependentUpon>
     </Compile>
-    <Compile Update="View\Birds\AddBirdNote.xaml.cs">
-      <DependentUpon>AddBirdNote.xaml</DependentUpon>
+    <Compile Update="View\Birds\AddBirdNoteDesktop.xaml.cs">
+      <DependentUpon>AddBirdNoteDesktop.xaml</DependentUpon>
     </Compile>
     <Compile Update="View\Birds\BirdResultsMobile1.xaml.cs">
       <DependentUpon>BirdResultsMobile1.xaml</DependentUpon>
@@ -73,6 +73,9 @@
     </Compile>
     <Compile Update="View\Volunteers\AddVolunteerForm.xaml.cs">
       <DependentUpon>AddVolunteerForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Update="View\Volunteers\LogVolunteerHoursDesktop.xaml.cs">
+      <DependentUpon>LogVolunteerHoursDesktop.xaml</DependentUpon>
     </Compile>
   </ItemGroup>
 
@@ -110,7 +113,7 @@
     <EmbeddedResource Update="View\MasterPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
-    <EmbeddedResource Update="View\Birds\AddBirdNote.xaml">
+    <EmbeddedResource Update="View\Birds\AddBirdNoteDesktop.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
     </EmbeddedResource>
     <EmbeddedResource Update="View\Members\MemberResultsDesktop.xaml">

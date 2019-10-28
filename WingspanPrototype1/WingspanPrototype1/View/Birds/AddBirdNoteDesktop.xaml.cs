@@ -13,9 +13,11 @@ using Xamarin.Forms.Xaml;
 namespace WingspanPrototype1.View
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class AddBirdNoteMobile1 : ContentPage
+    public partial class AddBirdNoteDesktop : ContentPage
     {
-        public AddBirdNoteMobile1(string title)
+        public string selectedWingspanId;
+
+        public AddBirdNoteDesktop(string title)
         {
             InitializeComponent();
 
@@ -34,6 +36,66 @@ namespace WingspanPrototype1.View
                     break;
             }
 
+            categoryPicker.ItemsSource = new string[] { "Medical", "Transfer", "Release" };
+
+        }
+
+        private async void AddButton_Clicked(object sender, EventArgs e)
+        {
+            addingIndicatior.IsRunning = true;
+
+            await Task.Run(() =>
+            {
+                if (categoryPicker.SelectedIndex != -1)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        DisplayAlert("Feild Empty", "The category feild can not be empty", "OK");
+                        addingIndicatior.IsRunning = false;
+                    });
+
+                    return;
+                }
+
+                if (!Validate.FeildPopulated(noteEditor.Text))
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        DisplayAlert("Feild Empty", "The comment feild can not be empty", "OK");
+                        addingIndicatior.IsRunning = false;
+                    });
+
+                    return;
+                }
+
+
+                if (AddBirdNote.InsertNoteDocument(new Note
+                {
+                    Date = noteDatePicker.Date,
+                    Category = categoryPicker.SelectedItem.ToString(),
+                    Comment = noteEditor.Text,
+                    WingspanId = selectedWingspanId
+                }))
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        categoryPicker.SelectedIndex = -1;
+                        noteEditor.Text = null;
+                        DisplayAlert("Bird Note Added", "Your note has been added to this birds note history", "OK");
+                    });
+
+                    return;
+                }
+
+                Device.BeginInvokeOnMainThread(() =>
+                {
+                    addingIndicatior.IsRunning = false;
+                });
+
+            });
+
+
+
         }
 
         private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -42,18 +104,14 @@ namespace WingspanPrototype1.View
             {
                 var item = e.SelectedItem as WildBird;
 
-                Navigation.PushAsync(new AddBirdNoteMobile2(item, null));
-
+                selectedWingspanId = item.WingspanId;
             }
             else if (e.SelectedItem.GetType() == typeof(CaptiveBird))
             {
                 var item = e.SelectedItem as CaptiveBird;
 
-                Navigation.PushAsync(new AddBirdNoteMobile2(null, item));
-
+                selectedWingspanId = item.WingspanId;
             }
-
-            
         }
 
         private async void SearchButton_Clicked(object sender, EventArgs e)
@@ -96,9 +154,14 @@ namespace WingspanPrototype1.View
                     searchingIndicator.IsRunning = false;
                 });
 
+
+
+
             });
 
 
         }
     }
+
+    
 }

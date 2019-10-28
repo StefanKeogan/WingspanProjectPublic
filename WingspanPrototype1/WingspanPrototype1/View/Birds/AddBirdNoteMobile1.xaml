@@ -6,15 +6,18 @@
              mc:Ignorable="d"
              x:Class="WingspanPrototype1.View.AddBirdNoteMobile1">
     <ContentPage.Content>
-        <Grid>
+        
+        <Grid BackgroundColor="#F0F0F0">
             <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1.5*"/>
                 <RowDefinition Height="11*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
             <StackLayout Orientation="Horizontal" BackgroundColor="#F0F0F0" HorizontalOptions="FillAndExpand">
                 <Label Text="Wingspan Id" FontSize="20" VerticalOptions="Center" Margin="10,5,5,5"/>
                 <Entry x:Name="wingspanIdEntry" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="10,5,5,5"/>
+                <ImageButton x:Name="searchButton" Style="{StaticResource mainImageButtonStyle}" Clicked="SearchButton_Clicked"/>
             </StackLayout>
 
             <ListView x:Name="resultsListView" BackgroundColor="#F0F0F0" Grid.Row="1" ItemSelected="ResultsListView_ItemSelected" >
@@ -29,6 +32,8 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <ActivityIndicator x:Name="searchingIndicator" Color="#5C3838" WidthRequest="300" Grid.Row="2" BackgroundColor="#F0F0F0"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -33,13 +33,14 @@
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
                                 <RowDefinition Height="1*"/>
+                                <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
 
                             <!--Wingspan Id-->
                             <Label x:Name="wildWingspanIdLabel" Text="Wingspan Id" FontSize="20"/>
                             <StackLayout x:Name="wildWingspanIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1" >
                                 <Label x:Name="wildWingspanIdValueLabel" FontSize="20"/>
-                                <Button x:Name="wildWingspanIdEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="wildWingspanIdEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="WildWingspanIdEditButton_Clicked"/>
                             </StackLayout>
                             <Entry x:Name="wildWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
 
@@ -47,7 +48,7 @@
                             <Label x:Name="wildSpeciesLabel" Text="Species" FontSize="20" Grid.Row="1"/>
                             <StackLayout x:Name="wildSpeciesStack" Orientation="Horizontal" IsVisible="False" Grid.Row="1" Grid.Column="1">
                                 <Label x:Name="wildSpeciesValueLabel" FontSize="20"/>
-                                <Button x:Name="wildSpeciesEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="wildSpeciesEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="WildSpeciesEditButton_Clicked"/>
                             </StackLayout>
                             <Picker x:Name="wildSpeciesPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" IsVisible="False">
                                 <Picker.ItemsSource>
@@ -63,7 +64,7 @@
                             <Label x:Name="wildLocationLabel" Text="Location" FontSize="20" Grid.Row="2"/>
                             <StackLayout x:Name="wildLocationStack" Orientation="Horizontal"  IsVisible="False" Grid.Row="2" Grid.Column="1">
                                 <Label x:Name="wildLocationValueLabel" FontSize="20"/>
-                                <Button x:Name="wildLocationEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="wildLocationEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="WildLocationEditButton_Clicked"/>
                             </StackLayout>
                             <Entry x:Name="wildLocationEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
 
@@ -71,7 +72,7 @@
                             <Label x:Name="wildGpsLabel" Text="GPS" FontSize="20" Grid.Row="3"/>
                             <StackLayout x:Name="wildGpsStack" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" IsVisible="False">
                                 <Label x:Name="wildGpsValueLabel" Text="GPS" FontSize="20"/>
-                                <Button x:Name="wildGpsEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="wildGpsEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="WildGpsEditButton_Clicked"/>
                             </StackLayout>
                             <Entry x:Name="wildGpsEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
 
@@ -79,7 +80,7 @@
                             <Label x:Name="wildSexLabel" Text="Sex" FontSize="20" Grid.Row="4"/>
                             <StackLayout x:Name="wildSexStack" Orientation="Horizontal" Grid.Row="4" Grid.Column="1" IsVisible="False">
                                 <Label x:Name="wildSexValueLabel" Text="GPS" FontSize="20"/>
-                                <Button x:Name="wildSexEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="wildSexEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="WildSexEditButton_Clicked"/>
                             </StackLayout>
                             <Picker x:Name="wildSexPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" IsVisible="False">
                                 <Picker.ItemsSource>
@@ -94,7 +95,7 @@
                             <Label x:Name="wildAgeLabel" Text="Age" FontSize="20" Grid.Row="5"/>
                             <StackLayout x:Name="wildAgeStack" Orientation="Horizontal" Grid.Row="5" Grid.Column="1" IsVisible="False">
                                 <Label x:Name="wildAgeValueLabel" Text="GPS" FontSize="20" />
-                                <Button x:Name="wildAgeEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="wildAgeEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="WildAgeEditButton_Clicked"/>
                             </StackLayout>
                             <Picker x:Name="wildAgePicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1" IsVisible="False">
                                 <Picker.ItemsSource>
@@ -109,25 +110,33 @@
                             <Label x:Name="wildMetalBandIdLabel" Text="Metal Band Id" FontSize="20" Grid.Row="6"/>
                             <StackLayout x:Name="wildMetalBandStack" Orientation="Horizontal" Grid.Row="6" Grid.Column="1" IsVisible="False">
                                 <Label x:Name="wildMetalBandIdValueLabel" Text="GPS" FontSize="20"/>
-                                <Button x:Name="wildMetalBandIdEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="wildMetalBandIdEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="WildMetalBandIdEditButton_Clicked"/>
                             </StackLayout>
                             <Entry x:Name="wildMetalBandIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" IsVisible="False"/>
 
-                            <!--Date Banded-->
-                            <Label x:Name="wildDateBandedLabel" Text="Date Banded" FontSize="20" Grid.Row="7"/>
-                            <StackLayout x:Name="wildDateBandedStack" Orientation="Horizontal" Grid.Row="7" Grid.Column="1" IsVisible="False">
-                                <Label x:Name="wildDateBandedValueLabel" Text="GPS" FontSize="20"/>
-                                <Button x:Name="wildDateBandedEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                            <!--Band Info-->
+                            <Label x:Name="bandInfoLabel" Text="Band Info"  Grid.Row="7"/>
+                            <StackLayout x:Name="bandInfoStack" Grid.Row="7"  IsVisible="False">
+                                <Label x:Name="bandInfoValueLabel" Text="GPS" FontSize="20"/>
+                                <Button x:Name="bandInfoEditButton" Clicked="BandInfoEditButton_Clicked"/>
                             </StackLayout>
-                            <DatePicker x:Name="wildDateBandedPicker" Grid.Row="7" IsVisible="False" Grid.Column="1"/>
+                            <Entry x:Name="bandInfoEntry" Grid.Row="7" IsVisible="False"/>
+
+                            <!--Date Banded-->
+                            <Label x:Name="wildDateBandedLabel" Text="Date Banded" FontSize="20" Grid.Row="8"/>
+                            <StackLayout x:Name="wildDateBandedStack" Orientation="Horizontal" Grid.Row="8" Grid.Column="1" IsVisible="False">
+                                <Label x:Name="wildDateBandedValueLabel" Text="GPS" FontSize="20"/>
+                                <Button x:Name="wildDateBandedEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="WildDateBandedEditButton_Clicked"/>
+                            </StackLayout>
+                            <DatePicker x:Name="wildDateBandedPicker" Grid.Row="8" IsVisible="False" Grid.Column="1"/>
 
                             <!--Bander Name-->
-                            <Label x:Name="wildBanderNameLabel" Text="Bander Name" FontSize="20" Grid.Row="8"/>
-                            <StackLayout x:Name="wildBanderNameStack" Grid.Row="8" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
+                            <Label x:Name="wildBanderNameLabel" Text="Bander Name" FontSize="20" Grid.Row="9"/>
+                            <StackLayout x:Name="wildBanderNameStack" Grid.Row="9" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
                                 <Label x:Name="wildBanderNameValueLabel" Text="GPS" FontSize="20" />
-                                <Button x:Name="wildBanderNameEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="wildBanderNameEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="WildBanderNameEditButton_Clicked"/>
                             </StackLayout>
-                            <Entry x:Name="wildBanderNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="1" IsVisible="False"/>
+                            <Entry x:Name="wildBanderNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="9" Grid.Column="1" IsVisible="False"/>
 
                         </Grid>
                     </ContentView.Content>
@@ -159,7 +168,7 @@
                             <Label x:Name="captiveWingspanIdLabel" Text="Wingspan Id" FontSize="20"/>
                             <StackLayout x:Name="captiveWingspanIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
                                 <Label x:Name="captiveWingspanIdValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveWingspanIdEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="captiveWingspanIdEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveWingspanIdEditButton_Clicked"/>
                             </StackLayout>
                             <Entry x:Name="captiveWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
 
@@ -167,7 +176,7 @@
                             <Label x:Name="captiveNameLabel" Text="Name" FontSize="20" Grid.Row="1"/>
                             <StackLayout x:Name="captiveNameStack" Orientation="Horizontal" IsVisible="False" Grid.Row="1" Grid.Column="1">
                                 <Label x:Name="captiveNameValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveNameEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="captiveNameEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveNameEditButton_Clicked"/>
                             </StackLayout>
                             <Entry x:Name="captiveNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Row="1" Grid.Column="1"/>
 
@@ -175,31 +184,24 @@
                             <Label x:Name="captiveBandNumberLabel" Text="Band Number" FontSize="20" Grid.Row="2"/>
                             <StackLayout x:Name="captiveBandNumberStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1" Grid.Row="2">
                                 <Label x:Name="captiveBandNumberValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveBandNumberEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="captiveBandNumberEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveBandNumberEditButton_Clicked"/>
                             </StackLayout>
-                            <Entry x:Name="captiveBandNumberEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="2"/>
+                            <Entry x:Name="captiveBandNumberEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
 
                             <!--Band Colour-->
-                            <Label x:Name="captiveBandColourLabel" Text="Band Colour" FontSize="20" Grid.Row="3"/>
-                            <StackLayout x:Name="captiveBandColourStack" Orientation="Horizontal" IsVisible="False" Grid.Row="3" Grid.Column="1">
-                                <Label x:Name="captiveBandColourValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveBandColurEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                            <Label x:Name="captiveBandInfoLabel" Text="Band Colour" FontSize="20" Grid.Row="3"/>
+                            <StackLayout x:Name="captiveBandInfoStack" Orientation="Horizontal" IsVisible="False" Grid.Row="3" Grid.Column="1">
+                                <Label x:Name="captiveBandInfoValueLabel" FontSize="20"/>
+                                <Button x:Name="captiveBandInfoEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="BandInfoEditButton_Clicked"/>
                             </StackLayout>
-                            <Picker x:Name="captiveBandColourPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False">
-                                <Picker.ItemsSource>
-                                    <x:Array Type="{x:Type x:String}">
-                                        <x:String>G:M</x:String>
-                                        <x:String>B:M</x:String>
-                                        <x:String>M:R</x:String>
-                                    </x:Array>
-                                </Picker.ItemsSource>
-                            </Picker>
+                            <Entry x:Name="captiveBandInfoEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
+
 
                             <!--Species-->
                             <Label x:Name="captiveSpeciesLabel" Text="Species" FontSize="20" Grid.Row="4"/>
                             <StackLayout x:Name="captiveSpeciesStack" Orientation="Horizontal" IsVisible="False" Grid.Row="4" Grid.Column="1">
                                 <Label x:Name="captiveSpeciesValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveSpeciesEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="captiveSpeciesEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveSpeciesEditButton_Clicked"/>
                             </StackLayout>
                             <Picker x:Name="captiveSpeciesPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" IsVisible="False">
                                 <Picker.ItemsSource>
@@ -215,7 +217,7 @@
                             <Label x:Name="captiveSexLabel" Text="Sex" FontSize="20" Grid.Row="5"/>
                             <StackLayout x:Name="captiveSexStack" Orientation="Horizontal" Grid.Row="5" Grid.Column="1" IsVisible="False">
                                 <Label x:Name="captiveSexValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveSexEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="captiveSexEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveSexEditButton_Clicked"/>
                             </StackLayout>
                             <Picker x:Name="captiveSexPicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1" IsVisible="False">
                                 <Picker.ItemsSource>
@@ -230,7 +232,7 @@
                             <Label x:Name="captiveAgeLabel" Text="Age" FontSize="20" Grid.Row="6"/>
                             <StackLayout x:Name="captiveAgeStack" Orientation="Horizontal" Grid.Row="6" Grid.Column="1" IsVisible="False">
                                 <Label x:Name="captiveAgeValueLabel" FontSize="20" />
-                                <Button x:Name="captiveAgeEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="captiveAgeEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveAgeEditButton_Clicked"/>
                             </StackLayout>
                             <Picker x:Name="captiveAgePicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" IsVisible="False">
                                 <Picker.ItemsSource>
@@ -245,7 +247,7 @@
                             <Label x:Name="captiveLocationValue" Text="Location" FontSize="20" Grid.Row="7"/>
                             <StackLayout x:Name="captiveLocationStack" Orientation="Horizontal"  IsVisible="False" Grid.Row="7" Grid.Column="1">
                                 <Label x:Name="captiveLocationValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveLocationEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="captiveLocationEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveLocationEditButton_Clicked"/>
                             </StackLayout>
                             <Entry x:Name="captiveLocationEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1" IsVisible="False"/>
 
@@ -253,7 +255,7 @@
                             <Label x:Name="captiveDateArrivedLabel" Text="Date Arrived" FontSize="20" Grid.Row="8"/>
                             <StackLayout x:Name="captiveDateArrivedStack" Orientation="Horizontal" Grid.Row="8" Grid.Column="1" IsVisible="False">
                                 <Label x:Name="captiveDateArrivedValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveDateArrivedEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="captiveDateArrivedEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveDateArrivedEditButton_Clicked"/>
                             </StackLayout>
                             <DatePicker x:Name="captiveDateArrivedPicker" Grid.Row="8" IsVisible="False" Grid.Column="1"/>
 
@@ -261,7 +263,7 @@
                             <Label x:Name="captiveDateDepartedLabel" Text="Date Departed" FontSize="20" Grid.Row="9"/>
                             <StackLayout x:Name="captiveDateDepartedStack" Orientation="Horizontal" Grid.Row="9" Grid.Column="1" IsVisible="False">
                                 <Label x:Name="captiveDateDepartedValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveDateDepartedEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="captiveDateDepartedEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveDateDepartedEditButton_Clicked"/>
                             </StackLayout>
                             <DatePicker x:Name="captiveDateDepartedPicker" Grid.Row="9" IsVisible="False" Grid.Column="1"/>
 
@@ -269,7 +271,7 @@
                             <Label x:Name="cpativeDateDeceasedLabel" Text="Date Deceased" FontSize="20" Grid.Row="10"/>
                             <StackLayout x:Name="captiveDatedeceasedStack" Orientation="Horizontal" Grid.Row="10" Grid.Column="1" IsVisible="False">
                                 <Label x:Name="captiveDateDeceasedValueLabel" FontSize="20"/>
-                                <Button x:Name="captiveDateDeceasedEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="captiveDateDeceasedEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveDateDeceasedEditButton_Clicked"/>
                             </StackLayout>
                             <DatePicker x:Name="captiveDateDeceasedPicker" Grid.Row="10" IsVisible="False" Grid.Column="1"/>
 
@@ -277,7 +279,7 @@
                             <Label x:Name="captiveResultLabel" Text="Result" FontSize="20" Grid.Row="11"/>
                             <StackLayout x:Name="captiveResultStack" Grid.Row="11" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
                                 <Label x:Name="captiveResultValueLabel" FontSize="20" />
-                                <Button x:Name="captiveResultEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                                <Button x:Name="captiveResultEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveResultEditButton_Clicked"/>
                             </StackLayout>
                             <Entry x:Name="captiveResultEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="11" Grid.Column="1" IsVisible="False"/>
 
@@ -294,7 +296,8 @@
                          CornerRadius="5"
                          FontSize="20" 
                          HorizontalOptions="Center"
-                         WidthRequest="150"/>
+                         WidthRequest="150"
+                         Clicked="DeleteButton_Clicked"/>
                     <Button  Grid.Row="1" 
                          Text="Save Changes" 
                          BackgroundColor="#FFD966"
@@ -303,7 +306,8 @@
                          CornerRadius="5"
                          FontSize="20" 
                          HorizontalOptions="Center"
-                         WidthRequest="150"/>
+                         WidthRequest="150"
+                         Clicked="SaveButton_Clicked"/>
                     <Button  
                          x:Name="noteButton"
                          Grid.Row="1" 
@@ -328,7 +332,6 @@
                          HorizontalOptions="Center"
                          WidthRequest="150"
                         Clicked="LocationButton_Clicked"/>
-                    <!--Clicked="LocationButton_Clicked"-->
                 </StackLayout>
 
                 <!--Note history popup box-->
@@ -390,7 +393,7 @@
                                 <Picker x:Name="noteCategoryPicker" Margin="5,5,5,5"/>
 
                                 <Label Text="Note" FontSize="20" Margin="5,5,5,5"/>
-                                <Editor x:Name="notEditor" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+                                <Editor x:Name="noteEditor" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
 
                                 <Button
                                     x:Name="addNoteButton"
@@ -460,11 +463,14 @@
                                     <Button x:Name="addNewLocationExitButton" Style="{StaticResource exitStyle}" Clicked="AddNewLocationExitButton_Clicked"/>
                                 </StackLayout>
 
+                                <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
+                                <DatePicker x:Name="locationDatePicker" Margin="5,5,5,5"/>
+
                                 <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>
                                 <Picker x:Name="locationCategoryPicker" Margin="5,5,5,5"/>
 
                                 <Label Text="Location" FontSize="20" Margin="5,5,5,5"/>
-                                <Editor x:Name="locationEditor" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+                                <Entry x:Name="locationEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
 
                                 <Button
                                     x:Name="addLocationButton"
@@ -483,11 +489,7 @@
                 </ContentView>
 
             </Grid>
-            
-            
 
-           
-            
         </ScrollView>
     </ContentPage.Content>
    

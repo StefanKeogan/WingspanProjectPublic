@@ -1,8 +1,11 @@
-﻿using System;
+﻿using MongoDB.Bson;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WingspanPrototype1.Controller.Members;
+using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -12,45 +15,41 @@ namespace WingspanPrototype1.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MemberResultsMobile2 : ContentPage
     {
+        private List<Entry> entries = new List<Entry>();
+        private Editor editor;
+        private DatePicker date;
+        private ObjectId id;
+
         public MemberResultsMobile2(Member member)
         {
             InitializeComponent();
 
             DisplayMember(member);
+
+            id = member._id;
         }
 
         private void DisplayMember(Member member)
         {
-            //// Member Id
-            //if ((member._id != string.Empty) && (member._id != null))
-            //{
-            //    memberIdValueLabel.Text = member._id;
-            //    memberIdStack.IsVisible = true;
-            //    memberIdEntry.IsVisible = false;
-            //}
-            //else
-            //{
-            //    memberIdEntry.IsVisible = true;
-            //    memberIdStack.IsVisible = false;
-
-            //}
 
             // First Name
-            if ((member.FirstName != string.Empty) && (member.FirstName != null))
+            if (Validate.FeildPopulated(member.FirstName))
             {
+
                 memberFirstNameValueLabel.Text = member.FirstName;
                 memberFirstNameStack.IsVisible = true;
                 memberFirstNameEntry.IsVisible = false;
             }
             else
             {
-                memberFirstNameValueLabel.IsVisible = true;
+                memberFirstNameEntry.IsVisible = true;
                 memberFirstNameStack.IsVisible = false;
+                entries.Add(memberFirstNameEntry);
 
             }
 
             // Last Name
-            if ((member.LastName != string.Empty) && (member.LastName != null))
+            if (Validate.FeildPopulated(member.LastName))
             {
                 memberLastNameValueLabel.Text = member.LastName;
                 memberLastNameStack.IsVisible = true;
@@ -60,11 +59,12 @@ namespace WingspanPrototype1.View
             {
                 memberLastNameEntry.IsVisible = true;
                 memberLastNameStack.IsVisible = false;
+                entries.Add(memberLastNameEntry);
 
             }
 
             // Salutation Name
-            if ((member.SalutationName != string.Empty) && (member.SalutationName != null))
+            if (Validate.FeildPopulated(member.SalutationName))
             {
                 memberSalutationValueLabel.Text = member.SalutationName;
                 memberSalutationStack.IsVisible = true;
@@ -74,11 +74,12 @@ namespace WingspanPrototype1.View
             {
                 memberSalutationEntry.IsVisible = true;
                 memberSalutationStack.IsVisible = false;
+                entries.Add(memberSalutationEntry);
 
             }
 
             // Email
-            if ((member.Email != string.Empty) && (member.Email != null))
+            if (Validate.FeildPopulated(member.Email))
             {
                 memberEmailValueLabel.Text = member.Email;
                 memberEmailStack.IsVisible = true;
@@ -88,11 +89,12 @@ namespace WingspanPrototype1.View
             {
                 memberEmailEntry.IsVisible = true;
                 memberEmailStack.IsVisible = false;
+                entries.Add(memberEmailEntry);
 
             }
 
             // Company 
-            if ((member.Company != string.Empty) && (member.Company != null))
+            if (Validate.FeildPopulated(member.Company))
             {
                 memberCompanyValueLabel.Text = member.Company;
                 memberCompanyStack.IsVisible = true;
@@ -102,11 +104,12 @@ namespace WingspanPrototype1.View
             {
                 memberCompanyEntry.IsVisible = true;
                 memberCompanyStack.IsVisible = false;
+                entries.Add(memberCompanyEntry);
 
             }
 
             // Address 1
-            if ((member.Address1 != string.Empty) && (member.Address1 != null))
+            if (Validate.FeildPopulated(member.Address1))
             {
                 memberAddress1ValueLabel.Text = member.Address1;
                 memberAddress1Stack.IsVisible = true;
@@ -116,11 +119,12 @@ namespace WingspanPrototype1.View
             {
                 memberAddress1Entry.IsVisible = true;
                 memberAddress1Stack.IsVisible = false;
+                entries.Add(memberAddress1Entry);
 
             }
 
             // Address 2
-            if ((member.Address2 != string.Empty) && (member.Address2 != null))
+            if (Validate.FeildPopulated(member.Address2))
             {
                 memberAddress2ValueLabel.Text = member.Address2;
                 memberAddress2Stack.IsVisible = true;
@@ -130,11 +134,12 @@ namespace WingspanPrototype1.View
             {
                 memberAddress2Entry.IsVisible = true;
                 memberAddress2Stack.IsVisible = false;
+                entries.Add(memberAddress2Entry);
 
             }
 
             // Address 3
-            if ((member.Address3 != string.Empty) && (member.Address3 != null))
+            if (Validate.FeildPopulated(member.Address3))
             {
                 memberAddress3ValueLabel.Text = member.Address3;
                 memberAddress3Stack.IsVisible = true;
@@ -144,11 +149,12 @@ namespace WingspanPrototype1.View
             {
                 memberAddress3Entry.IsVisible = true;
                 memberAddress3Stack.IsVisible = false;
+                entries.Add(memberAddress3Entry);
 
             }
 
             // City
-            if ((member.City != string.Empty) && (member.City != null))
+            if (Validate.FeildPopulated(member.City))
             {
                 memberCityValueLabel.Text = member.City;
                 memberCityStack.IsVisible = true;
@@ -158,11 +164,12 @@ namespace WingspanPrototype1.View
             {
                 memberCityEntry.IsVisible = true;
                 memberCityStack.IsVisible = false;
+                entries.Add(memberCityEntry);
 
             }
 
             // Postcode
-            if ((member.Postcode != string.Empty) && (member.Postcode != null))
+            if (Validate.FeildPopulated(member.Postcode))
             {
                 memberPostCodeValueLabel.Text = member.Postcode;
                 memberPostCodeStack.IsVisible = true;
@@ -172,11 +179,27 @@ namespace WingspanPrototype1.View
             {
                 memberPostCodeEntry.IsVisible = true;
                 memberPostCodeStack.IsVisible = false;
+                entries.Add(memberPostCodeEntry);
+
+            }
+
+            // Country
+            if (Validate.FeildPopulated(member.Country))
+            {
+                memberCountryValueLabel.Text = member.Country;
+                memberCountryStack.IsVisible = true;
+                memberCountryEntry.IsVisible = false;
+            }
+            else
+            {
+                memberCountryEntry.IsVisible = true;
+                memberCountryStack.IsVisible = false;
+                entries.Add(memberCountryEntry);
 
             }
 
             // Comment
-            if ((member.Comment != string.Empty) && (member.Comment != null))
+            if (Validate.FeildPopulated(member.Comment))
             {
                 memberCommentValueLabel.Text = member.Comment;
                 memberCommentStack.IsVisible = true;
@@ -189,37 +212,10 @@ namespace WingspanPrototype1.View
 
             }
 
-            // Join Date
-            if (member.JoinDate.ToString() == "1/01/0001 12:00:00 AM")
-            {
-                memberJoinDateValueLabel.Text = member.JoinDate.ToString();
-                memberJoinDateStack.IsVisible = true;
-                memberJoinDatePicker.IsVisible = false;
-            }
-            else
-            {
-                memberJoinDatePicker.IsVisible = true;
-                memberJoinDateValueLabel.IsVisible = false;
+            memberJoinDateValueLabel.Text = member.JoinDate.ToString();
+            memberJoinDateStack.IsVisible = true;
+            memberJoinDatePicker.IsVisible = false;
 
-            }
-
-            // Set member donation history TODO connect to database
-            paymentListView.ItemsSource = new List<Payment> { new Payment { Date = DateTime.Today, Amount = 100 } };
-
-
-
-
-        }
-
-        // Save changes to this member 
-        private async void SaveChangesButton_Clicked(object sender, EventArgs e)
-        {
-            bool answer = await DisplayAlert("Are you sure?", "Would you like to save chnages to this member", "Yes", "No");
-
-            if (answer)
-            {
-                await DisplayAlert("Member Saved", "Changes to this member have been saved", "Ok");
-            }
         }
 
         // Delte this member
@@ -229,18 +225,57 @@ namespace WingspanPrototype1.View
 
             if (answer)
             {
-                await DisplayAlert("Member Deleted", "This member and their payment history have been delted", "Ok");
+                if (DeleteMember.DropDocument(id))
+                {
+                    await DisplayAlert("Member Deleted", "This member and their payment history have been delted", "OK");
+
+                    await Navigation.PopAsync();
+
+                }
+                else
+                {
+                    await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
+                }
+
             }
             else
             {
                 return;
             }
 
+        }
+
+
+        // Save changes to this member 
+        private async void SaveChangesButton_Clicked(object sender, EventArgs e)
+        {
+            bool answer = await DisplayAlert("Are you sure?", "Would you like to save chnages to this member", "Yes", "No");
+
+            if (answer)
+            {
+                Member updatedMember = UpdateMember.UpdateDocument(id, entries, editor, date);
+                if (updatedMember != null)
+                {
+                    updatedMember.FirstName = FormatText.FirstToUpper(updatedMember.FirstName);
+                    updatedMember.LastName = FormatText.FirstToUpper(updatedMember.LastName);
+                    updatedMember.SalutationName = FormatText.FirstToUpper(updatedMember.SalutationName);
+
+                    DisplayMember(updatedMember);
+                    await DisplayAlert("Member Saved", "Changes to this member have been saved", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Connection Error", "Could not connect to database, please check your connection and try again", "OK");
+                }
+
+            }
 
         }
 
         private void PaymentButton_Clicked(object sender, EventArgs e)
         {
+            // Find payments that belong to that member 
+            paymentListView.ItemsSource = FindMembersPayments.GetPaymentDocuments(id);
             paymentHistoryView.IsVisible = true;
         }
 
@@ -259,11 +294,66 @@ namespace WingspanPrototype1.View
             paymentHistoryView.IsVisible = false;
         }
 
-        private void AddPaymentButton_Clicked(object sender, EventArgs e)
+        // Adds payment to database 
+        private async void AddPaymentButton_Clicked(object sender, EventArgs e)
         {
-            DisplayAlert("Payment Added", "This members donation has been recorded", "Ok");
 
-            addNewPaymentView.IsVisible = false;
+
+            // Validate payment amount feild 
+            if (Validate.FeildPopulated(paymentAmountEntry.Text))
+            {
+                if (Validate.ContainsLetter(paymentAmountEntry.Text))
+                {
+                    await DisplayAlert("Invalid Format", "The can not contain letters", "OK");
+                    return;
+                }
+            }
+            else
+            {
+                await DisplayAlert("Feild Empty", "Please fill in the amount feild to continue", "OK");
+                return;
+            }
+
+            // Add payment to database 
+            if (AddPayment.InsertPaymentDocument(id, new Payment { Date = paymentDatePicker.Date, Amount = Convert.ToDouble(paymentAmountEntry.Text), Member_id = id }))
+            {
+                await DisplayAlert("Payment Added", "This members donation has been recorded", "OK");
+                paymentListView.ItemsSource = FindMembersPayments.GetPaymentDocuments(id);
+                addNewPaymentView.IsVisible = false;
+            }
+            else
+            {
+                await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
+            }
+
+
+        }
+
+        private async void PaymentListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
+        {
+            bool result = await DisplayAlert("Delete Payment?", "Would you like to delete this payment item?", "Yes", "No");
+
+            // If yes has been selected
+            if (result)
+            {
+                // Store selected list item
+                var item = e.SelectedItem as Payment;
+
+                // If item is not null
+                if (item != null)
+                {
+                    // Delete locattion document
+                    if (DeletePayment.DropDocument(item._id))
+                    {
+                        await DisplayAlert("Payment Deleted", "This payment has been deleted", "OK");
+                        paymentListView.ItemsSource = FindMembersPayments.GetPaymentDocuments(id);
+                    }
+                    else
+                    {
+                        await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
+                    }
+                }
+            }
         }
     }
 }

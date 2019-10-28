@@ -17,6 +17,15 @@
                 <Setter Property="FontSize" Value="20"/>
             </Style>
 
+            <Style x:Key="mainImageButtonStyle" TargetType="ImageButton">
+                <Setter Property="BorderColor" Value="#5C3838"/>
+                <Setter Property="BackgroundColor" Value="#FFD966"/>
+                <Setter Property="BorderWidth" Value="3"/>
+                <Setter Property="CornerRadius" Value="5"/>
+                <Setter Property="Margin" Value="5,5,5,5"/>
+                <Setter Property="WidthRequest" Value="50"/>
+            </Style>
+
             <Style x:Key="feildStyle" TargetType="Entry">
                 <Setter Property="WidthRequest" Value="450"/>
                 <Setter Property="HorizontalOptions" Value="StartAndExpand"/>

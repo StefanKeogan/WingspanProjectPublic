@@ -110,6 +110,7 @@
     <Content Include="Assets\gold-logo.png" />
     <Content Include="Assets\home-mobile.png" />
     <Content Include="Assets\mpprofile.PNG" />
+    <Content Include="Assets\search-icon.png" />
     <Content Include="Assets\tablet-home.png" />
     <Content Include="Assets\watermark-logo.png" />
     <Content Include="Properties\Default.rd.xml" />

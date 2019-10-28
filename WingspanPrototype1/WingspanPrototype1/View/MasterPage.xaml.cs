@@ -38,7 +38,7 @@ namespace WingspanPrototype1
             }
             else
             {
-                menuItems.Add(new MasterPageItem { Title = "Add Bird Note", TargetType = typeof(AddBirdNote) });
+                menuItems.Add(new MasterPageItem { Title = "Add Bird Note", TargetType = typeof(AddBirdNoteDesktop) });
             }
 
            

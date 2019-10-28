@@ -8,23 +8,28 @@
 
     <ContentPage.Content>
 
-        <StackLayout>
+        <StackLayout BackgroundColor="#F0F0F0">
             <StackLayout Orientation="Horizontal" BackgroundColor="#F0F0F0" HorizontalOptions="FillAndExpand">
-                <Label Text="Volunteer Id" FontSize="20" VerticalOptions="Center" Margin="10,5,5,5"/>
-                <Entry x:Name="volunteerIdEntry" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="10,5,5,5"/>
+                <Label Text="First Name" FontSize="20" VerticalOptions="Center" Margin="10,5,5,5"/>
+                <Entry x:Name="volunteerFirstNameEntry" VerticalOptions="Center" HorizontalOptions="FillAndExpand" Margin="10,5,5,5"/>
+                <ImageButton x:Name="searchButton" Style="{StaticResource mainImageButtonStyle}" Clicked="SearchButton_Clicked"/>
             </StackLayout>
+            
             <ListView x:Name="resultsListView" BackgroundColor="#F0F0F0" Grid.Row="1" ItemSelected="resultsListView_ItemSelected">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="5">
-                                <Label FontSize="20" Text="{Binding VolunteerId}"/>
-                                <Label FontSize="20" Text="{Binding Name}"/>
+                                <Label FontSize="20" Text="{Binding FirstName}"/>
+                                <Label FontSize="20" Text="{Binding LastName}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <ActivityIndicator x:Name="searchingIndicator" Color="#5C3838" WidthRequest="300" BackgroundColor="#F0F0F0" Margin="10,10"/>
+
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

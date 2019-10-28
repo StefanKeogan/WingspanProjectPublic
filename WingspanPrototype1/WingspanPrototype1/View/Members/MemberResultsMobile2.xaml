@@ -113,6 +113,14 @@
                     </StackLayout>
                     <Entry x:Name="memberPostCodeEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="10" Grid.Column="1" IsVisible="False"/>
 
+                    <!--Country-->
+                    <Label x:Name="memberCountryLabel" Text="Post Code" FontSize="20" Grid.Row="10"/>
+                    <StackLayout x:Name="memberCountryStack" Grid.Row="10" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
+                        <Label x:Name="memberCountryValueLabel" Text="GPS" FontSize="20" />
+                        <Button x:Name="memberCountryEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
+                    </StackLayout>
+                    <Entry x:Name="memberCountryEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="10" Grid.Column="1" IsVisible="False"/>
+
                     <!--Comment-->
                     <Label x:Name="memberCommentLabel" Text="Comment" FontSize="20" Grid.Row="11"/>
                     <StackLayout x:Name="memberCommentStack" Grid.Row="11" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
