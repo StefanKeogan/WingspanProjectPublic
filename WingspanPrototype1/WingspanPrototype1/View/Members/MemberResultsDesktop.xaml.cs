@@ -261,7 +261,10 @@ namespace WingspanPrototype1.View
                     await DisplayAlert("Member Deleted", "This member and their payment history have been delted", "OK");
 
                     Member member = memberResults.Find(x => x._id == id);
-                    memberResults.Remove(member);                   
+                    memberResults.Remove(member);
+
+                    addNewPaymentView.IsVisible = false;
+                    paymentHistoryView.IsVisible = false;
 
                     if (memberResults.Count <= 0)
                     {

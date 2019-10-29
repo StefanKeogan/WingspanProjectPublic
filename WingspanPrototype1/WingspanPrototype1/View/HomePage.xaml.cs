@@ -19,8 +19,6 @@ namespace WingspanPrototype1
             Title = title;
 
             // Check device to determine size background image path
-
-
             double size = DeviceSize.ScreenArea();
 
             if (size <= 783457) // If screen area is less than or equal to 7 inches set mobile image
@@ -34,6 +32,10 @@ namespace WingspanPrototype1
                     case Device.UWP:
                         backgroundImage.Source = "Assets/home-mobile.png";
                         logoImage.Source = "gold-logo.png";
+                        break;
+                    case Device.iOS:
+                        backgroundImage.Source = "homemobile.png";
+                        logoImage.Source = "goldlogo.png";
                         break;
                     default:
                         backgroundImage.Source = "";

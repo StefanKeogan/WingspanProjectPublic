@@ -608,12 +608,16 @@ namespace WingspanPrototype1
                     if (DeleteWildBird.DropDocument(id))
                     {
                         await DisplayAlert("Bird Deleted", "This wild bird and location history have been removed from the database", "OK");
-                        await Navigation.PopAsync();
+
+                        addNewNoteView.IsVisible = false;
+                        noteHistoryView.IsVisible = false;
+                        addNewLocationView.IsVisible = false;
+                        locationHistoryView.IsVisible = false;
+
                     }
                     else
                     {
                         await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
-                        await Navigation.PopAsync();
                     }
                 }
                 else if (birdType == typeof(CaptiveBird))
@@ -621,6 +625,10 @@ namespace WingspanPrototype1
                     if (DeleteCaptiveBird.DropDocument(id))
                     {
                         await DisplayAlert("Bird Deleted", "This captive bird, their notes and location history have been removed from the database", "OK");
+                        addNewNoteView.IsVisible = false;
+                        noteHistoryView.IsVisible = false;
+                        addNewLocationView.IsVisible = false;
+                        locationHistoryView.IsVisible = false;
                     }
                     else
                     {
@@ -628,7 +636,6 @@ namespace WingspanPrototype1
                         
                     }
                 }
-
 
             }
         }
