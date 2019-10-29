@@ -49,6 +49,13 @@ namespace WingspanPrototype1.View.Volunteers
 
                         allFeildsValid = false;
                     }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+                            firstNameError.IsVisible = false;
+                        });
+                    }
                 }
                 else
                 {
@@ -78,11 +85,19 @@ namespace WingspanPrototype1.View.Volunteers
                             lastNameError.IsVisible = false;
                         });
                     }
+                    
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        lastNameError.IsVisible = false;
+                    });
                 }
 
                 if (Validate.FeildPopulated(volunteerMobileEntry.Text))
                 {
-                    if (Validate.ContainsNumberOrSymbol(volunteerMobileEntry.Text))
+                    if (Validate.ContainsLetterOrSymbol(volunteerMobileEntry.Text))
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
@@ -98,6 +113,13 @@ namespace WingspanPrototype1.View.Volunteers
                             mobileError.IsVisible = false;
                         });
                     }
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        mobileError.IsVisible = false;
+                    });
                 }
 
                 // Email 
@@ -118,6 +140,13 @@ namespace WingspanPrototype1.View.Volunteers
                             emailError.IsVisible = false;
                         });
                     }
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        emailError.IsVisible = false;
+                    });
                 }
 
                 if ((!Validate.FeildPopulated(volunteerMobileEntry.Text)) && (!Validate.FeildPopulated(volunteerEmailEntry.Text)))

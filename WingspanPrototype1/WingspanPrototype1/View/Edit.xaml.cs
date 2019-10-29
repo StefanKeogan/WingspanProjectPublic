@@ -203,7 +203,6 @@ namespace WingspanPrototype1
                     }
 
                     searchingIndicator.IsRunning = true;
-                    searchButton.IsVisible = false;
 
                     // Run search on another thread
                     Task.Run(() => {
@@ -236,9 +235,7 @@ namespace WingspanPrototype1
                                 DisplayAlert("No Members Found", "That member could not be found", "OK");                               
                             }
 
-
                             searchingIndicator.IsRunning = false;
-                            // searchButton.IsVisible = true;
 
                         });
 
@@ -422,7 +419,6 @@ namespace WingspanPrototype1
                     }
 
                     searchingIndicator.IsRunning = true;
-                    // searchButton.IsVisible = false;
 
 
                     Task.Run(() => {
@@ -452,7 +448,6 @@ namespace WingspanPrototype1
                             }
 
                             searchingIndicator.IsRunning = false;
-                            // searchButton.IsVisible = true;
 
                         });
 

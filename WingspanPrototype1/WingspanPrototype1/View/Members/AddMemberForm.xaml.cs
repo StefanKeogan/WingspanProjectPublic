@@ -33,9 +33,7 @@ namespace WingspanPrototype1.View
 
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
-            searchingIndicator.IsEnabled = true;
-            searchingIndicator.IsVisible = true;
-            searchingIndicator.IsRunning = true;
+            addingIndicator.IsRunning = true;
 
             bool allFeildsValid = true;
 
@@ -54,6 +52,14 @@ namespace WingspanPrototype1.View
                         
                         allFeildsValid = false;
                     }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            firstNameError.IsVisible = false;
+                        });
+
+                    }
                 }
                 else
                 {
@@ -69,7 +75,7 @@ namespace WingspanPrototype1.View
                 // Last Name Validation
                 if (Validate.FeildPopulated(memberLastNameEntry.Text))
                 {
-                    if (Validate.ContainsNumberOrSymbol(memberFirstNameEntry.Text))
+                    if (Validate.ContainsNumberOrSymbol(memberLastNameEntry.Text))
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
@@ -86,11 +92,18 @@ namespace WingspanPrototype1.View
                     }
 
                 }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        lastNameError.IsVisible = false;
+                    });
+                }
 
                 // Salutation Name Validation
-                if (Validate.FeildPopulated(memberLastNameEntry.Text))
+                if (Validate.FeildPopulated(memberSalutationNameEntry.Text))
                 {
-                    if (Validate.ContainsNumberOrSymbol(memberLastNameEntry.Text))
+                    if (Validate.ContainsNumberOrSymbol(memberSalutationNameEntry.Text))
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
@@ -107,19 +120,41 @@ namespace WingspanPrototype1.View
                         });
                     }
                 }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        salutationNameError.IsVisible = false;
+                    });
+                }
 
                 // Email Name Validation
                 if (Validate.FeildPopulated(memberEmailEntry.Text))
                 {
                     if (Validate.EmailFormatValid(memberEmailEntry.Text))
                     {
-                        emailError.IsVisible = false;
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+                            emailError.IsVisible = false ;
+                        });
+                        
                     }
                     else
                     {
-                        emailError.IsVisible = true;
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            emailError.IsVisible = true;
+                        });
                     }
                 }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        emailError.IsVisible = false;
+                    });
+                }
+
 
                 // City 
                 if (Validate.FeildPopulated(memberCityEntry.Text))
@@ -140,6 +175,13 @@ namespace WingspanPrototype1.View
                             cityError.IsVisible = false;
                         });
                     }
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        cityError.IsVisible = false;
+                    });
                 }
 
                 // Postcode 
@@ -163,6 +205,14 @@ namespace WingspanPrototype1.View
                         });
                     }
                 }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        postcodeError.IsVisible = false;
+
+                    });
+                }
 
                 // Country 
                 if (Validate.FeildPopulated(memberCountryEntry.Text))
@@ -183,6 +233,13 @@ namespace WingspanPrototype1.View
                             countryError.IsVisible = false;
                         });
                     }
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        countryError.IsVisible = false;
+                    });
                 }
 
                 if (allFeildsValid)
@@ -228,7 +285,7 @@ namespace WingspanPrototype1.View
 
                         }
 
-                        searchingIndicator.IsEnabled = false;
+                        addingIndicator.IsRunning = false;
                     });
 
 
@@ -239,7 +296,7 @@ namespace WingspanPrototype1.View
 
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        searchingIndicator.IsEnabled = false;
+                        addingIndicator.IsRunning = false;
                     });
                 }
 

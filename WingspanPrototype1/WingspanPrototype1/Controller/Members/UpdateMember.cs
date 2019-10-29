@@ -48,7 +48,7 @@ namespace WingspanPrototype1.Controller.Members
                                     if (entry.StyleId == "memberAddress2Entry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Address2", entry.Text));
                                     if (entry.StyleId == "memberAddress3Entry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Address3", entry.Text));
                                     if (entry.StyleId == "memberCityEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("City", entry.Text));
-                                    if (entry.StyleId == "memberPostCodeEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("PostCode", entry.Text));
+                                    if (entry.StyleId == "memberPostCodeEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Postcode", entry.Text));
                                     if (entry.StyleId == "memberCountryEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Country", entry.Text));
 
                                 }

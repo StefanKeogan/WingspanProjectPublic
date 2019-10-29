@@ -46,7 +46,7 @@ namespace WingspanPrototype1.View
 
             await Task.Run(() =>
             {
-                if (categoryPicker.SelectedIndex != -1)
+                if (categoryPicker.SelectedIndex == -1)
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
@@ -153,8 +153,6 @@ namespace WingspanPrototype1.View
                 {
                     searchingIndicator.IsRunning = false;
                 });
-
-
 
 
             });

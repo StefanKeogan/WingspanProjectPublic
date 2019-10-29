@@ -32,7 +32,7 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" x:Name="resultsView" IsVisible="False">
+            <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" x:Name="resultsView" IsVisible="False" WidthRequest="600">
                 <Grid HorizontalOptions="Center" HeightRequest="150">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*"/>
@@ -150,7 +150,7 @@
             </ContentView>
 
             <!--Log Hours-->
-            <ContentView x:Name="logHoursView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600">
+            <ContentView x:Name="logHoursView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="450">
                 <ContentView.Content>
                     <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
                         <StackLayout BackgroundColor="#FFFFFF">

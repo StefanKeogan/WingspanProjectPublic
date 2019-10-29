@@ -398,7 +398,7 @@
                 </ContentView>
                 
                 <!--Add Note Popup-->
-                <ContentView x:Name="addNewNoteView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600">
+                <ContentView x:Name="addNewNoteView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="450">
                     <ContentView.Content>
                         <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
                             <StackLayout BackgroundColor="#FFFFFF">
@@ -467,7 +467,7 @@
                 </ContentView>
                 
                 <!--Add new location popup-->
-                <ContentView x:Name="addNewLocationView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600">
+                <ContentView x:Name="addNewLocationView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="450">
                     <ContentView.Content>
                         <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
                             <StackLayout BackgroundColor="#FFFFFF" >

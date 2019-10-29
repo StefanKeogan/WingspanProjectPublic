@@ -60,7 +60,14 @@ namespace WingspanPrototype1
                 menuItems.Add(new MasterPageItem { Title = "Log Volunteer Hours", TargetType = typeof(LogVolunteerHoursDesktop) });
             }
 
-            menuItems.Add(new MasterPageItem { Title = "Report Builder", TargetType = typeof(ReportBuilderDesktop) }) ;
+            if (DeviceSize.ScreenArea() <= 783457) // If the device screen is smaller than 7 inches
+            {
+                menuItems.Add(new MasterPageItem { Title = "Report Builder", TargetType = typeof(ReportBuilderMobile1) });
+            }
+            else
+            {
+                menuItems.Add(new MasterPageItem { Title = "Report Builder", TargetType = typeof(ReportBuilderDesktop) });               
+            }
 
             menuList = MenuList; // Assign MenuList to object (Makes the listview acessible from MainPage)
 

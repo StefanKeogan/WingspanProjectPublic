@@ -53,7 +53,7 @@ namespace WingspanPrototype1
             // What type of bird are we adding?
             if (Title == "New Wild Bird")
             {
-                searchingIndicator.IsRunning = true;
+                addingIndicator.IsRunning = true;
 
                 bool allFeildsValid = true;
 
@@ -130,14 +130,19 @@ namespace WingspanPrototype1
                             });
                         }
                     }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            wildBandIdError.IsVisible = false;
+
+                        });
+                    }
 
                     // Bander Name
                     if (Validate.FeildPopulated(wildBanderNameEntry.Text))
                     {
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            wildBanderNameError.IsVisible = false;
-                        });
+                        
 
                         if (Validate.ContainsNumberOrSymbol(wildBanderNameEntry.Text))
                         {
@@ -149,19 +154,41 @@ namespace WingspanPrototype1
 
                             allFeildsValid = false;
                         }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                wildBanderNameError.IsVisible = false;
+                            });
+                        }
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            wildBanderNameError.IsVisible = false;
+                        });
                     }
 
                     if (allFeildsValid)
                     {
-                        // TODO Dynamic wild bird object 
+
+                        string species = null;
+                        string sex = null;
+                        string age = null;
+
+                        if (wildSpeciesPicker.SelectedIndex != -1) species = wildSpeciesPicker.SelectedItem.ToString();
+                        if (wildAgePicker.SelectedIndex != -1) age = wildAgePicker.SelectedItem.ToString();
+                        if (wildSexPicker.SelectedIndex != -1) sex = wildSexPicker.SelectedItem.ToString();
+
                         // Insert record, return outcome
                         bool inserted = AddWildBird.InsertWildBirdDocumnet(new WildBird
                         {
                             WingspanId = GenerateWildWingspanId.NewId(),
-                            Species = wildSpeciesPicker.SelectedItem.ToString(),
+                            Species = species,
                             Location = wildLocationEntry.Text,
-                            Age = wildAgePicker.SelectedItem.ToString(),
-                            Sex = wildSexPicker.SelectedItem.ToString(),
+                            Age = age,
+                            Sex = sex,
                             MetalBand = wildMetalBandIdEntry.Text,
                             BandInfo = wildBandInfoEntry.Text,
                             Gps = wildGpsEntry.Text,
@@ -193,14 +220,20 @@ namespace WingspanPrototype1
                                 DisplayAlert("Connenction Error", "Could not connect to database please check connection and try again", "OK");
                             }
 
-                        });
+                            addingIndicator.IsRunning = false;
 
-                        searchingIndicator.IsRunning = false;
+                        });                      
                         
                     }
                     else
                     {
                         allFeildsValid = true;
+
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+                            addingIndicator.IsRunning = false;
+                        });
+
                     }
 
                 });               
@@ -208,7 +241,7 @@ namespace WingspanPrototype1
             }
             else if (Title == "New Captive Bird")
             {
-                searchingIndicator.IsRunning = true;
+                addingIndicator.IsRunning = true;
 
                 bool allFeildsValid = true;
 
@@ -239,7 +272,12 @@ namespace WingspanPrototype1
                     }
                     else
                     {
-                        captiveNameError.IsVisible = false;
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            captiveNameError.IsVisible = false;
+                        });
+
+                            
                     }
 
                     // Band number
@@ -278,6 +316,13 @@ namespace WingspanPrototype1
                         });                       
                         allFeildsValid = false;
                     }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            captiveSpeciesError.IsVisible = false;
+                        });
+                    }
 
                     // Sex
                     if (captiveSexPicker.SelectedIndex == -1)
@@ -288,6 +333,13 @@ namespace WingspanPrototype1
                         });
                             
                         allFeildsValid = false;
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            captiveSexError.IsVisible = false;
+                        });
                     }
 
 
@@ -302,6 +354,20 @@ namespace WingspanPrototype1
                             });                            
                             allFeildsValid = false;
                         }
+                        else
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                captiveLocationError.IsVisible = false;
+                            });
+                        }
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            captiveLocationError.IsVisible = false;
+                        });
                     }
 
                     if (allFeildsValid)
@@ -375,7 +441,7 @@ namespace WingspanPrototype1
                                 }
                             }
 
-                            searchingIndicator.IsRunning = false;
+                            addingIndicator.IsRunning = false;
 
                         });
 
@@ -387,12 +453,11 @@ namespace WingspanPrototype1
 
                         Device.BeginInvokeOnMainThread(() => 
                         {
-                            searchingIndicator.IsRunning = false;
+                            addingIndicator.IsRunning = false;
                         });
 
                         return;
 
-                        
                     }
 
                 });

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.View.Reports.ReportBuilderMobile1">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="reportPickerStyle" TargetType="Picker">
+                <Setter Property="HorizontalOptions" Value="Fill"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+            </Style>
+
+            <Style x:Key="reportLabelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="VerticalOptions" Value="Center"/>
+                <Setter Property="HorizontalOptions" Value="Start"/>
+            </Style>
+
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".6*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height=".6*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height=".6*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height=".6*"/>
+                <RowDefinition Height="1*"/>
+
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <Label Text="Collection" Style="{StaticResource reportLabelStyle}"/>
+            <Label Text="Condition" Style="{StaticResource reportLabelStyle}" Grid.Row="2"/>
+            <Label Text="From" Style="{StaticResource reportLabelStyle}" Grid.Row="4"/>
+            <Label Text="To" Style="{StaticResource reportLabelStyle}" Grid.Row="6"/>
+
+            <Picker x:Name="collectionPicker" Style="{StaticResource reportPickerStyle}" SelectedIndexChanged="collectionPicker_SelectedIndexChanged" Grid.Row="1">
+                <Picker.ItemsSource>
+                    <x:Array Type="{x:Type x:String}">
+                        <x:String>Wild Birds</x:String>
+                        <x:String>Captive Birds</x:String>
+                        <x:String>Members</x:String>
+                        <x:String>Volunteers</x:String>
+                    </x:Array>
+                </Picker.ItemsSource>
+            </Picker>
+
+            <Picker x:Name="conditionPicker" Style="{StaticResource reportPickerStyle}" Grid.Row="3"/>
+            <DatePicker x:Name="fromDatePicker" Style="{StaticResource reportPickerStyle}" Grid.Row="5"/>
+            <DatePicker x:Name="toDatePicker" Style="{StaticResource reportPickerStyle}" Grid.Row="7"/>
+
+            <Button Text="Generate Report" WidthRequest="170" Style="{StaticResource mainButtonStyle}" Grid.Row="8" Clicked="buildReportButton_Clicked"/>
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

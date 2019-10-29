@@ -238,7 +238,7 @@
                 WidthRequest="150"
                 Clicked="AddButton_Clicked"/>
 
-            <ActivityIndicator x:Name="searchingIndicator" Color="#5C3838" WidthRequest="300" Margin="30,30"/>
+            <ActivityIndicator x:Name="addingIndicator" Color="#5C3838" WidthRequest="300" Margin="30,30"/>
 
             </StackLayout>
         </ScrollView>

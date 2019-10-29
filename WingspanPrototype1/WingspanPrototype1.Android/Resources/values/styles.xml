@@ -25,6 +25,9 @@
     <item name="android:datePickerDialogTheme">@style/AppCompatDialogStyle</item>
   </style>
 
+  <color name="ListViewSelected">#5C3838</color>
+  <color name="ListViewHighlighted">#5C3838</color>
+
   <style name="AppCompatDialogStyle" parent="Theme.AppCompat.Light.Dialog">
     <item name="colorAccent">#5C3838</item>
   </style>
