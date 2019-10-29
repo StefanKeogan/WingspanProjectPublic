@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WingspanPrototype1.Model;
+using WingspanPrototype1.View;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -13,7 +14,7 @@ namespace WingspanPrototype1.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SelectMemberResultsDesktop : ContentPage
 	{
-		public SelectMemberResultsDesktop (List<Member> results)
+        public SelectMemberResultsDesktop (List<Member> results)
 		{
 			InitializeComponent ();
             resultsListView.ItemsSource = results;
@@ -29,6 +30,7 @@ namespace WingspanPrototype1.View
                 //display the results once an item is selected from the list
                 selectMemberResultsGrid.IsVisible = true;
             }
+          
         }
 
         private void DisplayMember(Member member)
@@ -87,7 +89,20 @@ namespace WingspanPrototype1.View
             {
                 selectMemberCommentsValueLabel.IsVisible = false;
             }
+
+            //set these variables for this member
+            SetSponsorDetails(member);
+            
         }
+
+        //set 'global' variables for sponsorship
+        private void SetSponsorDetails(Member member)
+        {
+            SponsorshipInfo.thisFirstName = member.FirstName;
+            SponsorshipInfo.thisLastName = member.LastName;
+            SponsorshipInfo.thisCompany = member.Company;
+        }
+
 
         //button to update using this member 
         private async void ThisMemberButton_Clicked(object sender, EventArgs e)

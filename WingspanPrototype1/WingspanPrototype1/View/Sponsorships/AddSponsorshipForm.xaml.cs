@@ -12,6 +12,16 @@ using WingspanPrototype1.Controller.Sponsorships;
 
 namespace WingspanPrototype1
 {
+    //public variables for the select member/bird classes to access and set
+    public static class SponsorshipInfo
+    {
+        public static string thisFirstName;
+        public static string thisLastName;
+        public static string thisCompany;
+        public static string thisWingspanID;
+    }
+
+
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSponsorshipForm : ContentPage
     {
@@ -77,12 +87,41 @@ namespace WingspanPrototype1
                 allFieldsValid = false;
             }
 
+            //assign selected sponsor name fields
+            selectedSponsorFirstNameValueLabel.Text = SponsorshipInfo.thisFirstName;
+            selectedSponsorLastNameValueLabel.Text = SponsorshipInfo.thisLastName;
+            selectedSponsorCompanyValueLabel.Text = SponsorshipInfo.thisCompany;
+
+            //check that at least one field is filled in
+            if ((selectedSponsorFirstNameValueLabel.Text == null) && (selectedSponsorLastNameValueLabel.Text == null) && (selectedSponsorCompanyValueLabel.Text == null))
+            {
+                sponsorNameError1.IsVisible = true;
+                sponsorNameError2.IsVisible = true;
+                sponsorNameError3.IsVisible = true;
+                allFieldsValid = false;
+            }
+
+
             //to be sponsored
             if (sponsoredBirdSelector.SelectedIndex == -1)
             {
                 selectBirdError.IsVisible = true;
                 allFieldsValid = false;
             }
+
+            //assign Wingspan ID of selected bird, if it is not already "Other"
+            if (!selectedWingspanIdValueLabel.Text.Equals("Other"))
+            {
+                selectedWingspanIdValueLabel.Text = SponsorshipInfo.thisWingspanID;
+            }
+
+            //make sure there is a Wingspan ID or "Other" displayed 
+            if (selectedWingspanIdValueLabel.Text == null)
+            {
+                selectBirdIDError.IsVisible = true;
+                allFieldsValid = false;
+            }
+
 
             //sponsorship level
             if (levelSelector.SelectedIndex == -1)
@@ -91,6 +130,7 @@ namespace WingspanPrototype1
                 allFieldsValid = false;
             }
 
+            
             if (allFieldsValid)
             {
                 bool sponsorshipInserted = AddSponsorship.InsertSponsorshipDocument(new Sponsorship
@@ -98,19 +138,27 @@ namespace WingspanPrototype1
                     WingspanId = selectedWingspanIdValueLabel.Text,
                     SponsorshipCategory = levelSelector.SelectedItem.ToString(),
                     SponsorshipNotes = sponsorshipNotesEditor.Text,
-                    //FirstName = the data brought back
-                    //LastName = the data brought back
-                    //Company = data brought back
+                    FirstName = selectedSponsorFirstNameValueLabel.Text,
+                    LastName = selectedSponsorLastNameValueLabel.Text,
+                    Company = selectedSponsorCompanyValueLabel.Text,
                     SponsorshipStart = startDateSelector.Date,
                     SponsorshipEnd = endDateSelector.Date
                 });
 
                 if (sponsorshipInserted)
                 {
-                    selectedSponsorNameValueLabel.Text = null;
+                    selectedSponsorFirstNameValueLabel.Text = null;
+                    selectedSponsorLastNameValueLabel.Text = null;
+                    selectedSponsorCompanyValueLabel.Text = null;
                     selectedWingspanIdValueLabel.Text = null;
                     levelSelector.SelectedItem = null;
                     sponsorshipNotesEditor.Text = null;
+
+                    //make 'global' variables null as well
+                    SponsorshipInfo.thisFirstName = null;
+                    SponsorshipInfo.thisLastName = null;
+                    SponsorshipInfo.thisCompany = null;
+                    SponsorshipInfo.thisWingspanID = null;
 
                     await DisplayAlert("Sponsorship Added", "Sponsorship document inserted into the database", "OK");
                 }
