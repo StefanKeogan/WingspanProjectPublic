@@ -124,6 +124,9 @@ namespace WingspanPrototype1.View
             {
                 selectBandInfoValueLabel.IsVisible = false;
             }
+
+            //set these variables for this bird
+            SetWildBirdDetails(bird);
         }
 
 
@@ -202,6 +205,21 @@ namespace WingspanPrototype1.View
                 selectCaptiveAgeValueLabel.IsVisible = false;
             }
 
+            //set these variables for this bird
+            SetCaptiveBirdDetails(bird);
+        }
+
+
+        //set 'global' variable for captive sponsorship
+        private void SetCaptiveBirdDetails(CaptiveBird bird)
+        {
+            SponsorshipInfo.thisWingspanID = bird.WingspanId;
+        }
+
+        //set 'global' variable for wild sponsorship
+        private void SetWildBirdDetails(WildBird bird)
+        {
+            SponsorshipInfo.thisWingspanID = bird.WingspanId;
         }
 
 
