@@ -26,7 +26,8 @@ namespace WingspanPrototype1.View
             if (item != null)
             {
                 DisplaySponsorship(item);
-                editSponsorshipResultsGrid.IsVisible = true;
+                editSponsorshipResults.IsVisible = true;
+                editSponsorshipButtons.IsVisible = true;
             }
         }
 
@@ -170,6 +171,36 @@ namespace WingspanPrototype1.View
 
         //selecting a new category
         private void EditCategorySelector_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditSponsorshipNotesValueEditButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditSponsorshipStartEditButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditSponsorshipEndEditButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditSponsorFirstNameEditButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditSponsorLastNameEditButton_Clicked(object sender, EventArgs e)
+        {
+
+        }
+
+        private void EditSponsorCompanyNameEditButton_Clicked(object sender, EventArgs e)
         {
 
         }
