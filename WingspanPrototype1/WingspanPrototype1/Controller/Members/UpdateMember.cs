@@ -38,7 +38,7 @@ namespace WingspanPrototype1.Controller.Members
                             {
                                 try
                                 {
-                                    // Which feild are we updateing?
+                                    // Which feild are we updating?
                                     if (entry.StyleId == "memberFirstNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("FirstName", entry.Text));
                                     if (entry.StyleId == "memberLastNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("LastName", entry.Text));
                                     if (entry.StyleId == "memberSalutationEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("SalutationName", entry.Text));

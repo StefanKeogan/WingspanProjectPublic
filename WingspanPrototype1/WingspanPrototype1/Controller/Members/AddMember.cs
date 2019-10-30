@@ -29,6 +29,7 @@ namespace WingspanPrototype1.Controller.Birds
                 if (Validate.FeildPopulated(member.FirstName)) document.Add("FirstName", member.FirstName.Replace(" ", string.Empty).ToLower());
                 if (Validate.FeildPopulated(member.LastName)) document.Add("LastName", member.LastName.Replace(" ", string.Empty).ToLower());
                 if (Validate.FeildPopulated(member.SalutationName)) document.Add("SalutationName", member.SalutationName.Replace(" ", string.Empty).ToLower());
+                if (Validate.FeildPopulated(member.Company)) document.Add("Company", member.Company.Replace(" ", string.Empty).ToLower());
                 if (Validate.FeildPopulated(member.Email)) document.Add("Email", member.Email);
                 if (Validate.FeildPopulated(member.Address1)) document.Add("Address1", member.Address1);
                 if (Validate.FeildPopulated(member.Address2)) document.Add("Address2", member.Address2);

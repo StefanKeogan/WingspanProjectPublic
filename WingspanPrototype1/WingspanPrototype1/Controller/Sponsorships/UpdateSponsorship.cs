@@ -6,5 +6,6 @@ namespace WingspanPrototype1.Controller.Sponsorships
 {
     class UpdateSponsorship
     {
+
     }
 }
