@@ -53,15 +53,15 @@
                 </Picker>
 
                 <!--selected sponsor first name-->
-                <Label x:Name="selectedSponsorFirstNameLabel" Text="Sponsor first name" Style="{StaticResource labelStyle}" Grid.Row="3"/>
+                <Label x:Name="selectedSponsorFirstNameLabel" Text="First name" Style="{StaticResource labelStyle}" Grid.Row="3"/>
                 <Label x:Name="selectedSponsorFirstNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="3"/>
 
                 <!--selected sponsor last name-->
-                <Label x:Name="selectedSponsorLastNameLabel" Text="Sponsor last name" Style="{StaticResource labelStyle}" Grid.Row="5"/>
+                <Label x:Name="selectedSponsorLastNameLabel" Text="Last name" Style="{StaticResource labelStyle}" Grid.Row="5"/>
                 <Label x:Name="selectedSponsorLastNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="5"/>
 
                 <!--selected sponsor company name-->
-                <Label x:Name="selectedSponsorCompanyLabel" Text="Sponsor company" Style="{StaticResource labelStyle}" Grid.Row="7"/>
+                <Label x:Name="selectedSponsorCompanyLabel" Text="Company" Style="{StaticResource labelStyle}" Grid.Row="7"/>
                 <Label x:Name="selectedSponsorCompanyValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="7"/>
 
                 <!--selecting the bird to be sponsored-->
@@ -80,7 +80,7 @@
                 <Label x:Name="selectedWingspanIdValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="11"/>
 
                 <!--level of sponsorship-->
-                <Label x:Name="sponsorshipLevel" Text="Select level" Style="{StaticResource labelStyle}" Grid.Row="13" />
+                <Label x:Name="sponsorshipLevel" Text="Level" Style="{StaticResource labelStyle}" Grid.Row="13" />
                 <Picker x:Name="levelSelector" Style="{StaticResource feildStyle}" Grid.Row="13">
                     <Picker.ItemsSource>
                         <x:Array Type="{x:Type x:String}">

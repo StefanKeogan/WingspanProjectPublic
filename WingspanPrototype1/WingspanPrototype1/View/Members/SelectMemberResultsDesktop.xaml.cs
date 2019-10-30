@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using WingspanPrototype1.Model;
 using WingspanPrototype1.View;
 using Xamarin.Forms;
+using WingspanPrototype1.Functions;
 using Xamarin.Forms.Xaml;
 
 namespace WingspanPrototype1.View
@@ -18,6 +19,13 @@ namespace WingspanPrototype1.View
 		{
 			InitializeComponent ();
             resultsListView.ItemsSource = results;
+
+            // What type of device are we running on 
+            if (DeviceSize.ScreenArea() <= 783457)
+            {
+                selectMemberMargin1.Width = 0;
+                selectMemberMargin2.Width = 0;
+            }
         }
 
         private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
