@@ -265,6 +265,7 @@ namespace WingspanPrototype1.View
 
                     addNewPaymentView.IsVisible = false;
                     paymentHistoryView.IsVisible = false;
+                    
 
                     if (memberResults.Count <= 0)
                     {
@@ -277,6 +278,8 @@ namespace WingspanPrototype1.View
 
                         // Add any items left over
                         resultsListView.ItemsSource = memberResults;
+
+                        DisplayMember(memberResults[0]);
                     }
                    
                 }

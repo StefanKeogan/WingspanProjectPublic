@@ -40,8 +40,8 @@ namespace WingspanPrototype1.Controller.Birds
 
                         List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
 
-                        if (Validate.FeildPopulated(wingspanId)) filters.Add(filterBuilder.Eq("WingspanId", wingspanId));
-                        if (Validate.FeildPopulated(birdName)) filters.Add(filterBuilder.Eq("Name", birdName.ToLower()));
+                        if (Validate.FeildPopulated(wingspanId)) filters.Add(filterBuilder.Eq("WingspanId", wingspanId.Replace(" ", string.Empty)));
+                        if (Validate.FeildPopulated(birdName)) filters.Add(filterBuilder.Eq("Name", birdName.Replace(" ", string.Empty).ToLower()));
 
                         // Captive bird filters with default values of null
                         FilterDefinition<BsonDocument> searchFilter = filters[0];
@@ -81,8 +81,8 @@ namespace WingspanPrototype1.Controller.Birds
                         List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
 
                         // If a feild is populated add a condition to the filter
-                        if (Validate.FeildPopulated(wingspanId)) filters.Add(filterBuilder.Eq("WingspanId", wingspanId));
-                        if (Validate.FeildPopulated(bandNumber)) filters.Add(filterBuilder.Eq("BandNo", bandNumber));
+                        if (Validate.FeildPopulated(wingspanId)) filters.Add(filterBuilder.Eq("WingspanId", wingspanId.Replace(" ", string.Empty)));
+                        if (Validate.FeildPopulated(bandNumber)) filters.Add(filterBuilder.Eq("BandNo", bandNumber.Replace(" ", string.Empty)));
 
                         FilterDefinition<BsonDocument> searchFilter = filters[0];
 

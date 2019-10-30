@@ -27,8 +27,8 @@ namespace WingspanPrototype1.Controller.Sponsorships
             var document = new BsonDocument
             {
                 { "Level", sponsorship.SponsorshipCategory },
-                { "StartDate", sponsorship.SponsorshipStart },
-                { "EndDate", sponsorship.SponsorshipEnd }
+                { "StartDate", sponsorship.SponsorshipStart.ToLocalTime() },
+                { "EndDate", sponsorship.SponsorshipEnd.ToLocalTime() }
             };
 
             // Add feilds that are populated 

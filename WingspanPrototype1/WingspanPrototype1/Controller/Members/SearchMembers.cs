@@ -27,9 +27,9 @@ namespace WingspanPrototype1.Controller.Birds
                 List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
 
                 // If feilds are populated add conditions to the filter
-                if (Validate.FeildPopulated(firstName)) filters.Add(filterBuilder.Eq("FirstName", firstName.ToLower()));
-                if (Validate.FeildPopulated(lastName)) filters.Add(filterBuilder.Eq("LastName", lastName.ToLower()));
-                if (Validate.FeildPopulated(salutationName)) filters.Add(filterBuilder.Eq("SalutionName", salutationName.ToLower()));
+                if (Validate.FeildPopulated(firstName)) filters.Add(filterBuilder.Eq("FirstName", firstName.ToLower().Replace(" ", string.Empty)));
+                if (Validate.FeildPopulated(lastName)) filters.Add(filterBuilder.Eq("LastName", lastName.ToLower().Replace(" ", string.Empty)));
+                if (Validate.FeildPopulated(salutationName)) filters.Add(filterBuilder.Eq("SalutionName", salutationName.ToLower().Replace( "", string.Empty)));
 
                 FilterDefinition<BsonDocument> searchFilter = filters[0];
 

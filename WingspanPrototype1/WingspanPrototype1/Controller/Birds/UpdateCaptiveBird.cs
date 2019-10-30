@@ -13,7 +13,7 @@ namespace WingspanPrototype1.Controller.Birds
 {
     class UpdateCaptiveBird
     {
-        public static CaptiveBird UpdateDocument(ObjectId id, List<Entry> entries, List<Picker> pickers) // TODO: Add date time update functionality 
+        public static CaptiveBird UpdateDocument(ObjectId id, List<Entry> entries, List<Picker> pickers, List<DatePicker> datePickers)
         {
             // Get database
             var database = DatabaseConnection.GetDatabase();
@@ -66,9 +66,13 @@ namespace WingspanPrototype1.Controller.Birds
                         {
                             try
                             {
-                                if (picker.StyleId == "captiveSpeciesPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Species", picker.SelectedItem.ToString()));
-                                if (picker.StyleId == "captiveSexPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Sex", picker.SelectedItem.ToString()));
-                                if (picker.StyleId == "captiveAgePicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Age", picker.SelectedItem.ToString()));
+                                if (picker.SelectedIndex != -1)
+                                {
+                                    if (picker.StyleId == "captiveSpeciesPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Species", picker.SelectedItem.ToString()));
+                                    if (picker.StyleId == "captiveSexPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Sex", picker.SelectedItem.ToString()));
+                                    if (picker.StyleId == "captiveAgePicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Age", picker.SelectedItem.ToString()));
+                                }
+                                
                             }
                             catch (Exception)
                             {
@@ -76,6 +80,27 @@ namespace WingspanPrototype1.Controller.Birds
                             }
 
                         }
+                    }
+
+                    if (datePickers.Count > 0)
+                    {
+                        foreach (var datePicker in datePickers)
+                        {
+                            try
+                            {
+                                if (datePicker.StyleId == "captiveDateDepartedPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("DateDeparted", datePicker.Date.ToLocalTime()));
+                                if (datePicker.StyleId == "captiveDateArrivedPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("DateArrived", datePicker.Date.ToLocalTime()));
+                                if (datePicker.StyleId == "captiveDateDeceasedPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("DateDeceased", datePicker.Date.ToLocalTime()));
+
+                            }
+                            catch (Exception)
+                            {
+
+                                return null;
+                            }
+                        }
+
+                        
                     }
 
                     return BsonSerializer.Deserialize<CaptiveBird>(collection.Find(Builders<BsonDocument>.Filter.Eq("_id", id)).First());

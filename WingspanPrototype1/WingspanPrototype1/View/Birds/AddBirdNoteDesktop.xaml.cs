@@ -15,7 +15,7 @@ namespace WingspanPrototype1.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddBirdNoteDesktop : ContentPage
     {
-        public string selectedWingspanId;
+        public string selectedWingspanId = null;
 
         public AddBirdNoteDesktop(string title)
         {
@@ -46,6 +46,17 @@ namespace WingspanPrototype1.View
 
             await Task.Run(() =>
             {
+                if (selectedWingspanId == null)
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        DisplayAlert("No Bird Selected", "A bird must be selected to add a note", "OK");
+                        addingIndicatior.IsRunning = false;
+                    });
+
+                    return;
+                }
+
                 if (categoryPicker.SelectedIndex == -1)
                 {
                     Device.BeginInvokeOnMainThread(() =>
@@ -82,6 +93,7 @@ namespace WingspanPrototype1.View
                         categoryPicker.SelectedIndex = -1;
                         noteEditor.Text = null;
                         DisplayAlert("Bird Note Added", "Your note has been added to this birds note history", "OK");
+                        addingIndicatior.IsRunning = false;
                     });
 
                     return;
@@ -134,12 +146,23 @@ namespace WingspanPrototype1.View
 
                 ArrayList results = SearchBirds.Search(wingspanIdEntry.Text, null, null);
 
-                if (results.Count > 0)
+                if (results != null)
                 {
-                    Device.BeginInvokeOnMainThread(() =>
+                    if (results.Count > 0)
                     {
-                        resultsListView.ItemsSource = results;
-                    });
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            resultsListView.ItemsSource = results;
+                        });
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            DisplayAlert("No Birds Found", "That bird could not be found", "OK");
+                        });
+                    }
+                    
                 }
                 else
                 {

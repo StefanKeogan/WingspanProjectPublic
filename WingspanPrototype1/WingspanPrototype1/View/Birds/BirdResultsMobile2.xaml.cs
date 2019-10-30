@@ -554,7 +554,7 @@ namespace WingspanPrototype1
                 }
                 else if (birdType == typeof(CaptiveBird))
                 {
-                    CaptiveBird captiveBird = UpdateCaptiveBird.UpdateDocument(id, entries, pickers);
+                    CaptiveBird captiveBird = UpdateCaptiveBird.UpdateDocument(id, entries, pickers, datePickers);
 
                     if (captiveBird != null)
                     {

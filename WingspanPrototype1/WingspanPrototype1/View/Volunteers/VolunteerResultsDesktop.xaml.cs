@@ -19,10 +19,13 @@ namespace WingspanPrototype1.View.Volunteers
     {
         private List<Entry> entries = new List<Entry>();
         private ObjectId id;
+        private List<Volunteer> volunteerResults;
 
         public VolunteerResultsDesktop(List<Volunteer> results)
         {
             InitializeComponent();
+
+            volunteerResults = results;
 
             foreach (var volunteer in results)
             {
@@ -162,11 +165,26 @@ namespace WingspanPrototype1.View.Volunteers
             {
                 if (DeleteVolunteer.DropDocument(id))
                 {
-                    await DisplayAlert("Volunteer Deleted", "This volunteer has been deleted", "Ok");
+                    await DisplayAlert("Volunteer Deleted", "This volunteer has been deleted", "OK");
 
-                    await Navigation.PopAsync();
+                    logHoursView.IsVisible = false;
+                    hoursHistoryView.IsVisible = false;
 
-                    // TODO: Refresh page? 
+                    Volunteer volunteer = volunteerResults.Find(x => x._id == id);
+                    volunteerResults.Remove(volunteer);
+
+                    if (volunteerResults.Count >= 0)
+                    {
+                        resultsListView.ItemsSource = null;
+
+                        resultsListView.ItemsSource = volunteerResults;
+
+                        DisplayVolunteer(volunteerResults[0]);
+                    }
+                    else
+                    {
+                        await Navigation.PopAsync();
+                    }
 
                 }
                 else
@@ -175,8 +193,6 @@ namespace WingspanPrototype1.View.Volunteers
                 }
                 
             }
-
-            // TODO: Erase volunteer, send to default page
 
         }
 

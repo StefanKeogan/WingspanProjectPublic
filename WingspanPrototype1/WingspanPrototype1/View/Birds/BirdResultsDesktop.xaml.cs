@@ -19,10 +19,13 @@ namespace WingspanPrototype1
         private List<Picker> pickers = new List<Picker>();
         private List<DatePicker> datePickers = new List<DatePicker>();
         private Type birdType;
+        private List<WildBird> wildResults = new List<WildBird>();
+        private List<CaptiveBird> captiveResults = new List<CaptiveBird>();
 
         public BirdResultsDesktop(ArrayList results)
         {
             InitializeComponent();
+
 
             foreach (var bird in results)
             {
@@ -30,7 +33,15 @@ namespace WingspanPrototype1
                 {
                     CaptiveBird captiveBird = bird as CaptiveBird;
 
-                    captiveBird.Name = FormatText.FirstToUpper(captiveBird.Name);                   
+                    captiveBird.Name = FormatText.FirstToUpper(captiveBird.Name);
+
+                    captiveResults.Add(captiveBird);
+                }
+                else if (bird.GetType() == typeof(WildBird))
+                {
+                    WildBird wildBird = bird as WildBird;
+
+                    wildResults.Add(wildBird);
                 }
             }
 
@@ -41,8 +52,6 @@ namespace WingspanPrototype1
             // Set picker content
             noteCategoryPicker.ItemsSource = new string[] { "Medical", "Breeding", "Transfer" };
             locationCategoryPicker.ItemsSource = new string[] { "Release", "Transfer" };
-
-
 
         }
 
@@ -216,7 +225,7 @@ namespace WingspanPrototype1
             }
 
             // Set Date Banded Value 
-            if (bird.DateBanded.ToString() != string.Empty)
+            if (bird.DateBanded.ToString() != "1/01/0001 12:00:00 AM")
             {
                 wildDateBandedValueLabel.Text = bird.DateBanded.ToString();
                 wildDateBandedStack.IsVisible = true;
@@ -225,8 +234,9 @@ namespace WingspanPrototype1
             }
             else
             {
-                wildDateBandedPicker.IsVisible = true;
-                wildDateBandedStack.IsVisible = false;
+                wildDateBandedValueLabel.Text = "Date Not Set";
+                wildDateBandedStack.IsVisible = true;
+                wildDateBandedPicker.IsVisible = false;
 
             }
 
@@ -385,7 +395,8 @@ namespace WingspanPrototype1
             // Set Date Arrived Value 
             if (bird.DateArrived.ToString() != "1/01/0001 12:00:00 AM")
             {
-                captiveDateArrivedValueLabel.Text = bird.DateArrived.ToString();
+
+                captiveDateArrivedValueLabel.Text = bird.DateArrived.ToShortDateString();
                 captiveDateArrivedStack.IsVisible = true;
                 captiveDateArrivedPicker.IsVisible = false;
 
@@ -400,29 +411,30 @@ namespace WingspanPrototype1
             // Set Date Departed Value 
             if (bird.DateDeparted.ToString() != "1/01/0001 12:00:00 AM")
             {
-                captiveDateDepartedValueLabel.Text = bird.DateDeparted.ToString();
+                captiveDateDepartedValueLabel.Text = bird.DateDeparted.ToShortDateString();
                 captiveDateDepartedStack.IsVisible = true;
                 captiveDateDepartedPicker.IsVisible = false;
             }
             else
             {
-                captiveDateDepartedPicker.IsVisible = true;
-                captiveDateDepartedStack.IsVisible = false;
+                captiveDateDepartedValueLabel.Text = "Date Not Set";
+                captiveDateDepartedStack.IsVisible = true;
+                captiveDateDepartedPicker.IsVisible = false;
 
             }
 
             // Set Date Deceased Value 
             if (bird.DateDeceased.ToString() != "1/01/0001 12:00:00 AM")
             {
-                captiveDateDeceasedValueLabel.Text = bird.DateDeceased.ToString();
+                captiveDateDeceasedValueLabel.Text = bird.DateDeceased.ToShortDateString();
                 captiveDatedeceasedStack.IsVisible = true;
                 captiveDateDeceasedPicker.IsVisible = false;
             }
             else
             {
-                captiveDateDeceasedPicker.IsVisible = true;
-                captiveDatedeceasedStack.IsVisible = false;
-
+                captiveDateDeceasedValueLabel.Text = "Date Not Set";
+                captiveDatedeceasedStack.IsVisible = true;
+                captiveDateDeceasedPicker.IsVisible = false;
             }
 
             // Set Result Value 
@@ -579,7 +591,7 @@ namespace WingspanPrototype1
                 }
                 else if (birdType == typeof(CaptiveBird))
                 {
-                    CaptiveBird captiveBird = UpdateCaptiveBird.UpdateDocument(id, entries, pickers);                   
+                    CaptiveBird captiveBird = UpdateCaptiveBird.UpdateDocument(id, entries, pickers, datePickers);                   
 
                     if (captiveBird != null)
                     {
@@ -613,6 +625,33 @@ namespace WingspanPrototype1
                         noteHistoryView.IsVisible = false;
                         addNewLocationView.IsVisible = false;
                         locationHistoryView.IsVisible = false;
+                        wildBirdDisplayForm.IsVisible = false;
+
+                        WildBird bird = wildResults.Find(x => x._id == id);
+                        wildResults.Remove(bird);
+
+                        if ((wildResults.Count <= 0) && (captiveResults.Count <= 0))
+                        {
+                            await Navigation.PopAsync();
+                        }
+                        else
+                        {
+                            resultsListView.ItemsSource = null;
+
+                            ArrayList updatedResults = new ArrayList();
+
+                            foreach (var wildBird in wildResults)
+                            {
+                                updatedResults.Add(wildBird);
+                            }
+
+                            foreach (var captiveResult in captiveResults)
+                            {
+                                updatedResults.Add(captiveResult);
+                            }
+
+                            resultsListView.ItemsSource = updatedResults;
+                        }
 
                     }
                     else
@@ -629,6 +668,34 @@ namespace WingspanPrototype1
                         noteHistoryView.IsVisible = false;
                         addNewLocationView.IsVisible = false;
                         locationHistoryView.IsVisible = false;
+                        captiveBirdDisplayForm.IsVisible = false;
+
+                        CaptiveBird bird = captiveResults.Find(x => x._id == id);
+                        captiveResults.Remove(bird);
+
+                        if ((captiveResults.Count <= 0) && (wildResults.Count <= 0))
+                        {
+                            await Navigation.PopAsync();
+                        }
+                        else
+                        {
+                            resultsListView.ItemsSource = null;
+
+                            ArrayList updatedResults = new ArrayList();
+
+                            foreach (var wildBird in wildResults)
+                            {
+                                updatedResults.Add(wildBird);
+                            }
+
+                            foreach (var captiveResult in captiveResults)
+                            {
+                                updatedResults.Add(captiveResult);
+                            }
+
+                            resultsListView.ItemsSource = updatedResults;
+                        }
+
                     }
                     else
                     {
@@ -822,23 +889,23 @@ namespace WingspanPrototype1
 
         private void CaptiveDateArrivedEditButton_Clicked(object sender, EventArgs e)
         {
-            wildDateBandedStack.IsVisible = false;
-            wildDateBandedPicker.IsVisible = true;
-            datePickers.Add(wildDateBandedPicker);
+            captiveDateArrivedStack.IsVisible = false;
+            captiveDateArrivedPicker.IsVisible = true;
+            datePickers.Add(captiveDateArrivedPicker);
         }
 
         private void CaptiveDateDepartedEditButton_Clicked(object sender, EventArgs e)
         {
-            wildDateBandedStack.IsVisible = false;
-            wildDateBandedPicker.IsVisible = true;
-            datePickers.Add(wildDateBandedPicker);
+            captiveDateDepartedStack.IsVisible = false;
+            captiveDateDepartedPicker.IsVisible = true;
+            datePickers.Add(captiveDateDepartedPicker);
         }
 
         private void CaptiveDateDeceasedEditButton_Clicked(object sender, EventArgs e)
         {
-            wildDateBandedStack.IsVisible = false;
-            wildDateBandedPicker.IsVisible = true;
-            datePickers.Add(wildDateBandedPicker);
+            captiveDatedeceasedStack.IsVisible = false;
+            captiveDateDeceasedPicker.IsVisible = true;
+            datePickers.Add(captiveDateDeceasedPicker);
         }
 
         private void CaptiveResultEditButton_Clicked(object sender, EventArgs e)

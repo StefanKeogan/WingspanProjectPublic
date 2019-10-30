@@ -22,7 +22,7 @@ namespace WingspanPrototype1.Controller.Birds
                 var document = new BsonDocument
                 {
                     {"WingspanId", bird.WingspanId},
-                    {"DateBanded", bird.DateBanded}
+                    {"DateBanded", bird.DateBanded.ToLocalTime()}
                 };
 
                 // Further validation for un-required feilds 

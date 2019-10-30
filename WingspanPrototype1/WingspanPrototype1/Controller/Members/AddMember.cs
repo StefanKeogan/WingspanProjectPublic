@@ -22,7 +22,7 @@ namespace WingspanPrototype1.Controller.Birds
                 // Create document object, add default values 
                 var document = new BsonDocument
                 {
-                    {"JoinDate", member.JoinDate },
+                    {"JoinDate", member.JoinDate.ToLocalTime() },
                 };
 
                 // Add feilds that are populated 

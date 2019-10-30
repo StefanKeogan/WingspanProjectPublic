@@ -27,7 +27,7 @@ namespace WingspanPrototype1.Controller.Volunteers
                 // Build search filter
                 List<FilterDefinition<BsonDocument>> filters = new List<FilterDefinition<BsonDocument>>();
 
-                if (Validate.FeildPopulated(volunteerEmail)) filters.Add(filterBuilder.Eq("Email", volunteerEmail));
+                if (Validate.FeildPopulated(volunteerEmail)) filters.Add(filterBuilder.Eq("Email", volunteerEmail.Replace(" ", string.Empty).ToLower()));
                 if (Validate.FeildPopulated(volunteerFirstName)) filters.Add(filterBuilder.Eq("FirstName", volunteerFirstName.Replace(" ", string.Empty).ToLower()));
                 if (Validate.FeildPopulated(volunteerLastName)) filters.Add(filterBuilder.Eq("LastName", volunteerLastName.Replace(" ", string.Empty).ToLower()));
 

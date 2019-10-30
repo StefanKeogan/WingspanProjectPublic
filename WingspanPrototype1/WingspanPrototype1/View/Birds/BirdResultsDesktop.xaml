@@ -7,9 +7,7 @@
              x:Class="WingspanPrototype1.BirdResultsDesktop"
              Title="Results">
     <ContentPage.Content>
-        <StackLayout>
-
-            <Grid BackgroundColor="#FFFFFF" VerticalOptions="Fill">
+        <Grid BackgroundColor="#FFFFFF" VerticalOptions="Fill">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="2*"/>
                     <ColumnDefinition Width="6*"/>
@@ -287,7 +285,7 @@
 
                                 <!--Date Departed-->
                                 <Label x:Name="captiveDateDepartedLabel" Text="Date Departed" Style="{StaticResource labelStyle}" Grid.Row="9"/>
-                                <StackLayout x:Name="captiveDateDepartedStack" Style="{StaticResource resultStackStyle}" Grid.Row="9" Grid.Column="1">
+                                <StackLayout x:Name="captiveDateDepartedStack" Style="{StaticResource resultStackStyle}" Grid.Row="9">
                                     <Label x:Name="captiveDateDepartedValueLabel" FontSize="20"/>
                                     <Button x:Name="captiveDateDepartedEditButton" Style="{StaticResource editStyleDesktop}" Clicked="CaptiveDateDepartedEditButton_Clicked"/>
                                 </StackLayout>
@@ -319,8 +317,6 @@
                 <StackLayout x:Name="resultButtons" IsVisible="False" HorizontalOptions="Center" Orientation="Horizontal" Grid.Column="1" Grid.Row="1" Margin="0,5">
                     <Button  
                          x:Name="deleteButton"
-                         Grid.Row="8" 
-                         Grid.ColumnSpan="2" 
                          Text="Delete" 
                          Style="{StaticResource mainButtonStyle}"
                          HorizontalOptions="Center"
@@ -329,8 +325,6 @@
                          Clicked="DeleteButton_Clicked"/>
                     <Button  
                          x:Name="saveButton"
-                         Grid.Row="8" 
-                         Grid.ColumnSpan="2" 
                          Text="Save Changes" 
                          Style="{StaticResource mainButtonStyle}"
                          HorizontalOptions="Center"
@@ -339,8 +333,6 @@
                          Clicked="SaveButton_Clicked"/>
                     <Button  
                          x:Name="noteButton"
-                         Grid.Row="8" 
-                         Grid.ColumnSpan="2" 
                          Text="View Notes" 
                          Style="{StaticResource mainButtonStyle}"
                          VerticalOptions="Center"
@@ -349,8 +341,7 @@
                          Clicked="NoteButton_Clicked"/>
                     <Button
                          x:Name="locationButton"
-                         Grid.Row="8" 
-                         Grid.ColumnSpan="2" 
+
                          Text="Past Locations" 
                          Style="{StaticResource mainButtonStyle}"
                          HorizontalOptions="Center"
@@ -467,37 +458,35 @@
                 </ContentView>
                 
                 <!--Add new location popup-->
-                <ContentView x:Name="addNewLocationView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="450">
-                    <ContentView.Content>
-                        <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
-                            <StackLayout BackgroundColor="#FFFFFF" >
-                                <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
-                                    <Label Text="Add Location" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
-                                    <Button x:Name="addNewLocationExitButton" Style="{StaticResource exitStyle}" Clicked="AddNewLocationExitButton_Clicked"/>
-                                </StackLayout>
+            <ContentView x:Name="addNewLocationView" IsVisible="False" Grid.Column="1" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="450">
+                <ContentView.Content>
+                    <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
+                        <StackLayout BackgroundColor="#FFFFFF" >
+                            <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
+                                <Label Text="Add Location" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
+                                <Button x:Name="addNewLocationExitButton" Style="{StaticResource exitStyle}" Clicked="AddNewLocationExitButton_Clicked"/>
+                            </StackLayout>
 
-                                <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
-                                <DatePicker x:Name="locationDatePicker" Margin="5,5,5,5"/>
+                            <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
+                            <DatePicker x:Name="locationDatePicker" Margin="5,5,5,5"/>
 
-                                <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>
-                                <Picker x:Name="locationCategoryPicker" Margin="5,5,5,5"/>
+                            <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>
+                            <Picker x:Name="locationCategoryPicker" Margin="5,5,5,5"/>
 
-                                <Label Text="Location" FontSize="20" Margin="5,5,5,5"/>
-                                <Entry x:Name="locationEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
+                            <Label Text="Location" FontSize="20" Margin="5,5,5,5"/>
+                            <Entry x:Name="locationEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
 
-                                <Button
-                                    x:Name="addLocationButton"
+                            <Button
+                                 x:Name="addLocationButton"
                                     Margin="5,5,5,5"
                                     Text="Add" 
                                     Style="{StaticResource mainButtonStyle}"
                                     HorizontalOptions="Center"
                                     Clicked="AddLocationButton_Clicked"/>
-                            </StackLayout>
-                        </Frame>
-                    </ContentView.Content>
-                </ContentView>
-
-            </Grid>
-        </StackLayout>
+                        </StackLayout>
+                    </Frame>
+                </ContentView.Content>
+            </ContentView>
+        </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -157,6 +157,14 @@ namespace WingspanPrototype1.View.Volunteers
                     });
                     allFeildsValid = false;
                 }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        contactError.IsVisible = false;
+                    });
+
+                }
 
                 Device.BeginInvokeOnMainThread(() =>
                 {
