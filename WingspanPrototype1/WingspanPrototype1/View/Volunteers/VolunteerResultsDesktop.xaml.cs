@@ -52,6 +52,9 @@ namespace WingspanPrototype1.View.Volunteers
 
         private void DisplayVolunteer(Volunteer volunteer)
         {
+            // Clear entries
+            entries.Clear();            
+
             id = volunteer._id;
 
             if (Validate.FeildPopulated(volunteer.FirstName))
@@ -134,11 +137,7 @@ namespace WingspanPrototype1.View.Volunteers
             if (!Validate.FeildPopulated(hoursEntry.Text))
             {
                 await DisplayAlert("Amount Feild Empty", "The amount feild must be filled in to continue", "OK");
-            }
-
-            if (!Validate.FeildPopulated(hoursEntry.Text))
-            {
-                await DisplayAlert("Note Feild Empty", "The note feild must be filled in to continue", "OK");
+                return;
             }
 
             if (LogVolunteerHours.InsertVolunteerHoursDocument(new VolunteerHours { Date = hoursDatePicker.Date,
@@ -203,12 +202,35 @@ namespace WingspanPrototype1.View.Volunteers
 
             if (result)
             {
+                if (entries.Count > 0)
+                {
+                    bool changesValid = ValidateVolunteerChanges(entries);
+                    if (!changesValid) return;
+                }
+
                 Volunteer volunteer = UpdateVolunteer.UpdateDocument(id, entries);                
 
                 if (volunteer != null)
                 {
                     volunteer.FirstName = FormatText.FirstToUpper(volunteer.FirstName);
                     volunteer.LastName = FormatText.FirstToUpper(volunteer.LastName);
+
+                    // Find old volunteer
+                    Volunteer oldVolunteer = volunteerResults.Find(x => x._id == id);
+                    int volunteerIndex = volunteerResults.IndexOf(oldVolunteer);
+
+                    // Replace old volunteer with updated
+                    volunteerResults[volunteerIndex] = volunteer;
+
+                    // Refresh result list 
+                    resultsListView.ItemsSource = null;
+                    resultsListView.ItemsSource = volunteerResults;
+
+                    // Clear entry data
+                    foreach (var entry in entries)
+                    {
+                        entry.Text = null;
+                    }
 
                     DisplayVolunteer(volunteer);
                     await DisplayAlert("Volunteer Saved", "Changes to this volunteer have been saved", "Ok");
@@ -222,6 +244,68 @@ namespace WingspanPrototype1.View.Volunteers
             
         }
 
+        private bool ValidateVolunteerChanges(List<Entry> entries)
+        {
+            bool allFeildsValid = true;
+
+            string errorMessage = "";
+
+            foreach (var entry in entries)
+            {
+                // Update document id entries are populated 
+                if (Validate.FeildPopulated(entry.Text))
+                {
+                    if (entry.StyleId == "volunteerEmailEntry")
+                    {
+                        if (!Validate.EmailFormatValid(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The Email must contain a valid email address";
+                        }
+                    }
+
+                    if (entry.StyleId == "volunteerFirstNameEntry")
+                    {
+                        if (Validate.ContainsNumberOrSymbol(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The First Name feild cannot contain numbers or symbols";
+                        }
+                    }
+
+                    if (entry.StyleId == "volunteerLastNameEntry")
+                    {
+                        if (Validate.ContainsNumberOrSymbol(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The Last Name feild cannot contain numbers or symbols";
+                        }
+                    }
+
+                    if (entry.StyleId == "volunteerMobileEntry")
+                    {
+                        if (Validate.ContainsNumberOrSymbol(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The Mobile feild cannot contain letters or symbols";
+                        }
+                    }
+
+                }
+            }
+
+            if (allFeildsValid)
+            {
+                errorMessage = "";
+                return true;
+            }
+            else
+            {
+                DisplayAlert("Invalid Input", errorMessage, "OK");
+                errorMessage = "";
+                return false;
+            }
+
+            
+
+        }
+
         private async void HoursListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             bool result = await DisplayAlert("Delete Hours?", "Would you like to delete this hours item?", "Yes", "No");
@@ -230,7 +314,7 @@ namespace WingspanPrototype1.View.Volunteers
             if (result)
             {
                 // Store selected list item
-                var item = e.SelectedItem as Payment;
+                var item = e.SelectedItem as VolunteerHours;
 
                 // If item is not null
                 if (item != null)

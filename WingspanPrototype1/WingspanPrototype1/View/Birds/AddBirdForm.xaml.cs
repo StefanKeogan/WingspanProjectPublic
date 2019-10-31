@@ -141,9 +141,7 @@ namespace WingspanPrototype1
 
                     // Bander Name
                     if (Validate.FeildPopulated(wildBanderNameEntry.Text))
-                    {
-                        
-
+                    {                        
                         if (Validate.ContainsNumberOrSymbol(wildBanderNameEntry.Text))
                         {
                             Device.BeginInvokeOnMainThread(() =>

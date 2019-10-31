@@ -101,6 +101,16 @@ namespace WingspanPrototype1.View.Volunteers
 
             await Task.Run(() => 
             {
+                if (selectedVolunteerId == ObjectId.Empty)
+                {
+                    Device.InvokeOnMainThreadAsync(() =>
+                    {
+                        DisplayAlert("Select a Volunteer", "A volunteer must be selected in order to log hours", "OK");
+                        addingIndicatior.IsRunning = false;
+                    });
+                    return;
+                }
+
                 if (Validate.FeildPopulated(hoursEntry.Text))
                 {
                     if (Validate.ContainsLetter(hoursEntry.Text))
@@ -108,7 +118,7 @@ namespace WingspanPrototype1.View.Volunteers
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             DisplayAlert("Invalid Format", "The hours feild cannot contain letters", "OK");
-
+                            addingIndicatior.IsRunning = false;
                         });
                         return;
                         
@@ -120,6 +130,7 @@ namespace WingspanPrototype1.View.Volunteers
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         DisplayAlert("Enter Hours", "Please fill in the hours feild to search", "OK");
+                        addingIndicatior.IsRunning = false;
                     });
 
                     return;

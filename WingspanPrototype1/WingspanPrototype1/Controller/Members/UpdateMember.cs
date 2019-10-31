@@ -80,7 +80,7 @@ namespace WingspanPrototype1.Controller.Members
                     {
                         try
                         {
-                            collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("JoinDate", date.Date));
+                            collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("JoinDate", date.Date.ToLocalTime()));
                         }
                         catch (Exception)
                         {

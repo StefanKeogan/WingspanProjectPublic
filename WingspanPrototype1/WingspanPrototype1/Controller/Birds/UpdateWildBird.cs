@@ -38,7 +38,7 @@ namespace WingspanPrototype1.Controller.Birds
                                 try
                                 {
                                     // Which feild are we updateing?
-                                    if (entry.StyleId == "wildWingspanIdEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("WingspanId", entry.Text));
+                                    // if (entry.StyleId == "wildWingspanIdEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("WingspanId", entry.Text));
                                     if (entry.StyleId == "wildLocationEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Location", entry.Text));
                                     if (entry.StyleId == "wildGpsEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Gps", entry.Text));
                                     if (entry.StyleId == "wildMetalBandIdEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("MetalBand", entry.Text));
@@ -46,7 +46,7 @@ namespace WingspanPrototype1.Controller.Birds
                                     if (entry.StyleId == "wildBanderNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("BanderName", entry.Text));
                                 }
                                 catch (Exception)
-                                {
+                                {                              
                                     return null;
                                 }
 
@@ -60,15 +60,18 @@ namespace WingspanPrototype1.Controller.Birds
                     {
                         foreach (var picker in pickers)
                         {
-                            try
+                            if (picker.SelectedIndex != -1)
                             {
-                                if (picker.StyleId == "wildSpeciesPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("WingspanId", picker.SelectedItem.ToString()));
-                                if (picker.StyleId == "wildSexPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Sex", picker.SelectedItem.ToString()));
-                                if (picker.StyleId == "wildAgePicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Age", picker.SelectedItem.ToString()));
-                            }
-                            catch (Exception)
-                            {
-                                return null;
+                                try
+                                {
+                                    if (picker.StyleId == "wildSpeciesPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("WingspanId", picker.SelectedItem.ToString()));
+                                    if (picker.StyleId == "wildSexPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Sex", picker.SelectedItem.ToString()));
+                                    if (picker.StyleId == "wildAgePicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Age", picker.SelectedItem.ToString()));
+                                }
+                                catch (Exception)
+                                {
+                                    return null;
+                                }
                             }
 
                         }

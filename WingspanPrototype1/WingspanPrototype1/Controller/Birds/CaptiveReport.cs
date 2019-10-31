@@ -29,13 +29,13 @@ namespace WingspanPrototype1.Controller.Birds
                 switch (condition.ToString())
                 {
                     case "Ingoing":
-                        filter = filterBuilder.Gte("DateArrived", startDate) & filterBuilder.Lte("DateArrived", endDate);
+                        filter = filterBuilder.Gte("DateArrived", startDate) & filterBuilder.Lte("DateArrived", endDate.ToLocalTime());
                         break;
                     case "Outgoing":
-                        filter = filterBuilder.Gte("DateDeparted", startDate) & filterBuilder.Lte("DateDeparted", endDate);
+                        filter = filterBuilder.Gte("DateDeparted", startDate) & filterBuilder.Lte("DateDeparted", endDate.ToLocalTime());
                         break;
                     case "Deceased":
-                        filter = filterBuilder.Gte("DateDeceased", startDate) & filterBuilder.Lte("DateDeceased", endDate);
+                        filter = filterBuilder.Gte("DateDeceased", startDate) & filterBuilder.Lte("DateDeceased", endDate.ToLocalTime());
                         break;
                     default:
                         return null;

@@ -24,6 +24,8 @@
                 <Setter Property="CornerRadius" Value="5"/>
                 <Setter Property="Margin" Value="5,5,5,5"/>
                 <Setter Property="WidthRequest" Value="50"/>
+                <Setter Property="HeightRequest" Value="50"/>
+                <Setter Property="Aspect" Value="AspectFit"/>
             </Style>
 
             <Style x:Key="feildStyle" TargetType="Entry">

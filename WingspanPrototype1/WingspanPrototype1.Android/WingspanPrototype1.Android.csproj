@@ -121,9 +121,9 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\darkbrownlogolarge.png" />
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\drawable-xxhdpi\searchiconsmall.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\icon.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\iconmobile.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\searchiconsmall.png" />
     <Content Include="Resources\drawable-xxhdpi\searchicon.png" />
     <Content Include="Resources\drawable-xxhdpi\watermarklogo.png" />
     <AndroidResource Include="Resources\mipmap-xhdpi\icon.png">

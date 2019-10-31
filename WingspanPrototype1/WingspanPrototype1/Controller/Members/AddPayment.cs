@@ -22,7 +22,7 @@ namespace WingspanPrototype1.Controller.Members
                 // Create payment document
                 var document = new BsonDocument
                 {
-                    {"Date", payment.Date },
+                    {"Date", payment.Date.ToLocalTime() },
                     {"Amount", payment.Amount },
                     {"Member_id", memberId }
                 };

@@ -24,7 +24,7 @@ namespace WingspanPrototype1.Controller.Members
                 var filterBuilder = Builders<BsonDocument>.Filter;
 
                 // Build master filter
-                var filter = filterBuilder.Gte("JoinDate", startDate) & filterBuilder.Lte("JoinDate", endDate);
+                var filter = filterBuilder.Gte("JoinDate", startDate.ToLocalTime()) & filterBuilder.Lte("JoinDate", endDate.ToLocalTime());
 
                 try
                 {

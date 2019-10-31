@@ -24,13 +24,13 @@ namespace WingspanPrototype1.View
             switch (Device.RuntimePlatform)
             {
                 case Device.UWP:
-                    searchButton.Source = "Assets/search-icon.png";
+                    searchButton.Source = "Assets/search-icon-small.png";
                     break;
                 case Device.Android:
-                    searchButton.Source = "searchicon.png";
+                    searchButton.Source = "searchiconsmall.png";
                     break;
                 default:
-                    searchButton.Source = "Assets/search-icon.png";
+                    searchButton.Source = "Assets/search-icon-small.png";
                     break;
             }
 
@@ -68,7 +68,7 @@ namespace WingspanPrototype1.View
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         DisplayAlert("Feild Empty", "The search feild can not be empty", "OK");
-
+                        searchingIndicator.IsRunning = false;
                     });
 
                     return;

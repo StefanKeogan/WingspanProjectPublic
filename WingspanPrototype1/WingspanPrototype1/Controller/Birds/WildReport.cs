@@ -25,7 +25,7 @@ namespace WingspanPrototype1.Controller.Birds
                 var filterBuilder = Builders<BsonDocument>.Filter;
 
                 // Build master filter
-                var filter = filterBuilder.Gte("DateBanded", startDate) & filterBuilder.Lte("DateBanded", endDate);
+                var filter = filterBuilder.Gte("DateBanded", startDate.ToLocalTime()) & filterBuilder.Lte("DateBanded", endDate.ToLocalTime());
 
                 try
                 {

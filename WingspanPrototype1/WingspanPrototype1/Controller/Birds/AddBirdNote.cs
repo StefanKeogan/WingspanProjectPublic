@@ -21,7 +21,7 @@ namespace WingspanPrototype1.Controller.Birds
                 // Create document
                 var document = new BsonDocument
                 {
-                    { "Date", note.Date },
+                    { "Date", note.Date.ToLocalTime() },
                     { "Category", note.Category },
                     { "Comment", note.Comment },
                     { "WingspanId", note.WingspanId}

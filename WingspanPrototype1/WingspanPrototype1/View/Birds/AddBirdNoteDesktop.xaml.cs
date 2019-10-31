@@ -138,7 +138,7 @@ namespace WingspanPrototype1.View
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         DisplayAlert("Feild Empty", "The search feild can not be empty", "OK");
-
+                        searchingIndicator.IsRunning = false;
                     });
 
                     return;

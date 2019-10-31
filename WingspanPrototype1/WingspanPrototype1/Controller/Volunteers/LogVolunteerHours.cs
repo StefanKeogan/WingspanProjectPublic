@@ -21,11 +21,12 @@ namespace WingspanPrototype1.Controller.Volunteers
                 // Create document
                 var document = new BsonDocument
                 {
-                    { "Date", hours.Date },
+                    { "Date", hours.Date.ToLocalTime() },
                     { "Amount", hours.Amount },
-                    { "Note", hours.Note },
                     { "Volunteer_id", hours.Volunteer_id}
                 };
+
+                if (hours.Note != null) document.Add("Note", hours.Note); 
 
                 // Insert docunment
                 try

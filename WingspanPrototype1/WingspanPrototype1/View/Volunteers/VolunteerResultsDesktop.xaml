@@ -35,16 +35,15 @@
             <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" x:Name="resultsView" IsVisible="False" WidthRequest="600">
                 <Grid HorizontalOptions="Center" HeightRequest="150">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
-                        <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="1*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
-
                     </Grid.RowDefinitions>
 
                     <!--First Name-->
@@ -125,13 +124,14 @@
                                 <ListView.ItemTemplate>
                                     <DataTemplate>
                                         <ViewCell>
-                                            <StackLayout Orientation="Horizontal" Margin="5,10,5,10">
-                                                <Label Text="Date" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
-                                                <Label Text="{Binding Date}" FontAttributes="Italic" FontSize="15"/>
-                                                <Label Text="Hours" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
-                                                <Label Text="{Binding Amount}" FontAttributes="Italic" FontSize="15"/>
-                                                <Label Text="Note" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
-                                                <Label Text="{Binding Note}" FontAttributes="Italic" FontSize="15"/>
+                                            <StackLayout Margin="5,10,5,10">
+                                                <StackLayout Orientation="Horizontal">
+                                                    <Label Text="Date" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
+                                                    <Label Text="{Binding Date}" FontAttributes="Italic" FontSize="15"/>
+                                                    <Label Text="Hours" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
+                                                    <Label Text="{Binding Amount}" FontAttributes="Italic" FontSize="15"/>
+                                                </StackLayout>
+                                                <Label Text="{Binding Note}" Margin="20,0,0,0" FontSize="15"/>
                                             </StackLayout>
                                         </ViewCell>
                                     </DataTemplate>

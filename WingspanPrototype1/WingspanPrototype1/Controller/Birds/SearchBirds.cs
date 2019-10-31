@@ -82,7 +82,7 @@ namespace WingspanPrototype1.Controller.Birds
 
                         // If a feild is populated add a condition to the filter
                         if (Validate.FeildPopulated(wingspanId)) filters.Add(filterBuilder.Eq("WingspanId", wingspanId.Replace(" ", string.Empty)));
-                        if (Validate.FeildPopulated(bandNumber)) filters.Add(filterBuilder.Eq("BandNo", bandNumber.Replace(" ", string.Empty)));
+                        if (Validate.FeildPopulated(bandNumber)) filters.Add(filterBuilder.Eq("MetalBand", bandNumber.Replace(" ", string.Empty)));
 
                         FilterDefinition<BsonDocument> searchFilter = filters[0];
 

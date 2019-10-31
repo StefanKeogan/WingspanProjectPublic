@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WingspanPrototype1.Controller.Birds;
 using WingspanPrototype1.Controller.Members;
+using WingspanPrototype1.Controller.Volunteers;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -65,93 +66,190 @@ namespace WingspanPrototype1.View.Reports
         {
             if ((collectionPicker.SelectedItem != null) && (conditionPicker.SelectedItem != null))
             {
-                switch (collectionPicker.SelectedItem.ToString())
+                buildingIndicator.IsRunning = true;
+
+                Task.Run(() =>
                 {
-                    case "All Birds":
-                        break;
-                    case "Wild Birds":                       
-                        captiveBirdListView.IsVisible = false;
-                        memberListView.IsVisible = false;
-                        volunteerListView.IsVisible = false;
-                        watermarkLayout.IsVisible = false;
-
-                        List<WildBird> wildResults = null;
-
-                        switch (conditionPicker.SelectedItem.ToString())
-                        {                            
-                            case "Banded":
-                                wildResults = WildReport.BandedReport(fromDatePicker.Date, toDatePicker.Date);                                
-                                break;
-                            case "Sponsored":
-                            default:
-                                break;
-                        }
-                        if ((wildResults != null) && (wildResults.Count > 0))
-                        {
-                            wildBirdListView.IsVisible = true;
-                            wildBirdListView.ItemsSource = wildResults;
-                        }
-                        break;
-                    case "Captive Birds":
-                        memberListView.IsVisible = false;
-                        volunteerListView.IsVisible = false;
-                        wildBirdListView.IsVisible = false;
-                        watermarkLayout.IsVisible = false;
-
-                        List<CaptiveBird> captiveResults = null;
-
-                        switch (conditionPicker.SelectedItem.ToString())
-                        {
-                            case "Ingoing":
-                                captiveResults = CaptiveReport.IngoingOutgoingReport("Ingoing", fromDatePicker.Date, toDatePicker.Date);
-                                break;
-                            case "Outgoing":
-                                captiveResults = CaptiveReport.IngoingOutgoingReport("Outgoing", fromDatePicker.Date, toDatePicker.Date);
-                                break;
-                            case "Deceased":
-                                captiveResults = CaptiveReport.IngoingOutgoingReport("Deceased", fromDatePicker.Date, toDatePicker.Date);
-                                break;
-                            default: captiveResults = null;
-                                break;                               
-                              
-                        }
-                        if ((captiveResults != null) && (captiveResults.Count > 0))
-                        {
-                            captiveBirdListView.IsVisible = true;
-                            captiveBirdListView.ItemsSource = captiveResults;
-                        }
-                        break;
-                    case "Members":
-                        captiveBirdListView.IsVisible = false;
-                        volunteerListView.IsVisible = false;
-                        wildBirdListView.IsVisible = false;
-                        watermarkLayout.IsVisible = false;
-
-                        List<Member> memberResults = null;
-
-                        switch (conditionPicker.SelectedItem.ToString())
-                        {
-                            case "Joined":
-                                memberResults = MemberReport.JoinedReport(fromDatePicker.Date, toDatePicker.Date);
+                    switch (collectionPicker.SelectedItem.ToString())
+                    {
+                        case "All Birds":
                             break;
-                            default: memberResults = null;
-                                break;
-                        }
+                        case "Wild Birds":
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                captiveBirdListView.IsVisible = false;
+                                memberListView.IsVisible = false;
+                                volunteerListView.IsVisible = false;                              
 
-                        if ((memberResults != null) && (memberResults.Count > 0))
-                        {
-                            memberListView.IsVisible = true;
-                            memberListView.ItemsSource = memberResults;
-                        }
-                        break;
-                    case "Volunteers":
-                        break;
-                    default:
-                        break;
-                }
+                            });                          
+
+                            List<WildBird> wildResults = null;
+
+                            switch (conditionPicker.SelectedItem.ToString())
+                            {
+                                case "Banded":
+                                    wildResults = WildReport.BandedReport(fromDatePicker.Date, toDatePicker.Date);
+                                    break;
+                                case "Sponsored":
+                                default:
+                                    break;
+                            }
+
+                            if ((wildResults != null) && (wildResults.Count > 0))
+                            {
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    watermarkLayout.IsVisible = false;
+                                    wildBirdListView.IsVisible = true;
+                                    wildBirdListView.ItemsSource = wildResults;
+                                    subtotalLabel.Text = "Total Banded Birds";
+                                    subtotalValue.Text = wildResults.Count.ToString();
+                                    buildingIndicator.IsRunning = false;
+                                });
+                            }
+                            break;
+                        case "Captive Birds":
+
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                memberListView.IsVisible = false;
+                                volunteerListView.IsVisible = false;
+                                wildBirdListView.IsVisible = false;
+                                
+                            });
+
+                            List<CaptiveBird> captiveResults = null;
+
+                            switch (conditionPicker.SelectedItem.ToString())
+                            {
+                                case "Ingoing":
+                                    captiveResults = CaptiveReport.IngoingOutgoingReport("Ingoing", fromDatePicker.Date, toDatePicker.Date);
+                                    break;
+                                case "Outgoing":
+                                    captiveResults = CaptiveReport.IngoingOutgoingReport("Outgoing", fromDatePicker.Date, toDatePicker.Date);
+                                    break;
+                                case "Deceased":
+                                    captiveResults = CaptiveReport.IngoingOutgoingReport("Deceased", fromDatePicker.Date, toDatePicker.Date);
+                                    break;
+                                default:
+                                    captiveResults = null;
+                                    break;
+
+                            }
+                            if ((captiveResults != null) && (captiveResults.Count > 0))
+                            {
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    watermarkLayout.IsVisible = false;
+                                    captiveBirdListView.IsVisible = true;
+                                    captiveBirdListView.ItemsSource = captiveResults;
+
+                                    switch (conditionPicker.SelectedItem.ToString())
+                                    {
+                                        case "Ingoing":
+                                            subtotalLabel.Text = "Total Ingoing Birds: ";
+                                            break;
+                                        case "Outgoing":
+                                            subtotalLabel.Text = "Total Outgoing Birds: ";
+                                            break;
+                                        case "Deceased":
+                                            subtotalLabel.Text = "Total Deceased Birds: ";
+                                            break;
+                                        default:
+                                            captiveResults = null;
+                                            break;
+
+                                    }
+                                    
+                                    subtotalValue.Text = captiveResults.Count.ToString();
+
+                                    buildingIndicator.IsRunning = false;
+
+                                });
+                            }
+                            break;
+                        case "Members":
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                captiveBirdListView.IsVisible = false;
+                                volunteerListView.IsVisible = false;
+                                wildBirdListView.IsVisible = false;
+                                
+                            });
+
+                            List<Member> memberResults = null;
+
+                            switch (conditionPicker.SelectedItem.ToString())
+                            {
+                                case "Joined":
+                                    memberResults = MemberReport.JoinedReport(fromDatePicker.Date, toDatePicker.Date);
+                                    break;
+                                default:
+                                    memberResults = null;
+                                    break;
+                            }
+
+                            if ((memberResults != null) && (memberResults.Count > 0))
+                            {
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    watermarkLayout.IsVisible = false;
+                                    memberListView.IsVisible = true;
+                                    memberListView.ItemsSource = memberResults;
+                                    subtotalLabel.Text = "Members Joined: ";
+                                    subtotalValue.Text = memberResults.Count.ToString();
+                                    buildingIndicator.IsRunning = false;
+                                });
+                            }
+                            break;
+                        case "Volunteers":
+
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                captiveBirdListView.IsVisible = false;
+                                memberListView.IsVisible = false;
+                                wildBirdListView.IsVisible = false;
+                            });
+
+                            List<VolunteerHours> volunteerResults = null;
+
+                            switch (conditionPicker.SelectedItem.ToString())
+                            {
+                                case "Worked":
+                                    volunteerResults = VolunteerReport.WorkedReport(fromDatePicker.Date, toDatePicker.Date);
+                                    break;
+                                default:
+                                    volunteerResults = null;
+                                    break;
+                            }
+
+                            if (volunteerResults != null)
+                            {
+                                double subtotal = 0;
+
+                                foreach (var hours in volunteerResults)
+                                {
+                                    subtotal = subtotal + hours.Amount;
+                                }
+
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    watermarkLayout.IsVisible = false;
+                                    volunteerListView.IsVisible = true;
+                                    volunteerListView.ItemsSource = volunteerResults;
+                                    subtotalLabel.Text = "Total Wours Worked: ";
+                                    subtotalValue.Text = subtotal.ToString();
+                                    buildingIndicator.IsRunning = false;
+                                    
+                                });
+                            }
+                            break;                           
+                        default:
+                            break;
+                    }
+                });
+               
             }
-        }
-
-        
+        }       
     }
 }
