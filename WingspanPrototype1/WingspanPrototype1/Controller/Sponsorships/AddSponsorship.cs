@@ -22,17 +22,15 @@ namespace WingspanPrototype1.Controller.Sponsorships
                 // Create document object, add default values 
                 var document = new BsonDocument
                 {
-                    { "Level", sponsorship.SponsorshipCategory },
+                    { "Level", sponsorship.Category },
                     { "StartDate", sponsorship.SponsorshipStart },
-                    { "EndDate", sponsorship.SponsorshipEnd }
+                    { "EndDate", sponsorship.SponsorshipEnd },
+                    { "Member_id", sponsorship.Member_id }
                 };
 
-                // Add feilds that are populated 
+                // Add feilds that are populated
                 if (Validate.FeildPopulated(sponsorship.WingspanId)) document.Add("WingspanId", sponsorship.WingspanId);
                 if (Validate.FeildPopulated(sponsorship.SponsorshipNotes)) document.Add("Notes", sponsorship.SponsorshipNotes.Replace(" ", string.Empty).ToLower());
-                if (Validate.FeildPopulated(sponsorship.FirstName)) document.Add("FirstName", sponsorship.FirstName.Replace(" ", string.Empty).ToLower());
-                if (Validate.FeildPopulated(sponsorship.LastName)) document.Add("LastName", sponsorship.LastName.Replace(" ", string.Empty).ToLower());
-                if (Validate.FeildPopulated(sponsorship.Company)) document.Add("Company", sponsorship.Company.Replace(" ", string.Empty).ToLower());
 
                 // Insert document
                 try

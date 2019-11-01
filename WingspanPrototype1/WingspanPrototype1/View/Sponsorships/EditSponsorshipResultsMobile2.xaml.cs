@@ -36,9 +36,9 @@ namespace WingspanPrototype1.View
             }
 
             //display Category
-            if ((sponsorship.SponsorshipCategory != string.Empty) && (sponsorship.SponsorshipCategory != null))
+            if ((sponsorship.Category != string.Empty) && (sponsorship.Category != null))
             {
-                editCategoryValueLabel.Text = sponsorship.SponsorshipCategory;
+                editCategoryValueLabel.Text = sponsorship.Category;
                 editCategoryStack.IsVisible = true;
                 editCategoryPicker.IsVisible = false;
             }
@@ -62,7 +62,7 @@ namespace WingspanPrototype1.View
             }
 
             //display Sponsorship start date
-            if ((sponsorship.SponsorshipStart.ToString() != string.Empty) && (sponsorship.SponsorshipStart != null))
+            if (sponsorship.SponsorshipStart.ToString() != string.Empty)
             {
                 editSponsorshipStartValueLabel.Text = sponsorship.SponsorshipStart.ToString();
                 editSponsorshipStartStack.IsVisible = true;
@@ -75,7 +75,7 @@ namespace WingspanPrototype1.View
             }
 
             //display Sponsorship end date
-            if ((sponsorship.SponsorshipEnd.ToString() != string.Empty) && (sponsorship.SponsorshipEnd != null))
+            if (sponsorship.SponsorshipEnd.ToString() != string.Empty)
             {
                 editSponsorshipEndValueLabel.Text = sponsorship.SponsorshipEnd.ToString();
                 editSponsorshipEndStack.IsVisible = true;

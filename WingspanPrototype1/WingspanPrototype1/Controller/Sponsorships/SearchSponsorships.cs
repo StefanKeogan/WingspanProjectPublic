@@ -16,7 +16,7 @@ namespace WingspanPrototype1.Controller.Sponsorships
             // Get DB
             var database = DatabaseConnection.GetDatabase();
 
-            // Get member collection
+            // Get sponsorship collection
             var collection = database.GetCollection<BsonDocument>("Sponsorships");
 
             // Used to build filter with multiple conditions

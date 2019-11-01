@@ -231,13 +231,13 @@ namespace WingspanPrototype1.View
         //set 'global' variable for captive sponsorship
         private void SetCaptiveBirdDetails(CaptiveBird bird)
         {
-            SponsorshipInfo.thisWingspanID = bird.WingspanId;
+            SponsorshipDetails.thisWingspanID = bird.WingspanId;
         }
 
         //set 'global' variable for wild sponsorship
         private void SetWildBirdDetails(WildBird bird)
         {
-            SponsorshipInfo.thisWingspanID = bird.WingspanId;
+            SponsorshipDetails.thisWingspanID = bird.WingspanId;
         }
 
         //choose this bird button

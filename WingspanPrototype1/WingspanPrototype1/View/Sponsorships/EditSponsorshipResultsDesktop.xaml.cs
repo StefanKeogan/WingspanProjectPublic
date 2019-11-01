@@ -1,4 +1,5 @@
 ﻿using System;
+using MongoDB.Bson;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,6 +8,8 @@ using System.Threading.Tasks;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
+using WingspanPrototype1.Controller.Birds;
+
 
 namespace WingspanPrototype1.View
 {
@@ -23,16 +26,20 @@ namespace WingspanPrototype1.View
         {
             var item = e.SelectedItem as Sponsorship;
 
+            //need to get the object of this member for display purposes
+            Member memberDetails = SearchMembers.Find(item.Member_id);
+
+
             if (item != null)
             {
-                DisplaySponsorship(item);
+                DisplaySponsorship(item, memberDetails);
                 editSponsorshipResults.IsVisible = true;
                 editSponsorshipButtons.IsVisible = true;
             }
         }
 
 
-        private void DisplaySponsorship(Sponsorship sponsorship)
+        private void DisplaySponsorship(Sponsorship sponsorship, Member member)
         {
             //display Wingspan ID
             if ((sponsorship.WingspanId != string.Empty) && (sponsorship.WingspanId != null))
@@ -48,9 +55,9 @@ namespace WingspanPrototype1.View
             }
 
             //display Category
-            if ((sponsorship.SponsorshipCategory != string.Empty) && (sponsorship.SponsorshipCategory != null))
+            if ((sponsorship.Category != string.Empty) && (sponsorship.Category != null))
             {
-                editCategoryValueLabel.Text = sponsorship.SponsorshipCategory;
+                editCategoryValueLabel.Text = sponsorship.Category;
                 editCategoryStack.IsVisible = true;
                 editCategoryPicker.IsVisible = false;
             }
@@ -74,7 +81,7 @@ namespace WingspanPrototype1.View
             }
 
             //display Sponsorship start date
-            if ((sponsorship.SponsorshipStart.ToString() != string.Empty) && (sponsorship.SponsorshipStart != null))
+            if (sponsorship.SponsorshipStart.ToString() != string.Empty)
             {
                 editSponsorshipStartValueLabel.Text = sponsorship.SponsorshipStart.ToString();
                 editSponsorshipStartStack.IsVisible = true;
@@ -87,7 +94,7 @@ namespace WingspanPrototype1.View
             }
 
             //display Sponsorship end date
-            if ((sponsorship.SponsorshipEnd.ToString() != string.Empty) && (sponsorship.SponsorshipEnd != null))
+            if (sponsorship.SponsorshipEnd.ToString() != string.Empty)
             {
                 editSponsorshipEndValueLabel.Text = sponsorship.SponsorshipEnd.ToString();
                 editSponsorshipEndStack.IsVisible = true;
@@ -100,9 +107,9 @@ namespace WingspanPrototype1.View
             }
 
             //display member's first name
-            if ((sponsorship.FirstName != string.Empty) && (sponsorship.FirstName != null))
+            if ((member.FirstName != string.Empty) && (member.FirstName != null))
             {
-                editSponsorFirstNameValueLabel.Text = sponsorship.FirstName;
+                editSponsorFirstNameValueLabel.Text = member.FirstName;
                 editSponsorFirstNameStack.IsVisible = true;
                 editSponsorFirstNameEntry.IsVisible = false;
             }
@@ -113,9 +120,9 @@ namespace WingspanPrototype1.View
             }
 
             //display member's last name
-            if ((sponsorship.LastName != string.Empty) && (sponsorship.LastName != null))
+            if ((member.LastName != string.Empty) && (member.LastName != null))
             {
-                editSponsorLastNameValueLabel.Text = sponsorship.LastName;
+                editSponsorLastNameValueLabel.Text = member.LastName;
                 editSponsorLastNameStack.IsVisible = true;
                 editSponsorLastNameEntry.IsVisible = false;
             }
@@ -126,9 +133,9 @@ namespace WingspanPrototype1.View
             }
 
             //display sponsoring company name
-            if ((sponsorship.Company != string.Empty) && (sponsorship.Company != null))
+            if ((member.Company != string.Empty) && (member.Company != null))
             {
-                editSponsorCompanyNameValueLabel.Text = sponsorship.Company;
+                editSponsorCompanyNameValueLabel.Text = member.Company;
                 editSponsorCompanyNameStack.IsVisible = true;
                 editSponsorCompanyNameEntry.IsVisible = false;
             }

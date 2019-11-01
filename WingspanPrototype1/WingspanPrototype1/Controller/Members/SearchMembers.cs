@@ -10,7 +10,7 @@ using MongoDB.Bson.Serialization;
 namespace WingspanPrototype1.Controller.Birds
 {
     class SearchMembers
-    {   
+    {
         public static List<Member> Search(string firstName, string lastName, string salutationName)
         {
             // Get DB
@@ -29,7 +29,7 @@ namespace WingspanPrototype1.Controller.Birds
                 // If feilds are populated add conditions to the filter
                 if (Validate.FeildPopulated(firstName)) filters.Add(filterBuilder.Eq("FirstName", firstName.ToLower().Replace(" ", string.Empty)));
                 if (Validate.FeildPopulated(lastName)) filters.Add(filterBuilder.Eq("LastName", lastName.ToLower().Replace(" ", string.Empty)));
-                if (Validate.FeildPopulated(salutationName)) filters.Add(filterBuilder.Eq("SalutionName", salutationName.ToLower().Replace( "", string.Empty)));
+                if (Validate.FeildPopulated(salutationName)) filters.Add(filterBuilder.Eq("SalutionName", salutationName.ToLower().Replace("", string.Empty)));
 
                 FilterDefinition<BsonDocument> searchFilter = filters[0];
 
@@ -63,9 +63,33 @@ namespace WingspanPrototype1.Controller.Birds
             else
             {
                 return null;
-            }          
+            }
 
         }
 
+        //find single member (mainly for display purposes on 'select member' page
+        public static Member Find(ObjectId id)
+        {
+            //get DB
+            var database = DatabaseConnection.GetDatabase();
+
+            if (database != null)
+            {
+                // Get member collection
+                var collection = database.GetCollection<BsonDocument>("Members");
+
+                //get the document in the collection with that id
+                var memberResult = collection.Find(new BsonDocument("_id", id));
+
+                //deserialise into "member" format
+                var memberObjectResult = BsonSerializer.Deserialize<Member>((BsonDocument)memberResult);
+
+                return memberObjectResult;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 }

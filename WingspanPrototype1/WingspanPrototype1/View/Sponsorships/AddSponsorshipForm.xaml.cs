@@ -1,4 +1,5 @@
 ﻿using System;
+using MongoDB.Bson;
 using System.Linq;
 using System.Collections.Generic;
 using Xamarin.Forms;
@@ -13,11 +14,12 @@ using WingspanPrototype1.Controller.Sponsorships;
 namespace WingspanPrototype1
 {
     //public variables for the select member/bird classes to access and set
-    public static class SponsorshipInfo
+    public static class SponsorshipDetails
     {
         public static string thisFirstName;
         public static string thisLastName;
         public static string thisCompany;
+        public static ObjectId thisMember;
         public static string thisWingspanID;
     }
 
@@ -37,6 +39,7 @@ namespace WingspanPrototype1
                 sponsorshipMargin2.Width = 0;
             }
         }
+
 
         //sorts out the sponsor selection
         async void OnSponsorSelected(object sender, EventArgs e)
@@ -88,9 +91,10 @@ namespace WingspanPrototype1
             }
 
             //assign selected sponsor name fields
-            selectedSponsorFirstNameValueLabel.Text = SponsorshipInfo.thisFirstName;
-            selectedSponsorLastNameValueLabel.Text = SponsorshipInfo.thisLastName;
-            selectedSponsorCompanyValueLabel.Text = SponsorshipInfo.thisCompany;
+            selectedSponsorFirstNameValueLabel.Text = SponsorshipDetails.thisFirstName;
+            selectedSponsorLastNameValueLabel.Text = SponsorshipDetails.thisLastName;
+            selectedSponsorCompanyValueLabel.Text = SponsorshipDetails.thisCompany;
+            
 
             //check that at least one field is filled in
             if ((selectedSponsorFirstNameValueLabel.Text == null) && (selectedSponsorLastNameValueLabel.Text == null) && (selectedSponsorCompanyValueLabel.Text == null))
@@ -112,7 +116,7 @@ namespace WingspanPrototype1
             //assign Wingspan ID of selected bird, if it is not already "Other"
             if (!selectedWingspanIdValueLabel.Text.Equals("Other"))
             {
-                selectedWingspanIdValueLabel.Text = SponsorshipInfo.thisWingspanID;
+                selectedWingspanIdValueLabel.Text = SponsorshipDetails.thisWingspanID;
             }
 
             //make sure there is a Wingspan ID or "Other" displayed 
@@ -136,11 +140,9 @@ namespace WingspanPrototype1
                 bool sponsorshipInserted = AddSponsorship.InsertSponsorshipDocument(new Sponsorship
                 {
                     WingspanId = selectedWingspanIdValueLabel.Text,
-                    SponsorshipCategory = levelSelector.SelectedItem.ToString(),
+                    Category = levelSelector.SelectedItem.ToString(),
                     SponsorshipNotes = sponsorshipNotesEditor.Text,
-                    FirstName = selectedSponsorFirstNameValueLabel.Text,
-                    LastName = selectedSponsorLastNameValueLabel.Text,
-                    Company = selectedSponsorCompanyValueLabel.Text,
+                    Member_id = SponsorshipDetails.thisMember,
                     SponsorshipStart = startDateSelector.Date,
                     SponsorshipEnd = endDateSelector.Date
                 });
@@ -155,10 +157,10 @@ namespace WingspanPrototype1
                     sponsorshipNotesEditor.Text = null;
 
                     //make 'global' variables null as well
-                    SponsorshipInfo.thisFirstName = null;
-                    SponsorshipInfo.thisLastName = null;
-                    SponsorshipInfo.thisCompany = null;
-                    SponsorshipInfo.thisWingspanID = null;
+                    SponsorshipDetails.thisFirstName = null;
+                    SponsorshipDetails.thisLastName = null;
+                    SponsorshipDetails.thisCompany = null;
+                    SponsorshipDetails.thisWingspanID = null;
 
                     await DisplayAlert("Sponsorship Added", "Sponsorship document inserted into the database", "OK");
                 }

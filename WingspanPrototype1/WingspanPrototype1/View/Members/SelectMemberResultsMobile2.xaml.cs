@@ -84,9 +84,9 @@ namespace WingspanPrototype1.View
         //set 'global' variables for sponsorship
         private void SetSponsorDetails(Member member)
         {
-            SponsorshipInfo.thisFirstName = member.FirstName;
-            SponsorshipInfo.thisLastName = member.LastName;
-            SponsorshipInfo.thisCompany = member.Company;
+            SponsorshipDetails.thisFirstName = member.FirstName;
+            SponsorshipDetails.thisLastName = member.LastName;
+            SponsorshipDetails.thisCompany = member.Company;
         }
 
         //assign this sponsor button
