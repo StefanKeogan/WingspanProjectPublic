@@ -52,6 +52,13 @@
                     </Picker.ItemsSource>
                 </Picker>
 
+                 <!--put the names into a stack within that row-->
+
+               
+
+
+                
+
                 <!--selected sponsor first name-->
                 <Label x:Name="selectedSponsorFirstNameLabel" Text="First name" Style="{StaticResource labelStyle}" Grid.Row="3"/>
                 <Label x:Name="selectedSponsorFirstNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="3"/>

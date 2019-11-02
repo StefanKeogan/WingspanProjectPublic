@@ -48,6 +48,8 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
 
+                        <!-- put these names into one stack -->
+
                         <!--member first name-->
                         <Label x:Name="selectMemberFirstNameLabel" Text="First name" Style="{StaticResource resultLabelStyle}"/>
                         <Label x:Name="selectMemberFirstNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False"/>
