@@ -22,6 +22,10 @@ namespace WingspanPrototype1
         private List<Picker> pickers = new List<Picker>();
         private List<DatePicker> datePickers = new List<DatePicker>();
         private Type birdType;
+        private List<WildBird> wildResults = new List<WildBird>();
+        private List<CaptiveBird> captiveResults = new List<CaptiveBird>();
+        // private ArrayList allResults = new ArrayList();
+
 
         public BirdResultsMobile2(ArrayList bird)
         {
@@ -55,6 +59,7 @@ namespace WingspanPrototype1
 
         }
 
+
         // Display wild bird content view
         public void DisplayWildBird(WildBird bird)
         {
@@ -69,22 +74,24 @@ namespace WingspanPrototype1
             // Display wild bird form
             wildBirdDisplayForm.IsVisible = true;
 
+            wildWingspanIdValueLabel.Text = bird.WingspanId;
+
             // Determine which feilds are populated, if populated display the value else display an entry, picker etc.
 
             // Set Wingspan Id Value
-            if (Validate.FeildPopulated(bird.WingspanId))
-            {
-                wildWingspanIdValueLabel.Text = bird.WingspanId;
-                wildWingspanIdStack.IsVisible = true;
-                wildWingspanIdEntry.IsVisible = false;
+            //if (Validate.FeildPopulated(bird.WingspanId))
+            //{
+            //    wildWingspanIdValueLabel.Text = bird.WingspanId;
+            //    wildWingspanIdStack.IsVisible = true;
+            //    wildWingspanIdEntry.IsVisible = false;
 
-            }
-            else
-            {
-                wildWingspanIdEntry.IsVisible = true;
-                wildWingspanIdStack.IsVisible = false;
-                entries.Add(wildWingspanIdEntry);
-            }
+            //}
+            //else
+            //{
+            //    wildWingspanIdEntry.IsVisible = true;
+            //    wildWingspanIdStack.IsVisible = false;
+            //    entries.Add(wildWingspanIdEntry);
+            //}
 
             // Set Species Value 
             if (Validate.FeildPopulated(bird.Species))
@@ -240,20 +247,22 @@ namespace WingspanPrototype1
             // Display captive bird form
             captiveBirdDisplayForm.IsVisible = true;
 
-            // Set Wingspan Id value
-            if (Validate.FeildPopulated(bird.WingspanId))
-            {
-                captiveWingspanIdValueLabel.Text = bird.WingspanId;
-                captiveWingspanIdStack.IsVisible = true;
-                captiveWingspanIdEntry.IsVisible = false;
+            captiveWingspanIdValueLabel.Text = bird.WingspanId;
 
-            }
-            else
-            {
-                captiveWingspanIdEntry.IsVisible = true;
-                captiveWingspanIdStack.IsVisible = false;
-                entries.Add(captiveWingspanIdEntry);
-            }
+            // Set Wingspan Id value
+            //if (Validate.FeildPopulated(bird.WingspanId))
+            //{
+            //    captiveWingspanIdValueLabel.Text = bird.WingspanId;
+            //    captiveWingspanIdStack.IsVisible = true;
+            //    captiveWingspanIdEntry.IsVisible = false;
+
+            //}
+            //else
+            //{
+            //    captiveWingspanIdEntry.IsVisible = true;
+            //    captiveWingspanIdStack.IsVisible = false;
+            //    entries.Add(captiveWingspanIdEntry);
+            //}
 
             // Set Name Value
             if (Validate.FeildPopulated(bird.Name))
@@ -361,9 +370,10 @@ namespace WingspanPrototype1
             }
 
             // Set Date Arrived Value 
-            if (bird.DateArrived.ToString() != "1/01/0001 12:00:00 AM")
+            if (bird.DateArrived.ToShortDateString() != "01/01/0001")
             {
-                captiveDateArrivedValueLabel.Text = bird.DateArrived.ToString();
+
+                captiveDateArrivedValueLabel.Text = bird.DateArrived.ToShortDateString();
                 captiveDateArrivedStack.IsVisible = true;
                 captiveDateArrivedPicker.IsVisible = false;
 
@@ -376,31 +386,33 @@ namespace WingspanPrototype1
             }
 
             // Set Date Departed Value 
-            if (bird.DateDeparted.ToString() != "1/01/0001 12:00:00 AM")
+            if (bird.DateDeparted.ToShortDateString() != "01/01/0001")
             {
-                captiveDateDepartedValueLabel.Text = bird.DateDeparted.ToString();
+                captiveDateDepartedValueLabel.Text = bird.DateDeparted.ToShortDateString();
                 captiveDateDepartedStack.IsVisible = true;
                 captiveDateDepartedPicker.IsVisible = false;
             }
             else
             {
-                captiveDateDepartedPicker.IsVisible = true;
-                captiveDateDepartedStack.IsVisible = false;
+                captiveDateDepartedValueLabel.Text = "Date Not Set";
+                captiveDateDepartedStack.IsVisible = true;
+                captiveDateDepartedPicker.IsVisible = false;
 
             }
 
             // Set Date Deceased Value 
-            if (bird.DateDeceased.ToString() != "1/01/0001 12:00:00 AM")
+            if (bird.DateDeceased.ToShortDateString() != "01/01/0001")
             {
-                captiveDateDeceasedValueLabel.Text = bird.DateDeceased.ToString();
+
+                captiveDateDeceasedValueLabel.Text = bird.DateDeceased.ToShortDateString();
                 captiveDatedeceasedStack.IsVisible = true;
                 captiveDateDeceasedPicker.IsVisible = false;
             }
             else
             {
-                captiveDateDeceasedPicker.IsVisible = true;
-                captiveDatedeceasedStack.IsVisible = false;
-
+                captiveDateDeceasedValueLabel.Text = "Date Not Set";
+                captiveDatedeceasedStack.IsVisible = true;
+                captiveDateDeceasedPicker.IsVisible = false;
             }
 
             // Set Result Value 
@@ -540,25 +552,83 @@ namespace WingspanPrototype1
             {
                 if (birdType == typeof(WildBird))
                 {
+                    // Do we have entry changes to validate?
+                    if (entries.Count > 0)
+                    {
+                        // Is the input valid?
+                        bool changesValid = ValidateWildBirdChanges(entries);
+                        if (!changesValid) return;
+                    }
+
                     WildBird wildBird = UpdateWildBird.UpdateDocument(id, entries, pickers);
 
                     if (wildBird != null)
                     {
+                        // Clear entries
+                        foreach (var entry in entries)
+                        {
+                            entry.Text = null;
+                        }
+
+                        // Reset pickers
+                        foreach (var picker in pickers)
+                        {
+                            picker.SelectedIndex = -1;
+                        }
+
+                        //// Find old wild bird
+                        //WildBird bird = wildResults.Find(x => x._id == id);
+                        //int resultIndex = allResults.IndexOf(bird);
+                        //int wildIndex = wildResults.IndexOf(bird);
+
+                        //// Update old wild bird 
+                        //wildResults[wildIndex] = wildBird;
+                        //allResults[resultIndex] = wildBird;
+
                         DisplayWildBird(wildBird);
                         await DisplayAlert("Bird Saved", "Your changes have been saved", "OK");
+
                     }
                     else
                     {
                         await DisplayAlert("Connection Error", "Could not connect to database, please check your connection and try again", "OK");
                     }
+
                 }
                 else if (birdType == typeof(CaptiveBird))
                 {
+                    if (entries.Count > 0)
+                    {
+                        bool changesValid = ValidateCaptiveBirdChanges(entries);
+                        if (!changesValid) return;
+                    }
+
                     CaptiveBird captiveBird = UpdateCaptiveBird.UpdateDocument(id, entries, pickers, datePickers);
 
                     if (captiveBird != null)
                     {
-                        captiveBird.Name = FormatText.FirstToUpper(captiveBird.Name);
+                        // Clear entries
+                        foreach (var entry in entries)
+                        {
+                            entry.Text = null;
+                        }
+
+                        // Reset pickers
+                        foreach (var picker in pickers)
+                        {
+                            picker.SelectedIndex = -1;
+                        }
+
+                        //// Find old captive bird
+                        //CaptiveBird bird = captiveResults.Find(x => x._id == id);
+                        //int resultIndex = allResults.IndexOf(bird);
+                        //int captiveIndex = captiveResults.IndexOf(bird);
+
+                        //// Update old captive bird 
+                        //captiveResults[captiveIndex] = captiveBird;
+                        //allResults[resultIndex] = captiveBird;                       
+
+                        //captiveBird.Name = FormatText.FirstToUpper(captiveBird.Name);
 
                         DisplayCaptiveBird(captiveBird);
                         await DisplayAlert("Bird Saved", "Your changes have been saved", "OK");
@@ -573,6 +643,114 @@ namespace WingspanPrototype1
             }
         }
 
+        private bool ValidateWildBirdChanges(List<Entry> entries)
+        {
+            bool allFeildsValid = true;
+            string errorMessage = "";
+
+            foreach (var entry in entries)
+            {
+                if (Validate.FeildPopulated(entry.Text))
+                {
+                    // Is the entry poulated
+                    if (Validate.FeildPopulated(entry.Text))
+                    {
+                        if (entry.StyleId == "wildLocationEntry")
+                        {
+                            if (Validate.ContainsNumberOrSymbol(entry.Text))
+                            {
+                                errorMessage = errorMessage + "The location feild cannot contain numbers or symbols \n";
+                                allFeildsValid = false;
+                            }
+                        }
+
+                        if (entry.StyleId == "wildMetalBandIdEntry")
+                        {
+                            if (Validate.ContainsLetterOrSymbol(entry.Text))
+                            {
+                                errorMessage = errorMessage + "The metal band id feild cannot contain letters or symbols \n";
+                                allFeildsValid = false;
+                            }
+                        }
+
+                        if (entry.StyleId == "wildBanderNameEntry")
+                        {
+                            if (Validate.ContainsNumberOrSymbol(entry.Text))
+                            {
+                                errorMessage = errorMessage + "The Bander Name feild cannot contain numbers or symbols";
+                                allFeildsValid = false;
+                            }
+                        }
+
+                    }
+                }
+
+            }
+
+            if (allFeildsValid)
+            {
+                return true;
+            }
+            else
+            {
+                DisplayAlert("Invalid Entry Format", errorMessage, "OK");
+                return false;
+            }
+        }
+
+        private bool ValidateCaptiveBirdChanges(List<Entry> entries)
+        {
+            bool allFeildsValid = true;
+
+            string errorMessage = "";
+
+            foreach (var entry in entries)
+            {
+                if (Validate.FeildPopulated(entry.Text))
+                {
+                    // Which feild are we updateing?
+                    if (entry.StyleId == "captiveNameEntry")
+                    {
+                        if (Validate.ContainsNumberOrSymbol(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The Name feild cannot contain numbers or symbols \n";
+                            allFeildsValid = false;
+                        }
+                    }
+                    if (entry.StyleId == "captiveBandNumberEntry")
+                    {
+                        if (Validate.ContainsLetterOrSymbol(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The Band Number feild cannot contain letters or symbols \n";
+                            allFeildsValid = false;
+                        }
+                    }
+                    if (entry.StyleId == "captiveLocationEntry")
+                    {
+                        if (Validate.ContainsNumberOrSymbol(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The Location feild cannot contain numbers or symbols \n";
+                            allFeildsValid = false;
+                        }
+                    }
+                }
+
+            }
+
+            if (allFeildsValid == true)
+            {
+                return true;
+            }
+            else
+            {
+                DisplayAlert("Invalid Input", errorMessage, "OK");
+                errorMessage = "";
+                return false;
+            }
+
+
+        }
+
         private async void DeleteButton_Clicked(object sender, EventArgs e)
         {
             bool result = await DisplayAlert("Are you sure", "Would you like to delete this bird", "Yes", "No");
@@ -583,7 +761,21 @@ namespace WingspanPrototype1
                     if (DeleteWildBird.DropDocument(id))
                     {
                         await DisplayAlert("Bird Deleted", "This wild bird and location history have been removed from the database", "OK");
-                        await Navigation.PopAsync();
+
+                        addNewNoteView.IsVisible = false;
+                        noteHistoryView.IsVisible = false;
+                        addNewLocationView.IsVisible = false;
+                        locationHistoryView.IsVisible = false;
+                        wildBirdDisplayForm.IsVisible = false;
+
+                        WildBird bird = wildResults.Find(x => x._id == id);
+                        wildResults.Remove(bird);
+
+                        if ((wildResults.Count <= 0) && (captiveResults.Count <= 0))
+                        {
+                            await Navigation.PopAsync();
+                        }                       
+
                     }
                     else
                     {
@@ -595,7 +787,20 @@ namespace WingspanPrototype1
                     if (DeleteCaptiveBird.DropDocument(id))
                     {
                         await DisplayAlert("Bird Deleted", "This captive bird, their notes and location history have been removed from the database", "OK");
-                        await Navigation.PopAsync();
+                        addNewNoteView.IsVisible = false;
+                        noteHistoryView.IsVisible = false;
+                        addNewLocationView.IsVisible = false;
+                        locationHistoryView.IsVisible = false;
+                        captiveBirdDisplayForm.IsVisible = false;
+
+                        CaptiveBird bird = captiveResults.Find(x => x._id == id);
+                        captiveResults.Remove(bird);
+
+                        if ((captiveResults.Count <= 0) && (wildResults.Count <= 0))
+                        {
+                            await Navigation.PopAsync();
+                        }                       
+
                     }
                     else
                     {
@@ -604,16 +809,15 @@ namespace WingspanPrototype1
                     }
                 }
 
-
             }
         }
 
-        private void WildWingspanIdEditButton_Clicked(object sender, EventArgs e)
-        {
-            wildWingspanIdStack.IsVisible = false;
-            wildWingspanIdEntry.IsVisible = true;
-            entries.Add(wildWingspanIdEntry);
-        }
+        //private void WildWingspanIdEditButton_Clicked(object sender, EventArgs e)
+        //{
+        //    wildWingspanIdStack.IsVisible = false;
+        //    wildWingspanIdEntry.IsVisible = true;
+        //    entries.Add(wildWingspanIdEntry);
+        //}
 
         private void WildSpeciesEditButton_Clicked(object sender, EventArgs e)
         {
@@ -678,12 +882,12 @@ namespace WingspanPrototype1
             entries.Add(bandInfoEntry);
         }
 
-        private void CaptiveWingspanIdEditButton_Clicked(object sender, EventArgs e)
-        {
-            captiveWingspanIdStack.IsVisible = false;
-            captiveWingspanIdEntry.IsVisible = true;
-            entries.Add(captiveWingspanIdEntry);
-        }
+        //private void CaptiveWingspanIdEditButton_Clicked(object sender, EventArgs e)
+        //{
+        //    captiveWingspanIdStack.IsVisible = false;
+        //    captiveWingspanIdEntry.IsVisible = true;
+        //    entries.Add(captiveWingspanIdEntry);
+        //}
 
         private void CaptiveNameEditButton_Clicked(object sender, EventArgs e)
         {
@@ -694,9 +898,9 @@ namespace WingspanPrototype1
 
         private void CaptiveBandNumberEditButton_Clicked(object sender, EventArgs e)
         {
-            captiveWingspanIdStack.IsVisible = false;
-            captiveWingspanIdEntry.IsVisible = true;
-            entries.Add(captiveWingspanIdEntry);
+            captiveBandNumberStack.IsVisible = false;
+            captiveBandNumberEntry.IsVisible = true;
+            entries.Add(captiveBandNumberEntry);
         }
 
         private void CaptiveBandInfoEditButton_Clicked(object sender, EventArgs e)
@@ -736,23 +940,23 @@ namespace WingspanPrototype1
 
         private void CaptiveDateArrivedEditButton_Clicked(object sender, EventArgs e)
         {
-            wildDateBandedStack.IsVisible = false;
-            wildDateBandedPicker.IsVisible = true;
-            datePickers.Add(wildDateBandedPicker);
+            captiveDateArrivedStack.IsVisible = false;
+            captiveDateArrivedPicker.IsVisible = true;
+            datePickers.Add(captiveDateArrivedPicker);
         }
 
         private void CaptiveDateDepartedEditButton_Clicked(object sender, EventArgs e)
         {
-            wildDateBandedStack.IsVisible = false;
-            wildDateBandedPicker.IsVisible = true;
-            datePickers.Add(wildDateBandedPicker);
+            captiveDateDepartedStack.IsVisible = false;
+            captiveDateDepartedPicker.IsVisible = true;
+            datePickers.Add(captiveDateDepartedPicker);
         }
 
         private void CaptiveDateDeceasedEditButton_Clicked(object sender, EventArgs e)
         {
-            wildDateBandedStack.IsVisible = false;
-            wildDateBandedPicker.IsVisible = true;
-            datePickers.Add(wildDateBandedPicker);
+            captiveDatedeceasedStack.IsVisible = false;
+            captiveDateDeceasedPicker.IsVisible = true;
+            datePickers.Add(captiveDateDeceasedPicker);
         }
 
         private void CaptiveResultEditButton_Clicked(object sender, EventArgs e)

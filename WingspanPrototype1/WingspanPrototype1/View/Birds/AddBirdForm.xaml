@@ -12,7 +12,7 @@
 
             <ContentView x:Name="wildBirdForm" IsVisible="False">
                 <ContentView.Content>
-                    <Grid HeightRequest="700" HorizontalOptions="Center">
+                    <Grid HeightRequest="900" HorizontalOptions="Center">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" x:Name="wildMargin1"/>
                             <ColumnDefinition Width="1.5*"/>
@@ -122,7 +122,7 @@
 
             <ContentView x:Name="captiveBirdForm" IsVisible="False">
                 <ContentView.Content>
-                    <Grid HeightRequest="600">
+                    <Grid HeightRequest="900">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="*" x:Name="captiveMargin1"/>
                             <ColumnDefinition Width="1.5*"/>

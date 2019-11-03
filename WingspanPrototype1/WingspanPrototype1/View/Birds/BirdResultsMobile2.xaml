@@ -38,11 +38,12 @@
 
                             <!--Wingspan Id-->
                             <Label x:Name="wildWingspanIdLabel" Text="Wingspan Id" FontSize="20"/>
-                            <StackLayout x:Name="wildWingspanIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1" >
-                                <Label x:Name="wildWingspanIdValueLabel" FontSize="20"/>
+                            <Label x:Name="wildWingspanIdValueLabel" FontSize="20" Grid.Column="1"/>
+                            <!--<StackLayout x:Name="wildWingspanIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1" >
+                                
                                 <Button x:Name="wildWingspanIdEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="WildWingspanIdEditButton_Clicked"/>
                             </StackLayout>
-                            <Entry x:Name="wildWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
+                            <Entry x:Name="wildWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>-->
 
                             <!--Species-->
                             <Label x:Name="wildSpeciesLabel" Text="Species" FontSize="20" Grid.Row="1"/>
@@ -166,11 +167,12 @@
 
                             <!--Wingspan Id-->
                             <Label x:Name="captiveWingspanIdLabel" Text="Wingspan Id" FontSize="20"/>
-                            <StackLayout x:Name="captiveWingspanIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
-                                <Label x:Name="captiveWingspanIdValueLabel" FontSize="20"/>
+                            <Label x:Name="captiveWingspanIdValueLabel" FontSize="20" Grid.Column="1"/>
+                            <!--<StackLayout x:Name="captiveWingspanIdStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
+                                
                                 <Button x:Name="captiveWingspanIdEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveWingspanIdEditButton_Clicked"/>
                             </StackLayout>
-                            <Entry x:Name="captiveWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
+                            <Entry x:Name="captiveWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>-->
 
                             <!--Name-->
                             <Label x:Name="captiveNameLabel" Text="Name" FontSize="20" Grid.Row="1"/>
@@ -186,7 +188,7 @@
                                 <Label x:Name="captiveBandNumberValueLabel" FontSize="20"/>
                                 <Button x:Name="captiveBandNumberEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="CaptiveBandNumberEditButton_Clicked"/>
                             </StackLayout>
-                            <Entry x:Name="captiveBandNumberEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Column="1"/>
+                            <Entry x:Name="captiveBandNumberEntry" HorizontalOptions="Fill" VerticalOptions="Center" IsVisible="False" Grid.Row="2" Grid.Column="1"/>
 
                             <!--Band Colour-->
                             <Label x:Name="captiveBandInfoLabel" Text="Band Colour" FontSize="20" Grid.Row="3"/>
@@ -335,7 +337,7 @@
                 </StackLayout>
 
                 <!--Note history popup box-->
-                <ContentView x:Name="noteHistoryView" HeightRequest="400"  IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView x:Name="noteHistoryView" HeightRequest="300"  IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center" Grid.Row="1">
                     <ContentView.Content>
                         <Frame BorderColor="#000000" Padding="3" BackgroundColor="#FFFFFF">
                             <StackLayout BackgroundColor="#FFFFFF" >
@@ -377,7 +379,7 @@
                 </ContentView>
 
                 <!--Add Note Popup-->
-                <ContentView x:Name="addNewNoteView" HeightRequest="400" IsVisible="False" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600">
+                <ContentView x:Name="addNewNoteView" HeightRequest="300" IsVisible="False" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600"  Grid.Row="1">
                     <ContentView.Content>
                         <Frame BorderColor="#000000" Padding="3" Margin="5,5,5,5" BackgroundColor="#FFFFFF">
                             <StackLayout BackgroundColor="#FFFFFF">
@@ -412,7 +414,7 @@
                 </ContentView>
 
                 <!--Location history popup-->
-                <ContentView x:Name="locationHistoryView" HeightRequest="400"  IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center">
+                <ContentView x:Name="locationHistoryView" HeightRequest="400"  IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center"  Grid.Row="1">
                     <ContentView.Content>
                         <Frame BorderColor="#000000" Padding="3" BackgroundColor="#FFFFFF">
                             <StackLayout BackgroundColor="#FFFFFF" >
@@ -454,7 +456,7 @@
                 </ContentView>
 
                 <!--Add new location popup-->
-                <ContentView x:Name="addNewLocationView" HeightRequest="400"  IsVisible="False" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600">
+                <ContentView x:Name="addNewLocationView" HeightRequest="400"  IsVisible="False" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600"  Grid.Row="1">
                     <ContentView.Content>
                         <Frame BorderColor="#000000" Padding="3" Margin="5,5,5,5" BackgroundColor="#FFFFFF">
                             <StackLayout BackgroundColor="#FFFFFF" >

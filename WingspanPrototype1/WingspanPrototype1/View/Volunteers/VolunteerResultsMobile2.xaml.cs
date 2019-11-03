@@ -16,7 +16,7 @@ namespace WingspanPrototype1.View.Volunteers
     public partial class VolunteerResultsMobile2 : ContentPage
     {
         private ObjectId id;
-        private List<Entry> entries;
+        private List<Entry> entries = new List<Entry>();
 
         public VolunteerResultsMobile2(Volunteer volunteer)
         {

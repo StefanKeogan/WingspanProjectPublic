@@ -4,98 +4,93 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
-             x:Class="WingspanPrototype1.View.Reports.ReportBuilderMobile2">
+             x:Class="WingspanPrototype1.View.Reports.ReportBuilderMobile2"
+             Title="ReportResults">
 
     <ContentPage.Resources>
         <ResourceDictionary>
-
-
-            <Style x:Key="resultLabel" TargetType="Label">
-                <Setter Property="FontSize" Value="15"/>
-                <Setter Property="Margin" Value="5,0,0,0"/>
-            </Style>
-
             <Style x:Key="resultListStyle" TargetType="ListView">
                 <Setter Property="BackgroundColor" Value="#FFFFFF"/>
                 <Setter Property="HorizontalOptions" Value="Fill"/>
                 <Setter Property="VerticalOptions" Value="Fill"/>
             </Style>
+
+            <Style x:Key="resultLabelStyle" TargetType="Label">
+                <Setter Property="TextColor" Value="#000000"/>
+                <Setter Property="FontSize" Value="20"/>
+            </Style>
         </ResourceDictionary>
     </ContentPage.Resources>
 
-
-
     <ContentPage.Content>
-        <Grid>
+        <Grid Margin="10,10,10,10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="11"/>
             </Grid.RowDefinitions>
 
-            <ListView x:Name="wildBirdListView" Style="{StaticResource resultListStyle}" IsVisible="False" Grid.Row="1">
+            <ListView x:Name="wildBirdListView" Style="{StaticResource resultListStyle}" IsVisible="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding WingspanId}"/>
-                                <Label Text="{Binding Species}"/>
-                                <Label Text="{Binding Sex}"/>
-                                <Label Text="{Binding Age}"/>
-                                <Label Text="{Binding MetalBand}"/>
-                                <Label Text="{Binding BandInfo}"/>
+                                <Label Text="{Binding WingspanId}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding Species}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding Sex}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding Age}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding MetalBand}" Style="{StaticResource resultLabelStyle}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ListView x:Name="captiveBirdListView" Style="{StaticResource resultListStyle}" IsVisible="False" Grid.Row="1">
+            <ListView x:Name="captiveBirdListView" Style="{StaticResource resultListStyle}" IsVisible="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding WingspanId}"/>
-                                <Label Text="{Binding Name}"/>
-                                <Label Text="{Binding Species}"/>
-                                <Label Text="{Binding Sex}"/>
-                                <Label Text="{Binding Age}"/>
-                                <Label Text="{Binding BandId}"/>
-                                <Label Text="{Binding BandInfo}"/>
+                                <Label Text="{Binding WingspanId}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding Name}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding Species}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding Sex}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding Age}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding BandId}" Style="{StaticResource resultLabelStyle}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ListView x:Name="memberListView" Style="{StaticResource resultListStyle}" IsVisible="False" Grid.Row="1">
+            <ListView x:Name="memberListView" Style="{StaticResource resultListStyle}" IsVisible="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding FirstName}"/>
-                                <Label Text="{Binding LastName}"/>
-                                <Label Text="{Binding Email}"/>
+                                <Label Text="{Binding FirstName}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding LastName}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="Joined " Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding JoinDate, StringFormat='{0:MM/dd/yy}'}" Style="{StaticResource resultLabelStyle}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ListView x:Name="volunteerListView" Style="{StaticResource resultListStyle}" IsVisible="False" Grid.Row="1">
+            <ListView x:Name="volunteerListView" Style="{StaticResource resultListStyle}" IsVisible="False">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal">
-                                <Label Text="{Binding FirstName}"/>
-                                <Label Text="{Binding LastName}"/>
-                                <Label Text="{Binding Email}"/>
-                                <Label Text="{Binding Moile}"/>
+                                <Label Text="{Binding FirstName}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding LastName}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding Email}" Style="{StaticResource resultLabelStyle}"/>
+                                <Label Text="{Binding Moile}" Style="{StaticResource resultLabelStyle}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
-
         </Grid>
     </ContentPage.Content>
 </ContentPage>

@@ -29,92 +29,91 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="1*"/>
-                        <RowDefinition Height="1*"/>
                     </Grid.RowDefinitions>
 
                     <!--First Name-->
-                    <Label x:Name="memberFirstNameLabel" Text="First Name" FontSize="20" Grid.Row="1"/>
-                    <StackLayout x:Name="memberFirstNameStack" Orientation="Horizontal" IsVisible="False" Grid.Row="1" Grid.Column="1">
+                    <Label x:Name="memberFirstNameLabel" Text="First Name" FontSize="20"/>
+                    <StackLayout x:Name="memberFirstNameStack" Orientation="Horizontal" IsVisible="False" Grid.Column="1">
                         <Label x:Name="memberFirstNameValueLabel" FontSize="20"/>
                         <Button x:Name="memberFirstNameEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberFirstNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberFirstNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1" IsVisible="False"/>
 
 
                     <!--Last Name-->
-                    <Label x:Name="memberLastNameLabel" Text="Last Name" FontSize="20" Grid.Row="2"/>
-                    <StackLayout x:Name="memberLastNameStack" Orientation="Horizontal"  IsVisible="False" Grid.Row="2" Grid.Column="1">
+                    <Label x:Name="memberLastNameLabel" Text="Last Name" FontSize="20" Grid.Row="1"/>
+                    <StackLayout x:Name="memberLastNameStack" Orientation="Horizontal"  IsVisible="False" Grid.Row="1" Grid.Column="1">
                         <Label x:Name="memberLastNameValueLabel" FontSize="20"/>
                         <Button x:Name="memberLastNameEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberLastNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberLastNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1" IsVisible="False"/>
 
                     <!--Salutation Name-->
-                    <Label x:Name="memberSalutationLabel" Text="Salutation Name" FontSize="20" Grid.Row="3"/>
-                    <StackLayout x:Name="memberSalutationStack" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberSalutationLabel" Text="Salutation Name" FontSize="20" Grid.Row="2"/>
+                    <StackLayout x:Name="memberSalutationStack" Orientation="Horizontal" Grid.Row="2" Grid.Column="1" IsVisible="False">
                         <Label x:Name="memberSalutationValueLabel" Text="GPS" FontSize="20"/>
                         <Button x:Name="memberSalutationEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberSalutationEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberSalutationEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="2" Grid.Column="1" IsVisible="False"/>
 
                     <!--Email-->
-                    <Label x:Name="memberEmailLabel" Text="Email" FontSize="20" Grid.Row="4"/>
-                    <StackLayout x:Name="memberEmailStack" Orientation="Horizontal" Grid.Row="4" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberEmailLabel" Text="Email" FontSize="20" Grid.Row="3"/>
+                    <StackLayout x:Name="memberEmailStack" Orientation="Horizontal" Grid.Row="3" Grid.Column="1" IsVisible="False">
                         <Label x:Name="memberEmailValueLabel" Text="GPS" FontSize="20"/>
                         <Button x:Name="memberEmailEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberEmailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberEmailEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="3" Grid.Column="1" IsVisible="False"/>
 
                     <!--Company-->
-                    <Label x:Name="memberCompanyLabel" Text="Company" FontSize="20" Grid.Row="5"/>
-                    <StackLayout x:Name="memberCompanyStack" Orientation="Horizontal" Grid.Row="5" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberCompanyLabel" Text="Company" FontSize="20" Grid.Row="4"/>
+                    <StackLayout x:Name="memberCompanyStack" Orientation="Horizontal" Grid.Row="4" Grid.Column="1" IsVisible="False">
                         <Label x:Name="memberCompanyValueLabel" Text="GPS" FontSize="20" />
                         <Button x:Name="memberCompanyEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberCompanyEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberCompanyEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="4" Grid.Column="1" IsVisible="False"/>
 
                     <!--Address 1-->
-                    <Label x:Name="memberAddress1Label" Text="Address 1" FontSize="20" Grid.Row="6"/>
-                    <StackLayout x:Name="memberAddress1Stack" Orientation="Horizontal" Grid.Row="6" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberAddress1Label" Text="Address 1" FontSize="20" Grid.Row="5"/>
+                    <StackLayout x:Name="memberAddress1Stack" Orientation="Horizontal" Grid.Row="5" Grid.Column="1" IsVisible="False">
                         <Label x:Name="memberAddress1ValueLabel" Text="GPS" FontSize="20"/>
                         <Button x:Name="memberAddress1Button" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberAddress1Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberAddress1Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="5" Grid.Column="1" IsVisible="False"/>
 
                     <!--Address 2-->
-                    <Label x:Name="memberAddress2Label" Text="Address 2" FontSize="20" Grid.Row="7"/>
-                    <StackLayout x:Name="memberAddress2Stack" Orientation="Horizontal" Grid.Row="7" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberAddress2Label" Text="Address 2" FontSize="20" Grid.Row="6"/>
+                    <StackLayout x:Name="memberAddress2Stack" Orientation="Horizontal" Grid.Row="6" Grid.Column="1" IsVisible="False">
                         <Label x:Name="memberAddress2ValueLabel" Text="GPS" FontSize="20"/>
                         <Button x:Name="memberAddress2Button" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberAddress2Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberAddress2Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="6" Grid.Column="1" IsVisible="False"/>
 
                     <!--Address 3-->
-                    <Label x:Name="memberAddress3Label" Text="Address 3" FontSize="20" Grid.Row="8"/>
-                    <StackLayout x:Name="memberAddress3Stack" Orientation="Horizontal" Grid.Row="8" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberAddress3Label" Text="Address 3" FontSize="20" Grid.Row="7"/>
+                    <StackLayout x:Name="memberAddress3Stack" Orientation="Horizontal" Grid.Row="7" Grid.Column="1" IsVisible="False">
                         <Label x:Name="memberAddress3ValueLabel" Text="GPS" FontSize="20"/>
                         <Button x:Name="memberAddress3Button" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberAddress3Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="8" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberAddress3Entry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="7" Grid.Column="1" IsVisible="False"/>
 
                     <!--City-->
-                    <Label x:Name="memberCityLabel" Text="City" FontSize="20" Grid.Row="9"/>
-                    <StackLayout x:Name="memberCityStack" Orientation="Horizontal" Grid.Row="9" Grid.Column="1" IsVisible="False">
+                    <Label x:Name="memberCityLabel" Text="City" FontSize="20" Grid.Row="8"/>
+                    <StackLayout x:Name="memberCityStack" Orientation="Horizontal" Grid.Row="8" Grid.Column="1" IsVisible="False">
                         <Label x:Name="memberCityValueLabel" Text="GPS" FontSize="20"/>
                         <Button x:Name="memberCItyEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberCityEntry" Grid.Row="9" IsVisible="False" Grid.Column="1"/>
+                    <Entry x:Name="memberCityEntry" Grid.Row="8" IsVisible="False" Grid.Column="1"/>
 
                     <!--Post Code-->
-                    <Label x:Name="memberPostCodeLabel" Text="Post Code" FontSize="20" Grid.Row="10"/>
-                    <StackLayout x:Name="memberPostCodeStack" Grid.Row="10" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
+                    <Label x:Name="memberPostCodeLabel" Text="Post Code" FontSize="20" Grid.Row="9"/>
+                    <StackLayout x:Name="memberPostCodeStack" Grid.Row="9" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
                         <Label x:Name="memberPostCodeValueLabel" Text="GPS" FontSize="20" />
                         <Button x:Name="memberPostCodeEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
                     </StackLayout>
-                    <Entry x:Name="memberPostCodeEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="10" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberPostCodeEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="9" Grid.Column="1" IsVisible="False"/>
 
                     <!--Country-->
-                    <Label x:Name="memberCountryLabel" Text="Post Code" FontSize="20" Grid.Row="10"/>
+                    <Label x:Name="memberCountryLabel" Text="Country" FontSize="20" Grid.Row="10"/>
                     <StackLayout x:Name="memberCountryStack" Grid.Row="10" Grid.Column="1" IsVisible="False" Orientation="Horizontal">
                         <Label x:Name="memberCountryValueLabel" Text="GPS" FontSize="20" />
                         <Button x:Name="memberCountryEditButton" Text="[edit]" BackgroundColor="#F0F0F0" TextColor="#5C3838" FontSize="15" VerticalOptions="Center"/>
@@ -138,7 +137,7 @@
                     <DatePicker x:Name="memberJoinDatePicker" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="12" Grid.Column="1" IsVisible="False"/>
 
                     <!--Donation History-->
-                    <ContentView x:Name="paymentHistoryView" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center" MinimumHeightRequest="300" Grid.Row="2" Grid.RowSpan="8" Grid.ColumnSpan="2">
+                    <ContentView x:Name="paymentHistoryView" IsVisible="False" HorizontalOptions="Center" VerticalOptions="Center" MinimumHeightRequest="300" Grid.Row="6" Grid.RowSpan="7" Grid.ColumnSpan="2">
                         <ContentView.Content>
                             <Frame BorderColor="#000000" Padding="3" BackgroundColor="#FFFFFF">
                                 <StackLayout BackgroundColor="#FFFFFF" >
@@ -146,15 +145,15 @@
                                         <Label Text="Payment History" TextColor="#FFFFFF" BackgroundColor="#5C3838" FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>
                                         <Button x:Name="paymentExitButton"  Style="{StaticResource exitStyle}" Clicked="PaymentExitButton_Clicked"/>
                                     </StackLayout>
-                                    <ListView x:Name="paymentListView">
+                                    <ListView x:Name="paymentListView" ItemSelected="PaymentListView_ItemSelected">
                                         <ListView.ItemTemplate>
                                             <DataTemplate>
                                                 <ViewCell>
                                                     <StackLayout Orientation="Horizontal" Margin="5,10,5,10">
                                                         <Label Text="Date" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
-                                                        <Label Text="{Binding PaymentDate}" FontAttributes="Italic" FontSize="15"/>
+                                                        <Label Text="{Binding Date}" FontAttributes="Italic" FontSize="15"/>
                                                         <Label Text="Category" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
-                                                        <Label Text="{Binding Donation}" FontAttributes="Italic" FontSize="15"/>
+                                                        <Label Text="{Binding Amount}" FontAttributes="Italic" FontSize="15"/>
                                                     </StackLayout>
                                                 </ViewCell>
                                             </DataTemplate>
@@ -173,9 +172,9 @@
                     </ContentView>
 
                     <!--Add Payment-->
-                    <ContentView x:Name="addNewPaymentView" IsVisible="False" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600" Grid.Row="2" Grid.RowSpan="8" Grid.ColumnSpan="2">
+                    <ContentView x:Name="addNewPaymentView" IsVisible="False" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="600" Grid.Row="6" Grid.RowSpan="7" Grid.ColumnSpan="2">
                         <ContentView.Content>
-                            <Frame BorderColor="#000000" Padding="3" Margin="20,20,20,20" BackgroundColor="#FFFFFF">
+                            <Frame BorderColor="#000000" Padding="3" Margin="5,5,5,5" BackgroundColor="#FFFFFF">
                                 <StackLayout BackgroundColor="#FFFFFF">
                                     <StackLayout BackgroundColor="#5C3838" Orientation="Horizontal">
                                         <Label Text="Add Payment" TextColor="#FFFFFF"  FontSize="20" Margin="5,5,5,5" HorizontalOptions="Center" VerticalOptions="Center"/>

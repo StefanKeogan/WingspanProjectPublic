@@ -35,6 +35,7 @@
                 <RowDefinition Height="1*"/>
 
                 <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
 
             <Label Text="Collection" Style="{StaticResource reportLabelStyle}"/>
@@ -57,7 +58,16 @@
             <DatePicker x:Name="fromDatePicker" Style="{StaticResource reportPickerStyle}" Grid.Row="5"/>
             <DatePicker x:Name="toDatePicker" Style="{StaticResource reportPickerStyle}" Grid.Row="7"/>
 
-            <Button Text="Generate Report" WidthRequest="170" Style="{StaticResource mainButtonStyle}" Grid.Row="8" Clicked="buildReportButton_Clicked"/>
+            <Button 
+                Text="Generate Report" 
+                WidthRequest="170" 
+                Style="{StaticResource mainButtonStyle}" 
+                Grid.Row="8" 
+                VerticalOptions="Center"
+                HorizontalOptions="Center"
+                Clicked="buildReportButton_Clicked"/>
+
+            <ActivityIndicator x:Name="buildingIndicator" HorizontalOptions="CenterAndExpand" Grid.Row="9" Color="#5C3838"/>
 
         </Grid>
     </ContentPage.Content>

@@ -253,12 +253,36 @@ namespace WingspanPrototype1.View
 
             if (answer)
             {
+                if (entries.Count > 0)
+                {
+                    bool changesValid = ValidateMemberChanges(entries);
+                    if (!changesValid) return;
+                }
+
+
                 Member updatedMember = UpdateMember.UpdateDocument(id, entries, editor, date);
                 if (updatedMember != null)
                 {
                     updatedMember.FirstName = FormatText.FirstToUpper(updatedMember.FirstName);
                     updatedMember.LastName = FormatText.FirstToUpper(updatedMember.LastName);
                     updatedMember.SalutationName = FormatText.FirstToUpper(updatedMember.SalutationName);
+
+
+                    //// Find old member 
+                    //Member member = memberResults.Find(x => x._id == id);
+                    //int memberIndex = memberResults.IndexOf(member);
+
+                    //// Update with new member
+                    //memberResults[memberIndex] = updatedMember;
+
+                    //resultsListView.ItemsSource = null;
+                    //resultsListView.ItemsSource = memberResults;
+
+                    // Clear entry content
+                    foreach (var entry in entries)
+                    {
+                        entry.Text = null;
+                    }
 
                     DisplayMember(updatedMember);
                     await DisplayAlert("Member Saved", "Changes to this member have been saved", "OK");
@@ -271,6 +295,104 @@ namespace WingspanPrototype1.View
             }
 
         }
+
+        private bool ValidateMemberChanges(List<Entry> entries)
+        {
+            bool allFeildsValid = true;
+
+            string errorMessage = "";
+
+            foreach (var entry in entries)
+            {
+                // Is the entry poulated
+                if (Validate.FeildPopulated(entry.Text))
+                {
+                    // Which feild are we updating?
+                    if (entry.StyleId == "memberFirstNameEntry")
+                    {
+                        if (Validate.ContainsNumberOrSymbol(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The First Name feild cannot contain numbers or symbols \n";
+                            allFeildsValid = false;
+                        }
+                    }
+
+                    if (entry.StyleId == "memberLastNameEntry")
+                    {
+                        if (Validate.ContainsNumberOrSymbol(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The Last Name feild cannot contain numbers or symbols \n";
+                            allFeildsValid = false;
+                        }
+                    }
+
+                    if (entry.StyleId == "memberSalutationEntry")
+                    {
+                        if (Validate.ContainsNumberOrSymbol(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The Salutation Name feild cannot contain numbers or symbols \n";
+                            allFeildsValid = false;
+                        }
+                    }
+
+                    if (entry.StyleId == "memberEmailEntry")
+                    {
+                        if (!Validate.EmailFormatValid(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The Email address you entered is not valid \n";
+                            allFeildsValid = false;
+                        }
+                    }
+
+                    //if (entry.StyleId == "memberCompanyEntry")
+
+                    if (entry.StyleId == "memberPostCodeEntry")
+                    {
+                        if (Validate.ContainsLetterOrSymbol(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The Post Code feild cannot contain letters or symbols \n";
+                            allFeildsValid = false;
+                        }
+                    }
+
+                    if (entry.StyleId == "memberCityEntry")
+                    {
+                        if (Validate.ContainsNumberOrSymbol(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The City feild cannot contain numbers or symbols \n";
+                            allFeildsValid = false;
+                        }
+                    }
+
+
+                    if (entry.StyleId == "memberCountryEntry")
+                    {
+                        if (Validate.ContainsNumberOrSymbol(entry.Text))
+                        {
+                            errorMessage = errorMessage + "The Country feild cannot contain numbers or symbols \n";
+                            allFeildsValid = false;
+                        }
+                    }
+
+                }
+
+
+            }
+
+            if (allFeildsValid)
+            {
+                errorMessage = "";
+                return true;
+            }
+            else
+            {
+                DisplayAlert("Changes Invalid", errorMessage, "OK");
+                errorMessage = "";
+                return false;
+            }
+
+        }
+
 
         private void PaymentButton_Clicked(object sender, EventArgs e)
         {
