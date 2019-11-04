@@ -9,26 +9,48 @@ using WingspanPrototype1.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WingspanPrototype1.Controller.Birds;
-
+using WingspanPrototype1.Functions;
 
 namespace WingspanPrototype1.View
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditSponsorshipResultsDesktop : ContentPage
 	{
-		public EditSponsorshipResultsDesktop (List<Sponsorship> results)
+        //all changes are added to this list
+        private List<Entry> entries = new List<Entry>();
+        private ObjectId id;
+        private Picker level;
+        private DatePicker start;
+        private DatePicker end;
+        private List<Sponsorship> sponsorshipResults = null;
+
+
+
+        public EditSponsorshipResultsDesktop (List<Sponsorship> results)
 		{
 			InitializeComponent ();
-            resultsListView.ItemsSource = results;
+
+            sponsorshipResults = results;
+
+            // Set member name items to upper case
+            foreach (var sponsorship in sponsorshipResults)
+            {
+                sponsorship.FirstName = FormatText.FirstToUpper(sponsorship.FirstName);
+                sponsorship.LastName = FormatText.FirstToUpper(sponsorship.LastName);
+                sponsorship.Company = FormatText.FirstToUpper(sponsorship.Company);
+            }
+            resultsListView.ItemsSource = sponsorshipResults;
         }
+
 
         private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
         {
             var item = e.SelectedItem as Sponsorship;
 
+            id = item._id;
+
             //need to get the object of this member for display purposes
             Member memberDetails = SearchMembers.Find(item.Member_id);
-
 
             if (item != null)
             {
@@ -41,8 +63,11 @@ namespace WingspanPrototype1.View
 
         private void DisplaySponsorship(Sponsorship sponsorship, Member member)
         {
+            //clear previous input items
+            entries.Clear();
+
             //display Wingspan ID
-            if ((sponsorship.WingspanId != string.Empty) && (sponsorship.WingspanId != null))
+            if (Validate.FeildPopulated(sponsorship.WingspanId))
             {
                 sponsoredWingspanIDValueLabel.Text = sponsorship.WingspanId;
                 sponsoredWingspanIDStack.IsVisible = true;

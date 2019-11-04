@@ -90,20 +90,37 @@ namespace WingspanPrototype1
                 allFieldsValid = false;
             }
 
-            //assign selected sponsor name fields
-            selectedSponsorFirstNameValueLabel.Text = SponsorshipDetails.thisFirstName;
-            selectedSponsorLastNameValueLabel.Text = SponsorshipDetails.thisLastName;
-            selectedSponsorCompanyValueLabel.Text = SponsorshipDetails.thisCompany;
-            
 
-            //check that at least one field is filled in
-            if ((selectedSponsorFirstNameValueLabel.Text == null) && (selectedSponsorLastNameValueLabel.Text == null) && (selectedSponsorCompanyValueLabel.Text == null))
+            //check whether the sponser has a first name or company name to display
+            if (SponsorshipDetails.thisFirstName != null)
             {
-                sponsorNameError1.IsVisible = true;
-                sponsorNameError2.IsVisible = true;
-                sponsorNameError3.IsVisible = true;
+                selectedSponsorNameValueLabel.Text = SponsorshipDetails.thisFirstName;
+            }
+            else if ((SponsorshipDetails.thisFirstName == null) && (SponsorshipDetails.thisCompany != null)) 
+            {
+                selectedSponsorNameValueLabel.Text = SponsorshipDetails.thisCompany;
+            }
+            else
+            {
+                //the member first name and/or company name is not displaying properly
+                sponsorNameError.IsVisible = true;
                 allFieldsValid = false;
             }
+
+            //DELETE THESE
+            ////assign selected sponsor name fields
+            //selectedSponsorFirstNameValueLabel.Text = SponsorshipDetails.thisFirstName;
+            //selectedSponsorLastNameValueLabel.Text = SponsorshipDetails.thisLastName;
+            //selectedSponsorCompanyValueLabel.Text = SponsorshipDetails.thisCompany;
+            
+            ////check that at least one field is filled in
+            //if ((selectedSponsorFirstNameValueLabel.Text == null) && (selectedSponsorLastNameValueLabel.Text == null) && (selectedSponsorCompanyValueLabel.Text == null))
+            //{
+            //    sponsorNameError1.IsVisible = true;
+            //    sponsorNameError2.IsVisible = true;
+            //    sponsorNameError3.IsVisible = true;
+            //    allFieldsValid = false;
+            //}
 
 
             //to be sponsored
@@ -143,15 +160,18 @@ namespace WingspanPrototype1
                     Category = levelSelector.SelectedItem.ToString(),
                     SponsorshipNotes = sponsorshipNotesEditor.Text,
                     Member_id = SponsorshipDetails.thisMember,
+                    FirstName = SponsorshipDetails.thisFirstName,
+                    LastName = SponsorshipDetails.thisLastName,
+                    Company = SponsorshipDetails.thisCompany,
                     SponsorshipStart = startDateSelector.Date,
                     SponsorshipEnd = endDateSelector.Date
                 });
 
                 if (sponsorshipInserted)
                 {
-                    selectedSponsorFirstNameValueLabel.Text = null;
-                    selectedSponsorLastNameValueLabel.Text = null;
-                    selectedSponsorCompanyValueLabel.Text = null;
+                    selectedSponsorNameValueLabel.Text = null;
+                    //selectedSponsorLastNameValueLabel.Text = null;
+                    //selectedSponsorCompanyValueLabel.Text = null;
                     selectedWingspanIdValueLabel.Text = null;
                     levelSelector.SelectedItem = null;
                     sponsorshipNotesEditor.Text = null;

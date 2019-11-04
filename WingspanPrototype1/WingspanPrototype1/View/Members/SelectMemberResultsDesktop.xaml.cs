@@ -98,12 +98,10 @@ namespace WingspanPrototype1.View
                 selectMemberCommentsValueLabel.IsVisible = false;
             }
 
-            //set these variables for this member
-            SetSponsorDetails(member);
-
-            
-            
+            //set the 'global' variables using this member
+            SetSponsorDetails(member);            
         }
+
 
         //set 'global' variables for sponsorship
         private void SetSponsorDetails(Member member)

@@ -67,7 +67,8 @@ namespace WingspanPrototype1.Controller.Birds
 
         }
 
-        //find single member (mainly for display purposes on 'select member' page
+
+        //find single member (mainly for display purposes on 'select member' page)
         public static Member Find(ObjectId id)
         {
             //get DB

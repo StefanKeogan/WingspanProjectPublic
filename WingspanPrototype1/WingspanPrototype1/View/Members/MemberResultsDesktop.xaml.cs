@@ -35,6 +35,7 @@ namespace WingspanPrototype1.View
                 member.FirstName = FormatText.FirstToUpper(member.FirstName);
                 member.LastName = FormatText.FirstToUpper(member.LastName);
                 member.SalutationName = FormatText.FirstToUpper(member.SalutationName);
+                member.Company = FormatText.FirstToUpper(member.Company);
             }
 
             resultsListView.ItemsSource = memberResults;
