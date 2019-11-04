@@ -111,6 +111,7 @@
     <Content Include="Assets\BadgeLogo.scale-400.png" />
     <Content Include="Assets\darkbrown-logo-large.png" />
     <Content Include="Assets\darkbrown-logo.png" />
+    <Content Include="Assets\darkbrownsplash.png" />
     <Content Include="Assets\desktophome.png" />
     <Content Include="Assets\gold-logo.png" />
     <Content Include="Assets\home-mobile.png" />

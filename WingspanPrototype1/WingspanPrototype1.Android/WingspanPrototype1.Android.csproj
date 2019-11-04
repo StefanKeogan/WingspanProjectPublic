@@ -81,23 +81,13 @@
     <AndroidResource Include="Resources\layout\Toolbar.xml" />
     <AndroidResource Include="Resources\values\styles.xml" />
     <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon.xml" />
-    <AndroidResource Include="Resources\mipmap-anydpi-v26\icon_round.xml" />
-    <AndroidResource Include="Resources\mipmap-hdpi\icon.png" />
-    <AndroidResource Include="Resources\mipmap-hdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\icon.png" />
-    <AndroidResource Include="Resources\mipmap-mdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-xhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-xxhdpi\icon.png" />
-    <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\icon.png" />
-    <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\drawable\xamarin_logo.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable-hdpi\" />
     <Folder Include="Resources\drawable-xhdpi\" />
     <Folder Include="Resources\drawable-xxxhdpi\" />
+    <Folder Include="Resources\mipmap-anydpi-v26\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\WingspanPrototype1\WingspanPrototype1.csproj">
@@ -126,10 +116,14 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\searchiconsmall.png" />
     <Content Include="Resources\drawable-xxhdpi\searchicon.png" />
     <Content Include="Resources\drawable-xxhdpi\watermarklogo.png" />
-    <AndroidResource Include="Resources\mipmap-xhdpi\icon.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
+    <AndroidResource Include="Resources\drawable\splash_screen.xml">
       <SubType>Designer</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\mipmap-xxxhdpi\darkbrownsplashscreen.png" />
+    <AndroidResource Include="Resources\mipmap-xxhdpi\darkbrownsplashscreen.png" />
+    <AndroidResource Include="Resources\mipmap-xhdpi\darkbrownsplashscreen.png" />
+    <AndroidResource Include="Resources\mipmap-hdpi\darkbrownsplashscreen.png" />
+    <AndroidResource Include="Resources\mipmap-mdpi\darkbrownsplashscreen.png" />
     <None Include="Resources\drawable\iconmobile.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
