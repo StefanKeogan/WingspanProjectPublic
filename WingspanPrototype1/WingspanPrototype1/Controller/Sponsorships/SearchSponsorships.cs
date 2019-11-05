@@ -6,6 +6,7 @@ using WingspanPrototype1.Functions;
 using MongoDB.Bson;
 using MongoDB.Driver;
 using MongoDB.Bson.Serialization;
+using WingspanPrototype1.Controller.Birds;
 
 namespace WingspanPrototype1.Controller.Sponsorships
 {
@@ -77,8 +78,70 @@ namespace WingspanPrototype1.Controller.Sponsorships
 
         }
 
+        public static List<Sponsorship> SearchByMember(string memberFirstName, string memberLastName, string memberCompanyName)
+        {
+            // Store found sponsorships
+            List<Sponsorship> sponsorshipResults = new List<Sponsorship>();
 
-       
+            // First get possible members 
+            List<Member> possibleMembers = SearchMembers.Search(memberFirstName, memberLastName, memberCompanyName);
+
+            // If members found 
+            if ((possibleMembers != null) && (possibleMembers.Count > 0))
+            {
+                var database = DatabaseConnection.GetDatabase();
+
+                if (database != null)
+                { 
+
+                    // Get sponsorship collection 
+                    var collection = database.GetCollection<BsonDocument>("Sponsorships");
+
+                    foreach (var member in possibleMembers)
+                    {
+                        // Build filter for this member 
+                        var filter = Builders<BsonDocument>.Filter.Eq("Member_id", member._id);
+
+                        try
+                        {
+                            // Search for member
+                            List<BsonDocument> results = collection.Find(filter).ToList();
+                            if ((results != null) && (results.Count > 0))
+                            {
+                                foreach (var result in results)
+                                {
+                                    sponsorshipResults.Add(BsonSerializer.Deserialize<Sponsorship>(result));
+                                }
+                            }
+                            else
+                            {
+                                continue;
+                            }
+                        }
+                        catch (Exception)
+                        {
+                            throw;
+                            // continue;
+                        }
+
+                    }
+
+                    return sponsorshipResults;
+
+                }
+                else
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+
+
+        }
+
 
         //NO LONGER POSSIBLE
         //public static List<Sponsorship> Search(string wingspanID, ObjectId member)

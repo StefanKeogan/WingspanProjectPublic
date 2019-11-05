@@ -49,9 +49,9 @@ namespace WingspanPrototype1.View
             }
 
             //display notes
-            if ((sponsorship.SponsorshipNotes != string.Empty) && (sponsorship.SponsorshipNotes != null))
+            if ((sponsorship.Notes != string.Empty) && (sponsorship.Notes != null))
             {
-                editSponsorshipNotesValueLabel.Text = sponsorship.SponsorshipNotes;
+                editSponsorshipNotesValueLabel.Text = sponsorship.Notes;
                 editSponsorshipNotesStack.IsVisible = true;
                 editSponsorshipNotes.IsVisible = false;
             }
@@ -62,9 +62,9 @@ namespace WingspanPrototype1.View
             }
 
             //display Sponsorship start date
-            if (sponsorship.SponsorshipStart.ToString() != string.Empty)
+            if (sponsorship.StartDate.ToString() != string.Empty)
             {
-                editSponsorshipStartValueLabel.Text = sponsorship.SponsorshipStart.ToString();
+                editSponsorshipStartValueLabel.Text = sponsorship.StartDate.ToString();
                 editSponsorshipStartStack.IsVisible = true;
                 editSponsorshipStartPicker.IsVisible = false;
             }
@@ -75,9 +75,9 @@ namespace WingspanPrototype1.View
             }
 
             //display Sponsorship end date
-            if (sponsorship.SponsorshipEnd.ToString() != string.Empty)
+            if (sponsorship.EndDate.ToString() != string.Empty)
             {
-                editSponsorshipEndValueLabel.Text = sponsorship.SponsorshipEnd.ToString();
+                editSponsorshipEndValueLabel.Text = sponsorship.EndDate.ToString();
                 editSponsorshipEndStack.IsVisible = true;
                 editSponsorshipEndPicker.IsVisible = false;
             }
@@ -87,44 +87,44 @@ namespace WingspanPrototype1.View
                 editSponsorshipEndStack.IsVisible = false;
             }
 
-            //display member's first name
-            if ((sponsorship.FirstName != string.Empty) && (sponsorship.FirstName != null))
-            {
-                editSponsorFirstNameValueLabel.Text = sponsorship.FirstName;
-                editSponsorFirstNameStack.IsVisible = true;
-                editSponsorFirstNameEntry.IsVisible = false;
-            }
-            else
-            {
-                editSponsorFirstNameEntry.IsVisible = true;
-                editSponsorFirstNameStack.IsVisible = false;
-            }
+        //    //display member's first name
+        //    if ((sponsorship.FirstName != string.Empty) && (sponsorship.FirstName != null))
+        //    {
+        //        editSponsorFirstNameValueLabel.Text = sponsorship.FirstName;
+        //        editSponsorFirstNameStack.IsVisible = true;
+        //        editSponsorFirstNameEntry.IsVisible = false;
+        //    }
+        //    else
+        //    {
+        //        editSponsorFirstNameEntry.IsVisible = true;
+        //        editSponsorFirstNameStack.IsVisible = false;
+        //    }
 
-            //display member's last name
-            if ((sponsorship.LastName != string.Empty) && (sponsorship.LastName != null))
-            {
-                editSponsorLastNameValueLabel.Text = sponsorship.LastName;
-                editSponsorLastNameStack.IsVisible = true;
-                editSponsorLastNameEntry.IsVisible = false;
-            }
-            else
-            {
-                editSponsorLastNameEntry.IsVisible = true;
-                editSponsorLastNameStack.IsVisible = false;
-            }
+        //    //display member's last name
+        //    if ((sponsorship.LastName != string.Empty) && (sponsorship.LastName != null))
+        //    {
+        //        editSponsorLastNameValueLabel.Text = sponsorship.LastName;
+        //        editSponsorLastNameStack.IsVisible = true;
+        //        editSponsorLastNameEntry.IsVisible = false;
+        //    }
+        //    else
+        //    {
+        //        editSponsorLastNameEntry.IsVisible = true;
+        //        editSponsorLastNameStack.IsVisible = false;
+        //    }
 
-            //display sponsoring company name
-            if ((sponsorship.Company != string.Empty) && (sponsorship.Company != null))
-            {
-                editSponsorCompanyNameValueLabel.Text = sponsorship.Company;
-                editSponsorCompanyNameStack.IsVisible = true;
-                editSponsorCompanyNameEntry.IsVisible = false;
-            }
-            else
-            {
-                editSponsorCompanyNameEntry.IsVisible = true;
-                editSponsorCompanyNameStack.IsVisible = false;
-            }
+        //    //display sponsoring company name
+        //    if ((sponsorship.Company != string.Empty) && (sponsorship.Company != null))
+        //    {
+        //        editSponsorCompanyNameValueLabel.Text = sponsorship.Company;
+        //        editSponsorCompanyNameStack.IsVisible = true;
+        //        editSponsorCompanyNameEntry.IsVisible = false;
+        //    }
+        //    else
+        //    {
+        //        editSponsorCompanyNameEntry.IsVisible = true;
+        //        editSponsorCompanyNameStack.IsVisible = false;
+        //    }
         }
 
 

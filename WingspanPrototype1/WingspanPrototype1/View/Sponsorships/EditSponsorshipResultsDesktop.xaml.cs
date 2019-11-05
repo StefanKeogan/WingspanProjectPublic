@@ -39,7 +39,7 @@ namespace WingspanPrototype1.View
         {
             var item = e.SelectedItem as Sponsorship;
 
-            id = item._id;
+            sponsorshipId = item._id;
 
             if (item != null)
             {
@@ -91,9 +91,9 @@ namespace WingspanPrototype1.View
             }
 
             //display notes
-            if ((sponsorship.SponsorshipNotes != string.Empty) && (sponsorship.SponsorshipNotes != null))
+            if ((sponsorship.Notes != string.Empty) && (sponsorship.Notes != null))
             {
-                editSponsorshipNotesValueLabel.Text = sponsorship.SponsorshipNotes;
+                editSponsorshipNotesValueLabel.Text = sponsorship.Notes;
                 editSponsorshipNotesStack.IsVisible = true;
                 editSponsorshipNotes.IsVisible = false;
             }
@@ -104,9 +104,9 @@ namespace WingspanPrototype1.View
             }
 
             //display Sponsorship start date
-            if (sponsorship.SponsorshipStart.ToString() != string.Empty)
+            if (sponsorship.StartDate.ToString() != string.Empty)
             {
-                editSponsorshipStartValueLabel.Text = sponsorship.SponsorshipStart.ToString();
+                editSponsorshipStartValueLabel.Text = sponsorship.StartDate.ToString();
                 editSponsorshipStartStack.IsVisible = true;
                 editSponsorshipStartPicker.IsVisible = false;
             }
@@ -117,9 +117,9 @@ namespace WingspanPrototype1.View
             }
 
             //display Sponsorship end date
-            if (sponsorship.SponsorshipEnd.ToString() != string.Empty)
+            if (sponsorship.EndDate.ToString() != string.Empty)
             {
-                editSponsorshipEndValueLabel.Text = sponsorship.SponsorshipEnd.ToString();
+                editSponsorshipEndValueLabel.Text = sponsorship.EndDate.ToString();
                 editSponsorshipEndStack.IsVisible = true;
                 editSponsorshipEndPicker.IsVisible = false;
             }
@@ -188,7 +188,7 @@ namespace WingspanPrototype1.View
                 {
                     await DisplayAlert("Sponsorship deleted", "", "OK");
 
-                    Sponsorship sponsorship = sponsorshipResults.Find(x => x._id == id);
+                    Sponsorship sponsorship = sponsorshipResults.Find(x => x._id == sponsorshipId);
                     sponsorshipResults.Remove(sponsorship);
 
                     if (sponsorshipResults.Count <= 0)

@@ -23,7 +23,6 @@ namespace WingspanPrototype1
         public static string thisWingspanID;
     }
 
-
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AddSponsorshipForm : ContentPage
     {
@@ -38,11 +37,34 @@ namespace WingspanPrototype1
                 sponsorshipMargin1.Width = 0;
                 sponsorshipMargin2.Width = 0;
             }
+
+            
+
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (SponsorshipDetails.thisFirstName != null)
+            {
+                selectedSponsorNameValueLabel.Text = SponsorshipDetails.thisFirstName;
+            }
+            else if ((SponsorshipDetails.thisFirstName == null) && (SponsorshipDetails.thisCompany != null))
+            {
+                selectedSponsorNameValueLabel.Text = SponsorshipDetails.thisCompany;
+            }
+
+            if (SponsorshipDetails.thisWingspanID != null)
+            {
+                selectedWingspanIdValueLabel.Text = SponsorshipDetails.thisWingspanID;
+            }
+
         }
 
 
         //sorts out the sponsor selection
-        async void OnSponsorSelected(object sender, EventArgs e)
+        private async void OnSponsorSelected(object sender, EventArgs e)
         {
             var picker = (Picker)sender;
             int selectedIndex = picker.SelectedIndex;
@@ -90,37 +112,12 @@ namespace WingspanPrototype1
                 allFieldsValid = false;
             }
 
-
-            //check whether the sponser has a first name or company name to display
-            if (SponsorshipDetails.thisFirstName != null)
-            {
-                selectedSponsorNameValueLabel.Text = SponsorshipDetails.thisFirstName;
-            }
-            else if ((SponsorshipDetails.thisFirstName == null) && (SponsorshipDetails.thisCompany != null)) 
-            {
-                selectedSponsorNameValueLabel.Text = SponsorshipDetails.thisCompany;
-            }
-            else
+            if ((SponsorshipDetails.thisFirstName == null) && (SponsorshipDetails.thisCompany == null)) 
             {
                 //the member first name and/or company name is not displaying properly
                 sponsorNameError.IsVisible = true;
                 allFieldsValid = false;
             }
-
-            //DELETE THESE
-            ////assign selected sponsor name fields
-            //selectedSponsorFirstNameValueLabel.Text = SponsorshipDetails.thisFirstName;
-            //selectedSponsorLastNameValueLabel.Text = SponsorshipDetails.thisLastName;
-            //selectedSponsorCompanyValueLabel.Text = SponsorshipDetails.thisCompany;
-            
-            ////check that at least one field is filled in
-            //if ((selectedSponsorFirstNameValueLabel.Text == null) && (selectedSponsorLastNameValueLabel.Text == null) && (selectedSponsorCompanyValueLabel.Text == null))
-            //{
-            //    sponsorNameError1.IsVisible = true;
-            //    sponsorNameError2.IsVisible = true;
-            //    sponsorNameError3.IsVisible = true;
-            //    allFieldsValid = false;
-            //}
 
 
             //to be sponsored
@@ -158,10 +155,10 @@ namespace WingspanPrototype1
                 {
                     WingspanId = selectedWingspanIdValueLabel.Text,
                     Category = levelSelector.SelectedItem.ToString(),
-                    SponsorshipNotes = sponsorshipNotesEditor.Text,
+                    Notes = sponsorshipNotesEditor.Text,
                     Member_id = SponsorshipDetails.thisMember,
-                    SponsorshipStart = startDateSelector.Date,
-                    SponsorshipEnd = endDateSelector.Date
+                    StartDate = startDateSelector.Date,
+                    EndDate = endDateSelector.Date
                 });
 
                 if (sponsorshipInserted)
@@ -172,6 +169,8 @@ namespace WingspanPrototype1
                     selectedWingspanIdValueLabel.Text = null;
                     levelSelector.SelectedItem = null;
                     sponsorshipNotesEditor.Text = null;
+                    sponsorSelector.SelectedIndex = -1;
+                    sponsoredBirdSelector.SelectedIndex = -1;
 
                     //make 'global' variables null as well
                     SponsorshipDetails.thisFirstName = null;

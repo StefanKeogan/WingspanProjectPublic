@@ -50,7 +50,7 @@
 
                 <!--selected sponsor first name or company name-->
                 <Label x:Name="selectedSponsorNameLabel" Text="First name" Style="{StaticResource labelStyle}" Grid.Row="3"/>
-                <Label x:Name="selectedSponsorNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="3"/>
+                <Label x:Name="selectedSponsorNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="True" Grid.Row="3"/>
 
 
                 <!-- NOT NEEDED ANYMORE
@@ -78,7 +78,7 @@
 
                 <!--selected bird wingspanID-->
                 <Label x:Name="selectedWingspinIdLabel" Text="Wingspan ID" Style="{StaticResource labelStyle}" Grid.Row="7"/>
-                <Label x:Name="selectedWingspanIdValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="7"/>
+                <Label x:Name="selectedWingspanIdValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="True" Grid.Row="7"/>
 
                 <!--level of sponsorship-->
                 <Label x:Name="sponsorshipLevel" Text="Level" Style="{StaticResource labelStyle}" Grid.Row="9" />

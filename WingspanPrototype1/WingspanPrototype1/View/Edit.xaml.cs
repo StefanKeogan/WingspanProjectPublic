@@ -241,9 +241,8 @@ namespace WingspanPrototype1
 
                     });                                      
                     break;
-               
-                case "Select Member":
 
+                case "Select Member":
                     // Are all feilds left empty
                     if (Validate.AllFeildsEmpty(new string[] { memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text }))
                     {
@@ -354,35 +353,62 @@ namespace WingspanPrototype1
                     Task.Run(() => {
 
                         List<Sponsorship> sponsorshipResults = new List<Sponsorship>(); //the sponsorships to list
-                        List<Member> possibleMembers = new List<Member>();              //members that meet search criteria
-                        List<Sponsorship> validMembers = new List<Sponsorship>();       //members that actual sponsor
+                        List<Sponsorship> memberSponsorshipResults = new List<Sponsorship>(); 
+                        List<Sponsorship> birdSponsorshipResults = new List<Sponsorship>(); 
+                        // List<Member> possibleMembers = new List<Member>();              //members that meet search criteria
+                        // List<Sponsorship> validMembers = new List<Sponsorship>();       //members that actual sponsor
 
                         //search sponsorships by bird
-                        if (sponsorshipWingspanIdEntry.Text != null)
+                        if (Validate.FeildPopulated(sponsorshipWingspanIdEntry.Text))
                         {
-                            sponsorshipResults = SearchSponsorships.FindByBird(sponsorshipWingspanIdEntry.Text);
+                            birdSponsorshipResults = SearchSponsorships.FindByBird(sponsorshipWingspanIdEntry.Text);
                         }
+
                         //search sponsorships by member
-                        else
+                        if ((Validate.FeildPopulated(sponsorshipFirstNameEntry.Text)) ||
+                        (Validate.FeildPopulated(sponsorshipLastNameEntry.Text))||
+                        (Validate.FeildPopulated(sponsorshipCompanyNameEntry.Text)))
                         {
-                            possibleMembers = SearchMembers.SponsorshipSearch(sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text);
-                            foreach (Member member in possibleMembers)
+                            memberSponsorshipResults = SearchSponsorships.SearchByMember(sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text);
+
+                            // OLD Search
+                            // possibleMembers = SearchMembers.SponsorshipSearch(sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text);
+                            //foreach (Member member in possibleMembers)
+                            //{
+                            //    validMembers = SearchSponsorships.FindByMember(member._id);
+                            //    if (validMembers != null)
+                            //    {
+                            //        foreach (Sponsorship sponsorship in validMembers)
+                            //        {
+                            //            sponsorshipResults.Add(sponsorship);
+                            //        }
+                            //        validMembers = null;
+                            //    }
+                            //}
+                        }
+
+                        if (memberSponsorshipResults != null)
+                        {
+                            if (memberSponsorshipResults.Count > 0)
                             {
-                                validMembers = SearchSponsorships.FindByMember(member._id);
-                                if (validMembers != null)
+                                foreach (var result in memberSponsorshipResults)
                                 {
-                                    foreach (Sponsorship sponsorship in validMembers)
-                                    {
-                                        sponsorshipResults.Add(sponsorship);
-                                    }
-                                    validMembers = null;
+                                    sponsorshipResults.Add(result);
                                 }
                             }
                         }
-                        //NO LONGER NEEDED
-                        //List<Sponsorship> sponsorshipResults = SearchSponsorships.Search(sponsorshipWingspanIdEntry.Text, );
 
-
+                           
+                        if ((birdSponsorshipResults.Count > 0) && (birdSponsorshipResults != null))
+                        {
+                            foreach (var result in birdSponsorshipResults)
+                            {
+                                if (!sponsorshipResults.Contains(result))
+                                {
+                                    sponsorshipResults.Add(result);
+                                }
+                            }
+                        }
 
                         Device.BeginInvokeOnMainThread(() => {
 
@@ -395,7 +421,7 @@ namespace WingspanPrototype1
                                 }
                                 else
                                 {
-                                    Navigation.PushAsync(new EditSponsorshipResultsMobile1(sponsorshipResults));
+                                    Navigation.PushAsync(new EditSponsorshipResultsDesktop(sponsorshipResults));
                                 }
                             }
                             else
@@ -404,7 +430,6 @@ namespace WingspanPrototype1
                             }
 
                             searchingIndicator.IsRunning = false;
-                            // searchButton.IsVisible = true;
 
                         });
 

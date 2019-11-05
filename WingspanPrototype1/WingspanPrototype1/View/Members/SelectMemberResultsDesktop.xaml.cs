@@ -116,6 +116,7 @@ namespace WingspanPrototype1.View
         //button to update using this member 
         private async void ThisMemberButton_Clicked(object sender, EventArgs e)
         {
+
             await DisplayAlert("Member added", "", "OK");
             await Navigation.PopToRootAsync();
         }

@@ -17,20 +17,20 @@ namespace WingspanPrototype1.Controller.Sponsorships
             if (database != null)
             {
                 // Get collection 
-                var collection = database.GetCollection<BsonDocument>("Sponsorship");
+                var collection = database.GetCollection<BsonDocument>("Sponsorships");
 
                 // Create document object, add default values 
                 var document = new BsonDocument
                 {
                     { "Level", sponsorship.Category },
-                    { "StartDate", sponsorship.SponsorshipStart },
-                    { "EndDate", sponsorship.SponsorshipEnd },
+                    { "StartDate", sponsorship.StartDate },
+                    { "EndDate", sponsorship.EndDate },
                     { "Member_id", sponsorship.Member_id }
                 };
 
                 // Add feilds that are populated
                 if (Validate.FeildPopulated(sponsorship.WingspanId)) document.Add("WingspanId", sponsorship.WingspanId);
-                if (Validate.FeildPopulated(sponsorship.SponsorshipNotes)) document.Add("Notes", sponsorship.SponsorshipNotes);
+                if (Validate.FeildPopulated(sponsorship.Notes)) document.Add("Notes", sponsorship.Notes);
 
                 // Insert document
                 try

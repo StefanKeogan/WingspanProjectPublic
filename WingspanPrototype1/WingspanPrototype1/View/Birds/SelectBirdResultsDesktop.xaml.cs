@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -13,7 +14,10 @@ namespace WingspanPrototype1.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class SelectBirdResultsDesktop : ContentPage
 	{
-		public SelectBirdResultsDesktop (ArrayList results)
+
+        private string selectedWingspanId;
+
+        public SelectBirdResultsDesktop (ArrayList results)
 		{
 			InitializeComponent ();
             resultsListView.ItemsSource = results;
@@ -33,22 +37,32 @@ namespace WingspanPrototype1.View
 
                     DisplayWildBird(wildItem);
 
-                    //id = wildItem._id;
+                    selectedWingspanId = wildItem.WingspanId;
 
-                    //birdType = typeof(WildBird);
+                    selectWildBirdGrid.IsVisible = true;
+                    selectCaptiveBirdGrid.IsVisible = false;
+
+                    // id = wildItem._id;
+                    // birdType = typeof(WildBird);
                 }
                 else if (item.GetType() == typeof(CaptiveBird))
                 {
                     var captiveItem = item as CaptiveBird;
 
-                    //only display captive birds that are alive
+                    // Only display captive birds that are alive
                     if ((captiveItem.DateDeceased == null) && (captiveItem.DateDeceased.ToString() == string.Empty))
                     {
                         DisplayCaptiveBird(captiveItem);
                     }
 
-                    //id = captiveItem._id;
+                    DisplayCaptiveBird(captiveItem);
 
+                    selectedWingspanId = captiveItem.WingspanId;
+
+                    selectCaptiveBirdGrid.IsVisible = true;
+                    selectWildBirdGrid.IsVisible = false;
+
+                    //id = captiveItem._id;
                     //birdType = typeof(CaptiveBird);
                 }
             }
@@ -58,12 +72,11 @@ namespace WingspanPrototype1.View
        
         private void DisplayWildBird(WildBird bird)
         {
-            //if captive bird is visible, hide it
-            if (selectCaptiveBirdGrid.IsVisible == true)
-            {
-                selectCaptiveBirdGrid.IsVisible = false;
-            }
-
+            ////if captive bird is visible, hide it
+            //if (selectCaptiveBirdGrid.IsVisible == true)
+            //{
+            //    selectCaptiveBirdGrid.IsVisible = false;
+            //}
 
             //display Wingspan ID
             if ((bird.WingspanId != string.Empty) && (bird.WingspanId != null))
@@ -150,15 +163,15 @@ namespace WingspanPrototype1.View
 
         private void DisplayCaptiveBird(CaptiveBird bird)
         {
-            //if wild bird grid is visible, hide it
-            if (selectWildBirdGrid.IsVisible == true)
-            {
-                selectWildBirdGrid.IsVisible = false;
-            }
+            ////if wild bird grid is visible, hide it
+            //if (selectWildBirdGrid.IsVisible == true)
+            //{
+            //    selectWildBirdGrid.IsVisible = false;
+            //}
 
 
             //display Wingspan ID 
-            if ((bird.WingspanId != string.Empty) && (bird.WingspanId != null))
+            if (Validate.FeildPopulated(bird.WingspanId))
             {
                 selectCaptiveWingspanIdValueLabel.Text = bird.WingspanId;
                 selectCaptiveWingspanIdValueLabel.IsVisible = true;
@@ -169,7 +182,7 @@ namespace WingspanPrototype1.View
             }
 
             //display bird name
-            if ((bird.Name != string.Empty) && (bird.Name != null))
+            if (Validate.FeildPopulated(bird.Name))
             {
                 selectCaptiveNameValueLabel.Text = bird.Name;
                 selectCaptiveNameValueLabel.IsVisible = true;
@@ -180,7 +193,7 @@ namespace WingspanPrototype1.View
             }
 
             //display band number
-            if ((bird.BandNo != string.Empty) && (bird.BandNo != null))
+            if (Validate.FeildPopulated(bird.BandNo))
             {
                 selectCaptiveBandNumberValueLabel.Text = bird.BandNo;
                 selectCaptiveBandNumberValueLabel.IsVisible = true;
@@ -191,7 +204,7 @@ namespace WingspanPrototype1.View
             }
 
             //display species
-            if ((bird.Species != string.Empty) && (bird.Species != null))
+            if (Validate.FeildPopulated(bird.Species))
             {
                 selectCaptiveSpeciesValueLabel.Text = bird.Species;
                 selectCaptiveSpeciesValueLabel.IsVisible = true;
@@ -202,7 +215,7 @@ namespace WingspanPrototype1.View
             }
 
             //display sex
-            if ((bird.Sex!= string.Empty) && (bird.Sex != null))
+            if (Validate.FeildPopulated(bird.Sex))
             {
                 selectCaptiveSexValueLabel.Text = bird.Sex;
                 selectCaptiveSexValueLabel.IsVisible = true;
@@ -213,7 +226,7 @@ namespace WingspanPrototype1.View
             }
 
             //display age
-            if ((bird.Age != string.Empty) && (bird.Age != null))
+            if (Validate.FeildPopulated(bird.Sex))
             {
                 selectCaptiveAgeValueLabel.Text = bird.Age;
                 selectCaptiveAgeValueLabel.IsVisible = true;
@@ -243,7 +256,7 @@ namespace WingspanPrototype1.View
         //choose this bird button
         private async void ThisBirdButton_Clicked(object sender, EventArgs e)
         {
-            await DisplayAlert("Bird added", "", "OK");
+            await DisplayAlert("Bird added", "You have selected this bird to sponsor", "OK");
             await Navigation.PopToRootAsync();
         }
     }
