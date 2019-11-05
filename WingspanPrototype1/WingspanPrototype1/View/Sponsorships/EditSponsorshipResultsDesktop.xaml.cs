@@ -18,7 +18,10 @@ namespace WingspanPrototype1.View
 	public partial class EditSponsorshipResultsDesktop : ContentPage
 	{
         private ObjectId sponsorshipId;
+        private ObjectId memberId;
+        private string bird;
         private Picker level;
+        private Editor notes;
         private DatePicker start;
         private DatePicker end;
         private List<Sponsorship> sponsorshipResults = null;
@@ -69,11 +72,11 @@ namespace WingspanPrototype1.View
             {
                 sponsoredWingspanIDValueLabel.Text = sponsorship.WingspanId;
                 sponsoredWingspanIDStack.IsVisible = true;
-                sponsoredWingspanIDEntry.IsVisible = false;
+                editBirdSelector.IsVisible = false;
             }
             else
             {
-                sponsoredWingspanIDEntry.IsVisible = true;
+                editBirdSelector.IsVisible = true;
                 sponsoredWingspanIDStack.IsVisible = false;
             }
 
@@ -134,17 +137,14 @@ namespace WingspanPrototype1.View
             {
                 editSponsorNameValueLabel.Text = memberDetails.FirstName;
                 editSponsorNameStack.IsVisible = true;
-                editSponsorNameEntry.IsVisible = false;
             }
             else if ((!Validate.FeildPopulated(memberDetails.FirstName)) && (Validate.FeildPopulated(memberDetails.Company)))
             {
                 editSponsorNameValueLabel.Text = memberDetails.Company;
                 editSponsorNameStack.IsVisible = true;
-                editSponsorNameEntry.IsVisible = false;
             }
             else
             {
-                editSponsorNameEntry.IsVisible = true;
                 editSponsorNameStack.IsVisible = false;
             }
 
@@ -232,30 +232,87 @@ namespace WingspanPrototype1.View
             }
         }
 
-        //selecting a new category
-        private void EditCategorySelector_SelectedIndexChanged(object sender, EventArgs e)
-        {
 
+
+        //change the bird being sponsored
+        private void SponsoredWingspanIDEditButton_ClickedAsync(object sender, EventArgs e)
+        {
+            sponsoredWingspanIDStack.IsVisible = false;
+            editBirdSelector.IsVisible = true;
+        }
+
+        //dealing with the edit bird selector
+        private async void EditBird_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            //change the bird being sponsored
+            if (selectedIndex == 0)
+            {
+                await Navigation.PushAsync(new Edit("Select Bird"));
+                sponsoredWingspanIDValueLabel.Text = SponsorshipDetails.thisWingspanID;
+                sponsoredWingspanIDValueLabel.IsVisible = true;
+            }
+            //change the sponsored bird to something else
+            else if (selectedIndex == 1)
+            {
+                sponsoredWingspanIDValueLabel.Text = "Other";
+                sponsoredWingspanIDValueLabel.IsVisible = true;
+            }
+
+            //updated wingspan ID
+            bird = sponsoredWingspanIDValueLabel.Text;
+        }
+
+
+        //selecting a new category
+        private void EditCategoryEditButton_Clicked(object sender, EventArgs e)
+        {
+            editCategoryPicker.IsVisible = true;
+            editCategoryStack.IsVisible = false;
+            level = editCategoryPicker;
         }
 
         private void EditSponsorshipNotesValueEditButton_Clicked(object sender, EventArgs e)
         {
-
+            editSponsorshipNotes.IsVisible = true;
+            editSponsorshipNotesStack.IsVisible = false;
+            notes = editSponsorshipNotes;
         }
 
         private void EditSponsorshipStartEditButton_Clicked(object sender, EventArgs e)
         {
-
+            editSponsorshipStartPicker.IsVisible = true;
+            editSponsorshipStartStack.IsVisible = false;
+            start = editSponsorshipStartPicker;
         }
 
         private void EditSponsorshipEndEditButton_Clicked(object sender, EventArgs e)
         {
-
+            editSponsorshipEndPicker.IsVisible = true;
+            editSponsorshipEndStack.IsVisible = false;
+            end = editSponsorshipEndPicker;
         }
 
-        private void EditSponsorNameEditButton_Clicked(object sender, EventArgs e)
+        //edit sponsor name means choose a new sponsor
+        private async void EditSponsorNameEditButton_Clicked(object sender, EventArgs e)
         {
+            //open this page to find a different member
+            await Navigation.PushAsync(new Edit("Select Member"));
 
+            //display either first name or company
+            if (SponsorshipDetails.thisFirstName != null)
+            {
+                editSponsorNameValueLabel.Text = SponsorshipDetails.thisFirstName;
+            }
+            else if ((SponsorshipDetails.thisFirstName == null) && (SponsorshipDetails.thisCompany != null))
+            {
+                editSponsorNameValueLabel.Text = SponsorshipDetails.thisCompany;
+            }
+
+            //updated sponsor
+            memberId = SponsorshipDetails.thisMember;
         }
     }
 }

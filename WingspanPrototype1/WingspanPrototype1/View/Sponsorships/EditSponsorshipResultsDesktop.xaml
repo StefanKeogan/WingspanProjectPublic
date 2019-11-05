@@ -29,7 +29,7 @@
 
             <!--grid to display sponsorship results-->
             <ScrollView x:Name="editSponsorshipResults" Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" IsVisible="False">
-                <Grid WidthRequest="500">
+                <Grid HeightRequest="600">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" />
                         <ColumnDefinition Width="2*" />
@@ -50,15 +50,22 @@
                     <Label x:Name="sponsoredWingspanIDLabel" Text="Wingspan ID" Style="{StaticResource resultLabelStyle}" />
                     <StackLayout x:Name="sponsoredWingspanIDStack" Style="{StaticResource resultStackStyle}" IsVisible="False">
                         <Label x:Name="sponsoredWingspanIDValueLabel" FontSize="20" />
-                        <Button x:Name="sponsoredWingspanIDEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" />
+                        <Button x:Name="sponsoredWingspanIDEditButton" Style="{StaticResource editStyleDesktop}" Clicked="SponsoredWingspanIDEditButton_Clicked"/>
                     </StackLayout>
-                    <Entry x:Name="sponsoredWingspanIDEntry" Style="{StaticResource feildStyle}" IsVisible="False" />
+                    <Picker x:Name="editBirdSelector" Style="{StaticResource feildStyle}" SelectedIndexChanged="EditBird_SelectedIndexChanged" IsVisible="False">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Individual Bird</x:String>
+                                <x:String>Other</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
 
                     <!--Sponsorship category-->
                     <Label x:Name="editCategoryLabel" Text="Category" Style="{StaticResource resultLabelStyle}" Grid.Row="1" />
                     <StackLayout x:Name="editCategoryStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="1">
                         <Label x:Name="editCategoryValueLabel" FontSize="20" />
-                        <Button x:Name="editCategoryEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" />
+                        <Button x:Name="editCategoryEditButton" Style="{StaticResource editStyleDesktop}" Clicked="EditCategoryEditButton_Clicked"/>
                     </StackLayout>
                     <Picker x:Name="editCategoryPicker" Style="{StaticResource feildStyle}" Grid.Row="1" IsVisible="False">
                         <Picker.ItemsSource>
@@ -97,13 +104,12 @@
                     </StackLayout>
                     <DatePicker x:Name="editSponsorshipEndPicker" Style="{StaticResource feildStyle}" Grid.Row="4" IsVisible="False" />
 
-                    <!--member first name-->
+                    <!--member name-->
                     <Label x:Name="editSponsorNameLabel" Text="Sponsor name" Style="{StaticResource resultLabelStyle}" Grid.Row="5" />
                     <StackLayout x:Name="editSponsorNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="5">
                         <Label x:Name="editSponsorNameValueLabel" FontSize="20" />
                         <Button x:Name="editSponsorNameEditButton" Style="{StaticResource editStyleDesktop}" Clicked="EditSponsorNameEditButton_Clicked" />
                     </StackLayout>
-                    <Entry x:Name="editSponsorNameEntry" Style="{StaticResource feildStyle}" IsVisible="False" Grid.Row="5" />
 
                     <!--NOT NEEDED
                     <Label x:Name="editSponsorLastNameLabel" Text="Last name" Style="{StaticResource resultLabelStyle}" Grid.Row="6" />
