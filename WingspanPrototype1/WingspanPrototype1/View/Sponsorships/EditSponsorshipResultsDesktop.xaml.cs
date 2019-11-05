@@ -9,6 +9,7 @@ using WingspanPrototype1.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WingspanPrototype1.Controller.Birds;
+using WingspanPrototype1.Controller.Sponsorships;
 using WingspanPrototype1.Functions;
 
 namespace WingspanPrototype1.View
@@ -16,9 +17,7 @@ namespace WingspanPrototype1.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditSponsorshipResultsDesktop : ContentPage
 	{
-        //all changes are added to this list
-        private List<Entry> entries = new List<Entry>();
-        private ObjectId id;
+        private ObjectId sponsorshipId;
         private Picker level;
         private DatePicker start;
         private DatePicker end;
@@ -32,13 +31,6 @@ namespace WingspanPrototype1.View
 
             sponsorshipResults = results;
 
-            // Set member name items to upper case
-            foreach (var sponsorship in sponsorshipResults)
-            {
-                sponsorship.FirstName = FormatText.FirstToUpper(sponsorship.FirstName);
-                sponsorship.LastName = FormatText.FirstToUpper(sponsorship.LastName);
-                sponsorship.Company = FormatText.FirstToUpper(sponsorship.Company);
-            }
             resultsListView.ItemsSource = sponsorshipResults;
         }
 
@@ -49,22 +41,28 @@ namespace WingspanPrototype1.View
 
             id = item._id;
 
-            //need to get the object of this member for display purposes
-            Member memberDetails = SearchMembers.Find(item.Member_id);
-
             if (item != null)
             {
-                DisplaySponsorship(item, memberDetails);
+                DisplaySponsorship(item);
                 editSponsorshipResults.IsVisible = true;
                 editSponsorshipButtons.IsVisible = true;
             }
         }
 
 
-        private void DisplaySponsorship(Sponsorship sponsorship, Member member)
+        private void DisplaySponsorship(Sponsorship sponsorship)
         {
+            //need to get the object of this member for display purposes
+            Member memberDetails = SearchMembers.Find(sponsorship.Member_id);
+
+            // Set member name items to upper case
+            memberDetails.FirstName = FormatText.FirstToUpper(memberDetails.FirstName);
+            memberDetails.LastName = FormatText.FirstToUpper(memberDetails.LastName);
+            memberDetails.Company = FormatText.FirstToUpper(memberDetails.Company);
+
+
             //clear previous input items
-            entries.Clear();
+            //entries.Clear();
 
             //display Wingspan ID
             if (Validate.FeildPopulated(sponsorship.WingspanId))
@@ -131,44 +129,50 @@ namespace WingspanPrototype1.View
                 editSponsorshipEndStack.IsVisible = false;
             }
 
-            //display member's first name
-            if ((member.FirstName != string.Empty) && (member.FirstName != null))
+            //display member's first name or company name
+            if (Validate.FeildPopulated(memberDetails.FirstName))
             {
-                editSponsorFirstNameValueLabel.Text = member.FirstName;
-                editSponsorFirstNameStack.IsVisible = true;
-                editSponsorFirstNameEntry.IsVisible = false;
+                editSponsorNameValueLabel.Text = memberDetails.FirstName;
+                editSponsorNameStack.IsVisible = true;
+                editSponsorNameEntry.IsVisible = false;
+            }
+            else if ((!Validate.FeildPopulated(memberDetails.FirstName)) && (Validate.FeildPopulated(memberDetails.Company)))
+            {
+                editSponsorNameValueLabel.Text = memberDetails.Company;
+                editSponsorNameStack.IsVisible = true;
+                editSponsorNameEntry.IsVisible = false;
             }
             else
             {
-                editSponsorFirstNameEntry.IsVisible = true;
-                editSponsorFirstNameStack.IsVisible = false;
+                editSponsorNameEntry.IsVisible = true;
+                editSponsorNameStack.IsVisible = false;
             }
 
-            //display member's last name
-            if ((member.LastName != string.Empty) && (member.LastName != null))
-            {
-                editSponsorLastNameValueLabel.Text = member.LastName;
-                editSponsorLastNameStack.IsVisible = true;
-                editSponsorLastNameEntry.IsVisible = false;
-            }
-            else
-            {
-                editSponsorLastNameEntry.IsVisible = true;
-                editSponsorLastNameStack.IsVisible = false;
-            }
+            ////display member's last name
+            //if ((memberDetails.LastName != string.Empty) && (memberDetails.LastName != null))
+            //{
+            //    editSponsorLastNameValueLabel.Text = memberDetails.LastName;
+            //    editSponsorLastNameStack.IsVisible = true;
+            //    editSponsorLastNameEntry.IsVisible = false;
+            //}
+            //else
+            //{
+            //    editSponsorLastNameEntry.IsVisible = true;
+            //    editSponsorLastNameStack.IsVisible = false;
+            //}
 
-            //display sponsoring company name
-            if ((member.Company != string.Empty) && (member.Company != null))
-            {
-                editSponsorCompanyNameValueLabel.Text = member.Company;
-                editSponsorCompanyNameStack.IsVisible = true;
-                editSponsorCompanyNameEntry.IsVisible = false;
-            }
-            else
-            {
-                editSponsorCompanyNameEntry.IsVisible = true;
-                editSponsorCompanyNameStack.IsVisible = false;
-            }
+            ////display sponsoring company name
+            //if ((memberDetails.Company != string.Empty) && (memberDetails.Company != null))
+            //{
+            //    editSponsorCompanyNameValueLabel.Text = memberDetails.Company;
+            //    editSponsorCompanyNameStack.IsVisible = true;
+            //    editSponsorCompanyNameEntry.IsVisible = false;
+            //}
+            //else
+            //{
+            //    editSponsorCompanyNameEntry.IsVisible = true;
+            //    editSponsorCompanyNameStack.IsVisible = false;
+            //}
         }
 
 
@@ -177,9 +181,36 @@ namespace WingspanPrototype1.View
         {
             bool answer = await DisplayAlert("", "Are you sure you want to delete this sponsorship?", "Yes", "No");
 
+            //if yes is selected
             if (answer)
             {
-                await DisplayAlert("Sponsorship deleted", "", "OK");
+                if (DeleteSponsorship.DropDocument(sponsorshipId))
+                {
+                    await DisplayAlert("Sponsorship deleted", "", "OK");
+
+                    Sponsorship sponsorship = sponsorshipResults.Find(x => x._id == id);
+                    sponsorshipResults.Remove(sponsorship);
+
+                    if (sponsorshipResults.Count <= 0)
+                    {
+                        await Navigation.PopAsync();
+                    }
+                    else
+                    {
+                        // Clear list view
+                        resultsListView.ItemsSource = null;
+
+                        // Add any items left over
+                        resultsListView.ItemsSource = sponsorshipResults;
+
+                        //display the first item in the list again
+                        DisplaySponsorship(sponsorshipResults[0]);
+                    }
+                }
+                else
+                {
+                    await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
+                }
             }
             else
             {
@@ -222,17 +253,7 @@ namespace WingspanPrototype1.View
 
         }
 
-        private void EditSponsorFirstNameEditButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EditSponsorLastNameEditButton_Clicked(object sender, EventArgs e)
-        {
-
-        }
-
-        private void EditSponsorCompanyNameEditButton_Clicked(object sender, EventArgs e)
+        private void EditSponsorNameEditButton_Clicked(object sender, EventArgs e)
         {
 
         }

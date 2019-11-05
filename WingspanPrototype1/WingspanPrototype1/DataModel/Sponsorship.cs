@@ -12,11 +12,5 @@ namespace WingspanPrototype1.Model
         public DateTime SponsorshipStart { get; set; }
         public DateTime SponsorshipEnd { get; set; }
 
-
-        //these are needed because they are fields on the 'search sponsorship' page
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Company { get; set; }
-
     }
 }

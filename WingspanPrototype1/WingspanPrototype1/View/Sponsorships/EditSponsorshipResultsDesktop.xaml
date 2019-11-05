@@ -43,8 +43,6 @@
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
                         <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
-                        <RowDefinition Height="1*" />
                     </Grid.RowDefinitions>
 
 
@@ -100,14 +98,14 @@
                     <DatePicker x:Name="editSponsorshipEndPicker" Style="{StaticResource feildStyle}" Grid.Row="4" IsVisible="False" />
 
                     <!--member first name-->
-                    <Label x:Name="editSponsorFirstNameLabel" Text="First name" Style="{StaticResource resultLabelStyle}" Grid.Row="5" />
-                    <StackLayout x:Name="editSponsorFirstNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="5">
-                        <Label x:Name="editSponsorFirstNameValueLabel" FontSize="20" />
-                        <Button x:Name="editSponsorFirstNameEditButton" Style="{StaticResource editStyleDesktop}" Clicked="EditSponsorFirstNameEditButton_Clicked" />
+                    <Label x:Name="editSponsorNameLabel" Text="Sponsor name" Style="{StaticResource resultLabelStyle}" Grid.Row="5" />
+                    <StackLayout x:Name="editSponsorNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="5">
+                        <Label x:Name="editSponsorNameValueLabel" FontSize="20" />
+                        <Button x:Name="editSponsorNameEditButton" Style="{StaticResource editStyleDesktop}" Clicked="EditSponsorNameEditButton_Clicked" />
                     </StackLayout>
-                    <Entry x:Name="editSponsorFirstNameEntry" Style="{StaticResource feildStyle}" IsVisible="False" Grid.Row="5" />
+                    <Entry x:Name="editSponsorNameEntry" Style="{StaticResource feildStyle}" IsVisible="False" Grid.Row="5" />
 
-                    <!--member last name-->
+                    <!--NOT NEEDED
                     <Label x:Name="editSponsorLastNameLabel" Text="Last name" Style="{StaticResource resultLabelStyle}" Grid.Row="6" />
                     <StackLayout x:Name="editSponsorLastNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="6">
                         <Label x:Name="editSponsorLastNameValueLabel" FontSize="20" />
@@ -115,13 +113,13 @@
                     </StackLayout>
                     <Entry x:Name="editSponsorLastNameEntry" Style="{StaticResource feildStyle}" IsVisible="False" Grid.Row="6" />
 
-                    <!--company name-->
                     <Label x:Name="editSponsorCompanyNameLabel" Text="Company name" Style="{StaticResource resultLabelStyle}" Grid.Row="7" />
                     <StackLayout x:Name="editSponsorCompanyNameStack" Style="{StaticResource resultStackStyle}" IsVisible="False" Grid.Row="7">
                         <Label x:Name="editSponsorCompanyNameValueLabel" FontSize="20" />
                         <Button x:Name="editSponsorCompanyNameEditButton" Style="{StaticResource editStyleDesktop}" Clicked="EditSponsorCompanyNameEditButton_Clicked" />
                     </StackLayout>
                     <Entry x:Name="editSponsorCompanyNameEntry" Style="{StaticResource feildStyle}" IsVisible="False" Grid.Row="7" />
+                    -->
                 </Grid>
             </ScrollView>
 

@@ -160,9 +160,6 @@ namespace WingspanPrototype1
                     Category = levelSelector.SelectedItem.ToString(),
                     SponsorshipNotes = sponsorshipNotesEditor.Text,
                     Member_id = SponsorshipDetails.thisMember,
-                    FirstName = SponsorshipDetails.thisFirstName,
-                    LastName = SponsorshipDetails.thisLastName,
-                    Company = SponsorshipDetails.thisCompany,
                     SponsorshipStart = startDateSelector.Date,
                     SponsorshipEnd = endDateSelector.Date
                 });

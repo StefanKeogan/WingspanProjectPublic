@@ -353,8 +353,36 @@ namespace WingspanPrototype1
 
                     Task.Run(() => {
 
-                        // Search sponsorships
-                        List<Sponsorship> sponsorshipResults = SearchSponsorships.Search(sponsorshipWingspanIdEntry.Text, sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text);
+                        List<Sponsorship> sponsorshipResults = new List<Sponsorship>(); //the sponsorships to list
+                        List<Member> possibleMembers = new List<Member>();              //members that meet search criteria
+                        List<Sponsorship> validMembers = new List<Sponsorship>();       //members that actual sponsor
+
+                        //search sponsorships by bird
+                        if (sponsorshipWingspanIdEntry.Text != null)
+                        {
+                            sponsorshipResults = SearchSponsorships.FindByBird(sponsorshipWingspanIdEntry.Text);
+                        }
+                        //search sponsorships by member
+                        else
+                        {
+                            possibleMembers = SearchMembers.SponsorshipSearch(sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text);
+                            foreach (Member member in possibleMembers)
+                            {
+                                validMembers = SearchSponsorships.FindByMember(member._id);
+                                if (validMembers != null)
+                                {
+                                    foreach (Sponsorship sponsorship in validMembers)
+                                    {
+                                        sponsorshipResults.Add(sponsorship);
+                                    }
+                                    validMembers = null;
+                                }
+                            }
+                        }
+                        //NO LONGER NEEDED
+                        //List<Sponsorship> sponsorshipResults = SearchSponsorships.Search(sponsorshipWingspanIdEntry.Text, );
+
+
 
                         Device.BeginInvokeOnMainThread(() => {
 
