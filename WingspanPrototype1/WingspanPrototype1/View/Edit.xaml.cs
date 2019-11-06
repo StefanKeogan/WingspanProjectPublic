@@ -140,27 +140,42 @@ namespace WingspanPrototype1
                             return;
                         }
                     }
-                   
-                    ArrayList selectBirdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);                   
 
-                    if ((selectBirdResults != null) && (selectBirdResults.Count > 0))
+                    Task.Run(() =>
                     {
-                        // If no feilds are invalid run the search
-                        if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
+                        ArrayList selectBirdResults = SearchBirds.Search(wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text);
+
+                        Device.BeginInvokeOnMainThread(() =>
                         {
-                            Navigation.PushAsync(new SelectBirdResultsMobile1(selectBirdResults));
-                        }
-                        else
-                        {
-                            Navigation.PushAsync(new SelectBirdResultsDesktop(selectBirdResults));
-                        }
-                    }
-                    else
-                    {
-                        DisplayAlert("No Birds Found", "That bird could not be found", "OK");
-                    }
+                            wingspanIdEntry.Text = null;
+                            birdNameEntry.Text = null;
+                            bandNumberEntry.Text = null;
+
+                            if ((selectBirdResults != null) && (selectBirdResults.Count > 0))
+                            {
+                                // If no feilds are invalid run the search
+                                if (DeviceSize.ScreenArea() <= 783457) // If the device size is less than 7 inches push the mobile page
+                                {
+                                    Navigation.PushAsync(new SelectBirdResultsMobile1(selectBirdResults));
+                                }
+                                else
+                                {
+                                    Navigation.PushAsync(new SelectBirdResultsDesktop(selectBirdResults));
+                                }
+                            }
+                            else
+                            {                           
+                                DisplayAlert("No Birds Found", "That bird could not be found", "OK");
+                                                     
+                            }
+
+                            searchingIndicator.IsRunning = false;
+
+                        });
+
+                    });
+
                     break;
-
 
                 case "Edit Members":
 
@@ -283,27 +298,42 @@ namespace WingspanPrototype1
 
                     searchingIndicator.IsRunning = true;
 
-                    // Search Members
-                    List<Member> selectMemberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
-                    searchingIndicator.IsRunning = false;
-
-                    if ((selectMemberResults != null) && (selectMemberResults.Count > 0))
+                    Task.Run(() => 
                     {
-                        // Results have been returned push the results page 
-                        if (DeviceSize.ScreenArea() <= 783457)
-                        {
-                            Navigation.PushAsync(new SelectMemberResultsMobile1(selectMemberResults));
-                        }
-                        else
-                        {
-                            Navigation.PushAsync(new SelectMemberResultsDesktop(selectMemberResults));
-                        }
+                        // Search Members
+                        List<Member> selectMemberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
 
-                    }
-                    else
-                    {
-                        DisplayAlert("No Members Found", "That member could not be found", "OK");
-                    }
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+                            if ((selectMemberResults != null) && (selectMemberResults.Count > 0))
+                            {
+                                memberFirstNameEntry.Text = null;
+                                memberLastNameEntry.Text = null;
+                                salutationNameEntry.Text = null;
+
+                                // Results have been returned push the results page 
+                                if (DeviceSize.ScreenArea() <= 783457)
+                                {
+                                    Navigation.PushAsync(new SelectMemberResultsMobile1(selectMemberResults));
+                                }
+                                else
+                                {
+                                    Navigation.PushAsync(new SelectMemberResultsDesktop(selectMemberResults));
+                                }
+
+                            }
+                            else
+                            {
+                                DisplayAlert("No Members Found", "That member could not be found", "OK");
+                            }
+
+                            searchingIndicator.IsRunning = false;
+
+                        });
+
+                       
+                    });
+
                     break;
 
                 case "Edit Sponsorships":

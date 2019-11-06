@@ -4,6 +4,7 @@ using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using WingspanPrototype1.Controller.Birds;
 using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
@@ -25,32 +26,18 @@ namespace WingspanPrototype1.Controller.Sponsorships
                 // Use to build updates
                 var updateBuilder = Builders<BsonDocument>.Update;
 
-
-                //are we updating the member ID?
-                if (memberId != null)
+                try
                 {
-                    try
-                    {
-                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("Member_id", memberId));
-                    }
-                    catch (Exception)
-                    {
-                        return null;
-                    }
+                    if (memberId != null) collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("Member_id", memberId));
+                    if (bird != null) collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("WingspanId", bird));
+                
+                }
+                catch (Exception)
+                {
+
+                    return null;
                 }
 
-                //are we updating the Wingspan id?
-                if (bird != null)
-                {
-                    try
-                    {
-                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("WingspanId", bird));
-                    }
-                    catch (Exception)
-                    {
-                        return null;
-                    }
-                }
 
                 //are we updating the level of sponsorship?
                 if (level != null)

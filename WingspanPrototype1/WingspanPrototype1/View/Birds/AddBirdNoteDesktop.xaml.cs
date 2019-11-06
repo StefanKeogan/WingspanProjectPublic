@@ -42,6 +42,8 @@ namespace WingspanPrototype1.View
 
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
+            bool allFeildsValid = true;
+
             addingIndicatior.IsRunning = true;
 
             await Task.Run(() =>
@@ -61,52 +63,71 @@ namespace WingspanPrototype1.View
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        DisplayAlert("Feild Empty", "The category feild can not be empty", "OK");
-                        addingIndicatior.IsRunning = false;
+                        noteCategoryError.IsVisible = true;                      
+                        allFeildsValid = false;
                     });
 
-                    return;
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        noteCategoryError.IsVisible = false;
+                    });
                 }
 
                 if (!Validate.FeildPopulated(noteEditor.Text))
                 {
                     Device.BeginInvokeOnMainThread(() =>
-                    {
-                        DisplayAlert("Feild Empty", "The comment feild can not be empty", "OK");
-                        addingIndicatior.IsRunning = false;
+                    {                       
+                        noteError.IsVisible = true;                       
                     });
+                    allFeildsValid = false;
 
-                    return;
                 }
-
-
-                if (AddBirdNote.InsertNoteDocument(new Note
-                {
-                    Date = noteDatePicker.Date,
-                    Category = categoryPicker.SelectedItem.ToString(),
-                    Comment = noteEditor.Text,
-                    WingspanId = selectedWingspanId
-                }))
+                else
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
-                        categoryPicker.SelectedIndex = -1;
-                        noteEditor.Text = null;
-                        DisplayAlert("Bird Note Added", "Your note has been added to this birds note history", "OK");
+                        noteError.IsVisible = false;
+                    });
+                }
+
+                if (allFeildsValid)
+                {
+
+                    if (AddBirdNote.InsertNoteDocument(new Note
+                    {
+                        Date = noteDatePicker.Date,
+                        Category = categoryPicker.SelectedItem.ToString(),
+                        Comment = noteEditor.Text,
+                        WingspanId = selectedWingspanId
+                    }))
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            categoryPicker.SelectedIndex = -1;
+                            noteEditor.Text = null;
+                            DisplayAlert("Bird Note Added", "Your note has been added to this birds note history", "OK");
+                            addingIndicatior.IsRunning = false;
+                        });
+                        return;
+                    }
+                }
+                else
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
                         addingIndicatior.IsRunning = false;
                     });
 
-                    return;
+                    allFeildsValid = true;
                 }
 
-                Device.BeginInvokeOnMainThread(() =>
-                {
-                    addingIndicatior.IsRunning = false;
-                });
+
+
 
             });
-
-
 
         }
 
@@ -171,6 +192,7 @@ namespace WingspanPrototype1.View
                         DisplayAlert("No Birds Found", "That bird could not be found", "OK");
                     });
                 }
+
 
                 Device.BeginInvokeOnMainThread(() =>
                 {

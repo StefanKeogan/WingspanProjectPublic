@@ -56,7 +56,7 @@ namespace WingspanPrototype1.View
         private void DisplaySponsorship(Sponsorship sponsorship)
         {
             //need to get the object of this member for display purposes
-            Member memberDetails = SearchMembers.Find(sponsorship.Member_id);
+            Member memberDetails = SearchMembers.SearchById(sponsorship.Member_id);
 
             // Set member name items to upper case
             memberDetails.FirstName = FormatText.FirstToUpper(memberDetails.FirstName);
@@ -257,7 +257,7 @@ namespace WingspanPrototype1.View
 
 
         //change the bird being sponsored
-        private void SponsoredWingspanIDEditButton_ClickedAsync(object sender, EventArgs e)
+        private void SponsoredWingspanIDEditButton_Clicked(object sender, EventArgs e)
         {
             sponsoredWingspanIDStack.IsVisible = false;
             editBirdSelector.IsVisible = true;

@@ -70,7 +70,7 @@ namespace WingspanPrototype1.Controller.Birds
 
 
         //find single member (mainly for display purposes on 'select member' page)
-        public static Member Find(ObjectId id)
+        public static Member SearchById(ObjectId id)
         {
             // Get DB
             var database = DatabaseConnection.GetDatabase();
@@ -81,12 +81,9 @@ namespace WingspanPrototype1.Controller.Birds
                 var collection = database.GetCollection<BsonDocument>("Members");
 
                 //get the document in the collection with that id
-                var memberResult = collection.Find(new BsonDocument("_id", id)).First();
+                Member memberResult = BsonSerializer.Deserialize<Member>(collection.Find(Builders<BsonDocument>.Filter.Eq("_id", id)).First());
 
-                //deserialise into "member" format
-                var memberObjectResult = BsonSerializer.Deserialize<Member>(memberResult);
-
-                return memberObjectResult;
+                return memberResult;
             }
             else
             {
