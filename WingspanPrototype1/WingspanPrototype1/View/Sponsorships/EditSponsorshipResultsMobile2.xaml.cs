@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using MongoDB.Bson;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,11 +13,22 @@ namespace WingspanPrototype1.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditSponsorshipResultsMobile2 : ContentPage
 	{
-		public EditSponsorshipResultsMobile2(Sponsorship sponsorship)
+        //class variables
+        private ObjectId sponsorshipId;
+        private ObjectId memberId;
+        private string bird;
+        private string level;
+        private Editor notes;
+        private DatePicker start;
+        private DatePicker end;
+
+        public EditSponsorshipResultsMobile2(Sponsorship sponsorship)
 		{
 			InitializeComponent();
 
             DisplaySponsorship(sponsorship);
+
+            sponsorshipId = sponsorship._id;
 		}
 
 
