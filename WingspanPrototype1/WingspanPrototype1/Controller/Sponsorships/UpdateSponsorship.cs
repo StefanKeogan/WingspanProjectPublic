@@ -70,7 +70,7 @@ namespace WingspanPrototype1.Controller.Sponsorships
                 {
                     try
                     {
-                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("SponsorshipNotes", notes.Text));
+                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("Notes", notes.Text));
                     }
                     catch (Exception)
                     {
@@ -84,7 +84,7 @@ namespace WingspanPrototype1.Controller.Sponsorships
                 {
                     try
                     {
-                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("SponsorshipStart", start.Date.ToLocalTime()));
+                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("StartDate", start.Date.ToLocalTime()));
                     }
                     catch (Exception)
                     {
@@ -97,7 +97,7 @@ namespace WingspanPrototype1.Controller.Sponsorships
                 {
                     try
                     {
-                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("SponsorshipEnd", end.Date.ToLocalTime()));
+                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("EndDate", end.Date.ToLocalTime()));
                     }
                     catch (Exception)
                     {

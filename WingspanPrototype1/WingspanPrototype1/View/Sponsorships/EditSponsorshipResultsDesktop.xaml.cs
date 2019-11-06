@@ -81,7 +81,7 @@ namespace WingspanPrototype1.View
             }
 
             //display Category
-            if ((sponsorship.Category != string.Empty) && (sponsorship.Category != null))
+            if (Validate.FeildPopulated(sponsorship.Category))
             {
                 editCategoryValueLabel.Text = sponsorship.Category;
                 editCategoryStack.IsVisible = true;
@@ -94,7 +94,7 @@ namespace WingspanPrototype1.View
             }
 
             //display notes
-            if ((sponsorship.Notes != string.Empty) && (sponsorship.Notes != null))
+            if (Validate.FeildPopulated(sponsorship.Notes))
             {
                 editSponsorshipNotesValueLabel.Text = sponsorship.Notes;
                 editSponsorshipNotesStack.IsVisible = true;
