@@ -68,8 +68,7 @@ namespace WingspanPrototype1.View
             }
           
         }
-
-       
+     
         private void DisplayWildBird(WildBird bird)
         {
             ////if captive bird is visible, hide it
@@ -160,7 +159,6 @@ namespace WingspanPrototype1.View
           
         }
 
-
         private void DisplayCaptiveBird(CaptiveBird bird)
         {
             ////if wild bird grid is visible, hide it
@@ -168,7 +166,6 @@ namespace WingspanPrototype1.View
             //{
             //    selectWildBirdGrid.IsVisible = false;
             //}
-
 
             //display Wingspan ID 
             if (Validate.FeildPopulated(bird.WingspanId))
@@ -257,7 +254,19 @@ namespace WingspanPrototype1.View
         private async void ThisBirdButton_Clicked(object sender, EventArgs e)
         {
             await DisplayAlert("Bird added", "You have selected this bird to sponsor", "OK");
-            await Navigation.PopToRootAsync();
+
+            if (SponsorshipDetails.thisAddingSponsorship)
+            {
+                await Navigation.PopToRootAsync();
+            }
+            else
+            {
+                // Remove the search page from the navigation stack
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+                await Navigation.PopAsync();
+            }
+
+            
         }
     }
 }

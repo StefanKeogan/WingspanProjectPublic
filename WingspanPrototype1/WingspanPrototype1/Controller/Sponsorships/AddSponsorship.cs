@@ -22,7 +22,7 @@ namespace WingspanPrototype1.Controller.Sponsorships
                 // Create document object, add default values 
                 var document = new BsonDocument
                 {
-                    { "Level", sponsorship.Category },
+                    { "Category", sponsorship.Category },
                     { "StartDate", sponsorship.StartDate },
                     { "EndDate", sponsorship.EndDate },
                     { "Member_id", sponsorship.Member_id }

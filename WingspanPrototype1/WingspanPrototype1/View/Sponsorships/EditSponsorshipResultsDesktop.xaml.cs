@@ -20,10 +20,9 @@ namespace WingspanPrototype1.View
         private ObjectId sponsorshipId;
         private ObjectId memberId;
         private string bird;
-        private Picker category;
+        private Picker category = new Picker();
         private Editor notes;
-        private DatePicker start;
-        private DatePicker end;
+        private List<DatePicker> dates = new List<DatePicker>();
         private List<Sponsorship> sponsorshipResults = null;
 
 
@@ -50,6 +49,31 @@ namespace WingspanPrototype1.View
                 editSponsorshipResults.IsVisible = true;
                 editSponsorshipButtons.IsVisible = true;
             }
+        }
+
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+
+            if (SponsorshipDetails.thisWingspanID != null)
+            {
+                sponsoredWingspanIDValueLabel.Text = SponsorshipDetails.thisWingspanID;
+                sponsoredWingspanIDStack.IsVisible = true;
+                editBirdSelector.IsVisible = false;
+                bird = SponsorshipDetails.thisWingspanID;
+            }
+
+            if (SponsorshipDetails.thisFirstName != null)
+            {
+                editSponsorNameValueLabel.Text = SponsorshipDetails.thisFirstName;
+                editSponsorNameStack.IsVisible = true;
+            }
+
+            if (SponsorshipDetails.thisMember != ObjectId.Empty)
+            {
+                memberId = SponsorshipDetails.thisMember;
+            }
+
         }
 
 
@@ -100,13 +124,14 @@ namespace WingspanPrototype1.View
             else
             {
                 editSponsorshipNotes.IsVisible = true;
+                notes = editSponsorshipNotes;
                 editSponsorshipNotesStack.IsVisible = false;
             }
 
             //display Sponsorship start date
             if (sponsorship.StartDate.ToString() != string.Empty)
             {
-                editSponsorshipStartValueLabel.Text = sponsorship.StartDate.ToString();
+                editSponsorshipStartValueLabel.Text = sponsorship.StartDate.ToShortDateString();
                 editSponsorshipStartStack.IsVisible = true;
                 editSponsorshipStartPicker.IsVisible = false;
             }
@@ -119,7 +144,7 @@ namespace WingspanPrototype1.View
             //display Sponsorship end date
             if (sponsorship.EndDate.ToString() != string.Empty)
             {
-                editSponsorshipEndValueLabel.Text = sponsorship.EndDate.ToString();
+                editSponsorshipEndValueLabel.Text = sponsorship.EndDate.ToShortDateString();
                 editSponsorshipEndStack.IsVisible = true;
                 editSponsorshipEndPicker.IsVisible = false;
             }
@@ -172,7 +197,6 @@ namespace WingspanPrototype1.View
             //}
         }
 
-
         //methods for buttons
         private async void DeleteSponsorshipButton_Clicked(object sender, EventArgs e)
         {
@@ -221,7 +245,7 @@ namespace WingspanPrototype1.View
 
             if (answer)
             {
-                Sponsorship updatedSponsorship = UpdateSponsorship.UpdateDocument(sponsorshipId, memberId, bird, category, notes, start, end);
+                Sponsorship updatedSponsorship = UpdateSponsorship.UpdateDocument(sponsorshipId, memberId, bird, category, notes, dates);
                 if (updatedSponsorship != null)
                 {               
                     // Find old sponsorship 
@@ -239,6 +263,11 @@ namespace WingspanPrototype1.View
                     SponsorshipDetails.thisLastName = null;
                     SponsorshipDetails.thisCompany = null;
                     SponsorshipDetails.thisWingspanID = null;
+
+                    // Clear pickers and entrys
+                    notes.Text = null;
+                    category.SelectedIndex = -1;
+                    dates.Clear();
 
                     DisplaySponsorship(updatedSponsorship);
 
@@ -269,6 +298,9 @@ namespace WingspanPrototype1.View
             //change the bird being sponsored
             if (selectedIndex == 0)
             {
+                // Set from add sponsorship to false as we are editing 
+                SponsorshipDetails.thisAddingSponsorship = false;
+
                 await Navigation.PushAsync(new Edit("Select Bird"));
                 sponsoredWingspanIDValueLabel.Text = SponsorshipDetails.thisWingspanID;
                 sponsoredWingspanIDValueLabel.IsVisible = true;
@@ -304,14 +336,14 @@ namespace WingspanPrototype1.View
         {
             editSponsorshipStartPicker.IsVisible = true;
             editSponsorshipStartStack.IsVisible = false;
-            start = editSponsorshipStartPicker;
+            dates.Add(editSponsorshipStartPicker);
         }
 
         private void EditSponsorshipEndEditButton_Clicked(object sender, EventArgs e)
         {
             editSponsorshipEndPicker.IsVisible = true;
             editSponsorshipEndStack.IsVisible = false;
-            end = editSponsorshipEndPicker;
+            dates.Add(editSponsorshipEndPicker);
         }
 
         //edit sponsor name means choose a new sponsor

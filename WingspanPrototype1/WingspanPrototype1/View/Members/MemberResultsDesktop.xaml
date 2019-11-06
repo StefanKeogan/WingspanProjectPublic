@@ -26,6 +26,7 @@
                             <StackLayout Orientation="Horizontal" Padding="5">
                                 <Label FontSize="20" Text="{Binding FirstName}"/>
                                 <Label FontSize="20" Text="{Binding LastName}"/>
+                                <Label FontSize="20" Text="{Binding Company}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -62,7 +63,7 @@
                         <Label x:Name="memberFirstNameValueLabel" FontSize="20"/>
                         <Button x:Name="memberFirstNameEditButton" Style="{StaticResource editStyleDesktop}" Clicked="memberFirstNameEditButton_Clicked"/>
                     </StackLayout>
-                    <Entry x:Name="memberFirstNameEntry" Style="{StaticResource resultFeildStyle}" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberFirstNameEntry" Style="{StaticResource resultFeildStyle}" IsVisible="False"/>
 
 
                     <!--Last Name-->

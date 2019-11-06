@@ -243,7 +243,7 @@ namespace WingspanPrototype1.View
 
             }
 
-            memberJoinDateValueLabel.Text = member.JoinDate.ToString();
+            memberJoinDateValueLabel.Text = member.JoinDate.ToShortDateString();
             memberJoinDateStack.IsVisible = true;
             memberJoinDatePicker.IsVisible = false;
 
@@ -622,5 +622,6 @@ namespace WingspanPrototype1.View
             memberCountryEntry.IsVisible = true;
             entries.Add(memberCountryEntry);
         }
+
     }
 }

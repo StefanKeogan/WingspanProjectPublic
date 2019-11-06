@@ -21,6 +21,9 @@ namespace WingspanPrototype1
         public static string thisCompany;
         public static ObjectId thisMember;
         public static string thisWingspanID;
+
+        // Are we selecting a member / bird for the add or edit page
+        public static bool thisAddingSponsorship;
     }
 
     [XamlCompilation(XamlCompilationOptions.Compile)]
@@ -36,9 +39,7 @@ namespace WingspanPrototype1
             {
                 sponsorshipMargin1.Width = 0;
                 sponsorshipMargin2.Width = 0;
-            }
-
-            
+            }          
 
         }
 
@@ -71,6 +72,7 @@ namespace WingspanPrototype1
 
             if (selectedIndex == 0) //exisiting member
             {
+                SponsorshipDetails.thisAddingSponsorship = true;
                 await Navigation.PushAsync(new Edit("Select Member"));
             }
             else if (selectedIndex == 1) //new member

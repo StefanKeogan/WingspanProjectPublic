@@ -13,7 +13,7 @@ namespace WingspanPrototype1.Controller.Sponsorships
 {
     class UpdateSponsorship
     {
-        public static Sponsorship UpdateDocument(ObjectId sponsorshipId, ObjectId memberId, string bird, Picker category, Editor notes, DatePicker start, DatePicker end)
+        public static Sponsorship UpdateDocument(ObjectId sponsorshipId, ObjectId memberId, string bird, Picker category, Editor notes, List<DatePicker> dates)
         {
             // Get database
             var database = DatabaseConnection.GetDatabase();
@@ -30,66 +30,33 @@ namespace WingspanPrototype1.Controller.Sponsorships
                 {
                     if (memberId != ObjectId.Empty) collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("Member_id", memberId));
                     if (bird != null) collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("WingspanId", bird));
-                
+                    if ((notes != null) && (Validate.FeildPopulated(notes.Text))) collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("Notes", notes.Text));
+                    if (category.SelectedIndex != -1) collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("Category", category.SelectedItem.ToString()));
+
                 }
                 catch (Exception)
                 {
-
                     return null;
                 }
 
-
-                //are we updating the level of sponsorship?
-                if (category.SelectedIndex != -1)
+                // Are we updating any dates?
+                if (dates.Count > 0)
                 {
-                    try
+                    foreach (var date in dates)
                     {
-                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("Category", category.SelectedItem.ToString()));
-                    }
-                    catch (Exception)
-                    {
-                        return null;
-                    }
-                }
-
-                //are we updating the sponsorship notes?
-                if (notes != null)
-                {
-                    try
-                    {
-                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("Notes", notes.Text));
-                    }
-                    catch (Exception)
-                    {
-                        return null;
+                        try
+                        {
+                            // What date are we updating?
+                            if (date.StyleId == "editSponsorshipStartPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("StartDate", date.Date.ToLocalTime()));
+                            if (date.StyleId == "editSponsorshipEndPicker") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("EndDate", date.Date.ToLocalTime()));
+                        }
+                        catch (Exception)
+                        {
+                            return null;
+                        }
+                        
                     }
 
-                }
-
-                //are we updating the start date?
-                if (start != null)
-                {
-                    try
-                    {
-                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("StartDate", start.Date.ToLocalTime()));
-                    }
-                    catch (Exception)
-                    {
-                        return null;
-                    }
-                }
-
-                //are we updating the end date?
-                if (end != null)
-                {
-                    try
-                    {
-                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", sponsorshipId), updateBuilder.Set("EndDate", end.Date.ToLocalTime()));
-                    }
-                    catch (Exception)
-                    {
-                        return null;
-                    }
                 }
 
                 // Return updated sponsorship

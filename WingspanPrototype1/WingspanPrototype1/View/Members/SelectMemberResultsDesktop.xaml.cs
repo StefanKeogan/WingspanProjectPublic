@@ -118,7 +118,19 @@ namespace WingspanPrototype1.View
         {
 
             await DisplayAlert("Member added", "", "OK");
-            await Navigation.PopToRootAsync();
+
+            if (SponsorshipDetails.thisAddingSponsorship)
+            {
+                await Navigation.PopToRootAsync();
+            }
+            else
+            {
+                // Remove the edit page off of the back stack
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+                await Navigation.PopAsync();
+            }
+
+           
         }
     }
 }

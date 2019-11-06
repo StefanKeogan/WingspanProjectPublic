@@ -49,7 +49,7 @@ namespace WingspanPrototype1.View
                             firstNameError.IsVisible = true;
                             firstNameError.Text = "First Name feild can not contain numbers or symbols";
                         });
-                        
+
                         allFeildsValid = false;
                     }
                     else
@@ -61,15 +61,27 @@ namespace WingspanPrototype1.View
 
                     }
                 }
-                else
+               
+                if (!Validate.FeildPopulated(memberFirstNameEntry.Text) && (!Validate.FeildPopulated(memberCompanyEntry.Text)))
                 {
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         firstNameError.IsVisible = true;
-                        firstNameError.Text = "First Name feild must be filled in";
+                        companyError.IsVisible = true;
+                        firstNameError.Text = "Either the First Name or Company feilds must be filled in";
                     });
 
                     allFeildsValid = false;
+                }
+
+
+                if (Validate.FeildPopulated(memberFirstNameEntry.Text) || (Validate.FeildPopulated(memberCompanyEntry.Text)))
+                {
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        firstNameError.IsVisible = false;
+                        companyError.IsVisible = false;
+                    });
                 }
 
                 // Last Name Validation
@@ -145,6 +157,8 @@ namespace WingspanPrototype1.View
                         {
                             emailError.IsVisible = true;
                         });
+
+                        allFeildsValid = false;
                     }
                 }
                 else
@@ -250,6 +264,7 @@ namespace WingspanPrototype1.View
                         LastName = memberLastNameEntry.Text,
                         SalutationName = memberSalutationNameEntry.Text,
                         Email = memberEmailEntry.Text,
+                        Company = memberCompanyEntry.Text,
                         Address1 = memberAddress1Entry.Text,
                         Address2 = memberAddress2Entry.Text,
                         Address3 = memberAddress3Entry.Text,
@@ -269,6 +284,7 @@ namespace WingspanPrototype1.View
                             memberLastNameEntry.Text = null;
                             memberSalutationNameEntry.Text = null;
                             memberEmailEntry.Text = null;
+                            memberCompanyEntry.Text = null;
                             memberAddress1Entry.Text = null;
                             memberAddress2Entry.Text = null;
                             memberAddress3Entry.Text = null;

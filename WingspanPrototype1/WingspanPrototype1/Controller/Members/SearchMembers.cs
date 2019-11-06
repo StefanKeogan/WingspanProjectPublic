@@ -11,7 +11,7 @@ namespace WingspanPrototype1.Controller.Birds
 {
     class SearchMembers
     {
-        public static List<Member> Search(string firstName, string lastName, string salutationName)
+        public static List<Member> Search(string firstName, string lastName, string companyName)
         {
             // Get DB
             var database = DatabaseConnection.GetDatabase();
@@ -29,7 +29,7 @@ namespace WingspanPrototype1.Controller.Birds
                 // If feilds are populated add conditions to the filter
                 if (Validate.FeildPopulated(firstName)) filters.Add(filterBuilder.Eq("FirstName", firstName.ToLower().Replace(" ", string.Empty)));
                 if (Validate.FeildPopulated(lastName)) filters.Add(filterBuilder.Eq("LastName", lastName.ToLower().Replace(" ", string.Empty)));
-                if (Validate.FeildPopulated(salutationName)) filters.Add(filterBuilder.Eq("SalutionName", salutationName.ToLower().Replace("", string.Empty)));
+                if (Validate.FeildPopulated(companyName)) filters.Add(filterBuilder.Eq("Company", companyName.ToLower().Replace(" ", string.Empty)));
 
                 FilterDefinition<BsonDocument> searchFilter = filters[0];
 
@@ -80,10 +80,18 @@ namespace WingspanPrototype1.Controller.Birds
                 // Get member collection
                 var collection = database.GetCollection<BsonDocument>("Members");
 
-                //get the document in the collection with that id
-                Member memberResult = BsonSerializer.Deserialize<Member>(collection.Find(Builders<BsonDocument>.Filter.Eq("_id", id)).First());
+                try
+                {
+                    //get the document in the collection with that id
+                    Member memberResult = BsonSerializer.Deserialize<Member>(collection.Find(Builders<BsonDocument>.Filter.Eq("_id", id)).First());
 
-                return memberResult;
+                    return memberResult;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+                
             }
             else
             {

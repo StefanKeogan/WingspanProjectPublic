@@ -24,6 +24,7 @@ namespace WingspanPrototype1.View
         private Editor notes;
         private DatePicker start;
         private DatePicker end;
+        private List<DatePicker> dates = new List<DatePicker>();
 
         public EditSponsorshipResultsMobile2(Sponsorship sponsorship)
 		{
@@ -198,7 +199,7 @@ namespace WingspanPrototype1.View
 
             if (answer)
             {
-                Sponsorship updatedSponsorship = UpdateSponsorship.UpdateDocument(sponsorshipId, memberId, bird, category, notes, start, end);
+                Sponsorship updatedSponsorship = UpdateSponsorship.UpdateDocument(sponsorshipId, memberId, bird, category, notes, dates);
                 if (updatedSponsorship != null)
                 {
                     //// Find old sponsorship 

@@ -180,7 +180,7 @@ namespace WingspanPrototype1
                 case "Edit Members":
 
                     // Are all feilds left empty
-                    if (Validate.AllFeildsEmpty(new string[]{memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text }))
+                    if (Validate.AllFeildsEmpty(new string[]{memberFirstNameEntry.Text, memberLastNameEntry.Text, companyNameEntry.Text }))
                     {
                         DisplayAlert("All Feilds Empty", "Please fill in at least one search feild to continue", "OK");
                         return;
@@ -207,15 +207,15 @@ namespace WingspanPrototype1
                     }
 
                     // Is the salutaion name feild filled in 
-                    if (Validate.FeildPopulated(salutationNameEntry.Text))
-                    {
-                        // Does this feild contain any numbers or special characters
-                        if (Validate.ContainsNumberOrSymbol(salutationNameEntry.Text))
-                        {
-                            DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
-                            return;
-                        }
-                    }
+                    //if (Validate.FeildPopulated(salutationNameEntry.Text))
+                    //{
+                    //    // Does this feild contain any numbers or special characters
+                    //    if (Validate.ContainsNumberOrSymbol(salutationNameEntry.Text))
+                    //    {
+                    //        DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
+                    //        return;
+                    //    }
+                    //}
 
                     searchingIndicator.IsRunning = true;
 
@@ -223,7 +223,7 @@ namespace WingspanPrototype1
                     Task.Run(() => {
 
                         // Search Members
-                        List<Member> memberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
+                        List<Member> memberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, companyNameEntry.Text);
 
                         // Run on main thread
                         Device.BeginInvokeOnMainThread(() => {
@@ -232,7 +232,7 @@ namespace WingspanPrototype1
                             {
                                 memberFirstNameEntry.Text = null;
                                 memberLastNameEntry.Text = null;
-                                salutationNameEntry.Text = null;
+                                companyNameEntry.Text = null;
 
                                 // Results have been returned push the results page 
                                 if (DeviceSize.ScreenArea() <= 783457)
@@ -259,7 +259,7 @@ namespace WingspanPrototype1
 
                 case "Select Member":
                     // Are all feilds left empty
-                    if (Validate.AllFeildsEmpty(new string[] { memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text }))
+                    if (Validate.AllFeildsEmpty(new string[] { memberFirstNameEntry.Text, memberLastNameEntry.Text, companyNameEntry.Text }))
                     {
                         DisplayAlert("All Feilds Empty", "Please fill in at least one search feild to continue", "OK");
                         return;
@@ -286,22 +286,22 @@ namespace WingspanPrototype1
                     }
 
                     // Is the salutaion name feild filled in 
-                    if (Validate.FeildPopulated(salutationNameEntry.Text))
-                    {
-                        // Does this feild contain any numbers or special characters
-                        if (Validate.ContainsNumberOrSymbol(salutationNameEntry.Text))
-                        {
-                            DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
-                            return;
-                        }
-                    }
+                    //if (Validate.FeildPopulated(sponsorshipCompanyNameEntry.Text))
+                    //{
+                    //    // Does this feild contain any numbers or special characters
+                    //    if (Validate.ContainsNumberOrSymbol(sponsorshipCompanyNameEntry.Text))
+                    //    {
+                    //        DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
+                    //        return;
+                    //    }
+                    //}
 
                     searchingIndicator.IsRunning = true;
 
                     Task.Run(() => 
                     {
                         // Search Members
-                        List<Member> selectMemberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, salutationNameEntry.Text);
+                        List<Member> selectMemberResults = SearchMembers.Search(memberFirstNameEntry.Text, memberLastNameEntry.Text, companyNameEntry.Text);
 
                         Device.BeginInvokeOnMainThread(() => 
                         {
@@ -309,7 +309,7 @@ namespace WingspanPrototype1
                             {
                                 memberFirstNameEntry.Text = null;
                                 memberLastNameEntry.Text = null;
-                                salutationNameEntry.Text = null;
+                                companyNameEntry.Text = null;
 
                                 // Results have been returned push the results page 
                                 if (DeviceSize.ScreenArea() <= 783457)
@@ -400,21 +400,6 @@ namespace WingspanPrototype1
                         (Validate.FeildPopulated(sponsorshipCompanyNameEntry.Text)))
                         {
                             memberSponsorshipResults = SearchSponsorships.SearchByMember(sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text);
-
-                            // OLD Search
-                            // possibleMembers = SearchMembers.SponsorshipSearch(sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text);
-                            //foreach (Member member in possibleMembers)
-                            //{
-                            //    validMembers = SearchSponsorships.FindByMember(member._id);
-                            //    if (validMembers != null)
-                            //    {
-                            //        foreach (Sponsorship sponsorship in validMembers)
-                            //        {
-                            //            sponsorshipResults.Add(sponsorship);
-                            //        }
-                            //        validMembers = null;
-                            //    }
-                            //}
                         }
 
                         if (memberSponsorshipResults != null)
@@ -444,6 +429,12 @@ namespace WingspanPrototype1
 
                             if ((sponsorshipResults != null) && (sponsorshipResults.Count > 0))
                             {
+                                // Clear search feilds 
+                                sponsorshipFirstNameEntry.Text = null;
+                                sponsorshipLastNameEntry.Text = null;
+                                sponsorshipCompanyNameEntry.Text = null;
+                                sponsorshipWingspanIdEntry.Text = null;
+
                                 // Results have been returned push the results page 
                                 if (DeviceSize.ScreenArea() <= 783457)
                                 {
