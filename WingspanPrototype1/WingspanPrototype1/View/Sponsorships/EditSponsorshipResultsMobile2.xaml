@@ -79,7 +79,7 @@
                     <Label x:Name="editSponsorNameLabel" Text="Sponsor name" FontSize="20" Grid.Row="5"/>
                     <StackLayout x:Name="editSponsorNameStack" Orientation="Horizontal" Grid.Column="1" IsVisible="False" Grid.Row="5">
                         <Label x:Name="editSponsorNameValueLabel" FontSize="20"/>
-                        <Button x:Name="editSponsorNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" Clicked="EditSponsorNameEditButton_Clicked"/>
+                        <Button x:Name="editSponsorNameEditButton" Text="[edit]" BackgroundColor="#FFFFFF" TextColor="#5C3838" FontSize="15" VerticalOptions="Center" />
                     </StackLayout>
 
                     <!-- NOT NEEDED ANYMORE

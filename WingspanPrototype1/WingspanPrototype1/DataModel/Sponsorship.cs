@@ -7,7 +7,6 @@ namespace WingspanPrototype1.Model
         public ObjectId _id { get; set; }
         public string WingspanId { get; set; }
         public string Category { get; set; }
-        public string Level { get; set; }
         public string Notes { get; set; }
         public ObjectId Member_id { get; set; }
         public DateTime StartDate { get; set; }

@@ -20,7 +20,7 @@ namespace WingspanPrototype1.View
         private ObjectId sponsorshipId;
         private ObjectId memberId;
         private string bird;
-        private string level;
+        private Picker category;
         private Editor notes;
         private DatePicker start;
         private DatePicker end;
@@ -224,7 +224,7 @@ namespace WingspanPrototype1.View
 
             if (answer)
             {
-                Sponsorship updatedSponsorship = UpdateSponsorship.UpdateDocument(sponsorshipId, memberId, bird, level, notes, start, end);
+                Sponsorship updatedSponsorship = UpdateSponsorship.UpdateDocument(sponsorshipId, memberId, bird, category, notes, start, end);
                 if (updatedSponsorship != null)
                 {               
                     // Find old sponsorship 
@@ -293,7 +293,7 @@ namespace WingspanPrototype1.View
         {
             editCategoryPicker.IsVisible = true;
             editCategoryStack.IsVisible = false;
-            level = editCategoryPicker.SelectedItem.ToString();
+            category = editCategoryPicker;
         }
 
         private void EditSponsorshipNotesValueEditButton_Clicked(object sender, EventArgs e)
