@@ -20,7 +20,7 @@ namespace WingspanPrototype1.View
         private ObjectId sponsorshipId;
         private ObjectId memberId;
         private string bird;
-        private Picker level;
+        private string level;
         private Editor notes;
         private DatePicker start;
         private DatePicker end;
@@ -224,12 +224,34 @@ namespace WingspanPrototype1.View
 
             if (answer)
             {
-                await DisplayAlert("Changes saved", "", "OK");
-            }
-            else
-            {
-                return;
-            }
+                Sponsorship updatedSponsorship = UpdateSponsorship.UpdateDocument(sponsorshipId, memberId, bird, level, notes, start, end);
+                if (updatedSponsorship != null)
+                {               
+                    // Find old sponsorship 
+                    Sponsorship sponsorship = sponsorshipResults.Find(x => x._id == sponsorshipId);
+                    int sponsorshipIndex = sponsorshipResults.IndexOf(sponsorship);
+
+                    // Update with new sponsorship
+                    sponsorshipResults[sponsorshipIndex] = updatedSponsorship;
+
+                    resultsListView.ItemsSource = null;
+                    resultsListView.ItemsSource = sponsorshipResults;
+
+                    //reset the 'global' again
+                    SponsorshipDetails.thisFirstName = null;
+                    SponsorshipDetails.thisLastName = null;
+                    SponsorshipDetails.thisCompany = null;
+                    SponsorshipDetails.thisWingspanID = null;
+
+                    DisplaySponsorship(updatedSponsorship);
+
+                    await DisplayAlert("Sponsorship Saved", "Changes to this sponsorship have been saved", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Connection Error", "Could not connect to database, please check your connection and try again", "OK");
+                }
+            }               
         }
 
 
@@ -271,7 +293,7 @@ namespace WingspanPrototype1.View
         {
             editCategoryPicker.IsVisible = true;
             editCategoryStack.IsVisible = false;
-            level = editCategoryPicker;
+            level = editCategoryPicker.SelectedItem.ToString();
         }
 
         private void EditSponsorshipNotesValueEditButton_Clicked(object sender, EventArgs e)
