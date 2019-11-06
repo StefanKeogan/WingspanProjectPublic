@@ -21,11 +21,11 @@ namespace WingspanPrototype1.View
             resultsListView.ItemsSource = results;
 
             // What type of device are we running on 
-            if (DeviceSize.ScreenArea() <= 783457)
-            {
-                selectMemberMargin1.Width = 0;
-                selectMemberMargin2.Width = 0;
-            }
+            //if (DeviceSize.ScreenArea() <= 783457)
+            //{
+            //    selectMemberMargin1.Width = 0;
+            //    selectMemberMargin2.Width = 0;
+            //}
         }
 
         private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

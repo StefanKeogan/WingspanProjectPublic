@@ -33,13 +33,13 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" x:Name="resultsView" IsVisible="False">
+            <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" x:Name="resultsView" IsVisible="False" WidthRequest="900">
                 <Grid HeightRequest="700">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>

@@ -436,7 +436,12 @@ namespace WingspanPrototype1
         // Note popup boxes
         private void NoteButton_Clicked(object sender, EventArgs e)
         {
+            noteListView.ItemsSource = FindBirdNotes.GetNoteDocuments(wingspanId);
             noteHistoryView.IsVisible = true;
+
+            // If location popups are visible, close them
+            locationHistoryView.IsVisible = false;
+            addNewLocationView.IsVisible = false;
         }
 
         private void AddNewNoteButton_Clicked(object sender, EventArgs e)
@@ -493,9 +498,13 @@ namespace WingspanPrototype1
         //Location popup boxes
         private void LocationButton_Clicked(object sender, EventArgs e)
         {
+            locationListView.ItemsSource = FindBirdLocationHistory.GetLocationDocuments(wingspanId);
             locationHistoryView.IsVisible = true;
 
-            
+            // If the note popups are open close them
+            addNewNoteView.IsVisible = false;
+            noteHistoryView.IsVisible = false;
+
         }
 
         private void AddNewLocationButton_Clicked(object sender, EventArgs e)

@@ -5,7 +5,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WingspanPrototype1.View.SelectBirdResultsDesktop"
-             Title="Sponsor Bird Results">
+             Title="Results">
     <ContentPage.Content>
         <Grid x:Name="selectBirdSearchGrid" VerticalOptions="FillAndExpand">
             <Grid.ColumnDefinitions>
@@ -32,15 +32,15 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ScrollView Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+            <ScrollView Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="600" HeightRequest="400">
                 <ContentView x:Name="selectWildBirdGrid" IsVisible="False">
                     <ContentView.Content>
-                        <Grid HeightRequest="400" HorizontalOptions="Center">
+                        <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="4*"/>
                                 <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -86,15 +86,15 @@
             </ScrollView>
 
 
-            <ScrollView Grid.Column="1" VerticalOptions="Center">
+            <ScrollView Grid.Column="1" VerticalOptions="Center" WidthRequest="600" HorizontalOptions="Center">
                 <ContentView x:Name="selectCaptiveBirdGrid" IsVisible="False">
                     <ContentView.Content>
                         <Grid HeightRequest="400">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="4*"/>
                                 <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>

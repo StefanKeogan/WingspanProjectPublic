@@ -34,13 +34,13 @@
                 
                 <ContentView x:Name="wildBirdDisplayForm" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
                     <ContentView.Content>
-                        <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
+                        <ScrollView VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="900">
                             <Grid HeightRequest="500">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
                                 <ColumnDefinition Width="2*"/>
-                                <ColumnDefinition Width="3*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="1*"/>
@@ -166,7 +166,7 @@
 
                 <ContentView x:Name="captiveBirdDisplayForm" Grid.Column="1" HorizontalOptions="Center" VerticalOptions="Center" IsVisible="False">
                     <ContentView.Content>
-                        <ScrollView HorizontalOptions="Center" VerticalOptions="Center" WidthRequest="500">
+                        <ScrollView HorizontalOptions="Center" VerticalOptions="Center"  WidthRequest="900">
                             <Grid HeightRequest="500">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="2*"/>
