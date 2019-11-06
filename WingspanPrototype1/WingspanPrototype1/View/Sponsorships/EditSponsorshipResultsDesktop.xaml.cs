@@ -64,9 +64,6 @@ namespace WingspanPrototype1.View
             memberDetails.Company = FormatText.FirstToUpper(memberDetails.Company);
 
 
-            //clear previous input items
-            //entries.Clear();
-
             //display Wingspan ID
             if (Validate.FeildPopulated(sponsorship.WingspanId))
             {
