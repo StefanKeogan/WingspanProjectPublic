@@ -477,5 +477,96 @@ namespace WingspanPrototype1.View
                 }
             }
         }
+
+        private void memberFirstNameEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberFirstNameStack.IsVisible = false;
+            memberFirstNameEntry.IsVisible = true;
+            entries.Add(memberFirstNameEntry);
+        }
+
+        private void memberLastNameEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberLastNameStack.IsVisible = false;
+            memberLastNameEntry.IsVisible = true;
+            entries.Add(memberLastNameEntry);
+        }
+
+        private void memberSalutationEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberSalutationStack.IsVisible = false;
+            memberSalutationEntry.IsVisible = true;
+            entries.Add(memberSalutationEntry);
+        }
+
+        private void memberEmailEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberEmailStack.IsVisible = false;
+            memberEmailEntry.IsVisible = true;
+            entries.Add(memberEmailEntry);
+        }
+
+        private void memberCompanyEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberCompanyStack.IsVisible = false;
+            memberCompanyEntry.IsVisible = true;
+            entries.Add(memberCompanyEntry);
+        }
+
+        private void memberAddress1Button_Clicked(object sender, EventArgs e)
+        {
+            memberAddress1Stack.IsVisible = false;
+            memberAddress1Entry.IsVisible = true;
+            entries.Add(memberAddress1Entry);
+        }
+
+        private void memberAddress2Button_Clicked(object sender, EventArgs e)
+        {
+            memberAddress2Stack.IsVisible = false;
+            memberAddress2Entry.IsVisible = true;
+            entries.Add(memberAddress2Entry);
+        }
+
+        private void memberAddress3Button_Clicked(object sender, EventArgs e)
+        {
+            memberAddress3Stack.IsVisible = false;
+            memberAddress3Entry.IsVisible = true;
+            entries.Add(memberAddress3Entry);
+        }
+
+        private void memberCityEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberCityStack.IsVisible = false;
+            memberCityEntry.IsVisible = true;
+            entries.Add(memberCityEntry);
+        }
+
+        private void memberPostCodeEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberPostCodeStack.IsVisible = false;
+            memberPostCodeEntry.IsVisible = true;
+            entries.Add(memberPostCodeEntry);
+        }
+
+        private void memberCommentValueEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberCommentStack.IsVisible = false;
+            memberCommentEditor.IsVisible = true;
+            editor = memberCommentEditor;
+        }
+
+        private void memberJoinDateEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberJoinDateStack.IsVisible = false;
+            memberJoinDatePicker.IsVisible = true;
+            date = memberJoinDatePicker;
+        }
+
+        private void memberCountryEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberCountryStack.IsVisible = false;
+            memberCountryEntry.IsVisible = true;
+            entries.Add(memberCountryEntry);
+        }
     }
 }

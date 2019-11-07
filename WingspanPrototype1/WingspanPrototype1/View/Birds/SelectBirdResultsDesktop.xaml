@@ -5,17 +5,17 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              mc:Ignorable="d"
              x:Class="WingspanPrototype1.View.SelectBirdResultsDesktop"
-             Title="ViewSponsorBirdResults">
+             Title="Results">
     <ContentPage.Content>
-        <Grid x:Name="selectBirdSearchGrid" VerticalOptions="FillAndExpand" IsVisible="False">
+        <Grid x:Name="selectBirdSearchGrid" VerticalOptions="FillAndExpand">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="6*"/>
             </Grid.ColumnDefinitions>
 
             <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="33*"/>
+                <RowDefinition Height="3*"/>
             </Grid.RowDefinitions>
 
             <!--list of search results-->
@@ -32,15 +32,15 @@
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ScrollView Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
+            <ScrollView Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="600" HeightRequest="400">
                 <ContentView x:Name="selectWildBirdGrid" IsVisible="False">
                     <ContentView.Content>
-                        <Grid HeightRequest="400" HorizontalOptions="Center">
+                        <Grid>
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="1.5*"/>
-                                <ColumnDefinition Width="3.5*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -86,15 +86,15 @@
             </ScrollView>
 
 
-            <ScrollView Grid.Column="1" VerticalOptions="Center">
+            <ScrollView Grid.Column="1" VerticalOptions="Center" WidthRequest="600" HorizontalOptions="Center">
                 <ContentView x:Name="selectCaptiveBirdGrid" IsVisible="False">
                     <ContentView.Content>
                         <Grid HeightRequest="400">
                             <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="*"/>
-                                <ColumnDefinition Width="1.5*"/>
-                                <ColumnDefinition Width="3.5*"/>
-                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="2*"/>
+                                <ColumnDefinition Width="6*"/>
+                                <ColumnDefinition Width="4*"/>
+                                <ColumnDefinition Width="2*"/>
                             </Grid.ColumnDefinitions>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -107,27 +107,27 @@
 
                             <!--Wingspan Id-->
                             <Label x:Name="selectCaptiveWingspanIdLabel" Text="Wingspan Id" Style="{StaticResource resultLabelStyle}"/>
-                            <Label x:Name="selectCaptiveWingspanIdValueLabel" Style="{StaticResource resultFeildStyle}" Grid.Column="1" IsVisible="False"/>
+                            <Label x:Name="selectCaptiveWingspanIdValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False"/>
 
                             <!--Name-->
                             <Label x:Name="selectCaptiveNameLabel" Text="Name" Style="{StaticResource resultLabelStyle}" Grid.Row="1"/>
-                            <Label x:Name="selectCaptiveNameValueLabel" Style="{StaticResource resultFeildStyle}" Grid.Row="1" IsVisible="False"/>
+                            <Label x:Name="selectCaptiveNameValueLabel" Style="{StaticResource selectFeildStyle}" Grid.Row="1" IsVisible="False"/>
 
                             <!--Band Number-->
                             <Label x:Name="selectCaptiveBandNumberLabel" Text="Band Number" Style="{StaticResource resultLabelStyle}" Grid.Row="2"/>
-                            <Label x:Name="selectCaptiveBandNumberValueLabel" Style="{StaticResource resultFeildStyle}" Grid.Row="2" IsVisible="False"/>
+                            <Label x:Name="selectCaptiveBandNumberValueLabel" Style="{StaticResource selectFeildStyle}" Grid.Row="2" IsVisible="False"/>
 
                             <!--Species-->
                             <Label x:Name="selectCaptiveSpeciesLabel" Text="Species" Style="{StaticResource resultLabelStyle}" Grid.Row="3"/>
-                            <Label x:Name="selectCaptiveSpeciesValueLabel" Style="{StaticResource resultFeildStyle}" Grid.Row="3" IsVisible="False"/>
+                            <Label x:Name="selectCaptiveSpeciesValueLabel" Style="{StaticResource selectFeildStyle}" Grid.Row="3" IsVisible="False"/>
 
                             <!--Sex-->
                             <Label x:Name="selectCaptiveSexLabel" Text="Sex" Style="{StaticResource resultLabelStyle}" Grid.Row="4"/>
-                            <Label x:Name="selectCaptiveSexValueLabel" Style="{StaticResource resultFeildStyle}" Grid.Row="4" IsVisible="False"/>
+                            <Label x:Name="selectCaptiveSexValueLabel" Style="{StaticResource selectFeildStyle}" Grid.Row="4" IsVisible="False"/>
 
                             <!--Age-->
                             <Label x:Name="selectCaptiveAgeLabel" Text="Age" Style="{StaticResource resultLabelStyle}" Grid.Row="5"/>
-                            <Label x:Name="selectCaptiveAgeValueLabel" Style="{StaticResource resultFeildStyle}" Grid.Row="5" IsVisible="False"/>
+                            <Label x:Name="selectCaptiveAgeValueLabel" Style="{StaticResource selectFeildStyle}" Grid.Row="5" IsVisible="False"/>
 
                         </Grid>
                     </ContentView.Content>
@@ -135,14 +135,16 @@
             </ScrollView>
 
             <!--button at the bottom -->
-            <Button x:Name="thisBirdButton"
-                        Grid.Row="1"
-                        HorizontalOptions="Center"
-                        VerticalOptions="Center"
-                        Text="Sponsor" 
-                        Style="{StaticResource mainButtonStyle}" 
-                        WidthRequest="150"
-                        Clicked="ThisBirdButton_Clicked"/>
+            <Button 
+                x:Name="thisBirdButton"
+                Grid.Row="1"
+                Grid.Column="1"
+                HorizontalOptions="Center"
+                VerticalOptions="Center"
+                Text="Sponsor" 
+                Style="{StaticResource mainButtonStyle}" 
+                WidthRequest="150"
+                Clicked="ThisBirdButton_Clicked"/>
 
         </Grid>
     </ContentPage.Content>

@@ -21,11 +21,11 @@ namespace WingspanPrototype1.View
             resultsListView.ItemsSource = results;
 
             // What type of device are we running on 
-            if (DeviceSize.ScreenArea() <= 783457)
-            {
-                selectMemberMargin1.Width = 0;
-                selectMemberMargin2.Width = 0;
-            }
+            //if (DeviceSize.ScreenArea() <= 783457)
+            //{
+            //    selectMemberMargin1.Width = 0;
+            //    selectMemberMargin2.Width = 0;
+            //}
         }
 
         private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -98,12 +98,10 @@ namespace WingspanPrototype1.View
                 selectMemberCommentsValueLabel.IsVisible = false;
             }
 
-            //set these variables for this member
-            SetSponsorDetails(member);
-
-            
-            
+            //set the 'global' variables using this member
+            SetSponsorDetails(member);            
         }
+
 
         //set 'global' variables for sponsorship
         private void SetSponsorDetails(Member member)
@@ -118,8 +116,21 @@ namespace WingspanPrototype1.View
         //button to update using this member 
         private async void ThisMemberButton_Clicked(object sender, EventArgs e)
         {
+
             await DisplayAlert("Member added", "", "OK");
-            await Navigation.PopToRootAsync();
+
+            if (SponsorshipDetails.thisAddingSponsorship)
+            {
+                await Navigation.PopToRootAsync();
+            }
+            else
+            {
+                // Remove the edit page off of the back stack
+                Navigation.RemovePage(Navigation.NavigationStack[Navigation.NavigationStack.Count - 2]);
+                await Navigation.PopAsync();
+            }
+
+           
         }
     }
 }

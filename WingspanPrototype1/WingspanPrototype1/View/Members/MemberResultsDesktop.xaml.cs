@@ -35,6 +35,7 @@ namespace WingspanPrototype1.View
                 member.FirstName = FormatText.FirstToUpper(member.FirstName);
                 member.LastName = FormatText.FirstToUpper(member.LastName);
                 member.SalutationName = FormatText.FirstToUpper(member.SalutationName);
+                member.Company = FormatText.FirstToUpper(member.Company);
             }
 
             resultsListView.ItemsSource = memberResults;
@@ -242,7 +243,7 @@ namespace WingspanPrototype1.View
 
             }
 
-            memberJoinDateValueLabel.Text = member.JoinDate.ToString();
+            memberJoinDateValueLabel.Text = member.JoinDate.ToShortDateString();
             memberJoinDateStack.IsVisible = true;
             memberJoinDatePicker.IsVisible = false;
 
@@ -621,5 +622,6 @@ namespace WingspanPrototype1.View
             memberCountryEntry.IsVisible = true;
             entries.Add(memberCountryEntry);
         }
+
     }
 }

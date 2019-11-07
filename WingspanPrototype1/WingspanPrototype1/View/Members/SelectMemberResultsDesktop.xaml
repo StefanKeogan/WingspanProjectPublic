@@ -31,13 +31,13 @@
                 </ListView>
 
                 <!--the grid to display the sponsor details-->
-                <ScrollView Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center">
-                    <Grid x:Name="selectMemberResultsGrid" IsVisible="False" HorizontalOptions="Center" HeightRequest="400">
+                <ScrollView Grid.Column="1" VerticalOptions="Center" HorizontalOptions="Center" WidthRequest="600">
+                    <Grid x:Name="selectMemberResultsGrid" IsVisible="False" HeightRequest="400">
                         <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="*" x:Name="selectMemberMargin1"/>
-                            <ColumnDefinition Width="1.5*"/>
-                            <ColumnDefinition Width="3.5*"/>
-                            <ColumnDefinition Width="*" x:Name="selectMemberMargin2"/>
+                            <ColumnDefinition Width="2*"/>
+                            <ColumnDefinition Width="6*"/>
+                            <ColumnDefinition Width="4*"/>
+                            <ColumnDefinition Width="2*"/>
                         </Grid.ColumnDefinitions>
                         <Grid.RowDefinitions>
                             <RowDefinition Height="*"/>
@@ -48,7 +48,6 @@
                             <RowDefinition Height="2*"/>
                         </Grid.RowDefinitions>
 
-                        <!-- put these names into one stack -->
 
                         <!--member first name-->
                         <Label x:Name="selectMemberFirstNameLabel" Text="First name" Style="{StaticResource resultLabelStyle}"/>
@@ -71,15 +70,17 @@
                         <Label x:Name="selectMemberCommentsValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="4"/>
 
                         <!--button at the bottom -->
-                        <Button x:Name="thisMemberButton"
-                                Grid.Row="5"
-                                Grid.ColumnSpan="2"
-                                HorizontalOptions="Center"
-                                VerticalOptions="Center"
-                                Text="Sponsor" 
-                                Style="{StaticResource mainButtonStyle}" 
-                                WidthRequest="150"
-                                Clicked="ThisMemberButton_Clicked"/>
+                        <Button 
+                            x:Name="thisMemberButton"
+                            Grid.Row="5"
+                            Grid.Column="1"
+                            Grid.ColumnSpan="2"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Text="Select" 
+                            Style="{StaticResource mainButtonStyle}" 
+                            WidthRequest="150"
+                            Clicked="ThisMemberButton_Clicked"/>
 
                     </Grid>
                 </ScrollView>

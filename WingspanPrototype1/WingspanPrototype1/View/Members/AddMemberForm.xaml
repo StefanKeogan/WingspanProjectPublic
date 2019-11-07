@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
             <StackLayout>
-                <Grid HeightRequest="1000">
+                <Grid HeightRequest="1100">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" x:Name="memberMargin1"/>
                         <ColumnDefinition Width="1.5*"/>
@@ -111,6 +111,9 @@
 
                     <!--Email-->
                     <Label x:Name="emailError" Style="{StaticResource addFormErrorStyle}" Text="Email address not valid" Grid.Row="6"/>
+                    
+                    <!--Company-->
+                    <Label x:Name="companyError" Style="{StaticResource addFormErrorStyle}" Text="Either the first name or company feild must be filled in" Grid.Row="8"/>
 
                     <!--City-->
                     <Label x:Name="cityError" Style="{StaticResource addFormErrorStyle}" Text="The city feild cannot contain numbers or symbols" Grid.Row="16"/>

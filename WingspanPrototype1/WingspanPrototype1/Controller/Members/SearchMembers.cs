@@ -11,7 +11,7 @@ namespace WingspanPrototype1.Controller.Birds
 {
     class SearchMembers
     {
-        public static List<Member> Search(string firstName, string lastName, string salutationName)
+        public static List<Member> Search(string firstName, string lastName, string companyName)
         {
             // Get DB
             var database = DatabaseConnection.GetDatabase();
@@ -29,7 +29,7 @@ namespace WingspanPrototype1.Controller.Birds
                 // If feilds are populated add conditions to the filter
                 if (Validate.FeildPopulated(firstName)) filters.Add(filterBuilder.Eq("FirstName", firstName.ToLower().Replace(" ", string.Empty)));
                 if (Validate.FeildPopulated(lastName)) filters.Add(filterBuilder.Eq("LastName", lastName.ToLower().Replace(" ", string.Empty)));
-                if (Validate.FeildPopulated(salutationName)) filters.Add(filterBuilder.Eq("SalutionName", salutationName.ToLower().Replace("", string.Empty)));
+                if (Validate.FeildPopulated(companyName)) filters.Add(filterBuilder.Eq("Company", companyName.ToLower().Replace(" ", string.Empty)));
 
                 FilterDefinition<BsonDocument> searchFilter = filters[0];
 
@@ -67,10 +67,12 @@ namespace WingspanPrototype1.Controller.Birds
 
         }
 
-        //find single member (mainly for display purposes on 'select member' page
-        public static Member Find(ObjectId id)
+
+
+        //find single member (mainly for display purposes on 'select member' page)
+        public static Member SearchById(ObjectId id)
         {
-            //get DB
+            // Get DB
             var database = DatabaseConnection.GetDatabase();
 
             if (database != null)
@@ -78,18 +80,24 @@ namespace WingspanPrototype1.Controller.Birds
                 // Get member collection
                 var collection = database.GetCollection<BsonDocument>("Members");
 
-                //get the document in the collection with that id
-                var memberResult = collection.Find(new BsonDocument("_id", id));
+                try
+                {
+                    //get the document in the collection with that id
+                    Member memberResult = BsonSerializer.Deserialize<Member>(collection.Find(Builders<BsonDocument>.Filter.Eq("_id", id)).First());
 
-                //deserialise into "member" format
-                var memberObjectResult = BsonSerializer.Deserialize<Member>((BsonDocument)memberResult);
-
-                return memberObjectResult;
+                    return memberResult;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+                
             }
             else
             {
                 return null;
             }
         }
+
     }
 }

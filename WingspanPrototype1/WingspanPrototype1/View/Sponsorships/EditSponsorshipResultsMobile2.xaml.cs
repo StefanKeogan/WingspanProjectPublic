@@ -1,9 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using MongoDB.Bson;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WingspanPrototype1.Model;
+using WingspanPrototype1.Controller.Birds;
+using WingspanPrototype1.Controller.Sponsorships;
+using WingspanPrototype1.Functions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -12,31 +16,52 @@ namespace WingspanPrototype1.View
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class EditSponsorshipResultsMobile2 : ContentPage
 	{
-		public EditSponsorshipResultsMobile2(Sponsorship sponsorship)
+        //class variables
+        private ObjectId sponsorshipId;
+        private ObjectId memberId;
+        private string bird;
+        private Picker category;
+        private Editor notes;
+        private DatePicker start;
+        private DatePicker end;
+        private List<DatePicker> dates = new List<DatePicker>();
+
+        public EditSponsorshipResultsMobile2(Sponsorship sponsorship)
 		{
 			InitializeComponent();
 
             DisplaySponsorship(sponsorship);
+
+            sponsorshipId = sponsorship._id;
 		}
 
 
         private void DisplaySponsorship(Sponsorship sponsorship)
         {
+            //need to get the object of this member for display purposes
+            Member memberDetails = SearchMembers.SearchById(sponsorship.Member_id);
+
+            // Set member name items to upper case
+            memberDetails.FirstName = FormatText.FirstToUpper(memberDetails.FirstName);
+            memberDetails.LastName = FormatText.FirstToUpper(memberDetails.LastName);
+            memberDetails.Company = FormatText.FirstToUpper(memberDetails.Company);
+
+
             //display Wingspan ID
-            if ((sponsorship.WingspanId != string.Empty) && (sponsorship.WingspanId != null))
+            if (Validate.FeildPopulated(sponsorship.WingspanId))
             {
                 sponsoredWingspanIDValueLabel.Text = sponsorship.WingspanId;
                 sponsoredWingspanIDStack.IsVisible = true;
-                sponsoredWingspanIDEntry.IsVisible = false;
+                editBirdSelector.IsVisible = false;
             }
             else
             {
-                sponsoredWingspanIDEntry.IsVisible = true;
+                editBirdSelector.IsVisible = true;
                 sponsoredWingspanIDStack.IsVisible = false;
             }
 
             //display Category
-            if ((sponsorship.Category != string.Empty) && (sponsorship.Category != null))
+            if (Validate.FeildPopulated(sponsorship.Category))
             {
                 editCategoryValueLabel.Text = sponsorship.Category;
                 editCategoryStack.IsVisible = true;
@@ -49,9 +74,9 @@ namespace WingspanPrototype1.View
             }
 
             //display notes
-            if ((sponsorship.SponsorshipNotes != string.Empty) && (sponsorship.SponsorshipNotes != null))
+            if (Validate.FeildPopulated(sponsorship.Notes))
             {
-                editSponsorshipNotesValueLabel.Text = sponsorship.SponsorshipNotes;
+                editSponsorshipNotesValueLabel.Text = sponsorship.Notes;
                 editSponsorshipNotesStack.IsVisible = true;
                 editSponsorshipNotes.IsVisible = false;
             }
@@ -62,9 +87,9 @@ namespace WingspanPrototype1.View
             }
 
             //display Sponsorship start date
-            if (sponsorship.SponsorshipStart.ToString() != string.Empty)
+            if (sponsorship.StartDate.ToString() != string.Empty)
             {
-                editSponsorshipStartValueLabel.Text = sponsorship.SponsorshipStart.ToString();
+                editSponsorshipStartValueLabel.Text = sponsorship.StartDate.ToString();
                 editSponsorshipStartStack.IsVisible = true;
                 editSponsorshipStartPicker.IsVisible = false;
             }
@@ -75,9 +100,9 @@ namespace WingspanPrototype1.View
             }
 
             //display Sponsorship end date
-            if (sponsorship.SponsorshipEnd.ToString() != string.Empty)
+            if (sponsorship.EndDate.ToString() != string.Empty)
             {
-                editSponsorshipEndValueLabel.Text = sponsorship.SponsorshipEnd.ToString();
+                editSponsorshipEndValueLabel.Text = sponsorship.EndDate.ToString();
                 editSponsorshipEndStack.IsVisible = true;
                 editSponsorshipEndPicker.IsVisible = false;
             }
@@ -87,44 +112,60 @@ namespace WingspanPrototype1.View
                 editSponsorshipEndStack.IsVisible = false;
             }
 
-            //display member's first name
-            if ((sponsorship.FirstName != string.Empty) && (sponsorship.FirstName != null))
+            //display the sponsor first name or company name
+            if (Validate.FeildPopulated(memberDetails.FirstName))
             {
-                editSponsorFirstNameValueLabel.Text = sponsorship.FirstName;
-                editSponsorFirstNameStack.IsVisible = true;
-                editSponsorFirstNameEntry.IsVisible = false;
+                editSponsorNameValueLabel.Text = memberDetails.FirstName;
+                editSponsorNameStack.IsVisible = true;
+            }
+            else if ((!Validate.FeildPopulated(memberDetails.FirstName)) && (Validate.FeildPopulated(memberDetails.Company)))
+            {
+                editSponsorNameValueLabel.Text = memberDetails.Company;
+                editSponsorNameStack.IsVisible = true;
             }
             else
             {
-                editSponsorFirstNameEntry.IsVisible = true;
-                editSponsorFirstNameStack.IsVisible = false;
+                editSponsorNameStack.IsVisible = false;
             }
 
-            //display member's last name
-            if ((sponsorship.LastName != string.Empty) && (sponsorship.LastName != null))
-            {
-                editSponsorLastNameValueLabel.Text = sponsorship.LastName;
-                editSponsorLastNameStack.IsVisible = true;
-                editSponsorLastNameEntry.IsVisible = false;
-            }
-            else
-            {
-                editSponsorLastNameEntry.IsVisible = true;
-                editSponsorLastNameStack.IsVisible = false;
-            }
+            //    //display member's first name
+            //    if ((sponsorship.FirstName != string.Empty) && (sponsorship.FirstName != null))
+            //    {
+            //        editSponsorFirstNameValueLabel.Text = sponsorship.FirstName;
+            //        editSponsorFirstNameStack.IsVisible = true;
+            //        editSponsorFirstNameEntry.IsVisible = false;
+            //    }
+            //    else
+            //    {
+            //        editSponsorFirstNameEntry.IsVisible = true;
+            //        editSponsorFirstNameStack.IsVisible = false;
+            //    }
 
-            //display sponsoring company name
-            if ((sponsorship.Company != string.Empty) && (sponsorship.Company != null))
-            {
-                editSponsorCompanyNameValueLabel.Text = sponsorship.Company;
-                editSponsorCompanyNameStack.IsVisible = true;
-                editSponsorCompanyNameEntry.IsVisible = false;
-            }
-            else
-            {
-                editSponsorCompanyNameEntry.IsVisible = true;
-                editSponsorCompanyNameStack.IsVisible = false;
-            }
+            //    //display member's last name
+            //    if ((sponsorship.LastName != string.Empty) && (sponsorship.LastName != null))
+            //    {
+            //        editSponsorLastNameValueLabel.Text = sponsorship.LastName;
+            //        editSponsorLastNameStack.IsVisible = true;
+            //        editSponsorLastNameEntry.IsVisible = false;
+            //    }
+            //    else
+            //    {
+            //        editSponsorLastNameEntry.IsVisible = true;
+            //        editSponsorLastNameStack.IsVisible = false;
+            //    }
+
+            //    //display sponsoring company name
+            //    if ((sponsorship.Company != string.Empty) && (sponsorship.Company != null))
+            //    {
+            //        editSponsorCompanyNameValueLabel.Text = sponsorship.Company;
+            //        editSponsorCompanyNameStack.IsVisible = true;
+            //        editSponsorCompanyNameEntry.IsVisible = false;
+            //    }
+            //    else
+            //    {
+            //        editSponsorCompanyNameEntry.IsVisible = true;
+            //        editSponsorCompanyNameStack.IsVisible = false;
+            //    }
         }
 
 
@@ -133,9 +174,18 @@ namespace WingspanPrototype1.View
         {
             bool answer = await DisplayAlert("", "Are you sure you want to delete this sponsorship?", "Yes", "No");
 
+            //if yes is selected
             if (answer)
             {
-                await DisplayAlert("Sponsorship deleted", "", "OK");
+                if (DeleteSponsorship.DropDocument(sponsorshipId))
+                {
+                    await DisplayAlert("Sponsorship deleted", "", "OK");
+                    await Navigation.PopAsync();
+                }
+                else
+                {
+                    await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
+                }
             }
             else
             {
@@ -149,12 +199,115 @@ namespace WingspanPrototype1.View
 
             if (answer)
             {
-                await DisplayAlert("Changes saved", "", "OK");
+                Sponsorship updatedSponsorship = UpdateSponsorship.UpdateDocument(sponsorshipId, memberId, bird, category, notes, dates);
+                if (updatedSponsorship != null)
+                {
+                    //// Find old sponsorship 
+                    //Sponsorship sponsorship = sponsorshipResults.Find(x => x._id == sponsorshipId);
+                    //int sponsorshipIndex = sponsorshipResults.IndexOf(sponsorship);
+
+                    //// Update with new sponsorship
+                    //sponsorshipResults[sponsorshipIndex] = updatedSponsorship;
+
+                    //resultsListView.ItemsSource = null;
+                    //resultsListView.ItemsSource = sponsorshipResults;
+
+                    //reset the 'global' again
+                    SponsorshipDetails.thisFirstName = null;
+                    SponsorshipDetails.thisLastName = null;
+                    SponsorshipDetails.thisCompany = null;
+                    SponsorshipDetails.thisWingspanID = null;
+
+                    DisplaySponsorship(updatedSponsorship);
+
+                    await DisplayAlert("Sponsorship Saved", "Changes to this sponsorship have been saved", "OK");
+                }
+                else
+                {
+                    await DisplayAlert("Connection Error", "Could not connect to database, please check your connection and try again", "OK");
+                }
             }
-            else
+        }
+
+        //change the bird being sponsored
+        private void SponsoredWingspanIDEditButton_Clicked(object sender, EventArgs e)
+        {
+            sponsoredWingspanIDStack.IsVisible = false;
+            editBirdSelector.IsVisible = true;
+        }
+
+        //dealing with the edit bird selector
+        private async void EditBird_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var picker = (Picker)sender;
+            int selectedIndex = picker.SelectedIndex;
+
+            //change the bird being sponsored
+            if (selectedIndex == 0)
             {
-                return;
+                await Navigation.PushAsync(new Edit("Select Bird"));
+                sponsoredWingspanIDValueLabel.Text = SponsorshipDetails.thisWingspanID;
+                sponsoredWingspanIDValueLabel.IsVisible = true;
             }
+            //change the sponsored bird to something else
+            else if (selectedIndex == 1)
+            {
+                sponsoredWingspanIDValueLabel.Text = "Other";
+                sponsoredWingspanIDValueLabel.IsVisible = true;
+            }
+
+            //updated wingspan ID
+            bird = sponsoredWingspanIDValueLabel.Text;
+        }
+
+
+        //selecting a new category
+        private void EditCategoryEditButton_Clicked(object sender, EventArgs e)
+        {
+            editCategoryPicker.IsVisible = true;
+            editCategoryStack.IsVisible = false;
+            category = editCategoryPicker;
+        }
+
+        private void EditSponsorshipNotesValueEditButton_Clicked(object sender, EventArgs e)
+        {
+            editSponsorshipNotes.IsVisible = true;
+            editSponsorshipNotesStack.IsVisible = false;
+            notes = editSponsorshipNotes;
+        }
+
+        private void EditSponsorshipStartEditButton_Clicked(object sender, EventArgs e)
+        {
+            editSponsorshipStartPicker.IsVisible = true;
+            editSponsorshipStartStack.IsVisible = false;
+            start = editSponsorshipStartPicker;
+        }
+
+        private void EditSponsorshipEndEditButton_Clicked(object sender, EventArgs e)
+        {
+            editSponsorshipEndPicker.IsVisible = true;
+            editSponsorshipEndStack.IsVisible = false;
+            end = editSponsorshipEndPicker;
+        }
+
+        //edit sponsor name means choose a new sponsor
+        private async void EditSponsorNameEditButton_Clicked(object sender, EventArgs e)
+        {
+            //open this page to find a different member
+            await Navigation.PushAsync(new Edit("Select Member"));
+
+            //display either first name or company
+            if (SponsorshipDetails.thisFirstName != null)
+            {
+                editSponsorNameValueLabel.Text = SponsorshipDetails.thisFirstName;
+            }
+            else if ((SponsorshipDetails.thisFirstName == null) && (SponsorshipDetails.thisCompany != null))
+            {
+                editSponsorNameValueLabel.Text = SponsorshipDetails.thisCompany;
+            }
+
+            //updated sponsor
+            memberId = SponsorshipDetails.thisMember;
         }
     }
 }

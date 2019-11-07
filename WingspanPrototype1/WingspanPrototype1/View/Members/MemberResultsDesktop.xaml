@@ -26,19 +26,20 @@
                             <StackLayout Orientation="Horizontal" Padding="5">
                                 <Label FontSize="20" Text="{Binding FirstName}"/>
                                 <Label FontSize="20" Text="{Binding LastName}"/>
+                                <Label FontSize="20" Text="{Binding Company}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
 
-            <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" x:Name="resultsView" IsVisible="False">
+            <ScrollView HorizontalOptions="Center" VerticalOptions="Center" Grid.Column="1" x:Name="resultsView" IsVisible="False" WidthRequest="900">
                 <Grid HeightRequest="700">
                     <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*"/>
                         <ColumnDefinition Width="2*"/>
-                        <ColumnDefinition Width="3*"/>
-                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="6*"/>
+                        <ColumnDefinition Width="2*"/>
                     </Grid.ColumnDefinitions>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -62,7 +63,7 @@
                         <Label x:Name="memberFirstNameValueLabel" FontSize="20"/>
                         <Button x:Name="memberFirstNameEditButton" Style="{StaticResource editStyleDesktop}" Clicked="memberFirstNameEditButton_Clicked"/>
                     </StackLayout>
-                    <Entry x:Name="memberFirstNameEntry" Style="{StaticResource resultFeildStyle}" Grid.Column="1" IsVisible="False"/>
+                    <Entry x:Name="memberFirstNameEntry" Style="{StaticResource resultFeildStyle}" IsVisible="False"/>
 
 
                     <!--Last Name-->

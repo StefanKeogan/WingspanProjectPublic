@@ -41,10 +41,11 @@ namespace WingspanPrototype1
             var database = client.GetDatabase("WingspanDB");
             return database;
 
-            //// Local host connection
-            //var client = new MongoClient("mongodb://localhost:27017");
-            //var database = client.GetDatabase("WingspanDB");
-            //return database;
+            // Local host connection
+            var client = new MongoClient("mongodb://localhost:27017");
+            var database = client.GetDatabase("WingspanDB");
+            return database;
+
 
         }
 
