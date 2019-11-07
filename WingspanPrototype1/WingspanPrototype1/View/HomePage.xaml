@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              mc:Ignorable="d"
              x:Class="WingspanPrototype1.HomePage"
              NavigationPage.HasNavigationBar="True">
@@ -16,6 +16,8 @@
             <Image x:Name="backgroundImage" Grid.RowSpan="2" Aspect="AspectFill" />
 
             <Image x:Name="logoImage" HorizontalOptions="Center" VerticalOptions="Center"/>
+
+            <Label Text="Photo: Rod Hill" FontSize="17" TextColor="#FFFFFF" Grid.Row="1" HorizontalOptions="End" VerticalOptions="End" Opacity=".8" Margin="0,0,10,0"/>
 
         </Grid>
                        

@@ -392,7 +392,15 @@
                                 <DatePicker x:Name="noteDatePicker" Margin="5,5,5,5"/>
 
                                 <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>
-                                <Picker x:Name="noteCategoryPicker" Margin="5,5,5,5"/>
+                                <Picker x:Name="noteCategoryPicker" Margin="5,5,5,5">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Medical</x:String>
+                                            <x:String>Breeding</x:String>
+                                            <x:String>Other</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
 
                                 <Label Text="Note" FontSize="20" Margin="5,5,5,5"/>
                                 <Editor x:Name="noteEditor" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
@@ -469,7 +477,15 @@
                                 <DatePicker x:Name="locationDatePicker" Margin="5,5,5,5"/>
 
                                 <Label Text="Category" FontSize="20" Margin="5,5,5,5"/>
-                                <Picker x:Name="locationCategoryPicker" Margin="5,5,5,5"/>
+                                <Picker x:Name="locationCategoryPicker" Margin="5,5,5,5">
+                                    <Picker.ItemsSource>
+                                        <x:Array Type="{x:Type x:String}">
+                                            <x:String>Transfer</x:String>
+                                            <x:String>Release</x:String>
+                                            <x:String>Captive</x:String>
+                                        </x:Array>
+                                    </Picker.ItemsSource>
+                                </Picker>
 
                                 <Label Text="Location" FontSize="20" Margin="5,5,5,5"/>
                                 <Entry x:Name="locationEntry" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>

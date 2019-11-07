@@ -47,8 +47,11 @@
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Falcon</x:String>
-                                    <x:String>Hawk</x:String>
+                                    <x:String>Harrier</x:String>
                                     <x:String>Morepork</x:String>
+                                    <x:String>Barn Owl</x:String>
+                                    <x:String>Little Owl</x:String>
+                                    <x:String>Ruru</x:String>
                                 </x:Array>
                             </Picker.ItemsSource>
                         </Picker>
@@ -110,9 +113,6 @@
                         <!--Location-->
                         <Label x:Name="wildLocationError" Style="{StaticResource addFormErrorStyle}" Grid.Row="2"/>
 
-                        <!--Metal Band Id-->
-                        <Label x:Name="wildBandIdError" Style="{StaticResource addFormErrorStyle}" Grid.Row="10"/>
-
                         <!--Bander Name-->
                         <Label x:Name="wildBanderNameError" Style="{StaticResource addFormErrorStyle}" Grid.Row="16"/>
 
@@ -169,8 +169,11 @@
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Falcon</x:String>
-                                    <x:String>Hawk</x:String>
+                                    <x:String>Harrier</x:String>
                                     <x:String>Morepork</x:String>
+                                    <x:String>Barn Owl</x:String>
+                                    <x:String>Little Owl</x:String>
+                                    <x:String>Ruru</x:String>
                                 </x:Array>
                             </Picker.ItemsSource>
                         </Picker>
@@ -213,17 +216,11 @@
                         <!--Name-->
                         <Label x:Name="captiveNameError" Style="{StaticResource addFormErrorStyle}" Text="The name feild cannot contain numbers or symbols"/>
 
-                        <!--Band No-->
-                        <Label x:Name="captiveBandNumberError" Style="{StaticResource addFormErrorStyle}" Grid.Row="2" Text="The band number feild cannot contain letters or symbols"/>
-
                         <!--Species-->
                         <Label x:Name="captiveSpeciesError" Style="{StaticResource addFormErrorStyle}" Grid.Row="6" Text="The species feild must be filled in"/>
 
                         <!--Sex-->
                         <Label x:Name="captiveSexError" Style="{StaticResource addFormErrorStyle}" Grid.Row="8" Text="The sex feild must be filled in"/>
-
-                        <!--Location-->
-                        <Label x:Name="captiveLocationError" Style="{StaticResource addFormErrorStyle}"  Grid.Row="12" Text="The location feild cannot contain numbers or symbols"/>
                                                                         
                     </Grid>
                 </ContentView.Content>

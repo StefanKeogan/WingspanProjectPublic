@@ -152,6 +152,8 @@ namespace WingspanPrototype1.View.Reports
                                 captiveBirdListView.IsVisible = false;
                                 memberListView.IsVisible = false;
                                 volunteerListView.IsVisible = false;                              
+                                allBirdListView.IsVisible = false;                              
+                                sponsorshipListView.IsVisible = false;                              
 
                             });                          
 
@@ -169,15 +171,35 @@ namespace WingspanPrototype1.View.Reports
                                     break;
                             }
 
-                            if ((wildResults != null) && (wildResults.Count > 0))
+                            if (wildResults != null)
+                            {
+                                if (wildResults.Count > 0)
+                                {
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        watermarkLayout.IsVisible = false;
+                                        wildBirdListView.IsVisible = true;
+                                        wildBirdListView.ItemsSource = wildResults;
+                                        subtotalLabel.Text = "Total Birds Found";
+                                        subtotalValue.Text = wildResults.Count.ToString();
+                                        buildingIndicator.IsRunning = false;
+                                    });
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
+                                        buildingIndicator.IsRunning = false;
+                                    });
+                                }
+                                
+                            }
+                            else
                             {
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    watermarkLayout.IsVisible = false;
-                                    wildBirdListView.IsVisible = true;
-                                    wildBirdListView.ItemsSource = wildResults;
-                                    subtotalLabel.Text = "Total Birds Found";
-                                    subtotalValue.Text = wildResults.Count.ToString();
+                                    DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
                                 });
                             }
@@ -189,6 +211,8 @@ namespace WingspanPrototype1.View.Reports
                                 memberListView.IsVisible = false;
                                 volunteerListView.IsVisible = false;
                                 wildBirdListView.IsVisible = false;
+                                allBirdListView.IsVisible = false;
+                                sponsorshipListView.IsVisible = false;
                                 
                             });
 
@@ -213,35 +237,58 @@ namespace WingspanPrototype1.View.Reports
                                     break;
 
                             }
-                            if ((captiveResults != null) && (captiveResults.Count > 0))
+                            if (captiveResults != null) 
+                            {
+                                if (captiveResults.Count > 0)
+                                {
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        watermarkLayout.IsVisible = false;
+                                        captiveBirdListView.IsVisible = true;
+                                        captiveBirdListView.ItemsSource = captiveResults;
+
+                                        switch (conditionPicker.SelectedItem.ToString())
+                                        {
+                                            case "Ingoing":
+                                                subtotalLabel.Text = "Total Ingoing Birds: ";
+                                                break;
+                                            case "Outgoing":
+                                                subtotalLabel.Text = "Total Outgoing Birds: ";
+                                                break;
+                                            case "Deceased":
+                                                subtotalLabel.Text = "Total Deceased Birds: ";
+                                                break;
+                                            case "Sponsored":
+                                                subtotalLabel.Text = "Total Sponsored Birds: ";
+                                                break;
+                                            default:
+                                                captiveResults = null;
+                                                break;
+
+                                        }
+
+                                        subtotalValue.Text = captiveResults.Count.ToString();
+
+                                        buildingIndicator.IsRunning = false;
+
+                                    });
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
+                                        buildingIndicator.IsRunning = false;
+                                    });
+                                }
+                                
+                            }
+                            else
                             {
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    watermarkLayout.IsVisible = false;
-                                    captiveBirdListView.IsVisible = true;
-                                    captiveBirdListView.ItemsSource = captiveResults;
-
-                                    switch (conditionPicker.SelectedItem.ToString())
-                                    {
-                                        case "Ingoing":
-                                            subtotalLabel.Text = "Total Ingoing Birds: ";
-                                            break;
-                                        case "Outgoing":
-                                            subtotalLabel.Text = "Total Outgoing Birds: ";
-                                            break;
-                                        case "Deceased":
-                                            subtotalLabel.Text = "Total Deceased Birds: ";
-                                            break;
-                                        default:
-                                            captiveResults = null;
-                                            break;
-
-                                    }
-                                    
-                                    subtotalValue.Text = captiveResults.Count.ToString();
-
+                                    DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
-
                                 });
                             }
                             break;
@@ -251,6 +298,8 @@ namespace WingspanPrototype1.View.Reports
                                 captiveBirdListView.IsVisible = false;
                                 volunteerListView.IsVisible = false;
                                 wildBirdListView.IsVisible = false;
+                                allBirdListView.IsVisible = false;
+                                sponsorshipListView.IsVisible = false;
                                 
                             });
 
@@ -269,15 +318,35 @@ namespace WingspanPrototype1.View.Reports
                                     break;
                             }
 
-                            if ((memberResults != null) && (memberResults.Count > 0))
+                            if (memberResults != null)
+                            {
+                                if (memberResults.Count > 0)
+                                {
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        watermarkLayout.IsVisible = false;
+                                        memberListView.IsVisible = true;
+                                        memberListView.ItemsSource = memberResults;
+                                        subtotalLabel.Text = "Members Found: ";
+                                        subtotalValue.Text = memberResults.Count.ToString();
+                                        buildingIndicator.IsRunning = false;
+                                    });
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        DisplayAlert("No Members Found", "No members met those conditions", "OK");
+                                        buildingIndicator.IsRunning = false;
+                                    });
+                                }
+                                
+                            }
+                            else
                             {
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    watermarkLayout.IsVisible = false;
-                                    memberListView.IsVisible = true;
-                                    memberListView.ItemsSource = memberResults;
-                                    subtotalLabel.Text = "Members Found: ";
-                                    subtotalValue.Text = memberResults.Count.ToString();
+                                    DisplayAlert("No Members Found", "No members met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
                                 });
                             }
@@ -289,6 +358,8 @@ namespace WingspanPrototype1.View.Reports
                                 captiveBirdListView.IsVisible = false;
                                 memberListView.IsVisible = false;
                                 wildBirdListView.IsVisible = false;
+                                allBirdListView.IsVisible = false;
+                                sponsorshipListView.IsVisible = false;
                             });
 
                             List<VolunteerHours> volunteerResults = null;
@@ -305,22 +376,41 @@ namespace WingspanPrototype1.View.Reports
 
                             if (volunteerResults != null)
                             {
-                                double subtotal = 0;
-
-                                foreach (var hours in volunteerResults)
+                                if (volunteerResults.Count > 0)
                                 {
-                                    subtotal = subtotal + hours.Amount;
-                                }
+                                    double subtotal = 0;
 
+                                    foreach (var hours in volunteerResults)
+                                    {
+                                        subtotal = subtotal + hours.Amount;
+                                    }
+
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        watermarkLayout.IsVisible = false;
+                                        volunteerListView.IsVisible = true;
+                                        volunteerListView.ItemsSource = volunteerResults;
+                                        subtotalLabel.Text = "Total Wours Worked: ";
+                                        subtotalValue.Text = subtotal.ToString();
+                                        buildingIndicator.IsRunning = false;
+
+                                    });
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        DisplayAlert("No Volunteers Found", "No volunteers met those conditions", "OK");
+                                        buildingIndicator.IsRunning = false;
+                                    });
+                                }
+                            }                                                    
+                            else
+                            {
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    watermarkLayout.IsVisible = false;
-                                    volunteerListView.IsVisible = true;
-                                    volunteerListView.ItemsSource = volunteerResults;
-                                    subtotalLabel.Text = "Total Wours Worked: ";
-                                    subtotalValue.Text = subtotal.ToString();
+                                    DisplayAlert("No Volunteers Found", "No volunteers met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
-                                    
                                 });
                             }
                             break;
@@ -331,6 +421,7 @@ namespace WingspanPrototype1.View.Reports
                                 memberListView.IsVisible = false;
                                 wildBirdListView.IsVisible = false;
                                 volunteerListView.IsVisible = false;
+                                allBirdListView.IsVisible = false;
                             });
 
                             List<Sponsorship> sponsorshipResults = null;
@@ -345,19 +436,39 @@ namespace WingspanPrototype1.View.Reports
                                     break;
                             }
 
-                            if ((sponsorshipResults != null) && (sponsorshipResults.Count > 0))
+                            if (sponsorshipResults != null)
                             {
-                                double subtotal = sponsorshipResults.Count;
+                                if (sponsorshipResults.Count > 0)
+                                {
+                                    double subtotal = sponsorshipResults.Count;
 
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        watermarkLayout.IsVisible = false;
+                                        sponsorshipListView.IsVisible = true;
+                                        sponsorshipListView.ItemsSource = sponsorshipResults;
+                                        subtotalLabel.Text = "Total Sponsorhips Started: ";
+                                        subtotalValue.Text = subtotal.ToString();
+                                        buildingIndicator.IsRunning = false;
+
+                                    });
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        DisplayAlert("No Sponsorships Found", "No sponsorships met those conditions", "OK");
+                                        buildingIndicator.IsRunning = false;
+                                    });
+                                }
+                                
+                            }
+                            else
+                            {
                                 Device.BeginInvokeOnMainThread(() =>
                                 {
-                                    watermarkLayout.IsVisible = false;
-                                    sponsorshipListView.IsVisible = true;
-                                    sponsorshipListView.ItemsSource = sponsorshipResults;
-                                    subtotalLabel.Text = "Total Sponsorhips Started: ";
-                                    subtotalValue.Text = subtotal.ToString();
+                                    DisplayAlert("No Sponsorships Found", "No sponsordhips met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
-
                                 });
                             }
 

@@ -38,7 +38,6 @@
                                 <Label Text="{Binding Species}" Style="{StaticResource resultLabelStyle}"/>
                                 <Label Text="{Binding Sex}" Style="{StaticResource resultLabelStyle}"/>
                                 <Label Text="{Binding Age}" Style="{StaticResource resultLabelStyle}"/>
-                                <Label Text="{Binding MetalBand}" Style="{StaticResource resultLabelStyle}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -91,6 +90,24 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+
+            <ListView x:Name="sponsorshipListView" Style="{StaticResource resultListStyle}" IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Wingspan Id: " Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding WingspanId, StringFormat='{0:MM/dd/yy}'}" Style="{StaticResource reportLabelStyle}" FontAttributes="Italic"/>
+                                <Label Text="Start Date: " Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding StartDate, StringFormat='{0:MM/dd/yy}'}" Style="{StaticResource reportLabelStyle}" FontAttributes="Italic"/>
+                                <Label Text="Category: " Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding Category}" Style="{StaticResource reportLabelStyle}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
         </Grid>
     </ContentPage.Content>
 </ContentPage>

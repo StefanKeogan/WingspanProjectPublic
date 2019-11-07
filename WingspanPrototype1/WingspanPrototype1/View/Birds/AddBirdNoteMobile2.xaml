@@ -28,8 +28,8 @@
                         <Picker.ItemsSource>
                             <x:Array  Type="{x:Type x:String}">
                                 <x:String>Medical</x:String>
-                                <x:String>Transfer</x:String>
-                                <x:String>Release</x:String>
+                                <x:String>Breeding</x:String>
+                                <x:String>Other</x:String>
                             </x:Array>
                         </Picker.ItemsSource>
                     </Picker>

@@ -293,11 +293,11 @@ namespace WingspanPrototype1.View
                             memberPostcodeEntry.Text = null;
                             memberCommentEditor.Text = null;
 
-                            DisplayAlert("Member Added", "Member document inserted into the database", "OK");
+                            DisplayAlert("Member Added", "This member has been saved", "OK");
                         }
                         else
                         {
-                            DisplayAlert("Connenction Error", "Could not insert bird record, please check connection and try again", "OK");
+                            DisplayAlert("Connenction Error", "Could not insert member record, please check your connection and try again", "OK");
 
                         }
 

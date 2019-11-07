@@ -36,8 +36,6 @@ namespace WingspanPrototype1.View
                     break;
             }
 
-            categoryPicker.ItemsSource = new string[] { "Medical", "Transfer", "Release" };
-
         }
 
         private async void AddButton_Clicked(object sender, EventArgs e)

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             x:Class="WingspanPrototype1.View.Settings.SettingsMenu"
+             BackgroundColor="#F0F0F0">
+    <ContentPage.Content>
+        <ScrollView HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HeightRequest="600" Margin="30,30">
+            <Grid>
+                <Grid.RowDefinitions WidthRequest="800">
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="1.5*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="3*"/>
+                    <RowDefinition Height="1.5*"/>
+                </Grid.RowDefinitions>
+
+                <StackLayout WidthRequest="450" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
+                    <Label Text="Wild Bird Winspand Id Value: " FontSize="20" Margin="5,5,5,5"/>
+                    <Label x:Name="wildWingspanIdValue" Margin="5,5,5,5" FontSize="20"/>
+                </StackLayout>
+
+                <StackLayout WidthRequest="450" HorizontalOptions="CenterAndExpand" Grid.Row="1">
+                    <Label Text="New Wild Winspand Id Value" FontSize="20" Margin="5,5,5,5"/>
+                    <Entry x:Name="newWildWingspanIdEntry" Margin="5,5,5,5"/>
+                </StackLayout>
+
+                <Button 
+                    Text="Update"
+                    x:Name="updateWildIdButton"
+                    Grid.Row="2"
+                    WidthRequest="150"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Style="{StaticResource mainButtonStyle}"
+                    Clicked="updateWildIdButton_Clicked"/>
+
+                <StackLayout WidthRequest="450" HorizontalOptions="CenterAndExpand" Grid.Row="4" Orientation="Horizontal">
+                    <Label Text="Captive Bird Winspand Id Value: " FontSize="20" Margin="5,5,5,5"/>
+                    <Label x:Name="captiveWingspanIdValue" Margin="5,5,5,5" FontSize="20"/>
+                </StackLayout>
+
+                <StackLayout WidthRequest="450" HorizontalOptions="CenterAndExpand" Grid.Row="5">
+                    <Label Text="New Captive Winspand Id Value" FontSize="20" Margin="5,5,5,5"/>
+                    <Entry x:Name="newCaptiveWingspanIdEntry" Margin="5,5,5,5" FontSize="20"/>
+                </StackLayout>
+
+                <Button 
+                    Text="Update"
+                    x:Name="updateCaptiveIdButton"
+                    Grid.Row="6"
+                    WidthRequest="150"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Style="{StaticResource mainButtonStyle}"
+                    Clicked="updateCaptiveIdButton_Clicked"/>
+
+            </Grid>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

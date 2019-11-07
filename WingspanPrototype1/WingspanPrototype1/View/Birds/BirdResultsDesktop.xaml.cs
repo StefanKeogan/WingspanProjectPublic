@@ -61,13 +61,6 @@ namespace WingspanPrototype1
                 }
             }
 
-            
-        
-            // TODO: Set in XAML
-            // Set picker content
-            noteCategoryPicker.ItemsSource = new string[] { "Medical", "Breeding", "Transfer" };
-            locationCategoryPicker.ItemsSource = new string[] { "Release", "Transfer" };
-
         }
 
         private void ResultsListView_ItemSelected(object sender, SelectedItemChangedEventArgs e)

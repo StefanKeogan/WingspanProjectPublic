@@ -189,11 +189,11 @@ namespace WingspanPrototype1.View.Volunteers
                             volunteerMobileEntry.Text = null;
                             volunteerEmailEntry.Text = null;
 
-                            DisplayAlert("Volunteer Saved", "This volunteer has been inserted into the database", "OK");
+                            DisplayAlert("Volunteer Added", "This volunteer has been saved", "OK");
                         }
                         else
                         {
-                            DisplayAlert("Connection Error", "Please check connection and try again", "OK");
+                            DisplayAlert("Connection Error", "Could not insert volunteer record, Please check your connection and try again", "OK");
                         }
 
                         searchingIndicator.IsRunning = false;

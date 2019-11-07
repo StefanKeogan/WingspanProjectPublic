@@ -114,7 +114,7 @@ namespace WingspanPrototype1
                             }
                             else
                             {
-                                DisplayAlert("No Birds Found", "That bird could not be found", "OK");
+                                DisplayAlert("No Birds Found", "That bird could not be found, please check your connection or try another value", "OK");
                             }
 
                             searchingIndicator.IsRunning = false;
@@ -165,8 +165,7 @@ namespace WingspanPrototype1
                             }
                             else
                             {                           
-                                DisplayAlert("No Birds Found", "That bird could not be found", "OK");
-                                                     
+                                DisplayAlert("No Birds Found", "That bird could not be found, please check your connection or try another value", "OK");                                                    
                             }
 
                             searchingIndicator.IsRunning = false;
@@ -247,7 +246,7 @@ namespace WingspanPrototype1
                             }
                             else
                             {
-                                DisplayAlert("No Members Found", "That member could not be found", "OK");                               
+                                DisplayAlert("No Members Found", "That member could not be found, please check your connection or try another value", "OK");                               
                             }
 
                             searchingIndicator.IsRunning = false;
@@ -285,17 +284,6 @@ namespace WingspanPrototype1
                         }
                     }
 
-                    // Is the salutaion name feild filled in 
-                    //if (Validate.FeildPopulated(sponsorshipCompanyNameEntry.Text))
-                    //{
-                    //    // Does this feild contain any numbers or special characters
-                    //    if (Validate.ContainsNumberOrSymbol(sponsorshipCompanyNameEntry.Text))
-                    //    {
-                    //        DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
-                    //        return;
-                    //    }
-                    //}
-
                     searchingIndicator.IsRunning = true;
 
                     Task.Run(() => 
@@ -324,7 +312,7 @@ namespace WingspanPrototype1
                             }
                             else
                             {
-                                DisplayAlert("No Members Found", "That member could not be found", "OK");
+                                DisplayAlert("No Members Found", "That member could not be found, please check your connection or try another value", "OK");
                             }
 
                             searchingIndicator.IsRunning = false;
@@ -366,27 +354,13 @@ namespace WingspanPrototype1
                         }
                     }
 
-                    // Has the company name feild been populated? 
-                    if (Validate.FeildPopulated(sponsorshipCompanyNameEntry.Text))
-                    {
-                        // Does the sponsor name feild contain any numbers or symbols 
-                        if (Validate.ContainsNumberOrSymbol(sponsorshipCompanyNameEntry.Text))
-                        {
-                            DisplayAlert("Invalid Company Name Value", "The company name feild can not contain numbers or symbols", "OK");
-                            return;
-                        }
-                    }
-
                     searchingIndicator.IsRunning = true;
-                    // searchButton.IsVisible = false;
 
                     Task.Run(() => {
 
                         List<Sponsorship> sponsorshipResults = new List<Sponsorship>(); //the sponsorships to list
                         List<Sponsorship> memberSponsorshipResults = new List<Sponsorship>(); 
                         List<Sponsorship> birdSponsorshipResults = new List<Sponsorship>(); 
-                        // List<Member> possibleMembers = new List<Member>();              //members that meet search criteria
-                        // List<Sponsorship> validMembers = new List<Sponsorship>();       //members that actual sponsor
 
                         //search sponsorships by bird
                         if (Validate.FeildPopulated(sponsorshipWingspanIdEntry.Text))
@@ -447,7 +421,7 @@ namespace WingspanPrototype1
                             }
                             else
                             {
-                                DisplayAlert("No Sponsorships Found", "That sponsorship could not be found", "OK");
+                                DisplayAlert("No Sponsorships Found", "That sponsorship could not be found, please check your connection or try another value", "OK");
                             }
 
                             searchingIndicator.IsRunning = false;
@@ -518,7 +492,7 @@ namespace WingspanPrototype1
                             }
                             else
                             {
-                                DisplayAlert("No Members Found", "That member could not be found", "OK");
+                                DisplayAlert("No Members Found", "That member could not be found, please check your connection or try another value", "OK");
                             }
 
                             searchingIndicator.IsRunning = false;

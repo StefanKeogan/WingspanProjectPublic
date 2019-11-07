@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
             <StackLayout>
-                <Grid HeightRequest="1100">
+                <Grid HeightRequest="1200">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="*" x:Name="memberMargin1"/>
                         <ColumnDefinition Width="1.5*"/>

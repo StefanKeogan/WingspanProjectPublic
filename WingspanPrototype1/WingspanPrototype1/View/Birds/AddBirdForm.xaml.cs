@@ -79,26 +79,7 @@ namespace WingspanPrototype1
                     }
 
                     // Location
-                    if (Validate.FeildPopulated(wildLocationEntry.Text))
-                    {
-                        if (Validate.ContainsNumberOrSymbol(wildLocationEntry.Text))
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                wildLocationError.Text = "The location feild cannot contain numbers or symbols";
-                                wildLocationError.IsVisible = true;
-                            });
-                            allFeildsValid = false;
-                        }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                wildLocationError.IsVisible = false;
-                            });
-                        }
-                    }
-                    else
+                    if (!Validate.FeildPopulated(wildLocationEntry.Text))
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
@@ -107,35 +88,11 @@ namespace WingspanPrototype1
                         });
                         allFeildsValid = false;
                     }
-
-                    // Metal Band
-                    if (Validate.FeildPopulated(wildMetalBandIdEntry.Text))
-                    {
-
-                        if (Validate.ContainsLetterOrSymbol(wildMetalBandIdEntry.Text))
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                wildBandIdError.Text = "The metal band Id feild can not contain letters or symbols";
-                                wildBandIdError.IsVisible = true;
-                            });
-                            allFeildsValid = false;
-                        }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                wildBandIdError.IsVisible = false;
-
-                            });
-                        }
-                    }
                     else
                     {
                         Device.BeginInvokeOnMainThread(() =>
                         {
-                            wildBandIdError.IsVisible = false;
-
+                            wildLocationError.IsVisible = false;
                         });
                     }
 
@@ -170,7 +127,6 @@ namespace WingspanPrototype1
 
                     if (allFeildsValid)
                     {
-
                         string species = null;
                         string sex = null;
                         string age = null;
@@ -211,11 +167,11 @@ namespace WingspanPrototype1
                                 wildGpsEntry.Text = null;
                                 wildBanderNameEntry.Text = null;
 
-                                DisplayAlert("Wild Bird Saved", "This bird has been saved in the database", "Ok");
+                                DisplayAlert("Wild Bird Added", "This bird has been saved in the database", "Ok");
                             }
                             else
                             {
-                                DisplayAlert("Connenction Error", "Could not connect to database please check connection and try again", "OK");
+                                DisplayAlert("Connenction Error", "Could not insert bird record, please check connection and try again", "OK");
                             }
 
                             addingIndicator.IsRunning = false;
@@ -278,33 +234,6 @@ namespace WingspanPrototype1
                             
                     }
 
-                    // Band number
-                    if (Validate.FeildPopulated(captiveBandNumberEntry.Text))
-                    {
-                        if (Validate.ContainsLetterOrSymbol(captiveBandNumberEntry.Text))
-                        {
-                            Device.BeginInvokeOnMainThread(() => 
-                            {
-                                captiveBandNumberError.IsVisible = true;
-                            });                            
-                            allFeildsValid = false;
-                        }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                captiveBandNumberError.IsVisible = false;
-                            });
-                        }
-                    }
-                    else
-                    {
-                        Device.BeginInvokeOnMainThread(() => 
-                        {
-                            captiveBandNumberError.IsVisible = false;
-                        });
-                    }
-
                     // Species
                     if (captiveSpeciesPicker.SelectedIndex == -1)
                     {
@@ -338,35 +267,7 @@ namespace WingspanPrototype1
                         {
                             captiveSexError.IsVisible = false;
                         });
-                    }
-
-
-                    // Location
-                    if (Validate.FeildPopulated(captiveLocationEntry.Text))
-                    {
-                        if (Validate.ContainsNumberOrSymbol(captiveLocationEntry.Text))
-                        {
-                            Device.BeginInvokeOnMainThread(() => 
-                            {
-                                captiveLocationError.IsVisible = true;
-                            });                            
-                            allFeildsValid = false;
-                        }
-                        else
-                        {
-                            Device.BeginInvokeOnMainThread(() =>
-                            {
-                                captiveLocationError.IsVisible = false;
-                            });
-                        }
-                    }
-                    else
-                    {
-                        Device.BeginInvokeOnMainThread(() =>
-                        {
-                            captiveLocationError.IsVisible = false;
-                        });
-                    }
+                    }                   
 
                     if (allFeildsValid)
                     {
@@ -411,7 +312,7 @@ namespace WingspanPrototype1
                                 captiveAgePicker.SelectedIndex = -1;
                                 captiveLocationEntry.Text = null;
 
-                                DisplayAlert("Captive Bird Saved", "This bird has been saved in the database", "Ok");
+                                DisplayAlert("Captive Bird Added", "This bird has been saved in the database", "Ok");
                             }
                             else
                             {
@@ -460,10 +361,6 @@ namespace WingspanPrototype1
 
                 });
 
-            }
-            else
-            {
-                // TODO: Error message 
             }
             
         }       

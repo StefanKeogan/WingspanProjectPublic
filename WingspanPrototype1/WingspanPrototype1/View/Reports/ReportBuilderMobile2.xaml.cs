@@ -37,6 +37,11 @@ namespace WingspanPrototype1.View.Reports
                 volunteerListView.IsVisible = true;
                 volunteerListView.ItemsSource = results;
             }
+            else if (results[0].GetType() == typeof(Sponsorship))
+            {
+                sponsorshipListView.IsVisible = true;
+                sponsorshipListView.ItemsSource = results;
+            }
 
         }
 

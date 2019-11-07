@@ -9,7 +9,7 @@
              NavigationPage.HasNavigationBar="True"
              NavigationPage.HasBackButton="True">
     <ContentPage.Content>
-            <StackLayout WidthRequest="600" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10,10">
+            <StackLayout WidthRequest="500" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" Margin="10,10">
 
             <Label x:Name="searchTitle" HorizontalOptions="Center" FontSize="20" Margin="30,50"/>
 
