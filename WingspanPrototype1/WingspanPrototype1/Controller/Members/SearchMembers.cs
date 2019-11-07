@@ -83,7 +83,7 @@ namespace WingspanPrototype1.Controller.Birds
                 try
                 {
                     //get the document in the collection with that id
-                    Member memberResult = BsonSerializer.Deserialize<Member>(collection.Find(Builders<BsonDocument>.Filter.Eq("_id", id)).First());
+                    Member memberResult = BsonSerializer.Deserialize<Member>(collection.Find(Builders<BsonDocument>.Filter.Eq("_id", id)).FirstOrDefault());
 
                     return memberResult;
                 }

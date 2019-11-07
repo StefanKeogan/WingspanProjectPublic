@@ -1,10 +1,12 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WingspanPrototype1.Controller.Birds;
 using WingspanPrototype1.Controller.Members;
+using WingspanPrototype1.Controller.Sponsorships;
 using WingspanPrototype1.Controller.Volunteers;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
@@ -57,6 +59,9 @@ namespace WingspanPrototype1.View.Reports
                 case "Volunteers":
                     conditionPicker.ItemsSource = new string[] { "Worked" };
                     break;
+                case "Sponsorships":
+                    conditionPicker.ItemsSource = new string[] { "Started" };
+                    break;
                 default:
                     break;
             }
@@ -73,6 +78,73 @@ namespace WingspanPrototype1.View.Reports
                     switch (collectionPicker.SelectedItem.ToString())
                     {
                         case "All Birds":
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                captiveBirdListView.IsVisible = false;
+                                wildBirdListView.IsVisible = false;
+                                sponsorshipListView.IsVisible = false;
+                                memberListView.IsVisible = false;
+                                volunteerListView.IsVisible = false;
+                            });
+
+                            List<CaptiveBird> allCaptiveResults = null;
+                            List<WildBird> allWildResults = null;
+                            ArrayList allResults = new ArrayList();
+                           
+                            switch (conditionPicker.SelectedItem.ToString())
+                            {
+                                case "Sponsored":
+                                    allWildResults = WildReport.SponsoredReport(fromDatePicker.Date, toDatePicker.Date);
+                                    allCaptiveResults = CaptiveReport.SponsoredReport(fromDatePicker.Date, toDatePicker.Date);
+                                    break;
+                                default:
+                                    break;
+                            }
+
+                            if (allCaptiveResults != null)
+                            {
+                                if (allCaptiveResults.Count > 0)
+                                {
+                                    foreach (var result in allCaptiveResults)
+                                    {
+                                        allResults.Add(result);
+                                    }
+                                }
+                            }
+
+
+                            if (allWildResults != null)
+                            {
+                                if (allWildResults.Count > 0)
+                                {
+                                    foreach (var result in allWildResults)
+                                    {
+                                        allResults.Add(result);
+                                    }
+                                }
+                            }                           
+
+                            if (allResults.Count > 0)
+                            {
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    watermarkLayout.IsVisible = false;
+                                    allBirdListView.IsVisible = true;
+                                    allBirdListView.ItemsSource = allResults;
+                                    subtotalLabel.Text = "Total Sponsored Birds";
+                                    subtotalValue.Text = allResults.Count.ToString();
+                                    buildingIndicator.IsRunning = false;
+                                });
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
+                                    buildingIndicator.IsRunning = false;
+                                });
+                            }
+
                             break;
                         case "Wild Birds":
                             Device.BeginInvokeOnMainThread(() =>
@@ -91,6 +163,8 @@ namespace WingspanPrototype1.View.Reports
                                     wildResults = WildReport.BandedReport(fromDatePicker.Date, toDatePicker.Date);
                                     break;
                                 case "Sponsored":
+                                    wildResults = WildReport.SponsoredReport(fromDatePicker.Date, toDatePicker.Date);
+                                    break;
                                 default:
                                     break;
                             }
@@ -102,7 +176,7 @@ namespace WingspanPrototype1.View.Reports
                                     watermarkLayout.IsVisible = false;
                                     wildBirdListView.IsVisible = true;
                                     wildBirdListView.ItemsSource = wildResults;
-                                    subtotalLabel.Text = "Total Banded Birds";
+                                    subtotalLabel.Text = "Total Birds Found";
                                     subtotalValue.Text = wildResults.Count.ToString();
                                     buildingIndicator.IsRunning = false;
                                 });
@@ -130,6 +204,9 @@ namespace WingspanPrototype1.View.Reports
                                     break;
                                 case "Deceased":
                                     captiveResults = CaptiveReport.IngoingOutgoingReport("Deceased", fromDatePicker.Date, toDatePicker.Date);
+                                    break;
+                                case "Sponsored":
+                                    captiveResults = CaptiveReport.SponsoredReport(fromDatePicker.Date, toDatePicker.Date);
                                     break;
                                 default:
                                     captiveResults = null;
@@ -184,6 +261,9 @@ namespace WingspanPrototype1.View.Reports
                                 case "Joined":
                                     memberResults = MemberReport.JoinedReport(fromDatePicker.Date, toDatePicker.Date);
                                     break;
+                                case "Sponsoring":
+                                    memberResults = SponsorshipReport.MembersSponsoring(fromDatePicker.Date, toDatePicker.Date);
+                                    break;
                                 default:
                                     memberResults = null;
                                     break;
@@ -196,7 +276,7 @@ namespace WingspanPrototype1.View.Reports
                                     watermarkLayout.IsVisible = false;
                                     memberListView.IsVisible = true;
                                     memberListView.ItemsSource = memberResults;
-                                    subtotalLabel.Text = "Members Joined: ";
+                                    subtotalLabel.Text = "Members Found: ";
                                     subtotalValue.Text = memberResults.Count.ToString();
                                     buildingIndicator.IsRunning = false;
                                 });
@@ -243,7 +323,45 @@ namespace WingspanPrototype1.View.Reports
                                     
                                 });
                             }
-                            break;                           
+                            break;
+                        case "Sponsorships":
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                captiveBirdListView.IsVisible = false;
+                                memberListView.IsVisible = false;
+                                wildBirdListView.IsVisible = false;
+                                volunteerListView.IsVisible = false;
+                            });
+
+                            List<Sponsorship> sponsorshipResults = null;
+
+                            switch (conditionPicker.SelectedItem.ToString())
+                            {
+                                case "Started":
+                                    sponsorshipResults = SponsorshipReport.StartedReport(fromDatePicker.Date, toDatePicker.Date);
+                                    break;
+                                default:
+                                    volunteerResults = null;
+                                    break;
+                            }
+
+                            if ((sponsorshipResults != null) && (sponsorshipResults.Count > 0))
+                            {
+                                double subtotal = sponsorshipResults.Count;
+
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    watermarkLayout.IsVisible = false;
+                                    sponsorshipListView.IsVisible = true;
+                                    sponsorshipListView.ItemsSource = sponsorshipResults;
+                                    subtotalLabel.Text = "Total Sponsorhips Started: ";
+                                    subtotalValue.Text = subtotal.ToString();
+                                    buildingIndicator.IsRunning = false;
+
+                                });
+                            }
+
+                            break;
                         default:
                             break;
                     }

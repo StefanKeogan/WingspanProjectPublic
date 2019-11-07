@@ -376,7 +376,6 @@ namespace WingspanPrototype1.View
 
                 }
 
-
             }
 
             if (allFeildsValid)

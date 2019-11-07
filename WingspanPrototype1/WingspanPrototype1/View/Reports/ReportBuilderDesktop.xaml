@@ -69,10 +69,12 @@
             <Picker x:Name="collectionPicker" Style="{StaticResource reportPickerStyle}" SelectedIndexChanged="collectionPicker_SelectedIndexChanged">
                 <Picker.ItemsSource>
                     <x:Array Type="{x:Type x:String}">
+                        <x:String>All Birds</x:String>
                         <x:String>Wild Birds</x:String>
                         <x:String>Captive Birds</x:String>
                         <x:String>Members</x:String>
                         <x:String>Volunteers</x:String>
+                        <x:String>Sponsorships</x:String>
                     </x:Array>
                 </Picker.ItemsSource>
             </Picker>
@@ -93,6 +95,22 @@
                 Clicked="buildReportButton_Clicked"/>
 
             <ActivityIndicator x:Name="buildingIndicator" HorizontalOptions="CenterAndExpand" Grid.Row="2" Grid.ColumnSpan="5" Color="#5C3838"/>
+
+            <ListView x:Name="allBirdListView" Style="{StaticResource resultListStyle}" IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{Binding WingspanId}" Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding Name}" Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding Species}" Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding Sex}" Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding Age}" Style="{StaticResource reportLabelStyle}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
 
             <ListView x:Name="wildBirdListView" Style="{StaticResource resultListStyle}" IsVisible="False">
                 <ListView.ItemTemplate>
@@ -136,6 +154,7 @@
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="{Binding FirstName}" Style="{StaticResource reportLabelStyle}"/>
                                 <Label Text="{Binding LastName}" Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding Company}" Style="{StaticResource reportLabelStyle}"/>
                                 <Label Text="{Binding Email}" Style="{StaticResource reportLabelStyle}"/>
                                 <Label Text="Joined " Style="{StaticResource reportLabelStyle}"/>
                                 <Label Text="{Binding JoinDate, StringFormat='{0:MM/dd/yy}'}" Style="{StaticResource reportLabelStyle}"/>
@@ -156,6 +175,23 @@
                                 <Label Text="Hours Worked: " Style="{StaticResource reportLabelStyle}"/>
                                 <Label Text="{Binding Amount}" Style="{StaticResource reportLabelStyle}" FontAttributes="Italic"/>
                                 <Label Text="{Binding Note}" Style="{StaticResource reportLabelStyle}"/>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView x:Name="sponsorshipListView" Style="{StaticResource resultListStyle}" IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Wingspan Id: " Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding WingspanId, StringFormat='{0:MM/dd/yy}'}" Style="{StaticResource reportLabelStyle}" FontAttributes="Italic"/>
+                                <Label Text="Start Date: " Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding StartDate, StringFormat='{0:MM/dd/yy}'}" Style="{StaticResource reportLabelStyle}" FontAttributes="Italic"/>
+                                <Label Text="Category: " Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding Category}" Style="{StaticResource reportLabelStyle}"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
