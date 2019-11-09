@@ -178,10 +178,8 @@ namespace WingspanPrototype1.View.Volunteers
                     }
                     else
                     {
-                        //clear list view
                         resultsListView.ItemsSource = null;
 
-                        //add any items left over
                         resultsListView.ItemsSource = volunteerResults;
 
                         DisplayVolunteer(volunteerResults[0]);
