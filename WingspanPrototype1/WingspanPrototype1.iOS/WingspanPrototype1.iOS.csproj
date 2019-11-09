@@ -76,25 +76,13 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon1024.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon180.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon120.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon60.png">
@@ -122,6 +110,21 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
+    <ImageAsset Include="Assets.xcassets\darkbrownlogo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\goldlogo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\home.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\searchicon.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\watermarklogo.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-3.png" />
+    <ImageAsset Include="Assets.xcassets\darkbrownlogo.imageset\darkbrownlogo.pdf" />
+    <ImageAsset Include="Assets.xcassets\goldlogo.imageset\goldlogo.pdf" />
+    <ImageAsset Include="Assets.xcassets\home.imageset\homemobile.pdf" />
+    <ImageAsset Include="Assets.xcassets\home.imageset\tablethome.pdf" />
+    <ImageAsset Include="Assets.xcassets\searchicon.imageset\searchicon.pdf" />
+    <ImageAsset Include="Assets.xcassets\watermarklogo.imageset\watermarklogo.pdf" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -143,42 +146,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <AndroidResource Include="Resources\darkbrownlogo.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\darkbrownlogolarge.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\goldlogo.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\homemobile.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\icon.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\iconmobile.png">
-      <Generator>MSBuild:UpdateGeneratedFiles</Generator>
-      <SubType>Designer</SubType>
-    </AndroidResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Resources\searchicon.png" />
     <AndroidResource Include="Resources\searchiconsmall.png">
       <Generator>MSBuild:UpdateGeneratedFiles</Generator>
@@ -189,5 +156,14 @@
       <SubType>Designer</SubType>
     </AndroidResource>
     <Content Include="Resources\watermarklogo.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Assets.xcassets\darkbrownlogo.imageset\" />
+    <Folder Include="Assets.xcassets\goldlogo.imageset\" />
+    <Folder Include="Assets.xcassets\icon.imageset\" />
+    <Folder Include="Assets.xcassets\home.imageset\" />
+    <Folder Include="Assets.xcassets\searchicon.imageset\" />
+    <Folder Include="Assets.xcassets\darkbrownsplash.imageset\" />
+    <Folder Include="Assets.xcassets\watermarklogo.imageset\" />
   </ItemGroup>
 </Project>

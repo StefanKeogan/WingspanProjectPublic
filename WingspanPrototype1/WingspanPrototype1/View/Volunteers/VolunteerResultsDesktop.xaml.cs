@@ -172,17 +172,19 @@ namespace WingspanPrototype1.View.Volunteers
                     Volunteer volunteer = volunteerResults.Find(x => x._id == id);
                     volunteerResults.Remove(volunteer);
 
-                    if (volunteerResults.Count >= 0)
+                    if (volunteerResults.Count <= 0)
                     {
-                        resultsListView.ItemsSource = null;
-
-                        resultsListView.ItemsSource = volunteerResults;
-
-                        DisplayVolunteer(volunteerResults[0]);
+                        await Navigation.PopAsync();
                     }
                     else
                     {
-                        await Navigation.PopAsync();
+                        //clear list view
+                        resultsListView.ItemsSource = null;
+
+                        //add any items left over
+                        resultsListView.ItemsSource = volunteerResults;
+
+                        DisplayVolunteer(volunteerResults[0]);
                     }
 
                 }

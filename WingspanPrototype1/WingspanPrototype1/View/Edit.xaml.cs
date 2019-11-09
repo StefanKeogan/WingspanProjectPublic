@@ -1,4 +1,4 @@
-﻿using MongoDB.Bson;
+using MongoDB.Bson;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -492,7 +492,11 @@ namespace WingspanPrototype1
                             }
                             else
                             {
+<<<<<<< HEAD
                                 DisplayAlert("No Members Found", "That member could not be found, please check your connection or try another value", "OK");
+=======
+                                DisplayAlert("No Volunteers Found", "That volunteer could not be found", "OK");
+>>>>>>> b964d3b... A few fixes while Blake was playing and baby was asleep...
                             }
 
                             searchingIndicator.IsRunning = false;
