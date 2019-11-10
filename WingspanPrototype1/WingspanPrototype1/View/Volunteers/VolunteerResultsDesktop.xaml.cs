@@ -97,7 +97,7 @@ namespace WingspanPrototype1.View.Volunteers
                 entries.Add(volunteerEmailEntry);
             } 
 
-            if (Validate.FeildPopulated(volunteer.Mobile.ToString())  && (volunteer.Mobile.ToString() != "0"))
+            if (Validate.FeildPopulated(volunteer.Mobile.ToString())  && (volunteer.Mobile != 0))
             {
                 volunteerMobileValueLabel.Text = volunteer.Mobile.ToString();
                 volunteerMobileEntry.IsVisible = false;
@@ -148,6 +148,8 @@ namespace WingspanPrototype1.View.Volunteers
             }))
             {
                 hoursListView.ItemsSource = FindVolunteerWorkHours.GetHoursDocuments(id);
+                hoursEntry.Text = null;
+                noteEditor.Text = null;
                 logHoursView.IsVisible = false;
                 await DisplayAlert("Hours Logged", "This volunteer hours have been inserted into the database", "OK");
             }

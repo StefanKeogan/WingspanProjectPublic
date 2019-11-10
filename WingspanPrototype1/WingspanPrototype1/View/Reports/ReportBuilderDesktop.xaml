@@ -11,7 +11,7 @@
         <ResourceDictionary>
             <Style x:Key="reportPickerStyle" TargetType="Picker">
                 <Setter Property="WidthRequest" Value="450"/>
-                <Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+                <Setter Property="HorizontalOptions" Value="StartAndExpand"/>
                 <Setter Property="VerticalOptions" Value="Center"/>
                 <Setter Property="Grid.Row" Value="1"/>
             </Style>
@@ -54,8 +54,8 @@
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width=".9*"/>
-                <ColumnDefinition Width=".9*"/>
+                <ColumnDefinition Width="1.2*"/>
+                <ColumnDefinition Width="1.2*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="2*"/>
                 <ColumnDefinition Width="1.1*"/>

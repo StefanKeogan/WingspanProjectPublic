@@ -28,7 +28,13 @@ namespace WingspanPrototype1.Controller.Volunteers
                 // What other feilds do we need to insert?
                 if (Validate.FeildPopulated(volunteer.LastName)) document.Add("LastName", volunteer.LastName.Replace(" ", string.Empty).ToLower());
                 if (Validate.FeildPopulated(volunteer.Email)) document.Add("Email", volunteer.Email.Replace(" ", string.Empty));
-                if (Validate.FeildPopulated(volunteer.Mobile.ToString())) document.Add("Mobile", volunteer.Mobile);
+                if (Validate.FeildPopulated(volunteer.Mobile.ToString()))
+                {
+                    if (volunteer.Mobile != 0)
+                    {
+                        document.Add("Mobile", volunteer.Mobile);
+                    }
+                } 
 
                 try
                 {

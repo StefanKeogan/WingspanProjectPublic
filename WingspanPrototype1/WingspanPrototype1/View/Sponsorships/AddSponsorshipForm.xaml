@@ -9,11 +9,7 @@
              Title="New Sponsorship">
     <ContentPage.Content>
         <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
-<<<<<<< HEAD
-            <Grid HeightRequest="800" HorizontalOptions="Center">
-=======
             <Grid HeightRequest="1000" HorizontalOptions="Center">
->>>>>>> b964d3b... A few fixes while Blake was playing and baby was asleep...
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" x:Name="sponsorshipMargin1"/>
                     <ColumnDefinition Width="1.5*"/>

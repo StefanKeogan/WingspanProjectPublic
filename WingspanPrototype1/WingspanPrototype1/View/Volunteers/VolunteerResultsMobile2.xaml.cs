@@ -128,6 +128,8 @@ namespace WingspanPrototype1.View.Volunteers
             {
                 hoursListView.ItemsSource = FindVolunteerWorkHours.GetHoursDocuments(id);
                 logHoursView.IsVisible = false;
+                hoursEntry.Text = null;                                                                                                                                                                                                                                                                                                 
+                noteEditor.Text = null;
                 await DisplayAlert("Hours Logged", "This volunteer hours have been inserted into the database", "OK");
             }
 

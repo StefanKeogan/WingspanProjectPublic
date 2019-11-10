@@ -73,10 +73,8 @@
                     VerticalOptions="Center"
                     WidthRequest="150"
                     Clicked="AddButton_Clicked"/>
-
                 </Grid>
-
-                <ActivityIndicator x:Name="searchingIndicator" Color="#5C3838" WidthRequest="300" Margin="30,30" />
+                <ActivityIndicator x:Name="searchingIndicator" Color="#5C3838" WidthRequest="300"/>
             </StackLayout>
         </ScrollView>
     </ContentPage.Content>
