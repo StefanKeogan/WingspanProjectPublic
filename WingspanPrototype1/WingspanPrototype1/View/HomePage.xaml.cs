@@ -16,7 +16,7 @@ namespace WingspanPrototype1
         {
             InitializeComponent();
 
-            Title = title;
+            // Title = title;
 
             // Check device to determine size background image path
             double size = DeviceSize.ScreenArea();

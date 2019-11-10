@@ -5,7 +5,8 @@
              xmlns:d="http://xamarin.com/schemas/2014/forms/design"
              mc:Ignorable="d"
              x:Class="WingspanPrototype1.HomePage"
-             NavigationPage.HasNavigationBar="True">
+             NavigationPage.HasNavigationBar="True"
+             Title="Birdbook">
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>

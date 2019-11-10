@@ -63,6 +63,11 @@ namespace WingspanPrototype1
 
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
+            // Lock search button
+            searchButton.IsEnabled = false;
+
+            // Start loading animation
+            searchingIndicator.IsRunning = true;
 
             // What are we searching based on page title 
             switch (Title)
@@ -72,7 +77,7 @@ namespace WingspanPrototype1
                     if (Validate.AllFeildsEmpty(new string[] {wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text }))
                     {
                         DisplayAlert("All feilds empty", "Please fill in at least one feild to continue", "OK");
-                        return;
+                        break;
                     }
 
                     // Has the name feild been filled in  
@@ -81,12 +86,9 @@ namespace WingspanPrototype1
                         if (Validate.ContainsNumberOrSymbol(birdNameEntry.Text)) // Does the name feild contain an invalid symblo
                         {
                             DisplayAlert("Invalid Name Value", "The name feild can not contain numbers or symbols", "OK");
-                            return;
+                            break;
                         }
                     }
-
-                    // Load animation
-                    searchingIndicator.IsRunning = true;
 
                     // Run search on another thread
                     Task.Run(() => {
@@ -128,7 +130,7 @@ namespace WingspanPrototype1
                     if (Validate.AllFeildsEmpty(new string[] { wingspanIdEntry.Text, birdNameEntry.Text, bandNumberEntry.Text }))
                     {
                         DisplayAlert("All feilds empty", "Please fill in at least one feild to continue", "OK");
-                        return;
+                        break;
                     }
 
                     // Has the name feild been filled in  
@@ -137,7 +139,7 @@ namespace WingspanPrototype1
                         if (Validate.ContainsNumberOrSymbol(birdNameEntry.Text)) // Does the name feild contain an invalid symblo
                         {
                             DisplayAlert("Invalid Name Value", "The name feild can not contain numbers or symbols", "OK");
-                            return;
+                            break;
                         }
                     }
 
@@ -182,7 +184,7 @@ namespace WingspanPrototype1
                     if (Validate.AllFeildsEmpty(new string[]{memberFirstNameEntry.Text, memberLastNameEntry.Text, companyNameEntry.Text }))
                     {
                         DisplayAlert("All Feilds Empty", "Please fill in at least one search feild to continue", "OK");
-                        return;
+                        break;
                     }
 
                     // Is the first name feild filled in 
@@ -191,7 +193,7 @@ namespace WingspanPrototype1
                         if (Validate.ContainsNumberOrSymbol(memberFirstNameEntry.Text))
                         {
                             DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
-                            return;
+                            break;
                         }
                     }
 
@@ -201,7 +203,7 @@ namespace WingspanPrototype1
                         if (Validate.ContainsNumberOrSymbol(memberLastNameEntry.Text))
                         {
                             DisplayAlert("Invalid Last Name Value", "The first name feild can not contain numbers or symbols", "OK");
-                            return;
+                            break;
                         }
                     }
 
@@ -215,8 +217,6 @@ namespace WingspanPrototype1
                     //        return;
                     //    }
                     //}
-
-                    searchingIndicator.IsRunning = true;
 
                     // Run search on another thread
                     Task.Run(() => {
@@ -261,7 +261,7 @@ namespace WingspanPrototype1
                     if (Validate.AllFeildsEmpty(new string[] { memberFirstNameEntry.Text, memberLastNameEntry.Text, companyNameEntry.Text }))
                     {
                         DisplayAlert("All Feilds Empty", "Please fill in at least one search feild to continue", "OK");
-                        return;
+                        break;
                     }
 
                     // Is the first name feild filled in 
@@ -270,7 +270,7 @@ namespace WingspanPrototype1
                         if (Validate.ContainsNumberOrSymbol(memberFirstNameEntry.Text))
                         {
                             DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
-                            return;
+                            break;
                         }
                     }
 
@@ -280,11 +280,9 @@ namespace WingspanPrototype1
                         if (Validate.ContainsNumberOrSymbol(memberLastNameEntry.Text))
                         {
                             DisplayAlert("Invalid Last Name Value", "The first name feild can not contain numbers or symbols", "OK");
-                            return;
+                            break;
                         }
                     }
-
-                    searchingIndicator.IsRunning = true;
 
                     Task.Run(() => 
                     {
@@ -329,7 +327,7 @@ namespace WingspanPrototype1
                     if (Validate.AllFeildsEmpty(new string[] { sponsorshipWingspanIdEntry.Text, sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text }))
                     {
                         DisplayAlert("All Feilds Empty", "Please fill in at least one search feild to continue", "OK");
-                        return;
+                        break;
                     }                    
 
                     // Has the first name feild been populated? 
@@ -339,7 +337,7 @@ namespace WingspanPrototype1
                         if (Validate.ContainsNumberOrSymbol(sponsorshipFirstNameEntry.Text))
                         {
                             DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
-                            return;
+                            break;
                         }
                     }
 
@@ -350,11 +348,9 @@ namespace WingspanPrototype1
                         if (Validate.ContainsNumberOrSymbol(sponsorshipLastNameEntry.Text))
                         {
                             DisplayAlert("Invalid Last Name Value", "The last name feild can not contain numbers or symbols", "OK");
-                            return;
+                            break;
                         }
                     }
-
-                    searchingIndicator.IsRunning = true;
 
                     Task.Run(() => {
 
@@ -453,7 +449,7 @@ namespace WingspanPrototype1
                         if (Validate.ContainsNumberOrSymbol(volunteerFirstNameEntry.Text))
                         {
                             DisplayAlert("Invalid Volunteer Name Value", "The volunteer name feild can not contain numbers or symbols", "OK");
-                            return;
+                            break;
                         }
                     }
 
@@ -462,12 +458,9 @@ namespace WingspanPrototype1
                         if (Validate.ContainsNumberOrSymbol(volunteerLastNameEntry.Text))
                         {
                             DisplayAlert("Invalid Volunteer Name Value", "The volunteer name feild can not contain numbers or symbols", "OK");
-                            return;
+                            break;
                         }
                     }
-
-                    searchingIndicator.IsRunning = true;
-
 
                     Task.Run(() => {
 
@@ -500,10 +493,13 @@ namespace WingspanPrototype1
                         });
 
                     });
-
                     break;
+
             }
-                  
+
+            searchButton.IsEnabled = true;
+            searchingIndicator.IsRunning = false;
+
         }              
     }
 }
