@@ -110,21 +110,51 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <ImageAsset Include="Assets.xcassets\darkbrownlogo.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\goldlogo.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\home.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\searchicon.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\watermarklogo.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-2.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-3.png" />
-    <ImageAsset Include="Assets.xcassets\darkbrownlogo.imageset\darkbrownlogo.pdf" />
-    <ImageAsset Include="Assets.xcassets\goldlogo.imageset\goldlogo.pdf" />
-    <ImageAsset Include="Assets.xcassets\home.imageset\homemobile.pdf" />
-    <ImageAsset Include="Assets.xcassets\home.imageset\tablethome.pdf" />
-    <ImageAsset Include="Assets.xcassets\searchicon.imageset\searchicon.pdf" />
-    <ImageAsset Include="Assets.xcassets\watermarklogo.imageset\watermarklogo.pdf" />
+    <ImageAsset Include="Assets.xcassets\darkbrownlogo.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\goldlogo.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\home.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\searchicon.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\watermarklogo.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\icon-3.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\darkbrownlogo.imageset\darkbrownlogo.pdf">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\goldlogo.imageset\goldlogo.pdf">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\home.imageset\homemobile.pdf">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\home.imageset\tablethome.pdf">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\searchicon.imageset\searchicon.pdf">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\watermarklogo.imageset\watermarklogo.pdf">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

@@ -167,7 +167,7 @@ namespace WingspanPrototype1
                                 wildGpsEntry.Text = null;
                                 wildBanderNameEntry.Text = null;
 
-                                DisplayAlert("Wild Bird Added", "This bird has been saved in the database", "Ok");
+                                DisplayAlert("Wild Bird Added", "This bird has been saved in the database", "OK");
                             }
                             else
                             {

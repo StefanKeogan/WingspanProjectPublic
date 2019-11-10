@@ -19,8 +19,19 @@ namespace WingspanPrototype1.View.Settings
 
             Title = title;
 
-            wildWingspanIdValue.Text = FindIdValue.GetWingspanIdValue("WildIdValue").Value.ToString();
-            captiveWingspanIdValue.Text = FindIdValue.GetWingspanIdValue("CaptiveIdValue").Value.ToString();
+            IdValue wildWingspanId  = FindIdValue.GetWingspanIdValue("WildIdValue");
+            IdValue captiveWingspanId = FindIdValue.GetWingspanIdValue("CaptiveIdValue");
+
+            if ((wildWingspanId != null) || (captiveWingspanId != null))
+            {
+                wildWingspanIdValue.Text = wildWingspanId.Value.ToString();
+                captiveWingspanIdValue.Text = captiveWingspanId.Value.ToString();
+            }
+            else
+            {
+                DisplayAlert("Connection Error", "Could not get Id values, please check your connection and try again", "OK");
+            }                       
+
         }
 
         private void updateWildIdButton_Clicked(object sender, EventArgs e)
