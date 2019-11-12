@@ -7,7 +7,7 @@
              x:Class="WingspanPrototype1.View.Settings.SettingsMenu"
              BackgroundColor="#F0F0F0">
     <ContentPage.Content>
-        <ScrollView HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HeightRequest="600" Margin="30,30">
+        <ScrollView HorizontalOptions="CenterAndExpand" VerticalOptions="Center" HeightRequest="600" Margin="5,5">
             <Grid>
                 <Grid.RowDefinitions WidthRequest="800">
                     <RowDefinition Height="1*"/>
@@ -20,8 +20,8 @@
                 </Grid.RowDefinitions>
 
                 <StackLayout WidthRequest="450" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                    <Label Text="Wild Bird Winspand Id Value: " FontSize="20" Margin="5,5,5,5"/>
-                    <Label x:Name="wildWingspanIdValue" Margin="5,5,5,5" FontSize="20"/>
+                    <Label Text="Wild Bird Winspand Id Value: " FontSize="20"/>
+                    <Label x:Name="wildWingspanIdValue" Margin="5,0,0,0" FontSize="20"/>
                 </StackLayout>
 
                 <StackLayout WidthRequest="450" HorizontalOptions="CenterAndExpand" Grid.Row="1">
@@ -40,8 +40,8 @@
                     Clicked="updateWildIdButton_Clicked"/>
 
                 <StackLayout WidthRequest="450" HorizontalOptions="CenterAndExpand" Grid.Row="4" Orientation="Horizontal">
-                    <Label Text="Captive Bird Winspand Id Value: " FontSize="20" Margin="5,5,5,5"/>
-                    <Label x:Name="captiveWingspanIdValue" Margin="5,5,5,5" FontSize="20"/>
+                    <Label Text="Captive Bird Winspand Id Value: " FontSize="20"/>
+                    <Label x:Name="captiveWingspanIdValue" Margin="5,0,0,0" FontSize="20"/>
                 </StackLayout>
 
                 <StackLayout WidthRequest="450" HorizontalOptions="CenterAndExpand" Grid.Row="5">

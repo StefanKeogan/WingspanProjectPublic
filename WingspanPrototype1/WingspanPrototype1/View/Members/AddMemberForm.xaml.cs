@@ -34,6 +34,7 @@ namespace WingspanPrototype1.View
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
             addingIndicator.IsRunning = true;
+            addButton.IsEnabled = false;
 
             bool allFeildsValid = true;
 
@@ -302,6 +303,7 @@ namespace WingspanPrototype1.View
                         }
 
                         addingIndicator.IsRunning = false;
+                        addButton.IsEnabled = true;
                     });
 
 
@@ -313,6 +315,7 @@ namespace WingspanPrototype1.View
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         addingIndicator.IsRunning = false;
+                        addButton.IsEnabled = true;
                     });
                 }
 

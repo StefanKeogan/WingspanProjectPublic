@@ -34,6 +34,7 @@ namespace WingspanPrototype1.View
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
             addingIndicatior.IsRunning = true;
+            addButton.IsEnabled = false;
 
             await Task.Run(() =>
             {
@@ -42,6 +43,7 @@ namespace WingspanPrototype1.View
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         addingIndicatior.IsRunning = false;
+                        addButton.IsEnabled = true;
                         DisplayAlert("Feild Empty", "The category feild can not be empty", "OK");
                     });
 
@@ -54,6 +56,7 @@ namespace WingspanPrototype1.View
                     {
                         DisplayAlert("Feild Empty", "The comment feild can not be empty", "OK");
                         addingIndicatior.IsRunning = false;
+                        addButton.IsEnabled = true;
                     });
 
                     return;
@@ -79,6 +82,7 @@ namespace WingspanPrototype1.View
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     addingIndicatior.IsRunning = false;
+                    addButton.IsEnabled = true;
                 });
 
             });

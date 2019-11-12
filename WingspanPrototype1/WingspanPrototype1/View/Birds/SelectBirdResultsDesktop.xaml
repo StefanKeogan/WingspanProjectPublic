@@ -24,7 +24,7 @@
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Padding="5">
-                                <Label FontSize="20" Text="{Binding WingspanID}"/>
+                                <Label FontSize="20" Text="{Binding WingspanId}"/>
                                 <Label FontSize="20" Text="{Binding Name}"/>
                             </StackLayout>
                         </ViewCell>

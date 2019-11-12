@@ -27,6 +27,7 @@ namespace WingspanPrototype1.View.Volunteers
         private async void AddButton_Clicked(object sender, EventArgs e)
         {
             addingIndicatior.IsRunning = true;
+            addButton.IsVisible = false;
 
             await Task.Run(() =>
             {
@@ -38,6 +39,7 @@ namespace WingspanPrototype1.View.Volunteers
                         {
                             DisplayAlert("Invalid Format", "The hours feild cannot contain letters", "OK");
                             addingIndicatior.IsRunning = false;
+                            addButton.IsVisible = true;
 
                         });
                         return;
@@ -51,6 +53,7 @@ namespace WingspanPrototype1.View.Volunteers
                     {
                         DisplayAlert("Enter Hours", "Please fill in the hours feild to search", "OK");
                         addingIndicatior.IsRunning = false;
+                        addButton.IsVisible = true;
                     });
 
                     return;
@@ -89,6 +92,7 @@ namespace WingspanPrototype1.View.Volunteers
                 Device.BeginInvokeOnMainThread(() => {
 
                     addingIndicatior.IsRunning = false;
+                    addButton.IsVisible = true;
 
                 });
 

@@ -9,130 +9,132 @@
              Title="New Sponsorship">
     <ContentPage.Content>
         <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
-            <Grid HeightRequest="1000" HorizontalOptions="Center">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" x:Name="sponsorshipMargin1"/>
-                    <ColumnDefinition Width="1.5*"/>
-                    <ColumnDefinition Width="3.5*"/>
-                    <ColumnDefinition Width="*" x:Name="sponsorshipMargin2"/>
-                </Grid.ColumnDefinitions>
+            <StackLayout>
+                <Grid HeightRequest="1000" HorizontalOptions="Center">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" x:Name="sponsorshipMargin1"/>
+                        <ColumnDefinition Width="1.5*"/>
+                        <ColumnDefinition Width="3.5*"/>
+                        <ColumnDefinition Width="*" x:Name="sponsorshipMargin2"/>
+                    </Grid.ColumnDefinitions>
 
-                <Grid.RowDefinitions>
-                    <RowDefinition Height=".6*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height=".6*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height=".6*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height=".6*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height=".6*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height=".6*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height=".6*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height=".6*"/>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="2*"/>
-                </Grid.RowDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height=".6*"/>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="2*"/>
+                    </Grid.RowDefinitions>
 
-                <!--selecting existing sponsor or create a new one-->
-                <Label x:Name="selectSponsorLabel" Text="Select sponsor" Style="{StaticResource labelStyle}" Grid.Row="1"/>
-                <Picker x:Name="sponsorSelector" Style="{StaticResource feildStyle}" SelectedIndexChanged="OnSponsorSelected" Grid.Row="1">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Existing Member</x:String>
-                            <x:String>New Member</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                    <!--selecting existing sponsor or create a new one-->
+                    <Label x:Name="selectSponsorLabel" Text="Select sponsor" Style="{StaticResource labelStyle}" Grid.Row="1"/>
+                    <Picker x:Name="sponsorSelector" Style="{StaticResource feildStyle}" SelectedIndexChanged="OnSponsorSelected" Grid.Row="1">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Existing Member</x:String>
+                                <x:String>New Member</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
 
-                <!--selected sponsor first name or company name-->
-                <Label x:Name="selectedSponsorNameLabel" Text="First name" Style="{StaticResource labelStyle}" Grid.Row="3"/>
-                <Label x:Name="selectedSponsorNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="True" Grid.Row="3"/>
-
-
-                <!-- NOT NEEDED ANYMORE
-                <Label x:Name="selectedSponsorFirstNameLabel" Text="First name" Style="{StaticResource labelStyle}" Grid.Row="3"/>
-                <Label x:Name="selectedSponsorFirstNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="3"/>
-
-                <Label x:Name="selectedSponsorLastNameLabel" Text="Last name" Style="{StaticResource labelStyle}" Grid.Row="5"/>
-                <Label x:Name="selectedSponsorLastNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="5"/>
-
-                <Label x:Name="selectedSponsorCompanyLabel" Text="Company" Style="{StaticResource labelStyle}" Grid.Row="7"/>
-                <Label x:Name="selectedSponsorCompanyValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="7"/>
-                -->
+                    <!--selected sponsor first name or company name-->
+                    <Label x:Name="selectedSponsorNameLabel" Text="First name" Style="{StaticResource labelStyle}" Grid.Row="3"/>
+                    <Label x:Name="selectedSponsorNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="True" Grid.Row="3"/>
 
 
-                <!--selecting the bird to be sponsored-->
-                <Label x:Name="sponsoredBirdName" Text="Select bird" Style="{StaticResource labelStyle}" Grid.Row="5"/>
-                <Picker x:Name="sponsoredBirdSelector" Style="{StaticResource feildStyle}" SelectedIndexChanged="SelectSponsorship_SelectedIndexChanged" Grid.Row="5">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Individual Bird</x:String>
-                            <x:String>Other</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
+                    <!-- NOT NEEDED ANYMORE
+                    <Label x:Name="selectedSponsorFirstNameLabel" Text="First name" Style="{StaticResource labelStyle}" Grid.Row="3"/>
+                    <Label x:Name="selectedSponsorFirstNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="3"/>
 
-                <!--selected bird wingspanID-->
-                <Label x:Name="selectedWingspinIdLabel" Text="Wingspan ID" Style="{StaticResource labelStyle}" Grid.Row="7"/>
-                <Label x:Name="selectedWingspanIdValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="True" Grid.Row="7"/>
+                    <Label x:Name="selectedSponsorLastNameLabel" Text="Last name" Style="{StaticResource labelStyle}" Grid.Row="5"/>
+                    <Label x:Name="selectedSponsorLastNameValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="5"/>
 
-                <!--level of sponsorship-->
-                <Label x:Name="sponsorshipLevel" Text="Level" Style="{StaticResource labelStyle}" Grid.Row="9" />
-                <Picker x:Name="levelSelector" Style="{StaticResource feildStyle}" Grid.Row="9">
-                    <Picker.ItemsSource>
-                        <x:Array Type="{x:Type x:String}">
-                            <x:String>Wild Bird</x:String>
-                            <x:String>Captive Bird (Absolute)</x:String>
-                            <x:String>Captive Bird (Gold)</x:String>
-                            <x:String>Captive Bird (Silver)</x:String>
-                            <x:String>Captive Bird (Bronze)</x:String>
-                            <x:String>Other</x:String>
-                        </x:Array>
-                    </Picker.ItemsSource>
-                </Picker>
-
-                <!--any notes to add-->
-                <Label x:Name="sponsorshipNotesLabel" Text="Notes" Style="{StaticResource labelStyle}"  Grid.Row="11"/>
-                <Editor x:Name="sponsorshipNotesEditor" Grid.Row="11"  Style="{StaticResource feildStyle}"/>
-
-                <!--when sponsorship begins-->
-                <Label x:Name="sponsorshipStartDate" Text="Start date" Style="{StaticResource labelStyle}" Grid.Row="13"/>
-                <DatePicker x:Name="startDateSelector" Style="{StaticResource feildStyle}" Grid.Row="13" />
-
-                <!--when the sponsorship will end-->
-                <Label x:Name="sponsorshipEndDate" Text="End date" Style="{StaticResource labelStyle}" Grid.Row="15" />
-                <DatePicker x:Name="endDateSelector" Style="{StaticResource feildStyle}" Grid.Row="15" />
-                
-                
-                <!--ERROR MESSAGES-->
-                <!--name selection-->
-                <Label x:Name="selectNameError" Style="{StaticResource addFormErrorStyle}" Text="A sponsor must be selected"/>
-
-                <!--no sponsor name is visible-->
-                <Label x:Name="sponsorNameError" Style="{StaticResource addFormErrorStyle}" Text="Sponsor name must be displayed" Grid.Row="2"/>
-
-                <!-- NO LONGER NEEDED
-                <Label x:Name="sponsorNameError1" Style="{StaticResource addFormErrorStyle}" Text="One of these names must be filled in" Grid.Row="2"/>
-                <Label x:Name="sponsorNameError2" Style="{StaticResource addFormErrorStyle}" Text="One of these names must be filled in" Grid.Row="4"/>
-                <Label x:Name="sponsorNameError3" Style="{StaticResource addFormErrorStyle}" Text="One of these names must be filled in" Grid.Row="6"/>
-                -->
-
-                <!--to be sponsored field-->
-                <Label x:Name="selectBirdError" Style="{StaticResource addFormErrorStyle}" Text="There must be something to sponsor" Grid.Row="4"/>
-
-                <!--wingspan ID field-->
-                <Label x:Name="selectBirdIDError" Style="{StaticResource addFormErrorStyle}" Text="This Wingspan ID field cannot be empty" Grid.Row="6"/>
-                
-                <!--to be sponsored field-->
-                <Label x:Name="selectLevelError" Style="{StaticResource addFormErrorStyle}" Text="The level of sponsorship must be selected" Grid.Row="8"/>
+                    <Label x:Name="selectedSponsorCompanyLabel" Text="Company" Style="{StaticResource labelStyle}" Grid.Row="7"/>
+                    <Label x:Name="selectedSponsorCompanyValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="False" Grid.Row="7"/>
+                    -->
 
 
-                <!--save button-->
-                <Button x:Name="saveButton"
+                    <!--selecting the bird to be sponsored-->
+                    <Label x:Name="sponsoredBirdName" Text="Select bird" Style="{StaticResource labelStyle}" Grid.Row="5"/>
+                    <Picker x:Name="sponsoredBirdSelector" Style="{StaticResource feildStyle}" SelectedIndexChanged="SelectSponsorship_SelectedIndexChanged" Grid.Row="5">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Individual Bird</x:String>
+                                <x:String>Other</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <!--selected bird wingspanID-->
+                    <Label x:Name="selectedWingspinIdLabel" Text="Wingspan ID" Style="{StaticResource labelStyle}" Grid.Row="7"/>
+                    <Label x:Name="selectedWingspanIdValueLabel" Style="{StaticResource selectFeildStyle}" IsVisible="True" Grid.Row="7"/>
+
+                    <!--level of sponsorship-->
+                    <Label x:Name="sponsorshipLevel" Text="Level" Style="{StaticResource labelStyle}" Grid.Row="9" />
+                    <Picker x:Name="levelSelector" Style="{StaticResource feildStyle}" Grid.Row="9">
+                        <Picker.ItemsSource>
+                            <x:Array Type="{x:Type x:String}">
+                                <x:String>Wild Bird</x:String>
+                                <x:String>Captive Bird (Absolute)</x:String>
+                                <x:String>Captive Bird (Gold)</x:String>
+                                <x:String>Captive Bird (Silver)</x:String>
+                                <x:String>Captive Bird (Bronze)</x:String>
+                                <x:String>Other</x:String>
+                            </x:Array>
+                        </Picker.ItemsSource>
+                    </Picker>
+
+                    <!--any notes to add-->
+                    <Label x:Name="sponsorshipNotesLabel" Text="Notes" Style="{StaticResource labelStyle}"  Grid.Row="11"/>
+                    <Editor x:Name="sponsorshipNotesEditor" Grid.Row="11"  Style="{StaticResource feildStyle}"/>
+
+                    <!--when sponsorship begins-->
+                    <Label x:Name="sponsorshipStartDate" Text="Start date" Style="{StaticResource labelStyle}" Grid.Row="13"/>
+                    <DatePicker x:Name="startDateSelector" Style="{StaticResource feildStyle}" Grid.Row="13" />
+
+                    <!--when the sponsorship will end-->
+                    <Label x:Name="sponsorshipEndDate" Text="End date" Style="{StaticResource labelStyle}" Grid.Row="15" />
+                    <DatePicker x:Name="endDateSelector" Style="{StaticResource feildStyle}" Grid.Row="15" />
+
+
+                    <!--ERROR MESSAGES-->
+                    <!--name selection-->
+                    <Label x:Name="selectNameError" Style="{StaticResource addFormErrorStyle}" Text="A sponsor must be selected"/>
+
+                    <!--no sponsor name is visible-->
+                    <Label x:Name="sponsorNameError" Style="{StaticResource addFormErrorStyle}" Text="Sponsor name must be displayed" Grid.Row="2"/>
+
+                    <!-- NO LONGER NEEDED
+                    <Label x:Name="sponsorNameError1" Style="{StaticResource addFormErrorStyle}" Text="One of these names must be filled in" Grid.Row="2"/>
+                    <Label x:Name="sponsorNameError2" Style="{StaticResource addFormErrorStyle}" Text="One of these names must be filled in" Grid.Row="4"/>
+                    <Label x:Name="sponsorNameError3" Style="{StaticResource addFormErrorStyle}" Text="One of these names must be filled in" Grid.Row="6"/>
+                    -->
+
+                    <!--to be sponsored field-->
+                    <Label x:Name="selectBirdError" Style="{StaticResource addFormErrorStyle}" Text="There must be something to sponsor" Grid.Row="4"/>
+
+                    <!--wingspan ID field-->
+                    <Label x:Name="selectBirdIDError" Style="{StaticResource addFormErrorStyle}" Text="This Wingspan ID field cannot be empty" Grid.Row="6"/>
+
+                    <!--to be sponsored field-->
+                    <Label x:Name="selectLevelError" Style="{StaticResource addFormErrorStyle}" Text="The level of sponsorship must be selected" Grid.Row="8"/>
+
+
+                    <!--save button-->
+                    <Button 
+                        x:Name="saveButton"
                         Text="Save"
                         Grid.Row="16"
                         Grid.Column="1"
@@ -142,7 +144,12 @@
                         VerticalOptions="Center"
                         WidthRequest="150"
                         Clicked="SaveButton_Clicked"/>
-            </Grid>
+                    </Grid>
+
+                <ActivityIndicator x:Name="addingIndicator" Color="#5C3838" WidthRequest="300" Margin="30,30" />
+
+            </StackLayout>
+           
         </ScrollView>
     </ContentPage.Content>
 </ContentPage>

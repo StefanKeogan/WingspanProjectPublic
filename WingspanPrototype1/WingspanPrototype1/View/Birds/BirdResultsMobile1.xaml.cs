@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -17,7 +18,21 @@ namespace WingspanPrototype1
         public BirdResultsMobile1(ArrayList results)
         {
             InitializeComponent();
-         
+
+            // Format wild wingspan ID's
+            for (int i = 0; i > results.Count; i++)
+            {
+                if (results[i].GetType() == typeof(WildBird))
+                {
+                    WildBird wildResult = results[i] as WildBird;
+
+                    wildResult.WingspanId = FormatText.FirstToUpper(wildResult.WingspanId);
+
+                    results[i] = wildResult;
+
+                }
+            }
+
             mobileResults.ItemsSource = results;
 
         }

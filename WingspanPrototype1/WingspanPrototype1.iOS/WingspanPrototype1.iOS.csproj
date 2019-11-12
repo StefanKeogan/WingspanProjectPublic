@@ -189,11 +189,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\darkbrownlogo.imageset\" />
-    <Folder Include="Assets.xcassets\goldlogo.imageset\" />
-    <Folder Include="Assets.xcassets\icon.imageset\" />
-    <Folder Include="Assets.xcassets\home.imageset\" />
-    <Folder Include="Assets.xcassets\searchicon.imageset\" />
     <Folder Include="Assets.xcassets\darkbrownsplash.imageset\" />
+    <Folder Include="Assets.xcassets\goldlogo.imageset\" />
+    <Folder Include="Assets.xcassets\home.imageset\" />
+    <Folder Include="Assets.xcassets\icon.imageset\" />
+    <Folder Include="Assets.xcassets\searchicon.imageset\" />
     <Folder Include="Assets.xcassets\watermarklogo.imageset\" />
   </ItemGroup>
 </Project>

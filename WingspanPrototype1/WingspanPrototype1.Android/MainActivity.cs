@@ -6,6 +6,10 @@ using Android.Runtime;
 using Android.Views;
 using Android.Widget;
 using Android.OS;
+using Android.Net;
+using System.Net;
+using System.Collections.Generic;
+using Java.Net;
 
 namespace WingspanPrototype1.Droid
 {
@@ -20,11 +24,11 @@ namespace WingspanPrototype1.Droid
             TabLayoutResource = Resource.Layout.Tabbar;
             ToolbarResource = Resource.Layout.Toolbar;
 
-            if (Build.VERSION.SdkInt >= Build.VERSION_CODES.Lollipop) 
+            // Allows compatibility with lollipop 
+            if (Build.VERSION.SdkInt >= BuildVersionCodes.Lollipop) 
             { 
                 Window.SetStatusBarColor(Android.Graphics.Color.DarkGray); 
             }
-
 
             base.OnCreate(savedInstanceState);
 
@@ -38,5 +42,7 @@ namespace WingspanPrototype1.Droid
 
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
         }
+
+       
     }
 }

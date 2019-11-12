@@ -9,7 +9,7 @@ using WingspanPrototype1.View;
 using WingspanPrototype1.Model;
 using WingspanPrototype1.Functions;
 using WingspanPrototype1.Controller.Sponsorships;
-
+using System.Threading.Tasks;
 
 namespace WingspanPrototype1
 {
@@ -102,9 +102,13 @@ namespace WingspanPrototype1
 
 
         //save button for sponsorship
-        private async void SaveButton_Clicked(object sender, EventArgs e)
+        private void SaveButton_Clicked(object sender, EventArgs e)
         {
             bool allFieldsValid = true;
+
+            addingIndicator.IsRunning = true;
+           
+            saveButton.IsEnabled = false;
 
             //validation
             //sponsor
@@ -150,47 +154,77 @@ namespace WingspanPrototype1
                 allFieldsValid = false;
             }
 
-            
-            if (allFieldsValid)
+            Task.Run(() =>
             {
-                bool sponsorshipInserted = AddSponsorship.InsertSponsorshipDocument(new Sponsorship
+                if (allFieldsValid)
                 {
-                    WingspanId = selectedWingspanIdValueLabel.Text,
-                    Category = levelSelector.SelectedItem.ToString(),
-                    Notes = sponsorshipNotesEditor.Text,
-                    Member_id = SponsorshipDetails.thisMember,
-                    StartDate = startDateSelector.Date,
-                    EndDate = endDateSelector.Date
-                });
+                    bool sponsorshipInserted = AddSponsorship.InsertSponsorshipDocument(new Sponsorship
+                    {
+                        WingspanId = selectedWingspanIdValueLabel.Text,
+                        Category = levelSelector.SelectedItem.ToString(),
+                        Notes = sponsorshipNotesEditor.Text,
+                        Member_id = SponsorshipDetails.thisMember,
+                        StartDate = startDateSelector.Date,
+                        EndDate = endDateSelector.Date
+                    });
 
-                if (sponsorshipInserted)
-                {
-                    selectedSponsorNameValueLabel.Text = null;
-                    //selectedSponsorLastNameValueLabel.Text = null;
-                    //selectedSponsorCompanyValueLabel.Text = null;
-                    selectedWingspanIdValueLabel.Text = null;
-                    levelSelector.SelectedItem = null;
-                    sponsorshipNotesEditor.Text = null;
-                    sponsorSelector.SelectedIndex = -1;
-                    sponsoredBirdSelector.SelectedIndex = -1;
+                    if (sponsorshipInserted)
+                    {
+                        Device.BeginInvokeOnMainThread(() => 
+                        {
+                            selectedSponsorNameValueLabel.Text = null;
+                            //selectedSponsorLastNameValueLabel.Text = null;
+                            //selectedSponsorCompanyValueLabel.Text = null;
+                            selectedWingspanIdValueLabel.Text = null;
+                            levelSelector.SelectedItem = null;
+                            sponsorshipNotesEditor.Text = null;
+                            sponsorSelector.SelectedIndex = -1;
+                            sponsoredBirdSelector.SelectedIndex = -1;
 
-                    //make 'global' variables null as well
-                    SponsorshipDetails.thisFirstName = null;
-                    SponsorshipDetails.thisLastName = null;
-                    SponsorshipDetails.thisCompany = null;
-                    SponsorshipDetails.thisWingspanID = null;
+                            //make 'global' variables null as well
+                            SponsorshipDetails.thisFirstName = null;
+                            SponsorshipDetails.thisLastName = null;
+                            SponsorshipDetails.thisCompany = null;
+                            SponsorshipDetails.thisWingspanID = null;
 
-                    await DisplayAlert("Sponsorship Added", "Sponsorship document inserted into the database", "OK");
+                            DisplayAlert("Sponsorship Added", "Sponsorship document inserted into the database", "OK");
+                            
+                            addingIndicator.IsRunning = false;
+
+                            saveButton.IsEnabled = true;
+                            
+                        });
+
+                        
+                    }
+                    else
+                    {
+                        Device.BeginInvokeOnMainThread(() =>
+                        {
+                            DisplayAlert("Connenction Error", "Could not insert sponsorship record, please check connection and try again", "OK");
+
+                            addingIndicator.IsRunning = false;
+
+                            saveButton.IsEnabled = true;
+                        });
+
+                        
+                    }
                 }
                 else
                 {
-                    await DisplayAlert("Connenction Error", "Could not insert sponsorship record, please check connection and try again", "OK");
+                    Device.BeginInvokeOnMainThread(() =>
+                    {
+                        addingIndicator.IsRunning = false;
+                        saveButton.IsEnabled = true;
+                    });
+
+                    allFieldsValid = true;
                 }
-            }
-            else
-            {
-                allFieldsValid = true;
-            }
+            });
+
+            
+            
         }
     }
 }

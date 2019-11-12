@@ -52,6 +52,8 @@ namespace WingspanPrototype1.View.Volunteers
         {
             searchingIndicator.IsRunning = true;
 
+            searchButton.IsEnabled = false;
+
             await Task.Run(() =>
             {
                 if (!Validate.FeildPopulated(volunteerFirstNameEntry.Text))
@@ -60,6 +62,7 @@ namespace WingspanPrototype1.View.Volunteers
                     {
                         DisplayAlert("Enter Name", "Please fill in the first name feild to search", "OK");
                         addingIndicatior.IsRunning = false;
+                        searchButton.IsEnabled = true;
                     });
 
                     return;
@@ -86,6 +89,7 @@ namespace WingspanPrototype1.View.Volunteers
                 Device.BeginInvokeOnMainThread(() => {
 
                     searchingIndicator.IsRunning = false;
+                    searchButton.IsEnabled = true;
 
                 });
 
@@ -100,6 +104,7 @@ namespace WingspanPrototype1.View.Volunteers
             bool allFeildsValid = true;
 
             addingIndicatior.IsRunning = true;
+            addButton.IsEnabled = false;
 
             await Task.Run(() => 
             {
@@ -109,6 +114,7 @@ namespace WingspanPrototype1.View.Volunteers
                     {
                         DisplayAlert("Select a Volunteer", "A volunteer must be selected in order to log hours", "OK");
                         addingIndicatior.IsRunning = false;
+                        addButton.IsEnabled = true;
                     });
                     return;
                 }
@@ -164,6 +170,7 @@ namespace WingspanPrototype1.View.Volunteers
                             hoursEntry.Text = null;
                             noteEditor.Text = null;
                             addingIndicatior.IsRunning = false;
+                            addButton.IsEnabled = true;
                             DisplayAlert("Hours Logged", "This volunteers hours have been logged in the database", "OK");
                         });
 
@@ -175,6 +182,7 @@ namespace WingspanPrototype1.View.Volunteers
                         {
                             DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
                             addingIndicatior.IsRunning = false;
+                            addButton.IsEnabled = true;
                         });
 
 
@@ -185,6 +193,7 @@ namespace WingspanPrototype1.View.Volunteers
                     Device.BeginInvokeOnMainThread(() => 
                     {
                         addingIndicatior.IsRunning = false;
+                        addButton.IsEnabled = true;
                     });
 
                     allFeildsValid = false;

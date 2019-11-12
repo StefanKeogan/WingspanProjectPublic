@@ -55,6 +55,8 @@ namespace WingspanPrototype1
             {
                 addingIndicator.IsRunning = true;
 
+                addButton.IsEnabled = false;
+
                 bool allFeildsValid = true;
 
                 await Task.Run(() => {
@@ -127,33 +129,31 @@ namespace WingspanPrototype1
 
                     if (allFeildsValid)
                     {
-                        string species = null;
-                        string sex = null;
-                        string age = null;
 
-                        if (wildSpeciesPicker.SelectedIndex != -1) species = wildSpeciesPicker.SelectedItem.ToString();
-                        if (wildAgePicker.SelectedIndex != -1) age = wildAgePicker.SelectedItem.ToString();
-                        if (wildSexPicker.SelectedIndex != -1) sex = wildSexPicker.SelectedItem.ToString();
+
+                        WildBird wildBird = new WildBird();
+
+                        wildBird.WingspanId = GenerateWildWingspanId.NewId();
+
+                        if (wildSpeciesPicker.SelectedIndex != -1) wildBird.Species = wildSpeciesPicker.SelectedItem.ToString();
+                        if (wildAgePicker.SelectedIndex != -1) wildBird.Age = wildAgePicker.SelectedItem.ToString();
+                        if (wildSexPicker.SelectedIndex != -1) wildBird.Sex = wildSexPicker.SelectedItem.ToString();
+
+                        wildBird.Location = wildLocationEntry.Text;
+                        wildBird.MetalBand = wildMetalBandIdEntry.Text;
+                        wildBird.BandInfo = wildBandInfoEntry.Text;
+                        wildBird.Gps = wildGpsEntry.Text;                       
+                        wildBird.BanderName = wildBanderNameEntry.Text;
+
+                        if (dateBandedCheck.IsChecked) wildBird.DateBanded = wildDateBandedPicker.Date;
+
 
                         // Insert record, return outcome
-                        bool inserted = AddWildBird.InsertWildBirdDocumnet(new WildBird
-                        {
-                            WingspanId = GenerateWildWingspanId.NewId(),
-                            Species = species,
-                            Location = wildLocationEntry.Text,
-                            Age = age,
-                            Sex = sex,
-                            MetalBand = wildMetalBandIdEntry.Text,
-                            BandInfo = wildBandInfoEntry.Text,
-                            Gps = wildGpsEntry.Text,
-                            DateBanded = wildDateBandedPicker.Date,
-                            BanderName = wildBanderNameEntry.Text
-                        });
+                        bool inserted = AddWildBird.InsertWildBirdDocumnet(wildBird);
 
                         // Run on interface thread
                         Device.BeginInvokeOnMainThread(() => 
                         {
-
                             // Was the record inserted successfully?
                             if (inserted)
                             {
@@ -166,6 +166,8 @@ namespace WingspanPrototype1
                                 wildBandInfoEntry.Text = null;
                                 wildGpsEntry.Text = null;
                                 wildBanderNameEntry.Text = null;
+                                dateBandedCheck.IsChecked = false;
+                                wildDateBandedPicker.IsEnabled = false;
 
                                 DisplayAlert("Wild Bird Added", "This bird has been saved in the database", "OK");
                             }
@@ -175,6 +177,7 @@ namespace WingspanPrototype1
                             }
 
                             addingIndicator.IsRunning = false;
+                            addButton.IsEnabled = true;
 
                         });                      
                         
@@ -186,6 +189,7 @@ namespace WingspanPrototype1
                         Device.BeginInvokeOnMainThread(() => 
                         {
                             addingIndicator.IsRunning = false;
+                            addButton.IsEnabled = true;
                         });
 
                     }
@@ -196,6 +200,7 @@ namespace WingspanPrototype1
             else if (Title == "New Captive Bird")
             {
                 addingIndicator.IsRunning = true;
+                addButton.IsEnabled = false;
 
                 bool allFeildsValid = true;
 
@@ -341,6 +346,7 @@ namespace WingspanPrototype1
                             }
 
                             addingIndicator.IsRunning = false;
+                            addButton.IsEnabled = true;
 
                         });
 
@@ -353,6 +359,7 @@ namespace WingspanPrototype1
                         Device.BeginInvokeOnMainThread(() => 
                         {
                             addingIndicator.IsRunning = false;
+                            addButton.IsEnabled = true;
                         });
 
                         return;
@@ -363,7 +370,18 @@ namespace WingspanPrototype1
 
             }
             
-        }       
+        }
 
+        private void dateBandedCheck_CheckedChanged(object sender, CheckedChangedEventArgs e)
+        {
+            if (dateBandedCheck.IsChecked)
+            {
+                wildDateBandedPicker.IsEnabled = true;
+            }
+            else
+            {
+                wildDateBandedPicker.IsEnabled = false;
+            }
+        }
     }
 }

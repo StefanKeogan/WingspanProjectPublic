@@ -59,6 +59,7 @@ namespace WingspanPrototype1.View
         private async void SearchButton_Clicked(object sender, EventArgs e)
         {
             searchingIndicator.IsRunning = true;
+            searchButton.IsEnabled = false;
 
             await Task.Run(() =>
             {
@@ -69,6 +70,7 @@ namespace WingspanPrototype1.View
                     {
                         DisplayAlert("Feild Empty", "The search feild can not be empty", "OK");
                         searchingIndicator.IsRunning = false;
+                        searchButton.IsEnabled = true;
                     });
 
                     return;
@@ -94,6 +96,7 @@ namespace WingspanPrototype1.View
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     searchingIndicator.IsRunning = false;
+                    searchButton.IsEnabled = true;
                 });
 
             });

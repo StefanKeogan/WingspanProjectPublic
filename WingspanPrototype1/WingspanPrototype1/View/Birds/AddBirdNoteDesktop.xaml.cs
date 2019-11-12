@@ -43,6 +43,7 @@ namespace WingspanPrototype1.View
             bool allFeildsValid = true;
 
             addingIndicatior.IsRunning = true;
+            addButton.IsEnabled = false;
 
             await Task.Run(() =>
             {
@@ -108,6 +109,7 @@ namespace WingspanPrototype1.View
                             noteEditor.Text = null;
                             DisplayAlert("Bird Note Added", "Your note has been added to this birds note history", "OK");
                             addingIndicatior.IsRunning = false;
+                            addButton.IsEnabled = true;
                         });
                         return;
                     }
@@ -117,6 +119,7 @@ namespace WingspanPrototype1.View
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         addingIndicatior.IsRunning = false;
+                        addButton.IsEnabled = true;
                     });
 
                     allFeildsValid = true;
@@ -148,6 +151,7 @@ namespace WingspanPrototype1.View
         private async void SearchButton_Clicked(object sender, EventArgs e)
         {
             searchingIndicator.IsRunning = true;
+            searchButton.IsEnabled = false;
 
             await Task.Run(() =>
             {
@@ -158,6 +162,7 @@ namespace WingspanPrototype1.View
                     {
                         DisplayAlert("Feild Empty", "The search feild can not be empty", "OK");
                         searchingIndicator.IsRunning = false;
+                        searchButton.IsEnabled = true;
                     });
 
                     return;
@@ -195,6 +200,7 @@ namespace WingspanPrototype1.View
                 Device.BeginInvokeOnMainThread(() =>
                 {
                     searchingIndicator.IsRunning = false;
+                    searchButton.IsEnabled = true;
                 });
 
 

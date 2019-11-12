@@ -33,6 +33,8 @@ namespace WingspanPrototype1.View.Volunteers
         {
             searchingIndicator.IsRunning = true;
 
+            addButton.IsEnabled = false;
+
             bool allFeildsValid = true;
 
             await Task.Run(() =>
@@ -197,11 +199,13 @@ namespace WingspanPrototype1.View.Volunteers
                         }
 
                         searchingIndicator.IsRunning = false;
+                        addButton.IsEnabled = true;
                     }
                     else
                     {
                         allFeildsValid = true;
                         searchingIndicator.IsRunning = false;
+                        addButton.IsEnabled = true;
                     }
 
 

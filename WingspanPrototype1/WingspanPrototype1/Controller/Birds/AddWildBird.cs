@@ -21,8 +21,7 @@ namespace WingspanPrototype1.Controller.Birds
                 // Insert auto generated / default feilds 
                 var document = new BsonDocument
                 {
-                    {"WingspanId", bird.WingspanId},
-                    {"DateBanded", bird.DateBanded.ToLocalTime()}
+                    {"WingspanId", bird.WingspanId}
                 };
 
                 // Further validation for un-required feilds 
@@ -34,6 +33,7 @@ namespace WingspanPrototype1.Controller.Birds
                 if (bird.BandInfo != null) document.Add("BandInfo", bird.BandInfo);
                 if (bird.Gps != null) document.Add("Gps", bird.Gps.Replace(" ", string.Empty));
                 if (bird.BanderName != null) document.Add("BanderName", bird.BanderName.Replace(" ", string.Empty));
+                if (bird.DateBanded.ToString() != "1/01/0001 12:00:00 AM") document.Add("DateBanded", bird.DateBanded.ToLocalTime());
 
                 // Insert document
                 try

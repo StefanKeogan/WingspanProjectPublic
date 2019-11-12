@@ -59,6 +59,7 @@
             <DatePicker x:Name="toDatePicker" Style="{StaticResource reportPickerStyle}" Grid.Row="7"/>
 
             <Button 
+                x:Name="generateReportButton"
                 Text="Generate Report" 
                 WidthRequest="170" 
                 Style="{StaticResource mainButtonStyle}" 
