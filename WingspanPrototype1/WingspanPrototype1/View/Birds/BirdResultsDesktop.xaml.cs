@@ -57,6 +57,8 @@ namespace WingspanPrototype1
 
                     WildBird wildBird = bird as WildBird;
 
+                    wildBird.WingspanId = FormatText.FirstToUpper(wildBird.WingspanId);
+
                     wildResults.Add(wildBird);
                 }
             }

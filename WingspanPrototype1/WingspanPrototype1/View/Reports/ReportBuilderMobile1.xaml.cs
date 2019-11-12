@@ -64,6 +64,8 @@ namespace WingspanPrototype1.View.Reports
             {
                 buildingIndicator.IsRunning = true;
 
+                generateReportButton.IsEnabled = false;
+
                 Task.Run(() =>
                 {
                     switch (collectionPicker.SelectedItem.ToString())
@@ -118,6 +120,7 @@ namespace WingspanPrototype1.View.Reports
 
                                     Navigation.PushAsync(new ReportBuilderMobile2(new ArrayList(allResults)));
                                     buildingIndicator.IsRunning = false;
+                                    generateReportButton.IsEnabled = true;
                                 });
                             }
                             else
@@ -126,6 +129,7 @@ namespace WingspanPrototype1.View.Reports
                                 {
                                     DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
+                                    generateReportButton.IsEnabled = true;
                                 });
                             }
 
@@ -167,6 +171,7 @@ namespace WingspanPrototype1.View.Reports
                                     {
                                         DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
                                         buildingIndicator.IsRunning = false;
+                                        generateReportButton.IsEnabled = true;
                                     });
                                 }
 
@@ -177,6 +182,7 @@ namespace WingspanPrototype1.View.Reports
                                 {
                                     DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
+                                    generateReportButton.IsEnabled = true;
                                 });
                             }
                             break;
@@ -226,6 +232,7 @@ namespace WingspanPrototype1.View.Reports
                                     {
                                         DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
                                         buildingIndicator.IsRunning = false;
+                                        generateReportButton.IsEnabled = true;
                                     });
                                 }
 
@@ -236,6 +243,7 @@ namespace WingspanPrototype1.View.Reports
                                 {
                                     DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
+                                    generateReportButton.IsEnabled = true;
                                 });
                             }
                             break;
@@ -277,6 +285,7 @@ namespace WingspanPrototype1.View.Reports
                                     {
                                         DisplayAlert("No Members Found", "No members met those conditions", "OK");
                                         buildingIndicator.IsRunning = false;
+                                        generateReportButton.IsEnabled = true;
                                     });
                                 }
 
@@ -287,6 +296,7 @@ namespace WingspanPrototype1.View.Reports
                                 {
                                     DisplayAlert("No Members Found", "No members met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
+                                    generateReportButton.IsEnabled = true;
                                 });
                             }
                             break;
@@ -333,6 +343,7 @@ namespace WingspanPrototype1.View.Reports
                                     {
                                         DisplayAlert("No Volunteers Found", "No volunteers met those conditions", "OK");
                                         buildingIndicator.IsRunning = false;
+                                        generateReportButton.IsEnabled = true;
                                     });
                                 }
                             }
@@ -342,6 +353,7 @@ namespace WingspanPrototype1.View.Reports
                                 {
                                     DisplayAlert("No Volunteers Found", "No volunteers met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
+                                    generateReportButton.IsEnabled = true;
                                 });
                             }
                             break;
@@ -383,6 +395,7 @@ namespace WingspanPrototype1.View.Reports
                                     {
                                         DisplayAlert("No Sponsorships Found", "No sponsorships met those conditions", "OK");
                                         buildingIndicator.IsRunning = false;
+                                        generateReportButton.IsEnabled = true;
                                     });
                                 }
 
@@ -393,6 +406,7 @@ namespace WingspanPrototype1.View.Reports
                                 {
                                     DisplayAlert("No Sponsorships Found", "No sponsordhips met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
+                                    generateReportButton.IsEnabled = true;
                                 });
                             }
 
@@ -400,12 +414,13 @@ namespace WingspanPrototype1.View.Reports
                         default:
                             break;
                     }
-                });
 
-                
+                });           
 
             }
+
         }
 
     }
+
 }

@@ -35,7 +35,7 @@
                             <RowDefinition Height=".6*"/>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height=".6*"/>
-                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1.6*"/>
                             <RowDefinition Height=".6*"/>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
@@ -96,7 +96,14 @@
 
                         <!--Date Banded-->
                         <Label x:Name="dateBandedLabel" Text="Date Banded" Style="{StaticResource labelStyle}" Grid.Row="15"/>
-                        <DatePicker x:Name="wildDateBandedPicker" Style="{StaticResource feildStyle}" Grid.Row="15" />
+                         <StackLayout Style="{StaticResource wildDateStack}"  Grid.Row="15">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Bird Banded" FontSize="20" TextColor="#5C3838"/>
+                                <CheckBox x:Name="dateBandedCheck" Color="#5C3838" CheckedChanged="dateBandedCheck_CheckedChanged"/>
+                            </StackLayout>
+                            <DatePicker x:Name="wildDateBandedPicker" WidthRequest="450" IsEnabled="False"/>
+                        </StackLayout>
+                        
 
                         <!--Bander Name-->
                         <Label x:Name="banderNameLabel" Text="Bander Name" Style="{StaticResource labelStyle}" Grid.Row="17"/>

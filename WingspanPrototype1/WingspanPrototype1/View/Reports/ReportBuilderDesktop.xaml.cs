@@ -73,6 +73,8 @@ namespace WingspanPrototype1.View.Reports
             {
                 buildingIndicator.IsRunning = true;
 
+                buildReportButton.IsEnabled = false;
+
                 Task.Run(() =>
                 {
                     switch (collectionPicker.SelectedItem.ToString())
@@ -279,6 +281,7 @@ namespace WingspanPrototype1.View.Reports
                                     {
                                         DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
                                         buildingIndicator.IsRunning = false;
+                                        buildReportButton.IsEnabled = true;
                                     });
                                 }
                                 
@@ -289,6 +292,7 @@ namespace WingspanPrototype1.View.Reports
                                 {
                                     DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
+                                    buildReportButton.IsEnabled = true;
                                 });
                             }
                             break;
@@ -338,6 +342,7 @@ namespace WingspanPrototype1.View.Reports
                                     {
                                         DisplayAlert("No Members Found", "No members met those conditions", "OK");
                                         buildingIndicator.IsRunning = false;
+                                        buildReportButton.IsEnabled = true;
                                     });
                                 }
                                 
@@ -348,6 +353,7 @@ namespace WingspanPrototype1.View.Reports
                                 {
                                     DisplayAlert("No Members Found", "No members met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
+                                    buildReportButton.IsEnabled = true;
                                 });
                             }
                             break;
@@ -402,6 +408,7 @@ namespace WingspanPrototype1.View.Reports
                                     {
                                         DisplayAlert("No Volunteers Found", "No volunteers met those conditions", "OK");
                                         buildingIndicator.IsRunning = false;
+                                        buildReportButton.IsEnabled = true;
                                     });
                                 }
                             }                                                    
@@ -411,6 +418,7 @@ namespace WingspanPrototype1.View.Reports
                                 {
                                     DisplayAlert("No Volunteers Found", "No volunteers met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
+                                    buildReportButton.IsEnabled = true;
                                 });
                             }
                             break;
@@ -459,6 +467,7 @@ namespace WingspanPrototype1.View.Reports
                                     {
                                         DisplayAlert("No Sponsorships Found", "No sponsorships met those conditions", "OK");
                                         buildingIndicator.IsRunning = false;
+                                        buildReportButton.IsEnabled = true;
                                     });
                                 }
                                 
@@ -469,6 +478,7 @@ namespace WingspanPrototype1.View.Reports
                                 {
                                     DisplayAlert("No Sponsorships Found", "No sponsordhips met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
+                                    buildReportButton.IsEnabled = true;
                                 });
                             }
 

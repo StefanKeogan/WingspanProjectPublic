@@ -51,6 +51,7 @@ namespace WingspanPrototype1.View.Volunteers
         private async void SearchButton_Clicked(object sender, EventArgs e)
         {
             searchingIndicator.IsRunning = true;
+            searchButton.IsEnabled = false;
 
             await Task.Run(() =>
             {
@@ -85,6 +86,7 @@ namespace WingspanPrototype1.View.Volunteers
                 Device.BeginInvokeOnMainThread(() => {
 
                     searchingIndicator.IsRunning = false;
+                    searchButton.IsEnabled = true;
 
                 });
 

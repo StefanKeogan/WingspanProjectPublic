@@ -27,7 +27,7 @@ namespace WingspanPrototype1.Functions
             // Generate Wingspan ID
             int number = idValue.Value;
             int year = DateTime.Today.Year % 100;
-            string wingspanId = "W" + year.ToString() + "/" + number.ToString();
+            string wingspanId = "w" + year.ToString() + "/" + number.ToString();
 
             int increment = number + 1;
 

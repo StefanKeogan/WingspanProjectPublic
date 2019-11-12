@@ -1,9 +1,9 @@
-﻿using MongoDB.Bson;
+﻿using Android.Net;
+using Java.Net;
 using MongoDB.Driver;
-using System;
 using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
-using System.Text;
+using System.Net;
+using Xamarin.Forms;
 
 namespace WingspanPrototype1
 {
@@ -35,9 +35,9 @@ namespace WingspanPrototype1
             //}
 
             // Local host connection
-            var client = new MongoClient("mongodb://localhost:27017");
-            var database = client.GetDatabase("WingspanDB");
-            return database;
+            //var client = new MongoClient("mongodb://localhost:27017");
+            //var database = client.GetDatabase("WingspanDB");
+            //return database;
 
 
             // Clever Coud db connection
@@ -55,21 +55,21 @@ namespace WingspanPrototype1
 
 
             // Old Scale Grid Connection 
-            //string connectionString = "mongodb://wingspanapp:shadowfalconcricketmorepork@SG-WingspanDB-27502.servers.mongodirector.com:50432,SG-WingspanDB-27503.servers.mongodirector.com:50432,SG-WingspanDB-27504.servers.mongodirector.com:50432/WingspanDB?replicaSet=RS-WingspanDB-0&ssl=true";
+            string connectionString = "mongodb://wingspanapp:shadowfalconcricketmorepork@SG-WingspanDB-27502.servers.mongodirector.com:50432,SG-WingspanDB-27503.servers.mongodirector.com:50432,SG-WingspanDB-27504.servers.mongodirector.com:50432/WingspanDB?replicaSet=RS-WingspanDB-0&ssl=true";
 
-            //var url = new MongoUrl(connectionString);
+            var url = new MongoUrl(connectionString);
 
-            //var clientSettings = MongoClientSettings.FromUrl(url);
+            var clientSettings = MongoClientSettings.FromUrl(url);
+            
+            clientSettings.SslSettings = new SslSettings();
+            clientSettings.SslSettings.CheckCertificateRevocation = false;
+            clientSettings.UseTls = true;
+            clientSettings.AllowInsecureTls = true;
 
-            //clientSettings.SslSettings = new SslSettings();
-            //clientSettings.SslSettings.CheckCertificateRevocation = false;
-            //clientSettings.UseSsl = true;
-            //clientSettings.VerifySslCertificate = false;
+            var client = new MongoClient(clientSettings);
 
-            //var client = new MongoClient(clientSettings);
-
-            //var database = client.GetDatabase("WingspanDB");
-            //return database;
+            var database = client.GetDatabase("WingspanDB");
+            return database;
 
         }
 

@@ -63,12 +63,6 @@ namespace WingspanPrototype1
 
         private void SearchBtn_Clicked(object sender, EventArgs e)
         {
-            // Lock search button
-            searchButton.IsEnabled = false;
-
-            // Start loading animation
-            searchingIndicator.IsRunning = true;
-
             // What are we searching based on page title 
             switch (Title)
             {
@@ -89,6 +83,12 @@ namespace WingspanPrototype1
                             break;
                         }
                     }
+
+                    // Start loading animation
+                    searchingIndicator.IsRunning = true;
+
+                    // Lock Button
+                    searchButton.IsEnabled = false;
 
                     // Run search on another thread
                     Task.Run(() => {
@@ -120,6 +120,8 @@ namespace WingspanPrototype1
                             }
 
                             searchingIndicator.IsRunning = false;
+                            searchButton.IsEnabled = true;
+
                         });
                     });
 
@@ -142,6 +144,12 @@ namespace WingspanPrototype1
                             break;
                         }
                     }
+
+                    // Start loading animation
+                    searchingIndicator.IsRunning = true;
+
+                    // Lock Button
+                    searchButton.IsEnabled = false;
 
                     Task.Run(() =>
                     {
@@ -171,6 +179,7 @@ namespace WingspanPrototype1
                             }
 
                             searchingIndicator.IsRunning = false;
+                            searchButton.IsEnabled = true;
 
                         });
 
@@ -218,6 +227,12 @@ namespace WingspanPrototype1
                     //    }
                     //}
 
+                    // Start loading animation
+                    searchingIndicator.IsRunning = true;
+
+                    // Lock Button
+                    searchButton.IsEnabled = false;
+
                     // Run search on another thread
                     Task.Run(() => {
 
@@ -250,6 +265,7 @@ namespace WingspanPrototype1
                             }
 
                             searchingIndicator.IsRunning = false;
+                            searchButton.IsEnabled = true;
 
                         });
 
@@ -284,6 +300,12 @@ namespace WingspanPrototype1
                         }
                     }
 
+                    // Start loading animation
+                    searchingIndicator.IsRunning = true;
+
+                    // Lock Button
+                    searchButton.IsEnabled = false;
+
                     Task.Run(() => 
                     {
                         // Search Members
@@ -314,6 +336,7 @@ namespace WingspanPrototype1
                             }
 
                             searchingIndicator.IsRunning = false;
+                            searchButton.IsEnabled = true;
 
                         });
 
@@ -351,6 +374,12 @@ namespace WingspanPrototype1
                             break;
                         }
                     }
+
+                    // Start loading animation
+                    searchingIndicator.IsRunning = true;
+
+                    // Lock Button
+                    searchButton.IsEnabled = false;
 
                     Task.Run(() => {
 
@@ -421,6 +450,7 @@ namespace WingspanPrototype1
                             }
 
                             searchingIndicator.IsRunning = false;
+                            searchButton.IsEnabled = true;
 
                         });
 
@@ -462,6 +492,12 @@ namespace WingspanPrototype1
                         }
                     }
 
+                    // Start loading animation
+                    searchingIndicator.IsRunning = true;
+
+                    // Lock Button
+                    searchButton.IsEnabled = false;
+
                     Task.Run(() => {
 
                         List<Volunteer> volunteerResults = SearchVolunteers.Search(volunteerEmailEntry.Text, volunteerFirstNameEntry.Text, volunteerLastNameEntry.Text);
@@ -489,6 +525,7 @@ namespace WingspanPrototype1
                             }
 
                             searchingIndicator.IsRunning = false;
+                            searchButton.IsEnabled = true;
 
                         });
 
@@ -496,9 +533,6 @@ namespace WingspanPrototype1
                     break;
 
             }
-
-            searchButton.IsEnabled = true;
-            searchingIndicator.IsRunning = false;
 
         }              
     }
