@@ -20,12 +20,12 @@
                 </Grid.RowDefinitions>
 
                 <StackLayout WidthRequest="450" HorizontalOptions="CenterAndExpand" Orientation="Horizontal">
-                    <Label Text="Wild Bird Winspand Id Value: " FontSize="20"/>
+                    <Label Text="Wild Bird Wingspan Id Value: " FontSize="20"/>
                     <Label x:Name="wildWingspanIdValue" Margin="5,0,0,0" FontSize="20"/>
                 </StackLayout>
 
                 <StackLayout WidthRequest="450" HorizontalOptions="CenterAndExpand" Grid.Row="1">
-                    <Label Text="New Wild Winspand Id Value" FontSize="20" Margin="5,5,5,5"/>
+                    <Label Text="New Wild Wingspan Id Value" FontSize="20" Margin="5,5,5,5"/>
                     <Entry x:Name="newWildWingspanIdEntry" Margin="5,5,5,5"/>
                 </StackLayout>
 
@@ -40,12 +40,12 @@
                     Clicked="updateWildIdButton_Clicked"/>
 
                 <StackLayout WidthRequest="450" HorizontalOptions="CenterAndExpand" Grid.Row="4" Orientation="Horizontal">
-                    <Label Text="Captive Bird Winspand Id Value: " FontSize="20"/>
+                    <Label Text="Captive Bird Wingspan Id Value: " FontSize="20"/>
                     <Label x:Name="captiveWingspanIdValue" Margin="5,0,0,0" FontSize="20"/>
                 </StackLayout>
 
                 <StackLayout WidthRequest="450" HorizontalOptions="CenterAndExpand" Grid.Row="5">
-                    <Label Text="New Captive Winspand Id Value" FontSize="20" Margin="5,5,5,5"/>
+                    <Label Text="New Captive Wingspan Id Value" FontSize="20" Margin="5,5,5,5"/>
                     <Entry x:Name="newCaptiveWingspanIdEntry" Margin="5,5,5,5" FontSize="20"/>
                 </StackLayout>
 
