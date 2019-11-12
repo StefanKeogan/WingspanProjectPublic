@@ -1,6 +1,7 @@
 ﻿using Android.Net;
 using Java.Net;
 using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Net;
 using Xamarin.Forms;
@@ -41,35 +42,35 @@ namespace WingspanPrototype1
 
 
             // Clever Coud db connection
-            //try
-            //{
-            //    var client = new MongoClient("mongodb://uf5r4cvqwjrfnced0id7:KyixXt51y8XZVmLyd8n6@boeuzmf4hwi4iiw-mongodb.services.clever-cloud.com:27017/boeuzmf4hwi4iiw");
-            //    var database = client.GetDatabase("boeuzmf4hwi4iiw");
-            //    return database;
-            //}
-            //catch (Exception)   
-            //{
+            try
+            {
+                var client = new MongoClient("mongodb://uf5r4cvqwjrfnced0id7:KyixXt51y8XZVmLyd8n6@boeuzmf4hwi4iiw-mongodb.services.clever-cloud.com:27017/boeuzmf4hwi4iiw");
+                var database = client.GetDatabase("boeuzmf4hwi4iiw");
+                return database;
+            }
+            catch (Exception)
+            {
 
-            //    return null;
-            //}
+                return null;
+            }
 
 
-            // Old Scale Grid Connection 
-            string connectionString = "mongodb://wingspanapp:shadowfalconcricketmorepork@SG-WingspanDB-27502.servers.mongodirector.com:50432,SG-WingspanDB-27503.servers.mongodirector.com:50432,SG-WingspanDB-27504.servers.mongodirector.com:50432/WingspanDB?replicaSet=RS-WingspanDB-0&ssl=true";
+            //// Old Scale Grid Connection 
+            //string connectionString = "mongodb://wingspanapp:shadowfalconcricketmorepork@SG-WingspanDB-27502.servers.mongodirector.com:50432,SG-WingspanDB-27503.servers.mongodirector.com:50432,SG-WingspanDB-27504.servers.mongodirector.com:50432/WingspanDB?replicaSet=RS-WingspanDB-0&ssl=true";
 
-            var url = new MongoUrl(connectionString);
+            //var url = new MongoUrl(connectionString);
 
-            var clientSettings = MongoClientSettings.FromUrl(url);
+            //var clientSettings = MongoClientSettings.FromUrl(url);
             
-            clientSettings.SslSettings = new SslSettings();
-            clientSettings.SslSettings.CheckCertificateRevocation = false;
-            clientSettings.UseTls = true;
-            clientSettings.AllowInsecureTls = true;
+            //clientSettings.SslSettings = new SslSettings();
+            //clientSettings.SslSettings.CheckCertificateRevocation = false;
+            //clientSettings.UseTls = true;
+            //clientSettings.AllowInsecureTls = true;
 
-            var client = new MongoClient(clientSettings);
+            //var client = new MongoClient(clientSettings);
 
-            var database = client.GetDatabase("WingspanDB");
-            return database;
+            //var database = client.GetDatabase("WingspanDB");
+            //return database;
 
         }
 
