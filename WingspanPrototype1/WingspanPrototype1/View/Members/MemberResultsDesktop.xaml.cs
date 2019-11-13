@@ -48,7 +48,7 @@ namespace WingspanPrototype1.View
             resultsView.IsVisible = true;
             resultButtons.IsVisible = true;
 
-            id = item._id;
+            id = item.Member_id;
 
             if (item != null)
             {
@@ -263,7 +263,7 @@ namespace WingspanPrototype1.View
                 {
                     await DisplayAlert("Member Deleted", "This member and their payment history have been delted", "OK");
 
-                    Member member = memberResults.Find(x => x._id == id);
+                    Member member = memberResults.Find(x => x.Member_id == id);
                     memberResults.Remove(member);
 
                     addNewPaymentView.IsVisible = false;
@@ -324,7 +324,7 @@ namespace WingspanPrototype1.View
 
 
                     // Find old member 
-                    Member member = memberResults.Find(x => x._id == id);
+                    Member member = memberResults.Find(x => x.Member_id == id);
                     int memberIndex = memberResults.IndexOf(member);
 
                     // Update with new member
@@ -472,9 +472,7 @@ namespace WingspanPrototype1.View
 
         // Adds payment to database 
         private async void AddPaymentButton_Clicked(object sender, EventArgs e)
-        {
-            
-
+        {          
             // Validate payment amount feild 
             if (Validate.FeildPopulated(paymentAmountEntry.Text))
             {
@@ -495,6 +493,7 @@ namespace WingspanPrototype1.View
             {
                 await DisplayAlert("Payment Added", "This members donation has been recorded", "OK");
                 paymentListView.ItemsSource = FindMembersPayments.GetPaymentDocuments(id);
+                paymentAmountEntry.Text = null;
                 addNewPaymentView.IsVisible = false;
             }
             else
@@ -519,7 +518,7 @@ namespace WingspanPrototype1.View
                 if (item != null)
                 {
                     // Delete locattion document
-                    if (DeletePayment.DropDocument(item._id))
+                    if (DeletePayment.DropDocument(item.Payment_id))
                     {
                         await DisplayAlert("Payment Deleted", "This payment has been deleted", "OK");
                         paymentListView.ItemsSource = FindMembersPayments.GetPaymentDocuments(id);

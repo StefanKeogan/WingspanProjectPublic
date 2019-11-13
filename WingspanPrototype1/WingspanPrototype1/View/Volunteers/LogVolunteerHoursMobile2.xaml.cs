@@ -21,7 +21,7 @@ namespace WingspanPrototype1.View.Volunteers
         {
             InitializeComponent();
 
-            selectedVolunteerId = selectedVolunteer._id;
+            selectedVolunteerId = selectedVolunteer.Volunteer_id;
         }
 
         private async void AddButton_Clicked(object sender, EventArgs e)

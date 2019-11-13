@@ -100,7 +100,7 @@ namespace WingspanPrototype1.Controller.Sponsorships
                     foreach (var member in possibleMembers)
                     {
                         // Build filter for this member 
-                        var filter = Builders<BsonDocument>.Filter.Eq("Member_id", member._id);
+                        var filter = Builders<BsonDocument>.Filter.Eq("Member_id", member.Member_id);
 
                         try
                         {

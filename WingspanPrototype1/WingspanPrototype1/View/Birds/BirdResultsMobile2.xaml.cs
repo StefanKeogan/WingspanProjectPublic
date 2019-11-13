@@ -38,7 +38,7 @@ namespace WingspanPrototype1
 
                 DisplayWildBird(wildItem);
 
-                id = wildItem._id;
+                id = wildItem.Wild_id;
 
                 wingspanId = wildItem.WingspanId;
 
@@ -50,7 +50,7 @@ namespace WingspanPrototype1
 
                 DisplayCaptiveBird(captiveItem);
 
-                id = captiveItem._id;
+                id = captiveItem.Captive_id;
 
                 wingspanId = captiveItem.WingspanId;
 
@@ -483,6 +483,8 @@ namespace WingspanPrototype1
                 {
                     noteListView.ItemsSource = results;
                 }
+                noteEditor.Text = null;
+                noteCategoryPicker.SelectedIndex = -1;
                 addNewNoteView.IsVisible = false;
                 await DisplayAlert("Bird Note Added", "Your note has been added to this birds note history", "OK");
                 return;
@@ -537,6 +539,8 @@ namespace WingspanPrototype1
             {
                 await DisplayAlert("Location added", "Location has been added to this birds note history", "Ok");
                 locationListView.ItemsSource = FindBirdLocationHistory.GetLocationDocuments(wingspanId);
+                locationCategoryPicker.SelectedIndex = -1;
+                locationEntry.Text = null;
                 addNewLocationView.IsVisible = false;
             }
 
@@ -777,7 +781,7 @@ namespace WingspanPrototype1
                         locationHistoryView.IsVisible = false;
                         wildBirdDisplayForm.IsVisible = false;
 
-                        WildBird bird = wildResults.Find(x => x._id == id);
+                        WildBird bird = wildResults.Find(x => x.Wild_id == id);
                         wildResults.Remove(bird);
 
                         if ((wildResults.Count <= 0) && (captiveResults.Count <= 0))
@@ -802,7 +806,7 @@ namespace WingspanPrototype1
                         locationHistoryView.IsVisible = false;
                         captiveBirdDisplayForm.IsVisible = false;
 
-                        CaptiveBird bird = captiveResults.Find(x => x._id == id);
+                        CaptiveBird bird = captiveResults.Find(x => x.Captive_id == id);
                         captiveResults.Remove(bird);
 
                         if ((captiveResults.Count <= 0) && (wildResults.Count <= 0))

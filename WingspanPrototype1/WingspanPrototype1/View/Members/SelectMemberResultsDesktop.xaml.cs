@@ -109,7 +109,7 @@ namespace WingspanPrototype1.View
             SponsorshipDetails.thisFirstName = member.FirstName;
             SponsorshipDetails.thisLastName = member.LastName;
             SponsorshipDetails.thisCompany = member.Company;
-            SponsorshipDetails.thisMember = member._id;
+            SponsorshipDetails.thisMember = member.Member_id;
         }
 
 

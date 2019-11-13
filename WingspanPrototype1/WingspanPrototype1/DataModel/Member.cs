@@ -8,7 +8,8 @@ namespace WingspanPrototype1.Model
 {
     public class Member
     {
-        public ObjectId _id { get; set; }
+        [BsonId]
+        public ObjectId Member_id { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string SalutationName { get; set; }

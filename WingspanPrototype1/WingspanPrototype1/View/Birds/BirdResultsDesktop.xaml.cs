@@ -77,7 +77,7 @@ namespace WingspanPrototype1
 
                 DisplayWildBird(wildItem);
 
-                id = wildItem._id;
+                id = wildItem.Wild_id;
 
                 wingspanId = wildItem.WingspanId;
 
@@ -89,7 +89,7 @@ namespace WingspanPrototype1
 
                 DisplayCaptiveBird(captiveItem);
 
-                id = captiveItem._id;
+                id = captiveItem.Captive_id;
 
                 wingspanId = captiveItem.WingspanId;
 
@@ -515,6 +515,8 @@ namespace WingspanPrototype1
                 {
                     noteListView.ItemsSource = results;
                 }
+                noteCategoryPicker.SelectedIndex = -1;
+                noteEditor.Text = null;
                 addNewNoteView.IsVisible = false;
                 await DisplayAlert("Note Added", "Your note has been added to this birds note history", "OK");
                 return;
@@ -567,6 +569,8 @@ namespace WingspanPrototype1
             {
                 await DisplayAlert("Location added", "Location has been added to this birds note history", "Ok");
                 locationListView.ItemsSource = FindBirdLocationHistory.GetLocationDocuments(wingspanId);
+                locationEntry.Text = null;
+                locationCategoryPicker.SelectedIndex = -1;
                 addNewLocationView.IsVisible = false;
             }
             
@@ -615,7 +619,7 @@ namespace WingspanPrototype1
                         }
 
                         // Find old wild bird
-                        WildBird bird = wildResults.Find(x => x._id == id);
+                        WildBird bird = wildResults.Find(x => x.Wild_id == id);
                         int resultIndex = allResults.IndexOf(bird);
                         int wildIndex = wildResults.IndexOf(bird);
 
@@ -662,7 +666,7 @@ namespace WingspanPrototype1
                         }
 
                         // Find old captive bird
-                        CaptiveBird bird = captiveResults.Find(x => x._id == id);
+                        CaptiveBird bird = captiveResults.Find(x => x.Captive_id == id);
                         int resultIndex = allResults.IndexOf(bird);
                         int captiveIndex = captiveResults.IndexOf(bird);
 
@@ -708,7 +712,7 @@ namespace WingspanPrototype1
                         locationHistoryView.IsVisible = false;
                         wildBirdDisplayForm.IsVisible = false;
 
-                        WildBird bird = wildResults.Find(x => x._id == id);
+                        WildBird bird = wildResults.Find(x => x.Wild_id == id);
                         wildResults.Remove(bird);
 
                         if ((wildResults.Count <= 0) && (captiveResults.Count <= 0))
@@ -751,7 +755,7 @@ namespace WingspanPrototype1
                         locationHistoryView.IsVisible = false;
                         captiveBirdDisplayForm.IsVisible = false;
 
-                        CaptiveBird bird = captiveResults.Find(x => x._id == id);
+                        CaptiveBird bird = captiveResults.Find(x => x.Captive_id == id);
                         captiveResults.Remove(bird);
 
                         if ((captiveResults.Count <= 0) && (wildResults.Count <= 0))
@@ -802,7 +806,7 @@ namespace WingspanPrototype1
                 if (item != null)
                 {
                     // Delete location document
-                    if (DeleteBirdLocation.DropDocument(item._id))
+                    if (DeleteBirdLocation.DropDocument(item.Location_id))
                     {
                         await DisplayAlert("Location Deleted", "This bird location has been deleted", "OK");
                         locationListView.ItemsSource = FindBirdLocationHistory.GetLocationDocuments(wingspanId);
@@ -829,7 +833,7 @@ namespace WingspanPrototype1
                 if (item != null)
                 {
                     // Delete note document
-                    if (DeleteBirdNote.DropDocument(item._id))
+                    if (DeleteBirdNote.DropDocument(item.Note_id))
                     {
                         await DisplayAlert("Note Deleted", "This bird note has been deleted", "OK");
                         noteListView.ItemsSource = FindBirdNotes.GetNoteDocuments(wingspanId);

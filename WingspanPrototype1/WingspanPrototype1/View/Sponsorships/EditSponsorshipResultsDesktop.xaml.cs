@@ -41,7 +41,7 @@ namespace WingspanPrototype1.View
         {
             var item = e.SelectedItem as Sponsorship;
 
-            sponsorshipId = item._id;
+            sponsorshipId = item.Sponsorship_id;
 
             if (item != null)
             {
@@ -209,7 +209,7 @@ namespace WingspanPrototype1.View
                 {
                     await DisplayAlert("Sponsorship deleted", "", "OK");
 
-                    Sponsorship sponsorship = sponsorshipResults.Find(x => x._id == sponsorshipId);
+                    Sponsorship sponsorship = sponsorshipResults.Find(x => x.Sponsorship_id == sponsorshipId);
                     sponsorshipResults.Remove(sponsorship);
 
                     if (sponsorshipResults.Count <= 0)
@@ -249,7 +249,7 @@ namespace WingspanPrototype1.View
                 if (updatedSponsorship != null)
                 {               
                     // Find old sponsorship 
-                    Sponsorship sponsorship = sponsorshipResults.Find(x => x._id == sponsorshipId);
+                    Sponsorship sponsorship = sponsorshipResults.Find(x => x.Sponsorship_id == sponsorshipId);
                     int sponsorshipIndex = sponsorshipResults.IndexOf(sponsorship);
 
                     // Update with new sponsorship

@@ -23,7 +23,7 @@ namespace WingspanPrototype1.Controller.Birds
                 try
                 {
                     // Search note collection 
-                    List<BsonDocument> noteResults = collection.Find(Builders<BsonDocument>.Filter.Eq("WingspanId", wingspanId)).ToList();
+                    List<BsonDocument> noteResults = collection.Find(Builders<BsonDocument>.Filter.Eq("WingspanId", wingspanId.ToLower())).ToList();
 
                     // Convert results to note results
                     List<Note> noteObjectResults = new List<Note>();

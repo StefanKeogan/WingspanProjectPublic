@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,7 +8,8 @@ namespace WingspanPrototype1.Model
 {
     public class CaptiveBird
     {
-        public ObjectId _id { get; set; }
+        [BsonId]
+        public ObjectId Captive_id { get; set; }
         public string WingspanId { get; set; }
         public string Name { get; set; }
         public string BandNo { get; set; }

@@ -32,7 +32,7 @@ namespace WingspanPrototype1.Functions
             int increment = number+1;
 
             // Increment Id Value 
-            collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", idValue._id), Builders<BsonDocument>.Update.Set("Value", increment));
+            collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", idValue.Value_id), Builders<BsonDocument>.Update.Set("Value", increment));
 
             return wingspanId;
         }

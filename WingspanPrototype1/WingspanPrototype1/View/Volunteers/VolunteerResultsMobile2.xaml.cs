@@ -27,7 +27,7 @@ namespace WingspanPrototype1.View.Volunteers
 
         private void DisplayVolunteer(Volunteer volunteer)
         {
-            id = volunteer._id;
+            id = volunteer.Volunteer_id;
 
             if (Validate.FeildPopulated(volunteer.FirstName))
             {
@@ -199,7 +199,7 @@ namespace WingspanPrototype1.View.Volunteers
                 if (item != null)
                 {
                     // Delete locattion document
-                    if (DeleteHours.DropDocument(item._id))
+                    if (DeleteHours.DropDocument(item.Payment_id))
                     {
                         await DisplayAlert("Hours Deleted", "This volunteers hours has been deleted", "OK");
                         hoursListView.ItemsSource = FindVolunteerWorkHours.GetHoursDocuments(id);

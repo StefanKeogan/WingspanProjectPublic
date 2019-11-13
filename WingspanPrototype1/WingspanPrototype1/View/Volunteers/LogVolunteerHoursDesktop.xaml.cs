@@ -44,7 +44,7 @@ namespace WingspanPrototype1.View.Volunteers
 
             if (item != null)
             {
-                selectedVolunteerId = item._id;
+                selectedVolunteerId = item.Volunteer_id;
             }
         }
 

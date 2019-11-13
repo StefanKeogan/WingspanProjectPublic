@@ -24,7 +24,7 @@ namespace WingspanPrototype1.Controller.Birds
                     { "Date", note.Date.ToLocalTime() },
                     { "Category", note.Category },
                     { "Comment", note.Comment },
-                    { "WingspanId", note.WingspanId}
+                    { "WingspanId", note.WingspanId.ToLower()}
                 };
 
                 // Insert docunment

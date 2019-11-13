@@ -41,7 +41,7 @@ namespace WingspanPrototype1.Controller.WingspanId
                         var idValue = BsonSerializer.Deserialize<IdValue>(dbValue);
 
                         // Update Value
-                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", idValue._id), Builders<BsonDocument>.Update.Set("Value", value));
+                        collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", idValue.Value_id), Builders<BsonDocument>.Update.Set("Value", value));
 
                         return true;
                     }

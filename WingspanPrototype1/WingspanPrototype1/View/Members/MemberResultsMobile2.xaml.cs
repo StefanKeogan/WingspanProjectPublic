@@ -26,7 +26,7 @@ namespace WingspanPrototype1.View
 
             DisplayMember(member);
 
-            id = member._id;
+            id = member.Member_id;
         }
 
         private void DisplayMember(Member member)
@@ -464,7 +464,7 @@ namespace WingspanPrototype1.View
                 if (item != null)
                 {
                     // Delete locattion document
-                    if (DeletePayment.DropDocument(item._id))
+                    if (DeletePayment.DropDocument(item.Payment_id))
                     {
                         await DisplayAlert("Payment Deleted", "This payment has been deleted", "OK");
                         paymentListView.ItemsSource = FindMembersPayments.GetPaymentDocuments(id);

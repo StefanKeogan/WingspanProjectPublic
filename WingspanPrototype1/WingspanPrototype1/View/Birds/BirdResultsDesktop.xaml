@@ -405,7 +405,7 @@
                                 <Picker x:Name="noteCategoryPicker" Margin="5,5,5,5">
                                 <Picker.ItemsSource>
                                     <x:Array Type="{x:Type x:String}">
-                                        <x:String>Meical</x:String>
+                                        <x:String>Medical</x:String>
                                         <x:String>Breeding</x:String>
                                         <x:String>Other</x:String>
                                     </x:Array>

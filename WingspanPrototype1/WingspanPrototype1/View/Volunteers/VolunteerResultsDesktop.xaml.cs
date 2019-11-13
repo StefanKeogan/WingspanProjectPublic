@@ -55,7 +55,7 @@ namespace WingspanPrototype1.View.Volunteers
             // Clear entries
             entries.Clear();            
 
-            id = volunteer._id;
+            id = volunteer.Volunteer_id;
 
             if (Validate.FeildPopulated(volunteer.FirstName))
             {
@@ -171,7 +171,7 @@ namespace WingspanPrototype1.View.Volunteers
                     logHoursView.IsVisible = false;
                     hoursHistoryView.IsVisible = false;
 
-                    Volunteer volunteer = volunteerResults.Find(x => x._id == id);
+                    Volunteer volunteer = volunteerResults.Find(x => x.Volunteer_id == id);
                     volunteerResults.Remove(volunteer);
 
                     if (volunteerResults.Count <= 0)
@@ -218,7 +218,7 @@ namespace WingspanPrototype1.View.Volunteers
                     volunteer.LastName = FormatText.FirstToUpper(volunteer.LastName);
 
                     // Find old volunteer
-                    Volunteer oldVolunteer = volunteerResults.Find(x => x._id == id);
+                    Volunteer oldVolunteer = volunteerResults.Find(x => x.Volunteer_id == id);
                     int volunteerIndex = volunteerResults.IndexOf(oldVolunteer);
 
                     // Replace old volunteer with updated
@@ -322,7 +322,7 @@ namespace WingspanPrototype1.View.Volunteers
                 if (item != null)
                 {
                     // Delete locattion document
-                    if (DeleteHours.DropDocument(item._id))
+                    if (DeleteHours.DropDocument(item.Hours_id))
                     {
                         await DisplayAlert("Hours Deleted", "This volunteers hours has been deleted", "OK");
                         hoursListView.ItemsSource = FindVolunteerWorkHours.GetHoursDocuments(id);

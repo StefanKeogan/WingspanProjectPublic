@@ -30,7 +30,7 @@ namespace WingspanPrototype1.View
 
             DisplaySponsorship(sponsorship);
 
-            sponsorshipId = sponsorship._id;
+            sponsorshipId = sponsorship.Sponsorship_id;
 		}
 
         protected override void OnAppearing()
@@ -228,7 +228,7 @@ namespace WingspanPrototype1.View
                 if (updatedSponsorship != null)
                 {
                     // Find old sponsorship 
-                    Sponsorship sponsorship = sponsorshipResults.Find(x => x._id == sponsorshipId);
+                    Sponsorship sponsorship = sponsorshipResults.Find(x => x.Sponsorship_id == sponsorshipId);
                     int sponsorshipIndex = sponsorshipResults.IndexOf(sponsorship);
 
                     // Update with new sponsorship
