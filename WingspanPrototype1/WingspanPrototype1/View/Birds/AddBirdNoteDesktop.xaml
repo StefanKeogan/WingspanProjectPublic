@@ -50,12 +50,12 @@
                     <RowDefinition Height="2*"/>
                 </Grid.RowDefinitions>
 
-                <StackLayout Margin="30,30,30,30" WidthRequest="450" HorizontalOptions="CenterAndExpand">
+                <StackLayout Margin="15,30,15,30" WidthRequest="450" HorizontalOptions="CenterAndExpand">
                     <Label Text="Date" FontSize="20" Margin="5,5,5,5"/>
                     <DatePicker x:Name="noteDatePicker" Margin="5,5,5,5"/>
                 </StackLayout>
 
-                <StackLayout Margin="30,30,30,30" Grid.Row="1" WidthRequest="450" HorizontalOptions="CenterAndExpand">
+                <StackLayout Margin="15,30,15,30" Grid.Row="1" WidthRequest="450" HorizontalOptions="CenterAndExpand">
                     <StackLayout Orientation="Horizontal"  Margin="5,5,5,5">
                         <Label Text="Category" FontSize="20"/>
                         <Label x:Name="noteError" Style="{StaticResource addFormErrorStyle}" Text="The note feild must be filled in"/>
@@ -72,7 +72,7 @@
                     </Picker>
                 </StackLayout>
 
-                <StackLayout Grid.Row="2"  Margin="30,30,30,30" WidthRequest="450" HorizontalOptions="CenterAndExpand">
+                <StackLayout Grid.Row="2"  Margin="15,30,15,30" WidthRequest="450" HorizontalOptions="CenterAndExpand">
                     <StackLayout Orientation="Horizontal" Margin="5,5,5,5">
                         <Label Text="Note" FontSize="20"/>
                         <Label x:Name="noteCategoryError" Style="{StaticResource addFormErrorStyle}" Text="A category must be selected"/>

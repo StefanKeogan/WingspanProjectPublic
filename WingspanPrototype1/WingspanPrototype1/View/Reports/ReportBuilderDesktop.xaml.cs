@@ -56,6 +56,9 @@ namespace WingspanPrototype1.View.Reports
                 case "Members":
                     conditionPicker.ItemsSource = new string[] { "Joined", "Sponsoring" };
                     break;
+                case "Payments":
+                    conditionPicker.ItemsSource = new string[] {"Made"};
+                    break;
                 case "Volunteers":
                     conditionPicker.ItemsSource = new string[] { "Worked" };
                     break;
@@ -87,6 +90,7 @@ namespace WingspanPrototype1.View.Reports
                                 sponsorshipListView.IsVisible = false;
                                 memberListView.IsVisible = false;
                                 volunteerListView.IsVisible = false;
+                                paymentListView.IsVisible = false;
                             });
 
                             List<CaptiveBird> allCaptiveResults = null;
@@ -114,7 +118,6 @@ namespace WingspanPrototype1.View.Reports
                                 }
                             }
 
-
                             if (allWildResults != null)
                             {
                                 if (allWildResults.Count > 0)
@@ -136,6 +139,7 @@ namespace WingspanPrototype1.View.Reports
                                     subtotalLabel.Text = "Total Sponsored Birds";
                                     subtotalValue.Text = allResults.Count.ToString();
                                     buildingIndicator.IsRunning = false;
+                                    buildReportButton.IsEnabled = true;
                                 });
                             }
                             else
@@ -144,6 +148,7 @@ namespace WingspanPrototype1.View.Reports
                                 {
                                     DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
+                                    buildReportButton.IsEnabled = true;
                                 });
                             }
 
@@ -155,8 +160,8 @@ namespace WingspanPrototype1.View.Reports
                                 memberListView.IsVisible = false;
                                 volunteerListView.IsVisible = false;                              
                                 allBirdListView.IsVisible = false;                              
-                                sponsorshipListView.IsVisible = false;                              
-
+                                sponsorshipListView.IsVisible = false;
+                                paymentListView.IsVisible = false;
                             });                          
 
                             List<WildBird> wildResults = null;
@@ -185,6 +190,8 @@ namespace WingspanPrototype1.View.Reports
                                         subtotalLabel.Text = "Total Birds Found";
                                         subtotalValue.Text = wildResults.Count.ToString();
                                         buildingIndicator.IsRunning = false;
+                                        buildReportButton.IsEnabled = true;
+
                                     });
                                 }
                                 else
@@ -193,6 +200,7 @@ namespace WingspanPrototype1.View.Reports
                                     {
                                         DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
                                         buildingIndicator.IsRunning = false;
+                                        buildReportButton.IsEnabled = true;
                                     });
                                 }
                                 
@@ -203,6 +211,7 @@ namespace WingspanPrototype1.View.Reports
                                 {
                                     DisplayAlert("No Birds Found", "No birds met those conditions", "OK");
                                     buildingIndicator.IsRunning = false;
+                                    buildReportButton.IsEnabled = true;
                                 });
                             }
                             break;
@@ -215,7 +224,7 @@ namespace WingspanPrototype1.View.Reports
                                 wildBirdListView.IsVisible = false;
                                 allBirdListView.IsVisible = false;
                                 sponsorshipListView.IsVisible = false;
-                                
+                                paymentListView.IsVisible = false;
                             });
 
                             List<CaptiveBird> captiveResults = null;
@@ -270,8 +279,8 @@ namespace WingspanPrototype1.View.Reports
                                         }
 
                                         subtotalValue.Text = captiveResults.Count.ToString();
-
                                         buildingIndicator.IsRunning = false;
+                                        buildReportButton.IsEnabled = true;
 
                                     });
                                 }
@@ -304,7 +313,7 @@ namespace WingspanPrototype1.View.Reports
                                 wildBirdListView.IsVisible = false;
                                 allBirdListView.IsVisible = false;
                                 sponsorshipListView.IsVisible = false;
-                                
+                                paymentListView.IsVisible = false;
                             });
 
                             List<Member> memberResults = null;
@@ -334,6 +343,7 @@ namespace WingspanPrototype1.View.Reports
                                         subtotalLabel.Text = "Members Found: ";
                                         subtotalValue.Text = memberResults.Count.ToString();
                                         buildingIndicator.IsRunning = false;
+                                        buildReportButton.IsEnabled = true;
                                     });
                                 }
                                 else
@@ -357,6 +367,74 @@ namespace WingspanPrototype1.View.Reports
                                 });
                             }
                             break;
+                        case "Payments":
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                captiveBirdListView.IsVisible = false;
+                                volunteerListView.IsVisible = false;
+                                wildBirdListView.IsVisible = false;
+                                allBirdListView.IsVisible = false;
+                                sponsorshipListView.IsVisible = false;
+                                memberListView.IsVisible = false;
+
+                            });
+
+                            List<Payment> paymentResults = null;
+
+                            switch (conditionPicker.SelectedItem.ToString())
+                            {
+                                case "Made":
+                                    paymentResults = MemberReport.PaymentReport(fromDatePicker.Date, toDatePicker.Date);
+                                    break;
+                                default:
+                                    memberResults = null;
+                                    break;
+                            }
+
+                            if (paymentResults != null)
+                            {
+                                if (paymentResults.Count > 0)
+                                {
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        watermarkLayout.IsVisible = false;
+                                        paymentListView.IsVisible = true;
+                                        paymentListView.ItemsSource = paymentResults;
+                                        subtotalLabel.Text = "Subtotal: ";
+
+                                        double subtotal = 0;
+                                        foreach (var payment in paymentResults)
+                                        {
+                                            subtotal = subtotal + payment.Amount;
+                                        }
+
+                                        subtotalValue.Text = subtotal.ToString("0.00");
+                                        buildingIndicator.IsRunning = false;
+                                        buildReportButton.IsEnabled = true;
+                                    });
+                                }
+                                else
+                                {
+                                    Device.BeginInvokeOnMainThread(() =>
+                                    {
+                                        DisplayAlert("No Payments Found", "No payments met those conditions", "OK");
+                                        buildingIndicator.IsRunning = false;
+                                        buildReportButton.IsEnabled = true;
+                                    });
+                                }
+
+                            }
+                            else
+                            {
+                                Device.BeginInvokeOnMainThread(() =>
+                                {
+                                    DisplayAlert("No Payments Found", "No payments met those conditions", "OK");
+                                    buildingIndicator.IsRunning = false;
+                                    buildReportButton.IsEnabled = true;
+                                });
+                            }
+                            break;
+
                         case "Volunteers":
 
                             Device.BeginInvokeOnMainThread(() =>
@@ -366,6 +444,7 @@ namespace WingspanPrototype1.View.Reports
                                 wildBirdListView.IsVisible = false;
                                 allBirdListView.IsVisible = false;
                                 sponsorshipListView.IsVisible = false;
+                                paymentListView.IsVisible = false;
                             });
 
                             List<VolunteerHours> volunteerResults = null;
@@ -399,6 +478,7 @@ namespace WingspanPrototype1.View.Reports
                                         subtotalLabel.Text = "Total Wours Worked: ";
                                         subtotalValue.Text = subtotal.ToString();
                                         buildingIndicator.IsRunning = false;
+                                        buildReportButton.IsEnabled = true;
 
                                     });
                                 }
@@ -430,6 +510,7 @@ namespace WingspanPrototype1.View.Reports
                                 wildBirdListView.IsVisible = false;
                                 volunteerListView.IsVisible = false;
                                 allBirdListView.IsVisible = false;
+                                paymentListView.IsVisible = false;
                             });
 
                             List<Sponsorship> sponsorshipResults = null;
@@ -458,7 +539,7 @@ namespace WingspanPrototype1.View.Reports
                                         subtotalLabel.Text = "Total Sponsorhips Started: ";
                                         subtotalValue.Text = subtotal.ToString();
                                         buildingIndicator.IsRunning = false;
-
+                                        buildReportButton.IsEnabled = true;
                                     });
                                 }
                                 else

@@ -51,5 +51,44 @@ namespace WingspanPrototype1.Controller.Members
             }            
 
         }
+
+        public static List<Payment> PaymentReport(DateTime startDate, DateTime endDate)
+        {
+            var database = DatabaseConnection.GetDatabase();
+
+            if (database != null)
+            {
+                var collection = database.GetCollection<BsonDocument>("Payments");
+
+                var filterBuilder = Builders<BsonDocument>.Filter;
+
+                // Build master filter
+                var filter = filterBuilder.Gte("Date", startDate.ToLocalTime()) & filterBuilder.Lte("Date", endDate.ToLocalTime());
+
+                try
+                {
+                    // Search wild birds 
+                    var reportResults = collection.Find(filter).ToList();
+                    // Deserialize bson documents
+                    List<Payment> results = new List<Payment>();
+                    foreach (var result in reportResults)
+                    {
+                        results.Add(BsonSerializer.Deserialize<Payment>(result));
+                    }
+
+                    return results;
+                }
+                catch (Exception)
+                {
+                    return null;
+
+                }
+            }
+            else
+            {
+                return null;
+            }
+
+        }
     }
 }

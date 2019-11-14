@@ -702,9 +702,9 @@ namespace WingspanPrototype1
             {
                 if (birdType == typeof(WildBird))
                 {
-                    if (DeleteWildBird.DropDocument(id))
+                    if (DeleteWildBird.DropDocument(wingspanId))
                     {
-                        await DisplayAlert("Bird Deleted", "This wild bird and location history have been removed from the database", "OK");
+                        await DisplayAlert("Bird Deleted", "This wild bird and its note history have been removed from the database", "OK");
 
                         addNewNoteView.IsVisible = false;
                         noteHistoryView.IsVisible = false;
@@ -746,7 +746,7 @@ namespace WingspanPrototype1
                 }
                 else if (birdType == typeof(CaptiveBird))
                 {
-                    if (DeleteCaptiveBird.DropDocument(id))
+                    if (DeleteCaptiveBird.DropDocument(wingspanId))
                     {
                         await DisplayAlert("Bird Deleted", "This captive bird, their notes and location history have been removed from the database", "OK");
                         addNewNoteView.IsVisible = false;

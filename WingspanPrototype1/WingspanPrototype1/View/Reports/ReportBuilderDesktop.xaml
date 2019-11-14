@@ -73,6 +73,7 @@
                         <x:String>Wild Birds</x:String>
                         <x:String>Captive Birds</x:String>
                         <x:String>Members</x:String>
+                        <x:String>Payments</x:String>
                         <x:String>Volunteers</x:String>
                         <x:String>Sponsorships</x:String>
                     </x:Array>
@@ -159,6 +160,21 @@
                                 <Label Text="Joined " Style="{StaticResource reportLabelStyle}"/>
                                 <Label Text="{Binding JoinDate, StringFormat='{0:MM/dd/yy}'}" Style="{StaticResource reportLabelStyle}"/>
                                 
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <ListView x:Name="paymentListView" Style="{StaticResource resultListStyle}" IsVisible="False">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="Date: " Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding Date, StringFormat='{0:MM/dd/yy}'}" Style="{StaticResource reportLabelStyle}" FontAttributes="Italic"/>
+                                <Label Text="Amount: " Style="{StaticResource reportLabelStyle}"/>
+                                <Label Text="{Binding Amount}" Style="{StaticResource reportLabelStyle}" FontAttributes="Italic"/>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

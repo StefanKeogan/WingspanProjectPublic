@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Net;
+using WingspanPrototype1.Functions;
 using Xamarin.Forms;
 
 namespace WingspanPrototype1
@@ -10,6 +11,8 @@ namespace WingspanPrototype1
     {
         public static IMongoDatabase GetDatabase()
         {
+
+            ConnectionProperties connectionProperties = new ConnectionProperties();
             // Wingspan Scale Grid Connection 
             //try
             //{
@@ -34,7 +37,7 @@ namespace WingspanPrototype1
             //}
 
             // Local host connection
-            var client = new MongoClient("mongodb://localhost:27017");
+            var client = new MongoClient(connectionProperties.GetConnectionProperties());
             var database = client.GetDatabase("WingspanDB");
             return database;
 
@@ -53,19 +56,10 @@ namespace WingspanPrototype1
             //}
 
 
-            //// Old Scale Grid Connection 
-            //string connectionString = "mongodb://wingspanapp:shadowfalconcricketmorepork@SG-WingspanDB-27502.servers.mongodirector.com:50432,SG-WingspanDB-27503.servers.mongodirector.com:50432,SG-WingspanDB-27504.servers.mongodirector.com:50432/WingspanDB?replicaSet=RS-WingspanDB-0&ssl=true";
+            //// Dedicated Scale Grid Connection 
+            //string connectionString = "mongodb://birdbook:BirdBookIsAwesome19@SG-DedicatedTest-27835.servers.mongodirector.com:27017/WingspanDB";
 
-            //var url = new MongoUrl(connectionString);
-
-            //var clientSettings = MongoClientSettings.FromUrl(url);
-
-            //clientSettings.SslSettings = new SslSettings();
-            //clientSettings.SslSettings.CheckCertificateRevocation = false;
-            //clientSettings.UseTls = true;
-            //clientSettings.AllowInsecureTls = true;
-
-            //var client = new MongoClient(clientSettings);
+            //var client = new MongoClient(connectionString);
 
             //var database = client.GetDatabase("WingspanDB");
             //return database;

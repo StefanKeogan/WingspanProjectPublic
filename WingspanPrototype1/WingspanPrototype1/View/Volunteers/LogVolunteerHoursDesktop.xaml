@@ -50,12 +50,12 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
 
-                <StackLayout Margin="30,30,30,30" WidthRequest="450" HorizontalOptions="CenterAndExpand">
+                <StackLayout Margin="15,30,15,30" WidthRequest="450" HorizontalOptions="CenterAndExpand">
                     <Label Text="Date" FontSize="20"  Margin="5,5,5,5" />
                     <DatePicker x:Name="datePicker" HorizontalOptions="FillAndExpand"   Margin="5,5,5,5"/>
                 </StackLayout>
 
-                <StackLayout Grid.Row="1"  Margin="30,30,30,30" WidthRequest="450" HorizontalOptions="CenterAndExpand">
+                <StackLayout Grid.Row="1"  Margin="15,30,15,30" WidthRequest="450" HorizontalOptions="CenterAndExpand">
                     <StackLayout Orientation="Horizontal">
                         <Label Text="Hours" FontSize="20"  Margin="5,5,5,5" />
                         <Label x:Name="hoursError" Style="{StaticResource addFormErrorStyle}" VerticalOptions="Center"/>
@@ -63,7 +63,7 @@
                     <Entry x:Name="hoursEntry" HorizontalOptions="Fill" VerticalOptions="Center" Margin="5,5,5,5"/>
                 </StackLayout>
 
-                <StackLayout Grid.Row="2"  Margin="30,30,30,30" WidthRequest="450" HorizontalOptions="CenterAndExpand">
+                <StackLayout Grid.Row="2"  Margin="15,30,15,30" WidthRequest="450" HorizontalOptions="CenterAndExpand">
                     <Label Text="Note" FontSize="20"  Margin="5,5,5,5"/>
                     <Editor x:Name="noteEditor" HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Margin="5,5,5,5"/>
                 </StackLayout>
