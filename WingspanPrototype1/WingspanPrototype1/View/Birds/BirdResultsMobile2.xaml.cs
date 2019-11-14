@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WingspanPrototype1.Controller.Birds;
+using WingspanPrototype1.Controller.Sponsorships;
 using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
@@ -769,6 +770,27 @@ namespace WingspanPrototype1
             bool result = await DisplayAlert("Are you sure", "Would you like to delete this bird", "Yes", "No");
             if (result == true)
             {
+                // Does this bird have any sponsors?
+                List<Sponsorship> sponsorships = SearchSponsorships.FindByBird(wingspanId);
+                if (sponsorships.Count > 0)
+                {
+                    // Would you like to remove sponsorships accosiated with this bird
+                    bool deleteSponsorships = await DisplayAlert("Bird Sponsored", "This bird has " + sponsorships.Count.ToString() + " sponsor(s)", "Delete bird and sponsorships", "Cancel");
+
+                    // Delete sponsorships 
+                    if (deleteSponsorships)
+                    {
+                        foreach (var sponsorship in sponsorships)
+                        {
+                            DeleteSponsorship.DropDocument(sponsorship.Sponsorship_id);
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+                }
+
                 if (birdType == typeof(WildBird))
                 {
                     if (DeleteWildBird.DropDocument(wingspanId))

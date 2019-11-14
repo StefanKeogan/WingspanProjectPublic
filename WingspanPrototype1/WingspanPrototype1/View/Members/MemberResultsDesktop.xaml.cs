@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using WingspanPrototype1.Controller.Birds;
 using WingspanPrototype1.Controller.Members;
+using WingspanPrototype1.Controller.Sponsorships;
 using WingspanPrototype1.Functions;
 using WingspanPrototype1.Model;
 using Xamarin.Forms;
@@ -259,6 +260,27 @@ namespace WingspanPrototype1.View
 
             if (answer)
             {
+                // Is the member currenty sponsoring any birds 
+                List<Sponsorship> sponsorships = SearchSponsorships.FindByMember(id);
+                if (sponsorships.Count > 0)
+                {
+                    bool deleteSponsorships = await DisplayAlert("Sponsoring", "This Member is sponsoring " + sponsorships.Count.ToString() + " bird(s)", "Delte member and their sponsorships", "Cancel");
+
+                    // Delete sponsorshpis accociated with that member 
+                    if (deleteSponsorships)
+                    {
+                        foreach (var sponsorship in sponsorships)
+                        {
+                            DeleteSponsorship.DropDocument(sponsorship.Sponsorship_id);
+                        }
+                    }
+                    else
+                    {
+                        return;
+                    }
+
+                }
+
                 if (DeleteMember.DropDocument(id))
                 {
                     await DisplayAlert("Member Deleted", "This member and their payment history have been delted", "OK");
