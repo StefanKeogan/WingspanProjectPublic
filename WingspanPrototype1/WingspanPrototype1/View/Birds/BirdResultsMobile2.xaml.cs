@@ -447,8 +447,7 @@ namespace WingspanPrototype1
 
         private void AddNewNoteButton_Clicked(object sender, EventArgs e)
         {
-            addNewNoteView.IsVisible = true;
-
+            addNewNoteView.IsVisible = true;           
         }
 
         private void NoteExitButton_Clicked(object sender, EventArgs e)
@@ -496,6 +495,8 @@ namespace WingspanPrototype1
         private void AddNewNoteExitButton_Clicked(object sender, EventArgs e)
         {
             addNewNoteView.IsVisible = false;
+            noteEditor.Text = null;
+            noteCategoryPicker.SelectedIndex = -1;
         }
 
         //Location popup boxes
@@ -555,6 +556,8 @@ namespace WingspanPrototype1
         private void AddNewLocationExitButton_Clicked(object sender, EventArgs e)
         {
             addNewLocationView.IsVisible = false;
+            locationEntry.Text = null;
+            locationCategoryPicker.SelectedIndex = -1;
         }
 
 

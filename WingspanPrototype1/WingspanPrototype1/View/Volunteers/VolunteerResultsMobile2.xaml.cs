@@ -103,6 +103,8 @@ namespace WingspanPrototype1.View.Volunteers
         private void LogHoursExitButton_Clicked(object sender, EventArgs e)
         {
             logHoursView.IsVisible = false;
+            hoursEntry.Text = null;
+            noteEditor.Text = null;
         }
 
         private async void LogButton_Clicked(object sender, EventArgs e)

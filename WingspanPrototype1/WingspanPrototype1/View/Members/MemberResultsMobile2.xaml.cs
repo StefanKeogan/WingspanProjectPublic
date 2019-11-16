@@ -435,6 +435,7 @@ namespace WingspanPrototype1.View
         private void PaymentExitButton_Clicked(object sender, EventArgs e)
         {
             paymentHistoryView.IsVisible = false;
+            paymentAmountEntry.Text = null;
         }
 
         // Adds payment to database 

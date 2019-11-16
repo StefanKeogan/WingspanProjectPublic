@@ -483,6 +483,8 @@ namespace WingspanPrototype1
         private void AddNewNoteButton_Clicked(object sender, EventArgs e)
         {
             addNewNoteView.IsVisible = true;
+            noteCategoryPicker.SelectedIndex = -1;
+            noteEditor.Text = null;
         }
 
         private void NoteExitButton_Clicked(object sender, EventArgs e)
@@ -585,6 +587,8 @@ namespace WingspanPrototype1
         private void AddNewLocationExitButton_Clicked(object sender, EventArgs e)
         {
             addNewLocationView.IsVisible = false;
+            locationEntry.Text = null;
+            locationCategoryPicker.SelectedIndex = -1;
         }
 
         // Save and delete button click events
