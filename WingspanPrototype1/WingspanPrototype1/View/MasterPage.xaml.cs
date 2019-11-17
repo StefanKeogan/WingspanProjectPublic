@@ -9,7 +9,6 @@ using WingspanPrototype1.Functions;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using WingspanPrototype1.View.Reports;
-using WingspanPrototype1.View.Settings;
 
 namespace WingspanPrototype1
 {
@@ -69,8 +68,6 @@ namespace WingspanPrototype1
             {
                 menuItems.Add(new MasterPageItem { Title = "Report Builder", TargetType = typeof(ReportBuilderDesktop) });               
             }
-
-            menuItems.Add(new MasterPageItem { Title = "Settings", TargetType = typeof(SettingsMenu) });
 
             menuList = MenuList; // Assign MenuList to object (Makes the listview acessible from MainPage)
 
