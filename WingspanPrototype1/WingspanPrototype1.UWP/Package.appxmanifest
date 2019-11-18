@@ -9,7 +9,7 @@
   <Identity
     Name="421901de-2786-4ce9-b424-833c9549b768"
     Publisher="CN=birdbook"
-    Version="1.0.13.0" />
+    Version="1.0.14.0" />
 
   <mp:PhoneIdentity PhoneProductId="ec0cc741-fd3e-485c-81be-68815c480690" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 

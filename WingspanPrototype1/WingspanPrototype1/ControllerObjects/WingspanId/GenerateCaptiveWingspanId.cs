@@ -16,26 +16,41 @@ namespace WingspanPrototype1.Functions
             DatabaseConnection databaseConnection = new DatabaseConnection();
             var database = databaseConnection.GetDatabase();
 
-            // Get collection
-            var collection = database.GetCollection<BsonDocument>("CaptiveIdValue");
+            if (database != null)
+            {
+                // Get collection
+                var collection = database.GetCollection<BsonDocument>("CaptiveIdValue");
 
-            // Get value
-            var value = collection.Find(new BsonDocument { }).First();
+                try
+                {
+                    // Get value
+                    var value = collection.Find(new BsonDocument { }).First();
 
-            // Get Id Value 
-            var idValue = BsonSerializer.Deserialize<IdValue>(value);
+                    // Get Id Value 
+                    var idValue = BsonSerializer.Deserialize<IdValue>(value);
 
-            // Generate Wingspan ID
-            int number = idValue.Value;
-            int year = DateTime.Today.Year % 100;
-            string wingspanId = year.ToString() + "/" + number.ToString();
+                    // Generate Wingspan ID
+                    int number = idValue.Value;
+                    int year = DateTime.Today.Year % 100;
+                    string wingspanId = year.ToString() + "/" + number.ToString();
 
-            int increment = number+1;
+                    int increment = number + 1;
 
-            // Increment Id Value 
-            collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", idValue.Value_id), Builders<BsonDocument>.Update.Set("Value", increment));
+                    // Increment Id Value 
+                    collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", idValue.Value_id), Builders<BsonDocument>.Update.Set("Value", increment));
 
-            return wingspanId;
+                    return wingspanId;
+                }
+                catch (Exception)
+                {
+                    return null;
+                }
+            }
+            else
+            {
+                return null;
+            }
+            
         }
     }
 }

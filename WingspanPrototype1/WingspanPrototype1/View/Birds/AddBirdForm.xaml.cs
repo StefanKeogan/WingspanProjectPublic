@@ -135,6 +135,14 @@ namespace WingspanPrototype1
 
                         wildBird.WingspanId = GenerateWildWingspanId.NewId();
 
+                        if (wildBird.WingspanId == null)
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                DisplayAlert("Connenction Error", "Could not generate wingspan Id, please check connection and try again", "OK");
+                            });
+                        }
+
                         if (wildSpeciesPicker.SelectedIndex != -1) wildBird.Species = wildSpeciesPicker.SelectedItem.ToString();
                         if (wildAgePicker.SelectedIndex != -1) wildBird.Age = wildAgePicker.SelectedItem.ToString();
                         if (wildSexPicker.SelectedIndex != -1) wildBird.Sex = wildSexPicker.SelectedItem.ToString();
@@ -278,6 +286,14 @@ namespace WingspanPrototype1
                     {
                         // Instantiate wingspan id here so both add bird and initial note functions can access it
                         string wingspanId = GenerateCaptiveWingspanId.NewId();
+
+                        if (wingspanId == null)
+                        {
+                            Device.BeginInvokeOnMainThread(() =>
+                            {
+                                DisplayAlert("Connenction Error", "Could not generate wingspan Id, please check connection and try again", "OK");
+                            });
+                        }
 
                         // Stores picker items, set default values
                         string speciesValue = null;
