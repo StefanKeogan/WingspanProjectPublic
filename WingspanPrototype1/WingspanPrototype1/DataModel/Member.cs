@@ -10,6 +10,7 @@ namespace WingspanPrototype1.Model
     {
         [BsonId]
         public ObjectId Member_id { get; set; }
+        public long Number { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string SalutationName { get; set; }
@@ -22,6 +23,8 @@ namespace WingspanPrototype1.Model
         public string Country { get; set; }
         public string Postcode { get; set; }
         public string Comment { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime JoinDate { get; set; }
 
 

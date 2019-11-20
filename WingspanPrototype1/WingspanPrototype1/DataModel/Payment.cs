@@ -10,6 +10,8 @@ namespace WingspanPrototype1.Model
     {
         [BsonId]
         public ObjectId Payment_id { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime Date { get; set; }
         public double Amount { get; set; }
         public ObjectId Member_id { get; set; }

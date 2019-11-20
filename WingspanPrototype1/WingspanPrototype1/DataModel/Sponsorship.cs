@@ -11,7 +11,11 @@ namespace WingspanPrototype1.Model
         public string Category { get; set; }
         public string Notes { get; set; }
         public ObjectId Member_id { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime StartDate { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime EndDate { get; set; }
 
     }

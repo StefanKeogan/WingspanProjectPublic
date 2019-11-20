@@ -18,8 +18,14 @@ namespace WingspanPrototype1.Model
         public string Age { get; set; }
         public string Sex { get; set; }      
         public string Location { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime DateArrived { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime DateDeparted { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime DateDeceased { get; set; }
         public string Result { get; set; }
         

@@ -40,6 +40,7 @@ namespace WingspanPrototype1.Controller.Birds
                                 {
                                     // Which feild are we updateing?
                                     // if (entry.StyleId == "wildWingspanIdEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("WingspanId", entry.Text));
+                                    if (entry.StyleId == "wildNameEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Name", entry.Text));
                                     if (entry.StyleId == "wildLocationEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Location", entry.Text));
                                     if (entry.StyleId == "wildGpsEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("Gps", entry.Text));
                                     if (entry.StyleId == "wildMetalBandIdEntry") collection.UpdateOne(Builders<BsonDocument>.Filter.Eq("_id", id), updateBuilder.Set("MetalBand", entry.Text));

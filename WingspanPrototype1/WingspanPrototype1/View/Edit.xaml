@@ -81,11 +81,18 @@
                         <Grid.RowDefinitions>
                             <RowDefinition/>
                             <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
                         </Grid.RowDefinitions>
 
                         <!--Wingspan Id-->
                         <Label x:Name="sponsorshipWingspanIDLabel" FontSize="20" Text="Wingspan ID"/>
                         <Entry x:Name="sponsorshipWingspanIdEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Column="1"/>
+
+                        <!--Wingspan Id--><!--
+                        <Label x:Name="sponsorshipBirdNameLabel" FontSize="20" Text="Wingspan ID" Grid.Row="1"/>
+                        <Entry x:Name="sponsorshipBirdNameEntry" HorizontalOptions="Fill" VerticalOptions="Center" Grid.Row="1" Grid.Column="1"/>-->
 
                         <!--sponsor/member first name-->
                         <Label x:Name="sponsorshipFirstNameLabel" Text="First name"  FontSize="20" Grid.Row="1"/>

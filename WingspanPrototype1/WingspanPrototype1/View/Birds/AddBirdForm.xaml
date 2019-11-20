@@ -35,20 +35,25 @@
                             <RowDefinition Height=".6*"/>
                             <RowDefinition Height="1*"/>
                             <RowDefinition Height=".6*"/>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height=".6*"/>
                             <RowDefinition Height="1.6*"/>
                             <RowDefinition Height=".6*"/>
                             <RowDefinition Height="1*"/>
                         </Grid.RowDefinitions>
 
-                        <!--Table Items-->    
+                        <!--Table Items-->
+                        <!--Name-->
+                        <Label x:Name="wildNameLabel" Text="Name" Style="{StaticResource labelStyle}" Grid.Row="1"/>
+                        <Entry x:Name="wildNameEntry" Style="{StaticResource feildStyle}" Grid.Row="1"/>
+
                         <!--Species-->
-                        <Label x:Name="wildSpeciesLabel" Text="Species" Style="{StaticResource labelStyle}" Grid.Row="1"/>
-                        <Picker x:Name="wildSpeciesPicker" Style="{StaticResource feildStyle}" Grid.Row="1">
+                        <Label x:Name="wildSpeciesLabel" Text="Species" Style="{StaticResource labelStyle}" Grid.Row="3"/>
+                        <Picker x:Name="wildSpeciesPicker" Style="{StaticResource feildStyle}" Grid.Row="3">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Falcon</x:String>
                                     <x:String>Harrier</x:String>
-                                    <x:String>Morepork</x:String>
                                     <x:String>Barn Owl</x:String>
                                     <x:String>Little Owl</x:String>
                                     <x:String>Ruru</x:String>
@@ -57,27 +62,28 @@
                         </Picker>
 
                         <!--Location-->
-                        <Label x:Name="wildLocationLabel" Text="Location" Grid.Row="3" Style="{StaticResource labelStyle}"/>
-                        <Entry x:Name="wildLocationEntry" Style="{StaticResource feildStyle}" Grid.Row="3"/>
+                        <Label x:Name="wildLocationLabel" Text="Location" Grid.Row="5" Style="{StaticResource labelStyle}"/>
+                        <Entry x:Name="wildLocationEntry" Style="{StaticResource feildStyle}" Grid.Row="5"/>
 
                         <!--GPS-->
-                        <Label x:Name="gpsLabel" Text="GPS" Style="{StaticResource labelStyle}" Grid.Row="5"/>
-                        <Entry x:Name="wildGpsEntry" Style="{StaticResource feildStyle}" Grid.Row="5"/>
+                        <Label x:Name="gpsLabel" Text="GPS" Style="{StaticResource labelStyle}" Grid.Row="7"/>
+                        <Entry x:Name="wildGpsEntry" Style="{StaticResource feildStyle}" Grid.Row="7"/>
 
                         <!--Sex-->
-                        <Label x:Name="wildSexLabel" Text="Sex" Style="{StaticResource labelStyle}" Grid.Row="7"/>
-                        <Picker x:Name="wildSexPicker" Style="{StaticResource feildStyle}" Grid.Row="7">
+                        <Label x:Name="wildSexLabel" Text="Sex" Style="{StaticResource labelStyle}" Grid.Row="9"/>
+                        <Picker x:Name="wildSexPicker" Style="{StaticResource feildStyle}" Grid.Row="9">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Male</x:String>
                                     <x:String>Female</x:String>
+                                    <x:String>TBC</x:String>
                                 </x:Array>
                             </Picker.ItemsSource>
                         </Picker>
 
                         <!--Age-->
-                        <Label x:Name="wildAgeLabel" Text="Age" Style="{StaticResource labelStyle}" Grid.Row="9"/>
-                        <Picker x:Name="wildAgePicker" Style="{StaticResource feildStyle}" Grid.Row="9">
+                        <Label x:Name="wildAgeLabel" Text="Age" Style="{StaticResource labelStyle}" Grid.Row="11"/>
+                        <Picker x:Name="wildAgePicker" Style="{StaticResource feildStyle}" Grid.Row="11">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Adult</x:String>
@@ -87,16 +93,16 @@
                         </Picker>
 
                         <!--Metal Band Id-->
-                        <Label x:Name="metalBandLabel" Text="Metal Band Id" Style="{StaticResource labelStyle}" Grid.Row="11"/>
-                        <Entry x:Name="wildMetalBandIdEntry" Style="{StaticResource feildStyle}" Grid.Row="11"/>
+                        <Label x:Name="metalBandLabel" Text="Metal Band Id" Style="{StaticResource labelStyle}" Grid.Row="13"/>
+                        <Entry x:Name="wildMetalBandIdEntry" Style="{StaticResource feildStyle}" Grid.Row="13"/>
 
                         <!--Band Info-->
-                        <Label x:Name="bandInfoLabel" Text="Band Info" Style="{StaticResource labelStyle}" Grid.Row="13"/>
-                        <Entry x:Name="wildBandInfoEntry" Style="{StaticResource feildStyle}" Grid.Row="13"/>
+                        <Label x:Name="bandInfoLabel" Text="Band Info" Style="{StaticResource labelStyle}" Grid.Row="15"/>
+                        <Entry x:Name="wildBandInfoEntry" Style="{StaticResource feildStyle}" Grid.Row="15"/>
 
                         <!--Date Banded-->
-                        <Label x:Name="dateBandedLabel" Text="Date Banded" Style="{StaticResource labelStyle}" Grid.Row="15"/>
-                         <StackLayout Style="{StaticResource wildDateStack}"  Grid.Row="15">
+                        <Label x:Name="dateBandedLabel" Text="Date Banded" Style="{StaticResource labelStyle}" Grid.Row="17"/>
+                         <StackLayout Style="{StaticResource wildDateStack}"  Grid.Row="17">
                             <StackLayout Orientation="Horizontal">
                                 <Label Text="Bird Banded" FontSize="20" TextColor="#5C3838"/>
                                 <CheckBox x:Name="dateBandedCheck" Color="#5C3838" CheckedChanged="dateBandedCheck_CheckedChanged"/>
@@ -106,22 +112,22 @@
                         
 
                         <!--Bander Name-->
-                        <Label x:Name="banderNameLabel" Text="Bander Name" Style="{StaticResource labelStyle}" Grid.Row="17"/>
-                        <Entry x:Name="wildBanderNameEntry" Style="{StaticResource feildStyle}" Grid.Row="17"/>
+                        <Label x:Name="banderNameLabel" Text="Bander Name" Style="{StaticResource labelStyle}" Grid.Row="19"/>
+                        <Entry x:Name="wildBanderNameEntry" Style="{StaticResource feildStyle}" Grid.Row="19"/>
 
                         <!--Initial Comment-->
-                        <Label x:Name="wildInitialNoteLabel" Text="Initial Note" Style="{StaticResource labelStyle}" Grid.Row="19" HorizontalTextAlignment="Start"/>
-                        <Editor x:Name="wildInitialNoteEditor" Style="{StaticResource feildStyle}" Grid.Row="19" />
+                        <Label x:Name="wildInitialNoteLabel" Text="Initial Note" Style="{StaticResource labelStyle}" Grid.Row="21" HorizontalTextAlignment="Start"/>
+                        <Editor x:Name="wildInitialNoteEditor" Style="{StaticResource feildStyle}" Grid.Row="21" />
                         
                         <!--Error Messages-->
                         <!--Species-->
-                        <Label x:Name="wildSpeciesError" Style="{StaticResource addFormErrorStyle}"/>
+                        <Label x:Name="wildSpeciesError" Style="{StaticResource addFormErrorStyle}" Grid.Row="2"/>
 
                         <!--Location-->
-                        <Label x:Name="wildLocationError" Style="{StaticResource addFormErrorStyle}" Grid.Row="2"/>
+                        <Label x:Name="wildLocationError" Style="{StaticResource addFormErrorStyle}" Grid.Row="4"/>
 
                         <!--Bander Name-->
-                        <Label x:Name="wildBanderNameError" Style="{StaticResource addFormErrorStyle}" Grid.Row="16"/>
+                        <Label x:Name="wildBanderNameError" Style="{StaticResource addFormErrorStyle}" Grid.Row="18"/>
 
                         </Grid>
                 </ContentView.Content>
@@ -177,7 +183,6 @@
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Falcon</x:String>
                                     <x:String>Harrier</x:String>
-                                    <x:String>Morepork</x:String>
                                     <x:String>Barn Owl</x:String>
                                     <x:String>Little Owl</x:String>
                                     <x:String>Ruru</x:String>
@@ -192,6 +197,7 @@
                                 <x:Array Type="{x:Type x:String}">
                                     <x:String>Male</x:String>
                                     <x:String>Female</x:String>
+                                    <x:String>TBC</x:String>
                                 </x:Array>
                             </Picker.ItemsSource>
                         </Picker>

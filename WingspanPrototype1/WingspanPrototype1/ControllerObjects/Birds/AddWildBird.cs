@@ -27,6 +27,7 @@ namespace WingspanPrototype1.Controller.Birds
                 };
 
                 // Further validation for un-required feilds 
+                if (bird.Name != null) document.Add("Name", bird.Name);
                 if (bird.Species != null) document.Add("Species", bird.Species);
                 if (bird.Location != null) document.Add("Location", bird.Location.Replace(" ", string.Empty));
                 if (bird.Age != null) document.Add("Age", bird.Age);

@@ -437,7 +437,7 @@
                                                 <StackLayout Margin="5,5,5,5">
                                                     <StackLayout Orientation="Horizontal">
                                                         <Label Text="Date" Margin="5,0,0,0" FontAttributes="Bold" FontSize="15"/>
-                                                        <Label Text="{Binding Date}" FontAttributes="Italic" FontSize="15"/>
+                                                        <Label Text="{Binding Date, StringFormat='{0:MM/dd/yy}'}" FontAttributes="Italic" FontSize="15"/>
                                                         <Label Text="Category" Margin="5,0,0,0" FontAttributes="Bold" FontSize="15"/>
                                                         <Label Text="{Binding Category}" FontAttributes="Italic" FontSize="15"/>
                                                     </StackLayout>

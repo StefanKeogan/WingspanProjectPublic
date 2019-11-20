@@ -119,7 +119,7 @@ namespace WingspanPrototype1
             // Set Wingspan Id Value
             //if (Validate.FeildPopulated(bird.WingspanId))
             //{
-                
+
             //    wildWingspanIdStack.IsVisible = true;
             //    wildWingspanIdEntry.IsVisible = false;
 
@@ -130,6 +130,20 @@ namespace WingspanPrototype1
             //    wildWingspanIdStack.IsVisible = false;
             //    entries.Add(wildWingspanIdEntry);
             //}
+
+            // Set Name Value 
+            if (Validate.FeildPopulated(bird.Name))
+            {
+                wildNameValueLabel.Text = bird.Name;
+                wildNameStack.IsVisible = true;
+                wildNameEntry.IsVisible = false;
+            }
+            else
+            {
+                wildNameEntry.IsVisible = true;
+                wildNameStack.IsVisible = false;
+                entries.Add(wildNameEntry);
+            }
 
             // Set Species Value 
             if (Validate.FeildPopulated(bird.Species))
@@ -987,6 +1001,13 @@ namespace WingspanPrototype1
         //    wildWingspanIdEntry.IsVisible = true;
         //    entries.Add(wildWingspanIdEntry);
         //}
+
+        private void wildNameEditButton_Clicked(object sender, EventArgs e)
+        {
+            wildBanderNameStack.IsVisible = false;
+            wildNameEntry.IsVisible = true;
+            entries.Add(wildNameEntry);
+        }
 
         private void WildSpeciesEditButton_Clicked(object sender, EventArgs e)
         {

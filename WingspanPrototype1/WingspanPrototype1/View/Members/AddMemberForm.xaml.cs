@@ -216,7 +216,6 @@ namespace WingspanPrototype1.View
                         Device.BeginInvokeOnMainThread(() =>
                         {
                             postcodeError.IsVisible = false;
-
                         });
                     }
                 }
@@ -225,7 +224,6 @@ namespace WingspanPrototype1.View
                     Device.BeginInvokeOnMainThread(() =>
                     {
                         postcodeError.IsVisible = false;
-
                     });
                 }
 
@@ -261,6 +259,7 @@ namespace WingspanPrototype1.View
                 {
                     bool memberInserted = AddMember.InsertMemberDocument(new Member
                     {
+                        Number = Convert.ToInt64(memberNumberEntry.Text),
                         FirstName = memberFirstNameEntry.Text,
                         LastName = memberLastNameEntry.Text,
                         SalutationName = memberSalutationNameEntry.Text,
@@ -281,6 +280,7 @@ namespace WingspanPrototype1.View
                     {
                         if (memberInserted)
                         {
+                            memberNumberEntry.Text = null;
                             memberFirstNameEntry.Text = null;
                             memberLastNameEntry.Text = null;
                             memberSalutationNameEntry.Text = null;

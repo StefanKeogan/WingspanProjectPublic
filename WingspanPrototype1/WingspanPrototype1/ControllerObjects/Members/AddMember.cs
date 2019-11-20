@@ -23,10 +23,11 @@ namespace WingspanPrototype1.Controller.Birds
                 // Create document object, add default values 
                 var document = new BsonDocument
                 {
-                    {"JoinDate", member.JoinDate.ToLocalTime() },
+                    {"JoinDate", member.JoinDate.ToLocalTime()}
                 };
 
                 // Add feilds that are populated 
+                if (Validate.FeildPopulated(member.Number.ToString())) document.Add("Number", member.Number);
                 if (Validate.FeildPopulated(member.FirstName)) document.Add("FirstName", member.FirstName.Replace(" ", string.Empty).ToLower());
                 if (Validate.FeildPopulated(member.LastName)) document.Add("LastName", member.LastName.Replace(" ", string.Empty).ToLower());
                 if (Validate.FeildPopulated(member.SalutationName)) document.Add("SalutationName", member.SalutationName.Replace(" ", string.Empty).ToLower());

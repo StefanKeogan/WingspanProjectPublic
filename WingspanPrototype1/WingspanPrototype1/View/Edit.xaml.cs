@@ -395,7 +395,7 @@ namespace WingspanPrototype1
 
                         //search sponsorships by member
                         if ((Validate.FeildPopulated(sponsorshipFirstNameEntry.Text)) ||
-                        (Validate.FeildPopulated(sponsorshipLastNameEntry.Text))||
+                        (Validate.FeildPopulated(sponsorshipLastNameEntry.Text)) ||
                         (Validate.FeildPopulated(sponsorshipCompanyNameEntry.Text)))
                         {
                             memberSponsorshipResults = SearchSponsorships.SearchByMember(sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text);

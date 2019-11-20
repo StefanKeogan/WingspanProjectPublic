@@ -64,6 +64,22 @@ namespace WingspanPrototype1.View
             // Clear old input items 
             entries.Clear();
 
+            // Member Number
+            if (Validate.FeildPopulated(member.Number.ToString()))
+            {
+
+                memberNumberValueLabel.Text = member.Number.ToString();
+                memberNumberStack.IsVisible = true;
+                memberNumberEntry.IsVisible = false;
+            }
+            else
+            {
+                memberNumberEntry.IsVisible = true;
+                memberNumberStack.IsVisible = false;
+                entries.Add(memberNumberEntry);
+
+            }
+
             // First Name
             if (Validate.FeildPopulated(member.FirstName))
             {
@@ -499,9 +515,9 @@ namespace WingspanPrototype1.View
             // Validate payment amount feild 
             if (Validate.FeildPopulated(paymentAmountEntry.Text))
             {
-                if (Validate.ContainsLetter(paymentAmountEntry.Text))
+                if ((Validate.ContainsLetter(paymentAmountEntry.Text)) || (paymentAmountEntry.Text.Contains('$')))
                 {
-                    await DisplayAlert("Invalid Format", "The can not contain letters", "OK");
+                    await DisplayAlert("Invalid Format", "The can not contain letters or $", "OK");
                     return;
                 }
             }
@@ -522,8 +538,7 @@ namespace WingspanPrototype1.View
             else
             {
                 await DisplayAlert("Connection Error", "Please check your connection and try again", "OK");
-            }
-            
+            }          
             
         }
 
@@ -645,5 +660,11 @@ namespace WingspanPrototype1.View
             entries.Add(memberCountryEntry);
         }
 
+        private void memberNumberEditButton_Clicked(object sender, EventArgs e)
+        {
+            memberNumberStack.IsVisible = false;
+            memberNumberEntry.IsVisible = true;
+            entries.Add(memberNumberEntry);
+        }
     }
 }

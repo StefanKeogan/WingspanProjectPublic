@@ -57,9 +57,8 @@ namespace WingspanPrototype1.Controller.Birds
                     return memberObjectResults;
                 }
                 catch (Exception)
-                {
-                    throw;
-                    // return null;
+                {                
+                    return null;
                 }
             }
             else

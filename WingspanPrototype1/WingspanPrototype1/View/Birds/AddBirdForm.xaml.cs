@@ -147,6 +147,7 @@ namespace WingspanPrototype1
                         if (wildAgePicker.SelectedIndex != -1) wildBird.Age = wildAgePicker.SelectedItem.ToString();
                         if (wildSexPicker.SelectedIndex != -1) wildBird.Sex = wildSexPicker.SelectedItem.ToString();
 
+                        wildBird.Name = wildNameEntry.Text;
                         wildBird.Location = wildLocationEntry.Text;
                         wildBird.MetalBand = wildMetalBandIdEntry.Text;
                         wildBird.BandInfo = wildBandInfoEntry.Text;
@@ -166,6 +167,7 @@ namespace WingspanPrototype1
                             if (inserted)
                             {
                                 // Clear feilds
+                                wildNameEntry.Text = null;
                                 wildSpeciesPicker.SelectedIndex = -1;
                                 wildLocationEntry.Text = null;
                                 wildAgePicker.SelectedIndex = -1;
@@ -303,7 +305,7 @@ namespace WingspanPrototype1
                         // Handle pickers first
                         if (captiveSpeciesPicker.SelectedIndex != -1) speciesValue = captiveSpeciesPicker.SelectedItem.ToString();
                         if (captiveSexPicker.SelectedIndex != -1) sexValue = captiveSexPicker.SelectedItem.ToString();
-                        if (wildAgePicker.SelectedIndex != -1) ageValue = wildAgePicker.SelectedItem.ToString();
+                        if (captiveAgePicker.SelectedIndex != -1) ageValue = captiveAgePicker.SelectedItem.ToString();
 
 
                         bool birdInserted = AddCaptiveBird.InsertCaptiveBirdDocument(new CaptiveBird

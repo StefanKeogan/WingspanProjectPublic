@@ -11,6 +11,7 @@ namespace WingspanPrototype1
         [BsonId]
         public ObjectId Wild_id { get; set; }
         public string WingspanId{ get; set; }
+        public string Name{ get; set; }
         public string Species { get; set; }
         public string Location { get; set; }
         public string Age { get; set; }
@@ -18,6 +19,8 @@ namespace WingspanPrototype1
         public string MetalBand { get; set; }
         public string BandInfo { get; set; }      
         public string Gps { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime DateBanded { get; set; }
         public string BanderName { get; set; }
     }

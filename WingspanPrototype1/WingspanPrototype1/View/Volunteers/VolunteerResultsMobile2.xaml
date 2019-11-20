@@ -70,7 +70,7 @@
                                                 <ViewCell>
                                                     <StackLayout Orientation="Horizontal" Margin="5,10,5,10">
                                                         <Label Text="Date" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
-                                                        <Label Text="{Binding Date}" FontAttributes="Italic" FontSize="15"/>
+                                                        <Label Text="{Binding Date, StringFormat='{0:MM/dd/yy}'}" FontAttributes="Italic" FontSize="15"/>
                                                         <Label Text="Amount" Margin="20,0,0,0" FontAttributes="Bold" FontSize="15"/>
                                                         <Label Text="{Binding Amount}" FontAttributes="Italic" FontSize="15"/>
                                                     </StackLayout>

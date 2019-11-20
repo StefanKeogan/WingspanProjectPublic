@@ -10,6 +10,8 @@ namespace WingspanPrototype1.Model
     {
         [BsonId]
         public ObjectId Note_id { get; set; }
+
+        [BsonDateTimeOptions(Kind = DateTimeKind.Local)]
         public DateTime Date { get; set; }
         public string Category { get; set; }
         public string Comment { get; set; }
