@@ -25,7 +25,7 @@ namespace WingspanPrototype1.Controller.Birds
                     { "Date", location.Date },
                     { "Category", location.Category },
                     { "BirdLocation", location.BirdLocation },
-                    { "WingspanId", location.WingspanId}
+                    { "WingspanId", location.WingspanId }
                 };
 
                 // Insert docunment

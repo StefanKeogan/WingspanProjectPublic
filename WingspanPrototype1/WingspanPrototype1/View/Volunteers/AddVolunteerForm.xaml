@@ -9,7 +9,7 @@
     <ContentPage.Content>
         <ScrollView VerticalOptions="Center" HorizontalOptions="Center">
             <StackLayout>
-                <Grid  HeightRequest="400" >
+                <Grid  HeightRequest="500" >
                     <Grid.RowDefinitions>
                         <RowDefinition Height=".6*" />
                         <RowDefinition Height="1*"/>

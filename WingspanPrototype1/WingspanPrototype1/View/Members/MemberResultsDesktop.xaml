@@ -59,7 +59,7 @@
                     </Grid.RowDefinitions>
 
                     <!--Member Number-->
-                    <Label x:Name="memberNumberLabel" Text="First Name" Style="{StaticResource resultLabelStyle}"/>
+                    <Label x:Name="memberNumberLabel" Text="Member Number" Style="{StaticResource resultLabelStyle}"/>
                     <StackLayout x:Name="memberNumberStack" Style="{StaticResource resultStackStyle}" IsVisible="False">
                         <Label x:Name="memberNumberValueLabel" FontSize="20"/>
                         <Button x:Name="memberNumberEditButton" Style="{StaticResource editStyleDesktop}" Clicked="memberNumberEditButton_Clicked"/>

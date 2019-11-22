@@ -16,8 +16,8 @@ namespace WingspanPrototype1.Controller.Volunteers
 
             if (database != null)
             {
-                // Get location collection
-                var collection = database.GetCollection<BsonDocument>("NoteHistory");
+                // Get hours collection
+                var collection = database.GetCollection<BsonDocument>("VolunteerHours");
 
                 // Build filter
                 var filter = Builders<BsonDocument>.Filter.Eq("_id", id);

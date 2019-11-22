@@ -323,10 +323,10 @@ namespace WingspanPrototype1.View.Volunteers
                 // If item is not null
                 if (item != null)
                 {
-                    // Delete locattion document
+                    // Delete hours document
                     if (DeleteHours.DropDocument(item.Hours_id))
                     {
-                        await DisplayAlert("Hours Deleted", "This volunteers hours has been deleted", "OK");
+                        await DisplayAlert("Hours Deleted", "This volunteers hours have been deleted", "OK");
                         hoursListView.ItemsSource = FindVolunteerWorkHours.GetHoursDocuments(id);
                     }
                     else

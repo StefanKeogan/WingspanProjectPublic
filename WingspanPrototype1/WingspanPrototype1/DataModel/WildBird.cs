@@ -11,7 +11,7 @@ namespace WingspanPrototype1
         [BsonId]
         public ObjectId Wild_id { get; set; }
         public string WingspanId{ get; set; }
-        public string Name{ get; set; }
+        public string Name { get; set; }
         public string Species { get; set; }
         public string Location { get; set; }
         public string Age { get; set; }

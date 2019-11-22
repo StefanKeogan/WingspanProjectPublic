@@ -347,11 +347,22 @@ namespace WingspanPrototype1
 
                 case "Edit Sponsorships":
 
-                    if (Validate.AllFeildsEmpty(new string[] { sponsorshipWingspanIdEntry.Text, sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text }))
+                    if (Validate.AllFeildsEmpty(new string[] { sponsorshipWingspanIdEntry.Text, sponsorshipFirstNameEntry.Text, sponsorshipLastNameEntry.Text, sponsorshipCompanyNameEntry.Text, sponsorshipBirdNameEntry.Text }))
                     {
                         DisplayAlert("All Feilds Empty", "Please fill in at least one search feild to continue", "OK");
                         break;
-                    }                    
+                    }
+
+                    // Has the first bird feild been populated? 
+                    if (Validate.FeildPopulated(sponsorshipBirdNameEntry.Text))
+                    {
+                        // Does the sponsor name feild contain any numbers or symbols 
+                        if (Validate.ContainsNumberOrSymbol(sponsorshipBirdNameEntry.Text))
+                        {
+                            DisplayAlert("Invalid Bird Name Value", "The bird name feild can not contain numbers or symbols", "OK");
+                            break;
+                        }
+                    }
 
                     // Has the first name feild been populated? 
                     if (Validate.FeildPopulated(sponsorshipFirstNameEntry.Text))
@@ -362,7 +373,7 @@ namespace WingspanPrototype1
                             DisplayAlert("Invalid First Name Value", "The first name feild can not contain numbers or symbols", "OK");
                             break;
                         }
-                    }
+                    }            
 
                     // Has the last name feild been populated? 
                     if (Validate.FeildPopulated(sponsorshipLastNameEntry.Text))
@@ -387,10 +398,57 @@ namespace WingspanPrototype1
                         List<Sponsorship> memberSponsorshipResults = new List<Sponsorship>(); 
                         List<Sponsorship> birdSponsorshipResults = new List<Sponsorship>(); 
 
-                        //search sponsorships by bird
+                        // Search sponsorships by bird id
                         if (Validate.FeildPopulated(sponsorshipWingspanIdEntry.Text))
                         {
                             birdSponsorshipResults = SearchSponsorships.FindByBird(sponsorshipWingspanIdEntry.Text);
+                        }
+
+                        // If searching name find birds by name then search sonsorships for those birds
+                        if (Validate.FeildPopulated(sponsorshipBirdNameEntry.Text))
+                        {
+                            ArrayList results = SearchBirds.Search(null, sponsorshipBirdNameEntry.Text, null);
+
+                            List<Sponsorship> sponsorshipsFound = new List<Sponsorship>();
+
+
+                            // If results are found 
+                            if ((results != null) && (results.Count > 0))
+                            {
+                                // Loop through results and search sponsorsips for those birds
+                                foreach (var bird in results)
+                                {
+                                    List<Sponsorship> initialResults = new List<Sponsorship>();
+
+                                    // Is this bird captive?
+                                    if (bird.GetType() == typeof(CaptiveBird))
+                                    { 
+                                    
+                                        CaptiveBird captiveBird = bird as CaptiveBird;
+                                        initialResults = SearchSponsorships.FindByBird(captiveBird.WingspanId);
+                                    }
+                                    else if (bird.GetType() == typeof(WildBird))
+                                    {
+                                        WildBird wildBird = bird as WildBird;
+                                        initialResults = SearchSponsorships.FindByBird(wildBird.WingspanId);
+                                    }
+                                    else
+                                    {
+                                        continue;
+                                    }
+
+                                    foreach (var result in initialResults)
+                                    {
+                                        if (!sponsorshipResults.Contains(result))
+                                        {
+                                            sponsorshipResults.Add(result);
+                                        }
+                                        
+                                    }
+                                }                           
+                                
+                            }
+
                         }
 
                         //search sponsorships by member
@@ -411,7 +469,6 @@ namespace WingspanPrototype1
                                 }
                             }
                         }
-
                            
                         if ((birdSponsorshipResults.Count > 0) && (birdSponsorshipResults != null))
                         {

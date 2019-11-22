@@ -170,31 +170,17 @@ namespace WingspanPrototype1.View
                 editSponsorNameStack.IsVisible = false;
             }
 
-            ////display member's last name
-            //if ((memberDetails.LastName != string.Empty) && (memberDetails.LastName != null))
-            //{
-            //    editSponsorLastNameValueLabel.Text = memberDetails.LastName;
-            //    editSponsorLastNameStack.IsVisible = true;
-            //    editSponsorLastNameEntry.IsVisible = false;
-            //}
-            //else
-            //{
-            //    editSponsorLastNameEntry.IsVisible = true;
-            //    editSponsorLastNameStack.IsVisible = false;
-            //}
+            // Display members last name
+            if (((Validate.FeildPopulated(memberDetails.LastName)) && (!Validate.FeildPopulated(memberDetails.Company))))
+            {
+                editSponsorLastNameValueLabel.Text = memberDetails.LastName;
+                editSponsorLastNameStack.IsVisible = true;
+            }
+            else
+            {
+                editSponsorLastNameStack.IsVisible = false;
+            }
 
-            ////display sponsoring company name
-            //if ((memberDetails.Company != string.Empty) && (memberDetails.Company != null))
-            //{
-            //    editSponsorCompanyNameValueLabel.Text = memberDetails.Company;
-            //    editSponsorCompanyNameStack.IsVisible = true;
-            //    editSponsorCompanyNameEntry.IsVisible = false;
-            //}
-            //else
-            //{
-            //    editSponsorCompanyNameEntry.IsVisible = true;
-            //    editSponsorCompanyNameStack.IsVisible = false;
-            //}
         }
 
         //methods for buttons
